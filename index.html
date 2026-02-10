@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .header {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .option-item:hover {
+            background-color: #fafafa;
+        }
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        .special-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer-tools {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .tool-link {
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 彈出視窗樣式 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        .example-box {
+            background: #f4f4f4;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+        }
+        h4 { margin: 10px 0 5px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
+    
+    <div class="question">
+        The mayor has such a ______ schedule that it takes weeks to arrange an interview with her.
+    </div>
+
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) hasty <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) tight <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) diligent <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) routine <span class="info-icon">ⓘ</span></div>
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('E')">
+        (E) 查看答案與詳細解析
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('F')">
+        (F) 林威老師的話 (衍生詞與音標)
+    </div>
+
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+
+<div id="infoOverlay" class="overlay">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <div id="contentArea" class="overlay-content"></div>
+</div>
+
+<script>
+    const data = {
+        'A': {
+            title: '(A) hasty',
+            desc: '解釋：倉促的，輕率的',
+            example: 'Don\'t make a hasty decision. (不要做倉促的決定。)'
+        },
+        'B': {
+            title: '(B) tight',
+            desc: '解釋：(時間) 緊湊的；緊的',
+            example: 'We have a very tight schedule today. (我們今天的行程非常緊湊。)'
+        },
+        'C': {
+            title: '(C) diligent',
+            desc: '解釋：勤勉的，用功的',
+            example: 'She is a diligent student who never gives up. (她是一位從不放棄的勤勉學生。)'
+        },
+        'D': {
+            title: '(D) routine',
+            desc: '解釋：例行的，常規的',
+            example: 'Exercising has become part of my daily routine. (運動已成為我日常生活的一部分。)'
+        },
+        'E': {
+            title: '正確答案：(B)',
+            desc: '解析：題幹提到「需要數週才能安排好面談」，表示市長的行程非常「緊湊」。',
+            example: 'hasty (倉促)、diligent (勤勉)、routine (例行) 皆不符合此處語境。'
+        },
+        'F': {
+            title: '林威老師的話',
+            desc: '衍生詞與音標學習：',
+            detail: `
+                <h4>1. haste (名詞)</h4>
+                <p>KK: [hest] | 中文：匆忙</p>
+                <h4>2. tightness (名詞)</h4>
+                <p>KK: [ˈtaɪtnɪs] | 中文：緊湊、堅固</p>
+                <h4>3. diligence (名詞)</h4>
+                <p>KK: [ˈdɪlədʒəns] | 中文：勤勉</p>
+                <h4>4. routinely (副詞)</h4>
+                <p>KK: [ruˈtinli] | 中文：常規地</p>
+            `
+        },
+        'G': {
+            title: '衍生詞更多例句',
+            detail: `
+                <div class="example-box">1. <b>In her haste</b>, she forgot her keys.<br>(匆忙之中，她忘了帶鑰匙。)</div>
+                <div class="example-box">2. The <b>tightness</b> of the schedule surprised us.<br>(行程之緊湊讓我們感到驚訝。)</div>
+                <div class="example-box">3. Success requires <b>diligence</b> and patience.<br>(成功需要勤勉與耐心。)</div>
+                <div class="example-box">4. The equipment is <b>routinely</b> checked.<br>(這項設備會定期進行例行檢查。)</div>
+            `
+        },
+        'H': {
+            title: '台灣學測必備片語',
+            detail: `
+                <h4>1. end up (結果變成...)</h4>
+                <p>例句：If you don't study, you might end up failing the exam.<br>(如果你不讀書，最後可能會落得考試不及格的下場。)</p>
+                <h4>2. turn to... for... (向...尋求...)</h4>
+                <p>例句：You can always turn to your teachers for help.<br>(你隨時可以向老師尋求幫助。)</p>
+            `
+        }
+    };
+
+    function showOverlay(key) {
+        const item = data[key];
+        let html = `<div class="overlay-title">${item.title}</div>`;
+        if(item.desc) html += `<p>${item.desc}</p>`;
+        if(item.example) html += `<div class="example-box"><b>例句：</b><br>${item.example}</div>`;
+        if(item.detail) html += `<div>${item.detail}</div>`;
+        
+        document.getElementById('contentArea').innerHTML = html;
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
+
+    function closeOverlay() {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
