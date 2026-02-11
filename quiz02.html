@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .header {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .option-item:hover {
+            background-color: #fafafa;
+        }
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        .special-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer-tools {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .tool-link {
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 彈出視窗樣式 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        .example-box {
+            background: #f4f4f4;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-size: 0.95rem;
+        }
+        h4 { margin: 10px 0 5px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
+    
+    <div class="question">
+        Jane started as an ______ art designer, but now she has a professional studio of her own.
+    </div>
+
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) official <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) instant <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) amateur <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) elementary <span class="info-icon">ⓘ</span></div>
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('E')">
+        (E) 查看答案與詳細解析
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('F')">
+        (F) 林威老師的話 (衍生詞與音標)
+    </div>
+
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+
+<div id="infoOverlay" class="overlay">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <div id="contentArea" class="overlay-content"></div>
+</div>
+
+<script>
+    const data = {
+        'A': {
+            title: '(A) official',
+            desc: '解釋：官方的；正式的',
+            example: 'The news has not been made official yet. (這項消息尚未正式對外公布。)'
+        },
+        'B': {
+            title: '(B) instant',
+            desc: '解釋：立即的；即時的',
+            example: 'This app provides instant feedback to the users. (這款應用程式為使用者提供即時回饋。)'
+        },
+        'C': {
+            title: '(C) amateur',
+            desc: '解釋：業餘的；外行的',
+            example: 'The tournament is open to both amateur and professional golfers. (這場錦標賽開放給業餘和職業高爾夫球手參加。)'
+        },
+        'D': {
+            title: '(D) elementary',
+            desc: '解釋：基本的；初級的',
+            example: 'The problem is quite elementary; you should be able to solve it. (這個問題很基本，你應該能解決它。)'
+        },
+        'E': {
+            title: '正確答案：(C)',
+            desc: '解析：題幹後半句提到「現在擁有了自己的專業工作室 (professional studio)」，表示過去是從「業餘 (amateur)」身份開始的。',
+            example: 'official (正式)、instant (立即)、elementary (基本) 在此與 professional 身份的對比不恰當。'
+        },
+        'F': {
+            title: '林威老師的話',
+            desc: '衍生詞與音標學習：',
+            detail: `
+                <h4>1. officially (副詞)</h4>
+                <p>KK: [əˈfɪʃəli] | 中文：正式地</p>
+                <h4>2. instantly (副詞)</h4>
+                <p>KK: [ˈɪnstəntli] | 中文：立即地</p>
+                <h4>3. amateurish (形容詞)</h4>
+                <p>KK: [ˌæməˈtɜːrɪʃ] | 中文：外行的、不專業的</p>
+                <h4>4. element (名詞)</h4>
+                <p>KK: [ˈelɪmənt] | 中文：元素、要素</p>
+            `
+        },
+        'G': {
+            title: '衍生詞更多例句',
+            detail: `
+                <div class="example-box">1. The results will be <b>officially</b> announced tomorrow.<br>(結果將於明天正式公布。)</div>
+                <div class="example-box">2. I <b>instantly</b> recognized her voice on the phone.<br>(我在電話中立刻認出了她的聲音。)</div>
+                <div class="example-box">3. The play was a bit <b>amateurish</b>, but the acting was good.<br>(這齣戲有點外行，但演技不錯。)</div>
+                <div class="example-box">4. Honesty is an essential <b>element</b> of a good friendship.<br>(誠實是良好友誼的基本要素。)</div>
+            `
+        },
+        'H': {
+            title: '台灣學測必備片語',
+            detail: `
+                <h4>1. end up (結果變成...)</h4>
+                <p>例句：We took the wrong bus and ended up in a different city.<br>(我們搭錯車，最後竟然到了另一個城市。)</p>
+                <h4>2. turn to... for... (向...尋求...)</h4>
+                <p>例句：In times of trouble, she always turns to her sister for advice.<br>(遇到麻煩時，她總是向姊姊尋求建議。)</p>
+            `
+        }
+    };
+
+    function showOverlay(key) {
+        const item = data[key];
+        let html = `<div class="overlay-title">${item.title}</div>`;
+        if(item.desc) html += `<p>${item.desc}</p>`;
+        if(item.example) html += `<div class="example-box"><b>例句：</b><br>${item.example}</div>`;
+        if(item.detail) html += `<div>${item.detail}</div>`;
+        
+        document.getElementById('contentArea').innerHTML = html;
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
+
+    function closeOverlay() {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
