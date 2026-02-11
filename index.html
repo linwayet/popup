@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>高三英文練習題首頁</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f97373, #fb7185, #fbbf24); /* 溫暖漸層：橘紅＋粉色 */
+      color: #111827;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 24px;
+      color: #111827;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 0.95rem;
+      color: #1f2933;
+      margin: 4px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background-color: rgba(255,255,255,0.8);
+      color: #b91c1c;
+      font-size: 0.75rem;
+      margin-right: 4px;
+      border: 1px solid rgba(248,250,252,0.8);
+    }
+
+    .card {
+      background-color: rgba(255,255,255,0.96);
+      border-radius: 16px;
+      padding: 18px 14px 20px;
+      box-shadow: 0 12px 35px rgba(148,27,12,0.28);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      border-left: 4px solid #f97316;
+      padding-left: 8px;
+      color: #991b1b;
+    }
+
+    .card p.intro {
+      margin: 0 0 14px;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .quiz-item a {
+      display: block;
+      text-decoration: none;
+      background-color: #fef3c7;
+      border-radius: 12px;
+      padding: 10px 10px;
+      color: #7c2d12;
+      border: 1px solid #fed7aa;
+      transition: all 0.15s ease-in-out;
+      font-size: 0.92rem;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .quiz-item a:hover {
+      background-color: #fb923c;
+      border-color: #f97316;
+      color: white;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 20px rgba(180,83,9,0.45);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.8rem;
+      color: #1f2933;
+      text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      .card {
+        padding: 14px 12px 16px;
+      }
+      .quiz-item a {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <span class="tag">高三</span>
+        <span class="tag">英文練習</span>
+        <span class="tag">單字與模擬學測</span>
+      </div>
+      <h1>英文字彙與文法練習</h1>
+      <p>BBC, NY Times, Economist, 一對一教學（托福、多益、雅思）每月開班！</p>
+      <p>請私訊林威老師 Line ID：linwayet</p>
+      <p>各位同學好，我是林威老師，英文教學已達 34 年。</p>
+      <p>邁向《經濟學人》4000 篇文章（講解累積時間已達 15 年）。</p>
+    </header>
+
+    <main class="card">
+      <h2>單元測驗列表（共 20 回）</h2>
+      <p class="intro">每回大約 5–10 分鐘。請依照老師指定順序，或照自己需要選擇練習。</p>
+
+      <div class="quiz-grid">
+        <!-- 單字題 01–10 -->
+        <div class="quiz-item"><a href="quiz01.html">單字題 01</a></div>
+        <div class="quiz-item"><a href="quiz02.html">單字題 02</a></div>
+        <div class="quiz-item"><a href="quiz03.html">單字題 03</a></div>
+        <div class="quiz-item"><a href="quiz04.html">單字題 04</a></div>
+        <div class="quiz-item"><a href="quiz05.html">單字題 05</a></div>
+        <div class="quiz-item"><a href="quiz06.html">單字題 06</a></div>
+        <div class="quiz-item"><a href="quiz07.html">單字題 07</a></div>
+        <div class="quiz-item"><a href="quiz08.html">單字題 08</a></div>
+        <div class="quiz-item"><a href="quiz09.html">單字題 09</a></div>
+        <div class="quiz-item"><a href="quiz10.html">單字題 10</a></div>
+
+        <!-- 單字題 11–20（模擬學測） -->
+        <div class="quiz-item"><a href="quiz11.html">單字題 11（模擬學測）</a></div>
+        <div class="quiz-item"><a href="quiz12.html">單字題 12（模擬學測）</a></div>
+        <div class="quiz-item"><a href="quiz13.html">單字題 13（模擬學測）</a></div>
+        <div class="quiz-item"><a href="quiz14.html">單字題 14（模擬學測）</a></div>
+        <div class="quiz-item"><a href="quiz15.html">單字題 15（模擬學測）</a></div>
+        <div class="quiz-item"><a href="quiz16.html">單字題 16（模擬學測）</a></div>
+        <div class="quiz-item"><a href="quiz17.html">單字題 17（模擬學測）</a></div>
+        <div class="quiz-item"><a href="quiz18.html">單字題 18（模擬學測）</a></div>
+        <div class="quiz-item"><a href="quiz19.html">單字題 19（模擬學測）</a></div>
+        <div class="quiz-item"><a href="quiz20.html">單字題 20（模擬學測）</a></div>
+      </div>
+    </main>
+
+    <footer>
+      如頁面無法正確顯示，請改用 Chrome 或 Edge 並更新至最新版瀏覽器。
+    </footer>
+  </div>
+</body>
+</html>
