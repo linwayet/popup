@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>林威老師編輯 2026年2月10日｜115學測英文科</title>
+  <style>
+    :root{ --font: 18px; }
+    *{ box-sizing: border-box; }
+    body{
+      margin:0; padding:16px; background:#fff; color:#000;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Helvetica Neue",Arial,"Microsoft JhengHei",sans-serif;
+      font-size:var(--font); line-height:1.6;
+    }
+    .card{ max-width:760px; margin:0 auto; }
+    h1{ margin:0 0 8px; font-size:1.15rem; font-weight:700; }
+    .meta{ opacity:.75; margin-bottom:12px; }
+
+    .q{ border:1px solid #000; border-radius:12px; padding:14px 12px; background:#fff; }
+    .stem{ margin-bottom:12px; }
+
+    .choices{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+    .choice{
+      position:relative; border:1px solid #000; border-radius:10px; padding:12px 14px; background:#fff;
+      cursor:pointer; touch-action:manipulation;
+    }
+    .choice:focus{ outline:2px dashed #000; outline-offset:2px; }
+
+    .label{ font-weight:700; margin-right:6px; }
+
+    .info{
+      display:inline-flex; align-items:center; justify-content:center;
+      width:1.3em; height:1.3em; line-height:1.3em; border:1px solid #000; border-radius:50%;
+      font-weight:700; margin-left:6px; user-select:none; cursor: pointer;
+      touch-action:manipulation;
+    }
+
+    .tip{
+      position:absolute; left:12px; right:12px; top:calc(100% + 6px);
+      border:1px solid #000; background:#fff; border-radius:10px; padding:10px 12px; box-shadow:2px 2px 0 #000;
+      display:none; z-index:10; max-height:70vh; overflow-y:auto;
+    }
+    .tip h3{ margin:0 0 6px; font-size:1rem; }
+    .tip p{ margin:4px 0; }
+    .eg{ font-size:.96rem; }
+    .eg b{ font-weight:600; }
+    
+    .info:hover + .tip,
+    .info:focus + .tip,
+    .info[aria-expanded="true"] + .tip{ display:block !important; }
+
+    .helper{ margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .helper-btn{
+      position:relative; text-align:center; border:1px solid #000; border-radius:10px; padding:12px; background:#fff;
+      display: flex; align-items: center; justify-content: center;
+      cursor:pointer; touch-action:manipulation;
+    }
+
+    .footer{ margin-top:16px; opacity:.85; text-align: center; font-size: 0.9rem; }
+    table.kktable{ width:100%; border-collapse:collapse; margin-top:6px; }
+    table.kktable th, table.kktable td{ border:1px solid #000; padding:6px; text-align:left; }
+    table.kktable th{ background:#f7f7f7; }
+
+    .tip-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #999;
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+    }
+    .tip-close:hover {
+      color: #000;
+    }
+
+    .font-control{
+      text-align:center; margin-bottom:12px; padding:8px; background:#f9f9f9; border-radius:8px;
+    }
+    .font-control button{
+      padding:6px 12px; margin:0 4px; border:1px solid #000; background:#fff; 
+      cursor:pointer; border-radius:5px; font-size:0.9rem; font-weight:600;
+    }
+
+    ul.examples-list{
+      list-style:none; padding:0; margin:0;
+    }
+    ul.examples-list li{
+      margin:8px 0; padding:8px; background:#f9f9f9; border-left:3px solid #0066cc; font-size:0.96rem;
+    }
+    ul.examples-list b{
+      font-weight:600;
+    }
+
+    ul.phrases-list{
+      list-style:none; padding:0; margin:0;
+    }
+    ul.phrases-list li{
+      margin:8px 0; padding:8px; background:#f9f9f9; border-left:3px solid #ff6600; font-size:0.96rem;
+    }
+
+    @media (max-width: 600px) {
+      .tip {
+        position: fixed;
+        left: 5%;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 90%;
+        max-height: 80vh;
+      }
+      .helper{
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<main class="card">
+  <h1>115學測英文科 · 手機優化版</h1>
+  <div class="meta">topic: 林威老師編輯 2026年2月10日</div>
+
+  <div class="font-control">
+    <button onclick="setFontSize(16)">小</button>
+    <button onclick="setFontSize(18)">中</button>
+    <button onclick="setFontSize(20)">大</button>
+  </div>
+
+  <section class="q" aria-label="multiple choice question">
+    <div class="stem">
+      Jane started as an <span style="background-color: yellow;">________</span> art designer, but now she has a professional studio of her own.
+    </div>
+
+    <ul class="choices">
+      <li class="choice" role="button" tabindex="0">
+        <span class="label">(A)</span> official
+        <span class="info" tabindex="0" role="button" aria-controls="tipA" aria-expanded="false">ⓘ</span>
+        <div id="tipA" class="tip" role="region" aria-live="polite">
+          <span class="tip-close">×</span>
+          <h3>(A) official (adj.) 官方的；正式的</h3>
+          <p class="eg"><b>KK音標：</b>[əˈfɪʃəl]</p>
+          <p class="eg"><b>中文：</b>官方的、公務的、正式的、認可的</p>
+          <p class="eg"><b>例句：</b>The company made an <b>official</b> statement regarding the merger. (公司就合併發表了正式聲明。)</p>
+          <p class="eg"><b>分析：</b>指權威機構認可的，與句中「從事藝術設計的起點」語境不符。</p>
+        </div>
+      </li>
+
+      <li class="choice" role="button" tabindex="0">
+        <span class="label">(B)</span> instant
+        <span class="info" tabindex="0" role="button" aria-controls="tipB" aria-expanded="false">ⓘ</span>
+        <div id="tipB" class="tip" role="region" aria-live="polite">
+          <span class="tip-close">×</span>
+          <h3>(B) instant (adj.) 立即的；速食的</h3>
+          <p class="eg"><b>KK音標：</b>[ˈɪnstənt]</p>
+          <p class="eg"><b>中文：</b>立即的、即刻的、速成的、急迫的</p>
+          <p class="eg"><b>例句：</b>This coffee is <b>instant</b>, so it dissolves quickly in hot water. (這咖啡是即溶的，所以很快就在熱水中溶解了。)</p>
+          <p class="eg"><b>分析：</b>形容反應極快或速食品，無法形容設計師的身份性質。</p>
+        </div>
+      </li>
+
+      <li class="choice" role="button" tabindex="0">
+        <span class="label">(C)</span> amateur
+        <span class="info" tabindex="0" role="button" aria-controls="tipC" aria-expanded="false">ⓘ</span>
+        <div id="tipC" class="tip" role="region" aria-live="polite">
+          <span class="tip-close">×</span>
+          <h3>(C) amateur (adj./n.) 業餘的；業餘愛好者 ✅</h3>
+          <p class="eg"><b>KK音標：</b>[ˈæmətʃər]</p>
+          <p class="eg"><b>中文：</b>業餘的、外行的、愛好者</p>
+          <p class="eg"><b>例句：</b>He is an <b>amateur</b> singer who only performs for his friends. (他是個業餘歌手，只為朋友表演。)</p>
+          <p class="eg"><b>分析：</b>「業餘的」與後句的「professional」（專業的）形成完美對比。描述 Jane 從業餘起步到現在擁有專業工作室。</p>
+        </div>
+      </li>
+
+      <li class="choice" role="button" tabindex="0">
+        <span class="label">(D)</span> elementary
+        <span class="info" tabindex="0" role="button" aria-controls="tipD" aria-expanded="false">ⓘ</span>
+        <div id="tipD" class="tip" role="region" aria-live="polite">
+          <span class="tip-close">×</span>
+          <h3>(D) elementary (adj.) 基本的；初級的</h3>
+          <p class="eg"><b>KK音標：</b>[ˌɛləˈmɛntri]</p>
+          <p class="eg"><b>中文：</b>基本的、基礎的、初級的、初等的</p>
+          <p class="eg"><b>例句：</b>The math problem was quite <b>elementary</b> for the older students. (這道數學題對高年級學生來說相當基本。)</p>
+          <p class="eg"><b>分析：</b>指難易度或教育階段。雖然「初級」與專業有別，但在描述職業身份對比時，amateur 比 elementary 更常用且契合。</p>
+        </div>
+      </li>
+
+      <li class="choice" role="button" tabindex="0">
+        <span class="label">(E)</span> 解答
+        <span class="info" tabindex="0" role="button" aria-controls="tipE" aria-expanded="false">ⓘ</span>
+        <div id="tipE" class="tip" role="region" aria-live="polite">
+          <span class="tip-close">×</span>
+          <h3>✅ 正確答案：(C) amateur</h3>
+          <p><b>詳細解釋：</b></p>
+          <p>題意為「Jane 最初是以<u>業餘</u>藝術設計師身份起步的，但現在她擁有了自己的專業工作室。」</p>
+          <p><b>解題關鍵：</b>對照關鍵詞 <b>but now... professional studio</b>。句中的 <b>but</b> 暗示前後狀態的對比，而 <b>professional</b>（專業的）最適當的相反詞在選項中即為 <b>amateur</b>（業餘的）。</p>
+          <p><b>選項消去法：</b><br>
+          (A) official 指官方認可，與專業/業餘無關。<br>
+          (B) instant 指時間上的立即，不合邏輯。<br>
+          (D) elementary 指基礎程度，通常形容學科或技能難度，不常用來對比 professional 身份。</p>
+        </div>
+      </li>
+
+      <li class="choice" role="button" tabindex="0">
+        <span class="label">(F)</span> 林威老師的話
+        <span class="info" tabindex="0" role="button" aria-controls="tipF" aria-expanded="false">ⓘ</span>
+        <div id="tipF" class="tip" role="region" aria-live="polite">
+          <span class="tip-close">×</span>
+          <h3>👨‍🏫 林威老師的話</h3>
+          <p><b>衍生詞表：</b></p>
+          <table class="kktable">
+            <thead><tr><th>原字</th><th>衍生詞</th><th>音標 / 中文</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>official</td>
+                <td><b>office</b> (n.)</td>
+                <td>[ˈɔfɪs] 辦公室</td>
+              </tr>
+              <tr>
+                <td>instant</td>
+                <td><b>instantly</b> (adv.)</td>
+                <td>[ˈɪnstəntlɪ] 立即地</td>
+              </tr>
+              <tr>
+                <td>amateur</td>
+                <td><b>amateurish</b> (adj.)</td>
+                <td>[ˌæməˈtɜrɪʃ] 外行的；不專業的</td>
+              </tr>
+              <tr>
+                <td>elementary</td>
+                <td><b>element</b> (n.)</td>
+                <td>[ˈɛləmənt] 要素；元素</td>
+              </tr>
+            </tbody>
+          </table>
+          <p style="margin-top:10px;"><b>重點：</b>要注意 amateur 的拼寫，結尾是 <b>-eur</b>，這是法文來源詞的特徵。在職場對比中，amateur vs. professional 是極常見的一對反義詞。</p>
+        </div>
+      </li>
+    </ul>
+
+    <div class="helper">
+        <div class="helper-btn" role="button" tabindex="0">
+          更多的例句 
+          <span class="info" tabindex="0" role="button" aria-controls="tipEx" aria-expanded="false">ⓘ</span>
+          <div id="tipEx" class="tip" role="region" aria-live="polite">
+            <span class="tip-close">×</span>
+            <h3>衍生詞例句彙整</h3>
+            <ul class="examples-list">
+                <li><b>1. She works in a government office in the city center.</b><br>她在市中心的政府辦公室工作。</li>
+                <li><b>2. When I heard the news, I called him instantly.</b><br>我一聽到消息，立即打電話給他。</li>
+                <li><b>3. The design looked a bit amateurish and lacked detail.</b><br>這設計看起來有點外行，缺乏細節。</li>
+                <li><b>4. Patience is an essential element of teaching.</b><br>耐心是教學的一個基本要素。</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="helper-btn" role="button" tabindex="0">
+          更多的片語 
+          <span class="info" tabindex="0" role="button" aria-controls="tipPh" aria-expanded="false">ⓘ</span>
+          <div id="tipPh" class="tip" role="region" aria-live="polite">
+            <span class="tip-close">×</span>
+            <h3>台灣學測考試片語</h3>
+            <ul class="phrases-list">
+                <li>
+                    <b>① end up - 最後變成...、以...告終</b><br>
+                    <b>Example:</b> We took the wrong bus and <b>ended up</b> in the wrong part of town.<br>
+                    (我們搭錯了公車，最後到了城裡錯誤的地方。)
+                </li>
+                <li>
+                    <b>② turn to~ for~ - 向...求助於...</b><br>
+                    <b>Example:</b> In times of trouble, she often <b>turns to</b> her sister <b>for</b> emotional support.<br>
+                    (困難時期，她經常向姐姐尋求情感支持。)
+                </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <div class="footer">💡 提示：點擊 <b>ⓘ</b> 可開關說明；點擊右上 <b>×</b> 關閉。</div>
+</main>
+
+<script>
+  (function(){
+    const infoBtns = document.querySelectorAll('.info');
+    const closeBtns = document.querySelectorAll('.tip-close');
+
+    const closeAll = () => {
+      infoBtns.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    };
+
+    infoBtns.forEach(btn => {
+      ['pointerup', 'touchend', 'click'].forEach(evt => {
+        btn.addEventListener(evt, (e) => {
+          e.preventDefault(); e.stopPropagation();
+          const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+          closeAll();
+          if (!isExpanded) btn.setAttribute('aria-expanded', 'true');
+        }, { passive: false });
+      });
+    });
+
+    closeBtns.forEach(btn => {
+      ['pointerup', 'touchend', 'click'].forEach(evt => {
+        btn.addEventListener(evt, (e) => {
+          e.preventDefault(); e.stopPropagation();
+          closeAll();
+        }, { passive: false });
+      });
+    });
+    
+    document.addEventListener('pointerdown', (e) => {
+      if (!e.target.closest('.info, .tip')) closeAll();
+    }, true);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAll();
+    });
+  })();
+
+  function setFontSize(size) {
+    document.documentElement.style.setProperty('--font', size + 'px');
+  }
+</script>
+</body>
+</html>
