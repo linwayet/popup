@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .header {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .option-item:hover {
+            background-color: #fafafa;
+        }
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        .special-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer-tools {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .tool-link {
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 彈出視窗樣式 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        .example-box {
+            background: #f4f4f4;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border-left: 3px solid #ccc;
+        }
+        h4 { margin: 15px 0 5px 0; color: #333; }
+        .eg-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
+    
+    <div class="question">
+        As a shy boy afraid of making public appearances, Timmy ______ the thought of speaking before large audiences.
+    </div>
+
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) dreads <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) stresses <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) wanders <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) escapes <span class="info-icon">ⓘ</span></div>
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('E')">
+        (E) 查看答案與詳細解析
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('F')">
+        (F) 林威老師的話 (衍生詞與音標)
+    </div>
+
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+
+<div id="infoOverlay" class="overlay">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <div id="contentArea" class="overlay-content"></div>
+</div>
+
+<script>
+    const data = {
+        'A': {
+            title: '(A) dreads',
+            desc: '解釋：恐懼；害怕',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. He <b>dreads</b> the thought of failing the exam.<br>(一想到考試不及格他就感到恐懼。)</div>
+                    <div class="eg-item">2. I <b>dread</b> to think what would happen if he found out.<br>(我不敢想像如果他發現了會發生什麼事。)</div>
+                    <div class="eg-item">3. She <b>dreads</b> going to the dentist.<br>(她很害怕去看牙醫。)</div>
+                </div>`
+        },
+        'B': {
+            title: '(B) stresses',
+            desc: '解釋：強調；使壓力大',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The teacher <b>stresses</b> the importance of daily practice.<br>(老師強調每日練習的重要性。)</div>
+                    <div class="eg-item">2. This job <b>stresses</b> me out.<br>(這份工作讓我壓力很大。)</div>
+                    <div class="eg-item">3. He <b>stresses</b> that every detail must be perfect.<br>(他強調每個細節都必須完美。)</div>
+                </div>`
+        },
+        'C': {
+            title: '(C) wanders',
+            desc: '解釋：漫遊；閒逛；走神',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. We <b>wandered</b> around the old town for hours.<br>(我們在老城區漫步了好幾個小時。)</div>
+                    <div class="eg-item">2. My mind <b>wandered</b> during the long speech.<br>(在漫長的演說中，我走神了。)</div>
+                    <div class="eg-item">3. The cattle <b>wandered</b> off into the hills.<br>(牛群漫步走進了山丘。)</div>
+                </div>`
+        },
+        'D': {
+            title: '(D) escapes',
+            desc: '解釋：逃脫；避開',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The prisoner <b>escaped</b> from the jail last night.<br>(囚犯昨晚從監獄逃走了。)</div>
+                    <div class="eg-item">2. Nothing <b>escapes</b> her attention.<br>(什麼都逃不過她的注意力。)</div>
+                    <div class="eg-item">3. He <b>escaped</b> injury in the car accident.<br>(他在車禍中倖免於難。)</div>
+                </div>`
+        },
+        'E': {
+            title: '正確答案：(A)',
+            desc: '解析：題幹提到 Timmy 是個害羞且害怕公開露面的男孩，因此他會對在大眾面前演講的想法感到「恐懼」。',
+            example: 'stresses (強調)、wanders (漫遊)、escapes (逃脫) 在此處語意不通。'
+        },
+        'F': {
+            title: '林威老師的話',
+            desc: '衍生詞與音標學習：',
+            detail: `
+                <h4>1. dreadful (形容詞)</h4>
+                <p>KK: [ˈdrɛdfəl] | 中文：可怕的；糟糕的</p>
+                <h4>2. stressful (形容詞)</h4>
+                <p>KK: [ˈstrɛsfəl] | 中文：壓力大的</p>
+                <h4>3. wanderer (名詞)</h4>
+                <p>KK: [ˈwɑndərɚ] | 中文：流浪者；漫遊者</p>
+                <h4>4. escapism (名詞)</h4>
+                <p>KK: [ɪˈskepɪzəm] | 中文：逃避現實</p>
+            `
+        },
+        'G': {
+            title: '衍生詞更多例句',
+            detail: `
+                <div class="example-box">1. What a <b>dreadful</b> weather we are having!<br>(我們現在的天氣真是太糟糕了！)</div>
+                <div class="example-box">2. Moving house is a very <b>stressful</b> experience.<br>(搬家是一次壓力很大的經驗。)</div>
+                <div class="example-box">3. He has been a <b>wanderer</b> all his life.<br>(他一生都是個漫遊者。)</div>
+                <div class="example-box">4. Video games are often seen as a form of <b>escapism</b>.<br>(電子遊戲常被視為一種逃避現實的形式。)</div>
+            `
+        },
+        'H': {
+            title: '台灣學測必備片語',
+            detail: `
+                <h4>1. consist of (由...組成)</h4>
+                <p>例句：A healthy diet should <b>consist of</b> plenty of fruits and vegetables.<br>(健康的飲食應由大量的蔬菜和水果組成。)</p>
+                <h4>2. consistent with (與...一致)</h4>
+                <p>例句：Your actions should be <b>consistent with</b> your words.<br>(你的行為應該與你的言論一致。)</p>
+            `
+        }
+    };
+
+    function showOverlay(key) {
+        const item = data[key];
+        let html = `<div class="overlay-title">${item.title}</div>`;
+        if(item.desc) html += `<p>${item.desc}</p>`;
+        if(item.detail) html += `<div>${item.detail}</div>`;
+        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
+        
+        document.getElementById('contentArea').innerHTML = html;
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
+
+    function closeOverlay() {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

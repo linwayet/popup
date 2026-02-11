@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .header {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .option-item:hover {
+            background-color: #fafafa;
+        }
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        .special-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer-tools {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .tool-link {
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 彈出視窗樣式 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        .example-box {
+            background: #f4f4f4;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border-left: 3px solid #ccc;
+        }
+        h4 { margin: 15px 0 5px 0; color: #333; }
+        .eg-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
+    
+    <div class="question">
+        To the newly-crowned winner of the piano competition, music is his life's ______, which he has devoted himself to whole-heartedly.
+    </div>
+
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) resource <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) impact <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) passion <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) emphasis <span class="info-icon">ⓘ</span></div>
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('E')">
+        (E) 查看答案與詳細解析
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('F')">
+        (F) 林威老師的話 (衍生詞與音標)
+    </div>
+
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+
+<div id="infoOverlay" class="overlay">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <div id="contentArea" class="overlay-content"></div>
+</div>
+
+<script>
+    const data = {
+        'A': {
+            title: '(A) resource',
+            desc: '解釋：資源；物資',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. Water is a precious natural <b>resource</b>.<br>(水是寶貴的自然資源。)</div>
+                    <div class="eg-item">2. The library is a great <b>resource</b> for students.<br>(圖書館對學生來說是很好的資源。)</div>
+                    <div class="eg-item">3. We need to exploit our local <b>resources</b>.<br>(我們需要開發當地的資源。)</div>
+                </div>`
+        },
+        'B': {
+            title: '(B) impact',
+            desc: '解釋：影響；衝擊',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The new law will have a major <b>impact</b> on the economy.<br>(新法律將對經濟產生重大影響。)</div>
+                    <div class="eg-item">2. The <b>impact</b> of the collision was felt for miles.<br>(碰撞的衝擊力在幾英里外都能感受到。)</div>
+                    <div class="eg-item">3. His speech had a profound <b>impact</b> on the audience.<br>(他的演說對觀眾產生了深遠的影響。)</div>
+                </div>`
+        },
+        'C': {
+            title: '(C) passion',
+            desc: '解釋：熱情；強烈愛好',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. Cooking is her greatest <b>passion</b> in life.<br>(烹飪是她一生最大的愛好。)</div>
+                    <div class="eg-item">2. He spoke with great <b>passion</b> about his work.<br>(他充滿熱情地談論他的工作。)</div>
+                    <div class="eg-item">3. She has a <b>passion</b> for classical music.<br>(她對古典音樂情有獨鍾。)</div>
+                </div>`
+        },
+        'D': {
+            title: '(D) emphasis',
+            desc: '解釋：強調；重點',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The school puts great <b>emphasis</b> on sports.<br>(這間學校非常強調體育。)</div>
+                    <div class="eg-item">2. Where shall we put the <b>emphasis</b> in this project?<br>(我們在這個計畫中應把重點放在哪裡？)</div>
+                    <div class="eg-item">3. The <b>emphasis</b> is on quality rather than quantity.<br>(重點在於品質而非數量。)</div>
+                </div>`
+        },
+        'E': {
+            title: '正確答案：(C)',
+            desc: '解析：題幹提到鋼琴大賽的冠軍全心全意地投入在音樂中，表示音樂是他一生的「熱情」。',
+            example: 'resource (資源)、impact (影響)、emphasis (強調) 在此處無法貼切地形容一個人全心投入的對象。'
+        },
+        'F': {
+            title: '林威老師的話',
+            desc: '衍生詞與音標學習：',
+            detail: `
+                <h4>1. resourceful (形容詞)</h4>
+                <p>KK: [rɪˈsorsfəl] | 中文：資源豐富的；足智多謀的</p>
+                <h4>2. impactful (形容詞)</h4>
+                <p>KK: [ɪmˈpæktfəl] | 中文：有影響力的</p>
+                <h4>3. passionate (形容詞)</h4>
+                <p>KK: [ˈpæʃənɪt] | 中文：熱情的；激昂的</p>
+                <h4>4. emphasize (動詞)</h4>
+                <p>KK: [ˈɛmfəˌsaɪz] | 中文：強調</p>
+            `
+        },
+        'G': {
+            title: '衍生詞更多例句',
+            detail: `
+                <div class="example-box">1. She is a <b>resourceful</b> person who can solve any problem.<br>(她是個足智多謀的人，能解決任何問題。)</div>
+                <div class="example-box">2. The campaign was highly <b>impactful</b>.<br>(這次活動非常有影響力。)</div>
+                <div class="example-box">3. He is a <b>passionate</b> advocate for human rights.<br>(他是人權的熱情倡導者。)</div>
+                <div class="example-box">4. I want to <b>emphasize</b> that this is only a suggestion.<br>(我想強調這僅僅是一個建議。)</div>
+            `
+        },
+        'H': {
+            title: '台灣學測必備片語',
+            detail: `
+                <h4>1. deal with (處理；應付)</h4>
+                <p>例句：How do you <b>deal with</b> difficult customers?<br>(你如何應付奧客？)</p>
+                <h4>2. deal in (經營；買賣)</h4>
+                <p>例句：The shop <b>deals in</b> antique furniture.<br>(這間店經營古董家具。)</p>
+                <h4>3. a great deal of (大量的 + 不可數名詞)</h4>
+                <p>例句：She has <b>a great deal of</b> experience in teaching.<br>(她在教學方面有豐富的經驗。)</p>
+            `
+        }
+    };
+
+    function showOverlay(key) {
+        const item = data[key];
+        let html = `<div class="overlay-title">${item.title}</div>`;
+        if(item.desc) html += `<p>${item.desc}</p>`;
+        if(item.detail) html += `<div>${item.detail}</div>`;
+        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
+        
+        document.getElementById('contentArea').innerHTML = html;
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
+
+    function closeOverlay() {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

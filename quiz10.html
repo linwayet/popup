@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .header {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .option-item:hover {
+            background-color: #fafafa;
+        }
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        .special-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer-tools {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .tool-link {
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 彈出視窗樣式 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        .example-box {
+            background: #f4f4f4;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border-left: 3px solid #ccc;
+        }
+        h4 { margin: 15px 0 5px 0; color: #333; }
+        .eg-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
+    
+    <div class="question">
+        Deadly shootings on US campuses have raised ______ concerns about how to prevent such tragic incidents from happening again.
+    </div>
+
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) swift <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) brutal <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) harsh <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) grave <span class="info-icon">ⓘ</span></div>
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('E')">
+        (E) 查看答案與詳細解析
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('F')">
+        (F) 林威老師的話 (衍生詞與音標)
+    </div>
+
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+
+<div id="infoOverlay" class="overlay">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <div id="contentArea" class="overlay-content"></div>
+</div>
+
+<script>
+    const data = {
+        'A': {
+            title: '(A) swift',
+            desc: '解釋：迅速的；敏捷的',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The police took <b>swift</b> action to catch the thief.<br>(警方迅速採取行動抓住了小偷。)</div>
+                    <div class="eg-item">2. He is <b>swift</b> to point out other people's faults.<br>(他總是很快地指出別人的錯誤。)</div>
+                    <div class="eg-item">3. We hope for a <b>swift</b> recovery.<br>(我們祝願能早日康復。)</div>
+                </div>`
+        },
+        'B': {
+            title: '(B) brutal',
+            desc: '解釋：殘忍的；野蠻的',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. It was a <b>brutal</b> and senseless murder.<br>(這是一場殘忍且無意義的謀殺案。)</div>
+                    <div class="eg-item">2. The weather was <b>brutal</b> during the winter.<br>(冬天的天氣非常惡劣。)</div>
+                    <div class="eg-item">3. He was <b>brutal</b> in his honesty.<br>(他的誠實到了傷人的地步。)</div>
+                </div>`
+        },
+        'C': {
+            title: '(C) harsh',
+            desc: '解釋：嚴厲的；刺耳的；粗糙的',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The punishment was <b>harsh</b> for such a minor crime.<br>(對於這麼輕的罪行，處罰太嚴厲了。)</div>
+                    <div class="eg-item">2. We should avoid using <b>harsh</b> chemicals.<br>(我們應該避免使用具刺激性的化學物質。)</div>
+                    <div class="eg-item">3. He faced <b>harsh</b> criticism from the press.<br>(他面臨媒體的嚴厲批評。)</div>
+                </div>`
+        },
+        'D': {
+            title: '(D) grave',
+            desc: '解釋：嚴重的；嚴肅的；墳墓(n)',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The situation is much more <b>grave</b> than we expected.<br>(情況比我們預想的要嚴重得多。)</div>
+                    <div class="eg-item">2. He looked very <b>grave</b> as he spoke.<br>(他說話時表情非常嚴肅。)</div>
+                    <div class="eg-item">3. We are in <b>grave</b> danger of losing our jobs.<br>(我們面臨失業的嚴重危險。)</div>
+                </div>`
+        },
+        'E': {
+            title: '正確答案：(D)',
+            desc: '解析：題幹提到校園槍擊案引起了「嚴重的」關注。雖然 (B) brutal (殘忍的) 可形容槍擊案，但搭配 concern (擔憂/關注) 時，使用 grave 最為道地。',
+            example: 'grave concern 是一個常見的英文慣用語，表示深切的憂慮。'
+        },
+        'F': {
+            title: '林威老師的話',
+            desc: '衍生詞與音標學習：',
+            detail: `
+                <h4>1. swiftly (副詞)</h4>
+                <p>KK: [ˈswɪftlɪ] | 中文：迅速地</p>
+                <h4>2. brutality (名詞)</h4>
+                <p>KK: [bruˈtælətɪ] | 中文：殘暴行為</p>
+                <h4>3. harshly (副詞)</h4>
+                <p>KK: [ˈhɑrʃlɪ] | 中文：嚴酷地</p>
+                <h4>4. gravity (名詞)</h4>
+                <p>KK: [ˈɡrævətɪ] | 中文：嚴重性；地心引力</p>
+            `
+        },
+        'G': {
+            title: '衍生詞更多例句',
+            detail: `
+                <div class="example-box">1. The river was flowing <b>swiftly</b> after the rain.<br>(雨後河水流速很快。)</div>
+                <div class="example-box">2. They were shocked by the <b>brutality</b> of the attack.<br>(他們對這次襲擊的殘暴感到震驚。)</div>
+                <div class="example-box">3. Don't judge her too <b>harshly</b>.<br>(不要對她評判得太嚴苛。)</div>
+                <div class="example-box">4. I don't think you realize the <b>gravity</b> of the situation.<br>(我覺得你沒有意識到情況的嚴重性。)</div>
+            `
+        },
+        'H': {
+            title: '台灣學測必備片語',
+            detail: `
+                <h4>1. bump into (不期而遇)</h4>
+                <p>例句：I <b>bumped into</b> an old friend at the supermarket yesterday.<br>(昨天我在超市偶遇了一位老朋友。)</p>
+                <h4>2. come across (偶然發現；遇見)</h4>
+                <p>例句：I <b>come across</b> these old letters while cleaning the attic.<br>(我在打掃閣樓時偶然發現了這些舊信件。)</p>
+                <h4>3. have an encounter with (與...邂逅/遭遇)</h4>
+                <p>例句：She had a frightening <b>encounter with</b> a stray dog.<br>(她有過一次與流浪狗對峙的可怕經歷。)</p>
+            `
+        }
+    };
+
+    function showOverlay(key) {
+        const item = data[key];
+        let html = `<div class="overlay-title">${item.title}</div>`;
+        if(item.desc) html += `<p>${item.desc}</p>`;
+        if(item.detail) html += `<div>${item.detail}</div>`;
+        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
+        
+        document.getElementById('contentArea').innerHTML = html;
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
+
+    function closeOverlay() {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

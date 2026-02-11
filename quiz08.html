@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .header {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .option-item:hover {
+            background-color: #fafafa;
+        }
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        .special-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer-tools {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .tool-link {
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 彈出視窗樣式 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        .example-box {
+            background: #f4f4f4;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border-left: 3px solid #ccc;
+        }
+        h4 { margin: 15px 0 5px 0; color: #333; }
+        .eg-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
+    
+    <div class="question">
+        The drunk driver who shouted at passers-by and ______ them with glass bottles was quickly arrested by the police.
+    </div>
+
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) shattered <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) assaulted <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) overturned <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) condemned <span class="info-icon">ⓘ</span></div>
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('E')">
+        (E) 查看答案與詳細解析
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('F')">
+        (F) 林威老師的話 (衍生詞與音標)
+    </div>
+
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+
+<div id="infoOverlay" class="overlay">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <div id="contentArea" class="overlay-content"></div>
+</div>
+
+<script>
+    const data = {
+        'A': {
+            title: '(A) shattered',
+            desc: '解釋：粉碎；砸碎',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The window <b>shattered</b> into a thousand pieces.<br>(窗戶碎成了一千片。)</div>
+                    <div class="eg-item">2. The news <b>shattered</b> her dreams of a happy future.<br>(這個消息粉碎了她對幸福未來的夢想。)</div>
+                    <div class="eg-item">3. The explosion <b>shattered</b> nearby shop windows.<br>(爆炸震碎了附近商店的櫥窗。)</div>
+                </div>`
+        },
+        'B': {
+            title: '(B) assaulted',
+            desc: '解釋：攻擊；襲擊',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. He was <b>assaulted</b> by a gang of youths.<br>(他遭到一群青少年的襲擊。)</div>
+                    <div class="eg-item">2. The woman was physically <b>assaulted</b> in the park.<br>(那名女子在公園遭到肢體攻擊。)</div>
+                    <div class="eg-item">3. He was charged with <b>assaulting</b> a police officer.<br>(他被指控襲警。)</div>
+                </div>`
+        },
+        'C': {
+            title: '(C) overturned',
+            desc: '解釋：推翻；翻轉',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The car <b>overturned</b> in the middle of the road.<br>(車子在馬路中央翻覆了。)</div>
+                    <div class="eg-item">2. The Supreme Court <b>overturned</b> the lower court's decision.<br>(最高法院推翻了地方法院的判決。)</div>
+                    <div class="eg-item">3. He <b>overturned</b> the chair in his anger.<br>(他在憤怒中推翻了椅子。)</div>
+                </div>`
+        },
+        'D': {
+            title: '(D) condemned',
+            desc: '解釋：譴責；宣告...有罪',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The world leaders <b>condemned</b> the terrorist attack.<br>(各國領袖譴責了這次恐怖攻擊。)</div>
+                    <div class="eg-item">2. The judge <b>condemned</b> him to five years in prison.<br>(法官判處他五年徒刑。)</div>
+                    <div class="eg-item">3. The old building was <b>condemned</b> as unsafe.<br>(這棟舊建築因不安全而被宣告為危樓。)</div>
+                </div>`
+        },
+        'E': {
+            title: '正確答案：(B)',
+            desc: '解析：題幹提到酒駕司機對路人咆哮並用玻璃瓶「攻擊」他們，因此 (B) assaulted 最符合語境。',
+            example: 'shattered (粉碎) 通常受詞是物；overturned (推翻) 與 condemned (譴責) 在肢體衝突的文脈中不合適。'
+        },
+        'F': {
+            title: '林威老師的話',
+            desc: '衍生詞與音標學習：',
+            detail: `
+                <h4>1. assault (名詞)</h4>
+                <p>KK: [əˈsɔlt] | 中文：攻擊；襲擊</p>
+                <h4>2. condemnation (名詞)</h4>
+                <p>KK: [ˌkɑndɛmˈneʃən] | 中文：譴責</p>
+                <h4>3. shatterproof (形容詞)</h4>
+                <p>KK: [ˈʃætɚˌpruf] | 中文：防碎的</p>
+                <h4>4. overturn (動詞)</h4>
+                <p>KK: [ˌovɚˈtɝn] | 中文：推翻；翻轉</p>
+            `
+        },
+        'G': {
+            title: '衍生詞更多例句',
+            detail: `
+                <div class="example-box">1. Sexual <b>assault</b> is a serious crime.<br>(性侵害是嚴重的犯罪行為。)</div>
+                <div class="example-box">2. The plan met with widespread <b>condemnation</b>.<br>(這項計畫遭到了廣泛的譴責。)</div>
+                <div class="example-box">3. Safety glasses are usually made of <b>shatterproof</b> plastic.<br>(安全眼鏡通常由防碎塑膠製成。)</div>
+                <div class="example-box">4. They are trying to <b>overturn</b> the election results.<br>(他們正試圖推翻選舉結果。)</div>
+            `
+        },
+        'H': {
+            title: '台灣學測必備片語',
+            detail: `
+                <h4>1. pass out (暈倒；昏厥)</h4>
+                <p>例句：It was so hot in the room that several people <b>passed out</b>.<br>(房間裡太熱了，好幾個人暈了過去。)</p>
+                <h4>2. pass away (去世；過世)</h4>
+                <p>例句：His grandfather <b>passed away</b> peacefully in his sleep.<br>(他的祖父在睡夢中安詳地去世了。)</p>
+                <h4>3. pass down (傳承；流傳)</h4>
+                <p>例句：This diamond ring has been <b>passed down</b> in my family for generations.<br>(這枚鑽石戒指在我家族中世代相傳。)</p>
+            `
+        }
+    };
+
+    function showOverlay(key) {
+        const item = data[key];
+        let html = `<div class="overlay-title">${item.title}</div>`;
+        if(item.desc) html += `<p>${item.desc}</p>`;
+        if(item.detail) html += `<div>${item.detail}</div>`;
+        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
+        
+        document.getElementById('contentArea').innerHTML = html;
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
+
+    function closeOverlay() {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

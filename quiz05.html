@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .header {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .option-item:hover {
+            background-color: #fafafa;
+        }
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        .special-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer-tools {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .tool-link {
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 彈出視窗樣式 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        .example-box {
+            background: #f4f4f4;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border-left: 3px solid #ccc;
+        }
+        h4 { margin: 15px 0 5px 0; color: #333; }
+        .eg-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
+    
+    <div class="question">
+        It has been confirmed that a balanced ______ of fruit and vegetables is a key element to good health.
+    </div>
+
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) dimension <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) integration <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) provision <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) consumption <span class="info-icon">ⓘ</span></div>
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('E')">
+        (E) 查看答案與詳細解析
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('F')">
+        (F) 林威老師的話 (衍生詞與音標)
+    </div>
+
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+
+<div id="infoOverlay" class="overlay">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <div id="contentArea" class="overlay-content"></div>
+</div>
+
+<script>
+    const data = {
+        'A': {
+            title: '(A) dimension',
+            desc: '解釋：維度；層面；尺寸',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. There is a spiritual <b>dimension</b> to her poetry.<br>(她的詩作中帶有一種精神層面。)</div>
+                    <div class="eg-item">2. We must consider every <b>dimension</b> of the problem.<br>(我們必須考慮這個問題的每個面向。)</div>
+                    <div class="eg-item">3. The <b>dimensions</b> of the room are 5 by 4 meters.<br>(房間的尺寸是 5 乘 4 公尺。)</div>
+                </div>`
+        },
+        'B': {
+            title: '(B) integration',
+            desc: '解釋：整合；結合',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The <b>integration</b> of the two companies took a year.<br>(這兩家公司的整合花了一年的時間。)</div>
+                    <div class="eg-item">2. The curriculum promotes the <b>integration</b> of theory and practice.<br>(這門課程促進了理論與實踐的結合。)</div>
+                    <div class="eg-item">3. Cultural <b>integration</b> is a complex process.<br>(文化融合是一個複雜的過程。)</div>
+                </div>`
+        },
+        'C': {
+            title: '(C) provision',
+            desc: '解釋：提供；供應；條款',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The government is responsible for the <b>provision</b> of public services.<br>(政府負責公共服務的提供。)</div>
+                    <div class="eg-item">2. The contract contains a <b>provision</b> for early termination.<br>(合約中包含一項關於提前終止的條款。)</div>
+                    <div class="eg-item">3. We made <b>provision</b> for the extra guests.<br>(我們為額外的客人做好了供應準備。)</div>
+                </div>`
+        },
+        'D': {
+            title: '(D) consumption',
+            desc: '解釋：消耗；攝取；消費',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. Excessive alcohol <b>consumption</b> can damage your liver.<br>(過度攝取酒精會損害你的肝臟。)</div>
+                    <div class="eg-item">2. Energy <b>consumption</b> has increased this year.<br>(今年的能源消耗量有所增加。)</div>
+                    <div class="eg-item">3. This car has a low fuel <b>consumption</b>.<br>(這台車的油耗很低。)</div>
+                </div>`
+        },
+        'E': {
+            title: '正確答案：(D)',
+            desc: '解析：題幹討論「蔬果的攝取是健康的關鍵」，慣用語為 balanced consumption (均衡攝取/消耗)。',
+            example: 'dimension (維度)、integration (整合)、provision (提供) 在此處與「蔬果」搭配，無法表達「攝取量」的概念。'
+        },
+        'F': {
+            title: '林威老師的話',
+            desc: '衍生詞與音標學習：',
+            detail: `
+                <h4>1. dimensional (形容詞)</h4>
+                <p>KK: [dɪˈmɛnʃənəl] | 中文：維度的；空間的</p>
+                <h4>2. integrate (動詞)</h4>
+                <p>KK: [ˈɪntəˌɡret] | 中文：整合；合併</p>
+                <h4>3. provide (動詞)</h4>
+                <p>KK: [prəˈvaɪd] | 中文：提供</p>
+                <h4>4. consume (動詞)</h4>
+                <p>KK: [kənˈsum] | 中文：消耗；攝取；消費</p>
+            `
+        },
+        'G': {
+            title: '衍生詞更多例句',
+            detail: `
+                <div class="example-box">1. This software creates 3D <b>dimensional</b> models.<br>(這款軟體可以創建三維模型。)</div>
+                <div class="example-box">2. We need to <b>integrate</b> the new data into the report.<br>(我們需要將新數據整合到報告中。)</div>
+                <div class="example-box">3. The school <b>provides</b> free lunch for students.<br>(學校為學生提供免費午餐。)</div>
+                <div class="example-box">4. The fire <b>consumed</b> the entire building.<br>(大火吞噬了整棟建築。)</div>
+            `
+        },
+        'H': {
+            title: '台灣學測必備片語',
+            detail: `
+                <h4>1. make up for (補償；彌補)</h4>
+                <p>例句：I bought her a gift to <b>make up for</b> being late.<br>(我買了禮物給她，以補償我的遲到。)</p>
+                <h4>2. put up with (忍受；容忍)</h4>
+                <p>例句：I don't know how she <b>puts up with</b> his temper.<br>(我不知道她是如何忍受他的脾氣的。)</p>
+            `
+        }
+    };
+
+    function showOverlay(key) {
+        const item = data[key];
+        let html = `<div class="overlay-title">${item.title}</div>`;
+        if(item.desc) html += `<p>${item.desc}</p>`;
+        if(item.detail) html += `<div>${item.detail}</div>`;
+        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
+        
+        document.getElementById('contentArea').innerHTML = html;
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
+
+    function closeOverlay() {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

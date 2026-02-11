@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .header {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .option-item:hover {
+            background-color: #fafafa;
+        }
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        .special-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer-tools {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .tool-link {
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 彈出視窗樣式 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        .example-box {
+            background: #f4f4f4;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border-left: 3px solid #ccc;
+        }
+        h4 { margin: 15px 0 5px 0; color: #333; }
+        .eg-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
+    
+    <div class="question">
+        There were so many people at the bus station that I had to ______ my way through the crowd to board the bus in time.
+    </div>
+
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) crash <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) tumble <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) elbow <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) struggle <span class="info-icon">ⓘ</span></div>
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('E')">
+        (E) 查看答案與詳細解析
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('F')">
+        (F) 林威老師的話 (衍生詞與音標)
+    </div>
+
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+
+<div id="infoOverlay" class="overlay">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <div id="contentArea" class="overlay-content"></div>
+</div>
+
+<script>
+    const data = {
+        'A': {
+            title: '(A) crash',
+            desc: '解釋：碰撞；墜毀；倒下',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The car <b>crashed</b> into a tree.<br>(這輛車撞上了一棵樹。)</div>
+                    <div class="eg-item">2. Thousands of people lost money when the stock market <b>crashed</b>.<br>(股市崩盤時，成千上萬的人賠了錢。)</div>
+                    <div class="eg-item">3. Waves <b>crashed</b> against the shore.<br>(海浪拍打著岸邊。)</div>
+                </div>`
+        },
+        'B': {
+            title: '(B) tumble',
+            desc: '解釋：跌倒；滾下；暴跌',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. He <b>tumbled</b> down the stairs and broke his arm.<br>(他從樓梯上摔下來，摔斷了手臂。)</div>
+                    <div class="eg-item">2. Share prices <b>tumbled</b> yesterday.<br>(股票價格昨天大幅下跌。)</div>
+                    <div class="eg-item">3. The children <b>tumbled</b> out of the bus.<br>(孩子們從公車上連滾帶爬地跑了出來。)</div>
+                </div>`
+        },
+        'C': {
+            title: '(C) elbow',
+            desc: '解釋：用手肘推擠開路 (動詞用法)',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. He <b>elbowed</b> his way to the front of the queue.<br>(他用手肘擠到了隊伍的最前面。)</div>
+                    <div class="eg-item">2. She <b>elbowed</b> me aside to get a better look.<br>(她把我擠到一旁以便看得更清楚。)</div>
+                    <div class="eg-item">3. I had to <b>elbow</b> through the crowd to reach the exit.<br>(我不得不推擠人群以到達出口。)</div>
+                </div>`
+        },
+        'D': {
+            title: '(D) struggle',
+            desc: '解釋：奮力；掙扎；鬥爭',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. She <b>struggled</b> to lift the heavy box.<br>(她費力地搬起那個重箱子。)</div>
+                    <div class="eg-item">2. The company is <b>struggling</b> for survival.<br>(這家公司正為生存而掙扎。)</div>
+                    <div class="eg-item">3. He <b>struggled</b> against the wind.<br>(他在風中艱難前行。)</div>
+                </div>`
+        },
+        'E': {
+            title: '正確答案：(C)',
+            desc: '解析：題幹提到人潮擁擠，為了及時上車必須「擠出路來」。動詞 elbow 常與 way 搭配 (elbow one\'s way)，表示用手肘推擠開路。',
+            example: 'crash (撞擊) 與 tumble (摔倒) 語意不符；struggle (奮力) 雖然語意接近，但通常接 struggle through 而非搭配 one\'s way。'
+        },
+        'F': {
+            title: '林威老師的話',
+            desc: '衍生詞與音標學習：',
+            detail: `
+                <h4>1. elbow (名詞)</h4>
+                <p>KK: [ˈɛlbo] | 中文：手肘</p>
+                <h4>2. crash (名詞)</h4>
+                <p>KK: [kræʃ] | 中文：碰撞聲；崩盤</p>
+                <h4>3. tumbling (形容詞)</h4>
+                <p>KK: [ˈtʌmblɪŋ] | 中文：翻滾的</p>
+                <h4>4. struggle (名詞)</h4>
+                <p>KK: [ˈstrʌɡl] | 中文：奮鬥；掙扎</p>
+            `
+        },
+        'G': {
+            title: '衍生詞更多例句',
+            detail: `
+                <div class="example-box">1. He rested his <b>elbows</b> on the table.<br>(他把手肘靠在桌子上。)</div>
+                <div class="example-box">2. We heard a loud <b>crash</b> in the kitchen.<br>(我們聽到廚房傳來巨大的碰撞聲。)</div>
+                <div class="example-box">3. The <b>tumbling</b> water created a beautiful waterfall.<br>(奔騰而下的水流形成了美麗的瀑布。)</div>
+                <div class="example-box">4. Life is a constant <b>struggle</b>.<br>(生活是持續不斷的奮鬥。)</div>
+            `
+        },
+        'H': {
+            title: '台灣學測必備片語',
+            detail: `
+                <h4>1. tumble down (倒塌；跌落)</h4>
+                <p>例句：The old building <b>tumbled down</b> during the earthquake.<br>(那棟舊建築在地震中倒塌了。)</p>
+                <h4>2. stumble on/upon (偶然發現；絆倒)</h4>
+                <p>例句：Workmen <b>stumbled upon</b> the ancient ruins while digging a trench.<br>(工人在挖溝時偶然發現了古代遺跡。)</p>
+            `
+        }
+    };
+
+    function showOverlay(key) {
+        const item = data[key];
+        let html = `<div class="overlay-title">${item.title}</div>`;
+        if(item.desc) html += `<p>${item.desc}</p>`;
+        if(item.detail) html += `<div>${item.detail}</div>`;
+        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
+        
+        document.getElementById('contentArea').innerHTML = html;
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
+
+    function closeOverlay() {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .header {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .question {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .options-list {
+            list-style: none;
+            padding: 0;
+        }
+        .option-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.2s;
+        }
+        .option-item:hover {
+            background-color: #fafafa;
+        }
+        .info-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: #eee;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        .special-btn {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .footer-tools {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        .tool-link {
+            font-size: 0.9rem;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* 彈出視窗樣式 */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.95);
+            z-index: 1000;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .overlay-content {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px;
+        }
+        .overlay-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        .example-box {
+            background: #f4f4f4;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            border-left: 3px solid #ccc;
+        }
+        h4 { margin: 15px 0 5px 0; color: #333; }
+        .eg-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
+    
+    <div class="question">
+        Designed by a young engineer, the new product has created far more profit than ______ expected.
+    </div>
+
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) initially <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) genuinely <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) alternatively <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) fundamentally <span class="info-icon">ⓘ</span></div>
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('E')">
+        (E) 查看答案與詳細解析
+    </div>
+
+    <div class="special-btn" onclick="showOverlay('F')">
+        (F) 林威老師的話 (衍生詞與音標)
+    </div>
+
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+
+<div id="infoOverlay" class="overlay">
+    <span class="close-btn" onclick="closeOverlay()">×</span>
+    <div id="contentArea" class="overlay-content"></div>
+</div>
+
+<script>
+    const data = {
+        'A': {
+            title: '(A) initially',
+            desc: '解釋：最初，起初',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. <b>Initially</b>, the system was difficult to use.<br>(起初，這個系統很難使用。)</div>
+                    <div class="eg-item">2. The project was <b>initially</b> funded by a private donor.<br>(該計畫最初是由一位私人捐助者資助的。)</div>
+                    <div class="eg-item">3. He <b>initially</b> thought it was a joke.<br>(他最初以為那是個玩笑。)</div>
+                </div>`
+        },
+        'B': {
+            title: '(B) genuinely',
+            desc: '解釋：真心地；真正地',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. She was <b>genuinely</b> surprised by the news.<br>(她對這個消息感到由衷的驚訝。)</div>
+                    <div class="eg-item">2. He is <b>genuinely</b> interested in your welfare.<br>(他是真心關心你的福祉。)</div>
+                    <div class="eg-item">3. I <b>genuinely</b> believe this is the best solution.<br>(我真心相信這是最好的解決方案。)</div>
+                </div>`
+        },
+        'C': {
+            title: '(C) alternatively',
+            desc: '解釋：或者；替代地',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. You can fly, or <b>alternatively</b>, take the train.<br>(你可以搭飛機，或者也可以搭火車。)</div>
+                    <div class="eg-item">2. <b>Alternatively</b>, we could postpone the meeting.<br>(或者，我們可以延後會議。)</div>
+                    <div class="eg-item">3. The software is available for purchase; <b>alternatively</b>, you can use the free version.<br>(該軟體可以購買；或者，你也可以使用免費版本。)</div>
+                </div>`
+        },
+        'D': {
+            title: '(D) fundamentally',
+            desc: '解釋：根本地；基本地',
+            detail: `
+                <div class="example-box">
+                    <div class="eg-item">1. The two systems are <b>fundamentally</b> different.<br>(這兩個系統有根本上的不同。)</div>
+                    <div class="eg-item">2. The law needs to be <b>fundamentally</b> changed.<br>(這項法律需要從根本上進行改革。)</div>
+                    <div class="eg-item">3. <b>Fundamentally</b>, it is a matter of trust.<br>(從根本上來說，這是一個信任問題。)</div>
+                </div>`
+        },
+        'E': {
+            title: '正確答案：(A)',
+            desc: '解析：題幹提到「創造了比預期更多的利潤」，慣用語為 than initially expected (比最初預期的更多)。',
+            example: 'genuinely (真誠地)、alternatively (替代地)、fundamentally (根本地) 雖然是副詞，但在此處不符合「預期」的時間邏輯。'
+        },
+        'F': {
+            title: '林威老師的話',
+            desc: '衍生詞與音標學習：',
+            detail: `
+                <h4>1. initial (形容詞)</h4>
+                <p>KK: [ɪˈnɪʃəl] | 中文：最初的</p>
+                <h4>2. genuine (形容詞)</h4>
+                <p>KK: [ˈdʒɛnjuɪn] | 中文：真誠的；真正的</p>
+                <h4>3. alternative (形容詞/名詞)</h4>
+                <p>KK: [ɔlˈtɝnətɪv] | 中文：替代的；選項</p>
+                <h4>4. fundamental (形容詞)</h4>
+                <p>KK: [ˌfʌndəˈmɛntəl] | 中文：基本的</p>
+            `
+        },
+        'G': {
+            title: '衍生詞更多例句',
+            detail: `
+                <div class="example-box">1. My <b>initial</b> reaction was one of shock.<br>(我最初的反應是震驚。)</div>
+                <div class="example-box">2. This is a <b>genuine</b> leather jacket.<br>(這是一件真皮夾克。)</div>
+                <div class="example-box">3. Do you have an <b>alternative</b> plan?<br>(你有替代方案嗎？)</div>
+                <div class="example-box">4. Freedom of speech is a <b>fundamental</b> right.<br>(言論自由是一項基本權利。)</div>
+            `
+        },
+        'H': {
+            title: '台灣學測必備片語',
+            detail: `
+                <h4>1. put off (延期；延後)</h4>
+                <p>例句：The outdoor concert was <b>put off</b> because of the rain.<br>(戶外音樂會因為下雨而延期了。)</p>
+                <h4>2. put away (收好；儲存)</h4>
+                <p>例句：Please <b>put away</b> your toys before dinner.<br>(請在晚餐前把玩具收好。)</p>
+            `
+        }
+    };
+
+    function showOverlay(key) {
+        const item = data[key];
+        let html = `<div class="overlay-title">${item.title}</div>`;
+        if(item.desc) html += `<p>${item.desc}</p>`;
+        if(item.detail) html += `<div>${item.detail}</div>`;
+        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
+        
+        document.getElementById('contentArea').innerHTML = html;
+        document.getElementById('infoOverlay').style.display = 'block';
+    }
+
+    function closeOverlay() {
+        document.getElementById('infoOverlay').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
