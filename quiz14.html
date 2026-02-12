@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background-color: #fff; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; }
+        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; }
+        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
+        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; }
+        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; }
+        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
+        .overlay-content { max-width: 500px; margin: 0 auto; }
+        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; }
+        .overlay-title { font-size: 1.2rem; font-weight: bold; border-left: 4px solid #000; padding-left: 10px; }
+        .example-box { background: #f4f4f4; padding: 12px; border-radius: 8px; font-size: 0.95rem; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月12日</div>
+    <div class="question">The river is so _____ that it can accommodate large cargo ships from many countries.</div>
+    <div onclick="showOverlay('A')" class="option-item">(A) narrow <span class="info-icon">ⓘ</span></div>
+    <div onclick="showOverlay('B')" class="option-item">(B) huge <span class="info-icon">ⓘ</span></div>
+    <div onclick="showOverlay('C')" class="option-item">(C) broad <span class="info-icon">ⓘ</span></div>
+    <div onclick="showOverlay('D')" class="option-item">(D) slippery <span class="info-icon">ⓘ</span></div>
+    <div onclick="showOverlay('E')" class="special-btn">查看答案與解析</div>
+    <div onclick="showOverlay('H')" class="special-btn">學測常考片語</div>
+</div>
+<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
+<script>
+    const data = {
+        'C': { title: '(C) broad', desc: '解釋：寬廣的', detail: '<div class="example-box">1. The river is very <b>broad</b> here.<br>2. He has <b>broad</b> shoulders.<br>3. A <b>broad</b> range of topics.</div>' },
+        'E': { title: '正確答案：(C)', desc: '解析：河流夠「寬廣」(broad) 才能容納大型貨船。' },
+        'H': { title: '學測片語', detail: '<h4>1. hand in (繳交)</h4><p>Please <b>hand in</b> your homework.</p><h4>2. turn in (繳交/睡覺)</h4><p>I\'m tired and going to <b>turn in</b>.</p><h4>3. give in (讓步)</h4><p>The government refused to <b>give in</b> to demands.</p>' }
+    };
+    function showOverlay(key) { const item = data[key]; let html = `<div class="overlay-title">${item.title}</div><p>${item.desc || ""}</p><div>${item.detail || ""}</div>`; document.getElementById('contentArea').innerHTML = html; document.getElementById('infoOverlay').style.display = 'block'; }
+    function closeOverlay() { document.getElementById('infoOverlay').style.display = 'none'; }
+</script>
+</body>
+</html>

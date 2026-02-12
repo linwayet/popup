@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
+        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
+        .options-list { list-style: none; padding: 0; }
+        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
+        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; }
+        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; }
+        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
+        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
+        .overlay-content { max-width: 500px; margin: 0 auto; }
+        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
+        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
+        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
+        .eg-item { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月12日 | 115學測英文科</div>
+    <div class="question">I need to send this _____ to my friend overseas with important documents inside.</div>
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) package <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) ticket <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) service <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) letter <span class="info-icon">ⓘ</span></div>
+    </div>
+    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解析</div>
+    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
+<script>
+    const data = {
+        'A': { title: '(A) package', desc: '解釋：包裹', detail: '<div class="example-box"><div class="eg-item">1. The <b>package</b> arrived this morning.<br>(包裹今天早上寄達了。)</div><div class="eg-item">2. He sent a <b>package</b> of books to his son.<br>(他寄了一包書給他兒子。)</div><div class="eg-item">3. Handle the <b>package</b> with care.<br>(請小心處理這個包裹。)</div></div>' },
+        'B': { title: '(B) ticket', desc: '解釋：票；券', detail: '<div class="example-box"><div class="eg-item">1. Do you have a <b>ticket</b> for the concert?<br>(你有音樂會的票嗎？)</div><div class="eg-item">2. I got a parking <b>ticket</b> yesterday.<br>(我昨天收到一張違規停車罰單。)</div><div class="eg-item">3. You need to book your <b>ticket</b> in advance.<br>(你需要提前訂票。)</div></div>' },
+        'C': { title: '(C) service', desc: '解釋：服務', detail: '<div class="example-box"><div class="eg-item">1. The <b>service</b> in this restaurant is excellent.<br>(這家餐廳的服務非常好。)</div><div class="eg-item">2. The bus <b>service</b> is quite reliable.<br>(這條巴士線路相當可靠。)</div><div class="eg-item">3. He has given 30 years of <b>service</b> to the firm.<br>(他為這家公司服務了三十年。)</div></div>' },
+        'D': { title: '(D) letter', desc: '解釋：信件', detail: '<div class="example-box"><div class="eg-item">1. I received a <b>letter</b> from an old friend.<br>(我收到一封老朋友的來信。)</div><div class="eg-item">2. She wrote a <b>letter</b> of recommendation.<br>(她寫了一封推薦信。)</div><div class="eg-item">3. Please mail this <b>letter</b> for me.<br>(請幫我寄這封信。)</div></div>' },
+        'E': { title: '正確答案：(A)', desc: '解析：題幹提到「寄送給海外朋友」且「內含重要文件」，符合包裹 (package) 的描述。雖然 letter 也可以放文件，但 package 更常用於描述寄送跨國的包裝物。', example: '注意 package 也可指軟體或套裝行程。' },
+        'F': { title: '林威老師的話', detail: '<h4>1. packaging (名詞)</h4><p>KK: [ˈpækɪdʒɪŋ] | 中文：包裝材料</p><h4>2. serviceable (形容詞)</h4><p>KK: [ˈsɝvɪsəbl] | 中文：耐用的；可供使用的</p>' },
+        'G': { title: '更多例句', detail: '<div class="example-box">1. The <b>packaging</b> is made of recycled paper.<br>(包裝是由回收紙製成的。)</div><div class="example-box">2. These old tools are still <b>serviceable</b>.<br>(這些舊工具依然可以使用。)</div>' },
+        'H': { title: '高三學測必備片語', detail: '<h4>1. carry out (執行；完成)</h4><p>例句：The scientists <b>carried out</b> a series of experiments.<br>(科學家們執行了一系列實驗。)</p><h4>2. bring about (導致；引起)</h4><p>例句：The new law <b>brought about</b> many changes.<br>(新法律引起了許多變化。)</p><h4>3. result in (導致；結果是)</h4><p>例句：The heavy rain <b>resulted in</b> a flood.<br>(大雨導致了洪災。)</p>' }
+    };
+    function showOverlay(key) { const item = data[key]; let html = `<div class="overlay-title">${item.title}</div>`; if(item.desc) html += `<p>${item.desc}</p>`; if(item.detail) html += `<div>${item.detail}</div>`; if(item.example) html += `<div class="example-box"><b>解析：</b><br>${item.example}</div>`; document.getElementById('contentArea').innerHTML = html; document.getElementById('infoOverlay').style.display = 'block'; }
+    function closeOverlay() { document.getElementById('infoOverlay').style.display = 'none'; }
+</script>
+</body>
+</html>
