@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
+        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
+        .options-list { list-style: none; padding: 0; }
+        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
+        .option-item:hover { background-color: #f9f9f9; }
+        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
+        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
+        .special-btn:hover { background-color: #f0f0f0; }
+        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
+        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
+        .tool-link:hover { color: #333; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
+        .overlay-content { max-width: 500px; margin: 0 auto; }
+        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
+        .close-btn:hover { color: #666; }
+        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
+        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
+        .eg-item { margin-bottom: 10px; }
+        .kk-text { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
+    <div class="question">The detective visited the wife of the victim to offer his sympathy, but his _______ motive was to examine her response to his questions.</div>
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) brief <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) underlying <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) durable <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) lengthy <span class="info-icon">ⓘ</span></div>
+    </div>
+    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
+    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
+<script>
+    const data = {
+        'A': { 
+            title: '(A) brief', 
+            desc: '解釋：簡短的；簡潔的；短暫的；扼要的', 
+            detail: '<div class="example-box"><div class="eg-item">1. Please give me a <b>brief</b> summary of the report.<br>(請給我一份簡潔的報告摘要。)</div><div class="eg-item">2. The meeting was <b>brief</b> and productive.<br>(會議簡短但富有成效。)</div><div class="eg-item">3. I only have a <b>brief</b> moment to talk.<br>(我只有片刻的時間談話。)</div></div>' 
+        },
+        'B': { 
+            title: '(B) underlying', 
+            desc: '解釋：潛在的；隱藏的；根本的；下層的；基礎的', 
+            detail: '<div class="example-box"><div class="eg-item">1. There is an <b>underlying</b> issue that needs to be addressed.<br>(有一個潛在的問題需要解決。)</div><div class="eg-item">2. The <b>underlying</b> cause of the problem is still unknown.<br>(問題的根本原因仍然未知。)</div><div class="eg-item">3. His <b>underlying</b> fear is that he won\'t be accepted.<br>(他潛在的恐懼是他不會被接受。)</div></div>' 
+        },
+        'C': { 
+            title: '(C) durable', 
+            desc: '解釋：耐久的；耐用的；持久的；牢固的', 
+            detail: '<div class="example-box"><div class="eg-item">1. This <b>durable</b> material can last for years.<br>(這種耐用的材料可以使用多年。)</div><div class="eg-item">2. We need a <b>durable</b> solution to this problem.<br>(我們需要一個持久的解決方案。)</div><div class="eg-item">3. This <b>durable</b> fabric is perfect for outdoor use.<br>(這種耐久的布料非常適合戶外使用。)</div></div>' 
+        },
+        'D': { 
+            title: '(D) lengthy', 
+            desc: '解釋：冗長的；漫長的；長時間的；冗詞贅句的', 
+            detail: '<div class="example-box"><div class="eg-item">1. The <b>lengthy</b> speech put many people to sleep.<br>(冗長的演講使許多人睡著了。)</div><div class="eg-item">2. After a <b>lengthy</b> investigation, they found the truth.<br>(經過漫長的調查，他們發現了真相。)</div><div class="eg-item">3. The contract contains <b>lengthy</b> terms and conditions.<br>(合同包含冗長的條款和條件。)</div></div>' 
+        },
+        'E': { 
+            title: '✓ 正確答案：(B) underlying', 
+            desc: '詳細解析：題目說偵探訪問受害者的妻子表面上是為了表示同情，但「隱藏的」或「潛在的」動機是檢查她對問題的反應。(B) underlying 正是表示「潛在的；隱藏在表面下的」，完美描述了偵探真實但隱藏的目的。', 
+            example: '<b>為什麼不選其他選項？</b><br>• (A) brief：簡短，無法用於描述隱藏的動機<br>• (C) durable：耐久，完全無關，無法修飾動機<br>• (D) lengthy：冗長，不符合句意，與隱藏無關' 
+        },
+        'F': { 
+            title: '林威老師的話 - 衍生詞與音標', 
+            detail: '<h4>1. underlie (動詞)</h4><p class="kk-text">KK: [ˌʌndɚˈlaɪ]</p><p>中文：位於...下面；是...的基礎；潛在；隱藏在...</p><h4>2. underline (動詞)</h4><p class="kk-text">KK: [ˌʌndɚˈlaɪn]</p><p>中文：強調；著重指出；在...下劃線</p>' 
+        },
+        'G': { 
+            title: '衍生詞更多例句', 
+            detail: '<div class="example-box"><div class="eg-item">1. What <b>underlies</b> this strange behavior?<br>(是什麼導致了這種奇怪的行為？)</div></div><div class="example-box"><div class="eg-item">2. The principle that <b>underlies</b> our company is integrity.<br>(支撐我們公司的原則是誠實。)</div></div><div class="example-box"><div class="eg-item">3. Please <b>underline</b> the important words in the text.<br>(請在文本中的重要詞彙下方劃線。)</div></div><div class="example-box"><div class="eg-item">4. The report <b>underlines</b> the importance of education.<br>(這份報告強調了教育的重要性。)</div></div>' 
+        },
+        'H': { 
+            title: '高三學測必備片語', 
+            detail: '<h4>1. offer sympathy (表示同情；表達哀悼)</h4><p>例句: I came to <b>offer my sympathy</b> for your loss.<br>(我來為你的損失表達同情。)</p><h4>2. examine response (檢查回應；觀察反應)</h4><p>例句: The teacher will <b>examine your response</b> to the question.<br>(老師將檢查你對問題的回應。)</p><h4>3. true/real/underlying motive (真實的動機；潛在的目的)</h4><p>例句: His <b>underlying motive</b> was to gain power and influence.<br>(他潛在的動機是獲得權力和影響力。)</p>' 
+        }
+    };
+    function showOverlay(key) { 
+        const item = data[key]; 
+        let html = `<div class="overlay-title">${item.title}</div>`; 
+        if(item.desc) html += `<p>${item.desc}</p>`; 
+        if(item.detail) html += `<div>${item.detail}</div>`; 
+        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
+        document.getElementById('contentArea').innerHTML = html; 
+        document.getElementById('infoOverlay').style.display = 'block'; 
+    }
+    function closeOverlay() { 
+        document.getElementById('infoOverlay').style.display = 'none'; 
+    }
+</script>
+</body>
+</html>

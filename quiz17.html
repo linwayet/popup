@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
+        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
+        .options-list { list-style: none; padding: 0; }
+        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
+        .option-item:hover { background-color: #f9f9f9; }
+        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
+        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
+        .special-btn:hover { background-color: #f0f0f0; }
+        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
+        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
+        .tool-link:hover { color: #333; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
+        .overlay-content { max-width: 500px; margin: 0 auto; }
+        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
+        .close-btn:hover { color: #666; }
+        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
+        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
+        .eg-item { margin-bottom: 10px; }
+        .kk-text { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
+    <div class="question">The design was innovative; however, the lack of user-friendly features greatly _______ its appeal to customers.</div>
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) weakened <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) halted <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) implied <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) held <span class="info-icon">ⓘ</span></div>
+    </div>
+    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
+    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
+<script>
+    const data = {
+        'A': { 
+            title: '(A) weakened', 
+            desc: '解釋：削弱；減弱；衰弱；變軟弱', 
+            detail: '<div class="example-box"><div class="eg-item">1. The economic crisis <b>weakened</b> the company\'s position.<br>(經濟危機削弱了公司的地位。)</div><div class="eg-item">2. His health has <b>weakened</b> over the years.<br>(多年來他的健康狀況衰退了。)</div><div class="eg-item">3. The storm <b>weakened</b> as it moved inland.<br>(風暴向內陸移動時減弱了。)</div></div>' 
+        },
+        'B': { 
+            title: '(B) halted', 
+            desc: '解釋：停止；暫停；停頓；中止', 
+            detail: '<div class="example-box"><div class="eg-item">1. The project <b>halted</b> due to funding issues.<br>(該項目因資金問題而停止。)</div><div class="eg-item">2. The train <b>halted</b> at the station.<br>(火車在車站停了下來。)</div><div class="eg-item">3. Production was <b>halted</b> temporarily.<br>(生產暫時停止。)</div></div>' 
+        },
+        'C': { 
+            title: '(C) implied', 
+            desc: '解釋：暗示；隱含；意味著；含蓄地表達', 
+            detail: '<div class="example-box"><div class="eg-item">1. Her silence <b>implied</b> agreement.<br>(她的沉默暗示了同意。)</div><div class="eg-item">2. The report <b>implied</b> that changes were needed.<br>(報告暗示需要進行改變。)</div><div class="eg-item">3. His words <b>implied</b> criticism of the decision.<br>(他的話隱含著對這個決定的批評。)</div></div>' 
+        },
+        'D': { 
+            title: '(D) held', 
+            desc: '解釋：持有；保持；握住；舉辦；認為', 
+            detail: '<div class="example-box"><div class="eg-item">1. She <b>held</b> the book carefully.<br>(她小心地握著書。)</div><div class="eg-item">2. The company <b>holds</b> the record for fastest service.<br>(該公司保持了最快服務的記錄。)</div><div class="eg-item">3. They <b>held</b> a meeting to discuss the issue.<br>(他們舉辦了一次會議討論這個問題。)</div></div>' 
+        },
+        'E': { 
+            title: '✓ 正確答案：(A) weakened', 
+            desc: '詳細解析：題目的邏輯是「雖然設計是創新的，但是缺乏用戶友好的功能大大___了它對顧客的吸引力」。這裡應該填入表示「減弱」「降低」的動詞，(A) weakened 正是表示「削弱；減弱」，完美符合句意。', 
+            example: '<b>為什麼不選其他選項？</b><br>• (B) halted：停止，無法用於描述「削弱吸引力」<br>• (C) implied：暗示，文法和語意都不符合<br>• (D) held：保持，與句意相反，應為「削弱」而非「保持」' 
+        },
+        'F': { 
+            title: '林威老師的話 - 衍生詞與音標', 
+            detail: '<h4>1. weakness (名詞)</h4><p class="kk-text">KK: [ˈwekənəs]</p><p>中文：弱點；缺陷；衰弱；弱勢</p><h4>2. weaken (動詞原形/不同形式)</h4><p class="kk-text">KK: [ˈwikən]</p><p>中文：削弱；減弱；衰落；軟化</p>' 
+        },
+        'G': { 
+            title: '衍生詞更多例句', 
+            detail: '<div class="example-box"><div class="eg-item">1. The <b>weakness</b> of the argument undermined his position.<br>(這個論證的弱點削弱了他的立場。)</div></div><div class="example-box"><div class="eg-item">2. Lack of sleep can <b>weaken</b> your immune system.<br>(睡眠不足會削弱你的免疫系統。)</div></div><div class="example-box"><div class="eg-item">3. The dollar\'s <b>weakness</b> affects international trade.<br>(美元的疲軟影響了國際貿易。)</div></div><div class="example-box"><div class="eg-item">4. Time gradually <b>weakened</b> his resolve.<br>(時間逐漸削弱了他的決心。)</div></div>' 
+        },
+        'H': { 
+            title: '高三學測必備片語', 
+            detail: '<h4>1. lack of (缺乏；缺少...)</h4><p>例句: The <b>lack of</b> communication caused problems.<br>(溝通不足導致了問題。)</p><h4>2. appeal to (吸引；呼籲；對...有吸引力)</h4><p>例句: This product <b>appeals to</b> young consumers.<br>(這個產品吸引年輕消費者。)</p><h4>3. weaken the appeal (削弱吸引力；減少吸引力)</h4><p>例句: The high price <b>weakened the appeal</b> of the product.<br>(高價格削弱了產品的吸引力。)</p>' 
+        }
+    };
+    function showOverlay(key) { 
+        const item = data[key]; 
+        let html = `<div class="overlay-title">${item.title}</div>`; 
+        if(item.desc) html += `<p>${item.desc}</p>`; 
+        if(item.detail) html += `<div>${item.detail}</div>`; 
+        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
+        document.getElementById('contentArea').innerHTML = html; 
+        document.getElementById('infoOverlay').style.display = 'block'; 
+    }
+    function closeOverlay() { 
+        document.getElementById('infoOverlay').style.display = 'none'; 
+    }
+</script>
+</body>
+</html>

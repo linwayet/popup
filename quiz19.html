@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
+        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
+        .options-list { list-style: none; padding: 0; }
+        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
+        .option-item:hover { background-color: #f9f9f9; }
+        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
+        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
+        .special-btn:hover { background-color: #f0f0f0; }
+        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
+        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
+        .tool-link:hover { color: #333; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
+        .overlay-content { max-width: 500px; margin: 0 auto; }
+        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
+        .close-btn:hover { color: #666; }
+        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
+        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
+        .eg-item { margin-bottom: 10px; }
+        .kk-text { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
+    <div class="question">Known for being critical and demanding, our teacher often complains that very few students manage to hand in assignments that meet his _______.</div>
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) directions <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) opportunities <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) standards <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) decisions <span class="info-icon">ⓘ</span></div>
+    </div>
+    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
+    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
+<script>
+    const data = {
+        'A': { 
+            title: '(A) directions', 
+            desc: '解釋：方向；指示；指導；說明；路線', 
+            detail: '<div class="example-box"><div class="eg-item">1. Follow the <b>directions</b> on the package carefully.<br>(請仔細按照包裝上的指示進行。)</div><div class="eg-item">2. The teacher gave clear <b>directions</b> for the project.<br>(老師為這個項目給出了清楚的指示。)</div><div class="eg-item">3. I need <b>directions</b> to get to the station.<br>(我需要去車站的路線指引。)</div></div>' 
+        },
+        'B': { 
+            title: '(B) opportunities', 
+            desc: '解釋：機會；機遇；條件；時機', 
+            detail: '<div class="example-box"><div class="eg-item">1. This job is a great <b>opportunity</b> for career advancement.<br>(這份工作是職業發展的絕佳機會。)</div><div class="eg-item">2. She had several <b>opportunities</b> to travel abroad.<br>(她有過多次出國旅遊的機會。)</div><div class="eg-item">3. We should take every <b>opportunity</b> to improve ourselves.<br>(我們應該抓住每個改進自己的機會。)</div></div>' 
+        },
+        'C': { 
+            title: '(C) standards', 
+            desc: '解釋：標準；規範；水準；要求；尺度', 
+            detail: '<div class="example-box"><div class="eg-item">1. This product meets international quality <b>standards</b>.<br>(這個產品符合國際質量標準。)</div><div class="eg-item">2. The teacher has high <b>standards</b> for student work.<br>(老師對學生作業有很高的標準。)</div><div class="eg-item">3. We must maintain the highest <b>standards</b> of professionalism.<br>(我們必須保持最高的專業標準。)</div></div>' 
+        },
+        'D': { 
+            title: '(D) decisions', 
+            desc: '解釋：決定；決策；裁決；判決；結論', 
+            detail: '<div class="example-box"><div class="eg-item">1. She made a difficult <b>decision</b> to change careers.<br>(她做出了改行的困難決定。)</div><div class="eg-item">2. The manager\'s <b>decisions</b> affect the entire company.<br>(經理的決策影響整個公司。)</div><div class="eg-item">3. We respect the referee\'s <b>decision</b>.<br>(我們尊重裁判的裁決。)</div></div>' 
+        },
+        'E': { 
+            title: '✓ 正確答案：(C) standards', 
+            desc: '詳細解析：題目說明老師以苛刻和要求高著稱，經常抱怨很少有學生能交出符合他的___的作業。這裡應該填入表示「標準；要求；水準」的詞，(C) standards 正是表示「標準」，完美符合句意。老師對作業的要求就是他的標準。', 
+            example: '<b>為什麼不選其他選項？</b><br>• (A) directions：指示，無法用於描述「作業品質要求」<br>• (B) opportunities：機會，文法和語意都不符合<br>• (D) decisions：決定，無法表達「標準」或「要求」的含義' 
+        },
+        'F': { 
+            title: '林威老師的話 - 衍生詞與音標', 
+            detail: '<h4>1. standardize (動詞)</h4><p class="kk-text">KK: [ˈstændɚdaɪz]</p><p>中文：標準化；統一標準；使符合標準</p><h4>2. standardized (形容詞)</h4><p class="kk-text">KK: [ˈstændɚdaɪzd]</p><p>中文：標準化的；統一的；按標準的</p>' 
+        },
+        'G': { 
+            title: '衍生詞更多例句', 
+            detail: '<div class="example-box"><div class="eg-item">1. Many companies <b>standardize</b> their procedures to ensure consistency.<br>(許多公司標準化其程序以確保一致性。)</div></div><div class="example-box"><div class="eg-item">2. The <b>standardized</b> test measures students\' academic abilities.<br>(標準化考試測量學生的學術能力。)</div></div><div class="example-box"><div class="eg-item">3. We need to <b>standardize</b> our quality control process.<br>(我們需要標準化我們的質量控制過程。)</div></div><div class="example-box"><div class="eg-item">4. <b>Standardized</b> units make international trade easier.<br>(標準化的單位使國際貿易更容易。)</div></div>' 
+        },
+        'H': { 
+            title: '高三學測必備片語', 
+            detail: '<h4>1. hand in (上交；遞交；交出作業或文件)</h4><p>例句: Please <b>hand in</b> your homework by Friday.<br>(請在星期五之前上交你的作業。)</p><h4>2. meet someone\'s standards (符合...的標準；達到...的要求)</h4><p>例句: Your essay does not <b>meet the</b> required <b>standards</b>.<br>(你的文章不符合所需的標準。)</p><h4>3. live up to (達到；符合；不辜負)</h4><p>例句: The product <b>lives up to</b> its promises.<br>(這個產品符合它的承諾。)</p>' 
+        }
+    };
+    function showOverlay(key) { 
+        const item = data[key]; 
+        let html = `<div class="overlay-title">${item.title}</div>`; 
+        if(item.desc) html += `<p>${item.desc}</p>`; 
+        if(item.detail) html += `<div>${item.detail}</div>`; 
+        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
+        document.getElementById('contentArea').innerHTML = html; 
+        document.getElementById('infoOverlay').style.display = 'block'; 
+    }
+    function closeOverlay() { 
+        document.getElementById('infoOverlay').style.display = 'none'; 
+    }
+</script>
+</body>
+</html>

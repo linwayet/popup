@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>115學測英文練習 - 林威老師編輯</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
+        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
+        .options-list { list-style: none; padding: 0; }
+        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
+        .option-item:hover { background-color: #f9f9f9; }
+        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
+        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
+        .special-btn:hover { background-color: #f0f0f0; }
+        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
+        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
+        .tool-link:hover { color: #333; }
+        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
+        .overlay-content { max-width: 500px; margin: 0 auto; }
+        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
+        .close-btn:hover { color: #666; }
+        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
+        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
+        .eg-item { margin-bottom: 10px; }
+        .kk-text { color: #666; font-style: italic; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
+    <div class="question">Although Susan had never visited Japan before, she felt quite _______ with the culture because of the books and films she had enjoyed for years.</div>
+    <div class="options-list">
+        <div class="option-item" onclick="showOverlay('A')">(A) similar <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('B')">(B) equal <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('C')">(C) familiar <span class="info-icon">ⓘ</span></div>
+        <div class="option-item" onclick="showOverlay('D')">(D) generous <span class="info-icon">ⓘ</span></div>
+    </div>
+    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
+    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
+    <div class="footer-tools">
+        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
+        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+    </div>
+</div>
+<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
+<script>
+    const data = {
+        'A': { 
+            title: '(A) similar', 
+            desc: '解釋：相似的；類似的；相像的；差不多的', 
+            detail: '<div class="example-box"><div class="eg-item">1. My sister and I have <b>similar</b> interests.<br>(我和我妹妹有類似的興趣。)</div><div class="eg-item">2. These two products are <b>similar</b> in price.<br>(這兩種產品價格相似。)</div><div class="eg-item">3. Their ideas are <b>similar</b> to mine.<br>(他們的想法與我的相似。)</div></div>' 
+        },
+        'B': { 
+            title: '(B) equal', 
+            desc: '解釋：相等的；平等的；相同的；勝任的', 
+            detail: '<div class="example-box"><div class="eg-item">1. All people are <b>equal</b> before the law.<br>(所有人在法律面前都是平等的。)</div><div class="eg-item">2. Five plus five is <b>equal</b> to ten.<br>(五加五等於十。)</div><div class="eg-item">3. He is <b>equal</b> to the task ahead.<br>(他能勝任眼前的任務。)</div></div>' 
+        },
+        'C': { 
+            title: '(C) familiar', 
+            desc: '解釋：熟悉的；親密的；常見的；知道的', 
+            detail: '<div class="example-box"><div class="eg-item">1. This place is <b>familiar</b> to me.<br>(這個地方我很熟悉。)</div><div class="eg-item">2. Her voice sounds <b>familiar</b>.<br>(她的聲音聽起來很熟悉。)</div><div class="eg-item">3. I am <b>familiar</b> with that author\'s work.<br>(我熟悉那位作者的作品。)</div></div>' 
+        },
+        'D': { 
+            title: '(D) generous', 
+            desc: '解釋：慷慨的；寬宏大量的；大方的；豐富的', 
+            detail: '<div class="example-box"><div class="eg-item">1. She is a <b>generous</b> person who always helps others.<br>(她是一個慷慨的人，總是幫助他人。)</div><div class="eg-item">2. He made a <b>generous</b> donation to the charity.<br>(他向慈善機構做了慷慨的捐獻。)</div><div class="eg-item">3. The portions at this restaurant are <b>generous</b>.<br>(這家餐廳的份量很大。)</div></div>' 
+        },
+        'E': { 
+            title: '✓ 正確答案：(C) familiar', 
+            desc: '詳細解析：題目說蘇珊雖然從未去過日本，但因為多年來看過的書籍和電影，她對日本文化感到「熟悉」。(C) familiar 是最適合的詞選，常搭配 "feel familiar with" 或 "be familiar with" 表示對某事物感到熟悉或了解。', 
+            example: '<b>為什麼不選其他選項？</b><br>• (A) similar：相似，文法上「feel similar with」不正確，應為「similar to」<br>• (B) equal：相等，無法表達「對文化的了解程度」<br>• (D) generous：慷慨，完全無關，不符合句意' 
+        },
+        'F': { 
+            title: '林威老師的話 - 衍生詞與音標', 
+            detail: '<h4>1. familiarity (名詞)</h4><p class="kk-text">KK: [fəˌmɪliˈærəti]</p><p>中文：熟悉；親密；熟悉的事物；常識</p><h4>2. unfamiliar (形容詞)</h4><p class="kk-text">KK: [ˌʌnfəˈmɪljɚ]</p><p>中文：陌生的；不熟悉的；陌生人</p>' 
+        },
+        'G': { 
+            title: '衍生詞更多例句', 
+            detail: '<div class="example-box"><div class="eg-item">1. Their <b>familiarity</b> with the subject made the presentation excellent.<br>(他們對該主題的熟悉使報告非常出色。)</div></div><div class="example-box"><div class="eg-item">2. The <b>unfamiliar</b> surroundings made him feel uncomfortable.<br>(陌生的環境使他感到不舒服。)</div></div><div class="example-box"><div class="eg-item">3. Long <b>familiarity</b> with the city made navigation easy.<br>(對這座城市長期的熟悉使導航變得容易。)</div></div><div class="example-box"><div class="eg-item">4. This is an <b>unfamiliar</b> concept to most people.<br>(這對大多數人來說是一個陌生的概念。)</div></div>' 
+        },
+        'H': { 
+            title: '高三學測必備片語', 
+            detail: '<h4>1. be familiar with (對...很熟悉；了解...)</h4><p>例句：Are you <b>familiar with</b> this software?<br>(你熟悉這個軟體嗎？)</p><h4>2. feel familiar with (對...感到熟悉；因...而感到熟悉)</h4><p>例句：She <b>felt familiar with</b> the city because she had lived there before.<br>(她對這座城市感到熟悉，因為她以前住過那裡。)</p><h4>3. become familiar to (變得為...所熟悉；逐漸為人所知)</h4><p>例句: His name soon <b>became familiar to</b> everyone in the office.<br>(他的名字很快就在辦公室裡為人所熟知。)</p>' 
+        }
+    };
+    function showOverlay(key) { 
+        const item = data[key]; 
+        let html = `<div class="overlay-title">${item.title}</div>`; 
+        if(item.desc) html += `<p>${item.desc}</p>`; 
+        if(item.detail) html += `<div>${item.detail}</div>`; 
+        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
+        document.getElementById('contentArea').innerHTML = html; 
+        document.getElementById('infoOverlay').style.display = 'block'; 
+    }
+    function closeOverlay() { 
+        document.getElementById('infoOverlay').style.display = 'none'; 
+    }
+</script>
+</body>
+</html>
