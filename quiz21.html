@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Endurance — Antarctic Voyage</title>
+<style>
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ── BASE ── */
+:root {
+  --bg:        #0c0c0c;
+  --fg:        #ddd;
+  --accent:    #999;
+  --dim:       #555;
+  --card-bg:   #131313;
+  --card-bd:   #3a3a3a;
+  --btn-bg:    #0f0f0f;
+  --btn-bd:    #2e2e2e;
+  --gap:       clamp(6px, 2vw, 10px);
+  --pad-x:     clamp(12px, 4vw, 28px);
+}
+
+html { font-size: clamp(14px, 3.8vw, 17px); }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Georgia', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ── HEADER ── */
+h1 {
+  text-align: center;
+  padding: clamp(20px, 5vw, 36px) var(--pad-x) 6px;
+  font-size: clamp(1.3rem, 5vw, 2.2rem);
+  letter-spacing: clamp(0.1em, 1.5vw, 0.25em);
+  color: #f0f0f0;
+  font-weight: normal;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin-bottom: clamp(16px, 4vw, 28px);
+  font-size: clamp(0.72rem, 2.2vw, 0.9rem);
+  letter-spacing: 0.08em;
+  padding: 0 var(--pad-x);
+}
+
+/* ── SVG SCENE ── */
+.scene-container {
+  display: flex;
+  justify-content: center;
+  padding: 0 clamp(8px, 3vw, 16px) 8px;
+}
+
+svg.scene {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  /* prevent iOS from adding extra whitespace */
+  vertical-align: bottom;
+}
+
+/* ── VOCAB SECTION ── */
+.words-section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: clamp(18px, 4vw, 28px) var(--pad-x) clamp(40px, 8vw, 70px);
+}
+
+.words-section h2 {
+  text-align: center;
+  font-size: clamp(0.8rem, 2.8vw, 1.1rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 4px;
+  font-weight: normal;
+}
+
+.section-note {
+  text-align: center;
+  color: var(--dim);
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  font-style: italic;
+  margin-bottom: clamp(14px, 3vw, 22px);
+}
+
+/* ── WORD GRID ── */
+.word-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  justify-content: center;
+}
+
+.word-item { position: relative; }
+
+.word-btn {
+  background: var(--btn-bg);
+  border: 1px solid var(--btn-bd);
+  color: #c8c8c8;
+  /* larger tap target on mobile */
+  padding: clamp(8px, 2vw, 9px) clamp(12px, 3.5vw, 16px);
+  font-size: clamp(0.78rem, 2.4vw, 0.87rem);
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+  /* prevent tap highlight flash on iOS */
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  /* ensure minimum touch target 44px tall */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.word-btn:hover  { background: #1c1c1c; border-color: #777; color: #fff; }
+.word-btn.active { background: #181818; border-color: var(--accent); color: #fff; }
+
+/* ── POPUP — bottom sheet on small screens, floating on large ── */
+.popup {
+  display: none;
+  z-index: 9999;
+  background: var(--card-bg);
+  border: 1px solid var(--card-bd);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.9);
+  border-radius: 4px;
+  pointer-events: auto;
+  /* default: floating (desktop) */
+  position: fixed;
+  width: 340px;
+  padding: 16px 18px;
+}
+
+/* ── Mobile: full-width bottom sheet ── */
+@media (max-width: 480px) {
+  .popup {
+    /* override floating positioning */
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    border-radius: 14px 14px 0 0;
+    border-bottom: none;
+    padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
+    /* slide-up animation */
+    transform: translateY(100%);
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1),
+                display 0s 0.28s;
+  }
+  .popup.show {
+    transform: translateY(0);
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  /* drag handle */
+  .popup::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 4px;
+    background: #444;
+    border-radius: 2px;
+    margin: 0 auto 14px;
+  }
+  /* dim overlay behind sheet */
+  .popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 9998;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+  .popup-overlay.show { display: block; }
+}
+
+/* ── Tablet intermediate: wider popup ── */
+@media (min-width: 481px) and (max-width: 700px) {
+  .popup { width: min(90vw, 340px); }
+}
+
+.popup.show { display: block; }
+
+/* ── Popup content ── */
+.popup-word {
+  font-size: clamp(0.95rem, 3vw, 1.05rem);
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 2px;
+}
+.popup-pos {
+  font-size: clamp(0.68rem, 2vw, 0.73rem);
+  color: #666;
+  font-style: italic;
+  margin-bottom: clamp(8px, 2.5vw, 11px);
+}
+
+.example-block {
+  margin-bottom: clamp(8px, 2.5vw, 11px);
+  padding-left: 10px;
+  border-left: 2px solid #333;
+}
+.example-block:last-child { margin-bottom: 0; }
+
+.example-en {
+  font-size: clamp(0.76rem, 2.2vw, 0.82rem);
+  color: #c8c8c8;
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+.example-en em { color: #fff; font-style: normal; font-weight: bold; }
+
+.example-zh {
+  font-size: clamp(0.72rem, 2vw, 0.76rem);
+  color: #666;
+  line-height: 1.55;
+}
+
+/* ── Close button (mobile only) ── */
+.popup-close {
+  display: none;
+}
+@media (max-width: 480px) {
+  .popup-close {
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #222;
+    border: none;
+    color: #888;
+    font-size: 1rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 28px;
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1>THE ENDURANCE</h1>
+<p class="subtitle">Antarctic Expedition &nbsp;·&nbsp; 1914–1916 &nbsp;·&nbsp; Weddell Sea</p>
+
+<!-- ═══════════════════════════════════════════════
+     HAND-DRAWN STYLE SVG ILLUSTRATION
+     All strokes use slightly wobbly paths to
+     mimic pen-and-ink illustration
+════════════════════════════════════════════════ -->
+<div class="scene-container">
+<svg class="scene" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <filter id="roughen">
+    <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="4" seed="2" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <filter id="inkBlur">
+    <feGaussianBlur stdDeviation="0.4"/>
+  </filter>
+  <filter id="glowSoft">
+    <feGaussianBlur stdDeviation="5" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="glowStrong">
+    <feGaussianBlur stdDeviation="9" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#000"/>
+    <stop offset="75%" stop-color="#0d0d0d"/>
+    <stop offset="100%" stop-color="#181818"/>
+  </linearGradient>
+  <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#111"/>
+    <stop offset="100%" stop-color="#040404"/>
+  </linearGradient>
+  <radialGradient id="moonG" cx="45%" cy="45%" r="50%">
+    <stop offset="0%" stop-color="#e8e8e8"/>
+    <stop offset="70%" stop-color="#bbb"/>
+    <stop offset="100%" stop-color="#888"/>
+  </radialGradient>
+</defs>
+
+<!-- ── SKY ── -->
+<rect x="0" y="0" width="900" height="500" fill="url(#skyG)"/>
+
+<!-- Stars — scattered by hand -->
+<g fill="#fff" filter="url(#inkBlur)">
+  <circle cx="42" cy="28" r="1.1" opacity=".7"/>
+  <circle cx="88" cy="15" r="0.8" opacity=".5"/>
+  <circle cx="130" cy="42" r="1.3" opacity=".8"/>
+  <circle cx="175" cy="20" r="0.7" opacity=".6"/>
+  <circle cx="220" cy="38" r="1.0" opacity=".7"/>
+  <circle cx="265" cy="12" r="0.9" opacity=".5"/>
+  <circle cx="310" cy="30" r="1.2" opacity=".6"/>
+  <circle cx="358" cy="18" r="0.8" opacity=".8"/>
+  <circle cx="400" cy="45" r="0.7" opacity=".5"/>
+  <circle cx="445" cy="9"  r="1.1" opacity=".7"/>
+  <circle cx="490" cy="33" r="0.9" opacity=".6"/>
+  <circle cx="535" cy="21" r="1.3" opacity=".8"/>
+  <circle cx="580" cy="40" r="0.8" opacity=".5"/>
+  <circle cx="625" cy="14" r="1.0" opacity=".7"/>
+  <circle cx="670" cy="28" r="0.7" opacity=".6"/>
+  <circle cx="715" cy="10" r="1.2" opacity=".8"/>
+  <circle cx="758" cy="35" r="0.9" opacity=".5"/>
+  <circle cx="800" cy="18" r="1.1" opacity=".7"/>
+  <circle cx="845" cy="42" r="0.8" opacity=".6"/>
+  <circle cx="60"  cy="65" r="0.9" opacity=".5"/>
+  <circle cx="105" cy="78" r="1.1" opacity=".6"/>
+  <circle cx="155" cy="58" r="0.7" opacity=".7"/>
+  <circle cx="200" cy="88" r="1.2" opacity=".5"/>
+  <circle cx="250" cy="70" r="0.8" opacity=".6"/>
+  <circle cx="295" cy="92" r="1.0" opacity=".7"/>
+  <circle cx="340" cy="62" r="0.9" opacity=".8"/>
+  <circle cx="385" cy="80" r="1.1" opacity=".5"/>
+  <circle cx="430" cy="55" r="0.7" opacity=".6"/>
+  <circle cx="478" cy="85" r="1.3" opacity=".7"/>
+  <circle cx="520" cy="68" r="0.8" opacity=".5"/>
+  <circle cx="565" cy="90" r="1.0" opacity=".6"/>
+  <circle cx="610" cy="60" r="0.9" opacity=".8"/>
+  <circle cx="655" cy="75" r="1.2" opacity=".6"/>
+  <circle cx="700" cy="52" r="0.7" opacity=".5"/>
+  <circle cx="745" cy="80" r="1.1" opacity=".7"/>
+  <circle cx="790" cy="65" r="0.8" opacity=".6"/>
+  <circle cx="835" cy="55" r="1.0" opacity=".8"/>
+  <circle cx="28"  cy="110" r="1.0" opacity=".5"/>
+  <circle cx="73"  cy="130" r="0.8" opacity=".6"/>
+  <circle cx="118" cy="115" r="1.2" opacity=".7"/>
+  <circle cx="163" cy="140" r="0.7" opacity=".5"/>
+  <circle cx="208" cy="118" r="1.1" opacity=".6"/>
+  <circle cx="253" cy="145" r="0.9" opacity=".7"/>
+  <circle cx="740" cy="118" r="0.8" opacity=".5"/>
+  <circle cx="785" cy="132" r="1.0" opacity=".6"/>
+  <circle cx="830" cy="108" r="0.9" opacity=".7"/>
+  <circle cx="875" cy="140" r="1.1" opacity=".5"/>
+</g>
+
+<!-- ── MOON (hand-drawn circle + crescent shadow) ── -->
+<g filter="url(#glowSoft)">
+  <!-- moon glow halo -->
+  <circle cx="108" cy="72" r="36" fill="#fff" opacity="0.04"/>
+  <circle cx="108" cy="72" r="30" fill="#fff" opacity="0.05"/>
+</g>
+<!-- moon body - slightly imperfect path -->
+<path d="M138,72 C138,55 127,42 108,42 C89,42 78,55 78,72 C78,89 89,102 108,102 C127,102 138,89 138,72 Z"
+  fill="url(#moonG)" stroke="#ddd" stroke-width="1.2" filter="url(#roughen)" opacity="0.95"/>
+<!-- crescent shadow -->
+<path d="M116,44 C128,52 133,62 133,72 C133,82 128,92 116,100 C126,97 136,87 136,72 C136,57 126,47 116,44 Z"
+  fill="#0c0c0c" opacity="0.0"/>
+<!-- moon craters - pen-style circles -->
+<circle cx="98"  cy="65" r="4.5" fill="none" stroke="#aaa" stroke-width="1" opacity="0.4" filter="url(#roughen)"/>
+<circle cx="115" cy="80" r="3"   fill="none" stroke="#aaa" stroke-width="0.8" opacity="0.35" filter="url(#roughen)"/>
+<circle cx="104" cy="82" r="2"   fill="none" stroke="#999" stroke-width="0.7" opacity="0.3" filter="url(#roughen)"/>
+<circle cx="120" cy="60" r="2.5" fill="none" stroke="#aaa" stroke-width="0.8" opacity="0.3" filter="url(#roughen)"/>
+
+<!-- ── AURORA AUSTRALIS (hand-drawn sweeping arcs) ── -->
+<g opacity="0.22" filter="url(#glowSoft)" stroke-linecap="round">
+  <path d="M200,160 C280,110 380,145 460,125 C540,105 610,80 700,120 C760,148 820,130 890,155"
+    fill="none" stroke="#ccc" stroke-width="2.5"/>
+  <path d="M180,178 C270,132 370,162 455,142 C540,122 615,98 710,138 C770,162 835,148 905,170"
+    fill="none" stroke="#aaa" stroke-width="1.8"/>
+  <path d="M160,195 C250,155 355,178 445,158 C535,138 612,115 715,155 C778,178 845,165 910,185"
+    fill="none" stroke="#888" stroke-width="1.2"/>
+</g>
+
+<!-- ── DISTANT ICEBERGS (jagged hand-drawn polygons) ── -->
+<!-- Left berg -->
+<path d="M15,298 C25,285 38,260 52,248 C60,240 68,244 75,252 C82,260 90,278 100,298 Z"
+  fill="#1a1a1a" stroke="#777" stroke-width="1.3" filter="url(#roughen)" opacity="0.9"/>
+<path d="M52,298 C58,280 66,265 76,253 C82,260 88,272 95,298 Z"
+  fill="#222" stroke="#666" stroke-width="1" filter="url(#roughen)" opacity="0.7"/>
+<!-- Left berg snow cap -->
+<path d="M40,262 C48,254 56,248 64,252 C58,250 50,252 40,262 Z" fill="#999" opacity="0.5"/>
+
+<!-- Right berg group -->
+<path d="M760,292 C772,270 785,248 800,235 C810,226 820,230 830,240 C840,252 850,272 858,292 Z"
+  fill="#1a1a1a" stroke="#777" stroke-width="1.3" filter="url(#roughen)" opacity="0.9"/>
+<path d="M820,292 C826,276 832,260 840,248 C848,260 854,278 860,292 Z"
+  fill="#222" stroke="#666" stroke-width="1" filter="url(#roughen)" opacity="0.7"/>
+<path d="M808,295 C815,280 820,268 828,258 C832,270 836,284 840,295 Z"
+  fill="#181818" stroke="#555" stroke-width="1" filter="url(#roughen)" opacity="0.6"/>
+<!-- Right berg snow -->
+<path d="M792,250 C800,238 812,232 822,238 C812,234 800,240 792,250 Z" fill="#888" opacity="0.5"/>
+
+<!-- ── SEA ── -->
+<rect x="0" y="296" width="900" height="204" fill="url(#seaG)"/>
+
+<!-- Sea surface line — wobbly hand-drawn -->
+<path d="M0,298 C40,294 80,300 120,296 C160,292 200,298 240,295 C280,292 320,298 360,295
+         C400,292 440,299 480,296 C520,293 560,299 600,296 C640,293 680,299 720,296
+         C760,293 800,298 840,295 C870,293 890,297 900,296"
+  fill="none" stroke="#444" stroke-width="1.5" filter="url(#roughen)"/>
+
+<!-- Sea wave hatching (hand-drawn look) -->
+<g stroke="#252525" stroke-width="1" fill="none" opacity="0.7">
+  <path d="M20,312 Q60,306 100,312 Q140,318 180,312" filter="url(#roughen)"/>
+  <path d="M200,322 Q245,316 290,322 Q335,328 380,322" filter="url(#roughen)"/>
+  <path d="M400,308 Q445,302 490,308 Q535,314 580,308" filter="url(#roughen)"/>
+  <path d="M600,326 Q645,320 690,326 Q735,332 780,326" filter="url(#roughen)"/>
+  <path d="M800,314 Q838,308 878,314" filter="url(#roughen)"/>
+  <path d="M50,338 Q95,332 140,338 Q185,344 230,338" filter="url(#roughen)"/>
+  <path d="M260,348 Q305,342 350,348 Q395,354 440,348" filter="url(#roughen)"/>
+  <path d="M470,334 Q515,328 560,334 Q605,340 650,334" filter="url(#roughen)"/>
+  <path d="M680,350 Q720,344 760,350 Q800,356 840,350" filter="url(#roughen)"/>
+  <path d="M10,360 Q55,354 100,360 Q145,366 190,360" filter="url(#roughen)"/>
+  <path d="M360,366 Q400,360 440,366 Q480,372 520,366" filter="url(#roughen)"/>
+  <path d="M680,370 Q720,364 760,370" filter="url(#roughen)"/>
+</g>
+
+<!-- ── FOREGROUND ICE FLOES (hand-drawn irregular shapes) ── -->
+<!-- Left floe -->
+<path d="M0,400 C18,388 42,378 68,375 C90,373 108,378 125,382 C140,386 148,396 142,408
+         C135,420 118,428 95,432 C72,436 45,432 22,424 C8,418 0,410 0,400 Z"
+  fill="#e0e0e0" stroke="#bbb" stroke-width="1.5" filter="url(#roughen)" opacity="0.9"/>
+<!-- left floe shadow / crevice lines -->
+<path d="M20,400 C38,392 62,388 82,390" fill="none" stroke="#aaa" stroke-width="1" filter="url(#roughen)" opacity="0.5"/>
+<path d="M30,415 C50,408 75,405 95,408" fill="none" stroke="#999" stroke-width="0.8" filter="url(#roughen)" opacity="0.4"/>
+<path d="M80,382 C95,386 110,392 118,400" fill="none" stroke="#aaa" stroke-width="0.9" filter="url(#roughen)" opacity="0.4"/>
+
+<!-- Right floe -->
+<path d="M780,408 C800,395 828,385 855,383 C872,382 888,388 898,398 C905,408 900,422 888,432
+         C872,442 850,445 828,440 C808,436 790,428 782,418 C778,414 778,410 780,408 Z"
+  fill="#d8d8d8" stroke="#bbb" stroke-width="1.5" filter="url(#roughen)" opacity="0.9"/>
+<path d="M800,410 C820,402 845,398 865,402" fill="none" stroke="#aaa" stroke-width="1" filter="url(#roughen)" opacity="0.5"/>
+<path d="M810,424 C830,418 852,416 870,420" fill="none" stroke="#999" stroke-width="0.8" filter="url(#roughen)" opacity="0.4"/>
+
+<!-- Small mid floes -->
+<path d="M320,450 C334,440 355,436 374,440 C388,444 395,455 388,466 C380,476 362,480 344,476 C328,472 318,463 320,450 Z"
+  fill="#ccc" stroke="#aaa" stroke-width="1" filter="url(#roughen)" opacity="0.7"/>
+<path d="M550,442 C562,432 582,428 598,432 C612,436 618,448 610,458 C602,468 584,472 568,467 C554,462 545,452 550,442 Z"
+  fill="#c8c8c8" stroke="#aaa" stroke-width="1" filter="url(#roughen)" opacity="0.65"/>
+
+<!-- Moon shimmer reflection on water -->
+<path d="M102,300 C106,318 104,338 108,358 C110,372 106,388 110,405"
+  fill="none" stroke="#555" stroke-width="2.5" opacity="0.35" filter="url(#roughen)"/>
+<path d="M108,300 C112,320 110,342 114,362 C116,378 112,394 116,412"
+  fill="none" stroke="#666" stroke-width="1.8" opacity="0.3" filter="url(#roughen)"/>
+
+<!-- ══════════════════════════════════════════
+     THE ENDURANCE — HAND-DRAWN STYLE SHIP
+     ═══════════════════════════════════════ -->
+
+<!-- ── HULL — main organic shape ── -->
+<!-- Dark hull body -->
+<path d="M188,296 C200,288 218,278 240,272 C280,268 640,267 670,272 C692,277 710,288 718,296
+         C720,298 718,302 715,305 C700,318 680,328 658,334 C630,341 540,345 450,346
+         C360,347 270,343 242,336 C220,330 200,320 190,310 C186,305 186,300 188,296 Z"
+  fill="#1e1e1e" stroke="#888" stroke-width="2" filter="url(#roughen)"/>
+
+<!-- Hull wood planking — hand-drawn horizontal lines -->
+<g stroke="#333" stroke-width="1" fill="none" opacity="0.8">
+  <path d="M210,278 C320,274 580,273 695,278" filter="url(#roughen)"/>
+  <path d="M205,285 C320,281 580,280 700,285" filter="url(#roughen)"/>
+  <path d="M200,292 C318,288 582,287 705,292" filter="url(#roughen)"/>
+  <path d="M198,299 C316,295 584,294 708,299" filter="url(#roughen)"/>
+  <path d="M200,306 C318,302 582,301 706,306" filter="url(#roughen)"/>
+  <path d="M204,313 C320,309 580,308 702,313" filter="url(#roughen)"/>
+  <path d="M212,320 C328,316 572,315 694,320" filter="url(#roughen)"/>
+  <path d="M225,327 C340,323 560,322 678,327" filter="url(#roughen)"/>
+  <path d="M244,334 C355,330 548,329 658,334" filter="url(#roughen)"/>
+</g>
+
+<!-- Waterline highlight -->
+<path d="M193,301 C310,297 590,296 713,301" fill="none" stroke="#777" stroke-width="2.5" filter="url(#roughen)" opacity="0.6"/>
+
+<!-- Hull upper trim / bulwark -->
+<path d="M240,272 C360,266 540,265 660,270 C662,268 664,266 665,265 C545,261 355,262 238,268 Z"
+  fill="#2a2a2a" stroke="#999" stroke-width="1.5" filter="url(#roughen)" opacity="0.9"/>
+
+<!-- Bow curved stem — the pointy front -->
+<path d="M188,296 C185,290 182,280 185,268 C186,260 190,255 196,258 C200,262 204,270 208,278 C200,278 194,287 188,296 Z"
+  fill="#111" stroke="#888" stroke-width="1.8" filter="url(#roughen)"/>
+<!-- Bow wave splash marks -->
+<path d="M180,298 C172,290 168,280 174,272" fill="none" stroke="#ccc" stroke-width="1.5" filter="url(#roughen)" opacity="0.5"/>
+<path d="M175,302 C165,292 160,278 168,268" fill="none" stroke="#bbb" stroke-width="1" filter="url(#roughen)" opacity="0.35"/>
+
+<!-- Stern curved transom -->
+<path d="M718,296 C724,290 728,280 726,265 C724,258 720,255 715,258 C710,262 706,270 700,275 C706,274 714,285 718,296 Z"
+  fill="#111" stroke="#888" stroke-width="1.8" filter="url(#roughen)"/>
+
+<!-- Name on bow — hand-lettered feel -->
+<text x="240" y="310" font-family="Georgia, serif" font-size="10" fill="#888" letter-spacing="2.5" filter="url(#roughen)">ENDURANCE</text>
+
+<!-- Portholes — three, hand-drawn circles -->
+<g filter="url(#roughen)">
+  <circle cx="310" cy="303" r="9" fill="#0a0a0a" stroke="#aaa" stroke-width="2"/>
+  <circle cx="310" cy="303" r="5" fill="#050505" stroke="#777" stroke-width="1"/>
+  <path d="M306,299 Q310,302 308,306" fill="none" stroke="#555" stroke-width="1.2" opacity="0.7"/>
+
+  <circle cx="450" cy="302" r="9" fill="#0a0a0a" stroke="#aaa" stroke-width="2"/>
+  <circle cx="450" cy="302" r="5" fill="#050505" stroke="#777" stroke-width="1"/>
+  <path d="M446,298 Q450,301 448,305" fill="none" stroke="#555" stroke-width="1.2" opacity="0.7"/>
+
+  <circle cx="590" cy="303" r="9" fill="#0a0a0a" stroke="#aaa" stroke-width="2"/>
+  <circle cx="590" cy="303" r="5" fill="#050505" stroke="#777" stroke-width="1"/>
+  <path d="M586,299 Q590,302 588,306" fill="none" stroke="#555" stroke-width="1.2" opacity="0.7"/>
+</g>
+
+<!-- ── DECK / BULWARK ── -->
+<path d="M238,268 C358,263 542,262 662,267 L662,262 C542,257 358,258 238,263 Z"
+  fill="#2e2e2e" stroke="#aaa" stroke-width="1.2" filter="url(#roughen)"/>
+
+<!-- Deck railing stanchions — wobbly verticals -->
+<g stroke="#999" stroke-width="1.3" fill="none" opacity="0.85">
+  <line x1="268" y1="263" x2="267" y2="248" filter="url(#roughen)"/>
+  <line x1="298" y1="262" x2="297" y2="247" filter="url(#roughen)"/>
+  <line x1="328" y1="261" x2="327" y2="246" filter="url(#roughen)"/>
+  <line x1="358" y1="261" x2="357" y2="246" filter="url(#roughen)"/>
+  <line x1="388" y1="260" x2="387" y2="245" filter="url(#roughen)"/>
+  <line x1="418" y1="260" x2="417" y2="245" filter="url(#roughen)"/>
+  <line x1="448" y1="260" x2="447" y2="245" filter="url(#roughen)"/>
+  <line x1="478" y1="260" x2="477" y2="245" filter="url(#roughen)"/>
+  <line x1="508" y1="260" x2="507" y2="245" filter="url(#roughen)"/>
+  <line x1="538" y1="261" x2="537" y2="246" filter="url(#roughen)"/>
+  <line x1="568" y1="261" x2="567" y2="246" filter="url(#roughen)"/>
+  <line x1="598" y1="261" x2="597" y2="246" filter="url(#roughen)"/>
+  <line x1="628" y1="262" x2="627" y2="247" filter="url(#roughen)"/>
+  <line x1="655" y1="263" x2="654" y2="248" filter="url(#roughen)"/>
+</g>
+<!-- Top rail wire -->
+<path d="M266,248 C370,245 530,244 656,248" fill="none" stroke="#bbb" stroke-width="1.3" filter="url(#roughen)"/>
+<!-- Second rail wire -->
+<path d="M266,255 C370,252 530,251 656,255" fill="none" stroke="#888" stroke-width="0.9" filter="url(#roughen)" opacity="0.7"/>
+
+<!-- ── DECKHOUSE / CABIN ── -->
+<path d="M348,248 C350,230 354,222 360,218 C380,214 520,213 542,218 C548,222 552,230 552,248 Z"
+  fill="#1a1a1a" stroke="#999" stroke-width="1.8" filter="url(#roughen)"/>
+<!-- cabin roof edge -->
+<path d="M354,222 C380,218 520,217 542,222" fill="none" stroke="#aaa" stroke-width="2" filter="url(#roughen)"/>
+<!-- Cabin windows — four small panes with hand-drawn frames -->
+<g filter="url(#roughen)">
+  <!-- window 1 -->
+  <rect x="366" y="228" width="22" height="15" rx="1" fill="#080808" stroke="#aaa" stroke-width="1.2"/>
+  <line x1="377" y1="228" x2="377" y2="243" stroke="#777" stroke-width="0.9"/>
+  <line x1="366" y1="235" x2="388" y2="235" stroke="#777" stroke-width="0.9"/>
+  <!-- window 2 -->
+  <rect x="402" y="227" width="22" height="15" rx="1" fill="#080808" stroke="#aaa" stroke-width="1.2"/>
+  <line x1="413" y1="227" x2="413" y2="242" stroke="#777" stroke-width="0.9"/>
+  <line x1="402" y1="234" x2="424" y2="234" stroke="#777" stroke-width="0.9"/>
+  <!-- window 3 — warm glow in this one -->
+  <rect x="438" y="227" width="22" height="15" rx="1" fill="#0d0900" stroke="#aaa" stroke-width="1.2"/>
+  <rect x="439" y="228" width="20" height="13" rx="1" fill="#1a1200" opacity="0.8"/>
+  <line x1="449" y1="227" x2="449" y2="242" stroke="#555" stroke-width="0.9"/>
+  <line x1="438" y1="234" x2="460" y2="234" stroke="#555" stroke-width="0.9"/>
+  <!-- window 4 -->
+  <rect x="474" y="228" width="22" height="15" rx="1" fill="#080808" stroke="#aaa" stroke-width="1.2"/>
+  <line x1="485" y1="228" x2="485" y2="243" stroke="#777" stroke-width="0.9"/>
+  <line x1="474" y1="235" x2="496" y2="235" stroke="#777" stroke-width="0.9"/>
+</g>
+<!-- Cabin door -->
+<path d="M508,248 L508,225 C510,222 518,221 522,224 L522,248 Z"
+  fill="#111" stroke="#888" stroke-width="1" filter="url(#roughen)"/>
+
+<!-- ── SMOKESTACK / FUNNEL ── -->
+<!-- funnel body - slightly tapered, wobbly -->
+<path d="M432,218 C430,202 428,185 430,172 C431,165 435,162 440,162 C446,162 450,165 451,172 C453,185 452,202 450,218 Z"
+  fill="#111" stroke="#aaa" stroke-width="2" filter="url(#roughen)"/>
+<!-- funnel rim top -->
+<path d="M428,172 C432,168 436,165 440,165 C444,165 448,168 452,172 C448,170 444,168 440,168 C436,168 432,170 428,172 Z"
+  fill="#333" stroke="#ccc" stroke-width="1.5" filter="url(#roughen)"/>
+<!-- funnel band -->
+<path d="M430,192 C434,190 442,190 451,192 C444,194 434,194 430,192 Z" fill="#2a2a2a" stroke="#777" stroke-width="1" filter="url(#roughen)"/>
+<!-- Smoke — puffy organic blobs -->
+<g opacity="0.65" filter="url(#roughen)">
+  <path d="M430,162 C425,155 424,145 428,138 C432,131 440,130 446,135 C450,130 458,128 462,135
+           C466,128 474,128 476,136 C480,132 488,134 488,142 C490,150 484,158 478,160
+           C480,168 475,174 468,172 C464,178 455,180 450,174 C445,180 435,178 432,172
+           C426,174 420,168 422,162 C424,156 428,158 430,162 Z"
+    fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+  <path d="M424,138 C420,128 420,115 426,107 C430,100 440,99 446,106 C450,99 460,97 465,105
+           C470,97 480,99 480,108 C484,103 492,106 492,115 C494,124 488,132 482,133
+           C484,142 478,148 470,146 C466,153 456,155 450,148 C443,154 432,151 430,144
+           C424,145 418,140 420,133 C421,127 424,132 424,138 Z"
+    fill="#111" stroke="#444" stroke-width="1" opacity="0.85"/>
+  <path d="M420,107 C416,95 418,80 425,72 C430,65 440,64 447,71 C452,63 464,62 468,71
+           C475,62 486,65 486,75 C492,68 500,73 498,83 C498,93 490,100 484,100
+           C484,110 478,116 470,113 C464,120 454,122 448,115 C440,121 428,118 426,111
+           C420,112 414,106 416,99 Z"
+    fill="#0d0d0d" stroke="#333" stroke-width="1" opacity="0.75"/>
+</g>
+
+<!-- ── FOREMAST (forward mast) ── -->
+<!-- mast pole — slightly curved, hand-drawn -->
+<path d="M306,262 C304,230 303,195 304,155 C304,120 305,90 306,60 C307,90 307,120 308,155 C309,195 309,230 308,262 Z"
+  fill="#ccc" stroke="#888" stroke-width="1.5" filter="url(#roughen)"/>
+<!-- crow's nest platform — organic basket shape -->
+<path d="M292,64 C295,58 302,54 307,54 C312,54 318,58 322,64 C320,72 316,76 307,77 C298,77 293,72 292,64 Z"
+  fill="#222" stroke="#bbb" stroke-width="2" filter="url(#roughen)"/>
+<!-- crow's nest basket weave lines -->
+<path d="M293,68 C300,66 314,66 321,68" fill="none" stroke="#aaa" stroke-width="1" filter="url(#roughen)" opacity="0.6"/>
+<!-- lookout figure silhouette -->
+<ellipse cx="307" cy="60" rx="5" ry="5" fill="#111" filter="url(#roughen)"/>
+<path d="M303,65 C304,72 306,78 307,78 C308,78 310,72 311,65 Z" fill="#111" filter="url(#roughen)"/>
+<path d="M300,68 C295,65 292,62 295,60" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" filter="url(#roughen)"/>
+
+<!-- Foremast yard arms — slightly drooping, imperfect -->
+<path d="M242,90 C264,87 286,86 307,87 C328,86 350,87 372,90"
+  fill="none" stroke="#bbb" stroke-width="3.5" stroke-linecap="round" filter="url(#roughen)"/>
+<path d="M254,118 C272,115 290,114 307,115 C324,114 342,115 358,118"
+  fill="none" stroke="#aaa" stroke-width="3" stroke-linecap="round" filter="url(#roughen)"/>
+<path d="M262,145 C278,142 294,141 307,142 C320,141 336,142 350,145"
+  fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round" filter="url(#roughen)"/>
+
+<!-- Foremast sails — billowed, organic shapes -->
+<!-- Top sail (furled but with bulk) -->
+<path d="M244,90 C270,82 298,80 307,81 C316,80 340,82 370,90 C350,104 325,108 307,107 C289,108 260,104 244,90 Z"
+  fill="#1c1c1c" stroke="#aaa" stroke-width="1.5" filter="url(#roughen)"/>
+<path d="M252,93 C272,87 294,85 307,86 C320,85 342,87 360,93" fill="none" stroke="#666" stroke-width="1" filter="url(#roughen)" opacity="0.6"/>
+<!-- Mid sail -->
+<path d="M256,118 C276,110 294,108 307,109 C320,108 338,110 356,118 C340,130 324,134 307,133 C290,134 272,130 256,118 Z"
+  fill="#181818" stroke="#999" stroke-width="1.5" filter="url(#roughen)"/>
+<!-- Lower sail -->
+<path d="M264,145 C280,138 295,136 307,137 C319,136 334,138 348,145 C335,156 320,160 307,159 C294,160 277,156 264,145 Z"
+  fill="#151515" stroke="#888" stroke-width="1.5" filter="url(#roughen)"/>
+
+<!-- ── MAINMAST (tallest, centre) ── -->
+<path d="M448,262 C446,225 445,185 445,140 C445,100 446,65 447,30 C448,65 449,100 449,140 C449,185 450,225 450,262 Z"
+  fill="#d0d0d0" stroke="#999" stroke-width="2" filter="url(#roughen)"/>
+<!-- Mainmast truck / weathervane top -->
+<path d="M445,30 L447,22 L449,30 Z" fill="#ccc" filter="url(#roughen)"/>
+<!-- Flag -->
+<path d="M449,22 C462,26 472,30 462,34 C452,36 449,36 449,36 Z"
+  fill="#333" stroke="#888" stroke-width="1" filter="url(#roughen)"/>
+
+<!-- Main yard arms -->
+<path d="M368,55 C396,51 424,50 448,51 C472,50 500,51 528,55"
+  fill="none" stroke="#ccc" stroke-width="4" stroke-linecap="round" filter="url(#roughen)"/>
+<path d="M378,88 C404,84 428,83 448,84 C468,83 492,84 518,88"
+  fill="none" stroke="#bbb" stroke-width="3.5" stroke-linecap="round" filter="url(#roughen)"/>
+<path d="M388,120 C412,117 432,116 448,117 C464,116 488,117 508,120"
+  fill="none" stroke="#aaa" stroke-width="3" stroke-linecap="round" filter="url(#roughen)"/>
+<path d="M395,150 C418,147 435,146 448,147 C461,146 478,147 500,150"
+  fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round" filter="url(#roughen)"/>
+
+<!-- Main sails — billowing organic -->
+<!-- Top gallant -->
+<path d="M370,55 C404,44 432,42 448,43 C464,42 492,44 526,55 C504,72 476,77 448,76 C420,77 392,72 370,55 Z"
+  fill="#1e1e1e" stroke="#bbb" stroke-width="1.8" filter="url(#roughen)"/>
+<path d="M380,59 C408,50 432,48 448,49 C464,48 488,50 516,59" fill="none" stroke="#555" stroke-width="1.2" filter="url(#roughen)" opacity="0.6"/>
+<!-- Main topsail -->
+<path d="M380,88 C408,79 430,77 448,78 C466,77 490,79 516,88 C496,103 472,108 448,107 C424,108 400,103 380,88 Z"
+  fill="#1a1a1a" stroke="#bbb" stroke-width="1.8" filter="url(#roughen)"/>
+<!-- Main sail -->
+<path d="M390,120 C415,112 434,110 448,111 C462,110 482,112 505,120 C488,134 468,139 448,138 C428,139 408,134 390,120 Z"
+  fill="#161616" stroke="#aaa" stroke-width="1.8" filter="url(#roughen)"/>
+<!-- Lower main -->
+<path d="M397,150 C420,143 436,141 448,142 C460,141 477,143 498,150 C482,163 464,167 448,166 C432,167 415,163 397,150 Z"
+  fill="#141414" stroke="#999" stroke-width="1.5" filter="url(#roughen)"/>
+
+<!-- ── MIZZENMAST (rear) ── -->
+<path d="M596,262 C594,230 593,198 594,165 C594,130 595,100 596,75 C597,100 598,130 598,165 C599,198 599,230 598,262 Z"
+  fill="#c8c8c8" stroke="#888" stroke-width="1.8" filter="url(#roughen)"/>
+
+<!-- Mizzen yard arms -->
+<path d="M542,95 C562,91 582,90 597,91 C612,90 632,91 650,95"
+  fill="none" stroke="#bbb" stroke-width="3.5" stroke-linecap="round" filter="url(#roughen)"/>
+<path d="M550,125 C568,122 585,121 597,122 C609,121 628,122 645,125"
+  fill="none" stroke="#aaa" stroke-width="3" stroke-linecap="round" filter="url(#roughen)"/>
+<path d="M556,155 C572,152 587,151 597,152 C607,151 624,152 638,155"
+  fill="none" stroke="#999" stroke-width="2.5" stroke-linecap="round" filter="url(#roughen)"/>
+
+<!-- Mizzen sails -->
+<path d="M544,95 C566,86 583,84 597,85 C611,84 628,86 648,95 C630,108 614,113 597,112 C580,113 562,108 544,95 Z"
+  fill="#1c1c1c" stroke="#aaa" stroke-width="1.5" filter="url(#roughen)"/>
+<path d="M552,125 C570,117 585,115 597,116 C609,115 626,117 644,125 C628,137 613,141 597,140 C581,141 566,137 552,125 Z"
+  fill="#181818" stroke="#999" stroke-width="1.5" filter="url(#roughen)"/>
+<path d="M558,155 C574,148 588,146 597,147 C606,146 621,148 636,155 C622,166 608,170 597,169 C586,170 572,166 558,155 Z"
+  fill="#151515" stroke="#888" stroke-width="1.5" filter="url(#roughen)"/>
+
+<!-- ── RIGGING LINES — spider web of stays ── -->
+<g stroke="#777" fill="none" filter="url(#roughen)">
+  <!-- Bowsprit stays to foremast -->
+  <path d="M192,268 C230,200 268,130 307,88" stroke-width="1.1" opacity="0.7"/>
+  <path d="M196,265 C240,210 280,155 307,118" stroke-width="0.9" opacity="0.5"/>
+  <!-- Foremast backstays to deck -->
+  <path d="M307,62 C340,160 362,220 390,262" stroke-width="1" opacity="0.65"/>
+  <path d="M307,62 C285,155 272,210 252,262" stroke-width="1" opacity="0.65"/>
+  <!-- Foremast to mainmast stay -->
+  <path d="M307,62 C360,58 400,52 448,51" stroke-width="1.1" opacity="0.6"/>
+  <!-- Mainmast stays to deck fore -->
+  <path d="M448,32 C400,120 360,200 310,262" stroke-width="1.2" opacity="0.7"/>
+  <path d="M448,32 C488,120 520,195 560,262" stroke-width="1.2" opacity="0.7"/>
+  <!-- Mainmast stays to deck aft -->
+  <path d="M448,32 C465,130 480,210 490,262" stroke-width="1" opacity="0.55"/>
+  <path d="M448,32 C432,130 420,210 412,262" stroke-width="1" opacity="0.55"/>
+  <!-- Mainmast to mizzen stay -->
+  <path d="M448,51 C508,48 556,52 597,91" stroke-width="1" opacity="0.55"/>
+  <!-- Mizzenmast stays -->
+  <path d="M597,77 C620,160 640,215 660,262" stroke-width="1" opacity="0.6"/>
+  <path d="M597,77 C580,160 572,215 562,262" stroke-width="1" opacity="0.6"/>
+  <!-- Yard brace lines - foremast -->
+  <path d="M244,90 C270,130 288,180 296,262" stroke-width="0.85" opacity="0.45"/>
+  <path d="M370,90 C356,130 348,180 345,262" stroke-width="0.85" opacity="0.45"/>
+  <!-- Yard brace lines - mainmast -->
+  <path d="M370,55 C390,100 398,160 405,262" stroke-width="0.9" opacity="0.45"/>
+  <path d="M526,55 C510,100 502,160 495,262" stroke-width="0.9" opacity="0.45"/>
+  <!-- Shrouds - foremast -->
+  <path d="M256,118 C272,170 278,215 276,262" stroke-width="0.8" opacity="0.4"/>
+  <path d="M358,118 C348,170 344,215 340,262" stroke-width="0.8" opacity="0.4"/>
+  <!-- Shrouds - mizzen -->
+  <path d="M544,95 C558,155 562,215 560,262" stroke-width="0.8" opacity="0.4"/>
+  <path d="M648,95 C636,155 632,215 630,262" stroke-width="0.8" opacity="0.4"/>
+</g>
+
+<!-- ── WATER REFLECTION of ship ── -->
+<path d="M210,300 C320,308 580,308 700,300 C695,320 680,338 655,346 C590,355 310,355 248,346 C222,338 210,322 210,300 Z"
+  fill="#0d0d0d" opacity="0.5"/>
+
+<!-- Ship label -->
+<text x="450" y="490" text-anchor="middle" font-family="Georgia, serif" font-size="11"
+  fill="#3a3a3a" letter-spacing="3" filter="url(#roughen)">WEDDELL SEA &nbsp;·&nbsp; ANTARCTICA &nbsp;·&nbsp; 1915</text>
+
+</svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     VOCABULARY — 30 WORDS FROM THE ARTICLE
+════════════════════════════════════════════════ -->
+<div class="words-section">
+  <h2>Vocabulary from the Article</h2>
+  <p class="section-note">點擊任一單詞，查看例句與中文翻譯</p>
+  <div class="word-grid" id="wordGrid"></div>
+</div>
+
+<!-- Dim overlay (mobile bottom-sheet backdrop) -->
+<div class="popup-overlay" id="popupOverlay"></div>
+
+<!-- Popup / bottom sheet -->
+<div class="popup" id="mainPopup" role="dialog" aria-modal="true">
+  <button class="popup-close" id="popupClose" aria-label="關閉">✕</button>
+  <div class="popup-word" id="popWord"></div>
+  <div class="popup-pos"  id="popPos"></div>
+  <div class="example-block">
+    <div class="example-en" id="popEn1"></div>
+    <div class="example-zh" id="popZh1"></div>
+  </div>
+  <div class="example-block">
+    <div class="example-en" id="popEn2"></div>
+    <div class="example-zh" id="popZh2"></div>
+  </div>
+</div>
+
+<script>
+// ── 30 words taken directly from the article text ──
+const words = [
+  {
+    word: "famed",
+    pos: "adj. 著名的",
+    e1: "The <em>famed</em> explorer set sail before dawn, eager to reach the unknown coast.",
+    z1: "這位著名的探險家在黎明前出發，迫不及待地想抵達未知的海岸。",
+    e2: "She trained under a <em>famed</em> scientist whose research changed modern medicine.",
+    z2: "她在一位著名科學家門下學習，那位科學家的研究改變了現代醫學。"
+  },
+  {
+    word: "polar",
+    pos: "adj. 極地的",
+    e1: "The <em>polar</em> winds howled across the ice, dropping the temperature below minus forty.",
+    z1: "極地的狂風橫掃冰原，使氣溫驟降至零下四十度。",
+    e2: "Researchers at the <em>polar</em> station collected ice core samples for climate studies.",
+    z2: "極地站的研究人員採集冰芯樣本，用於氣候研究。"
+  },
+  {
+    word: "explorer",
+    pos: "n. 探險家",
+    e1: "Every <em>explorer</em> knows that careful preparation is as vital as courage.",
+    z1: "每一位探險家都清楚，周密的準備與勇氣同等重要。",
+    e2: "The young <em>explorer</em> mapped a river valley that no outsider had ever documented.",
+    z2: "這位年輕的探險家繪製了一條從未有外人記錄過的河谷地圖。"
+  },
+  {
+    word: "discovery",
+    pos: "n. 發現",
+    e1: "The <em>discovery</em> of the wreck thrilled historians around the world.",
+    z1: "這艘沉船的發現令全球歷史學家為之振奮。",
+    e2: "Her accidental <em>discovery</em> in the lab led to a breakthrough in cancer treatment.",
+    z2: "她在實驗室的意外發現，促成了癌症治療的重大突破。"
+  },
+  {
+    word: "legendary",
+    pos: "adj. 傳奇的",
+    e1: "The team's survival became a <em>legendary</em> story retold across generations.",
+    z1: "這支隊伍的求生故事成為一個代代相傳的傳奇。",
+    e2: "His <em>legendary</em> patience with students earned him the university's highest teaching award.",
+    z2: "他對學生的傳奇般的耐心，使他榮獲大學最高教學獎。"
+  },
+  {
+    word: "courage",
+    pos: "n. 勇氣",
+    e1: "It took immense <em>courage</em> to launch three lifeboats into a raging Antarctic storm.",
+    z1: "將三艘救生艇駛入洶湧的南極暴風中，需要巨大的勇氣。",
+    e2: "She gathered her <em>courage</em> and delivered the speech in front of five thousand people.",
+    z2: "她鼓起勇氣，在五千人面前發表了那篇演講。"
+  },
+  {
+    word: "perseverance",
+    pos: "n. 堅持；毅力",
+    e1: "Shackleton's <em>perseverance</em> kept the crew alive through months of impossible conditions.",
+    z1: "沙克爾頓的毅力，讓船員在數個月的絕境中存活下來。",
+    e2: "Her <em>perseverance</em> through years of rejection finally earned her a publishing deal.",
+    z2: "她多年來不屈不撓地面對拒絕，終於獲得了出版合約。"
+  },
+  {
+    word: "skilled",
+    pos: "adj. 技術嫻熟的",
+    e1: "A <em>skilled</em> crew is what separates a successful expedition from a doomed one.",
+    z1: "技術嫻熟的船員，正是成功探險與悲劇探險之間的分野。",
+    e2: "The surgeon was so <em>skilled</em> that the operation took half the expected time.",
+    z2: "這位外科醫生技術如此嫻熟，手術所花時間只有預期的一半。"
+  },
+  {
+    word: "set sail",
+    pos: "v.phr. 啟航",
+    e1: "The crew <em>set sail</em> on a grey August morning, waving farewell to the harbour.",
+    z1: "船員們在八月的灰色早晨啟航，向港口揮手道別。",
+    e2: "We plan to <em>set sail</em> at first light before the winds pick up.",
+    z2: "我們計劃在曙光初現、風浪升起之前啟航。"
+  },
+  {
+    word: "settlement",
+    pos: "n. 定居地；聚落",
+    e1: "South Georgia was the last <em>settlement</em> before the endless ice of the south.",
+    z1: "南喬治亞島是進入南方無際冰原前的最後一處聚落。",
+    e2: "Archaeologists found evidence of a Viking <em>settlement</em> beneath the coastal fields.",
+    z2: "考古學家在海岸田野下發現了維京人定居地的遺跡。"
+  },
+  {
+    word: "encountered",
+    pos: "v. 遭遇；邂逅",
+    e1: "The Endurance <em>encountered</em> floating ice just two days after leaving South Georgia.",
+    z1: "「堅忍號」離開南喬治亞島僅兩天，便遭遇了浮冰。",
+    e2: "During the hike, we <em>encountered</em> a dense fog that cut visibility to near zero.",
+    z2: "徒步途中，我們遭遇了一場濃霧，能見度幾乎降至零。"
+  },
+  {
+    word: "trapped",
+    pos: "adj. 被困的",
+    e1: "Once <em>trapped</em> in pack ice, the ship could no longer move under its own power.",
+    z1: "一旦被困在浮冰之中，船隻便再也無法依靠自身動力前行。",
+    e2: "The hikers were <em>trapped</em> on the ridge for two days until the storm passed.",
+    z2: "登山者被困在山脊上整整兩天，直到暴風雨過去。"
+  },
+  {
+    word: "pack ice",
+    pos: "n. 浮冰群",
+    e1: "The vessel drifted for months, locked in the grip of shifting <em>pack ice</em>.",
+    z1: "船隻在移動的浮冰群掌控下，漂流了數個月。",
+    e2: "Icebreakers are specially built to force a path through dense <em>pack ice</em>.",
+    z2: "破冰船是專門建造用來在密集浮冰群中闢路的。"
+  },
+  {
+    word: "drifting",
+    pos: "v. 漂流",
+    e1: "The ship spent nine months <em>drifting</em> southward and then northward with the current.",
+    z1: "船隻隨海流向南、再向北漂流了九個月。",
+    e2: "A life raft was spotted <em>drifting</em> three miles off the coast with no one aboard.",
+    z2: "一艘無人的救生筏被發現在距海岸三英里處漂流。"
+  },
+  {
+    word: "pressure",
+    pos: "n. 壓力",
+    e1: "The <em>pressure</em> of the surrounding ice slowly buckled the ship's wooden hull.",
+    z1: "周圍冰塊的壓力慢慢地使船身木製船殼彎曲變形。",
+    e2: "Working under <em>pressure</em>, the engineers still delivered the bridge on schedule.",
+    z2: "儘管在巨大壓力下工作，工程師們仍按時完成了橋樑建設。"
+  },
+  {
+    word: "buckled",
+    pos: "v. 彎曲；扭曲",
+    e1: "The steel girder <em>buckled</em> under the weight of the collapsed roof.",
+    z1: "鋼樑在倒塌屋頂的重壓下彎曲變形。",
+    e2: "Ice <em>buckled</em> the ship's planks until freezing water began to pour in.",
+    z2: "冰塊將船的木板壓得彎曲，直到冰冷的海水開始湧入。"
+  },
+  {
+    word: "exacerbated",
+    pos: "v. 使惡化；加劇",
+    e1: "Freezing water rushing in <em>exacerbated</em> an already desperate situation.",
+    z1: "湧入的冰冷海水，使本已絕望的處境愈發惡化。",
+    e2: "The supply shortage was <em>exacerbated</em> by roads blocked after the heavy snowfall.",
+    z2: "大雪封路後，物資短缺的情況因此進一步加劇。"
+  },
+  {
+    word: "abandon",
+    pos: "v. 棄置；遺棄",
+    e1: "Shackleton ordered his crew to <em>abandon</em> the ship before it slipped beneath the ice.",
+    z1: "沙克爾頓命令船員在船隻沉入冰下之前棄船。",
+    e2: "The village was forced to <em>abandon</em> their homes as the floodwaters rose.",
+    z2: "隨著洪水上漲，村民們被迫遺棄家園。"
+  },
+  {
+    word: "pitching",
+    pos: "v. 搭設（帳篷）",
+    e1: "After leaving the ship, the men spent hours <em>pitching</em> tents on the frozen sea.",
+    z1: "離開船隻後，眾人在結凍的海面上花了數小時搭設帳篷。",
+    e2: "The campers finished <em>pitching</em> their tent just before the thunderstorm broke.",
+    z2: "露營者在雷雨爆發前剛好完成帳篷的搭設。"
+  },
+  {
+    word: "camped out",
+    pos: "v.phr. 露宿；紮營",
+    e1: "The crew <em>camped out</em> on the drifting pack ice for five desperate months.",
+    z1: "船員們在漂移的浮冰上露宿了絕望的五個月。",
+    e2: "Fans <em>camped out</em> overnight in front of the stadium to secure the best seats.",
+    z2: "球迷們在體育場外通宵紮營，只為搶得最好的座位。"
+  },
+  {
+    word: "surviving",
+    pos: "v. 靠……維生；倖存",
+    e1: "The men kept themselves alive by <em>surviving</em> on penguins, seals, and seaweed.",
+    z1: "眾人靠捕食企鵝、海豹和海藻勉強維生。",
+    e2: "<em>Surviving</em> on just a handful of nuts per day, the castaway held on for six weeks.",
+    z2: "這名遇難者每天只靠一小把堅果維生，撐了六個星期。"
+  },
+  {
+    word: "uninhabited",
+    pos: "adj. 無人居住的",
+    e1: "After seven days at sea, the lifeboats reached the bleak, <em>uninhabited</em> Elephant Island.",
+    z1: "在海上漂流七天後，救生艇抵達了荒涼、無人居住的象島。",
+    e2: "The satellite images revealed a previously <em>uninhabited</em> reef teeming with wildlife.",
+    z2: "衛星圖像揭示了一處此前無人居住、卻充滿野生動物的礁石。"
+  },
+  {
+    word: "attempt",
+    pos: "n./v. 嘗試；企圖",
+    e1: "Shackleton made a dangerous <em>attempt</em> to sail to South Georgia for help.",
+    z1: "沙克爾頓冒險嘗試駛往南喬治亞島求援。",
+    e2: "The team made three <em>attempts</em> to reach the summit before finally succeeding.",
+    z2: "這支隊伍三度嘗試攻頂，最終才告成功。"
+  },
+  {
+    word: "stormy",
+    pos: "adj. 暴風雨的；狂暴的",
+    e1: "For sixteen days they battled across freezing, <em>stormy</em> seas in a tiny boat.",
+    z1: "整整十六天，他們在一艘小船上橫渡冰冷、狂暴的海洋。",
+    e2: "The <em>stormy</em> debate in parliament lasted well past midnight.",
+    z2: "議會的激烈辯論持續到深夜。"
+  },
+  {
+    word: "hiked",
+    pos: "v. 徒步跋涉",
+    e1: "The six men <em>hiked</em> for thirty-six hours across South Georgia's unmapped mountains.",
+    z1: "六名男子在南喬治亞島尚未測繪的山脈中徒步跋涉了三十六小時。",
+    e2: "We <em>hiked</em> twelve miles through dense forest before reaching the valley.",
+    z2: "我們穿越密林徒步十二英里，才抵達那片山谷。"
+  },
+  {
+    word: "whaling station",
+    pos: "n. 捕鯨站",
+    e1: "The exhausted men finally stumbled into the <em>whaling station</em> at Stromness.",
+    z1: "精疲力竭的眾人終於蹣跚地走進斯特羅姆內斯的捕鯨站。",
+    e2: "The old <em>whaling station</em> has been converted into a museum of maritime history.",
+    z2: "這座舊捕鯨站已被改建為一座海洋歷史博物館。"
+  },
+  {
+    word: "hindered",
+    pos: "v. 阻礙；妨礙",
+    e1: "Ice and bad weather <em>hindered</em> every rescue ship sent to retrieve the men.",
+    z1: "冰雪與惡劣天氣阻礙了每一艘前往救援的船隻。",
+    e2: "A power outage <em>hindered</em> the factory's production for three full days.",
+    z2: "一次停電事故，使工廠的生產受阻長達整整三天。"
+  },
+  {
+    word: "rescue",
+    pos: "n./v. 救援",
+    e1: "The <em>rescue</em> ship finally broke through the ice on the fourth attempt.",
+    z1: "救援船在第四次嘗試時終於衝破了冰層。",
+    e2: "Volunteers worked through the night to <em>rescue</em> trapped animals after the landslide.",
+    z2: "山崩後，志工整夜奮力搶救被困的動物。"
+  },
+  {
+    word: "expedition",
+    pos: "n. 探險；遠征隊",
+    e1: "Every member of the <em>expedition</em> survived, a fact that seemed almost miraculous.",
+    z1: "遠征隊的每一位成員都生還了，這幾乎像個奇蹟。",
+    e2: "The research <em>expedition</em> departed with twelve scientists and enough supplies for a year.",
+    z2: "這支科研遠征隊由十二名科學家組成，攜帶了足夠一年的補給出發。"
+  },
+  {
+    word: "sank",
+    pos: "v. 沉沒（sink 的過去式）",
+    e1: "The Endurance <em>sank</em> beneath the Weddell Sea in October 1915, where it lay for over a century.",
+    z1: "「堅忍號」於1915年10月沉入威德爾海，在那裡靜臥了逾百年。",
+    e2: "The fishing trawler <em>sank</em> within minutes after striking the submerged reef.",
+    z2: "拖網漁船觸礁後，在數分鐘內便沉沒了。"
+  }
+];
+
+// ── Build word buttons ──
+const grid    = document.getElementById('wordGrid');
+const popup   = document.getElementById('mainPopup');
+const overlay = document.getElementById('popupOverlay');
+const closeBtn= document.getElementById('popupClose');
+let activeBtn = null;
+
+/* Detect "mobile" breakpoint (matches CSS ≤480px) */
+const mq = window.matchMedia('(max-width: 480px)');
+
+function isMobile() { return mq.matches; }
+
+function fillPopup(w) {
+  document.getElementById('popWord').textContent = w.word;
+  document.getElementById('popPos').textContent  = w.pos;
+  document.getElementById('popEn1').innerHTML    = w.e1;
+  document.getElementById('popZh1').textContent  = w.z1;
+  document.getElementById('popEn2').innerHTML    = w.e2;
+  document.getElementById('popZh2').textContent  = w.z2;
+}
+
+function positionDesktop(btn) {
+  const br  = btn.getBoundingClientRect();
+  const pw  = Math.min(340, window.innerWidth - 16);
+  const gap = 10;
+
+  let left = br.left + br.width / 2 - pw / 2;
+  // clamp within viewport
+  if (left < 8) left = 8;
+  if (left + pw > window.innerWidth - 8) left = window.innerWidth - pw - 8;
+
+  popup.style.width  = pw + 'px';
+  popup.style.left   = left + 'px';
+  popup.style.right  = 'auto';
+  popup.style.bottom = 'auto';
+  popup.style.top    = '0px'; // temp — measure after show
+
+  popup.classList.add('show');
+
+  const ph = popup.offsetHeight;
+  let finalTop = br.top + window.scrollY - ph - gap;
+  if (finalTop < window.scrollY + 8) {
+    finalTop = br.bottom + window.scrollY + gap;
+  }
+  popup.style.top = finalTop + 'px';
+}
+
+function openPopup(btn, w) {
+  fillPopup(w);
+  if (activeBtn) activeBtn.classList.remove('active');
+  btn.classList.add('active');
+  activeBtn = btn;
+
+  if (isMobile()) {
+    // reset positioning so CSS bottom-sheet rules apply
+    popup.style.cssText = '';
+    overlay.classList.add('show');
+    popup.classList.add('show');
+    document.body.style.overflow = 'hidden'; // prevent scroll behind sheet
+  } else {
+    overlay.classList.remove('show');
+    positionDesktop(btn);
+  }
+}
+
+function closePopup() {
+  popup.classList.remove('show');
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+  if (activeBtn) { activeBtn.classList.remove('active'); activeBtn = null; }
+}
+
+words.forEach((w) => {
+  const item = document.createElement('div');
+  item.className = 'word-item';
+
+  const btn = document.createElement('button');
+  btn.className = 'word-btn';
+  btn.textContent = w.word;
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // toggle off if same button
+    if (activeBtn === btn && popup.classList.contains('show')) {
+      closePopup();
+      return;
+    }
+    openPopup(btn, w);
+  });
+
+  item.appendChild(btn);
+  grid.appendChild(item);
+});
+
+/* Close on overlay click, close button, or outside click */
+overlay.addEventListener('click', closePopup);
+closeBtn.addEventListener('click', closePopup);
+
+document.addEventListener('click', (e) => {
+  if (!popup.contains(e.target) && !e.target.classList.contains('word-btn')) {
+    closePopup();
+  }
+});
+popup.addEventListener('click', e => e.stopPropagation());
+
+/* Re-position on resize (only desktop) */
+window.addEventListener('resize', () => {
+  if (!popup.classList.contains('show') || isMobile()) return;
+  if (activeBtn) positionDesktop(activeBtn);
+});
+
+/* Touch swipe-down to dismiss bottom sheet */
+let touchStartY = 0;
+popup.addEventListener('touchstart', (e) => {
+  touchStartY = e.touches[0].clientY;
+}, { passive: true });
+popup.addEventListener('touchend', (e) => {
+  if (!isMobile()) return;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (dy > 60) closePopup(); // swipe down ≥60px
+}, { passive: true });
+</script>
+</body>
+</html>
