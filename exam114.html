@@ -1,1164 +1,1554 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Endurance — Antarctic Voyage</title>
+<title>114 學測英文 第 1-50 題（單面作答）</title>
 <style>
-/* ── RESET ── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* ── BASE ── */
-:root {
-  --bg:        #ffffff;
-  --fg:        #111111;
-  --accent:    #1a6fa8;
-  --dim:       #666666;
-  --card-bg:   #ffffff;
-  --card-bd:   #d0d0d0;
-  --btn-bg:    #f5f5f5;
-  --btn-bd:    #c8c8c8;
-  --btn-hover: #e8f0fa;
-  --btn-active:#1a6fa8;
-  --gap:       clamp(6px, 2vw, 10px);
-  --pad-x:     clamp(12px, 4vw, 28px);
-}
-
-html { font-size: clamp(14px, 3.8vw, 17px); }
-
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: 'Georgia', serif;
-  min-height: 100vh;
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
-}
-
-/* ── HEADER ── */
-h1 {
-  text-align: center;
-  padding: clamp(20px, 5vw, 36px) var(--pad-x) 6px;
-  font-size: clamp(1.3rem, 5vw, 2.2rem);
-  letter-spacing: clamp(0.1em, 1.5vw, 0.25em);
-  color: #111;
-  font-weight: normal;
-}
-
-.subtitle {
-  text-align: center;
-  color: #888;
-  font-style: italic;
-  margin-bottom: clamp(16px, 4vw, 28px);
-  font-size: clamp(0.72rem, 2.2vw, 0.9rem);
-  letter-spacing: 0.08em;
-  padding: 0 var(--pad-x);
-}
-
-/* ── SVG SCENE ── */
-.scene-container {
-  display: flex;
-  justify-content: center;
-  padding: 0 clamp(8px, 3vw, 16px) 8px;
-  background: #f0f6ff;
-  border-top: 1px solid #dde8f5;
-  border-bottom: 1px solid #dde8f5;
-}
-
-svg.scene {
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  display: block;
-  vertical-align: bottom;
-}
-
-/* ── VOCAB SECTION ── */
-.words-section {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: clamp(18px, 4vw, 28px) var(--pad-x) clamp(40px, 8vw, 70px);
-}
-
-.words-section h2 {
-  text-align: center;
-  font-size: clamp(0.8rem, 2.8vw, 1.1rem);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #333;
-  margin-bottom: 4px;
-  font-weight: normal;
-}
-
-.section-note {
-  text-align: center;
-  color: var(--dim);
-  font-size: clamp(0.7rem, 2vw, 0.8rem);
-  font-style: italic;
-  margin-bottom: clamp(14px, 3vw, 22px);
-}
-
-/* ── WORD GRID ── */
-.word-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--gap);
-  justify-content: center;
-}
-
-.word-item { position: relative; }
-
-.word-btn {
-  background: var(--btn-bg);
-  border: 1px solid var(--btn-bd);
-  color: #1a1a1a;
-  padding: clamp(8px, 2vw, 9px) clamp(12px, 3.5vw, 16px);
-  font-size: clamp(0.78rem, 2.4vw, 0.87rem);
-  font-family: 'Georgia', serif;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.18s, border-color 0.18s, color 0.18s, box-shadow 0.18s;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-.word-btn:hover  {
-  background: var(--btn-hover);
-  border-color: #1a6fa8;
-  color: #1a6fa8;
-  box-shadow: 0 2px 6px rgba(26,111,168,0.15);
-}
-.word-btn.active {
-  background: #1a6fa8;
-  border-color: #1a6fa8;
-  color: #fff;
-  box-shadow: 0 2px 8px rgba(26,111,168,0.35);
-}
-
-/* ── POPUP — bottom sheet on small screens, floating on large ── */
-.popup {
-  display: none;
-  z-index: 9999;
-  background: var(--card-bg);
-  border: 1px solid var(--card-bd);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
-  border-radius: 8px;
-  pointer-events: auto;
-  position: fixed;
-  width: 340px;
-  padding: 16px 18px;
-}
-
-/* ── Mobile: full-width bottom sheet ── */
-@media (max-width: 480px) {
-  .popup {
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    top: auto !important;
-    width: 100% !important;
-    border-radius: 18px 18px 0 0;
-    border-bottom: none;
-    padding: 20px 20px calc(20px + env(safe-area-inset-bottom));
-    transform: translateY(100%);
-    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1),
-                display 0s 0.28s;
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    margin: 0; padding: 20px;
+    color: #2c3e50; line-height: 1.75;
   }
-  .popup.show {
-    transform: translateY(0);
-    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+  .container {
+    max-width: 920px; margin: 0 auto;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    padding: 32px 40px;
   }
-  .popup::before {
-    content: '';
-    display: block;
-    width: 36px;
-    height: 4px;
-    background: #ccc;
-    border-radius: 2px;
-    margin: 0 auto 14px;
+  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
+  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
+  .subtitle { color: #7f8c8d; font-size: 0.95em; }
+  .student-info {
+    background: #ecf5fd; border-radius: 10px;
+    padding: 12px 16px; margin: 16px 0;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
   }
-  .popup-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.35);
-    z-index: 9998;
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+  .student-info label { font-weight: 600; color: #2980b9; }
+  .student-info input {
+    border: 1px solid #bdc3c7; border-radius: 6px;
+    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
   }
-  .popup-overlay.show { display: block; }
-}
-
-/* ── Tablet ── */
-@media (min-width: 481px) and (max-width: 700px) {
-  .popup { width: min(90vw, 340px); }
-}
-
-.popup.show { display: block; }
-
-/* ── Popup content ── */
-.popup-word {
-  font-size: clamp(0.95rem, 3vw, 1.05rem);
-  font-weight: bold;
-  color: #111;
-  margin-bottom: 2px;
-}
-.popup-pos {
-  font-size: clamp(0.68rem, 2vw, 0.73rem);
-  color: #1a6fa8;
-  font-style: italic;
-  margin-bottom: clamp(8px, 2.5vw, 11px);
-}
-
-.example-block {
-  margin-bottom: clamp(8px, 2.5vw, 11px);
-  padding-left: 10px;
-  border-left: 3px solid #1a6fa8;
-}
-.example-block:last-child { margin-bottom: 0; }
-
-.example-en {
-  font-size: clamp(0.76rem, 2.2vw, 0.82rem);
-  color: #222;
-  line-height: 1.6;
-  margin-bottom: 4px;
-}
-.example-en em { color: #c0392b; font-style: normal; font-weight: bold; }
-
-.example-zh {
-  font-size: clamp(0.72rem, 2vw, 0.76rem);
-  color: #888;
-  line-height: 1.55;
-}
-
-/* ── Close button (mobile only) ── */
-.popup-close { display: none; }
-@media (max-width: 480px) {
-  .popup-close {
-    display: block;
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    background: #eee;
-    border: none;
-    color: #555;
-    font-size: 1rem;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    cursor: pointer;
-    line-height: 28px;
-    text-align: center;
-    -webkit-tap-highlight-color: transparent;
+  .instruction {
+    background: #fff9e6; border-left: 4px solid #f39c12;
+    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
+    font-size: 0.95em; color: #8e6c16;
   }
-}
+  .legend {
+    font-size: 0.88em; color: #7f8c8d;
+    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+  .legend .word-sample {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
+  }
+  .section-title {
+    background: linear-gradient(90deg, #3498db, #5dade2);
+    color: #fff; padding: 10px 16px; border-radius: 8px;
+    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
+  }
+  .group-label {
+    background: #eaf4fb; color: #1f618d;
+    padding: 7px 14px; border-radius: 6px;
+    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
+    display: inline-block;
+  }
+  .passage {
+    background: #fafbfc; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
+    font-size: 1em; text-align: justify;
+  }
+  .passage p { margin: 0 0 10px; }
+  .passage p:last-child { margin-bottom: 0; }
+
+  .question {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .q-text { font-size: 1em; margin-bottom: 8px; }
+  .q-num {
+    display: inline-block; background: #3498db; color: #fff;
+    border-radius: 50%; min-width: 28px; height: 28px;
+    text-align: center; line-height: 28px; font-weight: 700;
+    margin-right: 6px; font-size: 0.88em; padding: 0 6px;
+  }
+  .q-inline {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+    flex-wrap: wrap;
+  }
+  .q-inline .q-num-sq {
+    background: #3498db; color: #fff; font-weight: 700;
+    border-radius: 6px; padding: 4px 10px; font-size: 0.95em;
+    flex-shrink: 0;
+  }
+
+  .options { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+  .options label {
+    flex: 1 1 calc(25% - 6px); min-width: 120px;
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 9px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
+    border-radius: 6px; cursor: pointer; transition: all 0.15s;
+    font-size: 0.92em;
+  }
+  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
+  .options input[type="radio"], .options input[type="checkbox"] { accent-color: #3498db; margin: 0; flex-shrink: 0; }
+  .options label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  .options-ci label { flex: 1 1 calc(20% - 6px); min-width: 100px; font-size: 0.88em; }
+  .options-ps label { flex: 1 1 100%; min-width: 100%; font-size: 0.93em; align-items: flex-start; }
+  .options-ps label input { margin-top: 3px; }
+  .options-rd label { flex: 1 1 calc(50% - 6px); min-width: 280px; font-size: 0.92em; align-items: flex-start; }
+  .options-rd label input { margin-top: 3px; }
+  .options-multi label { flex: 1 1 calc(50% - 6px); min-width: 240px; font-size: 0.92em; align-items: flex-start; }
+  .options-multi label input { margin-top: 3px; }
+  .options-multi label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  /* Q36 圖片題 */
+  .pic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px; }
+  .pic-opt {
+    background: #f8f9fa; border: 1.5px solid #dfe4ea; border-radius: 8px;
+    padding: 8px; cursor: pointer; transition: all 0.15s;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .pic-opt:hover { background: #ecf5fd; border-color: #5dade2; }
+  .pic-opt input { accent-color: #3498db; align-self: flex-start; margin: 0; }
+  .pic-opt.selected { background: #d6eaf8; border-color: #3498db; }
+  .pic-svg { width: 100%; max-width: 130px; height: 140px; background: #fff; border-radius: 4px; border: 1px solid #e1e8ed; }
+  .pic-cap { font-size: 0.85em; color: #2c3e50; font-weight: 600; text-align: center; }
+
+  .word { cursor: pointer; padding: 0 1px; border-radius: 3px; transition: background 0.12s; }
+  .word:hover { background: #fdecea; }
+  .word.unfamiliar { background: #ffebcd; border-bottom: 2px solid #e67e22; font-weight: 600; color: #b9770e; }
+
+  .blank { color: #e74c3c; font-weight: 700; padding: 0 2px; }
+
+  .vocab-row {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 6px 12px; margin-top: 8px;
+    font-size: 0.95em; color: #7d6608;
+    display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center;
+  }
+  .vocab-row::before {
+    content: "🔖 不懂的單字點一下標記："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; margin-right: 4px;
+  }
+  .vocab-row .word { padding: 2px 7px; background: #fff; border: 1px solid #f5b041; }
+  .vocab-row .word.unfamiliar { background: #ffebcd; }
+
+  .vocab-sentences {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 10px 14px; margin-top: 10px;
+    font-size: 0.93em; color: #7d6608;
+  }
+  .vocab-sentences::before {
+    content: "🔖 篇章結構選項句子（不懂的單字點一下標記，不用提號）："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; display: block; margin-bottom: 6px;
+  }
+  .vocab-sentences .sent-line { background: #fff; border-radius: 4px; padding: 5px 8px; margin: 4px 0; }
+
+  .fill-blank {
+    border: 1.5px solid #bdc3c7; border-bottom: 2px solid #3498db;
+    background: #f8fbfd; padding: 5px 10px; min-width: 140px;
+    font-size: 1em; font-family: inherit; border-radius: 6px;
+    margin: 0 4px;
+  }
+  .fill-blank:focus { outline: none; border-color: #3498db; background: #fff; }
+  textarea.short-ans {
+    width: 100%; min-height: 70px; padding: 10px;
+    border: 1.5px solid #bdc3c7; border-radius: 6px;
+    font-family: inherit; font-size: 0.95em; resize: vertical;
+    margin-top: 8px;
+  }
+  textarea.short-ans:focus { outline: none; border-color: #3498db; }
+
+  .trans-item {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .trans-item .ch-line { font-size: 1em; margin-bottom: 8px; color: #2c3e50; }
+
+  .button-row { text-align: center; margin: 26px 0 6px; }
+  button.submit-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
+    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+    transition: transform 0.15s;
+  }
+  button.submit-btn:hover { transform: translateY(-2px); }
+
+  #results { display: none; margin-top: 26px; }
+  .result-card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 20px 22px; margin-bottom: 20px;
+    border-top: 4px solid #3498db;
+  }
+  .result-card.score { border-top-color: #9b59b6; }
+  .result-card.teacher { border-top-color: #27ae60; }
+  .result-card.feedback { border-top-color: #e67e22; }
+  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
+  .copyable {
+    background: #f4f6f8; border: 1px dashed #bdc3c7;
+    border-radius: 8px; padding: 14px; white-space: pre-wrap;
+    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
+    max-height: 360px; overflow-y: auto; color: #2c3e50;
+  }
+  .copy-btn {
+    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
+    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
+  }
+  .copy-btn:hover { background: #7f8c8d; }
+  .copy-btn.copied { background: #27ae60; }
+
+  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
+  .score-detail { text-align: center; color: #7f8c8d; }
+
+  .wrong-item {
+    background: #fdf2f2; border-left: 4px solid #e74c3c;
+    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
+  }
+  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
+  .wrong-item .explain { color: #34495e; font-size: 0.95em; line-height: 1.7; }
+  .correct-mark { color: #27ae60; font-weight: 600; }
+  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+
+  .unknown-counter {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #ffebcd; color: #b9770e;
+    padding: 9px 16px; border-radius: 30px;
+    font-weight: 600; font-size: 0.9em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100; display: none;
+    border: 2px solid #e67e22;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 8px; }
+    .container { padding: 18px 16px; }
+    .options label { flex: 1 1 calc(50% - 6px); }
+    .options-ci label { flex: 1 1 calc(33% - 6px); }
+    .options-rd label { flex: 1 1 100%; }
+  }
 </style>
 </head>
 <body>
+<div class="container">
+  <header>
+    <h1>114 學年度學科能力測驗 ‧ 英文考科</h1>
+    <div class="subtitle">第 1-50 題（線上作答 ‧ 全部單面捲動 ‧ LINE 群繳交）</div>
+  </header>
 
-<h1>THE ENDURANCE</h1>
-<p class="subtitle">Antarctic Expedition &nbsp;·&nbsp; 1914 – 1916 &nbsp;·&nbsp; Weddell Sea</p>
-
-<!-- ═══════════════════════════════════════════════
-     HAND-DRAWN STYLE SVG ILLUSTRATION
-     All strokes use slightly wobbly paths to
-     mimic pen-and-ink illustration
-════════════════════════════════════════════════ -->
-<div class="scene-container">
-<svg class="scene" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <filter id="roughen">
-    <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="4" seed="2" result="noise"/>
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
-  </filter>
-  <filter id="inkBlur">
-    <feGaussianBlur stdDeviation="0.4"/>
-  </filter>
-  <filter id="glowSoft">
-    <feGaussianBlur stdDeviation="5" result="b"/>
-    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-  <filter id="glowStrong">
-    <feGaussianBlur stdDeviation="9" result="b"/>
-    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-  </filter>
-  <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%"   stop-color="#0b1a3a"/>
-    <stop offset="40%"  stop-color="#1a3a6e"/>
-    <stop offset="75%"  stop-color="#2e5f9e"/>
-    <stop offset="100%" stop-color="#4a8bc4"/>
-  </linearGradient>
-  <linearGradient id="seaG" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%"   stop-color="#1a4a7a"/>
-    <stop offset="50%"  stop-color="#0e3260"/>
-    <stop offset="100%" stop-color="#091e40"/>
-  </linearGradient>
-  <radialGradient id="moonG" cx="42%" cy="38%" r="55%">
-    <stop offset="0%"   stop-color="#fffde8"/>
-    <stop offset="60%"  stop-color="#fef0a0"/>
-    <stop offset="100%" stop-color="#e8c84a"/>
-  </radialGradient>
-  <linearGradient id="hullColour" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%"   stop-color="#8b4513"/>
-    <stop offset="40%"  stop-color="#6b3410"/>
-    <stop offset="100%" stop-color="#3d1f09"/>
-  </linearGradient>
-  <linearGradient id="sailColour" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%"   stop-color="#f5ead0"/>
-    <stop offset="100%" stop-color="#d4b896"/>
-  </linearGradient>
-  <linearGradient id="iceL" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%"   stop-color="#dff0fa"/>
-    <stop offset="100%" stop-color="#9dcce8"/>
-  </linearGradient>
-  <linearGradient id="floeL" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%"   stop-color="#eaf6ff"/>
-    <stop offset="100%" stop-color="#b8dff5"/>
-  </linearGradient>
-</defs>
-
-<!-- ── SKY ── -->
-<rect x="0" y="0" width="900" height="500" fill="url(#skyG)"/>
-
-<!-- Stars — scattered by hand -->
-<g fill="#ffe97a" filter="url(#inkBlur)">
-  <circle cx="42" cy="28" r="1.1" opacity=".7"/>
-  <circle cx="88" cy="15" r="0.8" opacity=".5"/>
-  <circle cx="130" cy="42" r="1.3" opacity=".8"/>
-  <circle cx="175" cy="20" r="0.7" opacity=".6"/>
-  <circle cx="220" cy="38" r="1.0" opacity=".7"/>
-  <circle cx="265" cy="12" r="0.9" opacity=".5"/>
-  <circle cx="310" cy="30" r="1.2" opacity=".6"/>
-  <circle cx="358" cy="18" r="0.8" opacity=".8"/>
-  <circle cx="400" cy="45" r="0.7" opacity=".5"/>
-  <circle cx="445" cy="9"  r="1.1" opacity=".7"/>
-  <circle cx="490" cy="33" r="0.9" opacity=".6"/>
-  <circle cx="535" cy="21" r="1.3" opacity=".8"/>
-  <circle cx="580" cy="40" r="0.8" opacity=".5"/>
-  <circle cx="625" cy="14" r="1.0" opacity=".7"/>
-  <circle cx="670" cy="28" r="0.7" opacity=".6"/>
-  <circle cx="715" cy="10" r="1.2" opacity=".8"/>
-  <circle cx="758" cy="35" r="0.9" opacity=".5"/>
-  <circle cx="800" cy="18" r="1.1" opacity=".7"/>
-  <circle cx="845" cy="42" r="0.8" opacity=".6"/>
-  <circle cx="60"  cy="65" r="0.9" opacity=".5"/>
-  <circle cx="105" cy="78" r="1.1" opacity=".6"/>
-  <circle cx="155" cy="58" r="0.7" opacity=".7"/>
-  <circle cx="200" cy="88" r="1.2" opacity=".5"/>
-  <circle cx="250" cy="70" r="0.8" opacity=".6"/>
-  <circle cx="295" cy="92" r="1.0" opacity=".7"/>
-  <circle cx="340" cy="62" r="0.9" opacity=".8"/>
-  <circle cx="385" cy="80" r="1.1" opacity=".5"/>
-  <circle cx="430" cy="55" r="0.7" opacity=".6"/>
-  <circle cx="478" cy="85" r="1.3" opacity=".7"/>
-  <circle cx="520" cy="68" r="0.8" opacity=".5"/>
-  <circle cx="565" cy="90" r="1.0" opacity=".6"/>
-  <circle cx="610" cy="60" r="0.9" opacity=".8"/>
-  <circle cx="655" cy="75" r="1.2" opacity=".6"/>
-  <circle cx="700" cy="52" r="0.7" opacity=".5"/>
-  <circle cx="745" cy="80" r="1.1" opacity=".7"/>
-  <circle cx="790" cy="65" r="0.8" opacity=".6"/>
-  <circle cx="835" cy="55" r="1.0" opacity=".8"/>
-  <circle cx="28"  cy="110" r="1.0" opacity=".5"/>
-  <circle cx="73"  cy="130" r="0.8" opacity=".6"/>
-  <circle cx="118" cy="115" r="1.2" opacity=".7"/>
-  <circle cx="163" cy="140" r="0.7" opacity=".5"/>
-  <circle cx="208" cy="118" r="1.1" opacity=".6"/>
-  <circle cx="253" cy="145" r="0.9" opacity=".7"/>
-  <circle cx="740" cy="118" r="0.8" opacity=".5"/>
-  <circle cx="785" cy="132" r="1.0" opacity=".6"/>
-  <circle cx="830" cy="108" r="0.9" opacity=".7"/>
-  <circle cx="875" cy="140" r="1.1" opacity=".5"/>
-</g>
-
-<!-- ── MOON (hand-drawn, warm golden) ── -->
-<g filter="url(#glowSoft)">
-  <circle cx="108" cy="72" r="44" fill="#ffd700" opacity="0.10"/>
-  <circle cx="108" cy="72" r="36" fill="#ffe566" opacity="0.12"/>
-</g>
-<path d="M138,72 C138,55 127,42 108,42 C89,42 78,55 78,72 C78,89 89,102 108,102 C127,102 138,89 138,72 Z"
-  fill="url(#moonG)" stroke="#e8c84a" stroke-width="1.5" filter="url(#roughen)" opacity="0.98"/>
-<!-- moon craters -->
-<circle cx="98"  cy="65" r="4.5" fill="none" stroke="#c8a030" stroke-width="1.2" opacity="0.5" filter="url(#roughen)"/>
-<circle cx="115" cy="80" r="3"   fill="none" stroke="#c8a030" stroke-width="1"   opacity="0.45" filter="url(#roughen)"/>
-<circle cx="104" cy="82" r="2"   fill="none" stroke="#b89020" stroke-width="0.9" opacity="0.4" filter="url(#roughen)"/>
-<circle cx="120" cy="60" r="2.5" fill="none" stroke="#c8a030" stroke-width="1"   opacity="0.4" filter="url(#roughen)"/>
-
-<!-- ── AURORA AUSTRALIS (vivid green-teal curtains) ── -->
-<g filter="url(#glowSoft)" stroke-linecap="round">
-  <path d="M200,160 C280,110 380,145 460,125 C540,105 610,80 700,120 C760,148 820,130 890,155"
-    fill="none" stroke="#00e5a0" stroke-width="3" opacity="0.55"/>
-  <path d="M180,178 C270,132 370,162 455,142 C540,122 615,98 710,138 C770,162 835,148 905,170"
-    fill="none" stroke="#40ffc0" stroke-width="2.2" opacity="0.4"/>
-  <path d="M160,195 C250,155 355,178 445,158 C535,138 612,115 715,155 C778,178 845,165 910,185"
-    fill="none" stroke="#80ffdd" stroke-width="1.5" opacity="0.3"/>
-  <!-- second aurora band — purple-violet -->
-  <path d="M300,140 C380,105 470,132 550,115 C630,98 700,75 790,108 C840,128 880,115 910,128"
-    fill="none" stroke="#b06aff" stroke-width="1.8" opacity="0.35"/>
-  <path d="M320,155 C400,122 490,148 565,132 C640,116 710,95 800,126 C848,144 882,132 910,142"
-    fill="none" stroke="#d0a0ff" stroke-width="1.2" opacity="0.25"/>
-</g>
-
-<!-- ── DISTANT ICEBERGS (coloured blue-white) ── -->
-<!-- Left berg -->
-<path d="M15,298 C25,285 38,260 52,248 C60,240 68,244 75,252 C82,260 90,278 100,298 Z"
-  fill="url(#iceL)" stroke="#7ab8d8" stroke-width="1.3" filter="url(#roughen)" opacity="0.92"/>
-<path d="M52,298 C58,280 66,265 76,253 C82,260 88,272 95,298 Z"
-  fill="#c8e8f8" stroke="#6aaac8" stroke-width="1" filter="url(#roughen)" opacity="0.7"/>
-<!-- Left berg shadow face -->
-<path d="M62,258 C68,250 74,248 78,254 C76,258 72,268 68,278 C65,270 62,262 62,258 Z"
-  fill="#8ab8d8" opacity="0.4" filter="url(#roughen)"/>
-<!-- Left berg snow cap glow -->
-<path d="M40,262 C48,254 56,248 64,252 C58,250 50,252 40,262 Z" fill="#eaf8ff" opacity="0.9"/>
-
-<!-- Right berg group -->
-<path d="M760,292 C772,270 785,248 800,235 C810,226 820,230 830,240 C840,252 850,272 858,292 Z"
-  fill="url(#iceL)" stroke="#7ab8d8" stroke-width="1.3" filter="url(#roughen)" opacity="0.92"/>
-<path d="M820,292 C826,276 832,260 840,248 C848,260 854,278 860,292 Z"
-  fill="#c8e8f8" stroke="#6aaac8" stroke-width="1" filter="url(#roughen)" opacity="0.7"/>
-<path d="M808,295 C815,280 820,268 828,258 C832,270 836,284 840,295 Z"
-  fill="#b0d8f0" stroke="#5a9ab8" stroke-width="1" filter="url(#roughen)" opacity="0.6"/>
-<!-- Right berg shadow -->
-<path d="M810,250 C818,242 826,238 830,244 C826,252 820,268 814,280 C812,268 810,258 810,250 Z"
-  fill="#6898c0" opacity="0.35" filter="url(#roughen)"/>
-<!-- Right berg snow -->
-<path d="M792,250 C800,238 812,232 822,238 C812,234 800,240 792,250 Z" fill="#eaf8ff" opacity="0.9"/>
-
-<!-- ── SEA ── -->
-<rect x="0" y="296" width="900" height="204" fill="url(#seaG)"/>
-
-<!-- Sea surface line -->
-<path d="M0,298 C40,294 80,300 120,296 C160,292 200,298 240,295 C280,292 320,298 360,295
-         C400,292 440,299 480,296 C520,293 560,299 600,296 C640,293 680,299 720,296
-         C760,293 800,298 840,295 C870,293 890,297 900,296"
-  fill="none" stroke="#1a5a8a" stroke-width="2" filter="url(#roughen)" opacity="0.8"/>
-
-<!-- Sea wave hatching — light blue crests -->
-<g stroke="#2a7ab8" stroke-width="1.2" fill="none" opacity="0.5">
-  <path d="M20,312 Q60,306 100,312 Q140,318 180,312" filter="url(#roughen)"/>
-  <path d="M200,322 Q245,316 290,322 Q335,328 380,322" filter="url(#roughen)"/>
-  <path d="M400,308 Q445,302 490,308 Q535,314 580,308" filter="url(#roughen)"/>
-  <path d="M600,326 Q645,320 690,326 Q735,332 780,326" filter="url(#roughen)"/>
-  <path d="M800,314 Q838,308 878,314" filter="url(#roughen)"/>
-  <path d="M50,338 Q95,332 140,338 Q185,344 230,338" filter="url(#roughen)"/>
-  <path d="M260,348 Q305,342 350,348 Q395,354 440,348" filter="url(#roughen)"/>
-  <path d="M470,334 Q515,328 560,334 Q605,340 650,334" filter="url(#roughen)"/>
-  <path d="M680,350 Q720,344 760,350 Q800,356 840,350" filter="url(#roughen)"/>
-  <path d="M10,360 Q55,354 100,360 Q145,366 190,360" filter="url(#roughen)"/>
-  <path d="M360,366 Q400,360 440,366 Q480,372 520,366" filter="url(#roughen)"/>
-  <path d="M680,370 Q720,364 760,370" filter="url(#roughen)"/>
-</g>
-<!-- white foam highlights on top waves -->
-<g stroke="#8ad0f0" stroke-width="0.9" fill="none" opacity="0.4">
-  <path d="M22,310 Q55,305 88,310" filter="url(#roughen)"/>
-  <path d="M202,320 Q240,315 278,320" filter="url(#roughen)"/>
-  <path d="M402,306 Q440,301 478,306" filter="url(#roughen)"/>
-  <path d="M602,324 Q640,319 678,324" filter="url(#roughen)"/>
-</g>
-
-<!-- ── FOREGROUND ICE FLOES (blue-white) ── -->
-<!-- Left floe -->
-<path d="M0,400 C18,388 42,378 68,375 C90,373 108,378 125,382 C140,386 148,396 142,408
-         C135,420 118,428 95,432 C72,436 45,432 22,424 C8,418 0,410 0,400 Z"
-  fill="url(#floeL)" stroke="#7ac0e0" stroke-width="1.5" filter="url(#roughen)" opacity="0.95"/>
-<path d="M20,400 C38,392 62,388 82,390" fill="none" stroke="#5aaad0" stroke-width="1.2" filter="url(#roughen)" opacity="0.5"/>
-<path d="M30,415 C50,408 75,405 95,408" fill="none" stroke="#4a9ac0" stroke-width="1" filter="url(#roughen)" opacity="0.4"/>
-<path d="M80,382 C95,386 110,392 118,400" fill="none" stroke="#5aaad0" stroke-width="1" filter="url(#roughen)" opacity="0.4"/>
-<!-- shadow underside -->
-<path d="M0,408 C22,416 60,424 95,426 C120,426 140,420 142,412"
-  fill="#7ab0d0" opacity="0.25" filter="url(#roughen)"/>
-
-<!-- Right floe -->
-<path d="M780,408 C800,395 828,385 855,383 C872,382 888,388 898,398 C905,408 900,422 888,432
-         C872,442 850,445 828,440 C808,436 790,428 782,418 C778,414 778,410 780,408 Z"
-  fill="url(#floeL)" stroke="#7ac0e0" stroke-width="1.5" filter="url(#roughen)" opacity="0.95"/>
-<path d="M800,410 C820,402 845,398 865,402" fill="none" stroke="#5aaad0" stroke-width="1.2" filter="url(#roughen)" opacity="0.5"/>
-<path d="M810,424 C830,418 852,416 870,420" fill="none" stroke="#4a9ac0" stroke-width="1" filter="url(#roughen)" opacity="0.4"/>
-<path d="M780,416 C806,432 840,440 870,436 C888,430 900,420 898,412"
-  fill="#7ab0d0" opacity="0.22" filter="url(#roughen)"/>
-
-<!-- Small mid floes -->
-<path d="M320,450 C334,440 355,436 374,440 C388,444 395,455 388,466 C380,476 362,480 344,476 C328,472 318,463 320,450 Z"
-  fill="#d8f0fc" stroke="#7ac0e0" stroke-width="1" filter="url(#roughen)" opacity="0.85"/>
-<path d="M550,442 C562,432 582,428 598,432 C612,436 618,448 610,458 C602,468 584,472 568,467 C554,462 545,452 550,442 Z"
-  fill="#cce8fa" stroke="#7ac0e0" stroke-width="1" filter="url(#roughen)" opacity="0.8"/>
-
-<!-- Moon / aurora shimmer reflection on water — golden-green -->
-<path d="M102,300 C106,318 104,338 108,358 C110,372 106,388 110,405"
-  fill="none" stroke="#ffd060" stroke-width="2.5" opacity="0.3" filter="url(#roughen)"/>
-<path d="M108,300 C112,320 110,342 114,362 C116,378 112,394 116,412"
-  fill="none" stroke="#ffe070" stroke-width="1.8" opacity="0.22" filter="url(#roughen)"/>
-<!-- aurora green reflection -->
-<path d="M400,302 C405,320 402,345 408,368 C412,385 408,405 414,428"
-  fill="none" stroke="#00d898" stroke-width="2" opacity="0.18" filter="url(#roughen)"/>
-
-<!-- ══════════════════════════════════════════
-     THE ENDURANCE — HAND-DRAWN STYLE SHIP
-     ═══════════════════════════════════════ -->
-
-<!-- ── HULL — rich wooden brown ── -->
-<path d="M188,296 C200,288 218,278 240,272 C280,268 640,267 670,272 C692,277 710,288 718,296
-         C720,298 718,302 715,305 C700,318 680,328 658,334 C630,341 540,345 450,346
-         C360,347 270,343 242,336 C220,330 200,320 190,310 C186,305 186,300 188,296 Z"
-  fill="url(#hullColour)" stroke="#5a2d0a" stroke-width="2" filter="url(#roughen)"/>
-
-<!-- Hull wood planking lines — warm amber -->
-<g stroke="#7a3c14" stroke-width="1" fill="none" opacity="0.6">
-  <path d="M210,278 C320,274 580,273 695,278" filter="url(#roughen)"/>
-  <path d="M205,285 C320,281 580,280 700,285" filter="url(#roughen)"/>
-  <path d="M200,292 C318,288 582,287 705,292" filter="url(#roughen)"/>
-  <path d="M198,299 C316,295 584,294 708,299" filter="url(#roughen)"/>
-  <path d="M200,306 C318,302 582,301 706,306" filter="url(#roughen)"/>
-  <path d="M204,313 C320,309 580,308 702,313" filter="url(#roughen)"/>
-  <path d="M212,320 C328,316 572,315 694,320" filter="url(#roughen)"/>
-  <path d="M225,327 C340,323 560,322 678,327" filter="url(#roughen)"/>
-  <path d="M244,334 C355,330 548,329 658,334" filter="url(#roughen)"/>
-</g>
-<!-- hull light sheen -->
-<path d="M210,280 C400,275 600,274 700,280 C600,276 400,277 210,280 Z"
-  fill="#c87840" opacity="0.18" filter="url(#roughen)"/>
-
-<!-- Waterline red stripe (traditional) -->
-<path d="M193,301 C310,297 590,296 713,301" fill="none" stroke="#c0392b" stroke-width="3.5" filter="url(#roughen)" opacity="0.85"/>
-
-<!-- Hull upper trim / bulwark — dark tarred wood -->
-<path d="M240,272 C360,266 540,265 660,270 C662,268 664,266 665,265 C545,261 355,262 238,268 Z"
-  fill="#3d2008" stroke="#7a5030" stroke-width="1.5" filter="url(#roughen)" opacity="0.95"/>
-
-<!-- Bow curved stem -->
-<path d="M188,296 C185,290 182,280 185,268 C186,260 190,255 196,258 C200,262 204,270 208,278 C200,278 194,287 188,296 Z"
-  fill="#3d2008" stroke="#7a5030" stroke-width="1.8" filter="url(#roughen)"/>
-<!-- Bow wave splash — white foam -->
-<path d="M180,298 C172,290 168,280 174,272" fill="none" stroke="#b8dff5" stroke-width="2" filter="url(#roughen)" opacity="0.7"/>
-<path d="M175,302 C165,292 160,278 168,268" fill="none" stroke="#d8f0ff" stroke-width="1.2" filter="url(#roughen)" opacity="0.5"/>
-
-<!-- Stern curved transom -->
-<path d="M718,296 C724,290 728,280 726,265 C724,258 720,255 715,258 C710,262 706,270 700,275 C706,274 714,285 718,296 Z"
-  fill="#3d2008" stroke="#7a5030" stroke-width="1.8" filter="url(#roughen)"/>
-
-<!-- Name on bow -->
-<text x="240" y="310" font-family="Georgia, serif" font-size="10" fill="#e8c090" letter-spacing="2.5" filter="url(#roughen)">ENDURANCE</text>
-
-<!-- Portholes — brass-rimmed -->
-<g filter="url(#roughen)">
-  <circle cx="310" cy="303" r="9" fill="#1a0e05" stroke="#c8922a" stroke-width="2.2"/>
-  <circle cx="310" cy="303" r="5" fill="#0d0804" stroke="#a07020" stroke-width="1"/>
-  <circle cx="308" cy="301" r="2" fill="#e8a840" opacity="0.4"/>
-
-  <circle cx="450" cy="302" r="9" fill="#1a0e05" stroke="#c8922a" stroke-width="2.2"/>
-  <circle cx="450" cy="302" r="5" fill="#0d0804" stroke="#a07020" stroke-width="1"/>
-  <circle cx="448" cy="300" r="2" fill="#e8a840" opacity="0.4"/>
-
-  <circle cx="590" cy="303" r="9" fill="#1a0e05" stroke="#c8922a" stroke-width="2.2"/>
-  <circle cx="590" cy="303" r="5" fill="#0d0804" stroke="#a07020" stroke-width="1"/>
-  <circle cx="588" cy="301" r="2" fill="#e8a840" opacity="0.4"/>
-</g>
-
-<!-- ── DECK / BULWARK ── -->
-<path d="M238,268 C358,263 542,262 662,267 L662,262 C542,257 358,258 238,263 Z"
-  fill="#5a3415" stroke="#c8922a" stroke-width="1.2" filter="url(#roughen)"/>
-
-<!-- Deck railing stanchions — iron grey -->
-<g stroke="#c8b090" stroke-width="1.4" fill="none" opacity="0.9">
-  <line x1="268" y1="263" x2="267" y2="248" filter="url(#roughen)"/>
-  <line x1="298" y1="262" x2="297" y2="247" filter="url(#roughen)"/>
-  <line x1="328" y1="261" x2="327" y2="246" filter="url(#roughen)"/>
-  <line x1="358" y1="261" x2="357" y2="246" filter="url(#roughen)"/>
-  <line x1="388" y1="260" x2="387" y2="245" filter="url(#roughen)"/>
-  <line x1="418" y1="260" x2="417" y2="245" filter="url(#roughen)"/>
-  <line x1="448" y1="260" x2="447" y2="245" filter="url(#roughen)"/>
-  <line x1="478" y1="260" x2="477" y2="245" filter="url(#roughen)"/>
-  <line x1="508" y1="260" x2="507" y2="245" filter="url(#roughen)"/>
-  <line x1="538" y1="261" x2="537" y2="246" filter="url(#roughen)"/>
-  <line x1="568" y1="261" x2="567" y2="246" filter="url(#roughen)"/>
-  <line x1="598" y1="261" x2="597" y2="246" filter="url(#roughen)"/>
-  <line x1="628" y1="262" x2="627" y2="247" filter="url(#roughen)"/>
-  <line x1="655" y1="263" x2="654" y2="248" filter="url(#roughen)"/>
-</g>
-<path d="M266,248 C370,245 530,244 656,248" fill="none" stroke="#e8d0a0" stroke-width="1.4" filter="url(#roughen)"/>
-<path d="M266,255 C370,252 530,251 656,255" fill="none" stroke="#c8b080" stroke-width="1" filter="url(#roughen)" opacity="0.7"/>
-
-<!-- ── DECKHOUSE / CABIN — painted white with black trim ── -->
-<path d="M348,248 C350,230 354,222 360,218 C380,214 520,213 542,218 C548,222 552,230 552,248 Z"
-  fill="#e8e0d0" stroke="#5a3415" stroke-width="1.8" filter="url(#roughen)"/>
-<path d="M354,222 C380,218 520,217 542,222" fill="none" stroke="#c89a50" stroke-width="2.2" filter="url(#roughen)"/>
-<!-- cabin windows — warm amber glow -->
-<g filter="url(#roughen)">
-  <rect x="366" y="228" width="22" height="15" rx="1" fill="#3a2800" stroke="#c8922a" stroke-width="1.5"/>
-  <rect x="367" y="229" width="20" height="13" rx="1" fill="#4a3800" opacity="0.6"/>
-  <line x1="377" y1="228" x2="377" y2="243" stroke="#a07020" stroke-width="1"/>
-  <line x1="366" y1="235" x2="388" y2="235" stroke="#a07020" stroke-width="1"/>
-
-  <rect x="402" y="227" width="22" height="15" rx="1" fill="#3a2800" stroke="#c8922a" stroke-width="1.5"/>
-  <rect x="403" y="228" width="20" height="13" rx="1" fill="#4a3800" opacity="0.6"/>
-  <line x1="413" y1="227" x2="413" y2="242" stroke="#a07020" stroke-width="1"/>
-  <line x1="402" y1="234" x2="424" y2="234" stroke="#a07020" stroke-width="1"/>
-
-  <!-- window 3 — warm lantern glow -->
-  <rect x="438" y="227" width="22" height="15" rx="1" fill="#5a3800" stroke="#c8922a" stroke-width="1.5"/>
-  <rect x="439" y="228" width="20" height="13" rx="1" fill="#e8a030" opacity="0.45"/>
-  <line x1="449" y1="227" x2="449" y2="242" stroke="#b08020" stroke-width="1"/>
-  <line x1="438" y1="234" x2="460" y2="234" stroke="#b08020" stroke-width="1"/>
-
-  <rect x="474" y="228" width="22" height="15" rx="1" fill="#3a2800" stroke="#c8922a" stroke-width="1.5"/>
-  <rect x="475" y="229" width="20" height="13" rx="1" fill="#4a3800" opacity="0.6"/>
-  <line x1="485" y1="228" x2="485" y2="243" stroke="#a07020" stroke-width="1"/>
-  <line x1="474" y1="235" x2="496" y2="235" stroke="#a07020" stroke-width="1"/>
-</g>
-<path d="M508,248 L508,225 C510,222 518,221 522,224 L522,248 Z"
-  fill="#3a2008" stroke="#7a5020" stroke-width="1.2" filter="url(#roughen)"/>
-
-<!-- ── SMOKESTACK — black with red band ── -->
-<path d="M432,218 C430,202 428,185 430,172 C431,165 435,162 440,162 C446,162 450,165 451,172 C453,185 452,202 450,218 Z"
-  fill="#1a1008" stroke="#5a3010" stroke-width="2" filter="url(#roughen)"/>
-<path d="M428,172 C432,168 436,165 440,165 C444,165 448,168 452,172 C448,170 444,168 440,168 C436,168 432,170 428,172 Z"
-  fill="#2a1808" stroke="#7a5020" stroke-width="1.5" filter="url(#roughen)"/>
-<!-- red band on funnel -->
-<path d="M430,188 C434,186 442,186 451,188 C444,192 434,192 430,188 Z"
-  fill="#c0392b" stroke="#8b0000" stroke-width="0.8" filter="url(#roughen)"/>
-<!-- Smoke — grey-white billowing -->
-<g filter="url(#roughen)">
-  <path d="M430,162 C425,155 424,145 428,138 C432,131 440,130 446,135 C450,130 458,128 462,135
-           C466,128 474,128 476,136 C480,132 488,134 488,142 C490,150 484,158 478,160
-           C480,168 475,174 468,172 C464,178 455,180 450,174 C445,180 435,178 432,172
-           C426,174 420,168 422,162 C424,156 428,158 430,162 Z"
-    fill="#b8b8b8" stroke="#909090" stroke-width="1" opacity="0.75"/>
-  <path d="M424,138 C420,128 420,115 426,107 C430,100 440,99 446,106 C450,99 460,97 465,105
-           C470,97 480,99 480,108 C484,103 492,106 492,115 C494,124 488,132 482,133
-           C484,142 478,148 470,146 C466,153 456,155 450,148 C443,154 432,151 430,144
-           C424,145 418,140 420,133 C421,127 424,132 424,138 Z"
-    fill="#cccccc" stroke="#aaaaaa" stroke-width="1" opacity="0.6"/>
-  <path d="M420,107 C416,95 418,80 425,72 C430,65 440,64 447,71 C452,63 464,62 468,71
-           C475,62 486,65 486,75 C492,68 500,73 498,83 C498,93 490,100 484,100
-           C484,110 478,116 470,113 C464,120 454,122 448,115 C440,121 428,118 426,111
-           C420,112 414,106 416,99 Z"
-    fill="#ddd" stroke="#bbb" stroke-width="1" opacity="0.45"/>
-</g>
-
-<!-- ── FOREMAST — warm pine brown ── -->
-<path d="M306,262 C304,230 303,195 304,155 C304,120 305,90 306,60 C307,90 307,120 308,155 C309,195 309,230 308,262 Z"
-  fill="#a0703a" stroke="#7a5028" stroke-width="1.5" filter="url(#roughen)"/>
-<!-- crow's nest — tarred basket -->
-<path d="M292,64 C295,58 302,54 307,54 C312,54 318,58 322,64 C320,72 316,76 307,77 C298,77 293,72 292,64 Z"
-  fill="#3d2008" stroke="#c8922a" stroke-width="2" filter="url(#roughen)"/>
-<path d="M293,68 C300,66 314,66 321,68" fill="none" stroke="#c8922a" stroke-width="1" filter="url(#roughen)" opacity="0.7"/>
-<!-- lookout figure -->
-<ellipse cx="307" cy="60" rx="5" ry="5" fill="#1a0e05" filter="url(#roughen)"/>
-<path d="M303,65 C304,72 306,78 307,78 C308,78 310,72 311,65 Z" fill="#1a0e05" filter="url(#roughen)"/>
-<path d="M300,68 C295,65 292,62 295,60" fill="none" stroke="#1a0e05" stroke-width="3" stroke-linecap="round" filter="url(#roughen)"/>
-
-<!-- Foremast yard arms -->
-<path d="M242,90 C264,87 286,86 307,87 C328,86 350,87 372,90"
-  fill="none" stroke="#8a6030" stroke-width="3.5" stroke-linecap="round" filter="url(#roughen)"/>
-<path d="M254,118 C272,115 290,114 307,115 C324,114 342,115 358,118"
-  fill="none" stroke="#8a6030" stroke-width="3" stroke-linecap="round" filter="url(#roughen)"/>
-<path d="M262,145 C278,142 294,141 307,142 C320,141 336,142 350,145"
-  fill="none" stroke="#7a5028" stroke-width="2.5" stroke-linecap="round" filter="url(#roughen)"/>
-
-<!-- Foremast sails — cream canvas -->
-<path d="M244,90 C270,82 298,80 307,81 C316,80 340,82 370,90 C350,104 325,108 307,107 C289,108 260,104 244,90 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.5" filter="url(#roughen)"/>
-<path d="M252,93 C272,87 294,85 307,86 C320,85 342,87 360,93" fill="none" stroke="#a08060" stroke-width="1" filter="url(#roughen)" opacity="0.5"/>
-<path d="M256,118 C276,110 294,108 307,109 C320,108 338,110 356,118 C340,130 324,134 307,133 C290,134 272,130 256,118 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.5" filter="url(#roughen)"/>
-<path d="M264,145 C280,138 295,136 307,137 C319,136 334,138 348,145 C335,156 320,160 307,159 C294,160 277,156 264,145 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.5" filter="url(#roughen)"/>
-
-<!-- ── MAINMAST — tallest, pine ── -->
-<path d="M448,262 C446,225 445,185 445,140 C445,100 446,65 447,30 C448,65 449,100 449,140 C449,185 450,225 450,262 Z"
-  fill="#b07840" stroke="#8a5828" stroke-width="2" filter="url(#roughen)"/>
-<path d="M445,30 L447,22 L449,30 Z" fill="#c8902a" filter="url(#roughen)"/>
-<!-- Flag — Union Jack colours suggested -->
-<path d="M449,22 C462,26 472,30 462,34 C452,36 449,36 449,36 Z"
-  fill="#c0392b" stroke="#8b0000" stroke-width="1" filter="url(#roughen)"/>
-
-<!-- Main yard arms -->
-<path d="M368,55 C396,51 424,50 448,51 C472,50 500,51 528,55"
-  fill="none" stroke="#9a7040" stroke-width="4" stroke-linecap="round" filter="url(#roughen)"/>
-<path d="M378,88 C404,84 428,83 448,84 C468,83 492,84 518,88"
-  fill="none" stroke="#9a7040" stroke-width="3.5" stroke-linecap="round" filter="url(#roughen)"/>
-<path d="M388,120 C412,117 432,116 448,117 C464,116 488,117 508,120"
-  fill="none" stroke="#8a6030" stroke-width="3" stroke-linecap="round" filter="url(#roughen)"/>
-<path d="M395,150 C418,147 435,146 448,147 C461,146 478,147 500,150"
-  fill="none" stroke="#8a6030" stroke-width="2.5" stroke-linecap="round" filter="url(#roughen)"/>
-
-<!-- Main sails — cream billowing canvas -->
-<path d="M370,55 C404,44 432,42 448,43 C464,42 492,44 526,55 C504,72 476,77 448,76 C420,77 392,72 370,55 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.8" filter="url(#roughen)"/>
-<path d="M380,59 C408,50 432,48 448,49 C464,48 488,50 516,59" fill="none" stroke="#a08060" stroke-width="1.2" filter="url(#roughen)" opacity="0.5"/>
-<path d="M380,88 C408,79 430,77 448,78 C466,77 490,79 516,88 C496,103 472,108 448,107 C424,108 400,103 380,88 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.8" filter="url(#roughen)"/>
-<path d="M390,120 C415,112 434,110 448,111 C462,110 482,112 505,120 C488,134 468,139 448,138 C428,139 408,134 390,120 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.8" filter="url(#roughen)"/>
-<path d="M397,150 C420,143 436,141 448,142 C460,141 477,143 498,150 C482,163 464,167 448,166 C432,167 415,163 397,150 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.5" filter="url(#roughen)"/>
-
-<!-- ── MIZZENMAST ── -->
-<path d="M596,262 C594,230 593,198 594,165 C594,130 595,100 596,75 C597,100 598,130 598,165 C599,198 599,230 598,262 Z"
-  fill="#a87038" stroke="#7a5028" stroke-width="1.8" filter="url(#roughen)"/>
-
-<!-- Mizzen yard arms -->
-<path d="M542,95 C562,91 582,90 597,91 C612,90 632,91 650,95"
-  fill="none" stroke="#9a7040" stroke-width="3.5" stroke-linecap="round" filter="url(#roughen)"/>
-<path d="M550,125 C568,122 585,121 597,122 C609,121 628,122 645,125"
-  fill="none" stroke="#8a6030" stroke-width="3" stroke-linecap="round" filter="url(#roughen)"/>
-<path d="M556,155 C572,152 587,151 597,152 C607,151 624,152 638,155"
-  fill="none" stroke="#8a6030" stroke-width="2.5" stroke-linecap="round" filter="url(#roughen)"/>
-
-<!-- Mizzen sails — cream -->
-<path d="M544,95 C566,86 583,84 597,85 C611,84 628,86 648,95 C630,108 614,113 597,112 C580,113 562,108 544,95 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.5" filter="url(#roughen)"/>
-<path d="M552,125 C570,117 585,115 597,116 C609,115 626,117 644,125 C628,137 613,141 597,140 C581,141 566,137 552,125 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.5" filter="url(#roughen)"/>
-<path d="M558,155 C574,148 588,146 597,147 C606,146 621,148 636,155 C622,166 608,170 597,169 C586,170 572,166 558,155 Z"
-  fill="url(#sailColour)" stroke="#b0926a" stroke-width="1.5" filter="url(#roughen)"/>
-
-<!-- ── RIGGING LINES — dark hemp rope ── -->
-<g stroke="#7a5828" fill="none" filter="url(#roughen)">
-  <!-- Bowsprit stays to foremast -->
-  <path d="M192,268 C230,200 268,130 307,88" stroke-width="1.1" opacity="0.7"/>
-  <path d="M196,265 C240,210 280,155 307,118" stroke-width="0.9" opacity="0.5"/>
-  <!-- Foremast backstays to deck -->
-  <path d="M307,62 C340,160 362,220 390,262" stroke-width="1" opacity="0.65"/>
-  <path d="M307,62 C285,155 272,210 252,262" stroke-width="1" opacity="0.65"/>
-  <!-- Foremast to mainmast stay -->
-  <path d="M307,62 C360,58 400,52 448,51" stroke-width="1.1" opacity="0.6"/>
-  <!-- Mainmast stays to deck fore -->
-  <path d="M448,32 C400,120 360,200 310,262" stroke-width="1.2" opacity="0.7"/>
-  <path d="M448,32 C488,120 520,195 560,262" stroke-width="1.2" opacity="0.7"/>
-  <!-- Mainmast stays to deck aft -->
-  <path d="M448,32 C465,130 480,210 490,262" stroke-width="1" opacity="0.55"/>
-  <path d="M448,32 C432,130 420,210 412,262" stroke-width="1" opacity="0.55"/>
-  <!-- Mainmast to mizzen stay -->
-  <path d="M448,51 C508,48 556,52 597,91" stroke-width="1" opacity="0.55"/>
-  <!-- Mizzenmast stays -->
-  <path d="M597,77 C620,160 640,215 660,262" stroke-width="1" opacity="0.6"/>
-  <path d="M597,77 C580,160 572,215 562,262" stroke-width="1" opacity="0.6"/>
-  <!-- Yard brace lines - foremast -->
-  <path d="M244,90 C270,130 288,180 296,262" stroke-width="0.85" opacity="0.45"/>
-  <path d="M370,90 C356,130 348,180 345,262" stroke-width="0.85" opacity="0.45"/>
-  <!-- Yard brace lines - mainmast -->
-  <path d="M370,55 C390,100 398,160 405,262" stroke-width="0.9" opacity="0.45"/>
-  <path d="M526,55 C510,100 502,160 495,262" stroke-width="0.9" opacity="0.45"/>
-  <!-- Shrouds - foremast -->
-  <path d="M256,118 C272,170 278,215 276,262" stroke-width="0.8" opacity="0.4"/>
-  <path d="M358,118 C348,170 344,215 340,262" stroke-width="0.8" opacity="0.4"/>
-  <!-- Shrouds - mizzen -->
-  <path d="M544,95 C558,155 562,215 560,262" stroke-width="0.8" opacity="0.4"/>
-  <path d="M648,95 C636,155 632,215 630,262" stroke-width="0.8" opacity="0.4"/>
-</g>
-
-<!-- ── WATER REFLECTION of ship ── -->
-<path d="M210,300 C320,308 580,308 700,300 C695,320 680,338 655,346 C590,355 310,355 248,346 C222,338 210,322 210,300 Z"
-  fill="#0d2a4a" opacity="0.45"/>
-<!-- reflection ripple hints -->
-<path d="M280,312 C360,308 540,307 630,312" fill="none" stroke="#2a6090" stroke-width="1" opacity="0.4" filter="url(#roughen)"/>
-<path d="M300,322 C380,318 520,317 610,322" fill="none" stroke="#2a6090" stroke-width="0.8" opacity="0.3" filter="url(#roughen)"/>
-
-<!-- Ship label -->
-<text x="450" y="490" text-anchor="middle" font-family="Georgia, serif" font-size="11"
-  fill="#6090b8" letter-spacing="3" filter="url(#roughen)">WEDDELL SEA · ANTARCTICA · 1915</text>
-
-</svg>
-</div>
-
-<!-- ═══════════════════════════════════════════════
-     VOCABULARY — 30 WORDS FROM THE ARTICLE
-════════════════════════════════════════════════ -->
-<div class="words-section">
-  <h2>Vocabulary from the Article</h2>
-  <p class="section-note">點擊任一單詞，查看例句與中文翻譯</p>
-  <div class="word-grid" id="wordGrid"></div>
-</div>
-
-<!-- Dim overlay (mobile bottom-sheet backdrop) -->
-<div class="popup-overlay" id="popupOverlay"></div>
-
-<!-- Popup / bottom sheet -->
-<div class="popup" id="mainPopup" role="dialog" aria-modal="true">
-  <button class="popup-close" id="popupClose" aria-label="關閉">✕</button>
-  <div class="popup-word" id="popWord"></div>
-  <div class="popup-pos"  id="popPos"></div>
-  <div class="example-block">
-    <div class="example-en" id="popEn1"></div>
-    <div class="example-zh" id="popZh1"></div>
+  <div class="student-info">
+    <label>姓名：</label><input type="text" id="studentName" placeholder="請輸入姓名">
+    <label>座號：</label><input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
   </div>
-  <div class="example-block">
-    <div class="example-en" id="popEn2"></div>
-    <div class="example-zh" id="popZh2"></div>
+
+  <div class="instruction">
+    <strong>作答說明：</strong>本卷共 50 題，全部單面作答、不分頁。每題單選一個答案（Q49 多選、Q47/Q48/Q50 為填空/簡答；Q36 為圖片題）。
+    閱讀時遇到<u>任何不會的單字</u>，直接點一下標記（再點取消），系統會於送出後統一匯出給老師。
+  </div>
+  <div class="legend">
+    不熟悉單字標記範例：<span class="word-sample">example</span>　🔖 黃底= 已標記不熟悉。各題下方/章節末尾有重複的選項單字列，方便點選。
+  </div>
+
+<form id="quizForm">
+
+<!-- ============ 一、詞彙題 (1-10) ============ -->
+<div class="section-title">一、詞彙題（第 1-10 題，每題 1 分）</div>
+
+<div class="question" data-q="1">
+  <div class="q-text autowrap"><span class="q-num">1</span>If you put a <span class="blank">______</span> under a leaking faucet, you will be surprised at the amount of water collected in 24 hours.</div>
+  <div class="options" data-qid="1">
+    <label><input type="radio" name="q1" value="A"><span>(A) border</span></label>
+    <label><input type="radio" name="q1" value="B"><span>(B) timer</span></label>
+    <label><input type="radio" name="q1" value="C"><span>(C) container</span></label>
+    <label><input type="radio" name="q1" value="D"><span>(D) marker</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">border</span><span class="word">timer</span><span class="word">container</span><span class="word">marker</span></div>
+</div>
+
+<div class="question" data-q="2">
+  <div class="q-text autowrap"><span class="q-num">2</span>The local farmers' market is popular as it offers a variety of fresh seasonal <span class="blank">______</span> to people in the community.</div>
+  <div class="options" data-qid="2">
+    <label><input type="radio" name="q2" value="A"><span>(A) produce</span></label>
+    <label><input type="radio" name="q2" value="B"><span>(B) fashion</span></label>
+    <label><input type="radio" name="q2" value="C"><span>(C) brand</span></label>
+    <label><input type="radio" name="q2" value="D"><span>(D) trend</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">produce</span><span class="word">fashion</span><span class="word">brand</span><span class="word">trend</span></div>
+</div>
+
+<div class="question" data-q="3">
+  <div class="q-text autowrap"><span class="q-num">3</span>As the years have passed by, many of my childhood memories are already <span class="blank">______</span>; I can no longer recall clearly what happened back then.</div>
+  <div class="options" data-qid="3">
+    <label><input type="radio" name="q3" value="A"><span>(A) blurring</span></label>
+    <label><input type="radio" name="q3" value="B"><span>(B) trimming</span></label>
+    <label><input type="radio" name="q3" value="C"><span>(C) draining</span></label>
+    <label><input type="radio" name="q3" value="D"><span>(D) glaring</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">blurring</span><span class="word">trimming</span><span class="word">draining</span><span class="word">glaring</span></div>
+</div>
+
+<div class="question" data-q="4">
+  <div class="q-text autowrap"><span class="q-num">4</span>Racist remarks are by nature <span class="blank">______</span> and hurtful, and should be avoided on all occasions.</div>
+  <div class="options" data-qid="4">
+    <label><input type="radio" name="q4" value="A"><span>(A) excessive</span></label>
+    <label><input type="radio" name="q4" value="B"><span>(B) furious</span></label>
+    <label><input type="radio" name="q4" value="C"><span>(C) offensive</span></label>
+    <label><input type="radio" name="q4" value="D"><span>(D) stubborn</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">excessive</span><span class="word">furious</span><span class="word">offensive</span><span class="word">stubborn</span></div>
+</div>
+
+<div class="question" data-q="5">
+  <div class="q-text autowrap"><span class="q-num">5</span>Not satisfied with the first <span class="blank">______</span> of her essay, Mary revised it several times before turning it in to the teacher.</div>
+  <div class="options" data-qid="5">
+    <label><input type="radio" name="q5" value="A"><span>(A) text</span></label>
+    <label><input type="radio" name="q5" value="B"><span>(B) brush</span></label>
+    <label><input type="radio" name="q5" value="C"><span>(C) draft</span></label>
+    <label><input type="radio" name="q5" value="D"><span>(D) plot</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">text</span><span class="word">brush</span><span class="word">draft</span><span class="word">plot</span></div>
+</div>
+
+<div class="question" data-q="6">
+  <div class="q-text autowrap"><span class="q-num">6</span>Left <span class="blank">______</span> for years, the deserted house was filled with a thick coating of dust and a smell of old damp wood.</div>
+  <div class="options" data-qid="6">
+    <label><input type="radio" name="q6" value="A"><span>(A) casual</span></label>
+    <label><input type="radio" name="q6" value="B"><span>(B) fragile</span></label>
+    <label><input type="radio" name="q6" value="C"><span>(C) remote</span></label>
+    <label><input type="radio" name="q6" value="D"><span>(D) vacant</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">casual</span><span class="word">fragile</span><span class="word">remote</span><span class="word">vacant</span></div>
+</div>
+
+<div class="question" data-q="7">
+  <div class="q-text autowrap"><span class="q-num">7</span>The high school student showed <span class="blank">______</span> courage when she helped the old man escape from the fire.</div>
+  <div class="options" data-qid="7">
+    <label><input type="radio" name="q7" value="A"><span>(A) gigantic</span></label>
+    <label><input type="radio" name="q7" value="B"><span>(B) exclusive</span></label>
+    <label><input type="radio" name="q7" value="C"><span>(C) multiple</span></label>
+    <label><input type="radio" name="q7" value="D"><span>(D) enormous</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">gigantic</span><span class="word">exclusive</span><span class="word">multiple</span><span class="word">enormous</span></div>
+</div>
+
+<div class="question" data-q="8">
+  <div class="q-text autowrap"><span class="q-num">8</span>Publicly financed projects are often <span class="blank">______</span> or delayed during tough economic times due to a lack of resources.</div>
+  <div class="options" data-qid="8">
+    <label><input type="radio" name="q8" value="A"><span>(A) halted</span></label>
+    <label><input type="radio" name="q8" value="B"><span>(B) hatched</span></label>
+    <label><input type="radio" name="q8" value="C"><span>(C) possessed</span></label>
+    <label><input type="radio" name="q8" value="D"><span>(D) reinforced</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">halted</span><span class="word">hatched</span><span class="word">possessed</span><span class="word">reinforced</span></div>
+</div>
+
+<div class="question" data-q="9">
+  <div class="q-text autowrap"><span class="q-num">9</span>Despite his busy schedule, the President <span class="blank">______</span> the school's graduation ceremony with his presence and a heartwarming speech.</div>
+  <div class="options" data-qid="9">
+    <label><input type="radio" name="q9" value="A"><span>(A) praised</span></label>
+    <label><input type="radio" name="q9" value="B"><span>(B) graced</span></label>
+    <label><input type="radio" name="q9" value="C"><span>(C) addressed</span></label>
+    <label><input type="radio" name="q9" value="D"><span>(D) credited</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">praised</span><span class="word">graced</span><span class="word">addressed</span><span class="word">credited</span></div>
+</div>
+
+<div class="question" data-q="10">
+  <div class="q-text autowrap"><span class="q-num">10</span>The manager of the company was sued for <span class="blank">______</span> abusing his colleagues, calling them "hopeless losers."</div>
+  <div class="options" data-qid="10">
+    <label><input type="radio" name="q10" value="A"><span>(A) verbally</span></label>
+    <label><input type="radio" name="q10" value="B"><span>(B) dominantly</span></label>
+    <label><input type="radio" name="q10" value="C"><span>(C) legitimately</span></label>
+    <label><input type="radio" name="q10" value="D"><span>(D) relevantly</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">verbally</span><span class="word">dominantly</span><span class="word">legitimately</span><span class="word">relevantly</span></div>
+</div>
+
+<!-- ============ 二、綜合測驗 (11-20) — 已位置變換 ============ -->
+<div class="section-title">二、綜合測驗（第 11-20 題，每題 1 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+
+<div class="group-label">【第 11-15 題為題組】The World Café</div>
+
+<!-- Para 1 (with 11, 12) -->
+<div class="passage autowrap">
+<p>In 1995, a group of business and academic leaders met at the home of Juanita Brown and David Isaacs in Mill Valley, California. None of them had any idea they were about to create a social innovation that <span class="blank">[11]</span> rapidly around the world.</p>
+<p>The group was supposed to have a large-circle discussion in their beautiful garden. Unfortunately, it started pouring. With their plan <span class="blank">[12]</span> by the rain, the two dozen participants squeezed into the living room.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">11.</span>
+  <div class="options" data-qid="11">
+    <label><input type="radio" name="q11" value="A"><span>(A) would spread</span></label>
+    <label><input type="radio" name="q11" value="B"><span>(B) had spread</span></label>
+    <label><input type="radio" name="q11" value="C"><span>(C) would have spread</span></label>
+    <label><input type="radio" name="q11" value="D"><span>(D) had been spreading</span></label>
   </div>
 </div>
+
+<div class="q-inline">
+  <span class="q-num-sq">12.</span>
+  <div class="options" data-qid="12">
+    <label><input type="radio" name="q12" value="A"><span>(A) fulfilled</span></label>
+    <label><input type="radio" name="q12" value="B"><span>(B) facilitated</span></label>
+    <label><input type="radio" name="q12" value="C"><span>(C) disrupted</span></label>
+    <label><input type="radio" name="q12" value="D"><span>(D) disclosed</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">fulfilled</span><span class="word">facilitated</span><span class="word">disrupted</span><span class="word">disclosed</span></div>
+
+<!-- Para 2 (with 13, 14) -->
+<div class="passage autowrap">
+<p>They broke into small, intimate table conversations, recording their insights on paper tablecloths. They periodically stopped their conversations to switch tables so the insights and ideas might <span class="blank">[13]</span> and deepen. As they moved from one table to another, they noticed new ideas emerging from the discussions. This in turn enriched subsequent rounds of conversation. Over the course of the morning, the innovative discussion process <span class="blank">[14]</span> a new form of collective effort that transformed the depth, scope, and quality of their discussion.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">13.</span>
+  <div class="options" data-qid="13">
+    <label><input type="radio" name="q13" value="A"><span>(A) emphasize</span></label>
+    <label><input type="radio" name="q13" value="B"><span>(B) circulate</span></label>
+    <label><input type="radio" name="q13" value="C"><span>(C) preserve</span></label>
+    <label><input type="radio" name="q13" value="D"><span>(D) recover</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">emphasize</span><span class="word">circulate</span><span class="word">preserve</span><span class="word">recover</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">14.</span>
+  <div class="options" data-qid="14">
+    <label><input type="radio" name="q14" value="A"><span>(A) made up for</span></label>
+    <label><input type="radio" name="q14" value="B"><span>(B) kept track of</span></label>
+    <label><input type="radio" name="q14" value="C"><span>(C) looked out for</span></label>
+    <label><input type="radio" name="q14" value="D"><span>(D) gave rise to</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 15) -->
+<div class="passage autowrap">
+<p>The World Café was <span class="blank">[15]</span> created. Since that rainy morning in Mill Valley, the World Café approach has been applied to multi-group discussions and cooperative actions by businesses, industries, and educational institutions around the world.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">15.</span>
+  <div class="options" data-qid="15">
+    <label><input type="radio" name="q15" value="A"><span>(A) thus</span></label>
+    <label><input type="radio" name="q15" value="B"><span>(B) still</span></label>
+    <label><input type="radio" name="q15" value="C"><span>(C) further</span></label>
+    <label><input type="radio" name="q15" value="D"><span>(D) also</span></label>
+  </div>
+</div>
+
+<div class="group-label">【第 16-20 題為題組】Motion Sickness</div>
+
+<!-- Para 1 (with 16) -->
+<div class="passage autowrap">
+<p>If you have ever been sick to your stomach on a rocking boat or a bumpy car ride, you know the discomfort of motion sickness. It can <span class="blank">[16]</span> suddenly, progressing from a feeling of uneasiness to a cold sweat. Soon, it can lead to dizziness, nausea, and vomiting.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">16.</span>
+  <div class="options" data-qid="16">
+    <label><input type="radio" name="q16" value="A"><span>(A) crash</span></label>
+    <label><input type="radio" name="q16" value="B"><span>(B) strike</span></label>
+    <label><input type="radio" name="q16" value="C"><span>(C) flush</span></label>
+    <label><input type="radio" name="q16" value="D"><span>(D) burst</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">crash</span><span class="word">strike</span><span class="word">flush</span><span class="word">burst</span></div>
+
+<!-- Para 2 (with 17, 18) -->
+<div class="passage autowrap">
+<p>Motion sickness occurs when the signals your brain receives from your eyes, ears, and body <span class="blank">[17]</span>. Your brain doesn't know whether you are stationary or moving when these parts send conflicting information: One part of your balance-sensing system detects that your body is moving, but the other parts <span class="blank">[18]</span>. Your brain's confused reaction makes you feel sick. You may experience the discomfort from the motion of cars, boats, or amusement park rides. You may also get sick from playing video games, or looking through a microscope.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">17.</span>
+  <div class="options" data-qid="17">
+    <label><input type="radio" name="q17" value="A"><span>(A) are not regular</span></label>
+    <label><input type="radio" name="q17" value="B"><span>(B) do not match</span></label>
+    <label><input type="radio" name="q17" value="C"><span>(C) can hardly move</span></label>
+    <label><input type="radio" name="q17" value="D"><span>(D) are rarely cued</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">18.</span>
+  <div class="options" data-qid="18">
+    <label><input type="radio" name="q18" value="A"><span>(A) aren't</span></label>
+    <label><input type="radio" name="q18" value="B"><span>(B) won't</span></label>
+    <label><input type="radio" name="q18" value="C"><span>(C) haven't</span></label>
+    <label><input type="radio" name="q18" value="D"><span>(D) don't</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 19, 20) -->
+<div class="passage autowrap">
+<p>You can take some <span class="blank">[19]</span> to help avoid the discomfort. If you are traveling, reserve seats where motion is felt the least, such as the front row of a car or forward cars of a train. Looking out into the distance from the vehicle can help <span class="blank">[20]</span>. You can also take medicine before your ride to avoid or reduce nausea and vomiting.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">19.</span>
+  <div class="options" data-qid="19">
+    <label><input type="radio" name="q19" value="A"><span>(A) special opportunities</span></label>
+    <label><input type="radio" name="q19" value="B"><span>(B) potential risks</span></label>
+    <label><input type="radio" name="q19" value="C"><span>(C) preventive measures</span></label>
+    <label><input type="radio" name="q19" value="D"><span>(D) significant advantages</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">opportunities</span><span class="word">potential</span><span class="word">preventive</span><span class="word">measures</span><span class="word">advantages</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">20.</span>
+  <div class="options" data-qid="20">
+    <label><input type="radio" name="q20" value="A"><span>(A) by far</span></label>
+    <label><input type="radio" name="q20" value="B"><span>(B) as well</span></label>
+    <label><input type="radio" name="q20" value="C"><span>(C) at least</span></label>
+    <label><input type="radio" name="q20" value="D"><span>(D) after all</span></label>
+  </div>
+</div>
+
+<!-- ============ 三、文意選填 (21-30) — 已位置變換 ============ -->
+<div class="section-title">三、文意選填（第 21-30 題，每題 1 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+<div class="group-label">【第 21-30 題為題組】Notre-Dame Bells</div>
+
+<!-- Para 1 (with 21) -->
+<div class="passage autowrap">
+<p>The Notre-Dame de Paris is one of the most famous cathedrals in Europe. Located at the heart of Paris, this medieval cathedral is <span class="blank">[21]</span> for its intricate architecture, stunning stained glass windows, and, above all, its bells.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">21.</span>
+  <div class="options options-ci" data-qid="21">
+    <label><input type="radio" name="q21" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q21" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q21" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q21" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q21" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q21" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q21" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q21" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q21" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q21" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<!-- Para 2 (with 22, 23, 24) -->
+<div class="passage autowrap">
+<p>Mounted in the two tall towers of the cathedral, Notre-Dame's bells have been ringing for over 800 years. In fact, there is documented <span class="blank">[22]</span> to the ringing of bells even before the cathedral's construction was completed, dating as far back as the 12th century. The 10 bells vary in size, each <span class="blank">[23]</span> a name. The largest one, named "Emmanuel," weighs over 13 tons. It is the only one of the whole group that <span class="blank">[24]</span> the French Revolution, while the rest were melted down for weapons.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">22.</span>
+  <div class="options options-ci" data-qid="22">
+    <label><input type="radio" name="q22" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q22" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q22" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q22" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q22" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q22" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q22" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q22" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q22" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q22" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">23.</span>
+  <div class="options options-ci" data-qid="23">
+    <label><input type="radio" name="q23" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q23" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q23" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q23" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q23" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q23" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q23" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q23" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q23" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q23" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">24.</span>
+  <div class="options options-ci" data-qid="24">
+    <label><input type="radio" name="q24" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q24" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q24" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q24" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q24" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q24" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q24" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q24" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q24" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q24" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 25) -->
+<div class="passage autowrap">
+<p>The melted bells were recast in the late 19th century. But due to their poor acoustic quality, all of the bells were replaced in 2013—except for Emmanuel, which <span class="blank">[25]</span> its renowned, excellent sound. This particular bell, ringing in F sharp, is considered one of the most harmonically beautiful in Europe.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">25.</span>
+  <div class="options options-ci" data-qid="25">
+    <label><input type="radio" name="q25" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q25" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q25" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q25" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q25" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q25" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q25" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q25" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q25" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q25" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<!-- Para 4 (with 26, 27, 28) -->
+<div class="passage autowrap">
+<p>Over centuries, the bells have become a <span class="blank">[26]</span> part of life in Paris, where they are known as "the cathedral's voice." They have been used to mark the hours of the day, to call the <span class="blank">[27]</span> to prayer, and to signal emergency situations such as fires and invasions. They have also rung in times of <span class="blank">[28]</span> and of mourning, announcing such events as royal weddings and coronations of kings, as well as funerals of heads of state.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">26.</span>
+  <div class="options options-ci" data-qid="26">
+    <label><input type="radio" name="q26" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q26" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q26" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q26" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q26" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q26" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q26" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q26" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q26" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q26" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">27.</span>
+  <div class="options options-ci" data-qid="27">
+    <label><input type="radio" name="q27" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q27" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q27" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q27" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q27" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q27" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q27" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q27" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q27" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q27" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">28.</span>
+  <div class="options options-ci" data-qid="28">
+    <label><input type="radio" name="q28" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q28" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q28" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q28" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q28" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q28" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q28" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q28" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q28" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q28" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<!-- Para 5 (with 29, 30) -->
+<div class="passage autowrap">
+<p>However, after the devastating fire that damaged the cathedral in 2019, the bells fell <span class="blank">[29]</span>. The building went through a complex and time-consuming process of <span class="blank">[30]</span>, and the famous monument was finally reopened on December 8, 2024. The sounds of Notre-Dame bells once again filled the air in Paris, and will be heard for generations to come.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">29.</span>
+  <div class="options options-ci" data-qid="29">
+    <label><input type="radio" name="q29" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q29" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q29" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q29" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q29" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q29" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q29" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q29" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q29" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q29" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">30.</span>
+  <div class="options options-ci" data-qid="30">
+    <label><input type="radio" name="q30" value="A"><span>(A) survived</span></label>
+    <label><input type="radio" name="q30" value="B"><span>(B) noted</span></label>
+    <label><input type="radio" name="q30" value="C"><span>(C) silent</span></label>
+    <label><input type="radio" name="q30" value="D"><span>(D) bearing</span></label>
+    <label><input type="radio" name="q30" value="E"><span>(E) reference</span></label>
+    <label><input type="radio" name="q30" value="F"><span>(F) restoration</span></label>
+    <label><input type="radio" name="q30" value="G"><span>(G) familiar</span></label>
+    <label><input type="radio" name="q30" value="H"><span>(H) retained</span></label>
+    <label><input type="radio" name="q30" value="I"><span>(I) celebration</span></label>
+    <label><input type="radio" name="q30" value="J"><span>(J) faithful</span></label>
+  </div>
+</div>
+
+<div class="vocab-row"><span class="word">survived</span><span class="word">noted</span><span class="word">silent</span><span class="word">bearing</span><span class="word">reference</span><span class="word">restoration</span><span class="word">familiar</span><span class="word">retained</span><span class="word">celebration</span><span class="word">faithful</span></div>
+
+<!-- ============ 四、篇章結構 (31-34) — 已位置變換 ============ -->
+<div class="section-title">四、篇章結構（第 31-34 題，每題 2 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+<div class="group-label">【第 31-34 題為題組】Capsule Hotel</div>
+
+<!-- Para 1 -->
+<div class="passage autowrap">
+<p>A capsule hotel, also known as a pod hotel, is a unique type of basic, affordable accommodation. Originated in Japan, these hotels were initially meant for business professionals to stay close to populated business districts without spending a lot. <span class="blank">[31]</span></p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">31.</span>
+  <div class="options options-ps" data-qid="31">
+    <label><input type="radio" name="q31" value="A"><span>(A) Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</span></label>
+    <label><input type="radio" name="q31" value="B"><span>(B) In response to rising demands, these hotels are embracing a wave of innovation.</span></label>
+    <label><input type="radio" name="q31" value="C"><span>(C) The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</span></label>
+    <label><input type="radio" name="q31" value="D"><span>(D) The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</span></label>
+  </div>
+</div>
+
+<!-- Para 2 -->
+<div class="passage autowrap">
+<p>A typical room of a capsule hotel is roughly the length and width of a single bed, with sufficient height for a guest to crawl in and sit up on the bed. The walls of each capsule may be made of wood, metal or any rigid material, but are often fiberglass or plastic. <span class="blank">[32]</span> Each capsule is equipped with a comfortable mattress, a small light, and sometimes a television or other entertainment options. Such minimalist design is what makes these hotels both inexpensive and efficient, providing only the essential elements for a good night sleep.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">32.</span>
+  <div class="options options-ps" data-qid="32">
+    <label><input type="radio" name="q32" value="A"><span>(A) Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</span></label>
+    <label><input type="radio" name="q32" value="B"><span>(B) In response to rising demands, these hotels are embracing a wave of innovation.</span></label>
+    <label><input type="radio" name="q32" value="C"><span>(C) The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</span></label>
+    <label><input type="radio" name="q32" value="D"><span>(D) The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</span></label>
+  </div>
+</div>
+
+<!-- Para 3 -->
+<div class="passage autowrap">
+<p>The first capsule hotel, the Capsule Inn Osaka, opened in 1979. Since then, capsule hotels have quickly spread to other cities and countries. Chains have emerged in Taiwan, Singapore, and even on resort islands like Bali. Pod hotels are also seen in Europe and North America, especially in big cities like New York, London, and Paris. <span class="blank">[33]</span> Instead of the traditional bare pod-sized style, new chains now feature interior design that appeals to digitally connected travelers from around the world. Guests may enjoy facilities such as free Wi-Fi, mobile charging, and even a soundless alarm system that raises the sleeping guests into a seated position while gradually brightening the lights.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">33.</span>
+  <div class="options options-ps" data-qid="33">
+    <label><input type="radio" name="q33" value="A"><span>(A) Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</span></label>
+    <label><input type="radio" name="q33" value="B"><span>(B) In response to rising demands, these hotels are embracing a wave of innovation.</span></label>
+    <label><input type="radio" name="q33" value="C"><span>(C) The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</span></label>
+    <label><input type="radio" name="q33" value="D"><span>(D) The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</span></label>
+  </div>
+</div>
+
+<!-- Para 4 -->
+<div class="passage autowrap">
+<p>While offering budget-conscious travelers a unique option, capsule hotels may not be suitable for everyone. Some hotels may not provide air conditioning in the capsules, leading to poor air flow. <span class="blank">[34]</span> Also, you may have to share common facilities (such as bathrooms) with other guests. And, if you're worried about feeling claustrophobic in small spaces, you'd better think twice before making a reservation.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">34.</span>
+  <div class="options options-ps" data-qid="34">
+    <label><input type="radio" name="q34" value="A"><span>(A) Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</span></label>
+    <label><input type="radio" name="q34" value="B"><span>(B) In response to rising demands, these hotels are embracing a wave of innovation.</span></label>
+    <label><input type="radio" name="q34" value="C"><span>(C) The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</span></label>
+    <label><input type="radio" name="q34" value="D"><span>(D) The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</span></label>
+  </div>
+</div>
+
+<!-- 篇章結構選項句子重複出現（不用提號）-->
+<div class="vocab-sentences autowrap">
+  <div class="sent-line">Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</div>
+  <div class="sent-line">In response to rising demands, these hotels are embracing a wave of innovation.</div>
+  <div class="sent-line">The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</div>
+  <div class="sent-line">The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</div>
+</div>
+
+<!-- ============ 五、閱讀測驗 (35-46) — 已位置變換 ============ -->
+<div class="section-title">五、閱讀測驗（第 35-46 題，每題 2 分）⚙ 已位置變換</div>
+
+<div class="group-label">【第 35-38 題為題組】Knight's Traffic Light</div>
+
+<div class="passage autowrap">
+<p>While waiting to cross the street at busy intersections, have you ever wondered who invented the traffic light? Most people credit the first traffic light to Nottingham engineer John Peake Knight. A railway manager, Knight specialized in designing the signaling system for Britain's growing railway network in the 1860s. He saw no reason why this could not be adapted for use on the busy London intersections. Thus, he proposed a signaling system based on the railway movable-arm signal: Arms extending horizontally commanded drivers to stop, whereas arms lowered to a 45-degree angle told drivers to move on, resembling a traffic director's gestures. Red and green gas lamps were added to the signal for use at night. A police officer was stationed by the side to operate the system.</p>
+<p>Knight's traffic signal was installed near London's Westminster Bridge in December 1868, but the system was short-lived. A gas leak one month later caused an explosion in the lights, injuring the policeman operating it. Deemed a public hazard, the project was immediately dropped, and traffic lights were banned until their return in 1929 back to the British streets.</p>
+<p>In the early 1900s, versions of the British traffic lights appeared in big cities in America, where traffic was on a sharp rise. Systems using movable arms were popular in Chicago, while those using the red and green lights were adopted in San Francisco. Patents with innovations on Knight's ideas were filed nationwide. A major breakthrough was the yellow light invented by a Detroit police officer William Potts. Installed in Detroit in 1920, Potts' three-color system allowed for the added signal "proceed with caution" to be displayed.</p>
+<p>Now, with the emergence of self-driving cars, researchers have begun to suggest that traffic signals are no longer necessary. Intersections will operate in a way that cars automatically adjust their speed to cross through, while maintaining safe distances from other vehicles. In the near future, we may experience a brand new form of traffic management!</p>
+</div>
+
+<div class="question" data-q="35">
+  <div class="q-text autowrap"><span class="q-num">35</span>What is this passage mainly about?</div>
+  <div class="options options-rd" data-qid="35">
+    <label><input type="radio" name="q35" value="A"><span>(A) The inventors of traffic lights in history.</span></label>
+    <label><input type="radio" name="q35" value="B"><span>(B) The functions of different traffic signals.</span></label>
+    <label><input type="radio" name="q35" value="C"><span>(C) The evolution of traffic control systems.</span></label>
+    <label><input type="radio" name="q35" value="D"><span>(D) The development of modern transportation.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">evolution</span><span class="word">inventors</span><span class="word">transportation</span></div>
+
+<!-- Q36 圖片題 -->
+<div class="question" data-q="36">
+  <div class="q-text autowrap"><span class="q-num">36</span>Which of the following pictures shows Knight's proposed traffic signal?</div>
+  <div class="pic-grid">
+    <!-- (A) 簡單可動雙臂號誌 -->
+    <label class="pic-opt"><input type="radio" name="q36" value="A">
+      <svg viewBox="0 0 100 140" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <!-- pole -->
+        <rect x="46" y="20" width="6" height="115" fill="#444"/>
+        <!-- top arm horizontal -->
+        <rect x="50" y="25" width="40" height="6" fill="#666"/>
+        <rect x="86" y="22" width="3" height="12" fill="#999"/>
+        <!-- bottom arm horizontal -->
+        <rect x="50" y="55" width="40" height="6" fill="#666"/>
+        <rect x="86" y="52" width="3" height="12" fill="#999"/>
+      </svg>
+      <span class="pic-cap">(A)</span>
+    </label>
+    <!-- (B) STOP/GO 方塊 -->
+    <label class="pic-opt"><input type="radio" name="q36" value="B">
+      <svg viewBox="0 0 100 140" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <rect x="35" y="65" width="6" height="70" fill="#444"/>
+        <rect x="20" y="30" width="60" height="40" fill="#7d2d2d" stroke="#333" stroke-width="1"/>
+        <text x="35" y="48" font-size="11" fill="#fff" font-weight="bold">STOP</text>
+        <text x="38" y="62" font-size="10" fill="#fff" font-weight="bold">GO</text>
+      </svg>
+      <span class="pic-cap">(B)</span>
+    </label>
+    <!-- (C) 紀念柱：燈籠盒 + 雙圓燈 + 頂部小騎士像（裝飾紀念，非正解） -->
+    <label class="pic-opt"><input type="radio" name="q36" value="C">
+      <svg viewBox="0 0 100 140" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <!-- pole -->
+        <rect x="46" y="65" width="8" height="70" fill="#3a3a3a"/>
+        <!-- box (lantern) -->
+        <rect x="30" y="20" width="40" height="50" rx="3" fill="#3a3a3a" stroke="#222" stroke-width="1.5"/>
+        <!-- two lamps stacked -->
+        <circle cx="50" cy="32" r="6" fill="#cc3030" stroke="#660000"/>
+        <circle cx="50" cy="52" r="6" fill="#3aaa3a" stroke="#066"/>
+        <!-- knight figure on top -->
+        <circle cx="50" cy="14" r="4" fill="#666"/>
+        <rect x="48" y="6" width="4" height="6" fill="#666"/>
+        <rect x="46" y="14" width="8" height="6" fill="#666"/>
+        <!-- decorative base -->
+        <rect x="42" y="135" width="16" height="4" fill="#222"/>
+      </svg>
+      <span class="pic-cap">(C)</span>
+    </label>
+    <!-- (D) ✓ Knight 提案：維多利亞式裝飾柱 + 兩側可動臂 + 頂部紅綠瓦斯燈（正解） -->
+    <label class="pic-opt"><input type="radio" name="q36" value="D">
+      <svg viewBox="0 0 100 140" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <!-- pole (decorative twisted) -->
+        <rect x="46" y="50" width="8" height="80" fill="#3a3a3a"/>
+        <line x1="46" y1="55" x2="54" y2="60" stroke="#222"/>
+        <line x1="46" y1="70" x2="54" y2="75" stroke="#222"/>
+        <line x1="46" y1="85" x2="54" y2="90" stroke="#222"/>
+        <line x1="46" y1="100" x2="54" y2="105" stroke="#222"/>
+        <!-- gas lamp housing on top with crown shape -->
+        <polygon points="42,18 58,18 55,8 50,4 45,8" fill="#444" stroke="#222"/>
+        <rect x="35" y="18" width="30" height="22" rx="2" fill="#3a3a3a" stroke="#222"/>
+        <!-- red/green lamps in housing -->
+        <circle cx="44" cy="29" r="3.5" fill="#cc3030" stroke="#660000"/>
+        <circle cx="56" cy="29" r="3.5" fill="#3aaa3a" stroke="#066"/>
+        <!-- semaphore arms (extending horizontally - "Stop") -->
+        <rect x="10" y="50" width="30" height="5" fill="#7d2d2d" stroke="#400"/>
+        <rect x="60" y="50" width="30" height="5" fill="#7d2d2d" stroke="#400"/>
+        <!-- arm pivot circles -->
+        <circle cx="40" cy="52" r="3" fill="#888"/>
+        <circle cx="60" cy="52" r="3" fill="#888"/>
+        <!-- decorative base -->
+        <polygon points="38,130 62,130 58,138 42,138" fill="#222"/>
+      </svg>
+      <span class="pic-cap">(D)</span>
+    </label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">proposed</span><span class="word">signal</span><span class="word">movable-arm</span><span class="word">gas lamps</span></div>
+
+<div class="question" data-q="37">
+  <div class="q-text autowrap"><span class="q-num">37</span>Which of the following statements is true, according to the passage?</div>
+  <div class="options options-rd" data-qid="37">
+    <label><input type="radio" name="q37" value="A"><span>(A) Future vehicles may not need traffic lights to cross an intersection.</span></label>
+    <label><input type="radio" name="q37" value="B"><span>(B) Knight was injured in the explosion of his traffic light.</span></label>
+    <label><input type="radio" name="q37" value="C"><span>(C) Potts' traffic light was the first one to appear in the USA.</span></label>
+    <label><input type="radio" name="q37" value="D"><span>(D) The first traffic signal originated from the idea of a traffic director.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">vehicles</span><span class="word">intersection</span><span class="word">explosion</span><span class="word">originated</span></div>
+
+<div class="question" data-q="38">
+  <div class="q-text autowrap"><span class="q-num">38</span>Here is a sentence: "This design was adopted in later traffic light designs across the world." Which paragraph is most suitable to have it as the final sentence?</div>
+  <div class="options options-rd" data-qid="38">
+    <label><input type="radio" name="q38" value="A"><span>(A) Paragraph 1.</span></label>
+    <label><input type="radio" name="q38" value="B"><span>(B) Paragraph 2.</span></label>
+    <label><input type="radio" name="q38" value="C"><span>(C) Paragraph 4.</span></label>
+    <label><input type="radio" name="q38" value="D"><span>(D) Paragraph 3.</span></label>
+  </div>
+</div>
+
+<div class="group-label">【第 39-42 題為題組】Horror Movies</div>
+
+<!-- Para 1, 2 -->
+<div class="passage autowrap">
+<p>Typically featuring zombies and serial killers, horror movies are too frightening to be fun for some people. But many others enjoy a good fear spectacle, and line up to see the latest scary movie. Given the variations in preferences, new studies have started to untangle the benefits and risks of horror movies.</p>
+<p>One benefit of horror movies revolves around the concept of so-called "safe fear." When watching a frightening film, people are in the comfort of their own home or theater seats rather than under the threat of any real danger. In a controlled environment, these films may actually reduce the negative impact on viewers and help them become tougher. Secondly, as people are drawn into the story, they tend to take the perspective of the characters and rehearse the plot unconsciously. Researchers believe that viewers are learning vicariously this way, picking up tips on how to handle threats in the real world. In addition, studies show that the thrill and excitement linked with scary films can be therapeutic: It allows viewers to release bottled-up emotions and experience a sense of relief after the movie is over. This probably explains why during the COVID-19 pandemic, horror and pandemic thrillers were the most-watched movies on digital movie apps.</p>
+</div>
+
+<!-- Q40 inline -->
+<div class="question" data-q="40">
+  <div class="q-text autowrap"><span class="q-num">40</span>What does the author mean by "learning vicariously" in the second paragraph?</div>
+  <div class="options options-rd" data-qid="40">
+    <label><input type="radio" name="q40" value="A"><span>(A) Gaining knowledge through observation.</span></label>
+    <label><input type="radio" name="q40" value="B"><span>(B) Making inquiries without reservation.</span></label>
+    <label><input type="radio" name="q40" value="C"><span>(C) Acquiring insights by face-to-face interaction.</span></label>
+    <label><input type="radio" name="q40" value="D"><span>(D) Obtaining information from personal experience.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">vicariously</span><span class="word">observation</span><span class="word">inquiries</span><span class="word">reservation</span><span class="word">acquiring</span><span class="word">insights</span></div>
+
+<!-- Para 3 -->
+<div class="passage autowrap">
+<p>However, researchers also find that horror movies can have negative effects on some people. People who are more sensitive to anxiety can panic after viewing a thriller. For those with unpleasant experiences, trauma may be triggered by the themes and images in the movies, which could make their symptoms worse. Furthermore, watching horror movies can disturb sleep patterns, as the residual fear and anxiety they evoke may keep people awake all night, thus leading to fatigue and irritability the following day. Finally, specialists warn that frightening films can have a negative impact on children. Children under 14 who watch horror movies have a greater chance of developing anxiety later in adulthood. Worse yet, exposure to graphic violence and bloodshed can make them less sensitive to real-life violence and more accepting of aggression.</p>
+</div>
+
+<div class="question" data-q="39">
+  <div class="q-text autowrap"><span class="q-num">39</span>What field of study does the research mentioned in the passage most likely belong to?</div>
+  <div class="options options-rd" data-qid="39">
+    <label><input type="radio" name="q39" value="A"><span>(A) Education.</span></label>
+    <label><input type="radio" name="q39" value="B"><span>(B) Philosophy.</span></label>
+    <label><input type="radio" name="q39" value="C"><span>(C) Psychology.</span></label>
+    <label><input type="radio" name="q39" value="D"><span>(D) Communication.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">Psychology</span><span class="word">Philosophy</span><span class="word">Communication</span></div>
+
+<div class="question" data-q="41">
+  <div class="q-text autowrap"><span class="q-num">41</span>Which of the following statements about horror movies can be inferred from the passage?</div>
+  <div class="options options-rd" data-qid="41">
+    <label><input type="radio" name="q41" value="A"><span>(A) Watching horror movies may have a long-term effect on personality.</span></label>
+    <label><input type="radio" name="q41" value="B"><span>(B) There are far more benefits to horror movies than disadvantages.</span></label>
+    <label><input type="radio" name="q41" value="C"><span>(C) Most horror movie lovers are prone to aggressive behavior.</span></label>
+    <label><input type="radio" name="q41" value="D"><span>(D) COVID-19 was an important source of inspiration for horror movies.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">long-term</span><span class="word">personality</span><span class="word">aggressive</span><span class="word">prone</span><span class="word">inspiration</span></div>
+
+<div class="question" data-q="42">
+  <div class="q-text autowrap"><span class="q-num">42</span>How does the author develop the ideas in this passage?</div>
+  <div class="options options-rd" data-qid="42">
+    <label><input type="radio" name="q42" value="A"><span>(A) By defining and illustrating a concept.</span></label>
+    <label><input type="radio" name="q42" value="B"><span>(B) By presenting cause and effect of a problem.</span></label>
+    <label><input type="radio" name="q42" value="C"><span>(C) By showing opposing views of an issue.</span></label>
+    <label><input type="radio" name="q42" value="D"><span>(D) By providing steps for settling a disagreement.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">defining</span><span class="word">illustrating</span><span class="word">opposing</span><span class="word">disagreement</span></div>
+
+<div class="group-label">【第 43-46 題為題組】Russia &amp; Vodka</div>
+
+<!-- Para 1-4 -->
+<div class="passage autowrap">
+<p>Russia is widely portrayed as the most alcohol-dependent country in the world. Critics of the country say that drinking is almost an inherent trait of the Russian people. However, there is more to the story.</p>
+<p>The consumption of alcoholic beverages was unusual in ancient Russia. Before the adoption of Christianity in Russia (10th century), there were no vineyards and therefore no wine. People only drank beverages with low alcohol content. Vodka, Russia's national drink, was not a Russian invention. The liquid was originally a grape alcohol introduced from France in the late 14th century. The first Russian-made vodka appeared in the 15th century, and the drink remained relatively low in alcohol content until the mid-18th century.</p>
+<p>There is contradictory information about Russians' inclination toward alcohol in the 15th and 16th centuries. Some documents noted that Russians "indulge in excessive drinking whenever the occasion arises," while others claimed that Russians "rarely drink wine." The heaviest drinkers in medieval Europe were actually Germans. There were many sayings about their desire for alcohol, such as "drunk as a German."</p>
+<p>The Russian state played a significant role in the spread of alcohol consumption in the country. In the 19th century, the emperors began to establish a state monopoly, largely due to the rise of illegal production of low-quality vodka. Thus, only the government was permitted to produce the alcohol. "<u>This</u>" soon filled the state treasury with huge revenues, but it also encouraged vodka consumption. The situation worsened when the industrial production of vodka began in the country, causing its prices to drop sharply and making it available to even low-income citizens.</p>
+</div>
+
+<!-- Q45 inline -->
+<div class="question" data-q="45">
+  <div class="q-text autowrap"><span class="q-num">45</span>What does "This" in the fourth paragraph refer to?</div>
+  <div class="options options-rd" data-qid="45">
+    <label><input type="radio" name="q45" value="A"><span>(A) The state monopoly.</span></label>
+    <label><input type="radio" name="q45" value="B"><span>(B) The government.</span></label>
+    <label><input type="radio" name="q45" value="C"><span>(C) The alcohol.</span></label>
+    <label><input type="radio" name="q45" value="D"><span>(D) The illegal production.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">monopoly</span><span class="word">illegal</span></div>
+
+<!-- Para 5 -->
+<div class="passage autowrap">
+<p>Meanwhile, a powerful anti-alcohol movement started in the 19th century. Government policies were made and public organizations established to prevent the spread of alcoholism in the country. The movement continued over the years; however, the problem remains. Although Russia does not occupy first place when it comes to alcohol consumption per capita, it is still close to the top.</p>
+</div>
+
+<div class="question" data-q="43">
+  <div class="q-text autowrap"><span class="q-num">43</span>What is the main purpose of the second paragraph in the passage?</div>
+  <div class="options options-rd" data-qid="43">
+    <label><input type="radio" name="q43" value="A"><span>(A) To argue against the assumption that Russians are born drinkers.</span></label>
+    <label><input type="radio" name="q43" value="B"><span>(B) To discuss the content of alcoholic drinks in ancient Europe.</span></label>
+    <label><input type="radio" name="q43" value="C"><span>(C) To highlight the French impact on Russians' drinking habits.</span></label>
+    <label><input type="radio" name="q43" value="D"><span>(D) To link Russians' vodka consumption to their adoption of Christianity.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">assumption</span><span class="word">highlight</span><span class="word">adoption</span></div>
+
+<div class="question" data-q="44">
+  <div class="q-text autowrap"><span class="q-num">44</span>Which of the following is true about vodka production?</div>
+  <div class="options options-rd" data-qid="44">
+    <label><input type="radio" name="q44" value="A"><span>(A) The first vodka made from wheat was imported from France.</span></label>
+    <label><input type="radio" name="q44" value="B"><span>(B) Vodka production in Russia started in the 15th century.</span></label>
+    <label><input type="radio" name="q44" value="C"><span>(C) Germany was the biggest vodka producer in medieval Europe.</span></label>
+    <label><input type="radio" name="q44" value="D"><span>(D) Russian people were encouraged to make their own vodka in the 19th century.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">imported</span><span class="word">producer</span><span class="word">encouraged</span></div>
+
+<div class="question" data-q="46">
+  <div class="q-text autowrap"><span class="q-num">46</span>How does the author conclude the passage in the last paragraph?</div>
+  <div class="options options-rd" data-qid="46">
+    <label><input type="radio" name="q46" value="A"><span>(A) By raising a new problem.</span></label>
+    <label><input type="radio" name="q46" value="B"><span>(B) By providing further facts.</span></label>
+    <label><input type="radio" name="q46" value="C"><span>(C) By making a future prediction.</span></label>
+    <label><input type="radio" name="q46" value="D"><span>(D) By summarizing the main ideas.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">conclude</span><span class="word">summarizing</span><span class="word">prediction</span></div>
+
+<!-- ============ 第貳部分 混合題 (47-50) ============ -->
+<div class="section-title">第 貳 部 分 ‧ 混 合 題（第 47-50 題，占 10 分）</div>
+<div class="group-label">【第 47-50 題為題組】Zoo Forum 動物園論壇</div>
+
+<div class="passage autowrap">
+<p>A zoo is a place where animals in captivity are put on display for humans to see. While early zoos put emphasis on displaying as many unusual creatures as possible, most modern zoos now focus on conservation and education. Still, many animal rights activists believe the cost of confining animals outweighs the benefits. What are your opinions? Feel free to share your ideas on this forum.</p>
+
+<p><strong>A. Amy</strong><br>Personally I'm against zoos, though I do understand some of the arguments why they should exist. I don't agree with caging animals for our entertainment.</p>
+<p><strong>B. Ben</strong><br>What gives humans the right to capture, confine, or breed other species? Even if an animal is endangered, does that justify restricting its freedom?</p>
+<p><strong>C. Cathy</strong><br>Zoos are a tradition, and a visit to a zoo is a wholesome family activity. Wildlife encounters are unforgettable experiences for children and adults alike.</p>
+<p><strong>D. Daniel</strong><br>To me, a zoo can be a good place for endangered species which have difficulty finding suitable mates in the wild.</p>
+<p><strong>E. Eddie</strong><br>My childhood memory of a polar bear pacing back and forth in a very small space in a zoo keeps haunting me. Is it a good idea to keep animals in sites not suited to them?</p>
+<p><strong>F. Frank</strong><br>Well, if zoos are an inevitability, zoo keepers must provide the best possible conditions for the animals that live in captivity—to say the least!</p>
+<p><strong>G. George</strong><br>Zoos have an educational aspect to it. It's easier to learn about an animal by seeing them in person.</p>
+<p><strong>H. Henry</strong><br>Most animals in zoos are not endangered, nor are they being prepared for release into natural habitats. In fact, it is nearly impossible to release captive-bred animals.</p>
+<p><strong>I. Irene</strong><br>Fostering empathy…By seeing an animal up close, the public could be encouraged to be more sensitive and compassionate to a species that is facing extinction in the wild.</p>
+<p><strong>J. Jack</strong><br>In making a case for or against zoos, both sides argue that they're saving animals. Whether or not zoos benefit the animal community, they certainly do make money. Like it or not, zoos will continue to exist as long as there is a demand for them.</p>
+</div>
+
+<div class="question" data-q="47">
+  <div class="q-text autowrap"><span class="q-num">47-48</span>請根據選文內容，從文章中選出兩個單詞，分別填入下列句子空格，並視句型結構需要作適當的字形變化，使句子語意完整、語法正確，且符合全文文意（每格 2 分，共 4 分）。</div>
+  <div class="autowrap" style="background:#f8fbfd;padding:10px;border-radius:6px;margin-top:6px;line-height:2;">
+    Modern zoos serve the purposes of conserving endangered species as well as
+    <input type="text" class="fill-blank" id="q47" placeholder="Q47">
+    visitors. However, some people are against zoos because the animals
+    <input type="text" class="fill-blank" id="q48" placeholder="Q48">
+    there will lose the freedom they enjoy in the wild.
+  </div>
+</div>
+<div class="vocab-row"><span class="word">conserving</span><span class="word">endangered</span><span class="word">educating</span><span class="word">caged</span><span class="word">captive</span><span class="word">captivity</span></div>
+
+<div class="question" data-q="49">
+  <div class="q-text autowrap"><span class="q-num">49</span>From (A) to (J) in the above forum discussion, which ONES show a positive attitude toward zoos?<strong>（多選題，4 分；請選出所有支持動物園的人）</strong></div>
+  <div class="options options-multi" data-qid="49">
+    <label><input type="checkbox" name="q49" value="A"><span>A. Amy</span></label>
+    <label><input type="checkbox" name="q49" value="B"><span>B. Ben</span></label>
+    <label><input type="checkbox" name="q49" value="C"><span>C. Cathy</span></label>
+    <label><input type="checkbox" name="q49" value="D"><span>D. Daniel</span></label>
+    <label><input type="checkbox" name="q49" value="E"><span>E. Eddie</span></label>
+    <label><input type="checkbox" name="q49" value="F"><span>F. Frank</span></label>
+    <label><input type="checkbox" name="q49" value="G"><span>G. George</span></label>
+    <label><input type="checkbox" name="q49" value="H"><span>H. Henry</span></label>
+    <label><input type="checkbox" name="q49" value="I"><span>I. Irene</span></label>
+    <label><input type="checkbox" name="q49" value="J"><span>J. Jack</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">attitude</span><span class="word">forum</span><span class="word">positive</span></div>
+
+<div class="question" data-q="50">
+  <div class="q-text autowrap"><span class="q-num">50</span>Which phrase on the forum discussion carries the meaning of "building the ability to understand and share the feelings of others"?<strong>（簡答題 2 分，請以英文一個片語回答）</strong></div>
+  <input type="text" class="fill-blank" id="q50" placeholder="請輸入答案" style="width:100%; min-width:0; margin-top:8px;">
+</div>
+<div class="vocab-row"><span class="word">phrase</span><span class="word">empathy</span><span class="word">fostering</span></div>
+
+<!-- ============ 第 參 部 分 、 非選擇題 ============ -->
+<div class="section-title">第 參 部 分 ‧ 非選擇題（占 28 分）</div>
+
+<div class="group-label">一、中譯英（占 8 分，每題 4 分）</div>
+<div class="instruction" style="margin-bottom:10px;">
+  <strong>說明：</strong>依題號將以下中文句子譯成正確、通順、達意的英文。
+</div>
+
+<div class="trans-item">
+  <div class="ch-line">1. 人類的想像和創意是科技進步最大的驅動力。</div>
+  <textarea id="trans1" class="short-ans" placeholder="請寫下你的英文翻譯..."></textarea>
+</div>
+
+<div class="trans-item">
+  <div class="ch-line">2. 過去在科幻電影中出現的神奇物件，現在正逐一成真。</div>
+  <textarea id="trans2" class="short-ans" placeholder="請寫下你的英文翻譯..."></textarea>
+</div>
+
+<div class="group-label">二、英文作文（占 20 分）</div>
+<div class="instruction autowrap" style="margin-bottom:10px;">
+  <strong>提示：</strong>每逢颱風逼近臺灣，各縣市政府會依氣象預報的內容而決定隔日是否停止上班上課。請針對這個議題寫一篇英文作文（至少 120 個 words），文分兩段：第一段根據下方對比圖片，描述颱風假時，實際上可能出現的兩種不同情景；第二段說明你對放颱風假的看法與經驗。
+</div>
+
+<!-- 颱風假對比示意圖 -->
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0;">
+  <div style="background:#fff;border:1.5px solid #dfe4ea;border-radius:8px;padding:10px;text-align:center;">
+    <svg viewBox="0 0 160 110" style="width:100%;max-width:150px;height:90px;" xmlns="http://www.w3.org/2000/svg">
+      <!-- typhoon scene: heavy rain, person struggling with umbrella -->
+      <rect width="160" height="110" fill="#cce0f0"/>
+      <!-- rain lines -->
+      <g stroke="#6090c0" stroke-width="1.2">
+        <line x1="20" y1="10" x2="14" y2="40"/>
+        <line x1="40" y1="5" x2="32" y2="35"/>
+        <line x1="60" y1="12" x2="52" y2="42"/>
+        <line x1="80" y1="6" x2="72" y2="36"/>
+        <line x1="100" y1="10" x2="92" y2="40"/>
+        <line x1="120" y1="4" x2="112" y2="34"/>
+        <line x1="140" y1="12" x2="132" y2="42"/>
+      </g>
+      <!-- ground -->
+      <rect x="0" y="80" width="160" height="30" fill="#6a8a6a"/>
+      <!-- person with umbrella -->
+      <ellipse cx="80" cy="55" rx="22" ry="12" fill="#e74c3c" stroke="#900"/>
+      <line x1="80" y1="65" x2="80" y2="85" stroke="#444" stroke-width="2"/>
+      <circle cx="80" cy="73" r="5" fill="#fcb"/>
+      <rect x="76" y="78" width="8" height="12" fill="#5577cc"/>
+      <!-- bent umbrella -->
+      <path d="M58 60 Q80 45 102 60" stroke="#900" stroke-width="2" fill="none"/>
+    </svg>
+    <div style="font-size:0.85em;font-weight:600;margin-top:4px;">情景一：風雨真的很大</div>
+  </div>
+  <div style="background:#fff;border:1.5px solid #dfe4ea;border-radius:8px;padding:10px;text-align:center;">
+    <svg viewBox="0 0 160 110" style="width:100%;max-width:150px;height:90px;" xmlns="http://www.w3.org/2000/svg">
+      <!-- sunny scene: blue sky, sun, person playing -->
+      <rect width="160" height="110" fill="#a8d8ff"/>
+      <!-- sun -->
+      <circle cx="130" cy="25" r="14" fill="#ffd84a"/>
+      <g stroke="#ffaa00" stroke-width="1.5">
+        <line x1="130" y1="5" x2="130" y2="10"/>
+        <line x1="115" y1="10" x2="118" y2="14"/>
+        <line x1="145" y1="10" x2="142" y2="14"/>
+        <line x1="105" y1="25" x2="111" y2="25"/>
+      </g>
+      <!-- ground -->
+      <rect x="0" y="80" width="160" height="30" fill="#88c068"/>
+      <!-- person playing / smiling -->
+      <circle cx="55" cy="58" r="7" fill="#fcb" stroke="#666"/>
+      <path d="M52 58 q3 2 6 0" stroke="#000" stroke-width="1" fill="none"/>
+      <circle cx="53" cy="56" r="0.8" fill="#000"/><circle cx="57" cy="56" r="0.8" fill="#000"/>
+      <rect x="49" y="65" width="12" height="16" fill="#3498db"/>
+      <line x1="49" y1="70" x2="40" y2="62" stroke="#fcb" stroke-width="3"/>
+      <line x1="61" y1="70" x2="72" y2="62" stroke="#fcb" stroke-width="3"/>
+      <!-- ball -->
+      <circle cx="100" cy="78" r="6" fill="#fff" stroke="#333"/>
+      <!-- thought balloon -->
+      <text x="86" y="35" font-size="9" fill="#444">📱</text>
+    </svg>
+    <div style="font-size:0.85em;font-weight:600;margin-top:4px;">情景二：風和日麗放假玩</div>
+  </div>
+</div>
+
+<div class="trans-item">
+  <div class="ch-line"><strong>請寫下你的英文作文（至少 120 字）：</strong></div>
+  <textarea id="essay" class="short-ans" placeholder="第一段：根據圖片描述颱風假時可能出現的兩種情景...&#10;&#10;第二段：說明你對放颱風假的看法與經驗..." style="min-height:220px;"></textarea>
+  <div style="text-align:right;font-size:0.85em;color:#7f8c8d;margin-top:4px;">字數：<span id="essayWordCount">0</span> words</div>
+</div>
+
+<div class="button-row">
+  <button type="button" class="submit-btn" onclick="submitQuiz()">送出作答</button>
+</div>
+
+</form>
+
+<div id="results">
+
+  <div class="result-card score">
+    <h3>📊 你的成績</h3>
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-detail" id="scoreDetail"></div>
+  </div>
+
+  <div class="result-card teacher">
+    <h3>📋 結果 1：選項結果 + 不熟悉單字 + 中譯英 + 作文（複製貼到 LINE 群給老師）</h3>
+    <div class="copyable" id="teacherReport"></div>
+    <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
+  </div>
+
+  <div class="result-card feedback">
+    <h3>💡 結果 2：錯題詳解（自己看，檢討訂正；可選擇複製給自己留存）</h3>
+    <div id="feedbackReport"></div>
+    <div class="copyable" id="feedbackTextArea" style="margin-top:14px;"></div>
+    <button class="copy-btn" onclick="copyText('feedbackTextArea', this)">📋 複製結果 2</button>
+  </div>
+
+</div>
+
+</div>
+
+<div class="unknown-counter" id="unknownCounter">🔖 已標記 <span id="unknownCount">0</span> 個</div>
 
 <script>
-// ── 30 words taken directly from the article text ──
-const words = [
-  {
-    word: "famed",
-    pos: "adj. 著名的",
-    e1: "The <em>famed</em> explorer set sail before dawn, eager to reach the unknown coast.",
-    z1: "這位著名的探險家在黎明前出發，迫不及待地想抵達未知的海岸。",
-    e2: "She trained under a <em>famed</em> scientist whose research changed modern medicine.",
-    z2: "她在一位著名科學家門下學習，那位科學家的研究改變了現代醫學。"
-  },
-  {
-    word: "polar",
-    pos: "adj. 極地的",
-    e1: "The <em>polar</em> winds howled across the ice, dropping the temperature below minus forty.",
-    z1: "極地的狂風橫掃冰原，使氣溫驟降至零下四十度。",
-    e2: "Researchers at the <em>polar</em> station collected ice core samples for climate studies.",
-    z2: "極地站的研究人員採集冰芯樣本，用於氣候研究。"
-  },
-  {
-    word: "explorer",
-    pos: "n. 探險家",
-    e1: "Every <em>explorer</em> knows that careful preparation is as vital as courage.",
-    z1: "每一位探險家都清楚，周密的準備與勇氣同等重要。",
-    e2: "The young <em>explorer</em> mapped a river valley that no outsider had ever documented.",
-    z2: "這位年輕的探險家繪製了一條從未有外人記錄過的河谷地圖。"
-  },
-  {
-    word: "discovery",
-    pos: "n. 發現",
-    e1: "The <em>discovery</em> of the wreck thrilled historians around the world.",
-    z1: "這艘沉船的發現令全球歷史學家為之振奮。",
-    e2: "Her accidental <em>discovery</em> in the lab led to a breakthrough in cancer treatment.",
-    z2: "她在實驗室的意外發現，促成了癌症治療的重大突破。"
-  },
-  {
-    word: "legendary",
-    pos: "adj. 傳奇的",
-    e1: "The team's survival became a <em>legendary</em> story retold across generations.",
-    z1: "這支隊伍的求生故事成為一個代代相傳的傳奇。",
-    e2: "His <em>legendary</em> patience with students earned him the university's highest teaching award.",
-    z2: "他對學生的傳奇般的耐心，使他榮獲大學最高教學獎。"
-  },
-  {
-    word: "courage",
-    pos: "n. 勇氣",
-    e1: "It took immense <em>courage</em> to launch three lifeboats into a raging Antarctic storm.",
-    z1: "將三艘救生艇駛入洶湧的南極暴風中，需要巨大的勇氣。",
-    e2: "She gathered her <em>courage</em> and delivered the speech in front of five thousand people.",
-    z2: "她鼓起勇氣，在五千人面前發表了那篇演講。"
-  },
-  {
-    word: "perseverance",
-    pos: "n. 堅持；毅力",
-    e1: "Shackleton's <em>perseverance</em> kept the crew alive through months of impossible conditions.",
-    z1: "沙克爾頓的毅力，讓船員在數個月的絕境中存活下來。",
-    e2: "Her <em>perseverance</em> through years of rejection finally earned her a publishing deal.",
-    z2: "她多年來不屈不撓地面對拒絕，終於獲得了出版合約。"
-  },
-  {
-    word: "skilled",
-    pos: "adj. 技術嫻熟的",
-    e1: "A <em>skilled</em> crew is what separates a successful expedition from a doomed one.",
-    z1: "技術嫻熟的船員，正是成功探險與悲劇探險之間的分野。",
-    e2: "The surgeon was so <em>skilled</em> that the operation took half the expected time.",
-    z2: "這位外科醫生技術如此嫻熟，手術所花時間只有預期的一半。"
-  },
-  {
-    word: "set sail",
-    pos: "v.phr. 啟航",
-    e1: "The crew <em>set sail</em> on a grey August morning, waving farewell to the harbour.",
-    z1: "船員們在八月的灰色早晨啟航，向港口揮手道別。",
-    e2: "We plan to <em>set sail</em> at first light before the winds pick up.",
-    z2: "我們計劃在曙光初現、風浪升起之前啟航。"
-  },
-  {
-    word: "settlement",
-    pos: "n. 定居地；聚落",
-    e1: "South Georgia was the last <em>settlement</em> before the endless ice of the south.",
-    z1: "南喬治亞島是進入南方無際冰原前的最後一處聚落。",
-    e2: "Archaeologists found evidence of a Viking <em>settlement</em> beneath the coastal fields.",
-    z2: "考古學家在海岸田野下發現了維京人定居地的遺跡。"
-  },
-  {
-    word: "encountered",
-    pos: "v. 遭遇；邂逅",
-    e1: "The Endurance <em>encountered</em> floating ice just two days after leaving South Georgia.",
-    z1: "「堅忍號」離開南喬治亞島僅兩天，便遭遇了浮冰。",
-    e2: "During the hike, we <em>encountered</em> a dense fog that cut visibility to near zero.",
-    z2: "徒步途中，我們遭遇了一場濃霧，能見度幾乎降至零。"
-  },
-  {
-    word: "trapped",
-    pos: "adj. 被困的",
-    e1: "Once <em>trapped</em> in pack ice, the ship could no longer move under its own power.",
-    z1: "一旦被困在浮冰之中，船隻便再也無法依靠自身動力前行。",
-    e2: "The hikers were <em>trapped</em> on the ridge for two days until the storm passed.",
-    z2: "登山者被困在山脊上整整兩天，直到暴風雨過去。"
-  },
-  {
-    word: "pack ice",
-    pos: "n. 浮冰群",
-    e1: "The vessel drifted for months, locked in the grip of shifting <em>pack ice</em>.",
-    z1: "船隻在移動的浮冰群掌控下，漂流了數個月。",
-    e2: "Icebreakers are specially built to force a path through dense <em>pack ice</em>.",
-    z2: "破冰船是專門建造用來在密集浮冰群中闢路的。"
-  },
-  {
-    word: "drifting",
-    pos: "v. 漂流",
-    e1: "The ship spent nine months <em>drifting</em> southward and then northward with the current.",
-    z1: "船隻隨海流向南、再向北漂流了九個月。",
-    e2: "A life raft was spotted <em>drifting</em> three miles off the coast with no one aboard.",
-    z2: "一艘無人的救生筏被發現在距海岸三英里處漂流。"
-  },
-  {
-    word: "pressure",
-    pos: "n. 壓力",
-    e1: "The <em>pressure</em> of the surrounding ice slowly buckled the ship's wooden hull.",
-    z1: "周圍冰塊的壓力慢慢地使船身木製船殼彎曲變形。",
-    e2: "Working under <em>pressure</em>, the engineers still delivered the bridge on schedule.",
-    z2: "儘管在巨大壓力下工作，工程師們仍按時完成了橋樑建設。"
-  },
-  {
-    word: "buckled",
-    pos: "v. 彎曲；扭曲",
-    e1: "The steel girder <em>buckled</em> under the weight of the collapsed roof.",
-    z1: "鋼樑在倒塌屋頂的重壓下彎曲變形。",
-    e2: "Ice <em>buckled</em> the ship's planks until freezing water began to pour in.",
-    z2: "冰塊將船的木板壓得彎曲，直到冰冷的海水開始湧入。"
-  },
-  {
-    word: "exacerbated",
-    pos: "v. 使惡化；加劇",
-    e1: "Freezing water rushing in <em>exacerbated</em> an already desperate situation.",
-    z1: "湧入的冰冷海水，使本已絕望的處境愈發惡化。",
-    e2: "The supply shortage was <em>exacerbated</em> by roads blocked after the heavy snowfall.",
-    z2: "大雪封路後，物資短缺的情況因此進一步加劇。"
-  },
-  {
-    word: "abandon",
-    pos: "v. 棄置；遺棄",
-    e1: "Shackleton ordered his crew to <em>abandon</em> the ship before it slipped beneath the ice.",
-    z1: "沙克爾頓命令船員在船隻沉入冰下之前棄船。",
-    e2: "The village was forced to <em>abandon</em> their homes as the floodwaters rose.",
-    z2: "隨著洪水上漲，村民們被迫遺棄家園。"
-  },
-  {
-    word: "pitching",
-    pos: "v. 搭設（帳篷）",
-    e1: "After leaving the ship, the men spent hours <em>pitching</em> tents on the frozen sea.",
-    z1: "離開船隻後，眾人在結凍的海面上花了數小時搭設帳篷。",
-    e2: "The campers finished <em>pitching</em> their tent just before the thunderstorm broke.",
-    z2: "露營者在雷雨爆發前剛好完成帳篷的搭設。"
-  },
-  {
-    word: "camped out",
-    pos: "v.phr. 露宿；紮營",
-    e1: "The crew <em>camped out</em> on the drifting pack ice for five desperate months.",
-    z1: "船員們在漂移的浮冰上露宿了絕望的五個月。",
-    e2: "Fans <em>camped out</em> overnight in front of the stadium to secure the best seats.",
-    z2: "球迷們在體育場外通宵紮營，只為搶得最好的座位。"
-  },
-  {
-    word: "surviving",
-    pos: "v. 靠……維生；倖存",
-    e1: "The men kept themselves alive by <em>surviving</em> on penguins, seals, and seaweed.",
-    z1: "眾人靠捕食企鵝、海豹和海藻勉強維生。",
-    e2: "<em>Surviving</em> on just a handful of nuts per day, the castaway held on for six weeks.",
-    z2: "這名遇難者每天只靠一小把堅果維生，撐了六個星期。"
-  },
-  {
-    word: "uninhabited",
-    pos: "adj. 無人居住的",
-    e1: "After seven days at sea, the lifeboats reached the bleak, <em>uninhabited</em> Elephant Island.",
-    z1: "在海上漂流七天後，救生艇抵達了荒涼、無人居住的象島。",
-    e2: "The satellite images revealed a previously <em>uninhabited</em> reef teeming with wildlife.",
-    z2: "衛星圖像揭示了一處此前無人居住、卻充滿野生動物的礁石。"
-  },
-  {
-    word: "attempt",
-    pos: "n./v. 嘗試；企圖",
-    e1: "Shackleton made a dangerous <em>attempt</em> to sail to South Georgia for help.",
-    z1: "沙克爾頓冒險嘗試駛往南喬治亞島求援。",
-    e2: "The team made three <em>attempts</em> to reach the summit before finally succeeding.",
-    z2: "這支隊伍三度嘗試攻頂，最終才告成功。"
-  },
-  {
-    word: "stormy",
-    pos: "adj. 暴風雨的；狂暴的",
-    e1: "For sixteen days they battled across freezing, <em>stormy</em> seas in a tiny boat.",
-    z1: "整整十六天，他們在一艘小船上橫渡冰冷、狂暴的海洋。",
-    e2: "The <em>stormy</em> debate in parliament lasted well past midnight.",
-    z2: "議會的激烈辯論持續到深夜。"
-  },
-  {
-    word: "hiked",
-    pos: "v. 徒步跋涉",
-    e1: "The six men <em>hiked</em> for thirty-six hours across South Georgia's unmapped mountains.",
-    z1: "六名男子在南喬治亞島尚未測繪的山脈中徒步跋涉了三十六小時。",
-    e2: "We <em>hiked</em> twelve miles through dense forest before reaching the valley.",
-    z2: "我們穿越密林徒步十二英里，才抵達那片山谷。"
-  },
-  {
-    word: "whaling station",
-    pos: "n. 捕鯨站",
-    e1: "The exhausted men finally stumbled into the <em>whaling station</em> at Stromness.",
-    z1: "精疲力竭的眾人終於蹣跚地走進斯特羅姆內斯的捕鯨站。",
-    e2: "The old <em>whaling station</em> has been converted into a museum of maritime history.",
-    z2: "這座舊捕鯨站已被改建為一座海洋歷史博物館。"
-  },
-  {
-    word: "hindered",
-    pos: "v. 阻礙；妨礙",
-    e1: "Ice and bad weather <em>hindered</em> every rescue ship sent to retrieve the men.",
-    z1: "冰雪與惡劣天氣阻礙了每一艘前往救援的船隻。",
-    e2: "A power outage <em>hindered</em> the factory's production for three full days.",
-    z2: "一次停電事故，使工廠的生產受阻長達整整三天。"
-  },
-  {
-    word: "rescue",
-    pos: "n./v. 救援",
-    e1: "The <em>rescue</em> ship finally broke through the ice on the fourth attempt.",
-    z1: "救援船在第四次嘗試時終於衝破了冰層。",
-    e2: "Volunteers worked through the night to <em>rescue</em> trapped animals after the landslide.",
-    z2: "山崩後，志工整夜奮力搶救被困的動物。"
-  },
-  {
-    word: "expedition",
-    pos: "n. 探險；遠征隊",
-    e1: "Every member of the <em>expedition</em> survived, a fact that seemed almost miraculous.",
-    z1: "遠征隊的每一位成員都生還了，這幾乎像個奇蹟。",
-    e2: "The research <em>expedition</em> departed with twelve scientists and enough supplies for a year.",
-    z2: "這支科研遠征隊由十二名科學家組成，攜帶了足夠一年的補給出發。"
-  },
-  {
-    word: "sank",
-    pos: "v. 沉沒（sink 的過去式）",
-    e1: "The Endurance <em>sank</em> beneath the Weddell Sea in October 1915, where it lay for over a century.",
-    z1: "「堅忍號」於1915年10月沉入威德爾海，在那裡靜臥了逾百年。",
-    e2: "The fishing trawler <em>sank</em> within minutes after striking the submerged reef.",
-    z2: "拖網漁船觸礁後，在數分鐘內便沉沒了。"
+  // ===== 正確答案（已套用 Q11-46 位置變換） =====
+  // 1-10 維持原樣
+  // 11:B→A, 12:B→C, 13:A→B, 14:C→D, 15:D→A
+  // 16:D→B, 17:C→B, 18:C→D, 19:B→C, 20:A→B
+  // Q21-30 文意選填新答案：21:B, 22:E, 23:D, 24:A, 25:H, 26:G, 27:J, 28:I, 29:C, 30:F
+  // 31:D→A, 32:C→D, 33:A→B, 34:B→C
+  // 35:A→C, 36:B→C, 37:D→A, 38:C→D
+  // 39:A→C, 40:B→A, 41:D→A, 42:B→C
+  // 43:C→A, 44:A→B, 45:D→A, 46:A→B
+  const ANSWERS = {
+    1:'C', 2:'A', 3:'A', 4:'C', 5:'C', 6:'D', 7:'D', 8:'A', 9:'B', 10:'A',
+    11:'A', 12:'C', 13:'B', 14:'D', 15:'A',
+    16:'B', 17:'B', 18:'D', 19:'C', 20:'B',
+    21:'B', 22:'E', 23:'D', 24:'A', 25:'H', 26:'G', 27:'J', 28:'I', 29:'C', 30:'F',
+    31:'A', 32:'D', 33:'B', 34:'C',
+    35:'C', 36:'D', 37:'A', 38:'D',
+    39:'C', 40:'A', 41:'A', 42:'C',
+    43:'A', 44:'B', 45:'A', 46:'B'
+  };
+  // Q47/Q48 填空
+  const FILL_ANSWERS = {
+    47: { keys: ['educating', 'educate'], display: 'educating' },
+    48: { keys: ['kept', 'caged', 'captive', 'confined'], display: 'kept' }
+  };
+  // Q49 多選（支持動物園的人）
+  const MULTI_ANSWERS = { 49: ['C','D','G','I'] };
+  // Q50 簡答
+  const SHORT_ANSWERS = {
+    50: { keys: [['fostering','empathy']], display: 'fostering empathy' }
+  };
+
+  // ===== 錯題詳解 =====
+  const EXPLANATIONS = {
+    1: { ans:'(C) container 容器', detail:'把「容器」放在漏水的水龍頭下接水。其餘選項皆無「裝水」之意。' },
+    2: { ans:'(A) produce 農產品', detail:'farmers\' market 販賣「新鮮當季農產品」，produce 作不可數名詞指蔬果。' },
+    3: { ans:'(A) blurring 變模糊', detail:'童年回憶「變模糊」，無法清楚回想。其餘選項皆不合。' },
+    4: { ans:'(C) offensive 冒犯的', detail:'種族歧視言論本質「冒犯且傷人」，與 hurtful 並列。' },
+    5: { ans:'(C) draft 草稿', detail:'first draft = 第一版草稿，修改多次才交。' },
+    6: { ans:'(D) vacant 空置的', detail:'Left vacant for years = 被空置多年，積滿灰塵。' },
+    7: { ans:'(D) enormous 極大的', detail:'enormous courage 為固定搭配。' },
+    8: { ans:'(A) halted 中止', detail:'公共資助專案在經濟困難時「被中止」或延遲。' },
+    9: { ans:"(B) graced 蒞臨增光", detail:"grace sth with one's presence = 親臨使其增光。" },
+    10:{ ans:'(A) verbally 言語上', detail:'經理「言語上」辱罵同事而被告。' },
+    11:{ ans:'(A) would spread (原 B)', detail:'主句 had no idea 為過去式，從句用過去未來式 would + V。' },
+    12:{ ans:'(C) disrupted (原 B)', detail:'計畫因大雨「被打亂」才擠進客廳。' },
+    13:{ ans:'(B) circulate (原 A)', detail:'換桌使想法能「流通」並深化。' },
+    14:{ ans:'(D) gave rise to (原 C)', detail:'創新討論方式「產生」一種新的集體合作形式。' },
+    15:{ ans:'(A) thus (原 D)', detail:'前文描述 World Café 誕生過程，此處用 thus 做因果總結。' },
+    16:{ ans:'(B) strike 突然發作 (原 D)', detail:'strike 表（疾病、災難）突然襲擊，suddenly 是線索。' },
+    17:{ ans:'(B) do not match 不相符 (原 C)', detail:'眼、耳、身體訊號「不相符」才引發暈動症。' },
+    18:{ ans:"(D) don't 不這樣做 (原 C)", detail:'代動詞呼應前文 detects（一般現在式肯定）。' },
+    19:{ ans:'(C) preventive measures 預防措施 (原 B)', detail:'take preventive measures = 採取預防措施。' },
+    20:{ ans:'(B) as well 也 (原 A)', detail:'遠望「也」能幫助，與下一句 also take medicine 呼應。' },
+    21:{ ans:'(B) noted 著名的 (原 I)', detail:'be noted for 為固定搭配，表「以…而著名」。' },
+    22:{ ans:'(E) reference 提及/記載 (原 A)', detail:'documented reference to = 有記錄的提及。' },
+    23:{ ans:'(D) bearing 帶有 (原 B)', detail:'each bearing a name 表「每個鐘各自帶有一個名字」。' },
+    24:{ ans:'(A) survived 倖存 (原 F)', detail:'Emmanuel 是唯一經歷法國大革命仍保留下來的鐘。' },
+    25:{ ans:'(H) retained 保有 (原 D)', detail:'2013 年除 Emmanuel 外鐘群被更換，因它仍「保有」優美音色。' },
+    26:{ ans:'(G) familiar 熟悉的 (原 C)', detail:'鐘聲已成巴黎生活中熟悉的一部分。' },
+    27:{ ans:'(J) faithful 信徒 (原 E)', detail:'call the faithful to prayer = 召喚信徒祈禱。' },
+    28:{ ans:'(I) celebration 慶祝 (原 G)', detail:'與 mourning 形成對比，鐘聲也在慶典與哀悼時響起。' },
+    29:{ ans:'(C) silent 沉寂的 (原 J)', detail:'fall silent = 沉寂下來、不再發聲。' },
+    30:{ ans:'(F) restoration 修復 (原 H)', detail:'大火後建築經歷複雜耗時的修復過程。' },
+    31:{ ans:'(A) Today, they provide low-budget overnight lodging... (原 D)', detail:'前文介紹起源於日本、原為商務人士；本句說明今日在全球大城市商業中心提供低價住宿。' },
+    32:{ ans:'(D) The room\'s thin plastic walls easily transmit the sound of snoring... (原 C)', detail:'此段描述膠囊房間的尺寸、材質與設備；本句補充膠囊排列方式（堆疊兩層）。原 (C) 為正解。' },
+    33:{ ans:'(B) In response to rising demands, these hotels are embracing a wave of innovation. (原 A)', detail:'前文說擴展到各國，後文說新連鎖加入設計與創新設備，本句承上啟下。' },
+    34:{ ans:'(C) The chambers are stacked side-by-side... (原 B)', detail:'此段列出膠囊旅館缺點。前一句空氣流通差，本句補上隔音差與打鼾聲問題。原 (B) 為正解。' },
+    35:{ ans:'(C) The evolution of traffic control systems. (原 A)', detail:'文章從 Knight 設計談到 Potts 三色燈再到自駕車未來，是「交通控制系統的演進」。' },
+    36:{ ans:'(D) 維多利亞式裝飾柱 + 兩側可動臂 + 頂部紅綠瓦斯燈 (原 C)', detail:'依文章描述 Knight 的號誌結合「railway movable-arm signal」（可動雙臂：水平=停、45度=行）與「Red and green gas lamps」（夜間用紅綠瓦斯燈），故 (D) 中同時含「兩側可動臂」與「頂部紅綠燈罩」最符合。(A) 只有可動臂無燈；(B) STOP/GO 板無臂無燈；(C) 有燈但無可動臂、且加上騎士小像為紀念裝飾。' },
+    37:{ ans:'(A) Future vehicles may not need traffic lights to cross an intersection. (原 D)', detail:'最後段說明自駕車時代車輛可自動調速，不再需要紅綠燈。' },
+    38:{ ans:'(D) Paragraph 3 (原 C)', detail:'「This design was adopted in later traffic light designs across the world.」呼應第 3 段 Potts 三色燈成為後世典範，故插在第 3 段尾最合適。' },
+    39:{ ans:'(C) Psychology. (原 A)', detail:'文章討論恐怖片對情緒、焦慮、創傷、行為的影響，屬心理學範疇。' },
+    40:{ ans:'(A) Gaining knowledge through observation. (原 B)', detail:'learn vicariously = 透過觀察他人經驗（非親身）習得知識。' },
+    41:{ ans:'(A) Watching horror movies may have a long-term effect on personality. (原 D)', detail:'文章提到 14 歲以下兒童看恐怖片，成年後焦慮機率增加，對暴力較不敏感→長期人格影響。' },
+    42:{ ans:'(C) By showing opposing views of an issue. (原 B)', detail:'文章先列正面（safe fear、學習、療癒），後列反面（焦慮、創傷、對兒童不利）→「對立觀點」。' },
+    43:{ ans:'(A) To argue against the assumption that Russians are born drinkers. (原 C)', detail:'第 2 段透過古俄羅斯酒類消費少、伏特加非俄國發明等史實反駁「俄人天生愛酒」的刻板印象。' },
+    44:{ ans:'(B) Vodka production in Russia started in the 15th century. (原 A)', detail:'文中明確說「The first Russian-made vodka appeared in the 15th century」。' },
+    45:{ ans:'(A) The state monopoly. (原 D)', detail:'This 指前句 emperors began to establish a state monopoly（國家專賣制度）。' },
+    46:{ ans:'(B) By providing further facts. (原 A)', detail:'最後段提供禁酒運動發展、現今俄國消費仍接近世界頂端的「進一步事實」做結。' }
+  };
+
+  // ===== JS 自動將文章/題目段落內所有英文單字包成可點選 span =====
+  function wrapWordsIn(root) {
+    const skipTags = new Set(['SCRIPT','STYLE','INPUT','LABEL','TEXTAREA','BUTTON']);
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => {
+        let p = n.parentNode;
+        while (p && p !== root) {
+          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (
+            p.classList.contains('word') ||
+            p.classList.contains('blank') ||
+            p.classList.contains('q-num') ||
+            p.classList.contains('q-num-sq') ||
+            p.classList.contains('options') ||
+            p.classList.contains('options-ci') ||
+            p.classList.contains('options-ps') ||
+            p.classList.contains('options-rd') ||
+            p.classList.contains('options-multi')
+          )) return NodeFilter.FILTER_REJECT;
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    const re = /[A-Za-z]+(?:['’\-][A-Za-z]+)*/g;
+    nodes.forEach(tn => {
+      const text = tn.nodeValue;
+      if (!re.test(text)) return;
+      re.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let lastIdx = 0, m;
+      while ((m = re.exec(text)) !== null) {
+        if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = m[0];
+        frag.appendChild(span);
+        lastIdx = m.index + m[0].length;
+      }
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      tn.parentNode.replaceChild(frag, tn);
+    });
   }
-];
 
-// ── Build word buttons ──
-const grid    = document.getElementById('wordGrid');
-const popup   = document.getElementById('mainPopup');
-const overlay = document.getElementById('popupOverlay');
-const closeBtn= document.getElementById('popupClose');
-let activeBtn = null;
+  document.querySelectorAll('.autowrap, .vocab-sentences').forEach(wrapWordsIn);
 
-/* Detect "mobile" breakpoint (matches CSS ≤480px) */
-const mq = window.matchMedia('(max-width: 480px)');
-
-function isMobile() { return mq.matches; }
-
-function fillPopup(w) {
-  document.getElementById('popWord').textContent = w.word;
-  document.getElementById('popPos').textContent  = w.pos;
-  document.getElementById('popEn1').innerHTML    = w.e1;
-  document.getElementById('popZh1').textContent  = w.z1;
-  document.getElementById('popEn2').innerHTML    = w.e2;
-  document.getElementById('popZh2').textContent  = w.z2;
-}
-
-function positionDesktop(btn) {
-  const br  = btn.getBoundingClientRect();
-  const pw  = Math.min(340, window.innerWidth - 16);
-  const gap = 10;
-
-  let left = br.left + br.width / 2 - pw / 2;
-  // clamp within viewport
-  if (left < 8) left = 8;
-  if (left + pw > window.innerWidth - 8) left = window.innerWidth - pw - 8;
-
-  popup.style.width  = pw + 'px';
-  popup.style.left   = left + 'px';
-  popup.style.right  = 'auto';
-  popup.style.bottom = 'auto';
-  popup.style.top    = '0px'; // temp — measure after show
-
-  popup.classList.add('show');
-
-  const ph = popup.offsetHeight;
-  let finalTop = br.top + window.scrollY - ph - gap;
-  if (finalTop < window.scrollY + 8) {
-    finalTop = br.bottom + window.scrollY + gap;
+  // 單字點擊切換（同字同步）
+  const counter = document.getElementById('unknownCounter');
+  const counterNum = document.getElementById('unknownCount');
+  function updateCounter() {
+    const set = new Set();
+    document.querySelectorAll('.word.unfamiliar').forEach(w => set.add(w.textContent.trim().toLowerCase()));
+    counterNum.textContent = set.size;
+    counter.style.display = set.size ? 'block' : 'none';
   }
-  popup.style.top = finalTop + 'px';
-}
-
-function openPopup(btn, w) {
-  fillPopup(w);
-  if (activeBtn) activeBtn.classList.remove('active');
-  btn.classList.add('active');
-  activeBtn = btn;
-
-  if (isMobile()) {
-    // reset positioning so CSS bottom-sheet rules apply
-    popup.style.cssText = '';
-    overlay.classList.add('show');
-    popup.classList.add('show');
-    document.body.style.overflow = 'hidden'; // prevent scroll behind sheet
-  } else {
-    overlay.classList.remove('show');
-    positionDesktop(btn);
-  }
-}
-
-function closePopup() {
-  popup.classList.remove('show');
-  overlay.classList.remove('show');
-  document.body.style.overflow = '';
-  if (activeBtn) { activeBtn.classList.remove('active'); activeBtn = null; }
-}
-
-words.forEach((w) => {
-  const item = document.createElement('div');
-  item.className = 'word-item';
-
-  const btn = document.createElement('button');
-  btn.className = 'word-btn';
-  btn.textContent = w.word;
-
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    // toggle off if same button
-    if (activeBtn === btn && popup.classList.contains('show')) {
-      closePopup();
-      return;
+  document.body.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('word')) {
+      const t = e.target.textContent.trim().toLowerCase();
+      const isOn = !e.target.classList.contains('unfamiliar');
+      document.querySelectorAll('.word').forEach(w => {
+        if (w.textContent.trim().toLowerCase() === t) {
+          w.classList.toggle('unfamiliar', isOn);
+        }
+      });
+      updateCounter();
     }
-    openPopup(btn, w);
   });
 
-  item.appendChild(btn);
-  grid.appendChild(item);
-});
-
-/* Close on overlay click, close button, or outside click */
-overlay.addEventListener('click', closePopup);
-closeBtn.addEventListener('click', closePopup);
-
-document.addEventListener('click', (e) => {
-  if (!popup.contains(e.target) && !e.target.classList.contains('word-btn')) {
-    closePopup();
+  // 選項選取樣式（單選）
+  document.querySelectorAll('.options input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const name = r.name;
+      document.querySelectorAll(`.options input[name="${name}"]`).forEach(x => x.closest('label').classList.remove('selected'));
+      r.closest('label').classList.add('selected');
+    });
+  });
+  // 圖片題 Q36 選取樣式
+  document.querySelectorAll('.pic-opt input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const name = r.name;
+      document.querySelectorAll(`.pic-opt input[name="${name}"]`).forEach(x => x.closest('label').classList.remove('selected'));
+      r.closest('label').classList.add('selected');
+    });
+  });
+  // 多選樣式
+  document.querySelectorAll('.options-multi input[type="checkbox"]').forEach(c => {
+    c.addEventListener('change', () => {
+      c.closest('label').classList.toggle('selected', c.checked);
+    });
+  });
+  // 作文字數計算
+  const essayEl = document.getElementById('essay');
+  const essayCountEl = document.getElementById('essayWordCount');
+  if (essayEl) {
+    essayEl.addEventListener('input', () => {
+      const text = essayEl.value.trim();
+      const words = text ? text.split(/\s+/).length : 0;
+      essayCountEl.textContent = words;
+      essayCountEl.style.color = words >= 120 ? '#27ae60' : '#e67e22';
+    });
   }
-});
-popup.addEventListener('click', e => e.stopPropagation());
 
-/* Re-position on resize (only desktop) */
-window.addEventListener('resize', () => {
-  if (!popup.classList.contains('show') || isMobile()) return;
-  if (activeBtn) positionDesktop(activeBtn);
-});
+  // 題號清單（Q1-46）
+  const ALL_QS = [...Array(46).keys()].map(i => i+1);
 
-/* Touch swipe-down to dismiss bottom sheet */
-let touchStartY = 0;
-popup.addEventListener('touchstart', (e) => {
-  touchStartY = e.touches[0].clientY;
-}, { passive: true });
-popup.addEventListener('touchend', (e) => {
-  if (!isMobile()) return;
-  const dy = e.changedTouches[0].clientY - touchStartY;
-  if (dy > 60) closePopup(); // swipe down ≥60px
-}, { passive: true });
+  // ===== 送出作答 =====
+  function submitQuiz() {
+    const name = document.getElementById('studentName').value.trim() || '（未填）';
+    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
+
+    const answers = {};
+    const unanswered = [];
+    ALL_QS.forEach(i => {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      if (sel) answers[i] = sel.value;
+      else { answers[i] = '-'; unanswered.push(i); }
+    });
+    answers[47] = (document.getElementById('q47').value || '').trim();
+    answers[48] = (document.getElementById('q48').value || '').trim();
+    if (!answers[47]) unanswered.push(47);
+    if (!answers[48]) unanswered.push(48);
+    const q49Sel = Array.from(document.querySelectorAll('input[name="q49"]:checked')).map(x=>x.value).sort();
+    answers[49] = q49Sel;
+    if (q49Sel.length === 0) unanswered.push(49);
+    answers[50] = (document.getElementById('q50').value || '').trim();
+    if (!answers[50]) unanswered.push(50);
+
+    const trans1 = (document.getElementById('trans1').value || '').trim();
+    const trans2 = (document.getElementById('trans2').value || '').trim();
+    const essayTxt = (document.getElementById('essay').value || '').trim();
+    const essayWordCount = essayTxt ? essayTxt.split(/\s+/).length : 0;
+    if (!trans1) unanswered.push('中譯英1');
+    if (!trans2) unanswered.push('中譯英2');
+    if (!essayTxt) unanswered.push('作文');
+
+    if (unanswered.length > 0) {
+      if (!confirm(`尚有 ${unanswered.length} 題未作答（${unanswered.slice(0,8).join(', ')}${unanswered.length>8?'…':''}），確定要送出嗎？`)) return;
+    }
+
+    // 評分
+    let correct = 0;
+    const wrongList = [];
+    ALL_QS.forEach(i => {
+      if (answers[i] === ANSWERS[i]) correct++;
+      else wrongList.push(i);
+    });
+    let q47ok = false, q48ok = false;
+    const ans47 = (answers[47]||'').toLowerCase().replace(/[^a-z]/g,'');
+    if (FILL_ANSWERS[47].keys.some(k => k.toLowerCase() === ans47)) { q47ok = true; correct++; } else { wrongList.push(47); }
+    const ans48 = (answers[48]||'').toLowerCase().replace(/[^a-z]/g,'');
+    if (FILL_ANSWERS[48].keys.some(k => k.toLowerCase() === ans48)) { q48ok = true; correct++; } else { wrongList.push(48); }
+    const corr49 = MULTI_ANSWERS[49].slice().sort();
+    let q49ok = false;
+    if (q49Sel.length === corr49.length && q49Sel.every((v,i)=>v===corr49[i])) { q49ok = true; correct++; } else { wrongList.push(49); }
+    const ans50low = (answers[50]||'').toLowerCase();
+    let q50ok = false;
+    if (SHORT_ANSWERS[50].keys.some(group => group.every(k => ans50low.includes(k)))) { q50ok = true; correct++; } else { wrongList.push(50); }
+
+    const total = ALL_QS.length + 4; // 50
+    const percent = Math.round(correct/total*100);
+
+    const unfamiliarSet = new Set();
+    document.querySelectorAll('.word.unfamiliar').forEach(w => {
+      const t = w.textContent.trim().toLowerCase();
+      if (t) unfamiliarSet.add(t);
+    });
+    const unfamiliar = Array.from(unfamiliarSet).sort();
+
+    document.getElementById('scoreBig').textContent = `${correct} / ${total}`;
+    document.getElementById('scoreDetail').textContent =
+      `答對 ${correct} 題 ‧ 答錯 ${total-correct} 題 ‧ 正確率 ${percent}% ‧ 不熟悉單字 ${unfamiliar.length} 個`;
+
+    const now = new Date();
+    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+    // ===== 結果 1 =====
+    let r1 = `【114學測英文 第1-50題 作答結果】\n`;
+    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分：${correct}/${total}（${percent}%）\n---\n`;
+    r1 += `題號\t學生答案\t正確答案\t對錯\n`;
+    ALL_QS.forEach(i => {
+      const ok = answers[i]===ANSWERS[i] ? '✓' : (answers[i]==='-' ? '✗(未答)' : '✗');
+      r1 += `${i}\t${answers[i]}\t${ANSWERS[i]}\t${ok}\n`;
+    });
+    r1 += `47\t${answers[47]||'-'}\t${FILL_ANSWERS[47].display}\t${q47ok?'✓':'✗'}\n`;
+    r1 += `48\t${answers[48]||'-'}\t${FILL_ANSWERS[48].display}\t${q48ok?'✓':'✗'}\n`;
+    r1 += `49\t${q49Sel.join('')||'-'}\t${corr49.join('')}\t${q49ok?'✓':'✗'}\n`;
+    r1 += `50\t${(answers[50]||'-').replace(/\n/g,' ')}\t${SHORT_ANSWERS[50].display}\t${q50ok?'✓':'✗'}\n`;
+    r1 += `---\n【中譯英 1】${trans1 || '(未作答)'}\n`;
+    r1 += `【中譯英 2】${trans2 || '(未作答)'}\n`;
+    r1 += `---\n【英文作文】（${essayWordCount} words）\n${essayTxt || '(未作答)'}\n`;
+    r1 += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n`;
+    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
+    document.getElementById('teacherReport').textContent = r1;
+
+    // ===== 結果 2 =====
+    const fb = document.getElementById('feedbackReport');
+    fb.innerHTML = '';
+    let fbText = `【114學測英文 第1-50題 錯題詳解】\n姓名：${name}　座號：${sid}\n作答時間：${ts}\n---\n`;
+
+    if (wrongList.length === 0) {
+      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
+      fbText += '🎉 全部答對！太棒了！';
+    } else {
+      wrongList.sort((a,b)=>a-b).forEach(i => {
+        const div = document.createElement('div');
+        div.className = 'wrong-item';
+        let stuAns, expl, correctText;
+        if (i <= 46) {
+          stuAns = answers[i] === '-' ? '未作答' : answers[i];
+          expl = EXPLANATIONS[i] || { ans: ANSWERS[i], detail: '' };
+          correctText = `${ANSWERS[i]}　${expl.ans}`;
+          div.innerHTML = `
+            <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">${expl.detail}</div>`;
+          fbText += `第 ${i} 題：你寫 ${stuAns}，正解 ${correctText}\n   → ${expl.detail}\n\n`;
+        } else if (i === 47) {
+          stuAns = answers[47] || '未作答';
+          correctText = FILL_ANSWERS[47].display;
+          div.innerHTML = `<div class="q-head">第 47 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">原文 "modern zoos now focus on conservation and education" → 動物園「保育」並「教育」遊客。educate 動詞改為動名詞 educating，與 conserving 平行。</div>`;
+          fbText += `第 47 題：你寫 ${stuAns}，正解 ${correctText} → 平行結構：educating。\n\n`;
+        } else if (i === 48) {
+          stuAns = answers[48] || '未作答';
+          correctText = FILL_ANSWERS[48].display;
+          div.innerHTML = `<div class="q-head">第 48 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">原文 E 段 Eddie 提到 "Is it a good idea to keep animals in sites not suited to them?"，及 F 段 Frank "the animals that live in captivity"，故 the animals kept there will lose their freedom。kept 為 keep 的過去分詞，作後置修飾。也可接受 caged、captive、confined。</div>`;
+          fbText += `第 48 題：你寫 ${stuAns}，正解 ${correctText}\n\n`;
+        } else if (i === 49) {
+          stuAns = q49Sel.join('') || '未作答';
+          correctText = corr49.join('');
+          div.innerHTML = `<div class="q-head">第 49 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">支持動物園的 4 人：C Cathy（傳統+家庭活動）、D Daniel（保育瀕危物種）、G George（教育價值）、I Irene（培養同理心）。其餘 A、B、E、H 反對；F、J 中立或實用主義。</div>`;
+          fbText += `第 49 題：你選 ${stuAns}，正解 ${correctText} → C、D、G、I。\n\n`;
+        } else if (i === 50) {
+          stuAns = (answers[50] || '未作答').replace(/\n/g,' ');
+          correctText = SHORT_ANSWERS[50].display;
+          div.innerHTML = `<div class="q-head">第 50 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 參考答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">"building the ability to understand and share the feelings of others" 即「同理心」（empathy）。原文 I 段 Irene 開頭即為 "Fostering empathy…"，是答案出處。</div>`;
+          fbText += `第 50 題：你寫「${stuAns}」，參考答案：${correctText}\n   → 來自 Irene 的留言開頭。\n\n`;
+        }
+        fb.appendChild(div);
+      });
+    }
+
+    fbText += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n${unfamiliar.length?unfamiliar.join(', '):'（無）'}\n`;
+    document.getElementById('feedbackTextArea').textContent = fbText;
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // ===== 複製文字 =====
+  function copyText(elId, btn) {
+    const txt = document.getElementById(elId).textContent;
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      document.body.removeChild(ta);
+    };
+    const ok = () => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ 已複製！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
+    } else { fallback(); ok(); }
+  }
 </script>
+
 </body>
 </html>
