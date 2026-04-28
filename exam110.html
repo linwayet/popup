@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>110 學測英文 第 1-56 題（單面作答）</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    margin: 0; padding: 20px;
+    color: #2c3e50; line-height: 1.75;
+  }
+  .container {
+    max-width: 920px; margin: 0 auto;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+  }
+  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
+  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
+  .subtitle { color: #7f8c8d; font-size: 0.95em; }
+  .student-info {
+    background: #ecf5fd; border-radius: 10px;
+    padding: 12px 16px; margin: 16px 0;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .student-info label { font-weight: 600; color: #2980b9; }
+  .student-info input {
+    border: 1px solid #bdc3c7; border-radius: 6px;
+    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
+  }
+  .instruction {
+    background: #fff9e6; border-left: 4px solid #f39c12;
+    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
+    font-size: 0.95em; color: #8e6c16;
+  }
+  .legend {
+    font-size: 0.88em; color: #7f8c8d;
+    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+  .legend .word-sample {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
+  }
+  .section-title {
+    background: linear-gradient(90deg, #3498db, #5dade2);
+    color: #fff; padding: 10px 16px; border-radius: 8px;
+    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
+  }
+  .group-label {
+    background: #eaf4fb; color: #1f618d;
+    padding: 7px 14px; border-radius: 6px;
+    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
+    display: inline-block;
+  }
+  .passage {
+    background: #fafbfc; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
+    font-size: 1em; text-align: justify;
+  }
+  .passage p { margin: 0 0 10px; }
+  .passage p:last-child { margin-bottom: 0; }
+
+  .question {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .q-text { font-size: 1em; margin-bottom: 8px; }
+  .q-num {
+    display: inline-block; background: #3498db; color: #fff;
+    border-radius: 50%; min-width: 28px; height: 28px;
+    text-align: center; line-height: 28px; font-weight: 700;
+    margin-right: 6px; font-size: 0.88em; padding: 0 6px;
+  }
+  .q-inline {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+    flex-wrap: wrap;
+  }
+  .q-inline .q-num-sq {
+    background: #3498db; color: #fff; font-weight: 700;
+    border-radius: 6px; padding: 4px 10px; font-size: 0.95em;
+    flex-shrink: 0;
+  }
+
+  .options { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+  .options label {
+    flex: 1 1 calc(25% - 6px); min-width: 120px;
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 9px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
+    border-radius: 6px; cursor: pointer; transition: all 0.15s;
+    font-size: 0.92em;
+  }
+  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
+  .options input[type="radio"] { accent-color: #3498db; margin: 0; flex-shrink: 0; }
+  .options label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  .options-ci label { flex: 1 1 calc(20% - 6px); min-width: 100px; font-size: 0.88em; }
+  .options-rd label { flex: 1 1 calc(50% - 6px); min-width: 280px; font-size: 0.92em; align-items: flex-start; }
+  .options-rd label input { margin-top: 3px; }
+
+  /* Q49 圖片題 */
+  .pic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px; }
+  .pic-opt {
+    background: #f8f9fa; border: 1.5px solid #dfe4ea; border-radius: 8px;
+    padding: 8px; cursor: pointer; transition: all 0.15s;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .pic-opt:hover { background: #ecf5fd; border-color: #5dade2; }
+  .pic-opt input { accent-color: #3498db; align-self: flex-start; margin: 0; }
+  .pic-opt.selected { background: #d6eaf8; border-color: #3498db; }
+  .pic-svg { width: 100%; max-width: 150px; height: 110px; background: #fff; border-radius: 4px; border: 1px solid #e1e8ed; }
+  .pic-cap { font-size: 0.85em; color: #2c3e50; font-weight: 600; text-align: center; }
+
+  .word { cursor: pointer; padding: 0 1px; border-radius: 3px; transition: background 0.12s; }
+  .word:hover { background: #fdecea; }
+  .word.unfamiliar { background: #ffebcd; border-bottom: 2px solid #e67e22; font-weight: 600; color: #b9770e; }
+
+  .blank { color: #e74c3c; font-weight: 700; padding: 0 2px; }
+
+  .vocab-row {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 6px 12px; margin-top: 8px;
+    font-size: 0.95em; color: #7d6608;
+    display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center;
+  }
+  .vocab-row::before {
+    content: "🔖 不懂的單字點一下標記："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; margin-right: 4px;
+  }
+  .vocab-row .word { padding: 2px 7px; background: #fff; border: 1px solid #f5b041; }
+  .vocab-row .word.unfamiliar { background: #ffebcd; }
+
+  textarea.short-ans {
+    width: 100%; min-height: 70px; padding: 10px;
+    border: 1.5px solid #bdc3c7; border-radius: 6px;
+    font-family: inherit; font-size: 0.95em; resize: vertical;
+    margin-top: 8px;
+  }
+  textarea.short-ans:focus { outline: none; border-color: #3498db; }
+
+  .trans-item {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .trans-item .ch-line { font-size: 1em; margin-bottom: 8px; color: #2c3e50; }
+
+  .button-row { text-align: center; margin: 26px 0 6px; }
+  button.submit-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
+    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+    transition: transform 0.15s;
+  }
+  button.submit-btn:hover { transform: translateY(-2px); }
+
+  #results { display: none; margin-top: 26px; }
+  .result-card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 20px 22px; margin-bottom: 20px;
+    border-top: 4px solid #3498db;
+  }
+  .result-card.score { border-top-color: #9b59b6; }
+  .result-card.teacher { border-top-color: #27ae60; }
+  .result-card.feedback { border-top-color: #e67e22; }
+  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
+  .copyable {
+    background: #f4f6f8; border: 1px dashed #bdc3c7;
+    border-radius: 8px; padding: 14px; white-space: pre-wrap;
+    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
+    max-height: 360px; overflow-y: auto; color: #2c3e50;
+  }
+  .copy-btn {
+    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
+    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
+  }
+  .copy-btn:hover { background: #7f8c8d; }
+  .copy-btn.copied { background: #27ae60; }
+
+  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
+  .score-detail { text-align: center; color: #7f8c8d; }
+
+  .wrong-item {
+    background: #fdf2f2; border-left: 4px solid #e74c3c;
+    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
+  }
+  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
+  .wrong-item .explain { color: #34495e; font-size: 0.95em; line-height: 1.7; }
+  .correct-mark { color: #27ae60; font-weight: 600; }
+  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+
+  .unknown-counter {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #ffebcd; color: #b9770e;
+    padding: 9px 16px; border-radius: 30px;
+    font-weight: 600; font-size: 0.9em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100; display: none;
+    border: 2px solid #e67e22;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 8px; }
+    .container { padding: 18px 16px; }
+    .options label { flex: 1 1 calc(50% - 6px); }
+    .options-ci label { flex: 1 1 calc(33% - 6px); }
+    .options-rd label { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>110 學年度學科能力測驗 ‧ 英文考科</h1>
+    <div class="subtitle">第 1-56 題（線上作答 ‧ 全部單面捲動 ‧ LINE 群繳交）</div>
+  </header>
+
+  <div class="student-info">
+    <label>姓名：</label><input type="text" id="studentName" placeholder="請輸入姓名">
+    <label>座號：</label><input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+  </div>
+
+  <div class="instruction">
+    <strong>作答說明：</strong>本卷共 56 題單選題＋中譯英＋作文，全部單面作答、不分頁。Q49 為圖片題。
+    閱讀時遇到<u>任何不會的單字</u>，直接點一下標記（再點取消），系統會於送出後統一匯出給老師。
+  </div>
+  <div class="legend">
+    不熟悉單字標記範例：<span class="word-sample">example</span>　🔖 黃底= 已標記不熟悉。
+  </div>
+
+<form id="quizForm">
+
+<!-- ============ 一、詞彙題 (1-15) ============ -->
+<div class="section-title">一、詞彙題（第 1-15 題，每題 1 分）</div>
+
+<div class="question" data-q="1">
+  <div class="q-text autowrap"><span class="q-num">1</span>Tom is really a naughty boy. He likes to <span class="blank">______</span> and play jokes on his younger sister when their parents are not around.</div>
+  <div class="options" data-qid="1">
+    <label><input type="radio" name="q1" value="A"><span>(A) alert</span></label>
+    <label><input type="radio" name="q1" value="B"><span>(B) spare</span></label>
+    <label><input type="radio" name="q1" value="C"><span>(C) tease</span></label>
+    <label><input type="radio" name="q1" value="D"><span>(D) oppose</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">alert</span><span class="word">spare</span><span class="word">tease</span><span class="word">oppose</span></div>
+</div>
+
+<div class="question" data-q="2">
+  <div class="q-text autowrap"><span class="q-num">2</span>Elderly shoppers in this store are advised to take the elevator rather than the <span class="blank">______</span>, which may move too fast for them to keep their balance.</div>
+  <div class="options" data-qid="2">
+    <label><input type="radio" name="q2" value="A"><span>(A) airway</span></label>
+    <label><input type="radio" name="q2" value="B"><span>(B) operator</span></label>
+    <label><input type="radio" name="q2" value="C"><span>(C) escalator</span></label>
+    <label><input type="radio" name="q2" value="D"><span>(D) instrument</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">airway</span><span class="word">operator</span><span class="word">escalator</span><span class="word">instrument</span></div>
+</div>
+
+<div class="question" data-q="3">
+  <div class="q-text autowrap"><span class="q-num">3</span>Upon hearing its master's call, the dog wagged its tail, and followed her out of the room <span class="blank">______</span>.</div>
+  <div class="options" data-qid="3">
+    <label><input type="radio" name="q3" value="A"><span>(A) obediently</span></label>
+    <label><input type="radio" name="q3" value="B"><span>(B) apparently</span></label>
+    <label><input type="radio" name="q3" value="C"><span>(C) logically</span></label>
+    <label><input type="radio" name="q3" value="D"><span>(D) thoroughly</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">obediently</span><span class="word">apparently</span><span class="word">logically</span><span class="word">thoroughly</span></div>
+</div>
+
+<div class="question" data-q="4">
+  <div class="q-text autowrap"><span class="q-num">4</span>Since many of our house plants are from humid jungle environments, they need <span class="blank">______</span> air to keep them green and healthy.</div>
+  <div class="options" data-qid="4">
+    <label><input type="radio" name="q4" value="A"><span>(A) moist</span></label>
+    <label><input type="radio" name="q4" value="B"><span>(B) stale</span></label>
+    <label><input type="radio" name="q4" value="C"><span>(C) crisp</span></label>
+    <label><input type="radio" name="q4" value="D"><span>(D) fertile</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">moist</span><span class="word">stale</span><span class="word">crisp</span><span class="word">fertile</span></div>
+</div>
+
+<div class="question" data-q="5">
+  <div class="q-text autowrap"><span class="q-num">5</span>The skydiver managed to land safely after jumping out of the aircraft, even though her <span class="blank">______</span> failed to open in midair.</div>
+  <div class="options" data-qid="5">
+    <label><input type="radio" name="q5" value="A"><span>(A) glimpse</span></label>
+    <label><input type="radio" name="q5" value="B"><span>(B) latitude</span></label>
+    <label><input type="radio" name="q5" value="C"><span>(C) segment</span></label>
+    <label><input type="radio" name="q5" value="D"><span>(D) parachute</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">glimpse</span><span class="word">latitude</span><span class="word">segment</span><span class="word">parachute</span></div>
+</div>
+
+<div class="question" data-q="6">
+  <div class="q-text autowrap"><span class="q-num">6</span>The invention of the steam engine, which was used to power heavy machines, brought about a <span class="blank">______</span> change in society.</div>
+  <div class="options" data-qid="6">
+    <label><input type="radio" name="q6" value="A"><span>(A) persuasive</span></label>
+    <label><input type="radio" name="q6" value="B"><span>(B) harmonious</span></label>
+    <label><input type="radio" name="q6" value="C"><span>(C) conventional</span></label>
+    <label><input type="radio" name="q6" value="D"><span>(D) revolutionary</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">persuasive</span><span class="word">harmonious</span><span class="word">conventional</span><span class="word">revolutionary</span></div>
+</div>
+
+<div class="question" data-q="7">
+  <div class="q-text autowrap"><span class="q-num">7</span>To encourage classroom <span class="blank">______</span>, the teacher divided the class into groups and asked them to solve a problem together with their partners.</div>
+  <div class="options" data-qid="7">
+    <label><input type="radio" name="q7" value="A"><span>(A) operation</span></label>
+    <label><input type="radio" name="q7" value="B"><span>(B) interaction</span></label>
+    <label><input type="radio" name="q7" value="C"><span>(C) adjustment</span></label>
+    <label><input type="radio" name="q7" value="D"><span>(D) explanation</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">operation</span><span class="word">interaction</span><span class="word">adjustment</span><span class="word">explanation</span></div>
+</div>
+
+<div class="question" data-q="8">
+  <div class="q-text autowrap"><span class="q-num">8</span>Lisa <span class="blank">______</span> onto the ground and injured her ankle while she was playing basketball yesterday.</div>
+  <div class="options" data-qid="8">
+    <label><input type="radio" name="q8" value="A"><span>(A) buried</span></label>
+    <label><input type="radio" name="q8" value="B"><span>(B) punched</span></label>
+    <label><input type="radio" name="q8" value="C"><span>(C) scattered</span></label>
+    <label><input type="radio" name="q8" value="D"><span>(D) tumbled</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">buried</span><span class="word">punched</span><span class="word">scattered</span><span class="word">tumbled</span></div>
+</div>
+
+<div class="question" data-q="9">
+  <div class="q-text autowrap"><span class="q-num">9</span>Hundreds of residents received free testing <span class="blank">______</span> from the city government to find out if their water contained any harmful chemicals.</div>
+  <div class="options" data-qid="9">
+    <label><input type="radio" name="q9" value="A"><span>(A) kits</span></label>
+    <label><input type="radio" name="q9" value="B"><span>(B) trials</span></label>
+    <label><input type="radio" name="q9" value="C"><span>(C) zones</span></label>
+    <label><input type="radio" name="q9" value="D"><span>(D) proofs</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">kits</span><span class="word">trials</span><span class="word">zones</span><span class="word">proofs</span></div>
+</div>
+
+<div class="question" data-q="10">
+  <div class="q-text autowrap"><span class="q-num">10</span>The 2011 Nobel Peace Prize was awarded <span class="blank">______</span> to three women for the efforts they made in fighting for women's rights.</div>
+  <div class="options" data-qid="10">
+    <label><input type="radio" name="q10" value="A"><span>(A) actively</span></label>
+    <label><input type="radio" name="q10" value="B"><span>(B) earnestly</span></label>
+    <label><input type="radio" name="q10" value="C"><span>(C) jointly</span></label>
+    <label><input type="radio" name="q10" value="D"><span>(D) naturally</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">actively</span><span class="word">earnestly</span><span class="word">jointly</span><span class="word">naturally</span></div>
+</div>
+
+<div class="question" data-q="11">
+  <div class="q-text autowrap"><span class="q-num">11</span>The company is <span class="blank">______</span> and making great profits under the wise leadership of the chief executive officer.</div>
+  <div class="options" data-qid="11">
+    <label><input type="radio" name="q11" value="A"><span>(A) applauding</span></label>
+    <label><input type="radio" name="q11" value="B"><span>(B) flourishing</span></label>
+    <label><input type="radio" name="q11" value="C"><span>(C) circulating</span></label>
+    <label><input type="radio" name="q11" value="D"><span>(D) exceeding</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">applauding</span><span class="word">flourishing</span><span class="word">circulating</span><span class="word">exceeding</span></div>
+</div>
+
+<div class="question" data-q="12">
+  <div class="q-text autowrap"><span class="q-num">12</span>It is absolutely <span class="blank">______</span> to waste your money on an expensive car when you cannot even get a driver's license.</div>
+  <div class="options" data-qid="12">
+    <label><input type="radio" name="q12" value="A"><span>(A) absurd</span></label>
+    <label><input type="radio" name="q12" value="B"><span>(B) cautious</span></label>
+    <label><input type="radio" name="q12" value="C"><span>(C) vigorous</span></label>
+    <label><input type="radio" name="q12" value="D"><span>(D) obstinate</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">absurd</span><span class="word">cautious</span><span class="word">vigorous</span><span class="word">obstinate</span></div>
+</div>
+
+<div class="question" data-q="13">
+  <div class="q-text autowrap"><span class="q-num">13</span>The problem of illegal drug use is very complex and cannot be traced to merely one <span class="blank">______</span> reason.</div>
+  <div class="options" data-qid="13">
+    <label><input type="radio" name="q13" value="A"><span>(A) singular</span></label>
+    <label><input type="radio" name="q13" value="B"><span>(B) countable</span></label>
+    <label><input type="radio" name="q13" value="C"><span>(C) favorable</span></label>
+    <label><input type="radio" name="q13" value="D"><span>(D) defensive</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">singular</span><span class="word">countable</span><span class="word">favorable</span><span class="word">defensive</span></div>
+</div>
+
+<div class="question" data-q="14">
+  <div class="q-text autowrap"><span class="q-num">14</span>The non-profit organization has <span class="blank">______</span> $1 million over five years to finance the construction of the medical center.</div>
+  <div class="options" data-qid="14">
+    <label><input type="radio" name="q14" value="A"><span>(A) equipped</span></label>
+    <label><input type="radio" name="q14" value="B"><span>(B) resolved</span></label>
+    <label><input type="radio" name="q14" value="C"><span>(C) committed</span></label>
+    <label><input type="radio" name="q14" value="D"><span>(D) associated</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">equipped</span><span class="word">resolved</span><span class="word">committed</span><span class="word">associated</span></div>
+</div>
+
+<div class="question" data-q="15">
+  <div class="q-text autowrap"><span class="q-num">15</span>One week after the typhoon, some bridges were finally opened and bus service <span class="blank">______</span> in the country's most severely damaged areas.</div>
+  <div class="options" data-qid="15">
+    <label><input type="radio" name="q15" value="A"><span>(A) departed</span></label>
+    <label><input type="radio" name="q15" value="B"><span>(B) resumed</span></label>
+    <label><input type="radio" name="q15" value="C"><span>(C) transported</span></label>
+    <label><input type="radio" name="q15" value="D"><span>(D) corresponded</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">departed</span><span class="word">resumed</span><span class="word">transported</span><span class="word">corresponded</span></div>
+</div>
+
+<!-- ============ 二、綜合測驗 (16-30) — 已位置變換 ============ -->
+<div class="section-title">二、綜合測驗（第 16-30 題，每題 1 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+
+<div class="group-label">【第 16-20 題為題組】Barcelona Pigeons</div>
+
+<!-- Para 1 (with 16, 17) -->
+<div class="passage autowrap">
+<p>Street pigeons are a common sight in many European cities. In fact, a visit to a major European city just would not be the same <span class="blank">[16]</span> encountering them: bathing in fountains, perching on historic buildings, and flocking in public squares. In Barcelona, however, the birds are now threatening to <span class="blank">[17]</span> the city's historic center, pooping on monuments, buildings, and even tourists.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">16.</span>
+  <div class="options" data-qid="16">
+    <label><input type="radio" name="q16" value="A"><span>(A) for</span></label>
+    <label><input type="radio" name="q16" value="B"><span>(B) without</span></label>
+    <label><input type="radio" name="q16" value="C"><span>(C) as</span></label>
+    <label><input type="radio" name="q16" value="D"><span>(D) though</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">17.</span>
+  <div class="options" data-qid="17">
+    <label><input type="radio" name="q17" value="A"><span>(A) take over</span></label>
+    <label><input type="radio" name="q17" value="B"><span>(B) set up</span></label>
+    <label><input type="radio" name="q17" value="C"><span>(C) break down</span></label>
+    <label><input type="radio" name="q17" value="D"><span>(D) hang on</span></label>
+  </div>
+</div>
+
+<!-- Para 2 (with 18, 19) -->
+<div class="passage autowrap">
+<p>The city council originally proposed <span class="blank">[18]</span> the pigeon population by gathering the birds and shooting them. But that idea led to strong protests from numerous animal rights groups. After heated debates and discussions, the government was finally persuaded to consider another <span class="blank">[19]</span> effective method: giving the pigeons birth control.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">18.</span>
+  <div class="options" data-qid="18">
+    <label><input type="radio" name="q18" value="A"><span>(A) counting</span></label>
+    <label><input type="radio" name="q18" value="B"><span>(B) displaying</span></label>
+    <label><input type="radio" name="q18" value="C"><span>(C) reducing</span></label>
+    <label><input type="radio" name="q18" value="D"><span>(D) maintaining</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">counting</span><span class="word">displaying</span><span class="word">reducing</span><span class="word">maintaining</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">19.</span>
+  <div class="options" data-qid="19">
+    <label><input type="radio" name="q19" value="A"><span>(A) similarly</span></label>
+    <label><input type="radio" name="q19" value="B"><span>(B) nearly</span></label>
+    <label><input type="radio" name="q19" value="C"><span>(C) shortly</span></label>
+    <label><input type="radio" name="q19" value="D"><span>(D) precisely</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 20) -->
+<div class="passage autowrap">
+<p>In 2016, the city council decided to put its 85,000 pigeon population on a birth control pill to block the formation of eggs in birds. Starting from April 2017, the pills were placed in 40 bird feeders <span class="blank">[20]</span> throughout the city. It was predicted that there would be a decrease of 20 percent in the pigeon population in the first year and between 70 and 80 percent in four or five years.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">20.</span>
+  <div class="options" data-qid="20">
+    <label><input type="radio" name="q20" value="A"><span>(A) installed</span></label>
+    <label><input type="radio" name="q20" value="B"><span>(B) installing</span></label>
+    <label><input type="radio" name="q20" value="C"><span>(C) to install</span></label>
+    <label><input type="radio" name="q20" value="D"><span>(D) having installed</span></label>
+  </div>
+</div>
+
+<div class="group-label">【第 21-25 題為題組】Roy Sullivan</div>
+
+<!-- Para 1 (with 21, 22) -->
+<div class="passage autowrap">
+<p>Being hit by lightning is a rare event. Over the course of an 80-year life span, the odds of being hit by lightning are 1 in 3,000, <span class="blank">[21]</span> the probability of being struck seven different times. Roy Sullivan, a park ranger in the United States, was struck by lightning more recorded times than any other human being. Over his 36-year career, Sullivan was struck by lightning seven times—and <span class="blank">[22]</span> each shock!</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">21.</span>
+  <div class="options" data-qid="21">
+    <label><input type="radio" name="q21" value="A"><span>(A) not to mention</span></label>
+    <label><input type="radio" name="q21" value="B"><span>(B) as you can see</span></label>
+    <label><input type="radio" name="q21" value="C"><span>(C) with regard to</span></label>
+    <label><input type="radio" name="q21" value="D"><span>(D) if it isn't</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">22.</span>
+  <div class="options" data-qid="22">
+    <label><input type="radio" name="q22" value="A"><span>(A) piloted</span></label>
+    <label><input type="radio" name="q22" value="B"><span>(B) survived</span></label>
+    <label><input type="radio" name="q22" value="C"><span>(C) rejected</span></label>
+    <label><input type="radio" name="q22" value="D"><span>(D) tracked</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">piloted</span><span class="word">survived</span><span class="word">rejected</span><span class="word">tracked</span></div>
+
+<!-- Para 2 (with 23, 24) -->
+<div class="passage autowrap">
+<p>Strikes one, two, and three were pure bad luck, he thought. But after strike four, Sullivan became <span class="blank">[23]</span> death and took precautions during lightning strikes. Strike five occurred in 1973 when Sullivan was on patrol. A storm cloud "chased" him until he was struck. The same thing happened again in 1976. Sullivan, while surveying a campground, felt that a cloud was <span class="blank">[24]</span> him, and tried all he could to run—but it got him anyway.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">23.</span>
+  <div class="options" data-qid="23">
+    <label><input type="radio" name="q23" value="A"><span>(A) critical of</span></label>
+    <label><input type="radio" name="q23" value="B"><span>(B) fearful of</span></label>
+    <label><input type="radio" name="q23" value="C"><span>(C) doubtful about</span></label>
+    <label><input type="radio" name="q23" value="D"><span>(D) positive about</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">24.</span>
+  <div class="options" data-qid="24">
+    <label><input type="radio" name="q24" value="A"><span>(A) getting over</span></label>
+    <label><input type="radio" name="q24" value="B"><span>(B) coming after</span></label>
+    <label><input type="radio" name="q24" value="C"><span>(C) holding on to</span></label>
+    <label><input type="radio" name="q24" value="D"><span>(D) watching out for</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 25) -->
+<div class="passage autowrap">
+<p>Finally, on 25 June 1977, a seventh and final bolt struck Sullivan as he was fishing in a pond. "I don't believe God is after me," he theorized. "If he was, the first bolt <span class="blank">[25]</span> enough. Best I can figure is that I have some chemical, some mineral, in my body that draws lightning. I just wish I knew."</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">25.</span>
+  <div class="options" data-qid="25">
+    <label><input type="radio" name="q25" value="A"><span>(A) would have been</span></label>
+    <label><input type="radio" name="q25" value="B"><span>(B) was</span></label>
+    <label><input type="radio" name="q25" value="C"><span>(C) had been</span></label>
+    <label><input type="radio" name="q25" value="D"><span>(D) would be</span></label>
+  </div>
+</div>
+
+<div class="group-label">【第 26-30 題為題組】Tropical Glaciers</div>
+
+<!-- Para 1 (with 26) -->
+<div class="passage autowrap">
+<p>Glaciers are usually associated with colder climates. But some mountain ranges of South America, Africa, and Indonesia are also <span class="blank">[26]</span> glaciers and ice sheets. These tropical glaciers serve as a major source of water supply to one-sixth of the world's population.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">26.</span>
+  <div class="options" data-qid="26">
+    <label><input type="radio" name="q26" value="A"><span>(A) covers of</span></label>
+    <label><input type="radio" name="q26" value="B"><span>(B) home to</span></label>
+    <label><input type="radio" name="q26" value="C"><span>(C) roofs over</span></label>
+    <label><input type="radio" name="q26" value="D"><span>(D) room for</span></label>
+  </div>
+</div>
+
+<!-- Para 2 (with 27, 28) -->
+<div class="passage autowrap">
+<p>A newly published study, however, revealed that rising temperatures are posing an <span class="blank">[27]</span> threat to the last tropical glaciers in Indonesia's Papua region. The ice sheets, which once spanned 20 square kilometers, are thinning over five times as quickly compared to a few years ago. <span class="blank">[28]</span> already shrunk by 85% to a mere 0.5 square kilometers, Papua's glaciers will completely disappear within a decade, researchers have predicted.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">27.</span>
+  <div class="options" data-qid="27">
+    <label><input type="radio" name="q27" value="A"><span>(A) elaborate</span></label>
+    <label><input type="radio" name="q27" value="B"><span>(B) immediate</span></label>
+    <label><input type="radio" name="q27" value="C"><span>(C) occasional</span></label>
+    <label><input type="radio" name="q27" value="D"><span>(D) offensive</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">elaborate</span><span class="word">immediate</span><span class="word">occasional</span><span class="word">offensive</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">28.</span>
+  <div class="options" data-qid="28">
+    <label><input type="radio" name="q28" value="A"><span>(A) Have</span></label>
+    <label><input type="radio" name="q28" value="B"><span>(B) Had</span></label>
+    <label><input type="radio" name="q28" value="C"><span>(C) Having been</span></label>
+    <label><input type="radio" name="q28" value="D"><span>(D) Having</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 29) -->
+<div class="passage autowrap">
+<p>The disappearance of the glaciers will also leave a significant <span class="blank">[29]</span> impact. For many indigenous Papuans, the ice sheets represent a sacred symbol. "The mountains and valleys are the arms and legs of their god and the glaciers are the head," explained the head researcher.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">29.</span>
+  <div class="options" data-qid="29">
+    <label><input type="radio" name="q29" value="A"><span>(A) moral</span></label>
+    <label><input type="radio" name="q29" value="B"><span>(B) cultural</span></label>
+    <label><input type="radio" name="q29" value="C"><span>(C) political</span></label>
+    <label><input type="radio" name="q29" value="D"><span>(D) environmental</span></label>
+  </div>
+</div>
+
+<!-- Para 4 (with 30) -->
+<div class="passage autowrap">
+<p>The study warned that Papua's glaciers are only the "first to go" if greenhouse gases are <span class="blank">[30]</span> and temperatures continue rising. And this is certainly a serious warning about the depressing fate of other glaciers around the world.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">30.</span>
+  <div class="options" data-qid="30">
+    <label><input type="radio" name="q30" value="A"><span>(A) left unchecked</span></label>
+    <label><input type="radio" name="q30" value="B"><span>(B) kept balanced</span></label>
+    <label><input type="radio" name="q30" value="C"><span>(C) seen dismissed</span></label>
+    <label><input type="radio" name="q30" value="D"><span>(D) made released</span></label>
+  </div>
+</div>
+
+<!-- ============ 三、文意選填 (31-40) — 已位置變換 ============ -->
+<div class="section-title">三、文意選填（第 31-40 題，每題 1 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+<div class="group-label">【第 31-40 題為題組】Easy Exercise</div>
+
+<!-- Para 1 (with 31, 32, 33) -->
+<div class="passage autowrap">
+<p>If you cannot find ways to fit exercise into your busy daily schedule, don't worry! Exercise doesn't always have to be laborious. Research shows that <span class="blank">[31]</span> amounts of exercise—even just 15 minutes a day—helps ease depression, enhance self-image, relieve stress, and much more. That's right. Doing exercise makes you happy, and you don't have to be a fitness <span class="blank">[32]</span> to do it. What you need to do is to make "start slow and have fun" a motto to <span class="blank">[33]</span>. Then you'll be well on your way to using physical activity as a tool to make you feel better every day.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">31.</span>
+  <div class="options options-ci" data-qid="31">
+    <label><input type="radio" name="q31" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q31" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q31" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q31" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q31" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q31" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q31" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q31" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q31" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q31" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">32.</span>
+  <div class="options options-ci" data-qid="32">
+    <label><input type="radio" name="q32" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q32" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q32" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q32" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q32" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q32" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q32" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q32" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q32" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q32" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">33.</span>
+  <div class="options options-ci" data-qid="33">
+    <label><input type="radio" name="q33" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q33" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q33" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q33" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q33" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q33" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q33" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q33" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q33" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q33" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<!-- Para 2 (with 34, 35, 36, 37, 38) -->
+<div class="passage autowrap">
+<p>The "no pain, no gain" view of exercise is now considered old-fashioned. In fact, <span class="blank">[34]</span> health studies prove that exercise doesn't have to hurt to be effective. You might <span class="blank">[35]</span> that if working out doesn't give you pain, it isn't working. According to fitness trainers, physically <span class="blank">[36]</span> exercises may make you breathe heavily and your muscles may ache temporarily, but exercise should not be painful. In fact, if it is, it may <span class="blank">[37]</span> an injury or muscle strain. Many great forms of exercise—like walking, swimming, or gentle stretching—get results without the <span class="blank">[38]</span> or discomfort some people associate with exercise.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">34.</span>
+  <div class="options options-ci" data-qid="34">
+    <label><input type="radio" name="q34" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q34" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q34" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q34" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q34" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q34" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q34" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q34" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q34" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q34" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">35.</span>
+  <div class="options options-ci" data-qid="35">
+    <label><input type="radio" name="q35" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q35" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q35" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q35" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q35" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q35" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q35" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q35" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q35" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q35" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">36.</span>
+  <div class="options options-ci" data-qid="36">
+    <label><input type="radio" name="q36" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q36" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q36" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q36" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q36" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q36" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q36" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q36" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q36" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q36" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">37.</span>
+  <div class="options options-ci" data-qid="37">
+    <label><input type="radio" name="q37" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q37" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q37" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q37" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q37" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q37" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q37" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q37" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q37" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q37" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">38.</span>
+  <div class="options options-ci" data-qid="38">
+    <label><input type="radio" name="q38" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q38" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q38" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q38" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q38" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q38" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q38" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q38" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q38" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q38" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 39, 40) -->
+<div class="passage autowrap">
+<p>For the sake of your health, it is time to make regular exercise a part of your life. Keep in mind that even short periods of low-impact exercise serve as a powerful <span class="blank">[39]</span> to improve your health. So, no matter how busy you are, try to <span class="blank">[40]</span> for exercise every day, like a 15-minute walk with your dog. Your body will thank you in many ways.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">39.</span>
+  <div class="options options-ci" data-qid="39">
+    <label><input type="radio" name="q39" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q39" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q39" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q39" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q39" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q39" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q39" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q39" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q39" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q39" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">40.</span>
+  <div class="options options-ci" data-qid="40">
+    <label><input type="radio" name="q40" value="A"><span>(A) fanatic</span></label>
+    <label><input type="radio" name="q40" value="B"><span>(B) modest</span></label>
+    <label><input type="radio" name="q40" value="C"><span>(C) abide by</span></label>
+    <label><input type="radio" name="q40" value="D"><span>(D) soreness</span></label>
+    <label><input type="radio" name="q40" value="E"><span>(E) current</span></label>
+    <label><input type="radio" name="q40" value="F"><span>(F) argue</span></label>
+    <label><input type="radio" name="q40" value="G"><span>(G) means</span></label>
+    <label><input type="radio" name="q40" value="H"><span>(H) make time</span></label>
+    <label><input type="radio" name="q40" value="I"><span>(I) point to</span></label>
+    <label><input type="radio" name="q40" value="J"><span>(J) demanding</span></label>
+  </div>
+</div>
+
+<div class="vocab-row"><span class="word">fanatic</span><span class="word">modest</span><span class="word">abide by</span><span class="word">soreness</span><span class="word">current</span><span class="word">argue</span><span class="word">means</span><span class="word">make time</span><span class="word">point to</span><span class="word">demanding</span></div>
+
+<!-- ============ 四、閱讀測驗 (41-56) — 已位置變換 ============ -->
+<div class="section-title">四、閱讀測驗（第 41-56 題，每題 2 分）⚙ 已位置變換</div>
+
+<div class="group-label">【第 41-44 題為題組】Prickly Pear Cactus</div>
+
+<div class="passage autowrap">
+<p>The prickly pear cactus is such a powerful symbol in Mexico that it occupies a prime spot on Mexico's national flag. The plant was considered sacred by the ancient Aztecs, and modern-day Mexicans eat it, drink it, and even use it in medicines and shampoos. Now scientists have come up with a new use for the bright green plant: producing renewable energy.</p>
+<p>Known locally as nopal, the prickly pear is farmed on a massive scale in Mexico. Over the years, only the edible soft inner flesh has been used. The cactus's thick outer layer (i.e., husk), with all those spines, had always been viewed as a waste product until researchers developed a biogas generator to turn the husks into electricity.</p>
+<p>The pilot project dedicated to developing the cactus biogas generator began in the south of Mexico City. The area produces 200,000 tons a year of prickly pear cactus—up to 10 tons of which ends up as waste on the floor of the cactus market each day. Then, a local green energy startup company got the idea to turn that waste into energy. The generator is now in place at the cactus market, where the vendors are enthusiastic about this new way to utilize the tons of cactus husks that once went directly into the trash.</p>
+<p>The prickly pear has a number of advantages over other biofuel crops, such as wheat, sugarcane, and soybeans. For one thing, only the husk of the cactus is used for generating biofuel, while its inner flesh is still preserved for food. Therefore, using the plant as a fuel source will not put pressure on food prices. Moreover, the cactus requires minimum water, and thus is not grown on traditional agricultural pasture. This means that no increased competition arises for the water or land presently used for food production.</p>
+<p>The project in Mexico City has brought new hope to reducing the use of fossil fuels. If it can be expanded, the prickly pear could be the key to Mexico's energy future.</p>
+</div>
+
+<div class="question" data-q="41">
+  <div class="q-text autowrap"><span class="q-num">41</span>What is the purpose of this passage?</div>
+  <div class="options options-rd" data-qid="41">
+    <label><input type="radio" name="q41" value="A"><span>(A) To argue for the benefits of nopales.</span></label>
+    <label><input type="radio" name="q41" value="B"><span>(B) To predict the future agriculture policy of Mexico.</span></label>
+    <label><input type="radio" name="q41" value="C"><span>(C) To introduce a new source of energy.</span></label>
+    <label><input type="radio" name="q41" value="D"><span>(D) To change people's ideas about energy consumption.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">nopales</span><span class="word">consumption</span></div>
+
+<div class="question" data-q="42">
+  <div class="q-text autowrap"><span class="q-num">42</span>Which of the following is NOT mentioned as a function of the prickly pear?</div>
+  <div class="options options-rd" data-qid="42">
+    <label><input type="radio" name="q42" value="A"><span>(A) For personal hygiene.</span></label>
+    <label><input type="radio" name="q42" value="B"><span>(B) For gardening and landscaping.</span></label>
+    <label><input type="radio" name="q42" value="C"><span>(C) For treating illnesses.</span></label>
+    <label><input type="radio" name="q42" value="D"><span>(D) For food and beverage.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">hygiene</span><span class="word">landscaping</span><span class="word">beverage</span></div>
+
+<div class="question" data-q="43">
+  <div class="q-text autowrap"><span class="q-num">43</span>Which of the following statements about the prickly pear cactus is true?</div>
+  <div class="options options-rd" data-qid="43">
+    <label><input type="radio" name="q43" value="A"><span>(A) Its soft inner part is often discarded.</span></label>
+    <label><input type="radio" name="q43" value="B"><span>(B) It was not discovered until the modern era.</span></label>
+    <label><input type="radio" name="q43" value="C"><span>(C) It appears in a prominent place on Mexico's national flag.</span></label>
+    <label><input type="radio" name="q43" value="D"><span>(D) It turns into 200,000 tons of waste in Mexico each year.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">discarded</span><span class="word">prominent</span></div>
+
+<div class="question" data-q="44">
+  <div class="q-text autowrap"><span class="q-num">44</span>What advantage does the prickly pear cactus have over other biofuel crops?</div>
+  <div class="options options-rd" data-qid="44">
+    <label><input type="radio" name="q44" value="A"><span>(A) It will not influence food prices.</span></label>
+    <label><input type="radio" name="q44" value="B"><span>(B) It may replace feed for livestock.</span></label>
+    <label><input type="radio" name="q44" value="C"><span>(C) It generates more energy.</span></label>
+    <label><input type="radio" name="q44" value="D"><span>(D) It can increase global food production.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">livestock</span><span class="word">biofuel</span></div>
+
+<div class="group-label">【第 45-48 題為題組】Passport History</div>
+
+<div class="passage autowrap">
+<p>The concept of a travel document, which shows a person is under a ruler's protection while in a foreign land, has probably existed since rulers and states were first invented. But the earliest mention of an object which we might recognize as a passport appeared in about 450 B.C. The Hebrew Bible states that Nehemiah, an official serving King Artaxerxes of ancient Persia, asked permission to travel to Judah. The King agreed and gave Nehemiah a letter "to the governors of the province beyond the river," requesting safe passage for him as he travelled through their lands.</p>
+<p>Later, in the medieval Islamic Caliphate, a form of passport was the bara'a, a receipt for taxes paid. Only people who paid their taxes were permitted to travel to different regions of the Caliphate. In medieval Europe, on the other hand, travel documents were issued by local authorities, and generally contained a list of towns and cities which the document holder was permitted to enter or pass through. On the whole, documents were not required for travel to seaports, which were considered open trading points, but documents were required to travel inland from seaports.</p>
+<p>King Henry V of England is credited with having invented the first true passport, as a way of helping his subjects prove who they were in foreign lands. The earliest reference to these documents is found in a 15th-century Act of Parliament, while the term "passport" came into use about a century later. Nevertheless, passports were not generally required for international travel until the First World War. It was at this time that passports as we would recognize them today began to be used.</p>
+</div>
+
+<div class="question" data-q="45">
+  <div class="q-text autowrap"><span class="q-num">45</span>How is the information in the passage organized?</div>
+  <div class="options options-rd" data-qid="45">
+    <label><input type="radio" name="q45" value="A"><span>(A) By cause and effect.</span></label>
+    <label><input type="radio" name="q45" value="B"><span>(B) In order of time.</span></label>
+    <label><input type="radio" name="q45" value="C"><span>(C) In order of importance.</span></label>
+    <label><input type="radio" name="q45" value="D"><span>(D) By definition and illustration.</span></label>
+  </div>
+</div>
+
+<div class="question" data-q="46">
+  <div class="q-text autowrap"><span class="q-num">46</span>Which of the following statements is true about the earliest travel document?</div>
+  <div class="options options-rd" data-qid="46">
+    <label><input type="radio" name="q46" value="A"><span>(A) It was issued by the king of Judah.</span></label>
+    <label><input type="radio" name="q46" value="B"><span>(B) It served to invite people to travel beyond the river.</span></label>
+    <label><input type="radio" name="q46" value="C"><span>(C) It was given to an official of Persia.</span></label>
+    <label><input type="radio" name="q46" value="D"><span>(D) It appeared more than three thousand years ago.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">issued</span><span class="word">Persia</span></div>
+
+<div class="question" data-q="47">
+  <div class="q-text autowrap"><span class="q-num">47</span>When did the term "passport" start being used?</div>
+  <div class="options options-rd" data-qid="47">
+    <label><input type="radio" name="q47" value="A"><span>(A) In about 450 B.C.</span></label>
+    <label><input type="radio" name="q47" value="B"><span>(B) In the 16th century.</span></label>
+    <label><input type="radio" name="q47" value="C"><span>(C) During World War I.</span></label>
+    <label><input type="radio" name="q47" value="D"><span>(D) During King Henry V's reign.</span></label>
+  </div>
+</div>
+
+<div class="question" data-q="48">
+  <div class="q-text autowrap"><span class="q-num">48</span>Which of the following is NOT mentioned in the passage as a form of passport?</div>
+  <div class="options options-rd" data-qid="48">
+    <label><input type="radio" name="q48" value="A"><span>(A) A list of seaports.</span></label>
+    <label><input type="radio" name="q48" value="B"><span>(B) A receipt.</span></label>
+    <label><input type="radio" name="q48" value="C"><span>(C) A proof of identity.</span></label>
+    <label><input type="radio" name="q48" value="D"><span>(D) A letter.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">seaports</span><span class="word">receipt</span><span class="word">identity</span></div>
+
+<div class="group-label">【第 49-52 題為題組】Glass Armonica (Benjamin Franklin)</div>
+
+<div class="passage autowrap">
+<p>Benjamin Franklin, one of the Founding Fathers of the United States, was not only a great politician but also a highly accomplished scientist and inventor. Of his many achievements, probably the least well-known are his accomplishments in music. He invented an instrument for which both Mozart and Beethoven composed music—the glass armonica.</p>
+<p>In 1761, while living in England, Franklin heard a performer playing musical glasses. Franklin was charmed by the music, but felt that there was a better way to create the same sound. He had a glassmaker create thirty-seven hemispheres made of glass, with each being a different size and thickness to produce different pitches. The glass hemispheres were color coded with paint to identify the notes. Franklin ran an iron rod through a hole in the top of each hemisphere so that <u>they</u> could nest together from largest to smallest. He linked all of this to a device shaped like a spinning wheel, with a foot control that turned the rod, making the glass hemispheres rotate. Franklin moistened his fingers and held them against the rims of the glass hemispheres as they turned, producing a unique sound. He mastered the instrument and took it to parties and gatherings to play for his friends and acquaintances. The instrument became so popular that thousands were built and sold.</p>
+<p>But musical fashions changed. Music was moving out of the relatively small halls of Mozart's day into the large concert halls of the 19th century, and without amplification, the glass armonica simply couldn't be heard. Concert reviews from the period mourned the fact that the armonica sounded wonderful—only when it could be heard. So, alas, Franklin's marvelous invention was ultimately abandoned. The popularity of the instrument faded early in the 19th century, but it is still played occasionally today.</p>
+</div>
+
+<!-- Q49 圖片題 -->
+<div class="question" data-q="49">
+  <div class="q-text autowrap"><span class="q-num">49</span>Which of the following is the closest illustration of Benjamin Franklin's invention?</div>
+  <div class="pic-grid">
+    <!-- (A) Glass armonica - nested glass hemispheres on horizontal axis with foot pedal (CORRECT) -->
+    <label class="pic-opt"><input type="radio" name="q49" value="A">
+      <svg viewBox="0 0 200 110" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <!-- wooden box base -->
+        <rect x="20" y="55" width="160" height="22" fill="#8b6f47" stroke="#5d4037"/>
+        <line x1="20" y1="65" x2="180" y2="65" stroke="#5d4037" stroke-width="0.5"/>
+        <!-- horizontal iron rod -->
+        <line x1="30" y1="40" x2="170" y2="40" stroke="#444" stroke-width="2"/>
+        <!-- nested glass hemispheres (largest to smallest) -->
+        <g fill="rgba(180,220,240,0.6)" stroke="#5dade2" stroke-width="1">
+          <ellipse cx="50" cy="40" rx="20" ry="14"/>
+          <ellipse cx="65" cy="40" rx="17" ry="12"/>
+          <ellipse cx="80" cy="40" rx="14" ry="10"/>
+          <ellipse cx="92" cy="40" rx="12" ry="8.5"/>
+          <ellipse cx="103" cy="40" rx="10" ry="7"/>
+          <ellipse cx="113" cy="40" rx="8" ry="5.5"/>
+          <ellipse cx="121" cy="40" rx="6" ry="4.5"/>
+        </g>
+        <!-- color-coded rims -->
+        <ellipse cx="50" cy="32" rx="20" ry="2" fill="#c0392b"/>
+        <ellipse cx="65" cy="33" rx="17" ry="1.8" fill="#27ae60"/>
+        <ellipse cx="80" cy="33" rx="14" ry="1.5" fill="#f39c12"/>
+        <!-- spinning wheel mechanism (right) -->
+        <circle cx="170" cy="40" r="6" fill="#666" stroke="#222"/>
+        <circle cx="170" cy="40" r="2" fill="#222"/>
+        <!-- foot pedal -->
+        <rect x="80" y="92" width="40" height="6" fill="#5d4037"/>
+        <line x1="100" y1="77" x2="100" y2="92" stroke="#444" stroke-width="1.5"/>
+      </svg>
+      <span class="pic-cap">(A)</span>
+    </label>
+    <!-- (B) Wine glasses on table -->
+    <label class="pic-opt"><input type="radio" name="q49" value="B">
+      <svg viewBox="0 0 200 110" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="80" width="200" height="30" fill="#a87a4a"/>
+        <line x1="0" y1="80" x2="200" y2="80" stroke="#5d4037" stroke-width="1.5"/>
+        <!-- 5 wine glasses with water -->
+        <g stroke="#5dade2" fill="rgba(180,220,240,0.5)">
+          <path d="M30 30 L42 30 L40 50 Q36 56 32 50 Z" fill="rgba(100,180,220,0.4)"/>
+          <line x1="36" y1="56" x2="36" y2="76" stroke="#888"/>
+          <ellipse cx="36" cy="78" rx="6" ry="2" fill="#888"/>
+        </g>
+        <g stroke="#5dade2" fill="rgba(180,220,240,0.5)">
+          <path d="M62 30 L74 30 L72 53 Q68 59 64 53 Z" fill="rgba(100,180,220,0.5)"/>
+          <line x1="68" y1="59" x2="68" y2="78" stroke="#888"/>
+          <ellipse cx="68" cy="78" rx="6" ry="2" fill="#888"/>
+        </g>
+        <g stroke="#5dade2" fill="rgba(180,220,240,0.5)">
+          <path d="M94 30 L106 30 L104 56 Q100 62 96 56 Z" fill="rgba(100,180,220,0.6)"/>
+          <line x1="100" y1="62" x2="100" y2="78" stroke="#888"/>
+          <ellipse cx="100" cy="78" rx="6" ry="2" fill="#888"/>
+        </g>
+        <g stroke="#5dade2" fill="rgba(180,220,240,0.5)">
+          <path d="M126 30 L138 30 L136 60 Q132 66 128 60 Z" fill="rgba(100,180,220,0.7)"/>
+          <line x1="132" y1="66" x2="132" y2="78" stroke="#888"/>
+          <ellipse cx="132" cy="78" rx="6" ry="2" fill="#888"/>
+        </g>
+        <g stroke="#5dade2" fill="rgba(180,220,240,0.5)">
+          <path d="M158 30 L170 30 L168 64 Q164 70 160 64 Z" fill="rgba(100,180,220,0.8)"/>
+          <line x1="164" y1="70" x2="164" y2="78" stroke="#888"/>
+          <ellipse cx="164" cy="78" rx="6" ry="2" fill="#888"/>
+        </g>
+      </svg>
+      <span class="pic-cap">(B)</span>
+    </label>
+    <!-- (C) Hand-cranked organ / hurdy-gurdy -->
+    <label class="pic-opt"><input type="radio" name="q49" value="C">
+      <svg viewBox="0 0 200 110" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <!-- Box organ -->
+        <rect x="40" y="35" width="100" height="50" fill="#8b6f47" stroke="#5d4037"/>
+        <!-- pipes on top -->
+        <g fill="#aaa" stroke="#666">
+          <rect x="50" y="20" width="6" height="20"/>
+          <rect x="60" y="15" width="6" height="25"/>
+          <rect x="70" y="10" width="6" height="30"/>
+          <rect x="80" y="15" width="6" height="25"/>
+          <rect x="90" y="20" width="6" height="20"/>
+          <rect x="100" y="25" width="6" height="15"/>
+          <rect x="110" y="30" width="6" height="10"/>
+        </g>
+        <!-- crank -->
+        <circle cx="155" cy="60" r="10" fill="none" stroke="#444" stroke-width="2"/>
+        <line x1="155" y1="60" x2="170" y2="50" stroke="#444" stroke-width="2"/>
+        <circle cx="170" cy="50" r="3" fill="#5d4037"/>
+        <!-- legs -->
+        <line x1="50" y1="85" x2="50" y2="100" stroke="#5d4037" stroke-width="2"/>
+        <line x1="130" y1="85" x2="130" y2="100" stroke="#5d4037" stroke-width="2"/>
+      </svg>
+      <span class="pic-cap">(C)</span>
+    </label>
+    <!-- (D) Piano / keyboard -->
+    <label class="pic-opt"><input type="radio" name="q49" value="D">
+      <svg viewBox="0 0 200 110" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <!-- piano box -->
+        <rect x="20" y="20" width="160" height="60" fill="#3a2a1a" stroke="#222"/>
+        <!-- white keys -->
+        <g fill="#fff" stroke="#222">
+          <rect x="25" y="55" width="14" height="22"/>
+          <rect x="40" y="55" width="14" height="22"/>
+          <rect x="55" y="55" width="14" height="22"/>
+          <rect x="70" y="55" width="14" height="22"/>
+          <rect x="85" y="55" width="14" height="22"/>
+          <rect x="100" y="55" width="14" height="22"/>
+          <rect x="115" y="55" width="14" height="22"/>
+          <rect x="130" y="55" width="14" height="22"/>
+          <rect x="145" y="55" width="14" height="22"/>
+          <rect x="160" y="55" width="14" height="22"/>
+        </g>
+        <!-- black keys -->
+        <g fill="#222">
+          <rect x="36" y="55" width="8" height="14"/>
+          <rect x="51" y="55" width="8" height="14"/>
+          <rect x="81" y="55" width="8" height="14"/>
+          <rect x="96" y="55" width="8" height="14"/>
+          <rect x="111" y="55" width="8" height="14"/>
+          <rect x="141" y="55" width="8" height="14"/>
+          <rect x="156" y="55" width="8" height="14"/>
+        </g>
+        <!-- legs -->
+        <rect x="30" y="80" width="6" height="22" fill="#3a2a1a"/>
+        <rect x="164" y="80" width="6" height="22" fill="#3a2a1a"/>
+      </svg>
+      <span class="pic-cap">(D)</span>
+    </label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">armonica</span><span class="word">hemispheres</span><span class="word">pitches</span></div>
+
+<div class="question" data-q="50">
+  <div class="q-text autowrap"><span class="q-num">50</span>Which of the following statements is true about how the glass armonica works?</div>
+  <div class="options options-rd" data-qid="50">
+    <label><input type="radio" name="q50" value="A"><span>(A) Colored paint makes it sound better and last longer.</span></label>
+    <label><input type="radio" name="q50" value="B"><span>(B) The performer's fingers have to be slightly wet when playing it.</span></label>
+    <label><input type="radio" name="q50" value="C"><span>(C) Water has to be poured into the glass hemispheres.</span></label>
+    <label><input type="radio" name="q50" value="D"><span>(D) An iron rod is used to strike the thicker glass hemispheres.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">moistened</span><span class="word">rod</span></div>
+
+<div class="question" data-q="51">
+  <div class="q-text autowrap"><span class="q-num">51</span>According to the passage, why did the glass armonica lose its popularity?</div>
+  <div class="options options-rd" data-qid="51">
+    <label><input type="radio" name="q51" value="A"><span>(A) The skill of playing the glass armonica was very hard to master.</span></label>
+    <label><input type="radio" name="q51" value="B"><span>(B) Concert halls became too big for its music to be heard by the audience.</span></label>
+    <label><input type="radio" name="q51" value="C"><span>(C) Famous musicians like Beethoven had problems composing for it.</span></label>
+    <label><input type="radio" name="q51" value="D"><span>(D) Reviewers in that time indicated that it was clumsy and not fashionable.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">amplification</span><span class="word">audience</span></div>
+
+<div class="question" data-q="52">
+  <div class="q-text autowrap"><span class="q-num">52</span>What does the highlighted "they" in the second paragraph refer to?</div>
+  <div class="options options-rd" data-qid="52">
+    <label><input type="radio" name="q52" value="A"><span>(A) Iron rods.</span></label>
+    <label><input type="radio" name="q52" value="B"><span>(B) Colored notes.</span></label>
+    <label><input type="radio" name="q52" value="C"><span>(C) Hemispheres.</span></label>
+    <label><input type="radio" name="q52" value="D"><span>(D) Musical pitches.</span></label>
+  </div>
+</div>
+
+<div class="group-label">【第 53-56 題為題組】Morgan's Wonderland</div>
+
+<div class="passage autowrap">
+<p>Morgan's Wonderland, located in San Antonio, Texas, is a theme park geared mainly toward mentally or physically disabled children. The park was built by Gordon Hartman, a former real estate developer. The creation of the park was inspired by his daughter, Morgan, who suffers from severe cognitive delay and physical challenges.</p>
+<p>The world's first ultra-accessible family fun park, Morgan's Wonderland opened in the spring of 2010. Admission for guests with special needs is free, and fees for the general public are set at a much discounted price so that people of all ages and abilities can come together and play in a fun and safe environment.</p>
+<p>Completely wheelchair-accessible, the park features 25 acres of attractions including rides, playgrounds, a catch-and-release fishing lake, and picnic areas throughout the park. The rides are custom-designed to accommodate wheelchair riders so that every family member can enjoy the fun. The adapted rides include the Off-Road Adventure, where guests can test their driving skills in sporty vehicles. Moreover, each visitor is offered the option to wear a GPS Adventure Band, which allows them to keep track of each other while in the park. The band also enables them to take part in electronic activities. For example, when the riders scan the band at the Off-Road Adventure, a photo will be taken and sent to their email.</p>
+<p>In June 2017, Morgan's Wonderland celebrated the opening of Morgan's Inspiration Island. The new expansion is composed of five themed splash pads and a River Boat Adventure Ride. The wheelchair guests can transfer out of their chairs into unique, waterproof chairs and enjoy the splash park without risking damage to their personal wheelchairs.</p>
+<p>"Morgan taught me that there's more to life in many ways than what I saw before," said Hartman. "The blessing that Morgan has brought is beyond anything that I ever could have imagined and could explain."</p>
+</div>
+
+<div class="question" data-q="53">
+  <div class="q-text autowrap"><span class="q-num">53</span>What is the passage mainly about?</div>
+  <div class="options options-rd" data-qid="53">
+    <label><input type="radio" name="q53" value="A"><span>(A) The new addition to Morgan's Wonderland.</span></label>
+    <label><input type="radio" name="q53" value="B"><span>(B) The advanced technological devices in Morgan's Wonderland.</span></label>
+    <label><input type="radio" name="q53" value="C"><span>(C) The establishment and features of a special theme park.</span></label>
+    <label><input type="radio" name="q53" value="D"><span>(D) The needs of people who suffer from physical and mental disabilities.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">establishment</span><span class="word">disabilities</span></div>
+
+<div class="question" data-q="54">
+  <div class="q-text autowrap"><span class="q-num">54</span>What does "ultra-accessible" in the second paragraph imply?</div>
+  <div class="options options-rd" data-qid="54">
+    <label><input type="radio" name="q54" value="A"><span>(A) Admission is free for people young and old.</span></label>
+    <label><input type="radio" name="q54" value="B"><span>(B) It's easy for all visitors to use the facilities.</span></label>
+    <label><input type="radio" name="q54" value="C"><span>(C) Wheelchairs are provided for every featured attraction.</span></label>
+    <label><input type="radio" name="q54" value="D"><span>(D) Morgan's Wonderland is situated in a convenient location.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">accessible</span><span class="word">facilities</span></div>
+
+<div class="question" data-q="55">
+  <div class="q-text autowrap"><span class="q-num">55</span>Which of the following is NOT mentioned as a fun activity in the park?</div>
+  <div class="options options-rd" data-qid="55">
+    <label><input type="radio" name="q55" value="A"><span>(A) Fishing.</span></label>
+    <label><input type="radio" name="q55" value="B"><span>(B) Driving.</span></label>
+    <label><input type="radio" name="q55" value="C"><span>(C) Picnicking.</span></label>
+    <label><input type="radio" name="q55" value="D"><span>(D) Hiking.</span></label>
+  </div>
+</div>
+
+<div class="question" data-q="56">
+  <div class="q-text autowrap"><span class="q-num">56</span>Which of the following statements is true about Morgan's Wonderland?</div>
+  <div class="options options-rd" data-qid="56">
+    <label><input type="radio" name="q56" value="A"><span>(A) GPS bands allow visitors to enjoy the convenience of the electronic devices.</span></label>
+    <label><input type="radio" name="q56" value="B"><span>(B) Morgan's Inspiration Island includes 25 acres of attractions.</span></label>
+    <label><input type="radio" name="q56" value="C"><span>(C) Waterproof chairs enable visitors to roam all over the park.</span></label>
+    <label><input type="radio" name="q56" value="D"><span>(D) The success of the park is exactly what Morgan intended to achieve.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">waterproof</span><span class="word">roam</span></div>
+
+<!-- ============ 第 貳 部 分 、 非選擇題 ============ -->
+<div class="section-title">第 貳 部 分 ‧ 非選擇題（占 28 分）</div>
+
+<div class="group-label">一、中譯英（占 8 分，每題 4 分）</div>
+<div class="instruction" style="margin-bottom:10px;">
+  <strong>說明：</strong>依題號將以下中文句子譯成正確、通順、達意的英文。
+</div>
+
+<div class="trans-item">
+  <div class="ch-line">1. 根據新聞報導，每年全球有超過百萬人在道路事故中喪失性命。</div>
+  <textarea id="trans1" class="short-ans" placeholder="請寫下你的英文翻譯..."></textarea>
+</div>
+
+<div class="trans-item">
+  <div class="ch-line">2. 因此，交通法規必須嚴格執行，以確保所有用路人的安全。</div>
+  <textarea id="trans2" class="short-ans" placeholder="請寫下你的英文翻譯..."></textarea>
+</div>
+
+<div class="group-label">二、英文作文（占 20 分）</div>
+<div class="instruction autowrap" style="margin-bottom:10px;">
+  <strong>提示：</strong>下圖為遊客到訪某場所的新聞畫面。你認為圖中呈現的是什麼景象？你對這個景象有什麼感想？請根據此圖片，寫一篇英文作文（至少 120 個 words），文分兩段：第一段描述圖片的內容，包括其中人、事、物以及發生的事情；第二段則以遊客或場所主人的立場，表達你對這件事情的看法。
+</div>
+
+<!-- 觀光景點擁擠示意圖 -->
+<div style="display:flex;justify-content:center;margin:14px 0;">
+  <div style="background:#fff;border:1.5px solid #dfe4ea;border-radius:8px;padding:14px;text-align:center;max-width:400px;">
+    <svg viewBox="0 0 320 180" style="width:100%;max-width:340px;height:180px;" xmlns="http://www.w3.org/2000/svg">
+      <!-- sky -->
+      <rect width="320" height="80" fill="#cee0f2"/>
+      <!-- mountain / scenic background -->
+      <polygon points="0,80 80,30 160,80" fill="#8a9a8a"/>
+      <polygon points="120,80 200,40 270,80" fill="#7a8a7a"/>
+      <polygon points="200,80 280,25 320,80" fill="#6a7a6a"/>
+      <!-- ground / paved area -->
+      <rect y="80" width="320" height="100" fill="#cab68a"/>
+      <!-- scenic landmark (e.g. famous tree, statue, monument) - here a flowering tree -->
+      <ellipse cx="160" cy="65" rx="32" ry="28" fill="#f4a8c8" stroke="#c0688a"/>
+      <ellipse cx="160" cy="65" rx="32" ry="28" fill="#f8c0d4" opacity="0.5"/>
+      <rect x="156" y="80" width="8" height="35" fill="#5d4037"/>
+      <!-- many tourists (crowd) -->
+      <g>
+        <!-- row 1 -->
+        <circle cx="40" cy="115" r="6" fill="#fcb"/>
+        <rect x="36" y="120" width="8" height="18" fill="#c0392b"/>
+        <circle cx="60" cy="118" r="6" fill="#fcb"/>
+        <rect x="56" y="123" width="8" height="18" fill="#3498db"/>
+        <circle cx="80" cy="115" r="6" fill="#a06548"/>
+        <rect x="76" y="120" width="8" height="18" fill="#27ae60"/>
+        <circle cx="100" cy="118" r="6" fill="#fcb"/>
+        <rect x="96" y="123" width="8" height="18" fill="#9b59b6"/>
+        <circle cx="120" cy="115" r="6" fill="#a06548"/>
+        <rect x="116" y="120" width="8" height="18" fill="#f39c12"/>
+        <circle cx="140" cy="118" r="6" fill="#fcb"/>
+        <rect x="136" y="123" width="8" height="18" fill="#16a085"/>
+        <circle cx="180" cy="118" r="6" fill="#fcb"/>
+        <rect x="176" y="123" width="8" height="18" fill="#e74c3c"/>
+        <circle cx="200" cy="115" r="6" fill="#a06548"/>
+        <rect x="196" y="120" width="8" height="18" fill="#f1c40f"/>
+        <circle cx="220" cy="118" r="6" fill="#fcb"/>
+        <rect x="216" y="123" width="8" height="18" fill="#2980b9"/>
+        <circle cx="240" cy="115" r="6" fill="#fcb"/>
+        <rect x="236" y="120" width="8" height="18" fill="#8e44ad"/>
+        <circle cx="260" cy="118" r="6" fill="#a06548"/>
+        <rect x="256" y="123" width="8" height="18" fill="#27ae60"/>
+        <circle cx="280" cy="115" r="6" fill="#fcb"/>
+        <rect x="276" y="120" width="8" height="18" fill="#c0392b"/>
+        <!-- row 2 (closer/larger) -->
+        <circle cx="50" cy="148" r="8" fill="#fcb"/>
+        <rect x="44" y="155" width="12" height="22" fill="#3498db"/>
+        <!-- camera -->
+        <rect x="44" y="146" width="12" height="6" fill="#000"/>
+        <circle cx="50" cy="149" r="2" fill="#888"/>
+        <circle cx="90" cy="148" r="8" fill="#a06548"/>
+        <rect x="84" y="155" width="12" height="22" fill="#c0392b"/>
+        <circle cx="130" cy="148" r="8" fill="#fcb"/>
+        <rect x="124" y="155" width="12" height="22" fill="#9b59b6"/>
+        <!-- selfie stick -->
+        <line x1="130" y1="150" x2="138" y2="138" stroke="#444"/>
+        <rect x="136" y="135" width="6" height="4" fill="#333"/>
+        <circle cx="170" cy="148" r="8" fill="#fcb"/>
+        <rect x="164" y="155" width="12" height="22" fill="#27ae60"/>
+        <circle cx="210" cy="148" r="8" fill="#a06548"/>
+        <rect x="204" y="155" width="12" height="22" fill="#e67e22"/>
+        <circle cx="250" cy="148" r="8" fill="#fcb"/>
+        <rect x="244" y="155" width="12" height="22" fill="#16a085"/>
+        <circle cx="290" cy="148" r="8" fill="#a06548"/>
+        <rect x="284" y="155" width="12" height="22" fill="#34495e"/>
+      </g>
+      <!-- trash on ground (litter) -->
+      <ellipse cx="20" cy="172" rx="3" ry="1.5" fill="#fff" stroke="#888"/>
+      <ellipse cx="305" cy="170" rx="3" ry="1.5" fill="#cce0f0" stroke="#888"/>
+      <rect x="105" y="170" width="4" height="2" fill="#c0392b"/>
+    </svg>
+    <div style="font-size:0.88em;font-weight:600;margin-top:6px;color:#666;">遊客大量湧入景點（垃圾、擁擠、自拍棒）</div>
+  </div>
+</div>
+
+<div class="trans-item">
+  <div class="ch-line"><strong>請寫下你的英文作文（至少 120 字）：</strong></div>
+  <textarea id="essay" class="short-ans" placeholder="第一段：描述圖片的內容（人、事、物與發生的事情）...&#10;&#10;第二段：以遊客或場所主人的立場，表達你對這件事情的看法..." style="min-height:220px;"></textarea>
+  <div style="text-align:right;font-size:0.85em;color:#7f8c8d;margin-top:4px;">字數：<span id="essayWordCount">0</span> words</div>
+</div>
+
+<div class="button-row">
+  <button type="button" class="submit-btn" onclick="submitQuiz()">送出作答</button>
+</div>
+
+</form>
+
+<div id="results">
+
+  <div class="result-card score">
+    <h3>📊 你的成績</h3>
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-detail" id="scoreDetail"></div>
+  </div>
+
+  <div class="result-card teacher">
+    <h3>📋 結果 1：選項結果 + 不熟悉單字 + 中譯英 + 作文（複製貼到 LINE 群給老師）</h3>
+    <div class="copyable" id="teacherReport"></div>
+    <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
+  </div>
+
+  <div class="result-card feedback">
+    <h3>💡 結果 2：錯題詳解（自己看，檢討訂正；可選擇複製給自己留存）</h3>
+    <div id="feedbackReport"></div>
+    <div class="copyable" id="feedbackTextArea" style="margin-top:14px;"></div>
+    <button class="copy-btn" onclick="copyText('feedbackTextArea', this)">📋 複製結果 2</button>
+  </div>
+
+</div>
+
+</div>
+
+<div class="unknown-counter" id="unknownCounter">🔖 已標記 <span id="unknownCount">0</span> 個</div>
+
+<script>
+  // ===== 正確答案（已套用 Q16-56 位置變換） =====
+  const ANSWERS = {
+    1:'C', 2:'C', 3:'A', 4:'A', 5:'D', 6:'D', 7:'B', 8:'D', 9:'A', 10:'C',
+    11:'B', 12:'A', 13:'A', 14:'C', 15:'B',
+    16:'B', 17:'A', 18:'C', 19:'A', 20:'A',
+    21:'A', 22:'B', 23:'B', 24:'B', 25:'A',
+    26:'B', 27:'B', 28:'D', 29:'B', 30:'A',
+    31:'B', 32:'A', 33:'C', 34:'E', 35:'F', 36:'J', 37:'I', 38:'D', 39:'G', 40:'H',
+    41:'C', 42:'B', 43:'C', 44:'A',
+    45:'B', 46:'C', 47:'B', 48:'A',
+    49:'A', 50:'B', 51:'B', 52:'C',
+    53:'C', 54:'B', 55:'D', 56:'A'
+  };
+
+  // ===== 錯題詳解 =====
+  const EXPLANATIONS = {
+    1: { ans:'(C) tease 戲弄', detail:'淘氣男孩喜歡「戲弄」並開妹妹玩笑。其餘 alert 警覺、spare 騰出、oppose 反對皆不合。' },
+    2: { ans:'(C) escalator 手扶梯', detail:'老人被建議搭電梯而非「手扶梯」（escalator）。其餘 airway 空中航線、operator 操作員、instrument 樂器/儀器皆不合。' },
+    3: { ans:'(A) obediently 順從地', detail:'狗聽到主人呼喚搖尾「順從地」跟出去。其餘 apparently 顯然、logically 合邏輯地、thoroughly 徹底地皆不合。' },
+    4: { ans:'(A) moist 潮濕的', detail:'熱帶叢林植物需要「潮濕的空氣」。其餘 stale 走味、crisp 乾爽、fertile 肥沃皆不合。' },
+    5: { ans:'(D) parachute 降落傘', detail:'跳傘員的「降落傘」未在空中打開。其餘皆不合。' },
+    6: { ans:'(D) revolutionary 革命性的', detail:'蒸汽機帶來「革命性」的社會變化。其餘 persuasive 有說服力、harmonious 和諧、conventional 傳統皆不合。' },
+    7: { ans:'(B) interaction 互動', detail:'分組合作鼓勵課堂「互動」。其餘 operation 操作、adjustment 調整、explanation 解釋皆不合。' },
+    8: { ans:'(D) tumbled 跌倒', detail:'打籃球時 Lisa「跌倒」在地受傷。其餘 buried 埋葬、punched 揮拳、scattered 散布皆不合。' },
+    9: { ans:'(A) kits 套組', detail:'testing kits = 檢測套組。其餘 trials 試驗、zones 區域、proofs 證據皆不合。' },
+    10:{ ans:'(C) jointly 共同地', detail:'2011 諾貝爾和平獎「共同」頒給三位女性。其餘 actively 積極、earnestly 認真、naturally 自然皆不合。' },
+    11:{ ans:'(B) flourishing 蓬勃發展', detail:'公司在執行長領導下「蓬勃發展」並大賺錢。其餘 applauding 讚揚、circulating 流通、exceeding 超過皆不合。' },
+    12:{ ans:'(A) absurd 荒謬的', detail:'連駕照都沒有卻買貴車是「荒謬」的。其餘 cautious 謹慎、vigorous 強健、obstinate 頑固皆不合。' },
+    13:{ ans:'(A) singular 單一的', detail:'毒品問題很複雜，無法歸於「單一」原因。其餘 countable 可數、favorable 有利、defensive 防禦皆不合。' },
+    14:{ ans:'(C) committed 投入(承諾)', detail:'commit + 金額 = 承諾投入金額。非營利組織「承諾投入」一百萬美金。其餘 equipped 裝備、resolved 解決、associated 相關皆不合。' },
+    15:{ ans:'(B) resumed 恢復', detail:'颱風一週後公車服務「恢復」。resume = 恢復；其餘 departed 離開、transported 運送、corresponded 通信皆不合。' },
+    16:{ ans:'(B) without (原 D)', detail:'would not be the same without ___ = 沒有…就不一樣。' },
+    17:{ ans:'(A) take over (原 C)', detail:'威脅要「占領」歷史中心，與 pooping on monuments 對應。' },
+    18:{ ans:'(C) reducing (原 B)', detail:'propose reducing the population = 提議「減少」鴿子數量。' },
+    19:{ ans:'(A) similarly (原 D)', detail:'another similarly effective method = 另一個「同樣有效」的方法。' },
+    20:{ ans:'(A) installed (原 B)', detail:'過去分詞當形容詞，修飾 bird feeders（被裝設的飼料器）。' },
+    21:{ ans:'(A) not to mention (原 C)', detail:'1/3000 的機率，「更別說」被擊中七次的機率了。' },
+    22:{ ans:'(B) survived (原 C)', detail:'被閃電擊中七次都「倖存」下來。' },
+    23:{ ans:'(B) fearful of (原 A)', detail:'第四次後 Sullivan 變得「害怕」死亡，並做預防措施。be fearful of = 害怕。' },
+    24:{ ans:'(B) coming after (原 A)', detail:'感覺雲在「追趕」自己。come after = 追趕。' },
+    25:{ ans:'(A) would have been (原 D)', detail:'與過去事實相反假設：「如果上帝真的針對我，第一道閃電就足夠了」。If he was, the first bolt would have been enough。' },
+    26:{ ans:'(B) home to (原 A)', detail:'be home to = 是…的家鄉/棲息地。某些山區「也是冰川和冰原的所在地」。' },
+    27:{ ans:'(B) immediate (原 C)', detail:'氣溫上升對印尼最後熱帶冰川造成「立即」威脅。' },
+    28:{ ans:'(D) Having (原 C)', detail:'分詞構句：Having already shrunk by 85%... 「（冰川）已縮小 85% 後…」。完成式分詞當條件。' },
+    29:{ ans:'(B) cultural (原 A)', detail:'冰川消失也會留下「文化」衝擊；後文 sacred symbol 解釋此文化意義。' },
+    30:{ ans:'(A) left unchecked (原 D)', detail:'if greenhouse gases are left unchecked = 若溫室氣體不受控制。leave + Vpp 表「使處於某狀態」。' },
+    31:{ ans:'(B) modest 適度的 (原 J)', detail:'modest amounts of exercise = 適度的運動，每天 15 分鐘即可。' },
+    32:{ ans:'(A) fanatic 狂熱者 (原 G)', detail:'don\'t have to be a fitness fanatic = 不必是健身狂熱者。' },
+    33:{ ans:'(C) abide by 遵守 (原 F)', detail:'a motto to abide by = 一個值得「遵守」的座右銘。' },
+    34:{ ans:'(E) current 當前的 (原 H)', detail:'current health studies = 當前的健康研究。' },
+    35:{ ans:'(F) argue 主張 (原 D)', detail:'You might argue that... = 你可能會「主張」⋯⋯。argue + that 子句。' },
+    36:{ ans:'(J) demanding 費力的 (原 E)', detail:'physically demanding exercises = 體能上吃力的運動，會讓你重重喘氣。' },
+    37:{ ans:'(I) point to 指向/暗示 (原 C)', detail:'it may point to an injury = 那可能「暗示」受傷。point to = 指向。' },
+    38:{ ans:'(D) soreness 痠痛 (原 B)', detail:'without the soreness or discomfort = 沒有「痠痛」或不適。與 discomfort 並列。' },
+    39:{ ans:'(G) means 方法 (原 A)', detail:'a powerful means to improve your health = 改善健康的有力「方法」。' },
+    40:{ ans:'(H) make time 騰出時間 (原 I)', detail:'try to make time for exercise = 試著為運動「騰出時間」。' },
+    41:{ ans:'(C) To introduce a new source of energy. (原 B)', detail:'文章重點是「介紹仙人掌作為新能源」（biogas generator from cactus husks）。' },
+    42:{ ans:'(B) For gardening and landscaping. (原 D)', detail:'文中提到食用、飲料、藥品、洗髮精等用途，但未提到「園藝景觀」用途。' },
+    43:{ ans:'(C) It appears in a prominent place on Mexico\'s national flag. (原 D)', detail:'文章開頭：「occupies a prime spot on Mexico\'s national flag」即「出現在墨西哥國旗的顯著位置」。' },
+    44:{ ans:'(A) It will not influence food prices. (原 B)', detail:'文中說只用 husk 發電，inner flesh 仍可食用，故「不會影響食物價格」。' },
+    45:{ ans:'(B) In order of time. (原 A)', detail:'全文以時間順序：450 BC → 中世紀 → 15 世紀 King Henry V → 16 世紀「passport」一詞 → 一戰後現代護照，按時間敘述。' },
+    46:{ ans:'(C) It was given to an official of Persia. (原 B)', detail:'最早的 travel document 是 King Artaxerxes 給 Nehemiah（波斯官員）的信件。' },
+    47:{ ans:'(B) In the 16th century. (原 C)', detail:'文中：「the term \'passport\' came into use about a century later」。15 世紀 + 約一世紀 = 16 世紀。' },
+    48:{ ans:'(A) A list of seaports. (原 D)', detail:'文中提到 letter（信件）、receipt（收據）、proof of identity（身份證明），但未提「港口清單」。中世紀歐洲文件包含可通過的「towns and cities」清單，非 seaports。' },
+    49:{ ans:'(A) 玻璃琴：橫軸上由大到小套疊的玻璃半球＋腳踏輪 (原 D)', detail:'依文章描述：37 個玻璃半球套在鐵桿上、由大到小排列、腳踏輪轉動半球，故 (A) 圖示最符合 Franklin 的玻璃琴。其他 (B) 排列的酒杯、(C) 手搖風琴、(D) 鋼琴皆不合。' },
+    50:{ ans:'(B) The performer\'s fingers have to be slightly wet when playing it. (原 D)', detail:'文中：「Franklin moistened his fingers and held them against the rims」→ 演奏時手指要先沾濕。' },
+    51:{ ans:'(B) Concert halls became too big for its music to be heard by the audience. (原 C)', detail:'文中：「moving... into the large concert halls of the 19th century, and without amplification, the glass armonica simply couldn\'t be heard」→ 音樂廳變大、又無擴音設備。' },
+    52:{ ans:'(C) Hemispheres. (原 B)', detail:'they could nest together from largest to smallest = 半球們可以由大到小套疊在一起。they 指 hemispheres。' },
+    53:{ ans:'(C) The establishment and features of a special theme park. (原 B)', detail:'文章介紹樂園的「建立背景與特色」（Hartman 創辦動機、無障礙設施、Inspiration Island 擴建等）。' },
+    54:{ ans:'(B) It\'s easy for all visitors to use the facilities. (原 A)', detail:'ultra-accessible = 超級便於使用，所有訪客（含身障者）都能輕鬆使用設施。' },
+    55:{ ans:'(D) Hiking. (原 C)', detail:'文中提到 rides, playgrounds, fishing lake, picnic areas, driving (Off-Road Adventure)，但未提「健行」（hiking）。' },
+    56:{ ans:'(A) GPS bands allow visitors to enjoy the convenience of the electronic devices. (原 D)', detail:'文中：「GPS Adventure Band... allows them to keep track of each other... enables them to take part in electronic activities」→ GPS 手環提供電子活動便利。' }
+  };
+
+  function wrapWordsIn(root) {
+    const skipTags = new Set(['SCRIPT','STYLE','INPUT','LABEL','TEXTAREA','BUTTON']);
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => {
+        let p = n.parentNode;
+        while (p && p !== root) {
+          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (
+            p.classList.contains('word') ||
+            p.classList.contains('blank') ||
+            p.classList.contains('q-num') ||
+            p.classList.contains('q-num-sq') ||
+            p.classList.contains('options') ||
+            p.classList.contains('options-ci') ||
+            p.classList.contains('options-rd')
+          )) return NodeFilter.FILTER_REJECT;
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    const re = /[A-Za-z]+(?:['’\-][A-Za-z]+)*/g;
+    nodes.forEach(tn => {
+      const text = tn.nodeValue;
+      if (!re.test(text)) return;
+      re.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let lastIdx = 0, m;
+      while ((m = re.exec(text)) !== null) {
+        if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = m[0];
+        frag.appendChild(span);
+        lastIdx = m.index + m[0].length;
+      }
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
+  document.querySelectorAll('.autowrap').forEach(wrapWordsIn);
+
+  const counter = document.getElementById('unknownCounter');
+  const counterNum = document.getElementById('unknownCount');
+  function updateCounter() {
+    const set = new Set();
+    document.querySelectorAll('.word.unfamiliar').forEach(w => set.add(w.textContent.trim().toLowerCase()));
+    counterNum.textContent = set.size;
+    counter.style.display = set.size ? 'block' : 'none';
+  }
+  document.body.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('word')) {
+      const t = e.target.textContent.trim().toLowerCase();
+      const isOn = !e.target.classList.contains('unfamiliar');
+      document.querySelectorAll('.word').forEach(w => {
+        if (w.textContent.trim().toLowerCase() === t) {
+          w.classList.toggle('unfamiliar', isOn);
+        }
+      });
+      updateCounter();
+    }
+  });
+
+  document.querySelectorAll('.options input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const name = r.name;
+      document.querySelectorAll(`.options input[name="${name}"]`).forEach(x => x.closest('label').classList.remove('selected'));
+      r.closest('label').classList.add('selected');
+    });
+  });
+  document.querySelectorAll('.pic-opt input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const name = r.name;
+      document.querySelectorAll(`.pic-opt input[name="${name}"]`).forEach(x => x.closest('label').classList.remove('selected'));
+      r.closest('label').classList.add('selected');
+    });
+  });
+  const essayEl = document.getElementById('essay');
+  const essayCountEl = document.getElementById('essayWordCount');
+  if (essayEl) {
+    essayEl.addEventListener('input', () => {
+      const text = essayEl.value.trim();
+      const words = text ? text.split(/\s+/).length : 0;
+      essayCountEl.textContent = words;
+      essayCountEl.style.color = words >= 120 ? '#27ae60' : '#e67e22';
+    });
+  }
+
+  const ALL_QS = [...Array(56).keys()].map(i => i+1);
+
+  function submitQuiz() {
+    const name = document.getElementById('studentName').value.trim() || '（未填）';
+    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
+
+    const answers = {};
+    const unanswered = [];
+    ALL_QS.forEach(i => {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      if (sel) answers[i] = sel.value;
+      else { answers[i] = '-'; unanswered.push(i); }
+    });
+
+    const trans1 = (document.getElementById('trans1').value || '').trim();
+    const trans2 = (document.getElementById('trans2').value || '').trim();
+    const essayTxt = (document.getElementById('essay').value || '').trim();
+    const essayWordCount = essayTxt ? essayTxt.split(/\s+/).length : 0;
+    if (!trans1) unanswered.push('中譯英1');
+    if (!trans2) unanswered.push('中譯英2');
+    if (!essayTxt) unanswered.push('作文');
+
+    if (unanswered.length > 0) {
+      if (!confirm(`尚有 ${unanswered.length} 題未作答（${unanswered.slice(0,8).join(', ')}${unanswered.length>8?'…':''}），確定要送出嗎？`)) return;
+    }
+
+    let correct = 0;
+    const wrongList = [];
+    ALL_QS.forEach(i => {
+      if (answers[i] === ANSWERS[i]) correct++;
+      else wrongList.push(i);
+    });
+
+    const total = ALL_QS.length;
+    const percent = Math.round(correct/total*100);
+
+    const unfamiliarSet = new Set();
+    document.querySelectorAll('.word.unfamiliar').forEach(w => {
+      const t = w.textContent.trim().toLowerCase();
+      if (t) unfamiliarSet.add(t);
+    });
+    const unfamiliar = Array.from(unfamiliarSet).sort();
+
+    document.getElementById('scoreBig').textContent = `${correct} / ${total}`;
+    document.getElementById('scoreDetail').textContent =
+      `答對 ${correct} 題 ‧ 答錯 ${total-correct} 題 ‧ 正確率 ${percent}% ‧ 不熟悉單字 ${unfamiliar.length} 個`;
+
+    const now = new Date();
+    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+    let r1 = `【110學測英文 第1-56題 作答結果】\n`;
+    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分：${correct}/${total}（${percent}%）\n---\n`;
+    r1 += `題號\t學生答案\t正確答案\t對錯\n`;
+    ALL_QS.forEach(i => {
+      const ok = answers[i]===ANSWERS[i] ? '✓' : (answers[i]==='-' ? '✗(未答)' : '✗');
+      r1 += `${i}\t${answers[i]}\t${ANSWERS[i]}\t${ok}\n`;
+    });
+    r1 += `---\n【中譯英 1】${trans1 || '(未作答)'}\n`;
+    r1 += `【中譯英 2】${trans2 || '(未作答)'}\n`;
+    r1 += `---\n【英文作文】（${essayWordCount} words）\n${essayTxt || '(未作答)'}\n`;
+    r1 += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n`;
+    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
+    document.getElementById('teacherReport').textContent = r1;
+
+    const fb = document.getElementById('feedbackReport');
+    fb.innerHTML = '';
+    let fbText = `【110學測英文 第1-56題 錯題詳解】\n姓名：${name}　座號：${sid}\n作答時間：${ts}\n---\n`;
+
+    if (wrongList.length === 0) {
+      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
+      fbText += '🎉 全部答對！太棒了！';
+    } else {
+      wrongList.sort((a,b)=>a-b).forEach(i => {
+        const stuAns = answers[i] === '-' ? '未作答' : answers[i];
+        const expl = EXPLANATIONS[i] || { ans: ANSWERS[i], detail: '' };
+        const correctText = `${ANSWERS[i]}　${expl.ans}`;
+        const div = document.createElement('div');
+        div.className = 'wrong-item';
+        div.innerHTML = `
+          <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+          <div class="explain">${expl.detail}</div>`;
+        fb.appendChild(div);
+        fbText += `第 ${i} 題：你寫 ${stuAns}，正解 ${correctText}\n   → ${expl.detail}\n\n`;
+      });
+    }
+
+    fbText += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n${unfamiliar.length?unfamiliar.join(', '):'（無）'}\n`;
+    document.getElementById('feedbackTextArea').textContent = fbText;
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function copyText(elId, btn) {
+    const txt = document.getElementById(elId).textContent;
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      document.body.removeChild(ta);
+    };
+    const ok = () => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ 已複製！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
+    } else { fallback(); ok(); }
+  }
+</script>
+
+</body>
+</html>
