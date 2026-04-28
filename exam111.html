@@ -826,81 +826,115 @@
       </svg>
       <span class="pic-cap">(A)</span>
     </label>
-    <!-- (B) Roman/Greek soldier with metal helmet, sword -->
+    <!-- (B) Hunter with bow and arrow, kneeling, minimal clothing -->
     <label class="pic-opt"><input type="radio" name="q35" value="B">
       <svg viewBox="0 0 100 150" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="135" width="100" height="15" fill="#d4c282"/>
-        <!-- helmet with crest -->
-        <path d="M40 18 Q50 5 60 18 L60 28 L40 28 Z" fill="#888" stroke="#444"/>
-        <path d="M50 5 L50 -2 L48 -2 Z" fill="#c0392b"/>
-        <rect x="48" y="0" width="4" height="8" fill="#c0392b"/>
-        <!-- face -->
-        <circle cx="50" cy="32" r="6" fill="#f0c8a0"/>
-        <!-- armor / tunic -->
-        <rect x="38" y="38" width="24" height="35" fill="#bbb" stroke="#666"/>
-        <rect x="34" y="73" width="32" height="20" fill="#a0826d" stroke="#444"/>
-        <!-- legs -->
-        <rect x="42" y="93" width="6" height="42" fill="#f0c8a0"/>
-        <rect x="52" y="93" width="6" height="42" fill="#f0c8a0"/>
-        <!-- sword -->
-        <line x1="76" y1="50" x2="84" y2="100" stroke="#aaa" stroke-width="2.5"/>
-        <line x1="73" y1="48" x2="78" y2="52" stroke="#444" stroke-width="3"/>
-        <!-- round shield -->
-        <circle cx="22" cy="60" r="12" fill="#c0392b" stroke="#444" stroke-width="1.5"/>
-        <circle cx="22" cy="60" r="3" fill="#888"/>
+        <!-- head -->
+        <circle cx="38" cy="40" r="7" fill="#7a4a30"/>
+        <!-- short hair -->
+        <path d="M32 36 q6 -6 12 0" fill="#3a1f0f"/>
+        <!-- torso (bare-chested) -->
+        <path d="M30 47 L46 47 L50 75 L28 80 Z" fill="#7a4a30"/>
+        <!-- loincloth -->
+        <rect x="30" y="72" width="22" height="14" fill="#a87a4a" stroke="#5d4037"/>
+        <!-- kneeling pose: front leg bent forward -->
+        <path d="M28 80 L20 100 L24 110 L40 110 L36 100 L40 85" fill="#7a4a30" stroke="#5d4037"/>
+        <!-- back leg kneeling -->
+        <path d="M50 75 L66 90 L75 110 L60 115 L52 100 Z" fill="#7a4a30" stroke="#5d4037"/>
+        <!-- left arm holding bow -->
+        <line x1="30" y1="55" x2="60" y2="60" stroke="#7a4a30" stroke-width="6"/>
+        <!-- right arm pulling string -->
+        <line x1="46" y1="60" x2="22" y2="55" stroke="#7a4a30" stroke-width="5"/>
+        <!-- bow (large curved bow) -->
+        <path d="M62 30 Q82 60 62 90" stroke="#5d4037" stroke-width="2.5" fill="none"/>
+        <!-- bow string -->
+        <line x1="62" y1="30" x2="48" y2="60" stroke="#444" stroke-width="0.8"/>
+        <line x1="48" y1="60" x2="62" y2="90" stroke="#444" stroke-width="0.8"/>
+        <!-- arrow -->
+        <line x1="48" y1="60" x2="80" y2="60" stroke="#5d4037" stroke-width="1.2"/>
+        <polygon points="80,60 76,57 76,63" fill="#444"/>
       </svg>
       <span class="pic-cap">(B)</span>
     </label>
-    <!-- (C) Native American with feather headdress -->
+    <!-- (C) Warrior with feathered headdress and spear (Zulu/African style) -->
     <label class="pic-opt"><input type="radio" name="q35" value="C">
       <svg viewBox="0 0 100 150" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="135" width="100" height="15" fill="#d4c282"/>
-        <!-- feather headdress -->
-        <g fill="#f5f5f5" stroke="#444">
-          <path d="M40 8 L42 22 L44 8 Z"/>
-          <path d="M44 5 L46 22 L48 5 Z"/>
-          <path d="M48 3 L50 22 L52 3 Z"/>
-          <path d="M52 5 L54 22 L56 5 Z"/>
-          <path d="M56 8 L58 22 L60 8 Z"/>
+        <!-- feathered headdress (top tuft) -->
+        <g fill="#3a3a3a" stroke="#000">
+          <path d="M44 8 L46 20 L48 8 Z"/>
+          <path d="M48 5 L50 20 L52 5 Z"/>
+          <path d="M52 8 L54 20 L56 8 Z"/>
         </g>
+        <!-- head with hair fringe -->
+        <circle cx="50" cy="26" r="7" fill="#7a4a30"/>
         <!-- band -->
-        <rect x="40" y="20" width="20" height="4" fill="#c0392b"/>
-        <!-- face -->
-        <circle cx="50" cy="32" r="7" fill="#a0654a"/>
-        <!-- buckskin tunic -->
-        <path d="M38 40 L62 40 L66 100 L34 100 Z" fill="#c8a482" stroke="#7a4a30"/>
-        <!-- fringe lines -->
-        <line x1="38" y1="60" x2="62" y2="60" stroke="#7a4a30" stroke-width="0.5"/>
+        <rect x="43" y="20" width="14" height="3" fill="#7d2d2d"/>
+        <!-- bare chest -->
+        <path d="M40 33 L60 33 L62 65 L38 65 Z" fill="#7a4a30"/>
+        <!-- decorative band on chest -->
+        <line x1="40" y1="48" x2="60" y2="48" stroke="#000" stroke-width="0.6"/>
+        <!-- skirt with checker pattern -->
+        <rect x="35" y="65" width="30" height="22" fill="#fff" stroke="#000"/>
+        <g fill="#000">
+          <rect x="36" y="66" width="4" height="4"/>
+          <rect x="44" y="66" width="4" height="4"/>
+          <rect x="52" y="66" width="4" height="4"/>
+          <rect x="60" y="66" width="4" height="4"/>
+          <rect x="40" y="72" width="4" height="4"/>
+          <rect x="48" y="72" width="4" height="4"/>
+          <rect x="56" y="72" width="4" height="4"/>
+          <rect x="36" y="78" width="4" height="4"/>
+          <rect x="44" y="78" width="4" height="4"/>
+          <rect x="52" y="78" width="4" height="4"/>
+          <rect x="60" y="78" width="4" height="4"/>
+        </g>
         <!-- legs -->
-        <rect x="42" y="100" width="6" height="35" fill="#a0654a"/>
-        <rect x="52" y="100" width="6" height="35" fill="#a0654a"/>
-        <!-- bow -->
-        <path d="M75 40 Q90 70 75 100" stroke="#7a4a30" stroke-width="2.5" fill="none"/>
-        <line x1="75" y1="40" x2="75" y2="100" stroke="#444" stroke-width="0.8"/>
+        <rect x="42" y="87" width="6" height="48" fill="#7a4a30"/>
+        <rect x="52" y="87" width="6" height="48" fill="#7a4a30"/>
+        <!-- spear (held vertically, right hand) -->
+        <line x1="80" y1="5" x2="80" y2="140" stroke="#5d4037" stroke-width="1.5"/>
+        <polygon points="80,2 77,12 83,12" fill="#888"/>
+        <!-- arm -->
+        <line x1="62" y1="45" x2="80" y2="50" stroke="#7a4a30" stroke-width="4"/>
       </svg>
       <span class="pic-cap">(C)</span>
     </label>
-    <!-- (D) Samurai with kimono and katana -->
+    <!-- (D) Warrior with tall oval shield + spear (Zulu-style) -->
     <label class="pic-opt"><input type="radio" name="q35" value="D">
       <svg viewBox="0 0 100 150" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
         <rect x="0" y="135" width="100" height="15" fill="#d4c282"/>
-        <!-- helmet (kabuto) -->
-        <path d="M38 18 Q50 8 62 18 L60 28 L40 28 Z" fill="#3a3a3a" stroke="#000"/>
-        <polygon points="48,8 50,2 52,8" fill="#f5b041"/>
-        <!-- face -->
-        <circle cx="50" cy="32" r="6" fill="#f0d0a8"/>
-        <!-- kimono / armor -->
-        <path d="M36 38 L64 38 L68 100 L32 100 Z" fill="#1f4e79" stroke="#0a2540"/>
-        <!-- sash -->
-        <rect x="32" y="68" width="36" height="6" fill="#7d2d2d"/>
-        <!-- mon symbol -->
-        <circle cx="50" cy="55" r="3" fill="none" stroke="#fff" stroke-width="0.8"/>
+        <!-- head -->
+        <circle cx="55" cy="22" r="7" fill="#7a4a30"/>
+        <!-- bare torso -->
+        <path d="M48 29 L62 29 L64 60 L46 60 Z" fill="#7a4a30"/>
+        <!-- waistband -->
+        <rect x="44" y="60" width="22" height="6" fill="#5d4037"/>
+        <!-- short loincloth -->
+        <path d="M46 66 L66 66 L68 80 L44 80 Z" fill="#a87a4a"/>
         <!-- legs -->
-        <rect x="42" y="100" width="6" height="35" fill="#1f4e79"/>
-        <rect x="52" y="100" width="6" height="35" fill="#1f4e79"/>
-        <!-- katana sword on side -->
-        <line x1="70" y1="65" x2="92" y2="105" stroke="#aaa" stroke-width="2"/>
-        <rect x="68" y="60" width="6" height="10" fill="#000"/>
+        <rect x="48" y="80" width="6" height="55" fill="#7a4a30"/>
+        <rect x="58" y="80" width="6" height="55" fill="#7a4a30"/>
+        <!-- spear in left hand -->
+        <line x1="78" y1="20" x2="78" y2="135" stroke="#5d4037" stroke-width="1.5"/>
+        <polygon points="78,15 75,25 81,25" fill="#888"/>
+        <!-- TALL OVAL SHIELD on right side -->
+        <ellipse cx="22" cy="75" rx="13" ry="38" fill="#a87a4a" stroke="#3a1f0f" stroke-width="1.5"/>
+        <!-- shield decorations: spots pattern -->
+        <g fill="#3a1f0f">
+          <circle cx="22" cy="50" r="1.5"/>
+          <circle cx="18" cy="60" r="1.5"/>
+          <circle cx="26" cy="60" r="1.5"/>
+          <circle cx="22" cy="70" r="1.5"/>
+          <circle cx="18" cy="80" r="1.5"/>
+          <circle cx="26" cy="80" r="1.5"/>
+          <circle cx="22" cy="90" r="1.5"/>
+          <circle cx="18" cy="100" r="1.5"/>
+          <circle cx="26" cy="100" r="1.5"/>
+        </g>
+        <!-- center stick of shield -->
+        <line x1="22" y1="40" x2="22" y2="113" stroke="#3a1f0f" stroke-width="0.8"/>
       </svg>
       <span class="pic-cap">(D)</span>
     </label>
@@ -1128,76 +1162,102 @@
   <strong>提示：</strong>不同的公園，可能樣貌不同，特色也不同。請以此為主題，並依據下列兩張圖片的內容，寫一篇英文作文（至少 120 個 words），文分兩段：第一段描述圖 A 和圖 B 中的公園各有何特色；第二段則說明你心目中理想公園的樣貌與特色，並解釋你的理由。
 </div>
 
-<!-- 公園對比示意圖 -->
+<!-- 公園對比示意圖（依原題：A=遊樂場，B=自然公園） -->
 <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:10px 0;">
+  <!-- 圖 A：遊樂場 / 兒童遊具公園 -->
   <div style="background:#fff;border:1.5px solid #dfe4ea;border-radius:8px;padding:10px;text-align:center;">
-    <svg viewBox="0 0 180 120" style="width:100%;max-width:170px;height:115px;" xmlns="http://www.w3.org/2000/svg">
-      <!-- Park A: Natural park with lake and trees -->
-      <rect width="180" height="80" fill="#a8d8ff"/>
-      <rect y="80" width="180" height="40" fill="#88c068"/>
-      <!-- Sun -->
-      <circle cx="150" cy="22" r="10" fill="#ffd84a"/>
-      <!-- Mountains -->
-      <polygon points="0,55 30,30 60,55" fill="#7a9a7a"/>
-      <polygon points="40,55 70,25 100,55" fill="#5a8060"/>
-      <polygon points="90,55 130,30 170,55" fill="#7a9a7a"/>
-      <!-- Lake -->
-      <ellipse cx="90" cy="95" rx="50" ry="12" fill="#5da9d9" stroke="#3a7faa"/>
-      <line x1="65" y1="95" x2="75" y2="95" stroke="#fff" stroke-width="0.8"/>
-      <line x1="100" y1="95" x2="115" y2="95" stroke="#fff" stroke-width="0.8"/>
-      <!-- Trees -->
-      <circle cx="20" cy="75" r="10" fill="#3a7a3a"/>
-      <rect x="18" y="80" width="4" height="8" fill="#5d4037"/>
-      <circle cx="155" cy="75" r="12" fill="#3a7a3a"/>
-      <rect x="153" y="80" width="4" height="10" fill="#5d4037"/>
-      <circle cx="40" cy="105" r="6" fill="#4a8a4a"/>
-      <rect x="39" y="108" width="2" height="6" fill="#5d4037"/>
-      <!-- Bird -->
-      <path d="M120 35 q5 -3 10 0 q-5 3 -10 0" fill="none" stroke="#000"/>
-    </svg>
-    <div style="font-size:0.9em;font-weight:600;margin-top:4px;">圖 A：自然公園</div>
-  </div>
-  <div style="background:#fff;border:1.5px solid #dfe4ea;border-radius:8px;padding:10px;text-align:center;">
-    <svg viewBox="0 0 180 120" style="width:100%;max-width:170px;height:115px;" xmlns="http://www.w3.org/2000/svg">
-      <!-- Park B: Urban park with playground -->
+    <svg viewBox="0 0 180 130" style="width:100%;max-width:170px;height:120px;" xmlns="http://www.w3.org/2000/svg">
+      <!-- sky -->
       <rect width="180" height="80" fill="#cee0f2"/>
-      <rect y="80" width="180" height="40" fill="#a8c878"/>
-      <!-- Buildings background -->
-      <rect x="0" y="30" width="20" height="50" fill="#aaa" stroke="#666"/>
-      <rect x="160" y="35" width="20" height="45" fill="#999" stroke="#666"/>
-      <line x1="3" y1="40" x2="17" y2="40" stroke="#666"/>
-      <line x1="3" y1="55" x2="17" y2="55" stroke="#666"/>
-      <line x1="3" y1="70" x2="17" y2="70" stroke="#666"/>
-      <line x1="163" y1="45" x2="177" y2="45" stroke="#666"/>
-      <line x1="163" y1="60" x2="177" y2="60" stroke="#666"/>
-      <!-- Slide -->
-      <line x1="40" y1="65" x2="40" y2="105" stroke="#444" stroke-width="2"/>
-      <line x1="40" y1="65" x2="65" y2="105" stroke="#c0392b" stroke-width="3"/>
-      <rect x="35" y="60" width="14" height="6" fill="#3498db"/>
-      <!-- Swings -->
-      <line x1="90" y1="55" x2="120" y2="55" stroke="#444" stroke-width="2"/>
-      <line x1="100" y1="55" x2="100" y2="80" stroke="#444"/>
-      <line x1="110" y1="55" x2="110" y2="80" stroke="#444"/>
-      <rect x="96" y="80" width="8" height="2" fill="#5d4037"/>
-      <rect x="106" y="80" width="8" height="2" fill="#5d4037"/>
-      <!-- Bench -->
-      <rect x="135" y="95" width="22" height="2" fill="#5d4037"/>
-      <line x1="138" y1="97" x2="138" y2="102" stroke="#5d4037"/>
-      <line x1="154" y1="97" x2="154" y2="102" stroke="#5d4037"/>
-      <!-- Tree -->
-      <circle cx="78" cy="92" r="7" fill="#3a7a3a"/>
-      <rect x="76" y="96" width="4" height="6" fill="#5d4037"/>
-      <!-- Person playing -->
-      <circle cx="50" cy="100" r="3" fill="#fcb"/>
-      <rect x="48" y="103" width="4" height="6" fill="#3498db"/>
+      <!-- clouds -->
+      <ellipse cx="40" cy="20" rx="14" ry="5" fill="#fff"/>
+      <ellipse cx="140" cy="15" rx="16" ry="5" fill="#fff"/>
+      <!-- ground (rubber playground floor) -->
+      <rect y="80" width="180" height="50" fill="#7d4d3a"/>
+      <!-- climbing frame (left) -->
+      <rect x="14" y="48" width="2" height="50" fill="#3a3a3a"/>
+      <rect x="40" y="48" width="2" height="50" fill="#3a3a3a"/>
+      <rect x="14" y="48" width="28" height="2" fill="#3a3a3a"/>
+      <line x1="14" y1="60" x2="42" y2="60" stroke="#3a3a3a" stroke-width="1"/>
+      <line x1="14" y1="72" x2="42" y2="72" stroke="#3a3a3a" stroke-width="1"/>
+      <line x1="14" y1="85" x2="42" y2="85" stroke="#3a3a3a" stroke-width="1"/>
+      <!-- climbing wall colored holds -->
+      <circle cx="22" cy="65" r="1.5" fill="#c0392b"/>
+      <circle cx="32" cy="78" r="1.5" fill="#27ae60"/>
+      <circle cx="22" cy="80" r="1.5" fill="#f39c12"/>
+      <!-- main play structure (center) with dome -->
+      <rect x="80" y="50" width="40" height="40" fill="#4a90c0" stroke="#222"/>
+      <ellipse cx="100" cy="50" rx="22" ry="12" fill="#a87a4a" stroke="#5d4037"/>
+      <line x1="86" y1="50" x2="86" y2="40" stroke="#5d4037"/>
+      <line x1="100" y1="38" x2="100" y2="50" stroke="#5d4037"/>
+      <line x1="114" y1="50" x2="114" y2="40" stroke="#5d4037"/>
+      <!-- mini windows on dome -->
+      <rect x="92" y="58" width="6" height="8" fill="#fff" stroke="#222" stroke-width="0.5"/>
+      <rect x="104" y="58" width="6" height="8" fill="#fff" stroke="#222" stroke-width="0.5"/>
+      <!-- slide (right side) -->
+      <path d="M120 75 Q140 85 150 100 L160 105 L160 100 Q150 88 130 70 Z" fill="#f5d089" stroke="#5d4037"/>
+      <!-- slide ladder -->
+      <line x1="80" y1="50" x2="80" y2="95" stroke="#444" stroke-width="2"/>
+      <line x1="86" y1="55" x2="86" y2="95" stroke="#444" stroke-width="2"/>
+      <line x1="80" y1="62" x2="86" y2="62" stroke="#444"/>
+      <line x1="80" y1="72" x2="86" y2="72" stroke="#444"/>
+      <line x1="80" y1="82" x2="86" y2="82" stroke="#444"/>
+      <!-- spinning wheels (foreground) -->
+      <circle cx="20" cy="105" r="6" fill="#aaa" stroke="#444"/>
+      <circle cx="32" cy="108" r="5" fill="#bbb" stroke="#444"/>
+      <circle cx="44" cy="105" r="6" fill="#aaa" stroke="#444"/>
+      <line x1="20" y1="105" x2="44" y2="105" stroke="#444" stroke-width="0.6"/>
+      <!-- step / curved barrier on right -->
+      <path d="M150 110 Q165 105 170 115 L170 130 L150 130 Z" fill="#5d4037"/>
     </svg>
-    <div style="font-size:0.9em;font-weight:600;margin-top:4px;">圖 B：都市遊樂公園</div>
+    <div style="font-size:0.9em;font-weight:600;margin-top:4px;">圖 A：兒童遊樂場</div>
+  </div>
+  <!-- 圖 B：自然公園（綠樹、草地、小徑、花圃） -->
+  <div style="background:#fff;border:1.5px solid #dfe4ea;border-radius:8px;padding:10px;text-align:center;">
+    <svg viewBox="0 0 180 130" style="width:100%;max-width:170px;height:120px;" xmlns="http://www.w3.org/2000/svg">
+      <!-- sky -->
+      <rect width="180" height="55" fill="#cfe6f5"/>
+      <!-- distant trees / horizon line -->
+      <ellipse cx="60" cy="50" rx="40" ry="12" fill="#9bc890"/>
+      <ellipse cx="140" cy="48" rx="35" ry="10" fill="#9bc890"/>
+      <!-- grass field -->
+      <rect y="55" width="180" height="75" fill="#a8d068"/>
+      <!-- foreground large trees with full canopy -->
+      <ellipse cx="20" cy="45" rx="18" ry="35" fill="#3a7a3a" stroke="#1f5a1f" stroke-width="0.5"/>
+      <rect x="18" y="78" width="4" height="22" fill="#5d4037"/>
+      <ellipse cx="160" cy="50" rx="20" ry="36" fill="#3a7a3a" stroke="#1f5a1f" stroke-width="0.5"/>
+      <rect x="158" y="84" width="4" height="20" fill="#5d4037"/>
+      <!-- middle smaller trees -->
+      <ellipse cx="55" cy="62" rx="12" ry="20" fill="#4a8a4a"/>
+      <rect x="53" y="80" width="3" height="10" fill="#5d4037"/>
+      <ellipse cx="120" cy="60" rx="13" ry="22" fill="#4a8a4a"/>
+      <rect x="118" y="80" width="3" height="10" fill="#5d4037"/>
+      <!-- flower bed (red/pink/purple flowers) -->
+      <ellipse cx="90" cy="100" rx="55" ry="6" fill="#7a9a5a"/>
+      <g>
+        <circle cx="60" cy="98" r="2" fill="#e74c3c"/>
+        <circle cx="68" cy="100" r="2" fill="#f08080"/>
+        <circle cx="76" cy="98" r="2" fill="#c0392b"/>
+        <circle cx="84" cy="100" r="2" fill="#e91e63"/>
+        <circle cx="92" cy="98" r="2" fill="#e74c3c"/>
+        <circle cx="100" cy="100" r="2" fill="#9b59b6"/>
+        <circle cx="108" cy="98" r="2" fill="#e91e63"/>
+        <circle cx="116" cy="100" r="2" fill="#c0392b"/>
+        <circle cx="64" cy="103" r="2" fill="#fff"/>
+        <circle cx="80" cy="104" r="2" fill="#fff"/>
+        <circle cx="96" cy="104" r="2" fill="#fff"/>
+        <circle cx="112" cy="104" r="2" fill="#fff"/>
+      </g>
+      <!-- pathway -->
+      <path d="M0 122 Q80 113 180 120" stroke="#cab68a" stroke-width="6" fill="none"/>
+    </svg>
+    <div style="font-size:0.9em;font-weight:600;margin-top:4px;">圖 B：自然公園</div>
   </div>
 </div>
 
 <div class="trans-item">
   <div class="ch-line"><strong>請寫下你的英文作文（至少 120 字）：</strong></div>
-  <textarea id="essay" class="short-ans" placeholder="第一段：描述圖 A（自然公園）和圖 B（都市遊樂公園）各自的特色...&#10;&#10;第二段：說明你心目中理想公園的樣貌與特色，並解釋理由..." style="min-height:220px;"></textarea>
+  <textarea id="essay" class="short-ans" placeholder="第一段：描述圖 A（兒童遊樂場）和圖 B（自然公園）各自的特色...&#10;&#10;第二段：說明你心目中理想公園的樣貌與特色，並解釋理由..." style="min-height:220px;"></textarea>
   <div style="text-align:right;font-size:0.85em;color:#7f8c8d;margin-top:4px;">字數：<span id="essayWordCount">0</span> words</div>
 </div>
 
