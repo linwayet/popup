@@ -1,262 +1,697 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-        }
-        .header {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .question {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-        }
-        .option-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-            position: relative;
-            transition: background 0.2s;
-        }
-        .option-item:hover {
-            background-color: #fafafa;
-        }
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #eee;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
-        .special-btn {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .footer-tools {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        .tool-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>昀軒 115 學測單字閱讀練習</title>
+  <style>
+    :root {
+      --ink: #1f2937;
+      --muted: #667085;
+      --line: #d8e0eb;
+      --paper: #f6f8fc;
+      --card: #ffffff;
+      --navy: #24476f;
+      --teal: #06746f;
+      --amber: #b65f10;
+      --rose: #b43c5d;
+      --green: #267354;
+      --violet: #6251b8;
+      --good: #0f7b45;
+      --bad: #b42318;
+      --soft-blue: #edf4ff;
+      --soft-amber: #fff4df;
+      --soft-green: #eaf8f0;
+    }
 
-        /* 彈出視窗樣式 */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.95);
-            z-index: 1000;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .overlay-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            font-weight: bold;
-            padding: 10px;
-        }
-        .overlay-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-left: 4px solid #000;
-            padding-left: 10px;
-        }
-        .example-box {
-            background: #f4f4f4;
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border-left: 3px solid #ccc;
-        }
-        h4 { margin: 15px 0 5px 0; color: #333; }
-        .eg-item { margin-bottom: 10px; }
-    </style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(36,71,111,.10), transparent 32%),
+        linear-gradient(315deg, rgba(6,116,111,.10), transparent 30%),
+        var(--paper);
+      line-height: 1.65;
+    }
+
+    header {
+      color: white;
+      background: linear-gradient(135deg, #1f3658 0%, #066f69 58%, #8d4f17 100%);
+      padding: 42px 18px 30px;
+      border-bottom: 1px solid rgba(255,255,255,.25);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: clamp(1.9rem, 5vw, 3.6rem);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 900px;
+      margin: 0;
+      color: rgba(255,255,255,.88);
+      font-size: 1.04rem;
+    }
+
+    .top-stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      min-height: 108px;
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.25);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255,255,255,.82);
+      font-size: .92rem;
+    }
+
+    .tabs {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      background: rgba(246,248,252,.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .tab-row {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 12px 0;
+    }
+
+    .tab {
+      flex: 0 0 auto;
+      min-height: 42px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: white;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .tab.active {
+      color: white;
+      background: var(--navy);
+      border-color: var(--navy);
+    }
+
+    main { padding: 24px 0 56px; }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .panel, .vocab-card, .question {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 30px rgba(22, 34, 51, .07);
+    }
+
+    .panel {
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      line-height: 1.25;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      color: #214f9a;
+      background: var(--soft-blue);
+      font-size: .86rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .pill.green { color: #236843; background: var(--soft-green); }
+    .pill.amber { color: #915004; background: var(--soft-amber); }
+    .pill.rose { color: #9a2f4e; background: #ffeaf1; }
+
+    .study-note {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .vocab-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .filter {
+      min-height: 36px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .filter.active {
+      color: white;
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .vocab-card {
+      padding: 16px;
+      border-top: 6px solid var(--accent, var(--navy));
+      min-height: 210px;
+    }
+
+    .word-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .word {
+      font-size: 1.35rem;
+      font-weight: 900;
+      overflow-wrap: anywhere;
+    }
+
+    .pos {
+      color: white;
+      background: var(--accent, var(--navy));
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: .78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .zh {
+      margin: 4px 0 10px;
+      color: #475467;
+      font-weight: 800;
+    }
+
+    .usage {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: #f3f6fb;
+      color: #46566b;
+      font-size: .93rem;
+    }
+
+    .mini {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: .91rem;
+    }
+
+    .reading {
+      font-size: 1.03rem;
+    }
+
+    .reading p { margin-bottom: 16px; }
+
+    .target {
+      padding: 1px 4px;
+      border-radius: 5px;
+      background: #fff0bf;
+      font-weight: 900;
+    }
+
+    .question {
+      padding: 18px;
+      margin-bottom: 14px;
+      border-left: 6px solid var(--accent, var(--navy));
+    }
+
+    .q-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 9px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 800;
+    }
+
+    .q-text {
+      font-size: 1.04rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .blank {
+      display: inline-block;
+      min-width: 128px;
+      padding: 0 8px 1px;
+      border-bottom: 3px solid #8ea2bd;
+      color: #5d6b80;
+      text-align: center;
+    }
+
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .option {
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid #bfccdc;
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .option:hover { border-color: var(--navy); }
+    .option.correct { color: white; background: var(--good); border-color: var(--good); }
+    .option.wrong { color: white; background: var(--bad); border-color: var(--bad); }
+    .option:disabled { cursor: default; opacity: .95; }
+
+    .feedback {
+      min-height: 24px;
+      margin-top: 10px;
+      font-weight: 800;
+    }
+
+    .feedback.ok { color: var(--good); }
+    .feedback.no { color: var(--bad); }
+
+    .scorebox {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8fafc;
+    }
+
+    .score {
+      font-size: 1.05rem;
+      font-weight: 900;
+    }
+
+    .reset {
+      min-height: 38px;
+      padding: 0 12px;
+      border: 1px solid var(--navy);
+      border-radius: 8px;
+      background: var(--navy);
+      color: white;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .strategy {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcff;
+    }
+
+    .strategy b { color: var(--navy); }
+
+    @media (max-width: 920px) {
+      .top-stats, .vocab-grid, .strategy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      header { padding-top: 32px; }
+      .wrap { width: min(100% - 24px, 1120px); }
+      .top-stats, .vocab-grid, .strategy-grid { grid-template-columns: 1fr; }
+      .section-title { display: block; }
+      .section-title .pill { margin-top: 8px; }
+      .panel, .question { padding: 16px; }
+      .word { font-size: 1.22rem; }
+      .tab { min-height: 40px; padding: 0 11px; }
+    }
+  </style>
 </head>
 <body>
-
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
-    
-    <div class="question">
-        It has been confirmed that a balanced ______ of fruit and vegetables is a key element to good health.
+  <header>
+    <div class="wrap">
+      <h1>昀軒｜115 學測英文單字閱讀練習</h1>
+      <p class="lead">依照 quiz02.html 的高三互動版型製作：先複習 64 個不熟單字，再用一篇學測風格閱讀做填充，最後練直接單字選擇。重點補強她錯過的詞彙搭配、文意選填、代名詞指涉、詞形與片語完整度。</p>
+      <div class="top-stats">
+        <div class="stat"><strong>64 words</strong><span>納入昀軒的不熟單字清單</span></div>
+        <div class="stat"><strong>14 blanks</strong><span>練閱讀填充、詞形與搭配</span></div>
+        <div class="stat"><strong>18 choices</strong><span>練學測詞彙題干擾選項</span></div>
+        <div class="stat"><strong>4 skills</strong><span>精準字義、回文、推論、輸出檢查</span></div>
+      </div>
     </div>
+  </header>
 
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) dimension <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) integration <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) provision <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) consumption <span class="info-icon">ⓘ</span></div>
+  <nav class="tabs">
+    <div class="wrap tab-row">
+      <button class="tab active" data-tab="vocab">1. 單字複習</button>
+      <button class="tab" data-tab="cloze">2. 閱讀填充</button>
+      <button class="tab" data-tab="choice">3. 單字選擇</button>
+      <button class="tab" data-tab="strategy">學測提醒</button>
     </div>
+  </nav>
 
-    <div class="special-btn" onclick="showOverlay('E')">
-        (E) 查看答案與詳細解析
-    </div>
+  <main class="wrap">
+    <section id="vocab" class="section active">
+      <div class="section-title">
+        <h2>Unit 1｜單字複習</h2>
+        <span class="pill">先看搭配，再背中文</span>
+      </div>
+      <p class="study-note">昀軒的弱點不是完全看不懂文章，而是容易被相近單字和局部語意干擾。先把單字放回常見搭配裡，效果會比單背中文好。</p>
+      <div class="vocab-tools" id="filters"></div>
+      <div class="vocab-grid" id="vocabGrid"></div>
+    </section>
 
-    <div class="special-btn" onclick="showOverlay('F')">
-        (F) 林威老師的話 (衍生詞與音標)
-    </div>
+    <section id="cloze" class="section">
+      <div class="section-title">
+        <h2>Unit 2｜閱讀填充練習</h2>
+        <span class="pill amber">主題：地圖、旅程與文化街區</span>
+      </div>
 
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
-</div>
+      <article class="panel reading">
+        <h3>Reading Passage: Directions Are Never Just Directions</h3>
+        <p>When Lian visited Stone Bay, a small <span class="target">indigenous</span> district on Taiwan's eastern coast, she expected a simple tourist stop. Instead, she found a place where tradition <span class="target">coexists</span> with change. An <span class="target">antique</span> shop sold oil lamps and wooden mirrors, while a modern studio displayed <span class="target">aboriginal</span> necklaces made by local artists. The neighborhood was not trying to become a crowded tourist <span class="target">mecca</span>; it wanted visitors to notice its cultural <span class="target">diversity</span> and buy meaningful <span class="target">souvenirs</span>.</p>
+        <p>At the visitor center, Lian saw an unusual map. Its <span class="target">orientation</span> changed according to each walking route. A guide explained that map <span class="target">layouts</span> have never been neutral. In some <span class="target">pre-biblical</span> traditions, east was placed at the top; in old <span class="target">Islamic</span> maps, south could be placed above north because early Muslims lived north of Mecca. Later, European exploration and <span class="target">imperialism</span> made many maps more Eurocentric. The modern north-up habit, the guide said, might be only a historical <span class="target">blip</span>, not an eternal rule.</p>
+        <p>Lian then climbed a <span class="target">narrow</span> spiral staircase inside a <span class="target">medieval</span>-style museum. The stairs turned <span class="target">clockwise</span>, and the guide asked visitors to think like castle <span class="target">defenders</span>. Attackers had to <span class="target">ascend</span> one at a time and could easily trip on <span class="target">uneven</span> steps. Defenders, familiar with the pattern, could <span class="target">retreat</span> upward quickly. This design <span class="target">favored</span> right-handed defenders and made a mass attack difficult.</p>
+        <p>The day ended with a short film about a <span class="target">famed</span> polar explorer and a <span class="target">sunken</span> ship. The crew's <span class="target">voyage</span> was slowed when ice pushed the ship <span class="target">northward</span> and left it <span class="target">trapped</span>. Stormy seas and bad weather <span class="target">hindered</span> rescue attempts, but the team eventually reached a <span class="target">whaling</span> station. For Lian, the lesson was clear: whether we read maps, history, or exam passages, we must follow clues carefully and avoid hasty conclusions.</p>
+      </article>
 
-<div id="infoOverlay" class="overlay">
-    <span class="close-btn" onclick="closeOverlay()">×</span>
-    <div id="contentArea" class="overlay-content"></div>
-</div>
+      <div class="scorebox">
+        <div class="score" id="clozeScore">填充得分：0 / 14</div>
+        <button class="reset" data-reset="cloze">重新作答</button>
+      </div>
+      <div id="clozeQuestions"></div>
+    </section>
 
-<script>
-    const data = {
-        'A': {
-            title: '(A) dimension',
-            desc: '解釋：維度；層面；尺寸',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. There is a spiritual <b>dimension</b> to her poetry.<br>(她的詩作中帶有一種精神層面。)</div>
-                    <div class="eg-item">2. We must consider every <b>dimension</b> of the problem.<br>(我們必須考慮這個問題的每個面向。)</div>
-                    <div class="eg-item">3. The <b>dimensions</b> of the room are 5 by 4 meters.<br>(房間的尺寸是 5 乘 4 公尺。)</div>
-                </div>`
-        },
-        'B': {
-            title: '(B) integration',
-            desc: '解釋：整合；結合',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The <b>integration</b> of the two companies took a year.<br>(這兩家公司的整合花了一年的時間。)</div>
-                    <div class="eg-item">2. The curriculum promotes the <b>integration</b> of theory and practice.<br>(這門課程促進了理論與實踐的結合。)</div>
-                    <div class="eg-item">3. Cultural <b>integration</b> is a complex process.<br>(文化融合是一個複雜的過程。)</div>
-                </div>`
-        },
-        'C': {
-            title: '(C) provision',
-            desc: '解釋：提供；供應；條款',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The government is responsible for the <b>provision</b> of public services.<br>(政府負責公共服務的提供。)</div>
-                    <div class="eg-item">2. The contract contains a <b>provision</b> for early termination.<br>(合約中包含一項關於提前終止的條款。)</div>
-                    <div class="eg-item">3. We made <b>provision</b> for the extra guests.<br>(我們為額外的客人做好了供應準備。)</div>
-                </div>`
-        },
-        'D': {
-            title: '(D) consumption',
-            desc: '解釋：消耗；攝取；消費',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. Excessive alcohol <b>consumption</b> can damage your liver.<br>(過度攝取酒精會損害你的肝臟。)</div>
-                    <div class="eg-item">2. Energy <b>consumption</b> has increased this year.<br>(今年的能源消耗量有所增加。)</div>
-                    <div class="eg-item">3. This car has a low fuel <b>consumption</b>.<br>(這台車的油耗很低。)</div>
-                </div>`
-        },
-        'E': {
-            title: '正確答案：(D)',
-            desc: '解析：題幹討論「蔬果的攝取是健康的關鍵」，慣用語為 balanced consumption (均衡攝取/消耗)。',
-            example: 'dimension (維度)、integration (整合)、provision (提供) 在此處與「蔬果」搭配，無法表達「攝取量」的概念。'
-        },
-        'F': {
-            title: '林威老師的話',
-            desc: '衍生詞與音標學習：',
-            detail: `
-                <h4>1. dimensional (形容詞)</h4>
-                <p>KK: [dɪˈmɛnʃənəl] | 中文：維度的；空間的</p>
-                <h4>2. integrate (動詞)</h4>
-                <p>KK: [ˈɪntəˌɡret] | 中文：整合；合併</p>
-                <h4>3. provide (動詞)</h4>
-                <p>KK: [prəˈvaɪd] | 中文：提供</p>
-                <h4>4. consume (動詞)</h4>
-                <p>KK: [kənˈsum] | 中文：消耗；攝取；消費</p>
-            `
-        },
-        'G': {
-            title: '衍生詞更多例句',
-            detail: `
-                <div class="example-box">1. This software creates 3D <b>dimensional</b> models.<br>(這款軟體可以創建三維模型。)</div>
-                <div class="example-box">2. We need to <b>integrate</b> the new data into the report.<br>(我們需要將新數據整合到報告中。)</div>
-                <div class="example-box">3. The school <b>provides</b> free lunch for students.<br>(學校為學生提供免費午餐。)</div>
-                <div class="example-box">4. The fire <b>consumed</b> the entire building.<br>(大火吞噬了整棟建築。)</div>
-            `
-        },
-        'H': {
-            title: '台灣學測必備片語',
-            detail: `
-                <h4>1. make up for (補償；彌補)</h4>
-                <p>例句：I bought her a gift to <b>make up for</b> being late.<br>(我買了禮物給她，以補償我的遲到。)</p>
-                <h4>2. put up with (忍受；容忍)</h4>
-                <p>例句：I don't know how she <b>puts up with</b> his temper.<br>(我不知道她是如何忍受他的脾氣的。)</p>
-            `
-        }
+    <section id="choice" class="section">
+      <div class="section-title">
+        <h2>Unit 3｜直接單字選擇</h2>
+        <span class="pill rose">練學測詞彙題判斷</span>
+      </div>
+      <p class="study-note">這一區專練昀軒錯題常見的選項陷阱：amateur / official、consumption / provision、dreads / wanders、grave / brutal，以及第 48、50 題的詞形和片語完整度。</p>
+      <div class="scorebox">
+        <div class="score" id="choiceScore">選擇得分：0 / 18</div>
+        <button class="reset" data-reset="choice">重新作答</button>
+      </div>
+      <div id="choiceQuestions"></div>
+    </section>
+
+    <section id="strategy" class="section">
+      <div class="section-title">
+        <h2>學測提醒</h2>
+        <span class="pill green">針對昀軒錯題</span>
+      </div>
+      <div class="strategy-grid">
+        <div class="strategy"><b>1. 看搭配</b><br>designer 前面是 amateur；concerns 前面是 grave；consumption 才能和食用量搭配。</div>
+        <div class="strategy"><b>2. 回文找指涉</b><br>第 40 題 them 要回到前一句找可複數指涉的名詞，不靠印象猜。</div>
+        <div class="strategy"><b>3. 推論抽象詞</b><br>blip 可從 not a rule 推出「短暫現象」，不要只看字面陌生就亂選。</div>
+        <div class="strategy"><b>4. 檢查輸出</b><br>one of a kind 少 a 會扣分；be blended with 需要過去分詞。</div>
+      </div>
+      <article class="panel" style="margin-top:18px">
+        <h3>建議練習順序</h3>
+        <p>第一輪先讀 Unit 1 的用法欄，遮住中文回想搭配。第二輪做 Unit 2，練從文章語境判斷答案。第三輪做 Unit 3，練學測單字題的干擾選項。最後把錯題整理成短語：<i>grave concerns</i>、<i>balanced consumption</i>、<i>dread the thought of V-ing</i>、<i>be blended with</i>、<i>one of a kind</i>。</p>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const colors = {
+      "核心詞彙": "#24476f",
+      "易混選項": "#b65f10",
+      "閱讀進階": "#06746f",
+      "文化地理": "#6251b8",
+      "詞形片語": "#b43c5d"
     };
 
-    function showOverlay(key) {
-        const item = data[key];
-        let html = `<div class="overlay-title">${item.title}</div>`;
-        if(item.desc) html += `<p>${item.desc}</p>`;
-        if(item.detail) html += `<div>${item.detail}</div>`;
-        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
-        
-        document.getElementById('contentArea').innerHTML = html;
-        document.getElementById('infoOverlay').style.display = 'block';
+    const vocab = [
+      {w:"accommodate", pos:"v.", zh:"容納；提供住宿；適應", cat:"核心詞彙", use:"accommodate weary travelers：接待疲憊旅人"},
+      {w:"amateur", pos:"adj./n.", zh:"業餘的；業餘者", cat:"易混選項", use:"an amateur designer：業餘設計師"},
+      {w:"assaulted", pos:"v.", zh:"攻擊；襲擊", cat:"核心詞彙", use:"assault someone with a bottle：用瓶子攻擊某人"},
+      {w:"brutal", pos:"adj.", zh:"殘酷的；野蠻的", cat:"易混選項", use:"a brutal attack：殘酷攻擊；不搭配 concerns"},
+      {w:"clues", pos:"n.", zh:"線索；提示", cat:"核心詞彙", use:"provide important clues：提供重要線索"},
+      {w:"compensate", pos:"v.", zh:"補償；彌補", cat:"核心詞彙", use:"compensate for a loss：彌補損失"},
+      {w:"condemned", pos:"v.", zh:"譴責；判定", cat:"易混選項", use:"condemn violent behavior：譴責暴力行為"},
+      {w:"consumption", pos:"n.", zh:"消耗；食用；消費", cat:"易混選項", use:"balanced consumption of fruit and vegetables：均衡食用蔬果"},
+      {w:"cuisine", pos:"n.", zh:"料理；菜餚", cat:"閱讀進階", use:"Chinese cuisine / local cuisine：中國料理/在地料理"},
+      {w:"diligent", pos:"adj.", zh:"勤奮的", cat:"易混選項", use:"a diligent student：勤奮學生；不形容 schedule"},
+      {w:"dimension", pos:"n.", zh:"尺寸；面向；維度", cat:"易混選項", use:"a social dimension：社會層面"},
+      {w:"dreads", pos:"v.", zh:"害怕；畏懼", cat:"易混選項", use:"dread the thought of V-ing：害怕想到做某事"},
+      {w:"emphasis", pos:"n.", zh:"強調；重點", cat:"易混選項", use:"put emphasis on vocabulary：強調單字"},
+      {w:"grave", pos:"adj./n.", zh:"嚴重的；墳墓", cat:"易混選項", use:"grave concerns：嚴重關切"},
+      {w:"hasty", pos:"adj.", zh:"匆忙的；草率的", cat:"易混選項", use:"a hasty decision：草率決定"},
+      {w:"manipulate", pos:"v.", zh:"操控；巧妙處理", cat:"閱讀進階", use:"manipulate information：操控資訊"},
+      {w:"provision", pos:"n.", zh:"提供；供應；條款", cat:"易混選項", use:"the provision of clean water：乾淨水源供應"},
+      {w:"reinforce", pos:"v.", zh:"加強；強化", cat:"核心詞彙", use:"reinforce an idea：強化想法"},
+      {w:"shattered", pos:"v./adj.", zh:"打碎；粉碎的", cat:"核心詞彙", use:"shattered glass / shattered confidence：碎玻璃/被粉碎的信心"},
+      {w:"wanders", pos:"v.", zh:"閒逛；漫遊；走神", cat:"易混選項", use:"His mind wanders. 他的心思飄走。"},
+      {w:"diversity", pos:"n.", zh:"多樣性", cat:"閱讀進階", use:"cultural diversity：文化多樣性"},
+      {w:"famed", pos:"adj.", zh:"著名的", cat:"閱讀進階", use:"a famed polar explorer：著名極地探險家"},
+      {w:"hindered", pos:"v.", zh:"阻礙；妨礙", cat:"閱讀進階", use:"bad weather hindered rescue attempts：壞天氣阻礙救援"},
+      {w:"northward", pos:"adv./adj.", zh:"向北；北方的", cat:"閱讀進階", use:"drift northward：向北漂流"},
+      {w:"polar", pos:"adj.", zh:"極地的；兩極的", cat:"閱讀進階", use:"polar explorer / polar region：極地探險家/極地地區"},
+      {w:"proverb", pos:"n.", zh:"諺語", cat:"閱讀進階", use:"a Russian proverb：俄羅斯諺語"},
+      {w:"stormy", pos:"adj.", zh:"暴風雨的；激烈的", cat:"閱讀進階", use:"stormy seas：暴風雨海面"},
+      {w:"stupidity", pos:"n.", zh:"愚蠢", cat:"閱讀進階", use:"a sign of stupidity：愚蠢的徵兆"},
+      {w:"sunken", pos:"adj.", zh:"沉沒的；凹陷的", cat:"閱讀進階", use:"a sunken ship：沉船"},
+      {w:"trapped", pos:"adj./v.", zh:"受困的；困住", cat:"閱讀進階", use:"trapped in ice：受困於冰中"},
+      {w:"uninhabited", pos:"adj.", zh:"無人居住的", cat:"閱讀進階", use:"an uninhabited island：無人島"},
+      {w:"unproductive", pos:"adj.", zh:"無成效的；沒有生產力的", cat:"閱讀進階", use:"by no means unproductive：絕非沒有效率"},
+      {w:"voyage", pos:"n./v.", zh:"航行；旅程", cat:"閱讀進階", use:"a dangerous voyage：危險航行"},
+      {w:"whaling", pos:"n./adj.", zh:"捕鯨；捕鯨的", cat:"閱讀進階", use:"a whaling station：捕鯨站"},
+      {w:"aboriginal", pos:"adj./n.", zh:"原住民的；原住民", cat:"文化地理", use:"aboriginal crafts：原住民工藝品"},
+      {w:"antique", pos:"adj./n.", zh:"古董的；古董", cat:"文化地理", use:"an antique oil lamp：古董油燈"},
+      {w:"ascend", pos:"v.", zh:"上升；攀登", cat:"閱讀進階", use:"ascend the stairs：上樓梯"},
+      {w:"blended", pos:"v./adj.", zh:"被混合；融合的", cat:"詞形片語", use:"be blended with foreign elements：與外國元素融合"},
+      {w:"blip", pos:"n.", zh:"短暫現象；小波動", cat:"閱讀進階", use:"a historical blip：歷史上的短暫現象"},
+      {w:"clockwise", pos:"adj./adv.", zh:"順時針的；順時針地", cat:"閱讀進階", use:"turn clockwise：順時針轉"},
+      {w:"coexists", pos:"v.", zh:"共存", cat:"詞形片語", use:"tradition coexists with innovation：傳統與創新共存"},
+      {w:"concrete", pos:"n./adj.", zh:"混凝土；具體的", cat:"閱讀進階", use:"concrete steps / a concrete example：混凝土階梯/具體例子"},
+      {w:"dakshina", pos:"n.", zh:"印度語詞，南方；右方", cat:"文化地理", use:"dakshina means south and right：dakshina 表示南方和右方"},
+      {w:"defenders", pos:"n.", zh:"防守者；守衛者", cat:"閱讀進階", use:"castle defenders：城堡防守者"},
+      {w:"descend", pos:"v.", zh:"下降；下來", cat:"閱讀進階", use:"descend the stairs：下樓梯"},
+      {w:"favored", pos:"v./adj.", zh:"有利於；偏愛的", cat:"閱讀進階", use:"the design favored defenders：這設計有利於防守者"},
+      {w:"harmoniously", pos:"adv.", zh:"和諧地", cat:"詞形片語", use:"coexist harmoniously：和諧共存"},
+      {w:"indigenous", pos:"adj.", zh:"原住民的；本土的", cat:"文化地理", use:"an indigenous district：原住民地區"},
+      {w:"inferred", pos:"v.", zh:"推論；推斷", cat:"閱讀進階", use:"can be inferred from the passage：可從文章推論"},
+      {w:"islamic", pos:"adj.", zh:"伊斯蘭的", cat:"文化地理", use:"old Islamic maps：古伊斯蘭地圖"},
+      {w:"marble", pos:"n.", zh:"大理石", cat:"文化地理", use:"stone and marble：石頭和大理石"},
+      {w:"medieval", pos:"adj.", zh:"中世紀的", cat:"文化地理", use:"medieval castles：中世紀城堡"},
+      {w:"narrow", pos:"adj.", zh:"狹窄的", cat:"核心詞彙", use:"a narrow staircase：狹窄樓梯"},
+      {w:"necklace", pos:"n.", zh:"項鍊", cat:"文化地理", use:"a wooden beads necklace：木珠項鍊"},
+      {w:"orient", pos:"n./v.", zh:"東方；使朝向；定位", cat:"文化地理", use:"the Orient / orient oneself：東方/確認方向"},
+      {w:"orientation", pos:"n.", zh:"方向；取向；迎新", cat:"閱讀進階", use:"map orientation：地圖方向"},
+      {w:"phrase", pos:"n.", zh:"片語；措辭", cat:"核心詞彙", use:"one of a kind is a phrase：one of a kind 是片語"},
+      {w:"pre-biblical", pos:"adj.", zh:"聖經時代以前的", cat:"文化地理", use:"pre-biblical maps：聖經時代以前的地圖"},
+      {w:"retreat", pos:"v./n.", zh:"撤退；退卻", cat:"閱讀進階", use:"retreat up the stairs：往樓梯上撤退"},
+      {w:"sailors", pos:"n.", zh:"水手", cat:"閱讀進階", use:"sailors relied on the North Star：水手依靠北極星"},
+      {w:"souvenirs", pos:"n.", zh:"紀念品", cat:"文化地理", use:"buy souvenirs：買紀念品"},
+      {w:"steel", pos:"n.", zh:"鋼；鋼鐵", cat:"文化地理", use:"steel frames：鋼架"},
+      {w:"uneven", pos:"adj.", zh:"不平的；不均勻的", cat:"閱讀進階", use:"uneven steps：不平的階梯"},
+      {w:"urgent", pos:"adj.", zh:"緊急的；迫切的", cat:"易混選項", use:"an urgent need：迫切需求"}
+    ];
+
+    const cloze = [
+      {q:"Stone Bay is a small ____ district on Taiwan's eastern coast.", ans:"indigenous", opts:["indigenous","urgent","brutal","diligent"], note:"district 和文化背景搭配，選 indigenous。"},
+      {q:"The village shows how tradition ____ with innovation.", ans:"coexists", opts:["coexists","wanders","hinders","assaults"], note:"tradition coexists with innovation 是第 47 題核心句型。"},
+      {q:"Visitors can buy an ____ oil lamp at the old shop.", ans:"antique", opts:["antique","amateur","uneven","stormy"], note:"oil lamp 作紀念品，語境是古董。"},
+      {q:"The necklace was made by an ____ artist.", ans:"aboriginal", opts:["aboriginal","unproductive","pre-biblical","clockwise"], note:"wooden beads necklace 對應原住民工藝。"},
+      {q:"The map's ____ changes according to the walking route.", ans:"orientation", opts:["orientation","consumption","provision","stupidity"], note:"map orientation 是地圖方向。"},
+      {q:"Some historians say the north-up habit may be only a historical ____.", ans:"blip", opts:["blip","cuisine","phrase","grave"], note:"blip 表示短暫狀態。"},
+      {q:"European exploration and ____ helped spread Eurocentric maps.", ans:"imperialism", opts:["imperialism","whaling","necklace","concrete"], note:"European imperialism 是地圖文章關鍵語。"},
+      {q:"The museum staircase was so ____ that attackers could not move in groups.", ans:"narrow", opts:["narrow","famed","sunken","hasty"], note:"螺旋梯狹窄，所以攻擊者只能一個一個上。"},
+      {q:"Attackers had to ____ the spiral staircase one at a time.", ans:"ascend", opts:["ascend","descend","compensate","reinforce"], note:"往上爬樓梯用 ascend。"},
+      {q:"The ____ steps made attackers more likely to stumble.", ans:"uneven", opts:["uneven","polar","islamic","diligent"], note:"uneven steps 是原文重要細節。"},
+      {q:"The clockwise design ____ right-handed defenders.", ans:"favored", opts:["favored","condemned","shattered","manipulated"], note:"favored 表示有利於。"},
+      {q:"Ice left the ship ____ for months.", ans:"trapped", opts:["trapped","brutal","urgent","blended"], note:"be trapped in ice：受困於冰中。"},
+      {q:"Stormy seas ____ the rescue attempts.", ans:"hindered", opts:["hindered","accommodated","recalled","coexisted"], note:"hinder 表示阻礙。"},
+      {q:"The crew finally reached a ____ station for help.", ans:"whaling", opts:["whaling","marble","dakshina","phrase"], note:"whaling station 是捕鯨站。"}
+    ];
+
+    const choice = [
+      {q:"Jane started as an ____ art designer, but later opened her own studio.", ans:"amateur", opts:["official","instant","amateur","diligent"], note:"從業餘到專業工作室，選 amateur。"},
+      {q:"A balanced ____ of fruit and vegetables is important for health.", ans:"consumption", opts:["dimension","integration","provision","consumption"], note:"蔬果是食用量，選 consumption。"},
+      {q:"Timmy ____ the thought of speaking before a large audience.", ans:"dreads", opts:["dreads","stresses","wanders","escapes"], note:"dread the thought of V-ing。"},
+      {q:"The shootings raised ____ concerns about campus safety.", ans:"grave", opts:["swift","brutal","harsh","grave"], note:"grave concerns 是固定搭配。"},
+      {q:"Teahouses sprang up to ____ weary travelers along the Silk Road.", ans:"accommodate", opts:["accommodate","compensate","anticipate","reinforce"], note:"提供休息處給旅人，選 accommodate。"},
+      {q:"The culinary art of dim sum ____ for a long time because tea and food were not paired.", ans:"had yet to develop", opts:["would hardly develop","had yet to develop","was fast developing","had almost developed"], note:"第 17 題錯點：had yet to develop 表示尚未發展。"},
+      {q:"A dark room with ____ light is ideal for napping.", ans:"minimal", opts:["minimal","stormy","urgent","brutal"], note:"昀軒第 29 題錯，little light 等於 minimal light。"},
+      {q:"The police found important ____ about the suspect's age and health.", ans:"clues", opts:["clues","phrases","souvenirs","dimensions"], note:"provide clues about..."},
+      {q:"The mayor ____ the violent attack in a public speech.", ans:"condemned", opts:["assaulted","condemned","overturned","shattered"], note:"公開譴責行為，選 condemned。"},
+      {q:"The window was ____ by stones during the storm.", ans:"shattered", opts:["shattered","accommodated","favored","inferred"], note:"玻璃被打碎用 shattered。"},
+      {q:"The answer can be ____ from the final paragraph.", ans:"inferred", opts:["inferred","hindered","trapped","favored"], note:"閱讀題常見：can be inferred。"},
+      {q:"The old bridge was built with stone, ____, and steel.", ans:"marble", opts:["marble","stupidity","proverb","orientation"], note:"材料語境，選 marble。"},
+      {q:"The old map reflects a ____ view because Europe is placed near the center.", ans:"Eurocentric", opts:["Eurocentric","uninhabited","clockwise","stormy"], note:"以歐洲為中心是 Eurocentric。"},
+      {q:"The products in the shop are perfectly ____ with foreign design elements.", ans:"blended", opts:["destination","blended","blip","blend"], note:"第 48 題：are blended with，需要過去分詞。"},
+      {q:"Joseph described each store as ____.", ans:"one of a kind", opts:["one of kind","one of a kind","one kind","a one kind"], note:"第 50 題：冠詞 a 不能漏。"},
+      {q:"The captain made a ____ decision without checking the weather report.", ans:"hasty", opts:["hasty","diligent","polar","famed"], note:"草率決定是 hasty decision。"},
+      {q:"The meeting was long and ____; nothing was decided.", ans:"unproductive", opts:["unproductive","indigenous","medieval","concrete"], note:"沒產出結果，選 unproductive。"},
+      {q:"The guide used a local ____ to explain why some cultures value silence.", ans:"proverb", opts:["proverb","necklace","steel","voyage"], note:"文化中的諺語是 proverb。"}
+    ];
+
+    const sections = document.querySelectorAll(".section");
+    const tabs = document.querySelectorAll(".tab");
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(item => item.classList.toggle("active", item === tab));
+        sections.forEach(sec => sec.classList.toggle("active", sec.id === tab.dataset.tab));
+        window.scrollTo({top: 0, behavior: "smooth"});
+      });
+    });
+
+    const filtersEl = document.querySelector("#filters");
+    const vocabGrid = document.querySelector("#vocabGrid");
+    const cats = ["全部", ...Array.from(new Set(vocab.map(item => item.cat)))];
+
+    function renderFilters(active = "全部") {
+      filtersEl.innerHTML = cats.map(cat => `<button class="filter ${cat === active ? "active" : ""}" data-cat="${cat}">${cat}</button>`).join("");
     }
 
-    function closeOverlay() {
-        document.getElementById('infoOverlay').style.display = 'none';
+    function renderVocab(cat = "全部") {
+      renderFilters(cat);
+      const list = cat === "全部" ? vocab : vocab.filter(item => item.cat === cat);
+      vocabGrid.innerHTML = list.map(item => `
+        <article class="vocab-card" style="--accent:${colors[item.cat]}">
+          <div class="word-line"><div class="word">${item.w}</div><div class="pos">${item.pos}</div></div>
+          <div class="zh">${item.zh}</div>
+          <div class="usage">${item.use}</div>
+          <div class="mini">分類：${item.cat}</div>
+        </article>
+      `).join("");
     }
-</script>
 
+    filtersEl.addEventListener("click", event => {
+      const btn = event.target.closest(".filter");
+      if (btn) renderVocab(btn.dataset.cat);
+    });
+
+    function buildExercise(target, data, scoreId, type) {
+      const host = document.querySelector(target);
+      host.innerHTML = data.map((item, index) => `
+        <article class="question" data-answer="${item.ans}" data-type="${type}" style="--accent:${index % 2 ? "var(--teal)" : "var(--amber)"}">
+          <div class="q-head"><span>Question ${index + 1}</span><span>${type === "cloze" ? "Fill in the blank" : "Choose the best word"}</span></div>
+          <div class="q-text">${type === "cloze" ? item.q.replace("____", '<span class="blank">____</span>') : item.q}</div>
+          <div class="options">
+            ${item.opts.map(opt => `<button class="option" data-opt="${opt}">${opt}</button>`).join("")}
+          </div>
+          <div class="feedback"></div>
+          <div class="mini">${item.note}</div>
+        </article>
+      `).join("");
+      updateScore(type, scoreId);
+    }
+
+    function updateScore(type, scoreId) {
+      const cards = [...document.querySelectorAll(`.question[data-type="${type}"]`)];
+      const correct = cards.filter(card => card.dataset.done === "true").length;
+      document.querySelector(scoreId).textContent = `${type === "cloze" ? "填充" : "選擇"}得分：${correct} / ${cards.length}`;
+    }
+
+    document.addEventListener("click", event => {
+      const opt = event.target.closest(".option");
+      if (!opt) return;
+      const card = opt.closest(".question");
+      if (card.dataset.answered === "true") return;
+
+      const answer = card.dataset.answer;
+      const type = card.dataset.type;
+      const feedback = card.querySelector(".feedback");
+      const isCorrect = opt.dataset.opt === answer;
+
+      card.dataset.answered = "true";
+      card.dataset.done = isCorrect ? "true" : "false";
+      card.querySelectorAll(".option").forEach(button => {
+        button.disabled = true;
+        if (button.dataset.opt === answer) button.classList.add("correct");
+      });
+      if (!isCorrect) opt.classList.add("wrong");
+      feedback.className = `feedback ${isCorrect ? "ok" : "no"}`;
+      feedback.textContent = isCorrect ? "Correct. 這個搭配很自然。" : `答案是 ${answer}。先看主詞、動詞搭配和句意。`;
+      updateScore(type, type === "cloze" ? "#clozeScore" : "#choiceScore");
+    });
+
+    document.querySelectorAll(".reset").forEach(button => {
+      button.addEventListener("click", () => {
+        if (button.dataset.reset === "cloze") {
+          buildExercise("#clozeQuestions", cloze, "#clozeScore", "cloze");
+        } else {
+          buildExercise("#choiceQuestions", choice, "#choiceScore", "choice");
+        }
+      });
+    });
+
+    renderVocab();
+    buildExercise("#clozeQuestions", cloze, "#clozeScore", "cloze");
+    buildExercise("#choiceQuestions", choice, "#choiceScore", "choice");
+  </script>
 </body>
 </html>
