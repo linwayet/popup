@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>112 學測英文 第 1-50 題（單面作答）</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    margin: 0; padding: 20px;
+    color: #2c3e50; line-height: 1.75;
+  }
+  .container {
+    max-width: 920px; margin: 0 auto;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+  }
+  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
+  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
+  .subtitle { color: #7f8c8d; font-size: 0.95em; }
+  .student-info {
+    background: #ecf5fd; border-radius: 10px;
+    padding: 12px 16px; margin: 16px 0;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .student-info label { font-weight: 600; color: #2980b9; }
+  .student-info input {
+    border: 1px solid #bdc3c7; border-radius: 6px;
+    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
+  }
+  .instruction {
+    background: #fff9e6; border-left: 4px solid #f39c12;
+    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
+    font-size: 0.95em; color: #8e6c16;
+  }
+  .legend {
+    font-size: 0.88em; color: #7f8c8d;
+    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+  .legend .word-sample {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
+  }
+  .section-title {
+    background: linear-gradient(90deg, #3498db, #5dade2);
+    color: #fff; padding: 10px 16px; border-radius: 8px;
+    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
+  }
+  .group-label {
+    background: #eaf4fb; color: #1f618d;
+    padding: 7px 14px; border-radius: 6px;
+    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
+    display: inline-block;
+  }
+  .passage {
+    background: #fafbfc; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
+    font-size: 1em; text-align: justify;
+  }
+  .passage p { margin: 0 0 10px; }
+  .passage p:last-child { margin-bottom: 0; }
+
+  .question {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .q-text { font-size: 1em; margin-bottom: 8px; }
+  .q-num {
+    display: inline-block; background: #3498db; color: #fff;
+    border-radius: 50%; min-width: 28px; height: 28px;
+    text-align: center; line-height: 28px; font-weight: 700;
+    margin-right: 6px; font-size: 0.88em; padding: 0 6px;
+  }
+  .q-inline {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+    flex-wrap: wrap;
+  }
+  .q-inline .q-num-sq {
+    background: #3498db; color: #fff; font-weight: 700;
+    border-radius: 6px; padding: 4px 10px; font-size: 0.95em;
+    flex-shrink: 0;
+  }
+
+  .options { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+  .options label {
+    flex: 1 1 calc(25% - 6px); min-width: 120px;
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 9px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
+    border-radius: 6px; cursor: pointer; transition: all 0.15s;
+    font-size: 0.92em;
+  }
+  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
+  .options input[type="radio"], .options input[type="checkbox"] { accent-color: #3498db; margin: 0; flex-shrink: 0; }
+  .options label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  .options-ci label { flex: 1 1 calc(20% - 6px); min-width: 100px; font-size: 0.88em; }
+  .options-ps label { flex: 1 1 100%; min-width: 100%; font-size: 0.93em; align-items: flex-start; }
+  .options-ps label input { margin-top: 3px; }
+  .options-rd label { flex: 1 1 calc(50% - 6px); min-width: 280px; font-size: 0.92em; align-items: flex-start; }
+  .options-rd label input { margin-top: 3px; }
+  .options-multi label { flex: 1 1 calc(50% - 6px); min-width: 240px; font-size: 0.92em; align-items: flex-start; }
+  .options-multi label input { margin-top: 3px; }
+  .options-multi label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  /* Q44 地圖題 */
+  .map-pic-wrap {
+    background: #fff; border: 1.5px solid #dfe4ea; border-radius: 8px;
+    padding: 10px; text-align: center; margin: 8px 0;
+  }
+  .map-pic-wrap svg { width: 100%; max-width: 560px; height: auto; }
+
+  .word { cursor: pointer; padding: 0 1px; border-radius: 3px; transition: background 0.12s; }
+  .word:hover { background: #fdecea; }
+  .word.unfamiliar { background: #ffebcd; border-bottom: 2px solid #e67e22; font-weight: 600; color: #b9770e; }
+
+  .blank { color: #e74c3c; font-weight: 700; padding: 0 2px; }
+
+  .vocab-row {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 6px 12px; margin-top: 8px;
+    font-size: 0.95em; color: #7d6608;
+    display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center;
+  }
+  .vocab-row::before {
+    content: "🔖 不懂的單字點一下標記："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; margin-right: 4px;
+  }
+  .vocab-row .word { padding: 2px 7px; background: #fff; border: 1px solid #f5b041; }
+  .vocab-row .word.unfamiliar { background: #ffebcd; }
+
+  .vocab-sentences {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 10px 14px; margin-top: 10px;
+    font-size: 0.93em; color: #7d6608;
+  }
+  .vocab-sentences::before {
+    content: "🔖 篇章結構選項句子（不懂的單字點一下標記，不用提號）："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; display: block; margin-bottom: 6px;
+  }
+  .vocab-sentences .sent-line { background: #fff; border-radius: 4px; padding: 5px 8px; margin: 4px 0; }
+
+  .fill-blank {
+    border: 1.5px solid #bdc3c7; border-bottom: 2px solid #3498db;
+    background: #f8fbfd; padding: 5px 10px; min-width: 140px;
+    font-size: 1em; font-family: inherit; border-radius: 6px;
+    margin: 0 4px;
+  }
+  .fill-blank:focus { outline: none; border-color: #3498db; background: #fff; }
+  textarea.short-ans {
+    width: 100%; min-height: 70px; padding: 10px;
+    border: 1.5px solid #bdc3c7; border-radius: 6px;
+    font-family: inherit; font-size: 0.95em; resize: vertical;
+    margin-top: 8px;
+  }
+  textarea.short-ans:focus { outline: none; border-color: #3498db; }
+
+  .trans-item {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .trans-item .ch-line { font-size: 1em; margin-bottom: 8px; color: #2c3e50; }
+
+  .button-row { text-align: center; margin: 26px 0 6px; }
+  button.submit-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
+    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+    transition: transform 0.15s;
+  }
+  button.submit-btn:hover { transform: translateY(-2px); }
+
+  #results { display: none; margin-top: 26px; }
+  .result-card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 20px 22px; margin-bottom: 20px;
+    border-top: 4px solid #3498db;
+  }
+  .result-card.score { border-top-color: #9b59b6; }
+  .result-card.teacher { border-top-color: #27ae60; }
+  .result-card.feedback { border-top-color: #e67e22; }
+  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
+  .copyable {
+    background: #f4f6f8; border: 1px dashed #bdc3c7;
+    border-radius: 8px; padding: 14px; white-space: pre-wrap;
+    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
+    max-height: 360px; overflow-y: auto; color: #2c3e50;
+  }
+  .copy-btn {
+    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
+    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
+  }
+  .copy-btn:hover { background: #7f8c8d; }
+  .copy-btn.copied { background: #27ae60; }
+
+  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
+  .score-detail { text-align: center; color: #7f8c8d; }
+
+  .wrong-item {
+    background: #fdf2f2; border-left: 4px solid #e74c3c;
+    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
+  }
+  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
+  .wrong-item .explain { color: #34495e; font-size: 0.95em; line-height: 1.7; }
+  .correct-mark { color: #27ae60; font-weight: 600; }
+  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+
+  .unknown-counter {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #ffebcd; color: #b9770e;
+    padding: 9px 16px; border-radius: 30px;
+    font-weight: 600; font-size: 0.9em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100; display: none;
+    border: 2px solid #e67e22;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 8px; }
+    .container { padding: 18px 16px; }
+    .options label { flex: 1 1 calc(50% - 6px); }
+    .options-ci label { flex: 1 1 calc(33% - 6px); }
+    .options-rd label { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>112 學年度學科能力測驗 ‧ 英文考科</h1>
+    <div class="subtitle">第 1-50 題（線上作答 ‧ 全部單面捲動 ‧ LINE 群繳交）</div>
+  </header>
+
+  <div class="student-info">
+    <label>姓名：</label><input type="text" id="studentName" placeholder="請輸入姓名">
+    <label>座號：</label><input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+  </div>
+
+  <div class="instruction">
+    <strong>作答說明：</strong>本卷共 50 題，全部單面作答、不分頁。每題單選一個答案（Q49 多選、Q47/Q48/Q50 為填空/簡答；Q44 為地圖題）。
+    閱讀時遇到<u>任何不會的單字</u>，直接點一下標記（再點取消），系統會於送出後統一匯出給老師。
+  </div>
+  <div class="legend">
+    不熟悉單字標記範例：<span class="word-sample">example</span>　🔖 黃底= 已標記不熟悉。各題下方/章節末尾有重複的選項單字列，方便點選。
+  </div>
+
+<form id="quizForm">
+
+<!-- ============ 一、詞彙題 (1-10) ============ -->
+<div class="section-title">一、詞彙題（第 1-10 題，每題 1 分）</div>
+
+<div class="question" data-q="1">
+  <div class="q-text autowrap"><span class="q-num">1</span>The bus driver often complains about chewing gum found under passenger seats because it is <span class="blank">______</span> and very hard to remove.</div>
+  <div class="options" data-qid="1">
+    <label><input type="radio" name="q1" value="A"><span>(A) sticky</span></label>
+    <label><input type="radio" name="q1" value="B"><span>(B) greasy</span></label>
+    <label><input type="radio" name="q1" value="C"><span>(C) clumsy</span></label>
+    <label><input type="radio" name="q1" value="D"><span>(D) mighty</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">sticky</span><span class="word">greasy</span><span class="word">clumsy</span><span class="word">mighty</span></div>
+</div>
+
+<div class="question" data-q="2">
+  <div class="q-text autowrap"><span class="q-num">2</span>Jesse is a talented model. He can easily adopt an elegant <span class="blank">______</span> for a camera shoot.</div>
+  <div class="options" data-qid="2">
+    <label><input type="radio" name="q2" value="A"><span>(A) clap</span></label>
+    <label><input type="radio" name="q2" value="B"><span>(B) toss</span></label>
+    <label><input type="radio" name="q2" value="C"><span>(C) pose</span></label>
+    <label><input type="radio" name="q2" value="D"><span>(D) snap</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">clap</span><span class="word">toss</span><span class="word">pose</span><span class="word">snap</span></div>
+</div>
+
+<div class="question" data-q="3">
+  <div class="q-text autowrap"><span class="q-num">3</span>In order to draw her family tree, Mary tried to trace her <span class="blank">______</span> back to their arrival in North America.</div>
+  <div class="options" data-qid="3">
+    <label><input type="radio" name="q3" value="A"><span>(A) siblings</span></label>
+    <label><input type="radio" name="q3" value="B"><span>(B) commuters</span></label>
+    <label><input type="radio" name="q3" value="C"><span>(C) ancestors</span></label>
+    <label><input type="radio" name="q3" value="D"><span>(D) instructors</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">siblings</span><span class="word">commuters</span><span class="word">ancestors</span><span class="word">instructors</span></div>
+</div>
+
+<div class="question" data-q="4">
+  <div class="q-text autowrap"><span class="q-num">4</span>Upon the super typhoon warning, Nancy rushed to the supermarket—only to find the shelves almost <span class="blank">______</span> and the stock nearly gone.</div>
+  <div class="options" data-qid="4">
+    <label><input type="radio" name="q4" value="A"><span>(A) blank</span></label>
+    <label><input type="radio" name="q4" value="B"><span>(B) bare</span></label>
+    <label><input type="radio" name="q4" value="C"><span>(C) hollow</span></label>
+    <label><input type="radio" name="q4" value="D"><span>(D) queer</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">blank</span><span class="word">bare</span><span class="word">hollow</span><span class="word">queer</span></div>
+</div>
+
+<div class="question" data-q="5">
+  <div class="q-text autowrap"><span class="q-num">5</span>Even though Jack said "Sorry!" to me in person, I did not feel any <span class="blank">______</span> in his apology.</div>
+  <div class="options" data-qid="5">
+    <label><input type="radio" name="q5" value="A"><span>(A) liability</span></label>
+    <label><input type="radio" name="q5" value="B"><span>(B) generosity</span></label>
+    <label><input type="radio" name="q5" value="C"><span>(C) integrity</span></label>
+    <label><input type="radio" name="q5" value="D"><span>(D) sincerity</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">liability</span><span class="word">generosity</span><span class="word">integrity</span><span class="word">sincerity</span></div>
+</div>
+
+<div class="question" data-q="6">
+  <div class="q-text autowrap"><span class="q-num">6</span>My grandfather has astonishing powers of <span class="blank">______</span>. He can still vividly describe his first day at school as a child.</div>
+  <div class="options" data-qid="6">
+    <label><input type="radio" name="q6" value="A"><span>(A) resolve</span></label>
+    <label><input type="radio" name="q6" value="B"><span>(B) fraction</span></label>
+    <label><input type="radio" name="q6" value="C"><span>(C) privilege</span></label>
+    <label><input type="radio" name="q6" value="D"><span>(D) recall</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">resolve</span><span class="word">fraction</span><span class="word">privilege</span><span class="word">recall</span></div>
+</div>
+
+<div class="question" data-q="7">
+  <div class="q-text autowrap"><span class="q-num">7</span>Recent research has found lots of evidence to <span class="blank">______</span> the drug company's claims about its "miracle" tablets for curing cancer.</div>
+  <div class="options" data-qid="7">
+    <label><input type="radio" name="q7" value="A"><span>(A) provoke</span></label>
+    <label><input type="radio" name="q7" value="B"><span>(B) counter</span></label>
+    <label><input type="radio" name="q7" value="C"><span>(C) expose</span></label>
+    <label><input type="radio" name="q7" value="D"><span>(D) convert</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">provoke</span><span class="word">counter</span><span class="word">expose</span><span class="word">convert</span></div>
+</div>
+
+<div class="question" data-q="8">
+  <div class="q-text autowrap"><span class="q-num">8</span>Corrupt officials and misguided policies have <span class="blank">______</span> the country's economy and burdened its people with enormous foreign debts.</div>
+  <div class="options" data-qid="8">
+    <label><input type="radio" name="q8" value="A"><span>(A) crippled</span></label>
+    <label><input type="radio" name="q8" value="B"><span>(B) accelerated</span></label>
+    <label><input type="radio" name="q8" value="C"><span>(C) rendered</span></label>
+    <label><input type="radio" name="q8" value="D"><span>(D) ventured</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">crippled</span><span class="word">accelerated</span><span class="word">rendered</span><span class="word">ventured</span></div>
+</div>
+
+<div class="question" data-q="9">
+  <div class="q-text autowrap"><span class="q-num">9</span>As a record number of fans showed up for the baseball final, the highways around the stadium were <span class="blank">______</span> with traffic all day.</div>
+  <div class="options" data-qid="9">
+    <label><input type="radio" name="q9" value="A"><span>(A) choked</span></label>
+    <label><input type="radio" name="q9" value="B"><span>(B) disturbed</span></label>
+    <label><input type="radio" name="q9" value="C"><span>(C) enclosed</span></label>
+    <label><input type="radio" name="q9" value="D"><span>(D) injected</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">choked</span><span class="word">disturbed</span><span class="word">enclosed</span><span class="word">injected</span></div>
+</div>
+
+<div class="question" data-q="10">
+  <div class="q-text autowrap"><span class="q-num">10</span>Studies show that the <span class="blank">______</span> unbiased media are in fact often deeply influenced by political ideology.</div>
+  <div class="options" data-qid="10">
+    <label><input type="radio" name="q10" value="A"><span>(A) undoubtedly</span></label>
+    <label><input type="radio" name="q10" value="B"><span>(B) roughly</span></label>
+    <label><input type="radio" name="q10" value="C"><span>(C) understandably</span></label>
+    <label><input type="radio" name="q10" value="D"><span>(D) supposedly</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">undoubtedly</span><span class="word">roughly</span><span class="word">understandably</span><span class="word">supposedly</span></div>
+</div>
+
+<!-- ============ 二、綜合測驗 (11-20) — 已位置變換 ============ -->
+<div class="section-title">二、綜合測驗（第 11-20 題，每題 1 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+
+<div class="group-label">【第 11-15 題為題組】Crown Shyness</div>
+
+<!-- Para 1 (with 11) -->
+<div class="passage autowrap">
+<p>In certain forests, when you look up you will see a network of cracks formed by gaps between the outermost edges of tree branches. It looks like a precisely engineered jigsaw puzzle, each branch growing just perfectly so it almost, <span class="blank">[11]</span>, touches the neighboring tree. This beautiful phenomenon is called crown shyness.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">11.</span>
+  <div class="options" data-qid="11">
+    <label><input type="radio" name="q11" value="A"><span>(A) by all means</span></label>
+    <label><input type="radio" name="q11" value="B"><span>(B) but not quite</span></label>
+    <label><input type="radio" name="q11" value="C"><span>(C) in no time</span></label>
+    <label><input type="radio" name="q11" value="D"><span>(D) and pretty much</span></label>
+  </div>
+</div>
+
+<!-- Para 2 (with 12, 13) -->
+<div class="passage autowrap">
+<p>Scientists have been discussing crown shyness since the 1920s, proposing <span class="blank">[12]</span> explanations for the phenomenon. Some researchers point out that as trees often grow close together, treetops can easily collide and break when swayed by the wind. In order to protect their branches from breakage, trees maintain "shyness gaps"—spaces large enough to prevent them from touching their neighbors.</p>
+<p>Other scientists suggest that plants, like animals, <span class="blank">[13]</span> resources—nutrients, water, space, and light. In forested areas with thick tree crowns, there is intense struggle for these resources.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">12.</span>
+  <div class="options" data-qid="12">
+    <label><input type="radio" name="q12" value="A"><span>(A) multiple</span></label>
+    <label><input type="radio" name="q12" value="B"><span>(B) universal</span></label>
+    <label><input type="radio" name="q12" value="C"><span>(C) productive</span></label>
+    <label><input type="radio" name="q12" value="D"><span>(D) conventional</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">multiple</span><span class="word">universal</span><span class="word">productive</span><span class="word">conventional</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">13.</span>
+  <div class="options" data-qid="13">
+    <label><input type="radio" name="q13" value="A"><span>(A) give way to</span></label>
+    <label><input type="radio" name="q13" value="B"><span>(B) get over</span></label>
+    <label><input type="radio" name="q13" value="C"><span>(C) compete for</span></label>
+    <label><input type="radio" name="q13" value="D"><span>(D) make up for</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 14, 15) -->
+<div class="passage autowrap">
+<p>Gaps in the treetops resulting from crown shyness may allow trees to increase their <span class="blank">[14]</span> light and enhance photosynthesis. Additionally, by having branches that do not touch those of their neighbors, trees may be able to limit the spread of leaf-eating insects, and potentially also the transmission of diseases from tree to tree. <span class="blank">[15]</span> decades of investigation, there is no consensus on exactly what causes the beautiful and mysterious phenomenon of crown shyness.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">14.</span>
+  <div class="options" data-qid="14">
+    <label><input type="radio" name="q14" value="A"><span>(A) exposure to</span></label>
+    <label><input type="radio" name="q14" value="B"><span>(B) reflection on</span></label>
+    <label><input type="radio" name="q14" value="C"><span>(C) reliance on</span></label>
+    <label><input type="radio" name="q14" value="D"><span>(D) sensitivity to</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">exposure</span><span class="word">reflection</span><span class="word">reliance</span><span class="word">sensitivity</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">15.</span>
+  <div class="options" data-qid="15">
+    <label><input type="radio" name="q15" value="A"><span>(A) Besides</span></label>
+    <label><input type="radio" name="q15" value="B"><span>(B) Despite</span></label>
+    <label><input type="radio" name="q15" value="C"><span>(C) Concerning</span></label>
+    <label><input type="radio" name="q15" value="D"><span>(D) For</span></label>
+  </div>
+</div>
+
+<div class="group-label">【第 16-20 題為題組】Mars Mission &amp; Gravity</div>
+
+<!-- Para 1 (with 16, 17) -->
+<div class="passage autowrap">
+<p>Gravity has been at the top of the science agenda since the start of Mars missions. In the earlier days of space travel, scientists tried to overcome the force of gravity so that a rocket could shoot <span class="blank">[16]</span> Earth's pull in order to land humans on the moon. Today, they are more interested in how reduced gravity affects the astronauts' <span class="blank">[17]</span> condition.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">16.</span>
+  <div class="options" data-qid="16">
+    <label><input type="radio" name="q16" value="A"><span>(A) straight on</span></label>
+    <label><input type="radio" name="q16" value="B"><span>(B) back to</span></label>
+    <label><input type="radio" name="q16" value="C"><span>(C) free of</span></label>
+    <label><input type="radio" name="q16" value="D"><span>(D) long before</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">17.</span>
+  <div class="options" data-qid="17">
+    <label><input type="radio" name="q17" value="A"><span>(A) perceptual</span></label>
+    <label><input type="radio" name="q17" value="B"><span>(B) physical</span></label>
+    <label><input type="radio" name="q17" value="C"><span>(C) external</span></label>
+    <label><input type="radio" name="q17" value="D"><span>(D) mental</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">perceptual</span><span class="word">physical</span><span class="word">external</span><span class="word">mental</span></div>
+
+<!-- Para 2 (with 18) -->
+<div class="passage autowrap">
+<p>Our bodies have evolved to exist within Earth's gravity (1 g), not in the weightlessness of space (0 g) or the microgravity of Mars (0.3 g). When on Earth, we have more fluids in our lower body because they are pulled down by Earth's gravity. However, with the absence of gravity in the outer space, our body fluids <span class="blank">[18]</span>, shifting toward the upper body and the head.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">18.</span>
+  <div class="options" data-qid="18">
+    <label><input type="radio" name="q18" value="A"><span>(A) redistributing</span></label>
+    <label><input type="radio" name="q18" value="B"><span>(B) redistribute</span></label>
+    <label><input type="radio" name="q18" value="C"><span>(C) redistributed</span></label>
+    <label><input type="radio" name="q18" value="D"><span>(D) being redistributed</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 19, 20) -->
+<div class="passage autowrap">
+<p>As a result, the astronauts have swollen, puffy faces, very much resembling that of the round-headed Charlie Brown in the famous comic strip. This "Charlie Brown effect" will be more <span class="blank">[19]</span> when the astronauts go on their Mars missions, which will take about three years to complete, much longer than missions to the moon. Moreover, the effect is often <span class="blank">[20]</span> space motion sickness, headaches, and nausea. Such a syndrome is considered the top health risk for the astronauts, and scientists are still trying to figure out how it may be prevented.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">19.</span>
+  <div class="options" data-qid="19">
+    <label><input type="radio" name="q19" value="A"><span>(A) aggressive</span></label>
+    <label><input type="radio" name="q19" value="B"><span>(B) severe</span></label>
+    <label><input type="radio" name="q19" value="C"><span>(C) unusual</span></label>
+    <label><input type="radio" name="q19" value="D"><span>(D) contagious</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">aggressive</span><span class="word">severe</span><span class="word">unusual</span><span class="word">contagious</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">20.</span>
+  <div class="options" data-qid="20">
+    <label><input type="radio" name="q20" value="A"><span>(A) accompanied by</span></label>
+    <label><input type="radio" name="q20" value="B"><span>(B) brought about</span></label>
+    <label><input type="radio" name="q20" value="C"><span>(C) varied with</span></label>
+    <label><input type="radio" name="q20" value="D"><span>(D) transferred from</span></label>
+  </div>
+</div>
+
+<!-- ============ 三、文意選填 (21-30) — 已位置變換 ============ -->
+<div class="section-title">三、文意選填（第 21-30 題，每題 1 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+<div class="group-label">【第 21-30 題為題組】Hydration</div>
+
+<!-- Para 1 (with 21) -->
+<div class="passage autowrap">
+<p>Water makes up more than half of our body weight. To sustain this amount of fluid in our bodies, plain water is considered our best choice, for it contains no sugar and no calories. Yet, is water always the healthiest drink we can <span class="blank">[21]</span>? Well, it depends on who and where we are, and what we're doing.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">21.</span>
+  <div class="options options-ci" data-qid="21">
+    <label><input type="radio" name="q21" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q21" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q21" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q21" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q21" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q21" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q21" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q21" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q21" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q21" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<!-- Para 2 (with 22) -->
+<div class="passage autowrap">
+<p>Obviously, a physically <span class="blank">[22]</span> person with an outdoor job under the sun will need to drink more fluid than a desk-bound person who lives and works in an air-conditioned place.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">22.</span>
+  <div class="options options-ci" data-qid="22">
+    <label><input type="radio" name="q22" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q22" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q22" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q22" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q22" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q22" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q22" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q22" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q22" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q22" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<!-- Para 3 (with 23, 24) -->
+<div class="passage autowrap">
+<p>But there's more to it than that. When a person sweats, he loses water and salt, so he needs to replace both. Replacing lost fluid with just plain water means the body has too much water and not enough salt. To <span class="blank">[23]</span> things out, the body will get rid of water by producing urine. For this reason, milk can actually be more <span class="blank">[24]</span> than drinking water.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">23.</span>
+  <div class="options options-ci" data-qid="23">
+    <label><input type="radio" name="q23" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q23" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q23" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q23" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q23" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q23" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q23" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q23" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q23" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q23" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">24.</span>
+  <div class="options options-ci" data-qid="24">
+    <label><input type="radio" name="q24" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q24" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q24" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q24" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q24" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q24" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q24" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q24" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q24" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q24" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<!-- Para 4 (with 25) -->
+<div class="passage autowrap">
+<p>Milk naturally contains salt and lactose, a sugar which the human body needs in small amounts to help stimulate water <span class="blank">[25]</span>.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">25.</span>
+  <div class="options options-ci" data-qid="25">
+    <label><input type="radio" name="q25" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q25" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q25" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q25" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q25" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q25" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q25" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q25" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q25" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q25" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<!-- Para 5 (with 26) -->
+<div class="passage autowrap">
+<p>Coconut water, which contains salt and carbohydrates, is also more functional than water at restoring and maintaining a normal fluid <span class="blank">[26]</span> after exercise.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">26.</span>
+  <div class="options options-ci" data-qid="26">
+    <label><input type="radio" name="q26" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q26" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q26" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q26" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q26" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q26" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q26" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q26" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q26" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q26" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<!-- Para 6 (with 27) -->
+<div class="passage autowrap">
+<p>For the average person, however, water remains a very good <span class="blank">[27]</span> for keeping hydrated—if you know how to drink it.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">27.</span>
+  <div class="options options-ci" data-qid="27">
+    <label><input type="radio" name="q27" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q27" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q27" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q27" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q27" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q27" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q27" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q27" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q27" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q27" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<!-- Para 7 (with 28) -->
+<div class="passage autowrap">
+<p>The secret is: Never wait until the body is telling you you're thirsty, since there must already have been significant changes in your body for it to eventually <span class="blank">[28]</span> your consciousness.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">28.</span>
+  <div class="options options-ci" data-qid="28">
+    <label><input type="radio" name="q28" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q28" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q28" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q28" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q28" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q28" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q28" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q28" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q28" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q28" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<!-- Para 8 (with 29) -->
+<div class="passage autowrap">
+<p>At that point, it might be well past the best moment to take in fluid. Also, drinking a lot of liquid in one go can cause more water to <span class="blank">[29]</span> the body quickly and come out as urine.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">29.</span>
+  <div class="options options-ci" data-qid="29">
+    <label><input type="radio" name="q29" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q29" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q29" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q29" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q29" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q29" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q29" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q29" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q29" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q29" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<!-- Para 9 (with 30) -->
+<div class="passage autowrap">
+<p>To <span class="blank">[30]</span> this, you need to drink water throughout the day to maintain your hydration levels.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">30.</span>
+  <div class="options options-ci" data-qid="30">
+    <label><input type="radio" name="q30" value="A"><span>(A) option</span></label>
+    <label><input type="radio" name="q30" value="B"><span>(B) reach for</span></label>
+    <label><input type="radio" name="q30" value="C"><span>(C) active</span></label>
+    <label><input type="radio" name="q30" value="D"><span>(D) absorption</span></label>
+    <label><input type="radio" name="q30" value="E"><span>(E) effective</span></label>
+    <label><input type="radio" name="q30" value="F"><span>(F) combat</span></label>
+    <label><input type="radio" name="q30" value="G"><span>(G) status</span></label>
+    <label><input type="radio" name="q30" value="H"><span>(H) alert</span></label>
+    <label><input type="radio" name="q30" value="I"><span>(I) even</span></label>
+    <label><input type="radio" name="q30" value="J"><span>(J) pass through</span></label>
+  </div>
+</div>
+
+<div class="vocab-row"><span class="word">option</span><span class="word">reach for</span><span class="word">active</span><span class="word">absorption</span><span class="word">effective</span><span class="word">combat</span><span class="word">status</span><span class="word">alert</span><span class="word">even</span><span class="word">pass through</span></div>
+
+<!-- ============ 四、篇章結構 (31-34) — 已位置變換 ============ -->
+<div class="section-title">四、篇章結構（第 31-34 題，每題 2 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+<div class="group-label">【第 31-34 題為題組】Synesthesia</div>
+
+<!-- Para 1 -->
+<div class="passage autowrap">
+<p>Have you ever thought of "coloring" the names of the days of the week? When you listen to someone speaking, do you see a rainbow of colors? Or perhaps Mozart's music tastes like an apple pie to you? If so, it is very likely that you have synesthesia.</p>
+<p>Synesthesia is a condition in which people's senses intermix. In some cases, people with synesthesia may experience colors when they hear, read, or even think of letters and numbers. In others, words can trigger a real sensation of taste on their tongue.</p>
+<p><span class="blank">[31]</span> In the early 1990s, however, scientists noticed that synesthetic colors do not change over time. When asked what color is evoked by a letter or number, synesthetic people would persistently give the same answer even if tested months or years apart. <span class="blank">[32]</span> The most compelling support, however, comes from brain scans, which show that color processing areas in the brain light up when these people listen to certain words.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">31.</span>
+  <div class="options options-ps" data-qid="31">
+    <label><input type="radio" name="q31" value="A"><span>(A) Meanwhile, environmental influences seem to shape a person's synesthesia.</span></label>
+    <label><input type="radio" name="q31" value="B"><span>(B) Some studies even show that people may all be synesthetic to some degree.</span></label>
+    <label><input type="radio" name="q31" value="C"><span>(C) This consistency serves as a proof that synesthesia is real.</span></label>
+    <label><input type="radio" name="q31" value="D"><span>(D) People with synesthesia used to be accused of making their experiences up.</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">32.</span>
+  <div class="options options-ps" data-qid="32">
+    <label><input type="radio" name="q32" value="A"><span>(A) Meanwhile, environmental influences seem to shape a person's synesthesia.</span></label>
+    <label><input type="radio" name="q32" value="B"><span>(B) Some studies even show that people may all be synesthetic to some degree.</span></label>
+    <label><input type="radio" name="q32" value="C"><span>(C) This consistency serves as a proof that synesthesia is real.</span></label>
+    <label><input type="radio" name="q32" value="D"><span>(D) People with synesthesia used to be accused of making their experiences up.</span></label>
+  </div>
+</div>
+
+<!-- Para 4 -->
+<div class="passage autowrap">
+<p>Is synesthesia genetically inherited or acquired after birth? Scientists agree that synesthesia has a genetic basis, because it frequently runs in families. But an actual synesthesia gene (or genes) has not been identified yet. <span class="blank">[33]</span> For example, the flavors people with taste-word synesthesia experience are usually childhood flavors, such as chocolate or strawberries. Also, people with color-music synesthesia more often than not have had early musical training.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">33.</span>
+  <div class="options options-ps" data-qid="33">
+    <label><input type="radio" name="q33" value="A"><span>(A) Meanwhile, environmental influences seem to shape a person's synesthesia.</span></label>
+    <label><input type="radio" name="q33" value="B"><span>(B) Some studies even show that people may all be synesthetic to some degree.</span></label>
+    <label><input type="radio" name="q33" value="C"><span>(C) This consistency serves as a proof that synesthesia is real.</span></label>
+    <label><input type="radio" name="q33" value="D"><span>(D) People with synesthesia used to be accused of making their experiences up.</span></label>
+  </div>
+</div>
+
+<!-- Para 5 -->
+<div class="passage autowrap">
+<p>Once thought to be extremely rare, synesthesia is now found to affect about one to four percent of the population. <span class="blank">[34]</span> As is often observed, most of us tend to associate lower notes with darker colors and higher notes with brighter colors. Researchers further point out that in most people synesthesia is active only during the first months of their infancy, while this ability remains forever in certain individuals.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">34.</span>
+  <div class="options options-ps" data-qid="34">
+    <label><input type="radio" name="q34" value="A"><span>(A) Meanwhile, environmental influences seem to shape a person's synesthesia.</span></label>
+    <label><input type="radio" name="q34" value="B"><span>(B) Some studies even show that people may all be synesthetic to some degree.</span></label>
+    <label><input type="radio" name="q34" value="C"><span>(C) This consistency serves as a proof that synesthesia is real.</span></label>
+    <label><input type="radio" name="q34" value="D"><span>(D) People with synesthesia used to be accused of making their experiences up.</span></label>
+  </div>
+</div>
+
+<div class="vocab-sentences autowrap">
+  <div class="sent-line">Meanwhile, environmental influences seem to shape a person's synesthesia.</div>
+  <div class="sent-line">Some studies even show that people may all be synesthetic to some degree.</div>
+  <div class="sent-line">This consistency serves as a proof that synesthesia is real.</div>
+  <div class="sent-line">People with synesthesia used to be accused of making their experiences up.</div>
+</div>
+
+<!-- ============ 五、閱讀測驗 (35-46) — 已位置變換 ============ -->
+<div class="section-title">五、閱讀測驗（第 35-46 題，每題 2 分）⚙ 已位置變換</div>
+
+<div class="group-label">【第 35-38 題為題組】Hula Hoop</div>
+
+<div class="passage autowrap">
+<p>When did people first experience the joy of the hula hoop? Although the term did not emerge until the 18th century, toy hoops twirled around the waist, limbs, or neck can be traced back to ancient times. As early as 1000 BC, Egyptian children played with hoop toys of dried grapevine. They threw, jumped, and slung them around their bodies as we do today. They also struck them with sticks to roll them down the road. Hoop rolling was also popular in ancient Greece. Their hoops, often made of metal, were not merely toys for Greek children but served as exercise devices as well.</p>
+<p>In the 14th century, hoops were popular as a form of recreation in Great Britain. The craze for hoops even resulted in dislocated backs and heart attacks, according to medical records. The term "hula," however, did not enter the English language until the 1700s, when British sailors first witnessed hula dancing in the Hawaiian Islands. Though no hoops were used, the movements of the ritual dances looked very similar to those in hooping. Thus "hula" and "hoop" came together, resulting in the term "hula hooping."</p>
+<p>Hoops spun their way through the cultures of pre-colonial America as well. Often considered as representing the circle of life, hoops featured prominently in the ritual dances of Native Americans. Dancers used small reed hoops as symbolic representations of animals such as eagles or snakes. With very rapid movements, they used the hoops to construct the symbolic forms around their bodies.</p>
+<p>The hula hoop gained international popularity in the late 1950s, when a plastic version was successfully marketed by California's Wham-O toy company. Twenty-five million plastic hoops were sold in less than four months. The hula hoop "fad" is still going strong today.</p>
+</div>
+
+<div class="question" data-q="35">
+  <div class="q-text autowrap"><span class="q-num">35</span>What question does the passage answer?</div>
+  <div class="options options-rd" data-qid="35">
+    <label><input type="radio" name="q35" value="A"><span>(A) Where did Hawaiian hula dancing come from?</span></label>
+    <label><input type="radio" name="q35" value="B"><span>(B) How was the word "hula-hooping" derived?</span></label>
+    <label><input type="radio" name="q35" value="C"><span>(C) What was the favorite toy of ancient Egyptian kids?</span></label>
+    <label><input type="radio" name="q35" value="D"><span>(D) Why did Wham-O start making hula hoops?</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">derived</span><span class="word">Hawaiian</span></div>
+
+<div class="question" data-q="36">
+  <div class="q-text autowrap"><span class="q-num">36</span>Which of the following statements is true about use of the hoop in history?</div>
+  <div class="options options-rd" data-qid="36">
+    <label><input type="radio" name="q36" value="A"><span>(A) The British used it for medical purposes.</span></label>
+    <label><input type="radio" name="q36" value="B"><span>(B) Ancient Greeks used it as a tool for workout.</span></label>
+    <label><input type="radio" name="q36" value="C"><span>(C) Native Americans used it to train animals.</span></label>
+    <label><input type="radio" name="q36" value="D"><span>(D) Hawaiian dancers used it to represent the circle of life.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">workout</span><span class="word">ritual</span></div>
+
+<div class="question" data-q="37">
+  <div class="q-text autowrap"><span class="q-num">37</span>Which of the following is NOT mentioned as a way of enjoying hula hoop fun?</div>
+  <div class="options options-rd" data-qid="37">
+    <label><input type="radio" name="q37" value="A"><span>(A) Kicking.</span></label>
+    <label><input type="radio" name="q37" value="B"><span>(B) Striking.</span></label>
+    <label><input type="radio" name="q37" value="C"><span>(C) Twirling.</span></label>
+    <label><input type="radio" name="q37" value="D"><span>(D) Spinning.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">Kicking</span><span class="word">Striking</span><span class="word">Twirling</span><span class="word">Spinning</span></div>
+
+<div class="question" data-q="38">
+  <div class="q-text autowrap"><span class="q-num">38</span>According to the passage, what materials have been used for making hoops?</div>
+  <div class="options options-rd" data-qid="38">
+    <label><input type="radio" name="q38" value="A"><span>(A) reed, grapevine, bamboo, plastic</span></label>
+    <label><input type="radio" name="q38" value="B"><span>(B) reed, bamboo, plastic, animal skin</span></label>
+    <label><input type="radio" name="q38" value="C"><span>(C) reed, grapevine, plastic, metal</span></label>
+    <label><input type="radio" name="q38" value="D"><span>(D) grapevine, plastic, metal, animal skin</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">reed</span><span class="word">grapevine</span><span class="word">bamboo</span></div>
+
+<div class="group-label">【第 39-42 題為題組】Asian Elephants &amp; Tea Gardens</div>
+
+<div class="passage autowrap">
+<p>When you enjoy your morning cup of tea, you are probably not aware that those tea leaves can mean injury, or even death, for Asian elephants roaming Indian tea gardens.</p>
+<p>In the Indian state of Assam, growing numbers of tea farms are destroying the Asian elephant's habitats and endangering their population. Much of the forest land where tea is grown in Assam is flat and thus farmers must dig drainage trenches to prevent water from accumulating and hurting the shrubs. The trenches, however, can be death traps for the elephants. Since the elephants need to use tea plantations as landmarks when navigating forests, they almost inevitably have to move through the farms. Moreover, because there are fewer humans around, pregnant females often use tea-growing areas as safe shelters to give birth. But baby elephants, not used to negotiating rough ground, may easily fall into the trenches and get hurt; and once injured, they might not be able to climb out. When mothers try to dig their babies out, both may be trapped and smothered by thick mud. Furthermore, elephants are known to resist leaving their sick or dying behind, and a herd may linger at a trench with a trapped baby for hours, reluctant to move on until all hope is lost.</p>
+<p>Is it possible for elephants to coexist with the prosperous tea business? Elephant Friendly Tea is an organization that takes the initiative to make "<u>it</u>" possible. The organization encourages consumers to choose brands that take precautions to protect elephants and has set up a certification program to reward tea growers who are doing it right. Until now, only smaller tea brands have been certified, but awareness is growing. The organization believes that people may be motivated to buy elephant-friendly brands when they know more about the risk tea can pose to these endangered animals.</p>
+</div>
+
+<div class="question" data-q="39">
+  <div class="q-text autowrap"><span class="q-num">39</span>Why do farmers in Assam dig trenches in tea gardens?</div>
+  <div class="options options-rd" data-qid="39">
+    <label><input type="radio" name="q39" value="A"><span>(A) To trap elephants.</span></label>
+    <label><input type="radio" name="q39" value="B"><span>(B) To protect tea trees.</span></label>
+    <label><input type="radio" name="q39" value="C"><span>(C) To mark boundaries of tea gardens.</span></label>
+    <label><input type="radio" name="q39" value="D"><span>(D) To expand tea farms.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">trenches</span><span class="word">boundaries</span></div>
+
+<div class="question" data-q="40">
+  <div class="q-text autowrap"><span class="q-num">40</span>Why are baby elephants easily injured in the Assam tea gardens according to the passage?</div>
+  <div class="options options-rd" data-qid="40">
+    <label><input type="radio" name="q40" value="A"><span>(A) They have difficulties moving around the uneven fields.</span></label>
+    <label><input type="radio" name="q40" value="B"><span>(B) They cannot find a safe shelter when climbing out of the trenches.</span></label>
+    <label><input type="radio" name="q40" value="C"><span>(C) They cannot locate the landmarks while trying to navigate forests.</span></label>
+    <label><input type="radio" name="q40" value="D"><span>(D) They are trapped by the sharp branches of the tea trees.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">uneven</span><span class="word">shelter</span><span class="word">navigate</span></div>
+
+<div class="question" data-q="41">
+  <div class="q-text autowrap"><span class="q-num">41</span>Which of the following statements about elephants and the tea gardens is true according to the passage?</div>
+  <div class="options options-rd" data-qid="41">
+    <label><input type="radio" name="q41" value="A"><span>(A) The fast growth of the tea gardens destroys the elephants' food source.</span></label>
+    <label><input type="radio" name="q41" value="B"><span>(B) Elephants are unwilling to leave their injured members behind in the tea gardens.</span></label>
+    <label><input type="radio" name="q41" value="C"><span>(C) The elephants use the trenches to roam around the tea gardens.</span></label>
+    <label><input type="radio" name="q41" value="D"><span>(D) Pregnant elephants avoid delivering babies in the tea gardens for fear of being disturbed.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">unwilling</span><span class="word">delivering</span><span class="word">disturbed</span></div>
+
+<div class="question" data-q="42">
+  <div class="q-text autowrap"><span class="q-num">42</span>What does "it" in the last paragraph refer to?</div>
+  <div class="options options-rd" data-qid="42">
+    <label><input type="radio" name="q42" value="A"><span>(A) To reward tea growers for protecting the environment.</span></label>
+    <label><input type="radio" name="q42" value="B"><span>(B) To certify elephant-friendly trenches and organizations.</span></label>
+    <label><input type="radio" name="q42" value="C"><span>(C) To create a win-win situation for elephants and tea farms.</span></label>
+    <label><input type="radio" name="q42" value="D"><span>(D) To encourage consumers to choose high-quality brands.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">certify</span><span class="word">win-win</span><span class="word">consumers</span></div>
+
+<div class="group-label">【第 43-46 題為題組】Zanzibar</div>
+
+<div class="passage autowrap">
+<p>Situated off the coast of Tanzania and washed by the warm, clean waters of the Indian Ocean, Zanzibar is a tropical archipelago comprised of several scattered islands. This popular beach destination is now famous for its white sand beaches, slender palms, and turquoise seas. But few people know that in the past, control of Zanzibar meant access to unimaginable wealth.</p>
+<p>From ancient times, Zanzibar has been a trading hotspot, thanks to its location on the trade route between Arabia and Africa. Traders from Asia had already visited the islands 900 years before the arrival of its first permanent settlers from the African mainland (around 1000 AD). In the 8th century, Persian merchants built settlements here, which grew over the next four centuries into their trading posts. Between the 12th and 15th centuries, trade increased between Arabia, Persia, and Zanzibar, bringing the archipelago both wealth and power.</p>
+<p>During the Age of Exploration, commerce in Zanzibar quickly boomed, largely due to the rise of the spice trade. At the close of the 15th century, Europeans' craze for spices gave rise to the Spice Route, a network of sea lanes joining Europe with the Far East, where most spices came from. In 1498, Portuguese explorer Vasco da Gama made the first sea voyage to India, via the southernmost tip of Africa. In 1499, he arrived at Zanzibar, an archipelago sitting at the crossroads of the Spice Route. The islands soon attracted traders from different lands. Hundreds of ships sailing the Spice Route docked here, bringing spices and goods for transaction, and Zanzibar became one of the biggest trading centers in the world.</p>
+<p>Since the 16th century, Zanzibar has come under the rule of the Portuguese, the Arabians, and then the British, each leaving a mark on the place. The paths of various religions also crossed here: Muslims have lived peacefully with Christians and Buddhists on the islands for centuries. The unique cultural intersections, scented with the aroma of cloves, vanilla, and cinnamon floating in the air, give these jewels on the Indian Ocean an amazing charm that goes far beyond tropical beach fun.</p>
+</div>
+
+<div class="question" data-q="43">
+  <div class="q-text autowrap"><span class="q-num">43</span>Which of the following is true about the earliest traders in Zanzibar?</div>
+  <div class="options options-rd" data-qid="43">
+    <label><input type="radio" name="q43" value="A"><span>(A) Asian merchants arrived centuries before the African settlers.</span></label>
+    <label><input type="radio" name="q43" value="B"><span>(B) The earliest traders arrived around 900 AD.</span></label>
+    <label><input type="radio" name="q43" value="C"><span>(C) Traders from Persia settled down permanently around 1000 AD.</span></label>
+    <label><input type="radio" name="q43" value="D"><span>(D) Most of the earliest merchants came from Africa.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">merchants</span><span class="word">settlers</span><span class="word">permanently</span></div>
+
+<!-- Q44 地圖題 -->
+<div class="question" data-q="44">
+  <div class="q-text autowrap"><span class="q-num">44</span>According to the passage, where is Zanzibar most likely located on the following map?</div>
+  <div class="map-pic-wrap">
+    <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- Ocean background -->
+      <rect width="560" height="320" fill="#e3f2fc"/>
+      <!-- Continents (simplified outlines) -->
+      <!-- North America -->
+      <path d="M40 60 Q60 40 110 50 L150 70 L160 110 L130 150 L90 145 L60 120 Z" fill="#fff" stroke="#666" stroke-width="1.2"/>
+      <text x="70" y="100" font-size="11" fill="#444" font-weight="600">North America</text>
+      <!-- South America -->
+      <path d="M130 180 L160 175 L180 215 L165 270 L140 285 L120 260 Z" fill="#fff" stroke="#666" stroke-width="1.2"/>
+      <text x="125" y="240" font-size="10" fill="#444" font-weight="600">South America</text>
+      <!-- Europe -->
+      <path d="M260 70 L290 55 L320 70 L310 100 L275 105 L260 90 Z" fill="#fff" stroke="#666" stroke-width="1.2"/>
+      <text x="270" y="80" font-size="10" fill="#444" font-weight="600">Europe</text>
+      <!-- Africa -->
+      <path d="M260 120 L310 110 L325 145 L320 200 L295 250 L270 240 L260 200 L250 165 Z" fill="#fff" stroke="#666" stroke-width="1.2"/>
+      <text x="270" y="170" font-size="10" fill="#444" font-weight="600">Africa</text>
+      <!-- Asia -->
+      <path d="M330 60 L470 55 L500 90 L480 130 L420 145 L370 130 L335 100 Z" fill="#fff" stroke="#666" stroke-width="1.2"/>
+      <text x="395" y="95" font-size="11" fill="#444" font-weight="600">Asia</text>
+      <!-- India peninsula -->
+      <path d="M395 130 L420 130 L425 165 L405 175 L395 150 Z" fill="#fff" stroke="#666" stroke-width="1.2"/>
+      <!-- SE Asia / Australia hint -->
+      <path d="M460 175 L500 180 L495 215 L470 220 L460 195 Z" fill="#fff" stroke="#666" stroke-width="1.2"/>
+
+      <!-- Ocean labels -->
+      <text x="195" y="125" font-size="10" fill="#1f618d" font-weight="600">Atlantic Ocean</text>
+      <text x="55" y="200" font-size="10" fill="#1f618d" font-weight="600">Pacific Ocean</text>
+      <text x="345" y="195" font-size="10" fill="#1f618d" font-weight="600">Indian Ocean</text>
+      <text x="490" y="160" font-size="10" fill="#1f618d" font-weight="600">Pacific Ocean</text>
+
+      <!-- Position markers (after shuffle) -->
+      <!-- New A = original B (East Africa coast / Zanzibar - CORRECT) -->
+      <circle cx="335" cy="200" r="11" fill="#fff" stroke="#c0392b" stroke-width="2.5"/>
+      <text x="332" y="204" font-size="12" fill="#c0392b" font-weight="700">A</text>
+      <!-- New B = original A (Mediterranean) -->
+      <circle cx="265" cy="100" r="11" fill="#fff" stroke="#c0392b" stroke-width="2.5"/>
+      <text x="262" y="104" font-size="12" fill="#c0392b" font-weight="700">B</text>
+      <!-- New C = original D (south of Africa) -->
+      <circle cx="320" cy="245" r="11" fill="#fff" stroke="#c0392b" stroke-width="2.5"/>
+      <text x="317" y="249" font-size="12" fill="#c0392b" font-weight="700">C</text>
+      <!-- New D = original C (Bay of Bengal / South Asia) -->
+      <circle cx="445" cy="160" r="11" fill="#fff" stroke="#c0392b" stroke-width="2.5"/>
+      <text x="442" y="164" font-size="12" fill="#c0392b" font-weight="700">D</text>
+    </svg>
+  </div>
+  <div class="options" data-qid="44">
+    <label><input type="radio" name="q44" value="A"><span>(A) A</span></label>
+    <label><input type="radio" name="q44" value="B"><span>(B) B</span></label>
+    <label><input type="radio" name="q44" value="C"><span>(C) C</span></label>
+    <label><input type="radio" name="q44" value="D"><span>(D) D</span></label>
+  </div>
+</div>
+
+<div class="question" data-q="45">
+  <div class="q-text autowrap"><span class="q-num">45</span>Which of the following can be inferred from the passage about Zanzibar?</div>
+  <div class="options options-rd" data-qid="45">
+    <label><input type="radio" name="q45" value="A"><span>(A) For centuries, Zanzibar has been a heaven for beach lovers.</span></label>
+    <label><input type="radio" name="q45" value="B"><span>(B) Besides spices, Zanzibar is well known for a great variety of jewelry.</span></label>
+    <label><input type="radio" name="q45" value="C"><span>(C) Cloves, vanilla, and cinnamon are common spices in Zanzibar.</span></label>
+    <label><input type="radio" name="q45" value="D"><span>(D) Vasco da Gama was Zanzibar's first foreign ruler during the Age of Exploration.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">cloves</span><span class="word">vanilla</span><span class="word">cinnamon</span><span class="word">jewelry</span></div>
+
+<div class="question" data-q="46">
+  <div class="q-text autowrap"><span class="q-num">46</span>Which set of words is used in the passage to refer to Zanzibar?</div>
+  <div class="options options-rd" data-qid="46">
+    <label><input type="radio" name="q46" value="A"><span>(A) islands, settlements, posts, crossroads</span></label>
+    <label><input type="radio" name="q46" value="B"><span>(B) islands, posts, jewels, destination</span></label>
+    <label><input type="radio" name="q46" value="C"><span>(C) archipelago, settlements, paths, islands</span></label>
+    <label><input type="radio" name="q46" value="D"><span>(D) archipelago, islands, jewels, destination</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">archipelago</span><span class="word">jewels</span><span class="word">destination</span><span class="word">crossroads</span></div>
+
+<!-- ============ 第貳部分 混合題 (47-50) ============ -->
+<div class="section-title">第 貳 部 分 ‧ 混 合 題（第 47-50 題，占 10 分）</div>
+<div class="group-label">【第 47-50 題為題組】GreenBurger Chatroom Discussion</div>
+
+<div class="passage autowrap">
+<p>Even if you're not a vegetarian, there's a good chance you've heard of plant-based meat. These meat substitutes are often advertised as beneficial for the environment. But do the customers really like them? Read the following chatroom discussions about GreenBurger, a product using alternative-meat patties.</p>
+
+<p><strong>(A) Olivia</strong><br>That's a firm NO! I tried one when I was a prep cook for Next Level Burgers…tasted awful, just like mashed peas gone to rot.</p>
+<p><strong>(B) Smith</strong><br>I haven't tried them. I just don't see the point. They are heavily processed with more calories and sodium than meat and are more expensive too! Unless you are a strict vegetarian and eschew meat for ethical reasons, meat is surely a better deal.</p>
+<p><strong>(C) Mika</strong><br>Not really. It tastes too much like actual meat. If I wanted to eat a dead cow, I would go for real burgers. Being vegan means I try to stick to plant food. But this is just not something that will ever interest me.</p>
+<p><strong>(D) Thomas</strong><br>GreenBurger just tastes "beany" to me, so I think that whatever form it comes in, it works better in recipes that would usually contain beans, such as in a rice bowl (as ground meat substitute). That being said, I'm definitely a carnivore and prefer meat, but I don't see anything wrong with choosing one of the fakey-fakey meaty things once in a while—just for a change.</p>
+<p><strong>(E) Rico</strong><br>I finally tried one last week. It didn't taste that bad, but I was surprised to find it had 40 more calories than the meat version! Isn't it supposed to be a healthy choice?</p>
+<p><strong>(F) Linda</strong><br>I liked it fine. I did NOT like the price, though. Hopefully that will come down. I'm trying to eat less beef.</p>
+<p><strong>(G) Ablo</strong><br>Yes! My whole family does. We've been mostly vegan 90% of the time for the last 6 years and we cannot thank GreenBurger enough! Especially when a burger craving hits…a GreenBurger does the trick. I've tried all kinds of vegan "burgers," and GreenBurgers are closer to what I'm looking for. In fact, I can have them every day—vegan or not!</p>
+<p><strong>(H) Alexander</strong><br>Well, they taste good if you add plenty of spices and sauces. Good for you? No, not at all. They're highly processed and contain no vegetables. They also contain a very large amount of processed coconut oil, which is even worse than lard. It's a killer for sure if eaten regularly. So why risk your life?</p>
+</div>
+
+<div class="question" data-q="47">
+  <div class="q-text autowrap"><span class="q-num">47-48</span>請從文章中找出最適當的單詞（word）填入下列句子空格中，並視語法需要做適當的字形變化。每格限填一個單詞（word）（每格 2 分，共 4 分）。</div>
+  <div class="autowrap" style="background:#f8fbfd;padding:10px;border-radius:6px;margin-top:6px;line-height:2;">
+    On the whole, the chatroom discussions about GreenBurger mainly focus on the issues of
+    <input type="text" class="fill-blank" id="q47" placeholder="Q47">,
+    price, and
+    <input type="text" class="fill-blank" id="q48" placeholder="Q48">
+    concerns.
+  </div>
+</div>
+<div class="vocab-row"><span class="word">taste</span><span class="word">tasted</span><span class="word">price</span><span class="word">health</span><span class="word">healthy</span><span class="word">concerns</span></div>
+
+<div class="question" data-q="49">
+  <div class="q-text autowrap"><span class="q-num">49</span>From (A) to (H) in the above chatroom discussions, which ones show that GreenBurger can be a choice for the chatroom participants themselves only under certain circumstances?<strong>（多選題，4 分；請選出所有「有條件接受」的人）</strong></div>
+  <div class="options options-multi" data-qid="49">
+    <label><input type="checkbox" name="q49" value="A"><span>A. Olivia</span></label>
+    <label><input type="checkbox" name="q49" value="B"><span>B. Smith</span></label>
+    <label><input type="checkbox" name="q49" value="C"><span>C. Mika</span></label>
+    <label><input type="checkbox" name="q49" value="D"><span>D. Thomas</span></label>
+    <label><input type="checkbox" name="q49" value="E"><span>E. Rico</span></label>
+    <label><input type="checkbox" name="q49" value="F"><span>F. Linda</span></label>
+    <label><input type="checkbox" name="q49" value="G"><span>G. Ablo</span></label>
+    <label><input type="checkbox" name="q49" value="H"><span>H. Alexander</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">circumstances</span><span class="word">participants</span></div>
+
+<div class="question" data-q="50">
+  <div class="q-text autowrap"><span class="q-num">50</span>Which phrase in the chatroom discussions means "serves the purpose" or "works well"?<strong>（簡答題 2 分，請以英文一個片語回答）</strong></div>
+  <input type="text" class="fill-blank" id="q50" placeholder="請輸入答案" style="width:100%; min-width:0; margin-top:8px;">
+</div>
+<div class="vocab-row"><span class="word">serves</span><span class="word">purpose</span></div>
+
+<!-- ============ 第 參 部 分 、 非選擇題 ============ -->
+<div class="section-title">第 參 部 分 ‧ 非選擇題（占 28 分）</div>
+
+<div class="group-label">一、中譯英（占 8 分，每題 4 分）</div>
+<div class="instruction" style="margin-bottom:10px;">
+  <strong>說明：</strong>依題號將以下中文句子譯成正確、通順、達意的英文。
+</div>
+
+<div class="trans-item">
+  <div class="ch-line">1. 歷史一再證明，戰爭會造成極為可怕的災難。</div>
+  <textarea id="trans1" class="short-ans" placeholder="請寫下你的英文翻譯..."></textarea>
+</div>
+
+<div class="trans-item">
+  <div class="ch-line">2. 避免衝突、確保世界和平應該是所有人類追求的目標。</div>
+  <textarea id="trans2" class="short-ans" placeholder="請寫下你的英文翻譯..."></textarea>
+</div>
+
+<div class="group-label">二、英文作文（占 20 分）</div>
+<div class="instruction autowrap" style="margin-bottom:10px;">
+  <strong>提示：</strong>隨著社群媒體的普及，表情符號（emoji）的使用也極為普遍。請參考下列表情符號，寫一篇英文作文（至少 120 個 words），文分兩段：第一段說明人們何以喜歡使用表情符號，並從下列的表情符號中舉一至二例，說明表情符號在溝通上有何功能；第二段則以個人或親友的經驗為例，討論表情符號在訊息表達或解讀上可能造成的誤會或困擾，並提出可以化解的方法。
+</div>
+
+<!-- 表情符號示意圖 -->
+<div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:14px 0;background:#f8fbfd;padding:14px;border-radius:8px;">
+  <div style="text-align:center;">
+    <div style="font-size:2.4em;line-height:1;">😀</div>
+    <div style="font-size:0.78em;color:#666;">smile</div>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-size:2.4em;line-height:1;">😢</div>
+    <div style="font-size:0.78em;color:#666;">sad</div>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-size:2.4em;line-height:1;">❤️</div>
+    <div style="font-size:0.78em;color:#666;">love</div>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-size:2.4em;line-height:1;">🤔</div>
+    <div style="font-size:0.78em;color:#666;">thinking</div>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-size:2.4em;line-height:1;">👍</div>
+    <div style="font-size:0.78em;color:#666;">thumbs up</div>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-size:2.4em;line-height:1;">😂</div>
+    <div style="font-size:0.78em;color:#666;">laugh</div>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-size:2.4em;line-height:1;">😡</div>
+    <div style="font-size:0.78em;color:#666;">angry</div>
+  </div>
+  <div style="text-align:center;">
+    <div style="font-size:2.4em;line-height:1;">😴</div>
+    <div style="font-size:0.78em;color:#666;">sleepy</div>
+  </div>
+</div>
+
+<div class="trans-item">
+  <div class="ch-line"><strong>請寫下你的英文作文（至少 120 字）：</strong></div>
+  <textarea id="essay" class="short-ans" placeholder="第一段：說明人們為何喜歡使用表情符號，舉一至二例說明其功能...&#10;&#10;第二段：以個人或親友經驗，討論表情符號可能造成的誤會與化解方法..." style="min-height:220px;"></textarea>
+  <div style="text-align:right;font-size:0.85em;color:#7f8c8d;margin-top:4px;">字數：<span id="essayWordCount">0</span> words</div>
+</div>
+
+<div class="button-row">
+  <button type="button" class="submit-btn" onclick="submitQuiz()">送出作答</button>
+</div>
+
+</form>
+
+<div id="results">
+
+  <div class="result-card score">
+    <h3>📊 你的成績</h3>
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-detail" id="scoreDetail"></div>
+  </div>
+
+  <div class="result-card teacher">
+    <h3>📋 結果 1：選項結果 + 不熟悉單字 + 中譯英 + 作文（複製貼到 LINE 群給老師）</h3>
+    <div class="copyable" id="teacherReport"></div>
+    <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
+  </div>
+
+  <div class="result-card feedback">
+    <h3>💡 結果 2：錯題詳解（自己看，檢討訂正；可選擇複製給自己留存）</h3>
+    <div id="feedbackReport"></div>
+    <div class="copyable" id="feedbackTextArea" style="margin-top:14px;"></div>
+    <button class="copy-btn" onclick="copyText('feedbackTextArea', this)">📋 複製結果 2</button>
+  </div>
+
+</div>
+
+</div>
+
+<div class="unknown-counter" id="unknownCounter">🔖 已標記 <span id="unknownCount">0</span> 個</div>
+
+<script>
+  // ===== 正確答案（已套用 Q11-46 位置變換） =====
+  const ANSWERS = {
+    1:'A', 2:'C', 3:'C', 4:'B', 5:'D', 6:'D', 7:'B', 8:'A', 9:'A', 10:'D',
+    11:'B', 12:'A', 13:'C', 14:'A', 15:'B',
+    16:'C', 17:'B', 18:'B', 19:'B', 20:'A',
+    21:'B', 22:'C', 23:'I', 24:'E', 25:'D', 26:'G', 27:'A', 28:'H', 29:'J', 30:'F',
+    31:'D', 32:'C', 33:'A', 34:'B',
+    35:'B', 36:'B', 37:'A', 38:'C',
+    39:'B', 40:'A', 41:'B', 42:'C',
+    43:'A', 44:'A', 45:'C', 46:'D'
+  };
+  const FILL_ANSWERS = {
+    47: { keys: ['taste','tasted','tastes'], display: 'taste' },
+    48: { keys: ['health','healthy'], display: 'health' }
+  };
+  const MULTI_ANSWERS = { 49: ['D','F'] };
+  const SHORT_ANSWERS = {
+    50: { keys: [['does the trick'], ['does','trick']], display: 'does the trick' }
+  };
+
+  // ===== 錯題詳解 =====
+  const EXPLANATIONS = {
+    1: { ans:'(A) sticky 黏的', detail:'口香糖「黏黏的」很難清除。其餘 greasy 油膩、clumsy 笨拙、mighty 強大皆不合。' },
+    2: { ans:'(C) pose 姿勢', detail:'模特兒輕鬆擺出「優雅姿勢」拍照。其餘為 clap 拍手、toss 拋擲、snap 啪一聲。' },
+    3: { ans:'(C) ancestors 祖先', detail:'畫家族樹要追溯「祖先」抵達北美。其餘 siblings 兄姐、commuters 通勤者、instructors 講師。' },
+    4: { ans:'(B) bare 空的', detail:'颱風前架上「空空如也」，stock 也快沒了。bare = 空的（特指看得見裸露表面）。其餘 blank 空白頁、hollow 中空、queer 古怪。' },
+    5: { ans:'(D) sincerity 誠意', detail:'雖說了 "Sorry!" 但感覺不到「誠意」。其餘 liability 責任、generosity 慷慨、integrity 正直。' },
+    6: { ans:'(D) recall 回憶力', detail:'powers of recall = 驚人的「回憶」能力。其餘 resolve 決心、fraction 部分、privilege 特權皆不合。' },
+    7: { ans:'(B) counter 反駁', detail:'證據「反駁」藥廠「神奇藥丸」的說法。其餘 provoke 激怒、expose 揭露、convert 轉換語意較遠。' },
+    8: { ans:'(A) crippled 重創', detail:'貪官污吏與失策「重創」國家經濟。crippled 比 ventured/rendered/accelerated 更符合「使衰殘」之意。' },
+    9: { ans:'(A) choked 阻塞', detail:'高速公路被車流「塞爆」。choked with traffic = 交通堵塞固定搭配。' },
+    10:{ ans:'(D) supposedly 號稱地', detail:'「號稱」中立的媒體實則受政治意識形態影響。supposedly = 被認為（含懷疑語氣）。' },
+    11:{ ans:'(B) but not quite (原 C)', detail:'almost, but not quite, touches = 幾乎觸碰，但又不完全碰到。其餘語意不合。' },
+    12:{ ans:'(A) multiple (原 D)', detail:'科學家「提出多種解釋」（multiple explanations）。productive 多產、universal 普遍、conventional 傳統，皆不合。' },
+    13:{ ans:'(C) compete for (原 B)', detail:'植物與動物一樣會「競爭資源」（compete for resources）。get over 克服、give way to 讓步、make up for 補償，皆不合。' },
+    14:{ ans:'(A) exposure to (原 B)', detail:'increase exposure to light = 增加光照量。reflection on 反思、reliance on 依賴、sensitivity to 敏感度，皆不合。' },
+    15:{ ans:'(B) Despite (原 C)', detail:'Despite decades of investigation = 儘管研究數十年，仍無共識。其餘無法表達讓步語氣。' },
+    16:{ ans:'(C) free of (原 B)', detail:'shoot free of Earth\'s pull = 擺脫地球引力射向太空。其餘 back to/long before/straight on 不合。' },
+    17:{ ans:'(B) physical (原 A)', detail:'重力影響太空人「身體」狀況。文章後續討論臉腫、體液移轉、頭痛皆是身體反應。' },
+    18:{ ans:'(B) redistribute (原 A)', detail:'句中已有 shifting 分詞，本動詞需作主動詞，現在式 redistribute（一般通則）。' },
+    19:{ ans:'(B) severe (原 C)', detail:'three years 比月球任務長很多，效應會更「嚴重」。其餘 contagious 傳染、unusual 不尋常、aggressive 侵略，皆不合。' },
+    20:{ ans:'(A) accompanied by (原 D)', detail:'be accompanied by = 伴隨…一起出現（暈動症、頭痛、噁心）。其餘搭配不合。' },
+    21:{ ans:'(B) reach for (原 J)', detail:'reach for = 伸手拿取。「我們可以伸手拿取最健康的飲料嗎？」' },
+    22:{ ans:'(C) active (原 B)', detail:'physically active = 身體活動量大的，需要喝更多水。' },
+    23:{ ans:'(I) even (原 G)', detail:'even things out = 使事情平衡。為了平衡水鹽比例，身體會排尿。' },
+    24:{ ans:'(E) effective (原 F)', detail:'milk can actually be more effective than water = 牛奶其實比水「更有效」。' },
+    25:{ ans:'(D) absorption (原 A)', detail:'help stimulate water absorption = 刺激水分吸收。乳糖幫助身體吸收水分。' },
+    26:{ ans:'(G) status (原 H)', detail:'fluid status = 體液狀態。椰子水有助於恢復正常體液狀態。' },
+    27:{ ans:'(A) option (原 E)', detail:'a very good option for keeping hydrated = 保持水分的好「選擇」。' },
+    28:{ ans:'(H) alert (原 C)', detail:'eventually alert your consciousness = 最終「警示」你的意識。等到口渴才喝為時已晚。' },
+    29:{ ans:'(J) pass through (原 I)', detail:'pass through the body = 通過/穿越身體。一次喝太多會直接通過身體變成尿液。' },
+    30:{ ans:'(F) combat (原 D)', detail:'To combat this = 為了「對抗」這個情況，需要全天分散補水。' },
+    31:{ ans:'(D) People with synesthesia used to be accused of making their experiences up. (原 C)', detail:'前段定義 synesthesia，本句談「過去人們以為他們是在編造」，下句 In the early 1990s, however, scientists noticed... 反駁此說法。' },
+    32:{ ans:'(C) This consistency serves as a proof that synesthesia is real. (原 A)', detail:'前句說同一字母會持續喚起同一顏色（即使隔月年），本句以 This consistency 承接：此一致性證明聯覺確實存在。' },
+    33:{ ans:'(A) Meanwhile, environmental influences seem to shape a person\'s synesthesia. (原 B)', detail:'前文說有遺傳基礎但基因尚未確定，本句 Meanwhile 引出環境影響，後文舉童年食物、早期音樂訓練為例支撐。' },
+    34:{ ans:'(B) Some studies even show that people may all be synesthetic to some degree. (原 D)', detail:'前句說 1-4% 人口受影響，本句 even 推進：研究顯示我們所有人或多或少都有；後文舉低音聯想暗色等普遍經驗呼應。' },
+    35:{ ans:'(B) How was the word "hula-hooping" derived? (原 A)', detail:'第二段明確說明 hula 來自夏威夷舞蹈，與 hoop 結合形成「hula hooping」一詞，故 (B) 為文章可回答之問題。' },
+    36:{ ans:'(B) Ancient Greeks used it as a tool for workout. (原 C)', detail:'第一段：希臘人的圈圈「serve as exercise devices」（運動器材），故 (B) 為真。' },
+    37:{ ans:'(A) Kicking 踢 (原 D)', detail:'文中提到 threw, jumped, slung, struck, twirled, spun 等動作，「踢」（kicking）未提及。' },
+    38:{ ans:'(C) reed, grapevine, plastic, metal (原 B)', detail:'文中提及：grapevine（葡萄藤）、metal（金屬）、reed（蘆葦）、plastic（塑膠）；未提及 bamboo（竹）或 animal skin（獸皮）。' },
+    39:{ ans:'(B) To protect tea trees. (原 A)', detail:'文中說：「farmers must dig drainage trenches to prevent water from accumulating and hurting the shrubs」即為保護茶樹不被積水傷害。' },
+    40:{ ans:'(A) They have difficulties moving around the uneven fields. (原 D)', detail:'baby elephants「not used to negotiating rough ground, may easily fall into the trenches」→ 不習慣崎嶇地形，容易掉進溝裡。' },
+    41:{ ans:'(B) Elephants are unwilling to leave their injured members behind in the tea gardens. (原 C)', detail:'文中：「elephants are known to resist leaving their sick or dying behind, and a herd may linger…」→ 不願拋下受傷同伴。' },
+    42:{ ans:'(C) To create a win-win situation for elephants and tea farms. (原 D)', detail:'前句問「Is it possible for elephants to coexist with the prosperous tea business?」(it = 大象與茶園共存)，故 it 指創造雙贏。' },
+    43:{ ans:'(A) Asian merchants arrived centuries before the African settlers. (原 C)', detail:'文中：「Traders from Asia had already visited the islands 900 years before the arrival of its first permanent settlers from the African mainland」→ 亞洲商人比非洲定居者早 900 年抵達。' },
+    44:{ ans:'(A) (原 B - 東非海岸／印度洋一側)', detail:'Zanzibar 位於坦尚尼亞外海、印度洋上，靠近非洲東岸。地圖上 A 點即為東非海岸印度洋一側，正解。' },
+    45:{ ans:'(C) Cloves, vanilla, and cinnamon are common spices in Zanzibar. (原 B)', detail:'文章末段：「scented with the aroma of cloves, vanilla, and cinnamon floating in the air」可推論這三種香料在當地很常見。' },
+    46:{ ans:'(D) archipelago, islands, jewels, destination (原 C)', detail:'文中四個詞皆出現：archipelago（群島）、islands（島嶼）、jewels on the Indian Ocean（印度洋上的明珠）、beach destination（海灘勝地）。' }
+  };
+
+  function wrapWordsIn(root) {
+    const skipTags = new Set(['SCRIPT','STYLE','INPUT','LABEL','TEXTAREA','BUTTON']);
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => {
+        let p = n.parentNode;
+        while (p && p !== root) {
+          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (
+            p.classList.contains('word') ||
+            p.classList.contains('blank') ||
+            p.classList.contains('q-num') ||
+            p.classList.contains('q-num-sq') ||
+            p.classList.contains('options') ||
+            p.classList.contains('options-ci') ||
+            p.classList.contains('options-ps') ||
+            p.classList.contains('options-rd') ||
+            p.classList.contains('options-multi')
+          )) return NodeFilter.FILTER_REJECT;
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    const re = /[A-Za-z]+(?:['’\-][A-Za-z]+)*/g;
+    nodes.forEach(tn => {
+      const text = tn.nodeValue;
+      if (!re.test(text)) return;
+      re.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let lastIdx = 0, m;
+      while ((m = re.exec(text)) !== null) {
+        if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = m[0];
+        frag.appendChild(span);
+        lastIdx = m.index + m[0].length;
+      }
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
+  document.querySelectorAll('.autowrap, .vocab-sentences').forEach(wrapWordsIn);
+
+  const counter = document.getElementById('unknownCounter');
+  const counterNum = document.getElementById('unknownCount');
+  function updateCounter() {
+    const set = new Set();
+    document.querySelectorAll('.word.unfamiliar').forEach(w => set.add(w.textContent.trim().toLowerCase()));
+    counterNum.textContent = set.size;
+    counter.style.display = set.size ? 'block' : 'none';
+  }
+  document.body.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('word')) {
+      const t = e.target.textContent.trim().toLowerCase();
+      const isOn = !e.target.classList.contains('unfamiliar');
+      document.querySelectorAll('.word').forEach(w => {
+        if (w.textContent.trim().toLowerCase() === t) {
+          w.classList.toggle('unfamiliar', isOn);
+        }
+      });
+      updateCounter();
+    }
+  });
+
+  document.querySelectorAll('.options input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const name = r.name;
+      document.querySelectorAll(`.options input[name="${name}"]`).forEach(x => x.closest('label').classList.remove('selected'));
+      r.closest('label').classList.add('selected');
+    });
+  });
+  document.querySelectorAll('.options-multi input[type="checkbox"]').forEach(c => {
+    c.addEventListener('change', () => {
+      c.closest('label').classList.toggle('selected', c.checked);
+    });
+  });
+  const essayEl = document.getElementById('essay');
+  const essayCountEl = document.getElementById('essayWordCount');
+  if (essayEl) {
+    essayEl.addEventListener('input', () => {
+      const text = essayEl.value.trim();
+      const words = text ? text.split(/\s+/).length : 0;
+      essayCountEl.textContent = words;
+      essayCountEl.style.color = words >= 120 ? '#27ae60' : '#e67e22';
+    });
+  }
+
+  const ALL_QS = [...Array(46).keys()].map(i => i+1);
+
+  function submitQuiz() {
+    const name = document.getElementById('studentName').value.trim() || '（未填）';
+    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
+
+    const answers = {};
+    const unanswered = [];
+    ALL_QS.forEach(i => {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      if (sel) answers[i] = sel.value;
+      else { answers[i] = '-'; unanswered.push(i); }
+    });
+    answers[47] = (document.getElementById('q47').value || '').trim();
+    answers[48] = (document.getElementById('q48').value || '').trim();
+    if (!answers[47]) unanswered.push(47);
+    if (!answers[48]) unanswered.push(48);
+    const q49Sel = Array.from(document.querySelectorAll('input[name="q49"]:checked')).map(x=>x.value).sort();
+    answers[49] = q49Sel;
+    if (q49Sel.length === 0) unanswered.push(49);
+    answers[50] = (document.getElementById('q50').value || '').trim();
+    if (!answers[50]) unanswered.push(50);
+
+    const trans1 = (document.getElementById('trans1').value || '').trim();
+    const trans2 = (document.getElementById('trans2').value || '').trim();
+    const essayTxt = (document.getElementById('essay').value || '').trim();
+    const essayWordCount = essayTxt ? essayTxt.split(/\s+/).length : 0;
+    if (!trans1) unanswered.push('中譯英1');
+    if (!trans2) unanswered.push('中譯英2');
+    if (!essayTxt) unanswered.push('作文');
+
+    if (unanswered.length > 0) {
+      if (!confirm(`尚有 ${unanswered.length} 題未作答（${unanswered.slice(0,8).join(', ')}${unanswered.length>8?'…':''}），確定要送出嗎？`)) return;
+    }
+
+    let correct = 0;
+    const wrongList = [];
+    ALL_QS.forEach(i => {
+      if (answers[i] === ANSWERS[i]) correct++;
+      else wrongList.push(i);
+    });
+    let q47ok = false, q48ok = false;
+    const ans47 = (answers[47]||'').toLowerCase().replace(/[^a-z]/g,'');
+    if (FILL_ANSWERS[47].keys.some(k => k.toLowerCase() === ans47)) { q47ok = true; correct++; } else { wrongList.push(47); }
+    const ans48 = (answers[48]||'').toLowerCase().replace(/[^a-z]/g,'');
+    if (FILL_ANSWERS[48].keys.some(k => k.toLowerCase() === ans48)) { q48ok = true; correct++; } else { wrongList.push(48); }
+    const corr49 = MULTI_ANSWERS[49].slice().sort();
+    let q49ok = false;
+    if (q49Sel.length === corr49.length && q49Sel.every((v,i)=>v===corr49[i])) { q49ok = true; correct++; } else { wrongList.push(49); }
+    const ans50low = (answers[50]||'').toLowerCase();
+    let q50ok = false;
+    if (SHORT_ANSWERS[50].keys.some(group => group.every(k => ans50low.includes(k)))) { q50ok = true; correct++; } else { wrongList.push(50); }
+
+    const total = ALL_QS.length + 4;
+    const percent = Math.round(correct/total*100);
+
+    const unfamiliarSet = new Set();
+    document.querySelectorAll('.word.unfamiliar').forEach(w => {
+      const t = w.textContent.trim().toLowerCase();
+      if (t) unfamiliarSet.add(t);
+    });
+    const unfamiliar = Array.from(unfamiliarSet).sort();
+
+    document.getElementById('scoreBig').textContent = `${correct} / ${total}`;
+    document.getElementById('scoreDetail').textContent =
+      `答對 ${correct} 題 ‧ 答錯 ${total-correct} 題 ‧ 正確率 ${percent}% ‧ 不熟悉單字 ${unfamiliar.length} 個`;
+
+    const now = new Date();
+    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+    let r1 = `【112學測英文 第1-50題 作答結果】\n`;
+    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分：${correct}/${total}（${percent}%）\n---\n`;
+    r1 += `題號\t學生答案\t正確答案\t對錯\n`;
+    ALL_QS.forEach(i => {
+      const ok = answers[i]===ANSWERS[i] ? '✓' : (answers[i]==='-' ? '✗(未答)' : '✗');
+      r1 += `${i}\t${answers[i]}\t${ANSWERS[i]}\t${ok}\n`;
+    });
+    r1 += `47\t${answers[47]||'-'}\t${FILL_ANSWERS[47].display}\t${q47ok?'✓':'✗'}\n`;
+    r1 += `48\t${answers[48]||'-'}\t${FILL_ANSWERS[48].display}\t${q48ok?'✓':'✗'}\n`;
+    r1 += `49\t${q49Sel.join('')||'-'}\t${corr49.join('')}\t${q49ok?'✓':'✗'}\n`;
+    r1 += `50\t${(answers[50]||'-').replace(/\n/g,' ')}\t${SHORT_ANSWERS[50].display}\t${q50ok?'✓':'✗'}\n`;
+    r1 += `---\n【中譯英 1】${trans1 || '(未作答)'}\n`;
+    r1 += `【中譯英 2】${trans2 || '(未作答)'}\n`;
+    r1 += `---\n【英文作文】（${essayWordCount} words）\n${essayTxt || '(未作答)'}\n`;
+    r1 += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n`;
+    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
+    document.getElementById('teacherReport').textContent = r1;
+
+    const fb = document.getElementById('feedbackReport');
+    fb.innerHTML = '';
+    let fbText = `【112學測英文 第1-50題 錯題詳解】\n姓名：${name}　座號：${sid}\n作答時間：${ts}\n---\n`;
+
+    if (wrongList.length === 0) {
+      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
+      fbText += '🎉 全部答對！太棒了！';
+    } else {
+      wrongList.sort((a,b)=>a-b).forEach(i => {
+        const div = document.createElement('div');
+        div.className = 'wrong-item';
+        let stuAns, expl, correctText;
+        if (i <= 46) {
+          stuAns = answers[i] === '-' ? '未作答' : answers[i];
+          expl = EXPLANATIONS[i] || { ans: ANSWERS[i], detail: '' };
+          correctText = `${ANSWERS[i]}　${expl.ans}`;
+          div.innerHTML = `
+            <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">${expl.detail}</div>`;
+          fbText += `第 ${i} 題：你寫 ${stuAns}，正解 ${correctText}\n   → ${expl.detail}\n\n`;
+        } else if (i === 47) {
+          stuAns = answers[47] || '未作答';
+          correctText = FILL_ANSWERS[47].display;
+          div.innerHTML = `<div class="q-head">第 47 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">許多參與者談論 GreenBurger 的「口味」（taste），如 Olivia 說 tasted awful、Mika 說 tastes too much like meat、Thomas 說 tastes "beany"、Rico/Alexander 也評論口味。</div>`;
+          fbText += `第 47 題：你寫 ${stuAns}，正解 ${correctText}\n\n`;
+        } else if (i === 48) {
+          stuAns = answers[48] || '未作答';
+          correctText = FILL_ANSWERS[48].display;
+          div.innerHTML = `<div class="q-head">第 48 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">健康疑慮（health concerns）：Smith 說熱量鈉含量高、Rico 驚訝多 40 卡、Alexander 強調椰子油加工問題。形容詞 healthy 改名詞 health 修飾 concerns。</div>`;
+          fbText += `第 48 題：你寫 ${stuAns}，正解 ${correctText}\n\n`;
+        } else if (i === 49) {
+          stuAns = q49Sel.join('') || '未作答';
+          correctText = corr49.join('');
+          div.innerHTML = `<div class="q-head">第 49 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">「在某些條件下」會接受的：D Thomas（once in a while, just for a change）和 F Linda（價格降下來再多吃）。其餘是堅決反對 (A,B,C,H)、無條件接受 (G) 或單純評論 (E)。</div>`;
+          fbText += `第 49 題：你選 ${stuAns}，正解 ${correctText}\n\n`;
+        } else if (i === 50) {
+          stuAns = (answers[50] || '未作答').replace(/\n/g,' ');
+          correctText = SHORT_ANSWERS[50].display;
+          div.innerHTML = `<div class="q-head">第 50 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 參考答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">片語 "does the trick" 意為「奏效、達到目的」。原文 G 段 Ablo："a GreenBurger does the trick"。</div>`;
+          fbText += `第 50 題：你寫「${stuAns}」，參考答案：${correctText}\n\n`;
+        }
+        fb.appendChild(div);
+      });
+    }
+
+    fbText += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n${unfamiliar.length?unfamiliar.join(', '):'（無）'}\n`;
+    document.getElementById('feedbackTextArea').textContent = fbText;
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function copyText(elId, btn) {
+    const txt = document.getElementById(elId).textContent;
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      document.body.removeChild(ta);
+    };
+    const ok = () => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ 已複製！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
+    } else { fallback(); ok(); }
+  }
+</script>
+
+</body>
+</html>
