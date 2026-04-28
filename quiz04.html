@@ -1,262 +1,543 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-        }
-        .header {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .question {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-        }
-        .option-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-            position: relative;
-            transition: background 0.2s;
-        }
-        .option-item:hover {
-            background-color: #fafafa;
-        }
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #eee;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
-        .special-btn {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .footer-tools {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        .tool-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>昀軒 115 學測英文診斷報告</title>
+  <style>
+    :root {
+      --ink: #243040;
+      --muted: #667085;
+      --line: #d9e0ea;
+      --paper: #f7f9fd;
+      --blue: #2f6fdd;
+      --teal: #00857a;
+      --orange: #c46210;
+      --rose: #c43d61;
+      --violet: #7057d2;
+      --green: #31835c;
+      --yellow: #fff4cf;
+    }
 
-        /* 彈出視窗樣式 */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.95);
-            z-index: 1000;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .overlay-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            font-weight: bold;
-            padding: 10px;
-        }
-        .overlay-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-left: 4px solid #000;
-            padding-left: 10px;
-        }
-        .example-box {
-            background: #f4f4f4;
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border-left: 3px solid #ccc;
-        }
-        h4 { margin: 15px 0 5px 0; color: #333; }
-        .eg-item { margin-bottom: 10px; }
-    </style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(47,111,221,.10), transparent 30%),
+        linear-gradient(315deg, rgba(0,133,122,.12), transparent 28%),
+        #f5f7fb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", sans-serif;
+      line-height: 1.65;
+    }
+
+    header {
+      padding: 42px 20px 28px;
+      background: #ffffffd9;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 { line-height: 1.25; margin: 0; }
+
+    h1 {
+      font-size: clamp(1.9rem, 7vw, 4rem);
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: clamp(1.35rem, 5vw, 2.1rem);
+    }
+
+    h3 { font-size: 1.08rem; }
+
+    .subtitle {
+      max-width: 880px;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat, .panel, .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(22, 34, 51, .07);
+    }
+
+    .stat {
+      padding: 16px;
+      min-height: 112px;
+      border-top: 6px solid var(--blue);
+    }
+
+    .stat:nth-child(2) { border-top-color: var(--green); }
+    .stat:nth-child(3) { border-top-color: var(--orange); }
+    .stat:nth-child(4) { border-top-color: var(--rose); }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(1.45rem, 5vw, 1.8rem);
+      line-height: 1.1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: .93rem;
+    }
+
+    main { padding: 8px 0 54px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 20px;
+      margin-top: 18px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #edf4ff;
+      color: #214f9a;
+      font-size: .88rem;
+      font-weight: 800;
+    }
+
+    .badge.warn { background: #fff0dd; color: #9b4b09; }
+    .badge.good { background: #eaf8f1; color: #236843; }
+    .badge.hot { background: #ffeaf0; color: #a83254; }
+
+    ul { margin: 12px 0 0; padding-left: 1.2em; }
+    li + li { margin-top: 8px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 8px;
+      font-size: .95rem;
+    }
+
+    th, td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #eff4fa;
+      font-size: .9rem;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .wrong { color: #b42318; font-weight: 900; }
+    .right { color: #067647; font-weight: 900; }
+
+    .translation {
+      border-left: 6px solid var(--violet);
+      background: linear-gradient(90deg, rgba(112,87,210,.09), white 18%);
+    }
+
+    .sentence {
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .sentence .label {
+      font-weight: 900;
+      color: var(--violet);
+    }
+
+    .fix {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--yellow);
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 10px 0;
+      background: rgba(245,247,251,.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      margin-top: 18px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    button {
+      flex: 0 0 auto;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 8px;
+      min-height: 38px;
+      padding: 0 12px;
+      font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    button.active {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .card {
+      overflow: hidden;
+      min-height: 318px;
+      display: flex;
+      flex-direction: column;
+      border-top: 8px solid var(--accent);
+    }
+
+    .card-head {
+      padding: 15px 15px 11px;
+      color: var(--ink);
+      background: #fbfcff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .word {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .word strong {
+      color: #243040;
+      font-size: 1.34rem;
+      overflow-wrap: anywhere;
+    }
+
+    .tag {
+      flex: 0 0 auto;
+      border: 1px solid #c7d2e1;
+      border-radius: 999px;
+      padding: 2px 8px;
+      color: #344054;
+      background: white;
+      font-size: .76rem;
+      font-weight: 900;
+    }
+
+    .meaning {
+      margin-top: 6px;
+      color: #46566b;
+      font-size: .96rem;
+      font-weight: 800;
+    }
+
+    .card-body {
+      padding: 14px 15px 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .context {
+      padding: 9px 10px;
+      border-radius: 8px;
+      background: #f3f6fb;
+      color: #46566b;
+      font-size: .9rem;
+    }
+
+    .examples {
+      display: grid;
+      gap: 9px;
+      margin-top: auto;
+    }
+
+    .example {
+      border-top: 1px dashed #c8d2df;
+      padding-top: 8px;
+      font-size: .95rem;
+    }
+
+    .example b { color: var(--accent); }
+
+    .zh {
+      margin-top: 3px;
+      color: #526174;
+      font-size: .91rem;
+    }
+
+    .note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    @media (max-width: 980px) {
+      .stats, .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      header { padding: 32px 16px 24px; }
+      .wrap { width: min(100% - 22px, 1180px); }
+      .stats, .cards { grid-template-columns: 1fr; }
+      .panel { padding: 16px; }
+      th, td { padding: 8px 7px; font-size: .88rem; }
+      .card { min-height: auto; }
+      .word strong { font-size: 1.24rem; }
+      .subtitle { font-size: .98rem; }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="wrap">
+      <h1>昀軒｜115 學測英文診斷報告</h1>
+      <p class="subtitle">依據第 1-50 題完整作答、翻譯答案與 64 個不熟單字整理。這份報告模仿原本學生報告格式，但調整成手機上一頁式閱讀。</p>
+      <section class="stats" aria-label="score summary">
+        <div class="stat"><strong>48 / 62</strong><span>選擇＋混合估算得分，約 77.4%</span></div>
+        <div class="stat"><strong>15 / 20</strong><span>第 1-20 題，詞彙與綜合測驗 75%</span></div>
+        <div class="stat"><strong>25 / 30</strong><span>第 21-37 題，文意與篇章整體穩</span></div>
+        <div class="stat"><strong>8 / 12</strong><span>第 39-50 題，閱讀細節與混合題需補</span></div>
+      </section>
+    </div>
+  </header>
 
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
-    
-    <div class="question">
-        Designed by a young engineer, the new product has created far more profit than ______ expected.
+  <main>
+    <div class="wrap">
+      <section class="grid">
+        <article class="panel">
+          <h2>程度判讀</h2>
+          <div class="badge-row">
+            <span class="badge good">整體：中上</span>
+            <span class="badge">篇章結構強</span>
+            <span class="badge warn">詞彙精準度需補</span>
+            <span class="badge hot">作文未作答</span>
+          </div>
+          <p>昀軒的英文程度可判斷為「中上，閱讀架構感佳，但精準單字、代名詞指涉與輸出語法還不夠穩」。她在篇章結構和大部分閱讀主旨題表現很好，表示文章大方向抓得住；真正失分集中在詞彙辨義、文意選填細節、閱讀指涉題，以及混合題的詞形與片語完整度。</p>
+          <ul>
+            <li><b>強項：</b>第 31-34 題全對，文章段落功能和邏輯銜接能力佳。</li>
+            <li><b>穩定區：</b>綜合測驗 9/10，只錯第 17 題，代表短文語意能跟上，但完成式時態仍要更敏感。</li>
+            <li><b>主要弱點：</b>第 2、5、6、10 題顯示單字不是完全不會，而是會被相近選項干擾，例如 <i>amateur</i>、<i>consumption</i>、<i>dreads</i>、<i>grave</i>。</li>
+            <li><b>閱讀弱點：</b>第 40 題代名詞 <i>them</i> 指涉判斷錯，第 45 題 <i>blip</i> 的語境推論錯，代表細節回文和抽象詞推論要練。</li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <h2>錯題診斷</h2>
+          <table>
+            <thead>
+              <tr><th>題型</th><th>錯題</th><th>診斷</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>詞彙</td><td class="wrong">2, 5, 6, 10</td><td>需補「句意搭配」：amateur designer、balanced consumption、dread the thought、grave concerns。</td></tr>
+              <tr><td>綜合測驗</td><td class="wrong">17</td><td>第 17 題正解 <i>had yet to develop</i>，表示「尚未發展」，要加強完成式與時間線。</td></tr>
+              <tr><td>文意選填</td><td class="wrong">29</td><td>dark space with minimal light；她選 atmosphere，代表局部語意看漏。</td></tr>
+              <tr><td>篇章結構</td><td class="right">31-34 全對</td><td>段落主題句與承接句判斷很穩，是明顯優勢。</td></tr>
+              <tr><td>閱讀測驗</td><td class="wrong">37, 40, 45</td><td>錯在時間細節、代名詞指涉、抽象詞義推論。</td></tr>
+              <tr><td>混合題</td><td class="wrong">48, 50</td><td>第 48 應填 <i>blended</i>；第 50 少了冠詞 <i>a</i>，片語完整度要檢查。</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="panel translation">
+        <h2>中譯英分析</h2>
+        <div class="sentence">
+          <div class="label">題 1 原答案</div>
+          <p>Now more and more high school English teachers have increased the rate of use English in class.</p>
+          <ul>
+            <li><b>優點：</b>主詞和現在完成式方向正確，能抓到「越來越多老師已經增加」的核心。</li>
+            <li><b>問題：</b><i>rate of use English</i> 不合語法；use 若放在 of 後面要變 <i>using</i>，更自然是 <i>the percentage/amount of English they use in class</i>。<i>senior high school</i> 比 <i>high school</i> 更貼近學測用語。</li>
+          </ul>
+          <div class="fix"><b>建議答案：</b>More and more senior high school English teachers have increased the percentage of English they use in class.</div>
+        </div>
+        <div class="sentence">
+          <div class="label">題 2 原答案</div>
+          <p>They group students by English capable and carry out various listening and speaking activities.</p>
+          <ul>
+            <li><b>優點：</b><i>group students</i> 和 <i>carry out various listening and speaking activities</i> 很好，第二個動詞搭配自然。</li>
+            <li><b>問題：</b><i>capable</i> 是形容詞，這裡需要名詞 <i>ability</i> 或 <i>proficiency</i>；「依照」可寫 <i>according to / based on</i>，比 by 更精準。</li>
+          </ul>
+          <div class="fix"><b>建議答案：</b>They group students according to their English ability and carry out various listening and speaking activities.</div>
+        </div>
+        <p class="note">翻譯程度判斷：她能建立英文句子主幹，動詞片語也有一定掌握；扣分關鍵會在詞性、名詞片語和介系詞精準度。作文未作答會讓非選整體風險偏高。</p>
+      </section>
+
+      <section>
+        <h2>不熟單字彩色卡片</h2>
+        <p class="note">共 64 個。每張卡提供詞性/中文、考題或閱讀語境提醒，以及兩組英文＋中文例句。按分類可快速複習。</p>
+      </section>
     </div>
 
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) initially <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) genuinely <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) alternatively <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) fundamentally <span class="info-icon">ⓘ</span></div>
+    <div class="toolbar">
+      <div class="wrap filters" id="filters"></div>
     </div>
 
-    <div class="special-btn" onclick="showOverlay('E')">
-        (E) 查看答案與詳細解析
-    </div>
+    <section class="wrap cards" id="cards" aria-label="vocabulary cards"></section>
+  </main>
 
-    <div class="special-btn" onclick="showOverlay('F')">
-        (F) 林威老師的話 (衍生詞與音標)
-    </div>
-
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
-</div>
-
-<div id="infoOverlay" class="overlay">
-    <span class="close-btn" onclick="closeOverlay()">×</span>
-    <div id="contentArea" class="overlay-content"></div>
-</div>
-
-<script>
-    const data = {
-        'A': {
-            title: '(A) initially',
-            desc: '解釋：最初，起初',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. <b>Initially</b>, the system was difficult to use.<br>(起初，這個系統很難使用。)</div>
-                    <div class="eg-item">2. The project was <b>initially</b> funded by a private donor.<br>(該計畫最初是由一位私人捐助者資助的。)</div>
-                    <div class="eg-item">3. He <b>initially</b> thought it was a joke.<br>(他最初以為那是個玩笑。)</div>
-                </div>`
-        },
-        'B': {
-            title: '(B) genuinely',
-            desc: '解釋：真心地；真正地',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. She was <b>genuinely</b> surprised by the news.<br>(她對這個消息感到由衷的驚訝。)</div>
-                    <div class="eg-item">2. He is <b>genuinely</b> interested in your welfare.<br>(他是真心關心你的福祉。)</div>
-                    <div class="eg-item">3. I <b>genuinely</b> believe this is the best solution.<br>(我真心相信這是最好的解決方案。)</div>
-                </div>`
-        },
-        'C': {
-            title: '(C) alternatively',
-            desc: '解釋：或者；替代地',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. You can fly, or <b>alternatively</b>, take the train.<br>(你可以搭飛機，或者也可以搭火車。)</div>
-                    <div class="eg-item">2. <b>Alternatively</b>, we could postpone the meeting.<br>(或者，我們可以延後會議。)</div>
-                    <div class="eg-item">3. The software is available for purchase; <b>alternatively</b>, you can use the free version.<br>(該軟體可以購買；或者，你也可以使用免費版本。)</div>
-                </div>`
-        },
-        'D': {
-            title: '(D) fundamentally',
-            desc: '解釋：根本地；基本地',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The two systems are <b>fundamentally</b> different.<br>(這兩個系統有根本上的不同。)</div>
-                    <div class="eg-item">2. The law needs to be <b>fundamentally</b> changed.<br>(這項法律需要從根本上進行改革。)</div>
-                    <div class="eg-item">3. <b>Fundamentally</b>, it is a matter of trust.<br>(從根本上來說，這是一個信任問題。)</div>
-                </div>`
-        },
-        'E': {
-            title: '正確答案：(A)',
-            desc: '解析：題幹提到「創造了比預期更多的利潤」，慣用語為 than initially expected (比最初預期的更多)。',
-            example: 'genuinely (真誠地)、alternatively (替代地)、fundamentally (根本地) 雖然是副詞，但在此處不符合「預期」的時間邏輯。'
-        },
-        'F': {
-            title: '林威老師的話',
-            desc: '衍生詞與音標學習：',
-            detail: `
-                <h4>1. initial (形容詞)</h4>
-                <p>KK: [ɪˈnɪʃəl] | 中文：最初的</p>
-                <h4>2. genuine (形容詞)</h4>
-                <p>KK: [ˈdʒɛnjuɪn] | 中文：真誠的；真正的</p>
-                <h4>3. alternative (形容詞/名詞)</h4>
-                <p>KK: [ɔlˈtɝnətɪv] | 中文：替代的；選項</p>
-                <h4>4. fundamental (形容詞)</h4>
-                <p>KK: [ˌfʌndəˈmɛntəl] | 中文：基本的</p>
-            `
-        },
-        'G': {
-            title: '衍生詞更多例句',
-            detail: `
-                <div class="example-box">1. My <b>initial</b> reaction was one of shock.<br>(我最初的反應是震驚。)</div>
-                <div class="example-box">2. This is a <b>genuine</b> leather jacket.<br>(這是一件真皮夾克。)</div>
-                <div class="example-box">3. Do you have an <b>alternative</b> plan?<br>(你有替代方案嗎？)</div>
-                <div class="example-box">4. Freedom of speech is a <b>fundamental</b> right.<br>(言論自由是一項基本權利。)</div>
-            `
-        },
-        'H': {
-            title: '台灣學測必備片語',
-            detail: `
-                <h4>1. put off (延期；延後)</h4>
-                <p>例句：The outdoor concert was <b>put off</b> because of the rain.<br>(戶外音樂會因為下雨而延期了。)</p>
-                <h4>2. put away (收好；儲存)</h4>
-                <p>例句：Please <b>put away</b> your toys before dinner.<br>(請在晚餐前把玩具收好。)</p>
-            `
-        }
+  <script>
+    const palette = {
+      "核心詞彙": "#2f6fdd",
+      "易混選項": "#c46210",
+      "閱讀進階": "#00857a",
+      "文化地理": "#7057d2",
+      "詞形片語": "#c43d61"
     };
 
-    function showOverlay(key) {
-        const item = data[key];
-        let html = `<div class="overlay-title">${item.title}</div>`;
-        if(item.desc) html += `<p>${item.desc}</p>`;
-        if(item.detail) html += `<div>${item.detail}</div>`;
-        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
-        
-        document.getElementById('contentArea').innerHTML = html;
-        document.getElementById('infoOverlay').style.display = 'block';
+    const words = [
+      {w:"accommodate", pos:"v.", zh:"容納；提供住宿；適應", cat:"核心詞彙", ctx:"第 16 題正解：teahouses accommodate weary travelers。", ex:["The hotel can accommodate two hundred guests.","這家旅館可以容納兩百位客人。","Teachers should accommodate students with different needs.","老師應該照顧不同需求的學生。"]},
+      {w:"amateur", pos:"adj./n.", zh:"業餘的；業餘者", cat:"易混選項", ctx:"第 2 題正解：an amateur art designer。", ex:["Jane started as an amateur designer.","Jane 一開始是業餘設計師。","The contest welcomes both professionals and amateurs.","這項比賽歡迎專業人士和業餘者。"]},
+      {w:"assaulted", pos:"v.", zh:"攻擊；襲擊", cat:"核心詞彙", ctx:"第 8 題：assaulted them with glass bottles。", ex:["The man assaulted a stranger with a bottle.","那名男子用瓶子攻擊陌生人。","The guard was assaulted during the robbery.","警衛在搶劫時遭到襲擊。"]},
+      {w:"brutal", pos:"adj.", zh:"殘酷的；野蠻的", cat:"易混選項", ctx:"第 10 題干擾選項，brutal 通常形容行為或攻擊。", ex:["The report described the attack as brutal.","報告形容那次攻擊很殘酷。","The team faced brutal competition this season.","這支隊伍本季面臨激烈競爭。"]},
+      {w:"clues", pos:"n.", zh:"線索；提示", cat:"核心詞彙", ctx:"第 13 題正解：provide important clues。", ex:["The chemicals provide clues about the rhino's health.","這些化學物質提供犀牛健康的線索。","Good readers look for clues in the context.","好的讀者會在上下文中找線索。"]},
+      {w:"compensate", pos:"v.", zh:"補償；彌補", cat:"核心詞彙", ctx:"第 16 題干擾選項；常用 compensate for。", ex:["The company compensated passengers for the delay.","公司補償因延誤受影響的乘客。","Extra practice can compensate for a late start.","額外練習可以彌補起步較晚。"]},
+      {w:"condemned", pos:"v.", zh:"譴責；判定", cat:"易混選項", ctx:"第 8 題干擾選項，語氣是批判，不是動手攻擊。", ex:["The mayor condemned the violent act.","市長譴責這起暴力行為。","The old bridge was condemned as unsafe.","那座老橋被判定不安全。"]},
+      {w:"consumption", pos:"n.", zh:"消耗；食用；消費", cat:"易混選項", ctx:"第 5 題正解：a balanced consumption of fruit and vegetables。", ex:["Balanced consumption of vegetables is good for health.","均衡食用蔬菜有益健康。","Energy consumption usually rises in summer.","能源消耗通常在夏天上升。"]},
+      {w:"cuisine", pos:"n.", zh:"料理；菜餚", cat:"閱讀進階", ctx:"點心文章：Chinese cuisine。", ex:["Dim sum is part of Cantonese cuisine.","點心是廣東料理的一部分。","Taiwanese cuisine is known for its variety.","台灣料理以多樣性聞名。"]},
+      {w:"diligent", pos:"adj.", zh:"勤奮的", cat:"易混選項", ctx:"第 1 題干擾選項；diligent 形容人勤奮。", ex:["She is a diligent student who reviews every day.","她是每天複習的勤奮學生。","Diligent workers are valued in every field.","勤奮的工作者在各行各業都受重視。"]},
+      {w:"dimension", pos:"n.", zh:"尺寸；面向；維度", cat:"易混選項", ctx:"第 5 題干擾選項，不能搭配 balanced fruit and vegetable。", ex:["The problem has a social dimension.","這個問題有社會層面。","Measure the dimensions of the room first.","先量房間的尺寸。"]},
+      {w:"dreads", pos:"v.", zh:"害怕；畏懼", cat:"易混選項", ctx:"第 6 題正解：dreads the thought of speaking。", ex:["Timmy dreads speaking in public.","Timmy 害怕公開演說。","She dreads the thought of failing the exam.","她害怕想到考試失敗。"]},
+      {w:"emphasis", pos:"n.", zh:"強調；重點", cat:"易混選項", ctx:"第 7 題干擾選項；life's passion 才是生命熱情。", ex:["The teacher put emphasis on vocabulary.","老師強調單字。","The speech placed too much emphasis on money.","這場演說太強調金錢。"]},
+      {w:"grave", pos:"adj./n.", zh:"嚴重的；墳墓", cat:"易混選項", ctx:"第 10 題正解：grave concerns。", ex:["The accident raised grave safety concerns.","事故引發嚴重安全疑慮。","Flowers were placed on the soldier's grave.","花被放在士兵的墓前。"]},
+      {w:"hasty", pos:"adj.", zh:"匆忙的；草率的", cat:"易混選項", ctx:"第 1 題干擾選項；schedule 用 tight 較自然。", ex:["Do not make a hasty decision.","不要做草率決定。","The report was full of hasty conclusions.","這份報告充滿草率結論。"]},
+      {w:"manipulate", pos:"v.", zh:"操控；巧妙處理", cat:"閱讀進階", ctx:"第 12 題干擾選項；communicate 才合語境。", ex:["Some ads manipulate people's fears.","有些廣告操控人們的恐懼。","The machine is easy to manipulate.","這台機器很容易操作。"]},
+      {w:"provision", pos:"n.", zh:"提供；供應；條款", cat:"易混選項", ctx:"第 5 題干擾選項；consumption 才指食用。", ex:["The provision of clean water is essential.","乾淨水源的供應很重要。","The contract includes a special provision.","合約包含一項特殊條款。"]},
+      {w:"reinforce", pos:"v.", zh:"加強；強化", cat:"核心詞彙", ctx:"第 16 題干擾選項；reinforce an idea/structure。", ex:["Examples reinforce the main idea.","例子能強化主旨。","The wall was reinforced after the storm.","暴風雨後牆面被加固。"]},
+      {w:"shattered", pos:"v./adj.", zh:"打碎；粉碎的", cat:"核心詞彙", ctx:"第 8 題干擾選項，也常指玻璃或夢想破碎。", ex:["The window was shattered by a stone.","窗戶被石頭打碎。","Her confidence was shattered by the failure.","失敗粉碎了她的信心。"]},
+      {w:"wanders", pos:"v.", zh:"閒逛；漫遊；走神", cat:"易混選項", ctx:"第 6 題干擾選項；dread 才是畏懼。", ex:["He wanders around the city on weekends.","他週末在城市裡閒逛。","My mind wanders when I am tired.","我累的時候會走神。"]},
+      {w:"diversity", pos:"n.", zh:"多樣性", cat:"閱讀進階", ctx:"微笑文章：immigration diversity。", ex:["Cultural diversity makes the city lively.","文化多樣性讓城市有活力。","The school values diversity and inclusion.","學校重視多樣性與包容。"]},
+      {w:"famed", pos:"adj.", zh:"著名的", cat:"閱讀進階", ctx:"Endurance 文章：the famed polar explorer。", ex:["Shackleton was a famed polar explorer.","Shackleton 是著名的極地探險家。","The city is famed for its night markets.","這座城市以夜市聞名。"]},
+      {w:"hindered", pos:"v.", zh:"阻礙；妨礙", cat:"閱讀進階", ctx:"Endurance 文章：ice and bad weather hindered their return。", ex:["Heavy rain hindered the rescue effort.","大雨阻礙了救援工作。","A lack of sleep can hinder learning.","睡眠不足會妨礙學習。"]},
+      {w:"northward", pos:"adv./adj.", zh:"向北；北方的", cat:"閱讀進階", ctx:"Endurance 文章：pushed northward by the ice。", ex:["The ship drifted northward for weeks.","船向北漂了數週。","A northward wind made the trip colder.","向北的風讓旅程更冷。"]},
+      {w:"polar", pos:"adj.", zh:"極地的；兩極的", cat:"閱讀進階", ctx:"Endurance 文章：polar explorer。", ex:["Polar regions are extremely cold.","極地地區極為寒冷。","The polar explorer prepared for months.","那位極地探險家準備了數月。"]},
+      {w:"proverb", pos:"n.", zh:"諺語", cat:"閱讀進階", ctx:"微笑文章：a Russian proverb。", ex:["There is a proverb about time and patience.","有一句關於時間和耐心的諺語。","Proverbs often reflect cultural values.","諺語常反映文化價值。"]},
+      {w:"stormy", pos:"adj.", zh:"暴風雨的；激烈的", cat:"閱讀進階", ctx:"Endurance 文章：stormy seas。", ex:["They sailed across stormy seas.","他們航越暴風雨的海面。","The meeting became stormy after the vote.","投票後會議變得激烈。"]},
+      {w:"stupidity", pos:"n.", zh:"愚蠢", cat:"閱讀進階", ctx:"微笑文章：a sign of stupidity。", ex:["The proverb links smiling without reason to stupidity.","這句諺語把無故微笑和愚蠢連在一起。","It was stupidity to ignore the warning.","忽視警告是愚蠢的。"]},
+      {w:"sunken", pos:"adj.", zh:"沉沒的；凹陷的", cat:"閱讀進階", ctx:"Endurance 文章：the discovery of a sunken ship。", ex:["Divers found a sunken ship near the island.","潛水員在島附近發現沉船。","The old man's cheeks looked sunken.","那位老人的臉頰看起來凹陷。"]},
+      {w:"trapped", pos:"adj./v.", zh:"受困的；困住", cat:"閱讀進階", ctx:"Endurance 文章：trapped in pack ice。", ex:["The ship was trapped in ice.","船受困於冰中。","Several hikers were trapped by the storm.","幾名登山客被暴風雨困住。"]},
+      {w:"uninhabited", pos:"adj.", zh:"無人居住的", cat:"閱讀進階", ctx:"Endurance 文章：uninhabited Elephant Island。", ex:["They landed on an uninhabited island.","他們登上一座無人島。","The house has been uninhabited for years.","這棟房子多年無人居住。"]},
+      {w:"unproductive", pos:"adj.", zh:"無成效的；沒有生產力的", cat:"閱讀進階", ctx:"第 21 題正解：napping is by no means unproductive。", ex:["A short nap is not unproductive.","短暫小睡並非沒有效率。","The meeting was long and unproductive.","會議又長又沒有成效。"]},
+      {w:"voyage", pos:"n./v.", zh:"航行；旅程", cat:"閱讀進階", ctx:"Endurance 閱讀主題：a challenging voyage。", ex:["The voyage to Antarctica was dangerous.","前往南極的航行很危險。","The sailors began their voyage at dawn.","水手們在黎明開始航程。"]},
+      {w:"whaling", pos:"n./adj.", zh:"捕鯨；捕鯨的", cat:"閱讀進階", ctx:"Endurance 文章：a whaling station。", ex:["They reached a whaling station for help.","他們抵達捕鯨站求助。","Whaling was once common in the region.","捕鯨曾在該地區很常見。"]},
+      {w:"aboriginal", pos:"adj./n.", zh:"原住民的；原住民", cat:"文化地理", ctx:"Wonder Village：an aboriginal wooden beads necklace。", ex:["The shop sells aboriginal crafts.","這家店販售原住民工藝品。","She bought an aboriginal wooden necklace.","她買了一條原住民木珠項鍊。"]},
+      {w:"antique", pos:"adj./n.", zh:"古董的；古董", cat:"文化地理", ctx:"Wonder Village：an antique store。", ex:["The store features antique mirrors.","這家店以古董鏡子為特色。","He collected antique lamps.","他收藏古董燈。"]},
+      {w:"ascend", pos:"v.", zh:"上升；攀登", cat:"閱讀進階", ctx:"螺旋梯文章：attackers ascend one at a time。", ex:["Attackers had to ascend the stairs one by one.","攻擊者必須一個一個上樓梯。","The hikers began to ascend the mountain.","登山客開始爬山。"]},
+      {w:"blended", pos:"v./adj.", zh:"被混合；融合的", cat:"詞形片語", ctx:"第 48 題正解：are perfectly blended with foreign elements。", ex:["Local features are blended with foreign elements.","在地特色與外國元素融合。","The sauce is blended until smooth.","醬料被攪拌到滑順。"]},
+      {w:"blip", pos:"n.", zh:"短暫現象；小波動", cat:"閱讀進階", ctx:"第 45 題正解：a temporary state。", ex:["The north-up practice may be a historical blip.","北方在上的做法可能只是歷史短暫現象。","The delay was only a small blip.","這次延誤只是小插曲。"]},
+      {w:"clockwise", pos:"adj./adv.", zh:"順時針的；順時針地", cat:"閱讀進階", ctx:"螺旋梯文章：turn clockwise upwards。", ex:["The staircase turns clockwise.","這座樓梯順時針旋轉。","Turn the handle clockwise to lock the door.","順時針轉動把手來鎖門。"]},
+      {w:"coexists", pos:"v.", zh:"共存", cat:"詞形片語", ctx:"第 47-48 摘要句：tradition coexists with innovation。", ex:["Tradition coexists with innovation in the village.","傳統與創新在村落中共存。","Different beliefs can coexist peacefully.","不同信念可以和平共存。"]},
+      {w:"concrete", pos:"n./adj.", zh:"混凝土；具體的", cat:"閱讀進階", ctx:"螺旋梯材料：steel, wood, concrete, glass。", ex:["The stairs are made of concrete.","樓梯由混凝土製成。","Please give me a concrete example.","請給我一個具體例子。"]},
+      {w:"dakshina", pos:"n.", zh:"印度語詞，南方；右方", cat:"文化地理", ctx:"地圖文章：dakshina means south and right。", ex:["The word dakshina suggests an east-facing view.","dakshina 這個詞暗示面向東方的觀點。","Dakshina is discussed in the passage about maps.","dakshina 出現在地圖文章的討論中。"]},
+      {w:"defenders", pos:"n.", zh:"防守者；守衛者", cat:"閱讀進階", ctx:"螺旋梯文章：castle defenders。", ex:["The defenders knew the stair pattern well.","防守者很熟悉樓梯模式。","The city's defenders prepared for the attack.","城市守衛者準備迎戰。"]},
+      {w:"descend", pos:"v.", zh:"下降；下來", cat:"閱讀進階", ctx:"螺旋梯題：ascend 與 descend 相對。", ex:["It is hard to descend uneven stairs in the dark.","在黑暗中下不平的樓梯很困難。","The plane began to descend.","飛機開始下降。"]},
+      {w:"favored", pos:"v./adj.", zh:"有利於；偏愛的", cat:"閱讀進階", ctx:"第 42 題：clockwise design favored defenders。", ex:["The design favored right-handed defenders.","這個設計有利於右撇子防守者。","She is a favored candidate for the job.","她是這份工作的熱門候選人。"]},
+      {w:"harmoniously", pos:"adv.", zh:"和諧地", cat:"詞形片語", ctx:"第 47-48 摘要句：coexists harmoniously。", ex:["Old and new elements coexist harmoniously.","新舊元素和諧共存。","The colors work harmoniously in the room.","這些顏色在房間裡和諧搭配。"]},
+      {w:"indigenous", pos:"adj.", zh:"原住民的；本土的", cat:"文化地理", ctx:"Wonder Village：a famous indigenous district。", ex:["The district is known for indigenous culture.","這個地區以原住民文化聞名。","Indigenous artists sell handmade products there.","原住民藝術家在那裡販售手作品。"]},
+      {w:"inferred", pos:"v.", zh:"推論；推斷", cat:"閱讀進階", ctx:"閱讀題常見問法：can be inferred。", ex:["The answer can be inferred from the final paragraph.","答案可從最後一段推論。","She inferred his meaning from his tone.","她從他的語氣推斷他的意思。"]},
+      {w:"islamic", pos:"adj.", zh:"伊斯蘭的", cat:"文化地理", ctx:"地圖文章：old Islamic maps。", ex:["Old Islamic maps often placed south at the top.","古伊斯蘭地圖常把南方放在上方。","The museum displays Islamic art.","博物館展示伊斯蘭藝術。"]},
+      {w:"marble", pos:"n.", zh:"大理石", cat:"文化地理", ctx:"螺旋梯文章：stone and marble。", ex:["The staircase was carved in marble.","樓梯由大理石雕成。","The palace has a marble floor.","宮殿有大理石地板。"]},
+      {w:"medieval", pos:"adj.", zh:"中世紀的", cat:"文化地理", ctx:"螺旋梯文章：medieval castles。", ex:["Medieval castles often had spiral staircases.","中世紀城堡常有螺旋梯。","The town still has medieval walls.","這座城鎮仍有中世紀城牆。"]},
+      {w:"narrow", pos:"adj.", zh:"狹窄的", cat:"核心詞彙", ctx:"螺旋梯文章：staircases were quite narrow。", ex:["The stairs were too narrow for a mass attack.","樓梯太窄，無法發動集體攻擊。","We walked through a narrow alley.","我們穿過一條狹窄巷弄。"]},
+      {w:"necklace", pos:"n.", zh:"項鍊", cat:"文化地理", ctx:"第 49 題：wooden beads necklace。", ex:["She bought a wooden beads necklace.","她買了一條木珠項鍊。","The necklace was made by a local artisan.","這條項鍊由在地工匠製作。"]},
+      {w:"orient", pos:"n./v.", zh:"東方；使朝向；定位", cat:"文化地理", ctx:"地圖文章：the Orient 指東方。", ex:["East is still called the Orient in some contexts.","某些語境中東方仍被稱為 the Orient。","The map helps visitors orient themselves.","地圖幫助旅客確認方向。"]},
+      {w:"orientation", pos:"n.", zh:"方向；取向；迎新", cat:"閱讀進階", ctx:"地圖文章主題：map orientation。", ex:["Map orientation has changed over time.","地圖方向隨時間改變。","Freshmen attended orientation last week.","新生上週參加迎新。"]},
+      {w:"phrase", pos:"n.", zh:"片語；措辭", cat:"核心詞彙", ctx:"第 50 題需完整寫出 phrase：one of a kind。", ex:["One of a kind is a useful phrase.","one of a kind 是實用片語。","The phrase must include the article a.","這個片語必須包含冠詞 a。"]},
+      {w:"pre-biblical", pos:"adj.", zh:"聖經時代以前的", cat:"文化地理", ctx:"地圖文章：pre-Biblical and Biblical eras。", ex:["East appeared at the top in some pre-Biblical maps.","某些聖經時代以前的地圖把東方放在上方。","The passage mentions pre-Biblical eras.","文章提到聖經時代以前的時期。"]},
+      {w:"retreat", pos:"v./n.", zh:"撤退；退卻", cat:"閱讀進階", ctx:"螺旋梯文章：defenders could retreat up them swiftly。", ex:["The defenders could retreat up the stairs quickly.","防守者可以迅速沿樓梯撤退。","The army was forced to retreat.","軍隊被迫撤退。"]},
+      {w:"sailors", pos:"n.", zh:"水手", cat:"閱讀進階", ctx:"地圖文章：sailors relied on the North Star。", ex:["Sailors used the North Star to find their way.","水手利用北極星辨認方向。","The sailors survived the storm.","水手們熬過了暴風雨。"]},
+      {w:"souvenirs", pos:"n.", zh:"紀念品", cat:"文化地理", ctx:"第 49 題：buy items as souvenirs。", ex:["They bought souvenirs in Wonder Village.","他們在 Wonder Village 買紀念品。","Local crafts make meaningful souvenirs.","在地工藝品是有意義的紀念品。"]},
+      {w:"steel", pos:"n.", zh:"鋼；鋼鐵", cat:"文化地理", ctx:"螺旋梯材料：steel frames。", ex:["Steel frames became cost-effective.","鋼架變得符合成本效益。","The bridge is made of steel.","這座橋由鋼鐵製成。"]},
+      {w:"uneven", pos:"adj.", zh:"不平的；不均勻的", cat:"閱讀進階", ctx:"螺旋梯文章：uneven steps。", ex:["Attackers might stumble on uneven steps.","攻擊者可能在不平的階梯上絆倒。","The road is uneven after the rain.","雨後道路不平。"]},
+      {w:"urgent", pos:"adj.", zh:"緊急的；迫切的", cat:"易混選項", ctx:"第 45 題干擾選項：urgent need 迫切需求。", ex:["This problem requires urgent attention.","這個問題需要緊急關注。","The hospital received an urgent call.","醫院接到一通緊急電話。"]}
+    ];
+
+    const filters = ["全部", ...Array.from(new Set(words.map(item => item.cat)))];
+    const filtersEl = document.querySelector("#filters");
+    const cardsEl = document.querySelector("#cards");
+
+    function render(filter = "全部") {
+      document.querySelectorAll("button[data-filter]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.filter === filter);
+      });
+
+      const list = filter === "全部" ? words : words.filter(item => item.cat === filter);
+      cardsEl.innerHTML = list.map(item => `
+        <article class="card" style="--accent:${palette[item.cat]}">
+          <div class="card-head">
+            <div class="word"><strong>${item.w}</strong><span class="tag">${item.cat}</span></div>
+            <div class="meaning">${item.pos} ${item.zh}</div>
+          </div>
+          <div class="card-body">
+            <div class="context">${item.ctx}</div>
+            <div class="examples">
+              <div class="example"><b>1.</b> ${item.ex[0]}<div class="zh">${item.ex[1]}</div></div>
+              <div class="example"><b>2.</b> ${item.ex[2]}<div class="zh">${item.ex[3]}</div></div>
+            </div>
+          </div>
+        </article>
+      `).join("");
     }
 
-    function closeOverlay() {
-        document.getElementById('infoOverlay').style.display = 'none';
-    }
-</script>
-
+    filtersEl.innerHTML = filters.map((name, index) => `
+      <button type="button" data-filter="${name}" class="${index === 0 ? "active" : ""}">${name}</button>
+    `).join("");
+    filtersEl.addEventListener("click", event => {
+      const button = event.target.closest("button[data-filter]");
+      if (button) render(button.dataset.filter);
+    });
+    render();
+  </script>
 </body>
 </html>

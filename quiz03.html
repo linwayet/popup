@@ -1,240 +1,518 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-        }
-        .header {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .question {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-        }
-        .option-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-            position: relative;
-            transition: background 0.2s;
-        }
-        .option-item:hover {
-            background-color: #fafafa;
-        }
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #eee;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
-        .special-btn {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .footer-tools {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        .tool-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>吳鼎濬 115 學測英文診斷報告</title>
+  <style>
+    :root {
+      --ink: #243040;
+      --muted: #667085;
+      --line: #d9e0ea;
+      --paper: #fbfcff;
+      --blue: #2f6fdd;
+      --teal: #00857a;
+      --orange: #c46210;
+      --rose: #c43d61;
+      --violet: #7057d2;
+      --green: #31835c;
+      --yellow: #fff4cf;
+    }
 
-        /* 彈出視窗樣式 */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.95);
-            z-index: 1000;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .overlay-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            font-weight: bold;
-            padding: 10px;
-        }
-        .overlay-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-left: 4px solid #000;
-            padding-left: 10px;
-        }
-        .example-box {
-            background: #f4f4f4;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            font-size: 0.95rem;
-        }
-        h4 { margin: 10px 0 5px 0; }
-    </style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(135deg, rgba(47,111,221,.10), transparent 30%),
+        linear-gradient(315deg, rgba(0,133,122,.12), transparent 28%),
+        #f5f7fb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", sans-serif;
+      line-height: 1.65;
+    }
+
+    header {
+      padding: 48px 24px 28px;
+      background: #ffffffcc;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 { line-height: 1.25; margin: 0; }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 4.2rem);
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin-top: 34px;
+      font-size: clamp(1.45rem, 2.4vw, 2.2rem);
+    }
+
+    h3 { font-size: 1.08rem; }
+
+    .subtitle {
+      max-width: 860px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .stat, .panel, .card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 12px 32px rgba(22, 34, 51, .07);
+    }
+
+    .stat {
+      padding: 18px;
+      min-height: 118px;
+      border-top: 6px solid var(--blue);
+    }
+
+    .stat:nth-child(2) { border-top-color: var(--green); }
+    .stat:nth-child(3) { border-top-color: var(--orange); }
+    .stat:nth-child(4) { border-top-color: var(--rose); }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      line-height: 1.1;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    main { padding: 8px 0 56px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 22px;
+      margin-top: 18px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #edf4ff;
+      color: #214f9a;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .badge.warn { background: #fff0dd; color: #9b4b09; }
+    .badge.good { background: #eaf8f1; color: #236843; }
+    .badge.hot { background: #ffeaf0; color: #a83254; }
+
+    ul { margin: 12px 0 0; padding-left: 1.2em; }
+    li + li { margin-top: 8px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #eff4fa;
+      font-size: .92rem;
+    }
+
+    tr:last-child td { border-bottom: 0; }
+
+    .wrong { color: #b42318; font-weight: 800; }
+    .right { color: #067647; font-weight: 800; }
+
+    .translation {
+      border-left: 6px solid var(--violet);
+      background: linear-gradient(90deg, rgba(112,87,210,.09), white 18%);
+    }
+
+    .sentence {
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+    }
+
+    .sentence .label {
+      font-weight: 800;
+      color: var(--violet);
+    }
+
+    .fix {
+      margin-top: 8px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--yellow);
+    }
+
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      padding: 12px 0;
+      background: rgba(245,247,251,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    button {
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 8px;
+      min-height: 38px;
+      padding: 0 12px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button.active {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .card {
+      overflow: hidden;
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-head {
+      padding: 16px 16px 13px;
+      color: var(--ink);
+      background: #f8fbff;
+      border-top: 8px solid #2f6fdd;
+    }
+
+    .card-head .word {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .word strong {
+      font-size: 1.45rem;
+      overflow-wrap: anywhere;
+    }
+
+    .tag {
+      flex: 0 0 auto;
+      border: 1px solid #b8c7da;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: .78rem;
+      font-weight: 800;
+      color: #344054;
+      background: white;
+    }
+
+    .meaning {
+      margin-top: 7px;
+      font-size: .98rem;
+      opacity: .96;
+      color: #46566b;
+    }
+
+    .card-body {
+      padding: 15px 16px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .context {
+      padding: 9px 10px;
+      border-radius: 8px;
+      background: #f3f6fb;
+      color: #46566b;
+      font-size: .92rem;
+    }
+
+    .examples {
+      display: grid;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .example {
+      border-top: 1px dashed #c8d2df;
+      padding-top: 9px;
+    }
+
+    .example b {
+      color: var(--accent);
+    }
+
+    .zh {
+      margin-top: 3px;
+      color: #526174;
+      font-size: .94rem;
+    }
+
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    @media (max-width: 960px) {
+      .stats, .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      header { padding-top: 34px; }
+      .stats, .cards { grid-template-columns: 1fr; }
+      .panel { padding: 18px; }
+      th, td { padding: 9px 8px; }
+    }
+
+    @media print {
+      .toolbar { position: static; }
+      button { display: none; }
+      body { background: white; }
+      .card, .panel, .stat { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <div class="wrap">
+      <h1>吳鼎濬｜115 學測英文診斷報告</h1>
+      <p class="subtitle">依據第 1-50 題作答、翻譯答案與 41 個不熟單字整理。重點是找出「能拿分的能力」和「下一輪最值得補的洞」。</p>
+      <section class="stats" aria-label="score summary">
+        <div class="stat"><strong>47 / 62</strong><span>選擇＋混合估算得分，約 75.8%</span></div>
+        <div class="stat"><strong>13 / 20</strong><span>第 1-20 題，詞彙與綜合測驗 65%</span></div>
+        <div class="stat"><strong>26 / 30</strong><span>第 21-37 題，文意選填與篇章結構很穩</span></div>
+        <div class="stat"><strong>8 / 12</strong><span>第 39-50 題，閱讀與混合題約 67%</span></div>
+      </section>
+    </div>
+  </header>
 
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
-    
-    <div class="question">
-        The teaching ______ at the famous high school soon attracted more than a dozen well-qualified applicants.
+  <main>
+    <div class="wrap">
+      <section class="grid">
+        <article class="panel">
+          <h2>程度判讀</h2>
+          <div class="badge-row">
+            <span class="badge good">整體：中上</span>
+            <span class="badge">閱讀主旨佳</span>
+            <span class="badge warn">精準字彙需補強</span>
+            <span class="badge hot">作文未作答</span>
+          </div>
+          <p>這位學生的英文程度可判定為「中上、閱讀架構感不錯，但字彙精準度與輸出能力還不穩」。第 21-36 題幾乎全對，代表他能處理文章脈絡、段落銜接、常見學測閱讀資訊。真正失分集中在詞彙辨義、細節推論、詞形變化，以及中譯英句型。</p>
+          <ul>
+            <li><b>強項：</b>文意選填 10/10、篇章結構 8/8，顯示上下文判讀、邏輯銜接、段落功能理解都成熟。</li>
+            <li><b>主要弱點：</b>詞彙題錯 4 題，尤其是 <i>dreads / assaulted / responsive to / had yet to develop</i> 這類「意思相近但搭配不同」的選項。</li>
+            <li><b>閱讀弱點：</b>第 37、42、45 題錯，偏向時間線、推論、抽象詞義判斷；不是完全看不懂，而是容易被表面字句帶走。</li>
+            <li><b>混合題弱點：</b>第 47 寫成 <i>village</i>、第 48 寫成原形 <i>blend</i>，表示能找到相關段落，但摘要句的語法角色判斷不足。</li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <h2>錯題診斷</h2>
+          <table>
+            <thead>
+              <tr><th>題型</th><th>錯題</th><th>診斷</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>詞彙</td><td class="wrong">2, 6, 8, 15</td><td>單字大意可能知道，但對搭配與語氣掌握不足，例如 <i>responsive to</i> 是「對……有反應」。</td></tr>
+              <tr><td>綜合測驗</td><td class="wrong">17, 18, 19</td><td>需要加強完成式、被動/慣用表達，以及連接詞片語 <i>as such</i>。</td></tr>
+              <tr><td>文意選填</td><td class="right">21-30 全對</td><td>上下文線索抓得準，是明顯優勢。</td></tr>
+              <tr><td>篇章結構</td><td class="right">31-36 全對</td><td>段落主旨與句子功能判斷佳。</td></tr>
+              <tr><td>閱讀測驗</td><td class="wrong">37, 42, 45</td><td>錯在細節時間、攻防邏輯、抽象詞 <i>blip</i> 的語境義。</td></tr>
+              <tr><td>混合題</td><td class="wrong">47, 48</td><td>第 47 應填 <i>innovation</i>；第 48 需配合被動結構填 <i>blended</i>。</td></tr>
+            </tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="panel translation">
+        <h2>中譯英分析</h2>
+        <div class="sentence">
+          <div class="label">題 1 原答案</div>
+          <p>More and more senior high sclool teachers have increased the proportion of using English during class.</p>
+          <ul>
+            <li><b>優點：</b>句子主幹完整，<i>More and more...</i>、現在完成式方向正確。</li>
+            <li><b>問題：</b><i>sclool</i> 拼字錯；「在課堂上使用英文的百分比」較自然是 <i>the percentage/proportion of English used in class</i> 或 <i>the amount of English they use in class</i>。</li>
+          </ul>
+          <div class="fix"><b>建議答案：</b>More and more senior high school English teachers have increased the percentage of English they use in class.</div>
+        </div>
+        <div class="sentence">
+          <div class="label">題 2 原答案</div>
+          <p>They divide students into different groups with their ability of English, taking various activities of litsening and speaking.</p>
+          <ul>
+            <li><b>優點：</b><i>divide students into different groups</i> 架構正確。</li>
+            <li><b>問題：</b>「依能力」要用 <i>according to / based on</i>；<i>ability of English</i> 應改為 <i>English ability/proficiency</i>；活動搭配要用 <i>carry out / conduct / do activities</i>，不是 <i>take activities</i>；<i>listening</i> 拼字錯。</li>
+          </ul>
+          <div class="fix"><b>建議答案：</b>They divide students into different groups according to their English ability and carry out various listening and speaking activities.</div>
+        </div>
+        <p class="note">翻譯程度判斷：目前能寫出基本句型，但介系詞、名詞搭配、動詞搭配與拼字會扣分。若要衝非選分數，最有效的練法是「中文句子切主幹 → 固定搭配 → 檢查詞性與拼字」。</p>
+      </section>
+
+      <section>
+        <h2>不熟單字彩色卡片</h2>
+        <p class="note">按鈕可篩選類別。例句刻意使用接近學測閱讀的語氣，方便直接拿來複習。</p>
+      </section>
     </div>
 
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) career <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) vacancy <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) expectation <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) inspiration <span class="info-icon">ⓘ</span></div>
+    <div class="toolbar">
+      <div class="wrap filters" id="filters"></div>
     </div>
 
-    <div class="special-btn" onclick="showOverlay('E')">
-        (E) 查看答案與詳細解析
-    </div>
+    <section class="wrap cards" id="cards" aria-label="vocabulary cards"></section>
+  </main>
 
-    <div class="special-btn" onclick="showOverlay('F')">
-        (F) 林威老師的話 (衍生詞與音標)
-    </div>
-
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
-</div>
-
-<div id="infoOverlay" class="overlay">
-    <span class="close-btn" onclick="closeOverlay()">×</span>
-    <div id="contentArea" class="overlay-content"></div>
-</div>
-
-<script>
-    const data = {
-        'A': {
-            title: '(A) career',
-            desc: '解釋：職業；生涯',
-            example: 'She hopes to have a long career in teaching. (她希望擁有一段長久的教學職涯。)'
-        },
-        'B': {
-            title: '(B) vacancy',
-            desc: '解釋：空缺；空位',
-            example: 'There is a job vacancy for a software engineer. (現在有一個軟體工程師的職位空缺。)'
-        },
-        'C': {
-            title: '(C) expectation',
-            desc: '解釋：期待；預期',
-            example: 'The hotel did not live up to our expectations. (這家飯店沒有達到我們的預期。)'
-        },
-        'D': {
-            title: '(D) inspiration',
-            desc: '解釋：靈感；啟示',
-            example: 'The nature is a constant source of inspiration for him. (大自然對他而言是源源不絕的靈感。)'
-        },
-        'E': {
-            title: '正確答案：(B)',
-            desc: '解析：題幹提到「吸引了十多位優秀的申請者」，這表示該校有「教學職缺」。',
-            example: 'career (生涯)、expectation (期待)、inspiration (靈感) 在此處邏輯上無法被「申請 (applicants)」。'
-        },
-        'F': {
-            title: '林威老師的話',
-            desc: '衍生詞與音標學習：',
-            detail: `
-                <h4>1. vacant (形容詞)</h4>
-                <p>KK: [ˈvekənt] | 中文：空的；未被佔用的</p>
-                <h4>2. expect (動詞)</h4>
-                <p>KK: [ɪkˈspɛkt] | 中文：期待；預料</p>
-                <h4>3. inspire (動詞)</h4>
-                <p>KK: [ɪnˈspaɪr] | 中文：鼓舞；啟發</p>
-                <h4>4. inspirational (形容詞)</h4>
-                <p>KK: [ˌɪnspəˈreʃənəl] | 中文：具啟發性的</p>
-            `
-        },
-        'G': {
-            title: '衍生詞更多例句',
-            detail: `
-                <div class="example-box">1. Is this seat <b>vacant</b>?<br>(這個座位有人坐嗎？)</div>
-                <div class="example-box">2. We <b>expect</b> our team to win the championship.<br>(我們預期我們的隊伍會贏得冠軍。)</div>
-                <div class="example-box">3. Her courage <b>inspired</b> me to try again.<br>(她的勇氣激勵我再次嘗試。)</div>
-                <div class="example-box">4. He gave an <b>inspirational</b> speech to the graduates.<br>(他對畢業生發表了一場激勵人心的演說。)</div>
-            `
-        },
-        'H': {
-            title: '台灣學測必備片語',
-            detail: `
-                <h4>1. end up (結果變成...)</h4>
-                <p>例句：If you keep lying, you will end up in trouble.<br>(如果你繼續撒謊，最後會惹上麻煩。)</p>
-                <h4>2. turn to... for... (向...尋求...)</h4>
-                <p>例句：Many people turn to the internet for health advice.<br>(許多人會向網路尋求健康建議。)</p>
-            `
-        }
+  <script>
+    const palette = {
+      "高頻核心": "#2f6fdd",
+      "閱讀進階": "#00857a",
+      "題目關鍵": "#c46210",
+      "文化地理": "#7057d2",
+      "易混詞形": "#c43d61"
     };
 
-    function showOverlay(key) {
-        const item = data[key];
-        let html = `<div class="overlay-title">${item.title}</div>`;
-        if(item.desc) html += `<p>${item.desc}</p>`;
-        if(item.example) html += `<div class="example-box"><b>例句：</b><br>${item.example}</div>`;
-        if(item.detail) html += `<div>${item.detail}</div>`;
-        
-        document.getElementById('contentArea').innerHTML = html;
-        document.getElementById('infoOverlay').style.display = 'block';
+    const words = [
+      {w:"assaulted", pos:"v.", zh:"攻擊；襲擊", cat:"題目關鍵", ctx:"第 8 題：用玻璃瓶攻擊路人。", ex:["The drunk man assaulted a passer-by outside the station.","那名醉漢在車站外攻擊一位路人。","The guard was assaulted during the robbery.","那名警衛在搶劫過程中遭到襲擊。"]},
+      {w:"compensate", pos:"v.", zh:"補償；彌補", cat:"高頻核心", ctx:"第 16 題干擾選項，常用 compensate for。", ex:["The company compensated customers for the delay.","公司因延誤補償顧客。","A good meal cannot compensate for a lack of sleep.","一頓好餐無法彌補睡眠不足。"]},
+      {w:"condemned", pos:"v.", zh:"譴責；宣告有罪", cat:"題目關鍵", ctx:"第 8 題干擾選項，語氣是批判不是肢體攻擊。", ex:["The mayor condemned the violent behavior.","市長譴責這種暴力行為。","The old building was condemned as unsafe.","那棟老建築被判定為不安全。"]},
+      {w:"dimension", pos:"n.", zh:"尺寸；面向；維度", cat:"閱讀進階", ctx:"第 5 題干擾選項，健康飲食應是 consumption。", ex:["The issue has a cultural dimension.","這個議題有文化層面的意義。","Measure each dimension before buying the shelf.","買架子前先量好每個尺寸。"]},
+      {w:"dreads", pos:"v.", zh:"害怕；畏懼", cat:"題目關鍵", ctx:"第 6 題正解：dread the thought of V-ing。", ex:["Timmy dreads speaking in front of strangers.","提米害怕在陌生人面前說話。","She dreads the day when she must leave home.","她害怕必須離家的那一天。"]},
+      {w:"elbow", pos:"v./n.", zh:"用手肘推擠；手肘", cat:"題目關鍵", ctx:"第 9 題正解：elbow one's way through the crowd。", ex:["I elbowed my way through the crowd.","我從人群中擠出一條路。","He hurt his elbow during the game.","他在比賽中弄傷了手肘。"]},
+      {w:"found", pos:"v.", zh:"創立；建立", cat:"易混詞形", ctx:"不是 find 的過去式時，可作動詞「創立」。", ex:["The school was founded in 1920.","這所學校創立於 1920 年。","They founded a club to protect local culture.","他們創立了一個保護在地文化的社團。"]},
+      {w:"grave", pos:"adj./n.", zh:"嚴重的；墳墓", cat:"題目關鍵", ctx:"第 10 題正解：grave concerns 嚴重關切。", ex:["The shootings raised grave concerns about safety.","槍擊事件引發對安全的嚴重關切。","Visitors placed flowers on the grave.","訪客把花放在墳墓上。"]},
+      {w:"just", pos:"adv./adj.", zh:"只是；剛剛；公正的", cat:"高頻核心", ctx:"文中 just like humans 表示「就像」。", ex:["This rule is not just for students.","這條規則不只是給學生的。","A just leader listens to different voices.","公正的領導者會聽取不同聲音。"]},
+      {w:"overturned", pos:"v.", zh:"翻倒；推翻", cat:"題目關鍵", ctx:"第 8 題干擾選項，常指車或判決被翻轉。", ex:["The strong wind overturned several boats.","強風吹翻了幾艘船。","The court overturned the earlier decision.","法院推翻了先前的判決。"]},
+      {w:"shattered", pos:"v./adj.", zh:"打碎；粉碎的", cat:"題目關鍵", ctx:"第 8 題干擾選項，指玻璃破碎或希望破滅。", ex:["The window was shattered by a stone.","窗戶被石頭打碎了。","His dream was shattered after the accident.","事故後他的夢想破滅了。"]},
+      {w:"smell at", pos:"phr.", zh:"聞；嗅", cat:"易混詞形", ctx:"文中 rhinos smell poop；英文較常說 smell/sniff，而不是 smell at。", ex:["The dog sniffed at the strange package.","狗嗅了嗅那個奇怪的包裹。","Rhinos smell chemicals in each other's poop.","犀牛會聞彼此糞便中的化學物質。"]},
+      {w:"cramming", pos:"v-ing", zh:"臨時抱佛腳；密集準備", cat:"閱讀進階", ctx:"第 21-30 題：students cramming for college exams。", ex:["Many students are cramming for the final exam.","許多學生正在為期末考臨時抱佛腳。","Cramming all night may hurt your memory.","整晚硬背可能傷害記憶力。"]},
+      {w:"enhance", pos:"v.", zh:"提升；增強", cat:"高頻核心", ctx:"第 21-30 題：naps can enhance memory and learning。", ex:["Short naps can enhance concentration.","短暫小睡可以提升專注力。","Pictures enhance the appeal of the book.","圖片提升了這本書的吸引力。"]},
+      {w:"hand", pos:"n./v.", zh:"手；交給；方面", cat:"高頻核心", ctx:"right-hand side 表示右手邊；hand 也常作動詞。", ex:["Please hand your worksheet to the teacher.","請把學習單交給老師。","The shop is on your right-hand side.","那間店在你的右手邊。"]},
+      {w:"manifestations", pos:"n.", zh:"表現；顯示；徵兆", cat:"閱讀進階", ctx:"微笑文章：smiles once seen as manifestations of poor manners。", ex:["Tears can be manifestations of relief.","眼淚可能是鬆了一口氣的表現。","These symptoms are manifestations of stress.","這些症狀是壓力的徵兆。"]},
+      {w:"nappers", pos:"n.", zh:"小睡的人", cat:"閱讀進階", ctx:"habitual nappers 指有固定午睡習慣的人。", ex:["Habitual nappers may feel more refreshed in the afternoon.","有午睡習慣的人下午可能更有精神。","The study compared nappers with non-nappers.","這項研究比較有午睡者和沒有午睡者。"]},
+      {w:"planks", pos:"n.", zh:"木板；厚板", cat:"閱讀進階", ctx:"Endurance 文章：ice buckled the planks。", ex:["The bridge was made of wooden planks.","那座橋由木板製成。","The pressure of the ice bent the ship's planks.","冰的壓力使船板彎曲。"]},
+      {w:"precedence", pos:"n.", zh:"優先；優先權", cat:"閱讀進階", ctx:"smiling 文章：individual rights take precedence over group needs。", ex:["Safety should take precedence over speed.","安全應優先於速度。","In that culture, group harmony takes precedence.","在那種文化中，群體和諧優先。"]},
+      {w:"resort", pos:"v./n.", zh:"訴諸；度假勝地", cat:"高頻核心", ctx:"resort to smiling 表示「訴諸微笑」。", ex:["They resorted to smiling when words failed.","語言不通時，他們只好靠微笑。","The family stayed at a beach resort.","那家人住在海邊度假村。"]},
+      {w:"smiling", pos:"n./v-ing", zh:"微笑；正在笑", cat:"高頻核心", ctx:"篇章結構主題字，注意可作名詞。", ex:["Smiling can make strangers feel welcome.","微笑能讓陌生人感到受歡迎。","She was smiling when she heard the news.","她聽到消息時正在微笑。"]},
+      {w:"stemmed", pos:"v.", zh:"源自；起因於", cat:"閱讀進階", ctx:"absence of smiles stemmed partly from poor dental hygiene。", ex:["The problem stemmed from a simple mistake.","這個問題起因於一個簡單錯誤。","His confidence stemmed from years of practice.","他的自信來自多年的練習。"]},
+      {w:"artisans", pos:"n.", zh:"工匠；手藝人", cat:"文化地理", ctx:"Wonder Village：local artisans 在地工藝師。", ex:["The market sells products made by local artisans.","這個市集販售在地工匠製作的產品。","Artisans keep traditional skills alive.","工匠讓傳統技藝延續下去。"]},
+      {w:"ascend", pos:"v.", zh:"上升；攀登", cat:"題目關鍵", ctx:"螺旋梯文章：attackers ascend one at a time。", ex:["The hikers began to ascend the mountain at dawn.","登山客黎明時開始爬山。","Smoke ascended slowly into the sky.","煙慢慢升上天空。"]},
+      {w:"blip", pos:"n.", zh:"短暫現象；小波動", cat:"題目關鍵", ctx:"第 45 題正解：a temporary state。", ex:["The delay was only a blip in the project.","這次延誤只是專案中的短暫小插曲。","North-up maps may be a historical blip.","北方在上的地圖可能只是歷史上的短暫狀態。"]},
+      {w:"boutique", pos:"n.", zh:"精品店；小型特色店", cat:"文化地理", ctx:"Wonder Village：Beyond World is a boutique。", ex:["She opened a small boutique near the station.","她在車站附近開了一間小精品店。","The boutique sells handmade bags.","這家精品店販售手工包。"]},
+      {w:"descend", pos:"v.", zh:"下降；下來", cat:"題目關鍵", ctx:"螺旋梯題：ascend 與 descend 相對。", ex:["The plane began to descend through the clouds.","飛機開始穿過雲層下降。","It is harder to descend the stairs in the dark.","在黑暗中下樓梯更困難。"]},
+      {w:"eurocentric", pos:"adj.", zh:"以歐洲為中心的", cat:"文化地理", ctx:"地圖文章：maps became Eurocentric。", ex:["The textbook was criticized for its Eurocentric view.","這本教科書因歐洲中心觀點受到批評。","Eurocentric maps often put Europe near the center.","歐洲中心式地圖常把歐洲放在接近中央的位置。"]},
+      {w:"fragrances", pos:"n.", zh:"香氣；香水", cat:"文化地理", ctx:"Aroma Paradise sells customized fragrances。", ex:["The shop offers many natural fragrances.","這家店提供許多天然香氣。","She prefers light fragrances in summer.","她夏天偏好清淡的香水。"]},
+      {w:"gourmet", pos:"adj./n.", zh:"美食的；美食家", cat:"文化地理", ctx:"After Work：gourmet pizzas。", ex:["The restaurant is famous for gourmet pizza.","這家餐廳以美食披薩聞名。","A gourmet cares deeply about flavor.","美食家非常重視味道。"]},
+      {w:"imperialism", pos:"n.", zh:"帝國主義", cat:"文化地理", ctx:"地圖文章：European imperialism established north-up maps。", ex:["Imperialism changed trade routes and maps.","帝國主義改變了貿易路線與地圖。","The course discusses the history of imperialism.","這門課討論帝國主義的歷史。"]},
+      {w:"layouts", pos:"n.", zh:"版面；配置；布局", cat:"閱讀進階", ctx:"GPS maps：layouts are dynamic。", ex:["The app offers several map layouts.","這個應用程式提供好幾種地圖配置。","Clear layouts help readers find information quickly.","清楚的版面能幫助讀者快速找到資訊。"]},
+      {w:"marble", pos:"n.", zh:"大理石", cat:"文化地理", ctx:"螺旋梯文章：steps carved in stone and marble。", ex:["The museum has a marble staircase.","博物館有一座大理石樓梯。","The statue was carved from white marble.","那座雕像由白色大理石雕成。"]},
+      {w:"mecca", pos:"n.", zh:"麥加；嚮往之地", cat:"文化地理", ctx:"地圖文章指 Islamic holy city Mecca。", ex:["Mecca is a holy city for Muslims.","麥加是穆斯林的聖城。","The district became a mecca for coffee lovers.","這個地區成了咖啡愛好者嚮往之地。"]},
+      {w:"orientation", pos:"n.", zh:"方向；取向；迎新", cat:"題目關鍵", ctx:"地圖文章主題：map orientation。", ex:["Map orientation has changed over time.","地圖方向隨時間改變。","Freshmen attended orientation before classes began.","新生在開課前參加迎新。"]},
+      {w:"oriented", pos:"adj./v.", zh:"朝向的；以……為導向的", cat:"題目關鍵", ctx:"maps were oriented to the east。", ex:["Ancient maps were often oriented toward the east.","古代地圖常朝向東方。","The course is practice-oriented.","這門課以實作為導向。"]},
+      {w:"prominent", pos:"adj.", zh:"顯著的；重要的；知名的", cat:"閱讀進階", ctx:"螺旋梯文章：a prominent structure。", ex:["The tower is a prominent feature of the city.","這座塔是該城市顯著的特色。","She became a prominent scientist.","她成為一位知名科學家。"]},
+      {w:"rejoiced", pos:"v.", zh:"欣喜；高興", cat:"文化地理", ctx:"Wonder Village：beer lovers rejoiced。", ex:["Fans rejoiced when the team won.","球隊獲勝時，粉絲欣喜若狂。","Local residents rejoiced at the news.","當地居民聽到消息後很高興。"]},
+      {w:"sparkling", pos:"adj.", zh:"閃閃發光的；氣泡的", cat:"文化地理", ctx:"Wonder Village：sparkling coastline。", ex:["The village lies along a sparkling coastline.","這個村落位於閃閃發光的海岸線旁。","She ordered a bottle of sparkling water.","她點了一瓶氣泡水。"]},
+      {w:"blend", pos:"v./n.", zh:"混合；融合", cat:"易混詞形", ctx:"第 48 學生寫原形，正確句型需填 blended。", ex:["The restaurant blends local food with foreign flavors.","這家餐廳融合在地食物與外國風味。","The tea is a blend of several herbs.","這種茶是數種草本的混合。"]},
+      {w:"innovation", pos:"n.", zh:"創新", cat:"易混詞形", ctx:"第 47 正解：tradition coexists with innovation。", ex:["Innovation keeps old traditions alive in new ways.","創新讓老傳統以新方式延續。","The company is known for technological innovation.","這家公司以科技創新聞名。"]}
+    ];
+
+    const filters = ["全部", ...Array.from(new Set(words.map(item => item.cat)))];
+    const filtersEl = document.querySelector("#filters");
+    const cardsEl = document.querySelector("#cards");
+
+    function render(filter = "全部") {
+      document.querySelectorAll("button[data-filter]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.filter === filter);
+      });
+
+      const list = filter === "全部" ? words : words.filter(item => item.cat === filter);
+      cardsEl.innerHTML = list.map(item => `
+        <article class="card" style="--accent:${palette[item.cat]}">
+          <div class="card-head" style="border-top-color:${palette[item.cat]}">
+            <div class="word"><strong style="color:#243040">${item.w}</strong><span class="tag">${item.cat}</span></div>
+            <div class="meaning">${item.pos} ${item.zh}</div>
+          </div>
+          <div class="card-body">
+            <div class="context">${item.ctx}</div>
+            <div class="examples">
+              <div class="example"><b>1.</b> ${item.ex[0]}<div class="zh">${item.ex[1]}</div></div>
+              <div class="example"><b>2.</b> ${item.ex[2]}<div class="zh">${item.ex[3]}</div></div>
+            </div>
+          </div>
+        </article>
+      `).join("");
     }
 
-    function closeOverlay() {
-        document.getElementById('infoOverlay').style.display = 'none';
-    }
-</script>
-
+    filtersEl.innerHTML = filters.map((name, index) => `
+      <button type="button" data-filter="${name}" class="${index === 0 ? "active" : ""}">${name}</button>
+    `).join("");
+    filtersEl.addEventListener("click", event => {
+      const button = event.target.closest("button[data-filter]");
+      if (button) render(button.dataset.filter);
+    });
+    render();
+  </script>
 </body>
 </html>
