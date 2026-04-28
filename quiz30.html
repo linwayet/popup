@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Article 2026-04-28 Fake News Travels Faster than Real News</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F8F4ED;
+  --paper:#FFFCF8;
+  --ink:#2D2A26;
+  --line:#D8C9B6;
+  --main:#8B5E3C;
+  --sub:#D4A574;
+  --hero:#F4E8D9;
+  --hero-line:#B78C67;
+  --credit:#2F6FB3;
+  --deep-complement:#C86422;
+  --section1:#1A3C5E;
+  --section2:#2E7D32;
+  --section2bg:#F1F8E9;
+  --section3:#1565C0;
+  --section3bg:#E3F2FD;
+  --section4:#6A1B9A;
+  --section4bg:#F3E5F5;
+  --section5:#E65100;
+  --section5bg:#FFF3E0;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#FCF8F2 0%,var(--bg) 100%);
+  color:var(--ink);
+  font-family:"BIZ UDPGothic",sans-serif;
+  font-size:22px;
+  line-height:1.8;
+  font-weight:400;
+  font-style:normal;
+  padding:24px 12px 56px;
+}
+.page{max-width:720px;margin:0 auto}
+.hero{
+  background:
+    radial-gradient(circle at top left,rgba(212,165,116,.3),transparent 32%),
+    radial-gradient(circle at bottom right,rgba(139,94,60,.16),transparent 28%),
+    var(--hero);
+  border:3px solid var(--hero-line);
+  border-radius:24px;
+  padding:26px 22px 20px;
+  text-align:center;
+  box-shadow:0 16px 34px rgba(110,82,52,.11);
+}
+.hero-frame{
+  border:2px solid rgba(139,94,60,.56);
+  border-radius:18px;
+  padding:18px 14px;
+  background:rgba(255,255,255,.58);
+}
+h1{
+  margin:0;
+  color:var(--main);
+  font-size:34px;
+  line-height:1.3;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.subtitle{
+  margin:12px 0 0;
+  font-size:24px;
+  color:#744A2F;
+  font-weight:700;
+}
+.credit{
+  margin:10px 0 0;
+  font-size:24px;
+  color:var(--credit);
+  font-weight:700;
+  letter-spacing:.05em;
+  text-shadow:1px 1px 0 rgba(255,255,255,.75);
+}
+section{margin-top:26px}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 12px 28px rgba(91,67,42,.08);
+}
+.section-head{
+  color:#fff;
+  padding:16px 20px;
+  font-size:26px;
+  font-weight:700;
+}
+.head-1{background:var(--section1)}
+.head-2{background:var(--section2)}
+.head-3{background:var(--section3)}
+.head-4{background:var(--section4)}
+.head-5{background:var(--section5)}
+.body{padding:22px 22px 26px;background:#fff}
+.body-2{background:var(--section2bg)}
+.body-3{background:var(--section3bg)}
+.body-4{background:var(--section4bg)}
+.body-5{background:var(--section5bg)}
+.article-meta{
+  margin:0 0 14px;
+  padding:12px 14px;
+  background:#F9F3EA;
+  border-left:6px solid var(--main);
+  border-radius:14px;
+  font-weight:700;
+}
+.article-text p{margin:14px 0}
+.key{color:var(--deep-complement);font-weight:700}
+.analysis-item,.vocab-item,.phrase-item,.grammar-point{
+  margin-top:20px;
+  padding-top:20px;
+  border-top:1px solid rgba(45,42,38,.14);
+}
+.analysis-item:first-child,.vocab-item:first-child,.phrase-item:first-child,.grammar-point:first-child{
+  margin-top:0;
+  padding-top:0;
+  border-top:none;
+}
+.analysis-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+.num{
+  width:44px;
+  height:44px;
+  min-width:44px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--section2);
+  color:#fff;
+  font-weight:700;
+  font-size:22px;
+}
+.quote{
+  margin:0;
+  padding:14px 16px;
+  background:rgba(255,255,255,.7);
+  border-radius:14px;
+  border-left:6px solid rgba(46,125,50,.56);
+}
+.label{font-weight:700;color:#5C3C1D}
+.subbox{
+  margin-top:10px;
+  padding:14px 16px;
+  background:rgba(255,255,255,.74);
+  border-radius:14px;
+}
+.vocab-top{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  flex-wrap:wrap;
+}
+.vocab-no{
+  width:38px;
+  height:38px;
+  min-width:38px;
+  border-radius:50%;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--section3);
+  color:#fff;
+  font-weight:700;
+  font-size:18px;
+}
+.word{font-size:29px;color:var(--section3);font-weight:700}
+.kk{font-size:18px;color:#8B5E3C}
+.vline{margin:8px 0}
+.tag{
+  display:inline-block;
+  min-height:44px;
+  padding:8px 14px;
+  border-radius:999px;
+  color:#fff;
+  font-size:16px;
+  font-weight:700;
+  vertical-align:middle;
+  margin:2px 8px 2px 0;
+}
+.t-deriv{background:#2E7D32}
+.t-idiom{background:#6A1B9A}
+.t-syn{background:#1565C0}
+.t-confuse{background:#795548}
+.t-root{background:#BF5B17}
+.t-pattern{background:#A84300}
+ul{margin:10px 0 0 24px;padding:0}
+li{margin:10px 0}
+.phrase{font-size:25px;font-weight:700;color:var(--section4)}
+blockquote{
+  margin:10px 0;
+  padding:14px 16px;
+  background:rgba(255,255,255,.72);
+  border-left:6px solid rgba(230,81,0,.55);
+  border-radius:12px;
+}
+details{
+  margin-top:20px;
+  border:2px solid var(--sub);
+  border-radius:18px;
+  overflow:hidden;
+  background:var(--paper);
+}
+summary{
+  list-style:none;
+  cursor:pointer;
+  min-height:72px;
+  padding:18px 20px;
+  background:var(--main);
+  color:#fff;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  font-weight:700;
+  font-size:24px;
+}
+summary::-webkit-details-marker{display:none}
+.arrow{transition:transform .3s ease}
+details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:18px 20px 22px}
+.chip-wrap{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:14px}
+.chip{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:8px 14px;
+  border-radius:999px;
+  background:#F2E1CB;
+  color:#704728;
+  border:1px solid #CDA77D;
+  font-weight:700;
+  font-size:18px;
+}
+.prefix-item,.suffix-item{
+  padding:10px 0;
+  border-bottom:1px solid var(--line);
+}
+.prefix-item:last-child,.suffix-item:last-child{border-bottom:none}
+.mini-title{
+  margin:0 0 10px;
+  font-size:21px;
+  color:#6B4726;
+  font-weight:700;
+}
+@media (max-width:720px){
+  body{font-size:20px;padding:18px 10px 42px}
+  h1{font-size:30px}
+  .subtitle,.credit{font-size:22px}
+  .section-head{font-size:24px}
+  .word{font-size:25px}
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <div class="hero-frame">
+      <h1>Fake News Travels Faster than Real News</h1>
+      <p class="subtitle">真假？假新聞傳遞快過真新聞</p>
+      <p class="credit">林威老師與AI agent 團隊製作</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-head head-1">區塊一：文章原文</div>
+    <div class="body">
+      <p class="article-meta"><strong>Title:</strong> Fake News Travels Faster than Real News</p>
+      <div class="article-text">
+        <p><span class="key">Fake news</span> often <span class="key">spreads</span> faster and farther than real news on social media. This can be dangerous for teenagers, because it may change how people think, vote, or even how they feel about their own <span class="key">safety</span>.</p>
+        <p>One large <span class="key">study</span> from MIT looked at more than 120,000 stories on Twitter over 10 years. The <span class="key">researchers</span> found that fake news was about 70 percent more likely to be <span class="key">retweeted</span> than true news. It also reached 1,500 people about six times faster than real news did, and the most popular fake stories could be seen by up to 100,000 users, while most true stories were rarely shared beyond 1,000 people. <span class="key">Surprisingly</span>, it was normal users, not bots, who mainly helped fake news travel “farther, faster, deeper, and more broadly” than the truth.</p>
+        <p>Why does this happen? Fake news is often more <span class="key">novel</span>, <span class="key">emotional</span>, and <span class="key">shocking</span>, so people feel excited, angry, or afraid and quickly share it without checking the facts. When a message <span class="key">matches</span> our beliefs or makes us feel strong emotions, we are more likely to believe it and <span class="key">pass it on</span>. For senior high school students, this means you should slow down, think carefully, and check <span class="key">reliable sources</span> before pressing “share”, especially during important events like elections or disasters.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-head head-2">區塊二：8句精讀</div>
+    <div class="body body-2">
+      <div class="analysis-item">
+        <div class="analysis-title"><span class="num">1</span><strong>句型精讀</strong></div>
+        <p class="quote"><span class="label">📌 原句：</span>Fake news often spreads faster and farther than real news on social media.</p>
+        <div class="subbox">
+          <p><span class="label">🇹🇼 中文翻譯：</span>假新聞在社群媒體上通常比真新聞傳播得更快、也更遠。</p>
+          <p><span class="label">🔬 文法解析：</span>這一句使用比較級結構 <strong>faster and farther than</strong>，用來直接比較假新聞與真新聞的傳播效果。句尾的 <strong>on social media</strong> 是介系詞片語，補充說明傳播發生的場域。</p>
+          <p><span class="label">✨ 亮點詞彙：</span>spread 傳播；farther 更遠；social media 社群媒體</p>
+        </div>
+      </div>
+
+      <div class="analysis-item">
+        <div class="analysis-title"><span class="num">2</span><strong>句型精讀</strong></div>
+        <p class="quote"><span class="label">📌 原句：</span>This can be dangerous for teenagers, because it may change how people think, vote, or even how they feel about their own safety.</p>
+        <div class="subbox">
+          <p><span class="label">🇹🇼 中文翻譯：</span>這對青少年可能很危險，因為它可能改變人們如何思考、如何投票，甚至如何看待自己的安全。</p>
+          <p><span class="label">🔬 文法解析：</span>主句後面接上 <strong>because</strong> 原因子句，說明為什麼這件事危險。子句中兩次出現的 <strong>how</strong> 引導名詞子句，分別當作 <strong>change</strong> 的受詞內容。</p>
+          <p><span class="label">✨ 亮點詞彙：</span>dangerous 危險的；safety 安全；vote 投票</p>
+        </div>
+      </div>
+
+      <div class="analysis-item">
+        <div class="analysis-title"><span class="num">3</span><strong>句型精讀</strong></div>
+        <p class="quote"><span class="label">📌 原句：</span>The researchers found that fake news was about 70 percent more likely to be retweeted than true news.</p>
+        <div class="subbox">
+          <p><span class="label">🇹🇼 中文翻譯：</span>研究人員發現，假新聞被轉推的可能性大約比真新聞高出百分之七十。</p>
+          <p><span class="label">🔬 文法解析：</span>本句用 <strong>found that...</strong> 來引導研究發現，是典型的 that 名詞子句作受詞。後面的 <strong>more likely to be retweeted</strong> 是「更可能被轉推」的表達，結合比較級與被動語態。</p>
+          <p><span class="label">✨ 亮點詞彙：</span>researcher 研究人員；likely 可能的；retweeted 被轉推的</p>
+        </div>
+      </div>
+
+      <div class="analysis-item">
+        <div class="analysis-title"><span class="num">4</span><strong>句型精讀</strong></div>
+        <p class="quote"><span class="label">📌 原句：</span>It also reached 1,500 people about six times faster than real news did, and the most popular fake stories could be seen by up to 100,000 users, while most true stories were rarely shared beyond 1,000 people.</p>
+        <div class="subbox">
+          <p><span class="label">🇹🇼 中文翻譯：</span>它傳到一千五百人的速度也比真新聞快了大約六倍，而最熱門的假新聞甚至可能被多達十萬名使用者看見；相較之下，多數真新聞很少被分享超過一千人。</p>
+          <p><span class="label">🔬 文法解析：</span>這一句包含三段資訊，分別用 <strong>and</strong> 與 <strong>while</strong> 串接。這裡的 <strong>while</strong> 表示對比，不是時間；此外 <strong>could be seen</strong> 和 <strong>were rarely shared</strong> 都是被動語態。</p>
+          <p><span class="label">✨ 亮點詞彙：</span>reach 觸及；up to 多達；beyond 超過</p>
+        </div>
+      </div>
+
+      <div class="analysis-item">
+        <div class="analysis-title"><span class="num">5</span><strong>句型精讀</strong></div>
+        <p class="quote"><span class="label">📌 原句：</span>Surprisingly, it was normal users, not bots, who mainly helped fake news travel “farther, faster, deeper, and more broadly” than the truth.</p>
+        <div class="subbox">
+          <p><span class="label">🇹🇼 中文翻譯：</span>令人驚訝的是，主要幫助假新聞比真相傳得更遠、更快、更深、更廣的，其實是一般使用者，而不是機器人。</p>
+          <p><span class="label">🔬 文法解析：</span>這是強調句型 <strong>It was ... who ...</strong>，用來特別凸顯真正造成影響的對象。中間的 <strong>not bots</strong> 為插入對比語，進一步強化「不是機器人，而是普通人」這個重點。</p>
+          <p><span class="label">✨ 亮點詞彙：</span>surprisingly 令人驚訝地；bots 機器人帳號；broadly 廣泛地</p>
+        </div>
+      </div>
+
+      <div class="analysis-item">
+        <div class="analysis-title"><span class="num">6</span><strong>句型精讀</strong></div>
+        <p class="quote"><span class="label">📌 原句：</span>Fake news is often more novel, emotional, and shocking, so people feel excited, angry, or afraid and quickly share it without checking the facts.</p>
+        <div class="subbox">
+          <p><span class="label">🇹🇼 中文翻譯：</span>假新聞通常更新奇、更情緒化，也更令人震驚，所以人們會感到興奮、生氣或害怕，並在沒有查證事實的情況下迅速分享它。</p>
+          <p><span class="label">🔬 文法解析：</span>主句先用三個形容詞比較級描述假新聞的特性，後面再以 <strong>so</strong> 連接結果。句尾的 <strong>without checking the facts</strong> 是介系詞加動名詞結構，用來補充分享時缺少查證的方式。</p>
+          <p><span class="label">✨ 亮點詞彙：</span>novel 新奇的；shocking 令人震驚的；facts 事實</p>
+        </div>
+      </div>
+
+      <div class="analysis-item">
+        <div class="analysis-title"><span class="num">7</span><strong>句型精讀</strong></div>
+        <p class="quote"><span class="label">📌 原句：</span>When a message matches our beliefs or makes us feel strong emotions, we are more likely to believe it and pass it on.</p>
+        <div class="subbox">
+          <p><span class="label">🇹🇼 中文翻譯：</span>當一則訊息符合我們的信念，或讓我們產生強烈情緒時，我們就更可能相信它，並把它傳出去。</p>
+          <p><span class="label">🔬 文法解析：</span>句首的 <strong>When</strong> 子句說明某種情況發生時的反應。主句中的 <strong>be more likely to + V</strong> 是很重要的機率句型，用來表達「更可能做某事」。</p>
+          <p><span class="label">✨ 亮點詞彙：</span>match 符合；belief 信念；pass it on 傳出去</p>
+        </div>
+      </div>
+
+      <div class="analysis-item">
+        <div class="analysis-title"><span class="num">8</span><strong>句型精讀</strong></div>
+        <p class="quote"><span class="label">📌 原句：</span>For senior high school students, this means you should slow down, think carefully, and check reliable sources before pressing “share”, especially during important events like elections or disasters.</p>
+        <div class="subbox">
+          <p><span class="label">🇹🇼 中文翻譯：</span>對高中生來說，這代表你應該先慢下來、仔細思考，並在按下「分享」之前查核可靠的資訊來源，尤其是在選舉或災難等重要事件期間。</p>
+          <p><span class="label">🔬 文法解析：</span>這一句以 <strong>should</strong> 帶出建議語氣，後面連續接三個原形動詞 <strong>slow down</strong>、<strong>think</strong>、<strong>check</strong>，形成平行結構。<strong>before pressing “share”</strong> 則是時間概念的介系詞片語，強調分享前的行動。</p>
+          <p><span class="label">✨ 亮點詞彙：</span>reliable 可靠的；source 來源；election 選舉</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-head head-3">區塊三：單字表</div>
+    <div class="body body-3">
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">1</span><span class="word">spread</span><span class="kk">[sprɛd]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>v. 傳播；擴散</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> spreading (n./adj. 傳播；擴散中的)；spreader (n. 傳播者)；widespread (adj. 廣泛的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> spread quickly 快速傳播；widely spread information 廣泛流傳的資訊；spread on social media 在社群媒體上傳播</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> circulate 流傳；distribute 散布</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> spread 傳播；broadcast 廣播；expand 擴大</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> spread + adv. / spread through + place</p>
+        <ul>
+          <li>Fake news often spreads faster and farther than real news on social media.<br>（假新聞在社群媒體上通常比真新聞傳播得更快也更遠。）</li>
+          <li>Rumors can spread quickly when people share them without thinking.<br>（當人們未經思考就轉傳時，謠言會迅速擴散。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">2</span><span class="word">safety</span><span class="kk">[ˈsefti]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 安全</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> safe (adj. 安全的)；safely (adv. 安全地)；unsafe (adj. 不安全的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> personal safety 個人安全；public safety 公共安全；a serious safety concern 嚴重的安全疑慮</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> security 安全保障；protection 保護</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> safety 安全；privacy 隱私</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> feel about your own safety / threaten safety</p>
+        <ul>
+          <li>Fake news may change how people feel about their own safety.<br>（假新聞可能改變人們對自身安全的感受。）</li>
+          <li>False disaster reports can seriously affect public safety.<br>（錯誤的災難報導可能嚴重影響公共安全。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">3</span><span class="word">researcher</span><span class="kk">[rɪˈsɝtʃɚ]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 研究人員</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> research (n./v. 研究)；researching (adj. 進行研究的)；research-based (adj. 以研究為基礎的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> a leading researcher 領先研究人員；academic researcher 學術研究人員；research findings 研究發現</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> investigator 研究者；scholar 學者</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> researcher 研究人員；reporter 記者</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> researchers found that... / a researcher at + place</p>
+        <ul>
+          <li>The researchers found that fake news was about 70 percent more likely to be retweeted than true news.<br>（研究人員發現，假新聞被轉推的可能性大約比真新聞高出百分之七十。）</li>
+          <li>The researcher at the university studied online behavior for years.<br>（那位大學研究人員研究網路行為多年。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">4</span><span class="word">retweet</span><span class="kk">[riˈtwit]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>v./n. 轉推</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> retweeted (adj./p.p. 已被轉推的)；retweeting (n. 轉推行為)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> widely retweeted 被大量轉推；retweet a post 轉推貼文；a viral retweet 爆紅轉推</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> repost 轉貼；share 分享</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> retweet 轉推；reply 回覆；quote repost 引述轉發</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> be retweeted / retweet + message</p>
+        <ul>
+          <li>Fake news was about 70 percent more likely to be retweeted than true news.<br>（假新聞被轉推的可能性大約比真新聞高出百分之七十。）</li>
+          <li>Students should not retweet a message before checking the facts.<br>（學生在查證事實前不應轉推訊息。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">5</span><span class="word">surprisingly</span><span class="kk">[sɚˈpraɪzɪŋli]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>adv. 令人驚訝地</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> surprise (n./v. 驚訝)；surprising (adj. 令人驚訝的)；surprised (adj. 感到驚訝的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> surprisingly common 出乎意料地常見；surprisingly fast 出乎意料地快；quite surprisingly 相當令人驚訝地</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> unexpectedly 出乎意料地；amazingly 驚人地</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> surprisingly 令人驚訝地；suddenly 突然地</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> surprisingly, + sentence</p>
+        <ul>
+          <li>Surprisingly, it was normal users, not bots, who mainly helped fake news travel farther than the truth.<br>（令人驚訝的是，主要幫助假新聞比真相傳得更遠的，是一般使用者而不是機器人。）</li>
+          <li>Surprisingly, many people still trust headlines without opening the article.<br>（令人驚訝的是，許多人仍然只看標題就相信內容。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">6</span><span class="word">broadly</span><span class="kk">[ˈbrɔdli]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>adv. 廣泛地；大致上</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> broad (adj. 廣的)；broaden (v. 擴展)；breadth (n. 寬度；廣度)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> more broadly 更廣泛地；broadly accepted 廣泛被接受的；broadly speaking 大致而言</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> widely 廣泛地；extensively 廣泛地</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> broadly 廣泛地；roughly 粗略地</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> travel broadly / broadly speaking</p>
+        <ul>
+          <li>Normal users helped fake news travel farther, faster, deeper, and more broadly than the truth.<br>（一般使用者幫助假新聞比真相傳得更遠、更快、更深、更廣。）</li>
+          <li>The rumor was broadly discussed across several online platforms.<br>（那則謠言在多個網路平台上被廣泛討論。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">7</span><span class="word">novel</span><span class="kk">[ˈnɑvəl]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>adj. 新奇的；新穎的</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> novelty (n. 新奇)；innovative (adj. 創新的)；innovation (n. 創新)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> highly novel 非常新奇的；a novel idea 新穎的想法；novel information 新奇資訊</p>
+        <p class="vline"><span class="tag t-root">字根</span> nov「新」：novelty 新奇；novice 新手；innovation 創新；renovate 翻新</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> original 原創的；new 新穎的</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> novel 新奇的；novel 小說</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> be novel / a novel + N</p>
+        <ul>
+          <li>Fake news is often more novel, emotional, and shocking.<br>（假新聞通常更新奇、更情緒化，也更令人震驚。）</li>
+          <li>A novel headline can attract clicks even when the content is weak.<br>（即使內容薄弱，新奇的標題仍可能吸引點擊。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">8</span><span class="word">emotional</span><span class="kk">[ɪˈmoʃənəl]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>adj. 情緒化的；情感的</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> emotion (n. 情緒)；emotionally (adv. 情緒上地)；emotionless (adj. 無表情的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> highly emotional 非常情緒化的；emotional reaction 情緒反應；emotionally charged 帶有強烈情緒的</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> sensitive 敏感的；passionate 情感強烈的</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> emotional 情緒化的；logical 理性的</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> be emotional / emotional + N</p>
+        <ul>
+          <li>Fake news is often more novel, emotional, and shocking.<br>（假新聞通常更新奇、更情緒化，也更令人震驚。）</li>
+          <li>An emotional message may spread faster than a careful explanation.<br>（情緒化的訊息可能比審慎的說明傳得更快。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">9</span><span class="word">shocking</span><span class="kk">[ˈʃɑkɪŋ]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>adj. 令人震驚的</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> shock (n./v. 震驚)；shocked (adj. 感到震驚的)；shockingly (adv. 令人震驚地)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> deeply shocking 非常震驚的；a shocking claim 聳動說法；shockingly false 極其失真的</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> startling 令人驚訝的；disturbing 令人不安的</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> shocking 令人震驚的；surprising 令人驚訝的</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> a shocking + N / be shocking to...</p>
+        <ul>
+          <li>Fake news is often more novel, emotional, and shocking.<br>（假新聞通常更新奇、更情緒化，也更令人震驚。）</li>
+          <li>The video used a shocking title to attract young viewers.<br>（那支影片用了聳動標題來吸引年輕觀眾。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">10</span><span class="word">belief</span><span class="kk">[bɪˈlif]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 信念；看法</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> believe (v. 相信)；believable (adj. 可信的)；unbelievable (adj. 難以置信的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> personal beliefs 個人信念；a strong belief 強烈信念；widely held beliefs 廣泛持有的看法</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> opinion 看法；conviction 信念</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> belief 信念；fact 事實</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> match our beliefs / belief in + N</p>
+        <ul>
+          <li>When a message matches our beliefs, we are more likely to believe it and pass it on.<br>（當一則訊息符合我們的信念時，我們就更可能相信它並把它傳出去。）</li>
+          <li>People often protect their beliefs even when new evidence appears.<br>（即使新證據出現，人們仍常維護自己的信念。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">11</span><span class="word">reliable</span><span class="kk">[rɪˈlaɪəbəl]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>adj. 可靠的</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> rely (v. 依賴)；reliability (n. 可靠性)；unreliable (adj. 不可靠的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> reliable sources 可靠來源；highly reliable 非常可靠的；a reliable report 可信的報導</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> trustworthy 值得信賴的；dependable 可靠的</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> reliable 可靠的；available 可取得的</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> check reliable sources / be reliable for...</p>
+        <ul>
+          <li>You should check reliable sources before pressing “share”.<br>（你應該在按下「分享」之前查核可靠的資訊來源。）</li>
+          <li>A reliable news site usually shows evidence and clear dates.<br>（可靠的新聞網站通常會提供證據與清楚日期。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">12</span><span class="word">source</span><span class="kk">[sors]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 來源；消息來源</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> source-based (adj. 以來源為基礎的)；resource (n. 資源)；sourcing (n. 尋找來源)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> a reliable source 可靠來源；primary source 第一手來源；news source 新聞來源</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> origin 來源；reference 參考來源</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> source 來源；resource 資源</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> source of + N / check sources before...</p>
+        <ul>
+          <li>Students should check reliable sources before pressing “share”.<br>（學生在按下「分享」之前應該查核可靠的資訊來源。）</li>
+          <li>The article did not name its source, so readers became suspicious.<br>（那篇文章沒有說明消息來源，所以讀者開始懷疑。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">13</span><span class="word">normal</span><span class="kk">[ˈnɔrməl]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>adj. 一般的；正常的</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> normally (adv. 通常)；abnormal (adj. 異常的)；normality (n. 正常狀態)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> normal users 一般使用者；perfectly normal 完全正常的；normally active users 通常活躍的使用者</p>
+        <p class="vline"><span class="tag t-root">字根</span> norm「規範」：normality 正常狀態；abnormal 異常的；normalize 正常化</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> ordinary 普通的；regular 一般的</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> normal 一般的；formal 正式的</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> normal + N / it is normal to...</p>
+        <ul>
+          <li>It was normal users, not bots, who mainly helped fake news travel farther than the truth.<br>（主要幫助假新聞比真相傳得更遠的，是一般使用者，而不是機器人。）</li>
+          <li>Normal users can become major spreaders of false information.<br>（一般使用者也可能成為假訊息的重要傳播者。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">14</span><span class="word">bot</span><span class="kk">[bɑt]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 機器人帳號；自動程式</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> bot-driven (adj. 由機器人帶動的)；botnet (n. 機器人網路)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> automated bots 自動機器人帳號；a bot account 機器人帳號；bot activity 機器人活動</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> automated account 自動化帳號</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> bot 機器人帳號；robot 機器人</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> not bots but users / bots spread...</p>
+        <ul>
+          <li>It was normal users, not bots, who mainly helped fake news travel farther than the truth.<br>（主要幫助假新聞比真相傳得更遠的，是一般使用者，而不是機器人。）</li>
+          <li>Some students think every false post comes from bots, but that is not always true.<br>（有些學生以為每則假訊息都來自機器人，但那並不總是正確。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">15</span><span class="word">fact</span><span class="kk">[fækt]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 事實</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> factual (adj. 根據事實的)；fact-check (v. 查核事實)；fact-checking (n. 事實查核)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> check the facts 查證事實；basic facts 基本事實；fact-based report 以事實為基礎的報導</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> truth 事實真相；reality 現實</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> fact 事實；opinion 意見</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> check the facts / facts about + N</p>
+        <ul>
+          <li>People quickly share fake news without checking the facts.<br>（人們常在沒有查證事實的情況下迅速分享假新聞。）</li>
+          <li>Before posting a comment, you should make sure the facts are correct.<br>（在發文評論之前，你應先確認事實是否正確。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">16</span><span class="word">disaster</span><span class="kk">[dɪˈzæstɚ]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 災難</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> disastrous (adj. 災難性的)；disaster-related (adj. 與災害有關的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> a natural disaster 天然災害；major disaster 重大災難；disaster warning 災難警報</p>
+        <p class="vline"><span class="tag t-root">字根</span> astro「星」：astronaut 太空人；astronomy 天文學；asteroid 小行星；disaster 災禍</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> catastrophe 巨大災難；calamity 災禍</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> disaster 災難；accident 意外</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> during disasters / disaster + N</p>
+        <ul>
+          <li>Students should be especially careful during important events like elections or disasters.<br>（學生在選舉或災難等重要事件期間尤其要小心。）</li>
+          <li>False disaster messages can cause panic in a community.<br>（錯誤的災難訊息可能在社區中引發恐慌。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">17</span><span class="word">election</span><span class="kk">[ɪˈlɛkʃən]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 選舉</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> elect (v. 選出)；elected (adj. 當選的)；electoral (adj. 選舉的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> a national election 全國選舉；election news 選舉新聞；election campaign 選舉活動</p>
+        <p class="vline"><span class="tag t-root">字根</span> lect「收集／選擇」：selection 選擇；election 選舉；collect 收集；intellect 智力</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> vote 選舉投票；poll 選舉</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> election 選舉；selection 選擇</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> during elections / election + N</p>
+        <ul>
+          <li>Students should check reliable sources especially during important events like elections.<br>（學生在選舉等重要事件期間尤其應該查核可靠來源。）</li>
+          <li>Fake news can influence public opinion during an election season.<br>（假新聞可能在選舉期間影響大眾意見。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">18</span><span class="word">belief</span><span class="kk">[bɪˈlif]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 信念；信仰</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> believe (v. 相信)；believer (n. 相信者)；believable (adj. 可信的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> strong beliefs 強烈信念；political beliefs 政治立場；belief system 信念系統</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> conviction 信念；viewpoint 觀點</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> belief 信念；value 價值觀</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> match beliefs / beliefs about + N</p>
+        <ul>
+          <li>When a message matches our beliefs, we are more likely to believe it.<br>（當一則訊息符合我們的信念時，我們就更可能相信它。）</li>
+          <li>Online posts often grow popular when they match readers’ existing beliefs.<br>（當網路貼文符合讀者既有信念時，常常更容易爆紅。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">19</span><span class="word">emotion</span><span class="kk">[ɪˈmoʃən]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 情緒</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> emotional (adj. 情緒化的)；emotionally (adv. 情緒上地)；emotionless (adj. 無情緒的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> strong emotions 強烈情緒；deep emotion 深層情感；emotional response 情緒反應</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> feeling 感受；sentiment 情感</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> emotion 情緒；motion 動作</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> feel strong emotions / emotion about + N</p>
+        <ul>
+          <li>When a message makes us feel strong emotions, we are more likely to pass it on.<br>（當一則訊息讓我們產生強烈情緒時，我們就更可能把它傳出去。）</li>
+          <li>Writers sometimes use emotion to make a weak claim sound powerful.<br>（作者有時會利用情緒讓薄弱的說法聽起來很有力量。）</li>
+        </ul>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-top"><span class="vocab-no">20</span><span class="word">beliefs</span><span class="kk">[bɪˈlifs]</span></div>
+        <p class="vline"><strong>詞性／中文：</strong>n. 信念；既有看法（複數）</p>
+        <p class="vline"><span class="tag t-deriv">衍生詞</span> belief (n. 信念)；believe (v. 相信)；unbelieving (adj. 不相信的)</p>
+        <p class="vline"><span class="tag t-idiom">慣用語／片語</span> existing beliefs 既有信念；cultural beliefs 文化信念；deeply held beliefs 深植心中的信念</p>
+        <p class="vline"><span class="tag t-syn">同義字</span> opinions 看法；assumptions 預設想法</p>
+        <p class="vline"><span class="tag t-confuse">易混淆字</span> beliefs 信念；biases 偏見</p>
+        <p class="vline"><span class="tag t-pattern">句型</span> match our beliefs / challenge beliefs</p>
+        <ul>
+          <li>When a message matches our beliefs, we are more likely to believe it and pass it on.<br>（當一則訊息符合我們的信念時，我們就更可能相信它並把它傳出去。）</li>
+          <li>Critical reading helps students question their own beliefs before sharing a post.<br>（批判性閱讀能幫助學生在分享貼文前先檢視自己的信念。）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-head head-4">區塊四：片語解析</div>
+    <div class="body body-4">
+      <div class="phrase-item">
+        <p class="phrase">1. on social media 在社群媒體上</p>
+        <p><span class="label">📋 用法說明：</span>這個片語表示事情發生的平台或媒介，常用來描述貼文、討論、廣告或新聞流傳的場域。寫作時很適合補充資訊傳播的位置。</p>
+        <p><span class="label">📖 例句一：</span>Fake news often spreads faster and farther than real news on social media.<br>（假新聞在社群媒體上通常比真新聞傳播得更快也更遠。）</p>
+        <p><span class="label">✏️ 例句二：</span>Many rumors become popular on social media before the truth appears.<br>（許多謠言會先在社群媒體上爆紅，之後真相才出現。）</p>
+      </div>
+
+      <div class="phrase-item">
+        <p class="phrase">2. be more likely to 更可能……</p>
+        <p><span class="label">📋 用法說明：</span><strong>be likely to</strong> 表示「可能會……」，若前面加上比較級 <strong>more</strong>，就變成「更可能」。這是閱讀測驗與作文都很常用的機率表達。</p>
+        <p><span class="label">📖 例句一：</span>The researchers found that fake news was about 70 percent more likely to be retweeted than true news.<br>（研究人員發現，假新聞被轉推的可能性大約比真新聞高出百分之七十。）</p>
+        <p><span class="label">✏️ 例句二：</span>People are more likely to trust a post when it confirms what they already think.<br>（當貼文證實人們原本的想法時，他們就更可能相信它。）</p>
+      </div>
+
+      <div class="phrase-item">
+        <p class="phrase">3. up to 多達；高達</p>
+        <p><span class="label">📋 用法說明：</span><strong>up to</strong> 可表示數量的上限，意思是「多達……」。它常出現在統計、研究報告與新聞寫作中，用來強調最大值。</p>
+        <p><span class="label">📖 例句一：</span>The most popular fake stories could be seen by up to 100,000 users.<br>（最熱門的假新聞甚至可能被多達十萬名使用者看見。）</p>
+        <p><span class="label">✏️ 例句二：</span>One false post may reach up to thousands of students in a single day.<br>（一則錯誤貼文在一天內可能觸及多達數千名學生。）</p>
+      </div>
+
+      <div class="phrase-item">
+        <p class="phrase">4. pass it on 傳出去；轉告下去</p>
+        <p><span class="label">📋 用法說明：</span><strong>pass on</strong> 表示「傳遞、轉傳」，若受詞是代名詞，就要放在中間，形成 <strong>pass it on</strong>。這是很實用的片語動詞，常用在訊息、故事與習慣的傳遞。</p>
+        <p><span class="label">📖 例句一：</span>We are more likely to believe it and pass it on.<br>（我們更可能相信它，並把它傳出去。）</p>
+        <p><span class="label">✏️ 例句二：</span>If you are not sure the claim is true, do not pass it on.<br>（如果你不確定那項說法是真的，就不要把它傳出去。）</p>
+      </div>
+
+      <div class="phrase-item">
+        <p class="phrase">5. slow down 慢下來</p>
+        <p><span class="label">📋 用法說明：</span><strong>slow down</strong> 除了字面上的「放慢速度」，也可用在思考與決策情境中，表示「先別急、冷靜一下」。本文就是用這個片語提醒學生先思考再分享。</p>
+        <p><span class="label">📖 例句一：</span>You should slow down, think carefully, and check reliable sources before pressing “share”.<br>（你應該先慢下來、仔細思考，並在按下「分享」之前查核可靠的資訊來源。）</p>
+        <p><span class="label">✏️ 例句二：</span>When a post makes you angry, slow down before you respond.<br>（當一則貼文讓你生氣時，回應之前先慢下來。）</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="section-head head-5">區塊五：文法解析</div>
+    <div class="body body-5">
+      <div class="grammar-point">
+        <h3>【that 名詞子句】That-Clause as Object that 子句作受詞</h3>
+        <p><strong>📌 示範句：</strong></p>
+        <blockquote>The researchers found that fake news was about 70 percent more likely to be retweeted than true news.</blockquote>
+        <p><strong>📖 說明：</strong></p>
+        <p>※ <strong>that + 子句</strong> 可以放在動詞後面當受詞，用來說明「發現、相信、知道、指出」的內容。這篇文章中，研究人員發現的具體結果，就是由 that 子句承接。</p>
+        <p>① 常接在 find、believe、say、report、know、realize 等動詞之後。</p>
+        <ul>
+          <li>例：Experts say that false stories spread quickly online.（專家表示，假消息會在網路上迅速傳播。）</li>
+          <li>例：Students realized that the headline was misleading.（學生發現那個標題具有誤導性。）</li>
+        </ul>
+        <p>② 正式書面語通常保留 that，使句意更清楚。</p>
+        <ul>
+          <li>例：Researchers reported that emotions affect online sharing.（研究人員指出，情緒會影響網路分享。）</li>
+        </ul>
+        <p><strong>✏️ 延伸練習：</strong></p>
+        <p>原句：Researchers found that fake news spread faster.</p>
+        <p>延伸：Researchers found that fake news spread faster because users reacted emotionally.</p>
+        <p>說明：在 that 子句中加入原因資訊，可以讓研究結果更完整。</p>
+        <p><strong>⚠️ 常見錯誤：</strong></p>
+        <p>✗ Researchers found fake news was faster is true.</p>
+        <p>✓ Researchers found that fake news was faster.</p>
+        <p>說明：that 子句本身就是 found 的受詞，不需要再另外加 is true。</p>
+        <p><strong>🎯 精選試題：</strong></p>
+        <p>Choose the best answer: The report showed ______ emotional posts were shared more often. A. what B. that C. whether D. because</p>
+        <p>答案：B 說明：此處需要 that 子句作 showed 的受詞。</p>
+      </div>
+
+      <div class="grammar-point">
+        <h3>【比較級】Comparative Degree 比較級句型</h3>
+        <p><strong>📌 示範句：</strong></p>
+        <blockquote>Fake news often spreads faster and farther than real news on social media.</blockquote>
+        <p><strong>📖 說明：</strong></p>
+        <p>※ 比較級用來比較兩者之間程度的高低，基本句型是 <strong>比較級 + than</strong>。本文用兩個比較級 <strong>faster</strong> 與 <strong>farther</strong>，同時比較速度與範圍。</p>
+        <p>① 單音節副詞或形容詞通常直接加 <strong>-er</strong>。</p>
+        <ul>
+          <li>例：True news moves slower than fake news.（真新聞傳播得比假新聞慢。）</li>
+          <li>例：This rumor spread wider than expected.（這則謠言傳得比預期更廣。）</li>
+        </ul>
+        <p>② 若要表達倍數差異，可搭配數量詞或程度副詞一起使用。</p>
+        <ul>
+          <li>例：The false post traveled much faster than the official report.（那則假貼文傳播速度遠比官方報告快。）</li>
+        </ul>
+        <p><strong>✏️ 延伸練習：</strong></p>
+        <p>原句：Fake news spreads faster than real news.</p>
+        <p>延伸：Fake news spreads much faster and reaches far more people than real news.</p>
+        <p>說明：加入副詞與第二個比較項，可讓比較更具體。</p>
+        <p><strong>⚠️ 常見錯誤：</strong></p>
+        <p>✗ Fake news spreads more fast than real news.</p>
+        <p>✓ Fake news spreads faster than real news.</p>
+        <p>說明：fast 的比較級是 faster，不用 more fast。</p>
+        <p><strong>🎯 精選試題：</strong></p>
+        <p>Choose the correct form: False stories spread ______ than factual reports. A. fast B. faster C. fastest D. more fastest</p>
+        <p>答案：B 說明：有 than 就要用比較級 faster。</p>
+      </div>
+
+      <div class="grammar-point">
+        <h3>【介系詞加動名詞】Preposition + V-ing 介系詞後接動名詞</h3>
+        <p><strong>📌 示範句：</strong></p>
+        <blockquote>Fake news is often more novel, emotional, and shocking, so people feel excited, angry, or afraid and quickly share it without checking the facts.</blockquote>
+        <p><strong>📖 說明：</strong></p>
+        <p>※ 介系詞後面若要接動作，動詞要改成動名詞形式。這句中的 <strong>without checking</strong> 表示「沒有查證就……」，是很常見的介系詞用法。</p>
+        <p>① 常見介系詞有 without、before、after、by、in 等，後面都接 V-ing。</p>
+        <ul>
+          <li>例：He shared the post without reading the full article.（他沒有讀完整篇文章就分享了貼文。）</li>
+          <li>例：Think carefully before pressing the button.（按下按鈕前要仔細思考。）</li>
+        </ul>
+        <p>② 這種結構很適合用來補充行動發生時的方式、時間或條件。</p>
+        <ul>
+          <li>例：Students can avoid trouble by checking the source first.（學生可以先查核來源來避免麻煩。）</li>
+        </ul>
+        <p><strong>✏️ 延伸練習：</strong></p>
+        <p>原句：People shared it without checking the facts.</p>
+        <p>延伸：People shared it without checking the facts or reading the full report.</p>
+        <p>說明：動名詞結構可以並列，讓補充內容更完整。</p>
+        <p><strong>⚠️ 常見錯誤：</strong></p>
+        <p>✗ People shared it without check the facts.</p>
+        <p>✓ People shared it without checking the facts.</p>
+        <p>說明：介系詞 without 後面必須接動名詞 checking。</p>
+        <p><strong>🎯 精選試題：</strong></p>
+        <p>Choose the best answer: Students should verify the information before ______ it online. A. post B. posted C. posting D. to post</p>
+        <p>答案：C 說明：介系詞 before 後面要接動名詞 posting。</p>
+      </div>
+
+      <details>
+        <summary><span>常見字首整理（約 50 個）</span><span class="arrow">▾</span></summary>
+        <div class="detail-body">
+          <div class="chip-wrap">
+            <span class="chip">字首總整理</span>
+            <span class="chip">一鍵展開閱讀</span>
+            <span class="chip">純視覺標籤元件</span>
+          </div>
+          <div class="prefix-item"><strong>ab-</strong>：離開、相反（abnormal 異常的）</div>
+          <div class="prefix-item"><strong>ad-</strong>：向、加（advance 前進）</div>
+          <div class="prefix-item"><strong>ambi-</strong>：雙方、兩面（ambiguous 模稜兩可的）</div>
+          <div class="prefix-item"><strong>anti-</strong>：反對、抗（antibiotic 抗生素）</div>
+          <div class="prefix-item"><strong>arch-</strong>：主要、首要（archenemy 死敵）</div>
+          <div class="prefix-item"><strong>auto-</strong>：自動、自我（autograph 親筆簽名）</div>
+          <div class="prefix-item"><strong>bene-</strong>：好的、善（benefit 好處）</div>
+          <div class="prefix-item"><strong>bi-</strong>：二、雙（bilingual 雙語的）</div>
+          <div class="prefix-item"><strong>circum-</strong>：環繞、周圍（circumstance 情況）</div>
+          <div class="prefix-item"><strong>co-/con-/com-</strong>：一起、共同（cooperate 合作）</div>
+          <div class="prefix-item"><strong>contra-</strong>：相反、對抗（contradict 反駁）</div>
+          <div class="prefix-item"><strong>de-</strong>：去除、下降（decode 解碼）</div>
+          <div class="prefix-item"><strong>dia-</strong>：穿過、透過（dialogue 對話）</div>
+          <div class="prefix-item"><strong>dis-</strong>：否定、分離（disagree 不同意）</div>
+          <div class="prefix-item"><strong>en-/em-</strong>：使成為（enable 使能夠）</div>
+          <div class="prefix-item"><strong>epi-</strong>：在上、在外（epidemic 流行病）</div>
+          <div class="prefix-item"><strong>ex-</strong>：外、前任（export 出口；ex-president 前總統）</div>
+          <div class="prefix-item"><strong>extra-</strong>：額外、外部（extraordinary 非凡的）</div>
+          <div class="prefix-item"><strong>hetero-</strong>：不同（heterogeneous 異質的）</div>
+          <div class="prefix-item"><strong>homo-</strong>：相同（homogeneous 同質的）</div>
+          <div class="prefix-item"><strong>hyper-</strong>：過度、超（hyperactive 過動的）</div>
+          <div class="prefix-item"><strong>hypo-</strong>：低於、不足（hypodermic 皮下的）</div>
+          <div class="prefix-item"><strong>in-/im-</strong>：否定、進入（invisible 看不見的；import 輸入）</div>
+          <div class="prefix-item"><strong>inter-</strong>：在…之間（international 國際的）</div>
+          <div class="prefix-item"><strong>iso-</strong>：相等、相同（isolate 隔離）</div>
+          <div class="prefix-item"><strong>mal-</strong>：壞、不良（malfunction 故障）</div>
+          <div class="prefix-item"><strong>micro-</strong>：微小（microscope 顯微鏡）</div>
+          <div class="prefix-item"><strong>mis-</strong>：錯誤（misunderstand 誤解）</div>
+          <div class="prefix-item"><strong>mono-</strong>：單一（monologue 獨白）</div>
+          <div class="prefix-item"><strong>multi-</strong>：多（multicultural 多元文化的）</div>
+          <div class="prefix-item"><strong>neo-</strong>：新的（neonatal 新生的）</div>
+          <div class="prefix-item"><strong>non-</strong>：非、沒有（nonsense 無意義）</div>
+          <div class="prefix-item"><strong>pan-</strong>：全部（pandemic 大流行病）</div>
+          <div class="prefix-item"><strong>peri-</strong>：周圍（perimeter 周長）</div>
+          <div class="prefix-item"><strong>poly-</strong>：多（polygon 多邊形）</div>
+          <div class="prefix-item"><strong>post-</strong>：之後（postwar 戰後的）</div>
+          <div class="prefix-item"><strong>pre-</strong>：之前（preview 預覽）</div>
+          <div class="prefix-item"><strong>pro-</strong>：向前、支持（progress 進步；pro-democracy 支持民主的）</div>
+          <div class="prefix-item"><strong>pseudo-</strong>：假的（pseudonym 筆名）</div>
+          <div class="prefix-item"><strong>re-</strong>：再、回（review 複習）</div>
+          <div class="prefix-item"><strong>semi-</strong>：一半、部分（semicircle 半圓）</div>
+          <div class="prefix-item"><strong>sub-</strong>：在下、次級（subway 地鐵）</div>
+          <div class="prefix-item"><strong>super-</strong>：超越、在上（superstar 超級明星）</div>
+          <div class="prefix-item"><strong>syn-/sym-</strong>：一起、共同（synchronize 同步）</div>
+          <div class="prefix-item"><strong>tele-</strong>：遠距（telephone 電話）</div>
+          <div class="prefix-item"><strong>trans-</strong>：穿越、轉變（transport 運輸）</div>
+          <div class="prefix-item"><strong>tri-</strong>：三（triangle 三角形）</div>
+          <div class="prefix-item"><strong>un-</strong>：否定、不（unhappy 不快樂的）</div>
+          <div class="prefix-item"><strong>vice-</strong>：副、代替（vice-president 副總統）</div>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>常見英文字尾整理（約 30 個）</span><span class="arrow">▾</span></summary>
+        <div class="detail-body">
+          <div class="chip-wrap">
+            <span class="chip">名詞字尾</span>
+            <span class="chip">形容詞字尾</span>
+            <span class="chip">動詞字尾</span>
+            <span class="chip">副詞字尾</span>
+          </div>
+          <p class="mini-title">名詞字尾</p>
+          <div class="suffix-item"><strong>-tion / -sion / -ation</strong>：表示「動作、過程或結果」，如 education（教育）、decision（決定）。</div>
+          <div class="suffix-item"><strong>-ment</strong>：表示「行為或結果」，如 agreement（協議）、development（發展）。</div>
+          <div class="suffix-item"><strong>-ness</strong>：表示「狀態或性質」，如 happiness（快樂）、darkness（黑暗）。</div>
+          <div class="suffix-item"><strong>-ity / -ty</strong>：表示抽象概念或狀態，如 ability（能力）、cruelty（殘酷）。</div>
+          <div class="suffix-item"><strong>-er / -or</strong>：表示「執行某動作的人或物」，如 teacher（老師）、actor（演員）。</div>
+          <div class="suffix-item"><strong>-ist</strong>：表示「信仰或專業的人」，如 artist（藝術家）、scientist（科學家）。</div>
+          <div class="suffix-item"><strong>-ship</strong>：表示「身分或關係」，如 friendship（友誼）、leadership（領導）。</div>
+          <div class="suffix-item"><strong>-hood</strong>：表示「階段或狀態」，如 childhood（童年）、neighborhood（鄰里）。</div>
+          <p class="mini-title">形容詞字尾</p>
+          <div class="suffix-item"><strong>-able / -ible</strong>：表示「能夠…的」，如 readable（可讀的）、credible（可信的）。</div>
+          <div class="suffix-item"><strong>-ous</strong>：表示「充滿…的」，如 dangerous（危險的）、famous（著名的）。</div>
+          <div class="suffix-item"><strong>-ful</strong>：表示「具有…的」，如 hopeful（充滿希望的）、beautiful（美麗的）。</div>
+          <div class="suffix-item"><strong>-less</strong>：表示「缺乏…的」，如 hopeless（絕望的）、powerless（無力的）。</div>
+          <div class="suffix-item"><strong>-al / -ic</strong>：表示「與…相關的」，如 natural（自然的）、poetic（詩意的）。</div>
+          <p class="mini-title">動詞字尾</p>
+          <div class="suffix-item"><strong>-ize / -ise</strong>：表示「使成為…」，如 realize（實現）、industrialize（工業化）。</div>
+          <div class="suffix-item"><strong>-ify</strong>：表示「使成為…」，如 beautify（美化）、clarify（澄清）。</div>
+          <div class="suffix-item"><strong>-ate</strong>：常用於形成動詞，如 dominate（支配）、activate（啟動）。</div>
+          <div class="suffix-item"><strong>-en</strong>：表示「使變成…」，如 strengthen（加強）、soften（使柔軟）。</div>
+          <p class="mini-title">副詞字尾</p>
+          <div class="suffix-item"><strong>-ly</strong>：最常見的副詞字尾，把形容詞轉成副詞。</div>
+          <div class="suffix-item"><strong>-ward(s)</strong>：表示方向，如 upwards（向上）、homeward（回家）。</div>
+          <div class="suffix-item"><strong>-wise</strong>：表示方式或角度，如 clockwise（順時針方向地）。</div>
+        </div>
+      </details>
+    </div>
+  </section>
+</main>
+</body>
+</html>

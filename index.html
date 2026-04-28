@@ -2,183 +2,545 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>高三英文練習題首頁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>錯中學 Echo 計劃 — 林威老師英文練習平台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Lora:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg:        #F8F4ED;
+      --surface:   #FEFCF8;
+      --text:      #2D2A26;
+      --text-sub:  #5C5040;
+      --accent:    #8B5E3C;
+      --gold:      #D4A574;
+      --gold-light:#F0D9B8;
+      --border:    #E2D4C0;
+      --shadow:    rgba(45,42,38,0.12);
+      --radius:    14px;
+      --max-w:     720px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 22px;
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #f97373, #fb7185, #fbbf24);
-      color: #111827;
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      min-height: 100vh;
+      padding: 0 0 60px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 24px 16px 40px;
-    }
-
-    header {
+    /* ── Hero Banner ── */
+    .hero {
+      background: linear-gradient(160deg, #3B2A1A 0%, #5C3D1E 55%, #8B5E3C 100%);
+      padding: 48px 24px 52px;
       text-align: center;
-      margin-bottom: 24px;
-      color: #111827;
+      position: relative;
+      overflow: hidden;
     }
 
-    header h1 {
-      font-size: 1.8rem;
-      margin-bottom: 8px;
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(212,165,116,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 15% 80%, rgba(212,165,116,0.12) 0%, transparent 60%);
+      pointer-events: none;
     }
 
-    header p {
-      font-size: 0.95rem;
-      color: #1f2933;
-      margin: 4px 0;
-    }
-
-    .tag {
+    .hero-badge {
       display: inline-block;
-      padding: 2px 8px;
+      background: rgba(212,165,116,0.25);
+      border: 1px solid rgba(212,165,116,0.55);
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 5px 18px;
       border-radius: 999px;
-      background-color: rgba(255,255,255,0.8);
-      color: #b91c1c;
-      font-size: 0.75rem;
-      margin-right: 4px;
-      border: 1px solid rgba(248,250,252,0.8);
+      margin-bottom: 20px;
+      font-family: 'Lora', serif;
+      text-transform: uppercase;
     }
 
-    .card {
-      background-color: rgba(255,255,255,0.96);
-      border-radius: 16px;
-      padding: 18px 14px 20px;
-      box-shadow: 0 12px 35px rgba(148,27,12,0.28);
+    .hero h1 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(24px, 5vw, 38px);
+      font-weight: 700;
+      color: #FFF8EE;
+      line-height: 1.3;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
     }
 
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-      border-left: 4px solid #f97316;
-      padding-left: 8px;
-      color: #991b1b;
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
     }
 
-    .card p.intro {
-      margin: 0 0 14px;
-      font-size: 0.9rem;
-      color: #4b5563;
+    .hero-sub {
+      font-size: 15px;
+      color: rgba(255,248,238,0.72);
+      margin-top: 6px;
+      letter-spacing: 0.03em;
     }
 
-    /* 固定三欄排版 */
+    /* ── Profile Card ── */
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .profile-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 28px 26px;
+      margin: 32px auto 0;
+      box-shadow: 0 4px 24px var(--shadow);
+      position: relative;
+    }
+
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--gold), var(--accent));
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .profile-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+      font-family: 'Lora', serif;
+    }
+
+    .profile-name {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .profile-lines {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .profile-lines li {
+      font-size: 16px;
+      color: var(--text-sub);
+      line-height: 1.7;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .profile-lines li .icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      margin-top: 2px;
+      color: var(--gold);
+      font-size: 16px;
+    }
+
+    .line-contact {
+      margin-top: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #E8F5E9;
+      border: 1.5px solid #81C784;
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #1B5E20;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .line-contact:hover { background: #C8E6C9; }
+
+    /* ── Section Title ── */
+    .section-wrap {
+      margin: 36px auto 0;
+      max-width: var(--max-w);
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: linear-gradient(90deg, var(--border), transparent);
+      margin-left: 4px;
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+    }
+
+    /* ── Quiz Grid ── */
     .quiz-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 8px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
     }
 
-    .quiz-item a {
-      display: block;
+    .quiz-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
-      background-color: #fef3c7;
-      border-radius: 12px;
-      padding: 10px 10px;
-      color: #7c2d12;
-      border: 1px solid #fed7aa;
-      transition: all 0.15s ease-in-out;
-      font-size: 0.92rem;
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 8px;
+      min-height: 72px;
+      color: var(--accent);
+      font-size: 15px;
+      font-weight: 700;
       text-align: center;
-      font-weight: 600;
+      line-height: 1.4;
+      transition: all 0.18s ease;
+      box-shadow: 0 2px 8px rgba(45,42,38,0.06);
+      position: relative;
+      overflow: hidden;
     }
 
-    .quiz-item a:hover {
-      background-color: #fb923c;
-      border-color: #f97316;
-      color: white;
-      transform: translateY(-1px);
-      box-shadow: 0 10px 20px rgba(180,83,9,0.45);
+    .quiz-btn .num {
+      font-family: 'Lora', serif;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
     }
 
-    footer {
+    .quiz-btn:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #FFF8EE;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139,94,60,0.32);
+    }
+
+    .quiz-btn:hover .num {
+      color: var(--gold-light);
+    }
+
+    .quiz-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Sub-sections */
+    .sub-heading {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-family: 'Lora', serif;
+      margin: 28px 0 12px;
+      padding-left: 10px;
+      border-left: 3px solid var(--gold);
+    }
+
+    /* ── Exam Section ── */
+    .exam-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .exam-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      background: linear-gradient(135deg, #FDF6EE, #F8F0E3);
+      border: 1.5px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 16px 10px;
+      min-height: 72px;
+      color: #5C3D1E;
+      font-size: 15px;
+      font-weight: 700;
       text-align: center;
-      margin-top: 18px;
-      font-size: 0.8rem;
-      color: #1f2933;
-      text-shadow: 0 1px 2px rgba(255,255,255,0.7);
+      transition: all 0.18s ease;
+      box-shadow: 0 2px 8px rgba(212,165,116,0.15);
     }
 
-    @media (max-width: 480px) {
-      /* 手機上仍然維持三欄，但內距微調，字稍微縮小 */
-      .container {
-        padding: 18px 10px 30px;
+    .exam-btn:hover {
+      background: var(--gold);
+      border-color: #B8874E;
+      color: var(--text);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(212,165,116,0.45);
+    }
+
+    /* ── Echo Marketing Banner ── */
+    .echo-banner {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: linear-gradient(135deg, #1A3A2A 0%, #2D5A3D 60%, #1A3A2A 100%);
+      border: 1.5px solid #4CAF50;
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin-top: 20px;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(76,175,80,0.2);
+    }
+
+    .echo-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 90% 50%, rgba(76,175,80,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .echo-banner:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(76,175,80,0.35);
+      border-color: #81C784;
+    }
+
+    .echo-banner-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .echo-banner-text {
+      flex: 1;
+    }
+
+    .echo-banner-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #E8F5E9;
+      margin-bottom: 3px;
+      letter-spacing: 0.03em;
+    }
+
+    .echo-banner-sub {
+      font-size: 14px;
+      color: #A5D6A7;
+      line-height: 1.5;
+    }
+
+    .echo-banner-cta {
+      flex-shrink: 0;
+      background: #4CAF50;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 8px;
+      white-space: nowrap;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center;
+      padding: 40px 20px 0;
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.8;
+    }
+
+    .footer a { color: var(--accent); text-decoration: none; }
+
+    /* ── Divider ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 36px 0 0;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 520px) {
+      html { font-size: 20px; }
+
+      .quiz-grid,
+      .exam-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
       }
-      header h1 {
-        font-size: 1.5rem;
+
+      .quiz-btn,
+      .exam-btn {
+        font-size: 13px;
+        min-height: 64px;
+        padding: 12px 5px;
       }
-      .card {
-        padding: 14px 10px 16px;
+
+      .profile-card {
+        padding: 22px 18px 20px;
       }
-      .quiz-item a {
-        font-size: 0.86rem;
-        padding: 9px 6px;
+    }
+
+    @media (max-width: 360px) {
+      .quiz-grid,
+      .exam-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div>
-        <span class="tag">高三</span>
-        <span class="tag">英文練習</span>
-        <span class="tag">單字與模擬學測</span>
-      </div>
-      <h1>英文字彙與文法練習</h1>
-      <p>BBC, NY Times, Economist, 一對一教學（托福、多益、雅思）每月開班！</p>
-      <p>請私訊林威老師 Line ID：linwayet</p>
-      <p>各位同學好，我是林威老師，英文教學已達 34 年。</p>
-      <p>邁向《經濟學人》4000 篇文章（講解累積時間已達 15 年）。</p>
-    </header>
 
-    <main class="card">
-      <h2>單元測驗列表（單字題＋歷屆學測）</h2>
-      <p class="intro">每回大約 5–10 分鐘。請依照老師指定順序，或照自己需要選擇練習。</p>
-
-      <div class="quiz-grid">
-        <!-- 單字題 01–10 -->
-        <div class="quiz-item"><a href="quiz01.html">單字題 01</a></div>
-        <div class="quiz-item"><a href="quiz02.html">單字題 02</a></div>
-        <div class="quiz-item"><a href="quiz03.html">單字題 03</a></div>
-        <div class="quiz-item"><a href="quiz04.html">單字題 04</a></div>
-        <div class="quiz-item"><a href="quiz05.html">單字題 05</a></div>
-        <div class="quiz-item"><a href="quiz06.html">單字題 06</a></div>
-        <div class="quiz-item"><a href="quiz07.html">單字題 07</a></div>
-        <div class="quiz-item"><a href="quiz08.html">單字題 08</a></div>
-        <div class="quiz-item"><a href="quiz09.html">單字題 09</a></div>
-        <div class="quiz-item"><a href="quiz10.html">單字題 10</a></div>
-
-        <!-- 單字題 11–20（模擬學測） -->
-        <div class="quiz-item"><a href="quiz11.html">單字題 11（模擬學測）</a></div>
-        <div class="quiz-item"><a href="quiz12.html">單字題 12（模擬學測）</a></div>
-        <div class="quiz-item"><a href="quiz13.html">單字題 13（模擬學測）</a></div>
-        <div class="quiz-item"><a href="quiz14.html">單字題 14（模擬學測）</a></div>
-        <div class="quiz-item"><a href="quiz15.html">單字題 15（模擬學測）</a></div>
-        <div class="quiz-item"><a href="quiz16.html">單字題 16（模擬學測）</a></div>
-        <div class="quiz-item"><a href="quiz17.html">單字題 17（模擬學測）</a></div>
-        <div class="quiz-item"><a href="quiz18.html">單字題 18（模擬學測）</a></div>
-        <div class="quiz-item"><a href="quiz19.html">單字題 19（模擬學測）</a></div>
-        <div class="quiz-item"><a href="quiz20.html">單字題 20（模擬學測）</a></div>
-
-        <!-- 歷屆學測題（新增 5 個） -->
-        <div class="quiz-item"><a href="exam114.html">114 年學測</a></div>
-        <div class="quiz-item"><a href="exam113.html">113 年學測</a></div>
-        <div class="quiz-item"><a href="exam112.html">112 年學測</a></div>
-        <div class="quiz-item"><a href="exam111.html">111 年學測</a></div>
-        <div class="quiz-item"><a href="exam110.html">110 年學測</a></div>
-      </div>
-    </main>
-
-    <footer>
-      如頁面無法正確顯示，請改用 Chrome 或 Edge 並更新至最新版瀏覽器。
-    </footer>
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">錯中學 Echo 計劃</div>
+    <h1>林威老師<em>英文練習平台</em></h1>
+    <p class="hero-sub">試卷分析 · 單字精練 · 學測模擬</p>
   </div>
+
+  <!-- Profile Card -->
+  <div class="container">
+    <div class="profile-card">
+      <div class="profile-label">關於林威老師</div>
+      <div class="profile-name">林威老師</div>
+      <ul class="profile-lines">
+        <li>
+          <span class="icon">📚</span>
+          <span>英文教學已達 <strong>34 年</strong>，一對一教學，主要針對國中生、高中生與專業大學生，隨時開班！</span>
+        </li>
+        <li>
+          <span class="icon">📰</span>
+          <span>邁向《經濟學人》<strong>4,000 篇</strong>文章，講解累積時間已達 15 年。</span>
+        </li>
+        <li>
+          <span class="icon">🎯</span>
+          <span>BBC、NY Times、Economist、托福、多益、雅思 — 每月開班！</span>
+        </li>
+      </ul>
+      <div style="margin-top:20px;">
+        <a class="line-contact" href="https://line.me/ti/p/linwayet" target="_blank" rel="noopener">
+          <span>💬</span>
+          <span>私訊聯絡 Line ID：<strong>linwayet</strong></span>
+        </a>
+      </div>
+      <a class="echo-banner" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <span class="echo-banner-icon">🌱</span>
+        <div class="echo-banner-text">
+          <div class="echo-banner-title">錯中學 ECHO 計劃</div>
+          <div class="echo-banner-sub">每一道錯題，都是下一次正確的起點<br>2026 年 6 月開班 · 歡迎詢問</div>
+        </div>
+        <span class="echo-banner-cta">了解更多 →</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Quiz List -->
+  <div class="section-wrap">
+    <h2 class="section-title">📋 試卷分析列表</h2>
+    <p class="section-desc">每回大約 5–10 分鐘，請依照老師指定順序或按需選擇練習。</p>
+
+    <!-- 試卷分析 01–10 -->
+    <div class="sub-heading">試卷分析 01–10</div>
+    <div class="quiz-grid">
+      <a class="quiz-btn" href="quiz01.html"><span class="num">NO.01</span>試卷分析 01</a>
+      <a class="quiz-btn" href="quiz02.html"><span class="num">NO.02</span>試卷分析 02</a>
+      <a class="quiz-btn" href="quiz03.html"><span class="num">NO.03</span>試卷分析 03</a>
+      <a class="quiz-btn" href="quiz04.html"><span class="num">NO.04</span>試卷分析 04</a>
+      <a class="quiz-btn" href="quiz05.html"><span class="num">NO.05</span>試卷分析 05</a>
+      <a class="quiz-btn" href="quiz06.html"><span class="num">NO.06</span>試卷分析 06</a>
+      <a class="quiz-btn" href="quiz07.html"><span class="num">NO.07</span>試卷分析 07</a>
+      <a class="quiz-btn" href="quiz08.html"><span class="num">NO.08</span>試卷分析 08</a>
+      <a class="quiz-btn" href="quiz09.html"><span class="num">NO.09</span>試卷分析 09</a>
+      <a class="quiz-btn" href="quiz10.html"><span class="num">NO.10</span>試卷分析 10</a>
+    </div>
+
+    <!-- 試卷分析 11–20 -->
+    <div class="sub-heading">試卷分析 11–20（模擬學測）</div>
+    <div class="quiz-grid">
+      <a class="quiz-btn" href="quiz11.html"><span class="num">NO.11</span>試卷分析 11</a>
+      <a class="quiz-btn" href="quiz12.html"><span class="num">NO.12</span>試卷分析 12</a>
+      <a class="quiz-btn" href="quiz13.html"><span class="num">NO.13</span>試卷分析 13</a>
+      <a class="quiz-btn" href="quiz14.html"><span class="num">NO.14</span>試卷分析 14</a>
+      <a class="quiz-btn" href="quiz15.html"><span class="num">NO.15</span>試卷分析 15</a>
+      <a class="quiz-btn" href="quiz16.html"><span class="num">NO.16</span>試卷分析 16</a>
+      <a class="quiz-btn" href="quiz17.html"><span class="num">NO.17</span>試卷分析 17</a>
+      <a class="quiz-btn" href="quiz18.html"><span class="num">NO.18</span>試卷分析 18</a>
+      <a class="quiz-btn" href="quiz19.html"><span class="num">NO.19</span>試卷分析 19</a>
+      <a class="quiz-btn" href="quiz20.html"><span class="num">NO.20</span>試卷分析 20</a>
+    </div>
+
+    <!-- 試卷分析 21–30 -->
+    <div class="sub-heading">試卷分析 21–30</div>
+    <div class="quiz-grid">
+      <a class="quiz-btn" href="quiz21.html"><span class="num">NO.21</span>試卷分析 21</a>
+      <a class="quiz-btn" href="quiz22.html"><span class="num">NO.22</span>試卷分析 22</a>
+      <a class="quiz-btn" href="quiz23.html"><span class="num">NO.23</span>試卷分析 23</a>
+      <a class="quiz-btn" href="quiz24.html"><span class="num">NO.24</span>試卷分析 24</a>
+      <a class="quiz-btn" href="quiz25.html"><span class="num">NO.25</span>試卷分析 25</a>
+      <a class="quiz-btn" href="quiz26.html"><span class="num">NO.26</span>試卷分析 26</a>
+      <a class="quiz-btn" href="quiz27.html"><span class="num">NO.27</span>試卷分析 27</a>
+      <a class="quiz-btn" href="quiz28.html"><span class="num">NO.28</span>試卷分析 28</a>
+      <a class="quiz-btn" href="quiz29.html"><span class="num">NO.29</span>試卷分析 29</a>
+      <a class="quiz-btn" href="quiz30.html"><span class="num">NO.30</span>試卷分析 30</a>
+    </div>
+
+    <!-- 歷屆學測 -->
+    <hr class="divider">
+    <div class="sub-heading" style="margin-top:28px;">歷屆學測試卷</div>
+    <div class="exam-grid">
+      <a class="exam-btn" href="exam115.html">115 年學測</a>
+      <a class="exam-btn" href="exam114.html">114 年學測</a>
+      <a class="exam-btn" href="exam113.html">113 年學測</a>
+      <a class="exam-btn" href="exam112.html">112 年學測</a>
+      <a class="exam-btn" href="exam111.html">111 年學測</a>
+      <a class="exam-btn" href="exam110.html">110 年學測</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="section-wrap">
+    <div class="footer">
+      <p>如頁面無法正確顯示，請改用 Chrome 或 Edge 並更新至最新版。</p>
+      <p style="margin-top:6px;">© 錯中學 Echo 計劃 · 林威老師英文教學平台</p>
+    </div>
+  </div>
+
 </body>
 </html>
