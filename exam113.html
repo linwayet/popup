@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>113 學測英文 第 1-50 題（單面作答）</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8edf3 100%);
+    margin: 0; padding: 20px;
+    color: #2c3e50; line-height: 1.75;
+  }
+  .container {
+    max-width: 920px; margin: 0 auto;
+    background: #fff; border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+    padding: 32px 40px;
+  }
+  header { border-bottom: 3px solid #3498db; padding-bottom: 16px; margin-bottom: 22px; }
+  h1 { color: #2980b9; font-size: 1.6em; margin: 0 0 4px; }
+  .subtitle { color: #7f8c8d; font-size: 0.95em; }
+  .student-info {
+    background: #ecf5fd; border-radius: 10px;
+    padding: 12px 16px; margin: 16px 0;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .student-info label { font-weight: 600; color: #2980b9; }
+  .student-info input {
+    border: 1px solid #bdc3c7; border-radius: 6px;
+    padding: 7px 12px; font-size: 1em; flex: 1; min-width: 120px;
+  }
+  .instruction {
+    background: #fff9e6; border-left: 4px solid #f39c12;
+    padding: 12px 16px; margin-bottom: 18px; border-radius: 6px;
+    font-size: 0.95em; color: #8e6c16;
+  }
+  .legend {
+    font-size: 0.88em; color: #7f8c8d;
+    background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+  .legend .word-sample {
+    background: #ffebcd; border-bottom: 2px solid #e67e22;
+    padding: 0 4px; border-radius: 3px; font-weight: 600; color: #b9770e;
+  }
+  .section-title {
+    background: linear-gradient(90deg, #3498db, #5dade2);
+    color: #fff; padding: 10px 16px; border-radius: 8px;
+    margin: 26px 0 14px; font-weight: 600; font-size: 1.05em;
+  }
+  .group-label {
+    background: #eaf4fb; color: #1f618d;
+    padding: 7px 14px; border-radius: 6px;
+    margin: 18px 0 10px; font-weight: 600; font-size: 0.98em;
+    display: inline-block;
+  }
+  .passage {
+    background: #fafbfc; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 18px; margin: 8px 0 12px;
+    font-size: 1em; text-align: justify;
+  }
+  .passage p { margin: 0 0 10px; }
+  .passage p:last-child { margin-bottom: 0; }
+
+  .question {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .q-text { font-size: 1em; margin-bottom: 8px; }
+  .q-num {
+    display: inline-block; background: #3498db; color: #fff;
+    border-radius: 50%; min-width: 28px; height: 28px;
+    text-align: center; line-height: 28px; font-weight: 700;
+    margin-right: 6px; font-size: 0.88em; padding: 0 6px;
+  }
+  .q-inline {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 10px 14px; margin: 8px 0;
+    flex-wrap: wrap;
+  }
+  .q-inline .q-num-sq {
+    background: #3498db; color: #fff; font-weight: 700;
+    border-radius: 6px; padding: 4px 10px; font-size: 0.95em;
+    flex-shrink: 0;
+  }
+
+  /* 4 選項橫向 */
+  .options { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+  .options label {
+    flex: 1 1 calc(25% - 6px); min-width: 120px;
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 9px; background: #f8f9fa; border: 1.5px solid #dfe4ea;
+    border-radius: 6px; cursor: pointer; transition: all 0.15s;
+    font-size: 0.92em;
+  }
+  .options label:hover { background: #ecf5fd; border-color: #5dade2; }
+  .options input[type="radio"], .options input[type="checkbox"] { accent-color: #3498db; margin: 0; flex-shrink: 0; }
+  .options label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  /* 文意選填：10 選項橫向 */
+  .options-ci label { flex: 1 1 calc(20% - 6px); min-width: 100px; font-size: 0.88em; }
+
+  /* 篇章結構：選項較長，每個一行 */
+  .options-ps label { flex: 1 1 100%; min-width: 100%; font-size: 0.93em; align-items: flex-start; }
+  .options-ps label input { margin-top: 3px; }
+
+  /* 閱讀題：選項較長 */
+  .options-rd label { flex: 1 1 calc(50% - 6px); min-width: 280px; font-size: 0.92em; align-items: flex-start; }
+  .options-rd label input { margin-top: 3px; }
+
+  /* 多選題 */
+  .options-multi label { flex: 1 1 calc(50% - 6px); min-width: 280px; font-size: 0.92em; align-items: flex-start; }
+  .options-multi label input { margin-top: 3px; }
+  .options-multi label.selected { background: #d6eaf8; border-color: #3498db; font-weight: 600; color: #2980b9; }
+
+  /* Q35 圖片題 */
+  .pic-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 8px; }
+  .pic-opt {
+    background: #f8f9fa; border: 1.5px solid #dfe4ea; border-radius: 8px;
+    padding: 8px; cursor: pointer; transition: all 0.15s;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .pic-opt:hover { background: #ecf5fd; border-color: #5dade2; }
+  .pic-opt input { accent-color: #3498db; align-self: flex-start; margin: 0; }
+  .pic-opt.selected { background: #d6eaf8; border-color: #3498db; }
+  .pic-svg { width: 100%; max-width: 130px; height: 70px; background: #fff; border-radius: 4px; border: 1px solid #e1e8ed; }
+  .pic-cap { font-size: 0.88em; color: #2c3e50; font-weight: 600; }
+
+  /* 作文圖片 */
+  .essay-pics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10px 0; }
+  .essay-pic-item {
+    background: #fff; border: 1.5px solid #dfe4ea; border-radius: 8px;
+    padding: 8px; text-align: center;
+  }
+  .essay-svg { width: 100%; max-width: 110px; height: 100px; }
+  .essay-pic-item .pic-num { display: inline-block; background: #3498db; color: #fff; border-radius: 50%; width: 22px; height: 22px; line-height: 22px; font-weight: 700; margin-bottom: 4px; font-size: 0.85em; }
+  .essay-pic-item .pic-label { font-size: 0.88em; font-weight: 600; color: #2c3e50; margin-top: 4px; display: block; }
+
+  /* 中譯英 */
+  .trans-item {
+    background: #fff; border: 1px solid #e1e8ed;
+    border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+  }
+  .trans-item .ch-line { font-size: 1em; margin-bottom: 8px; color: #2c3e50; }
+
+  /* 可點選單字 */
+  .word { cursor: pointer; padding: 0 1px; border-radius: 3px; transition: background 0.12s; }
+  .word:hover { background: #fdecea; }
+  .word.unfamiliar { background: #ffebcd; border-bottom: 2px solid #e67e22; font-weight: 600; color: #b9770e; }
+
+  .blank { color: #e74c3c; font-weight: 700; padding: 0 2px; }
+
+  /* 重複出現的單字標記列 */
+  .vocab-row {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 6px 12px; margin-top: 8px;
+    font-size: 0.95em; color: #7d6608;
+    display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center;
+  }
+  .vocab-row::before {
+    content: "🔖 不懂的單字點一下標記："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; margin-right: 4px;
+  }
+  .vocab-row .word { padding: 2px 7px; background: #fff; border: 1px solid #f5b041; }
+  .vocab-row .word.unfamiliar { background: #ffebcd; }
+
+  /* 篇章結構單字選項列（顯示句子，無題號） */
+  .vocab-sentences {
+    background: #fef5e7; border: 1px dashed #f5b041;
+    border-radius: 6px; padding: 10px 14px; margin-top: 10px;
+    font-size: 0.93em; color: #7d6608;
+  }
+  .vocab-sentences::before {
+    content: "🔖 篇章結構選項句子（不懂的單字點一下標記，不用提號）："; font-size: 0.85em;
+    color: #b9770e; font-weight: 600; display: block; margin-bottom: 6px;
+  }
+  .vocab-sentences .sent-line { background: #fff; border-radius: 4px; padding: 5px 8px; margin: 4px 0; }
+
+  /* 填空 / 簡答 */
+  .fill-blank {
+    border: 1.5px solid #bdc3c7; border-bottom: 2px solid #3498db;
+    background: #f8fbfd; padding: 5px 10px; min-width: 140px;
+    font-size: 1em; font-family: inherit; border-radius: 6px;
+    margin: 0 4px;
+  }
+  .fill-blank:focus { outline: none; border-color: #3498db; background: #fff; }
+  textarea.short-ans {
+    width: 100%; min-height: 70px; padding: 10px;
+    border: 1.5px solid #bdc3c7; border-radius: 6px;
+    font-family: inherit; font-size: 0.95em; resize: vertical;
+    margin-top: 8px;
+  }
+  textarea.short-ans:focus { outline: none; border-color: #3498db; }
+
+  .button-row { text-align: center; margin: 26px 0 6px; }
+  button.submit-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 14px 36px; font-size: 1.05em; font-weight: 600;
+    cursor: pointer; box-shadow: 0 4px 12px rgba(52,152,219,0.3);
+    transition: transform 0.15s;
+  }
+  button.submit-btn:hover { transform: translateY(-2px); }
+
+  #results { display: none; margin-top: 26px; }
+  .result-card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    padding: 20px 22px; margin-bottom: 20px;
+    border-top: 4px solid #3498db;
+  }
+  .result-card.score { border-top-color: #9b59b6; }
+  .result-card.teacher { border-top-color: #27ae60; }
+  .result-card.feedback { border-top-color: #e67e22; }
+  .result-card h3 { margin: 0 0 12px; color: #2c3e50; }
+  .copyable {
+    background: #f4f6f8; border: 1px dashed #bdc3c7;
+    border-radius: 8px; padding: 14px; white-space: pre-wrap;
+    font-family: "Menlo", "Consolas", monospace; font-size: 0.9em;
+    max-height: 360px; overflow-y: auto; color: #2c3e50;
+  }
+  .copy-btn {
+    background: #95a5a6; color: #fff; border: none; border-radius: 6px;
+    padding: 8px 16px; font-size: 0.9em; cursor: pointer; margin-top: 10px;
+  }
+  .copy-btn:hover { background: #7f8c8d; }
+  .copy-btn.copied { background: #27ae60; }
+
+  .score-big { font-size: 2.6em; font-weight: 700; color: #9b59b6; text-align: center; margin: 6px 0; }
+  .score-detail { text-align: center; color: #7f8c8d; }
+
+  .wrong-item {
+    background: #fdf2f2; border-left: 4px solid #e74c3c;
+    padding: 12px 16px; border-radius: 6px; margin-bottom: 10px;
+  }
+  .wrong-item .q-head { font-weight: 600; color: #c0392b; margin-bottom: 6px; }
+  .wrong-item .explain { color: #34495e; font-size: 0.95em; line-height: 1.7; }
+  .correct-mark { color: #27ae60; font-weight: 600; }
+  .wrong-mark { color: #e74c3c; font-weight: 600; text-decoration: line-through; }
+
+  .unknown-counter {
+    position: fixed; bottom: 20px; right: 20px;
+    background: #ffebcd; color: #b9770e;
+    padding: 9px 16px; border-radius: 30px;
+    font-weight: 600; font-size: 0.9em;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 100; display: none;
+    border: 2px solid #e67e22;
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 8px; }
+    .container { padding: 18px 16px; }
+    .options label { flex: 1 1 calc(50% - 6px); }
+    .options-ci label { flex: 1 1 calc(33% - 6px); }
+    .options-rd label { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>113 學年度學科能力測驗 ‧ 英文考科</h1>
+    <div class="subtitle">第 1-50 題（線上作答 ‧ 全部單面捲動 ‧ LINE 群繳交）</div>
+  </header>
+
+  <div class="student-info">
+    <label>姓名：</label><input type="text" id="studentName" placeholder="請輸入姓名">
+    <label>座號：</label><input type="text" id="studentId" placeholder="座號" style="max-width:90px;">
+  </div>
+
+  <div class="instruction">
+    <strong>作答說明：</strong>本卷共 50 題，全部單面作答、不分頁。每題單選一個答案（Q49 多選、Q47/Q48/Q50 為填空/簡答）。
+    閱讀時遇到<u>任何不會的單字</u>，直接點一下標記（再點取消），系統會於送出後統一匯出給老師。
+  </div>
+  <div class="legend">
+    不熟悉單字標記範例：<span class="word-sample">example</span>　🔖 黃底= 已標記不熟悉。各題下方/章節末尾有重複的選項單字列，方便點選。
+  </div>
+
+<form id="quizForm">
+
+<!-- ============ 一、詞彙題 (1-10) ============ -->
+<div class="section-title">一、詞彙題（第 1-10 題，每題 1 分）</div>
+
+<div class="question" data-q="1">
+  <div class="q-text autowrap"><span class="q-num">1</span>People who desire a <span class="blank">______</span> figure should exercise regularly and maintain healthy eating habits.</div>
+  <div class="options" data-qid="1">
+    <label><input type="radio" name="q1" value="A"><span>(A) spicy</span></label>
+    <label><input type="radio" name="q1" value="B"><span>(B) slender</span></label>
+    <label><input type="radio" name="q1" value="C"><span>(C) slight</span></label>
+    <label><input type="radio" name="q1" value="D"><span>(D) slippery</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">spicy</span><span class="word">slender</span><span class="word">slight</span><span class="word">slippery</span></div>
+</div>
+
+<div class="question" data-q="2">
+  <div class="q-text autowrap"><span class="q-num">2</span>Watching the sun <span class="blank">______</span> from a sea of clouds is a must-do activity for all visitors to Ali Mountain.</div>
+  <div class="options" data-qid="2">
+    <label><input type="radio" name="q2" value="A"><span>(A) emerging</span></label>
+    <label><input type="radio" name="q2" value="B"><span>(B) flashing</span></label>
+    <label><input type="radio" name="q2" value="C"><span>(C) rushing</span></label>
+    <label><input type="radio" name="q2" value="D"><span>(D) floating</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">emerging</span><span class="word">flashing</span><span class="word">rushing</span><span class="word">floating</span></div>
+</div>
+
+<div class="question" data-q="3">
+  <div class="q-text autowrap"><span class="q-num">3</span>Do you know what time the next bus is <span class="blank">______</span>? I've been waiting here for more than 30 minutes.</div>
+  <div class="options" data-qid="3">
+    <label><input type="radio" name="q3" value="A"><span>(A) apt</span></label>
+    <label><input type="radio" name="q3" value="B"><span>(B) due</span></label>
+    <label><input type="radio" name="q3" value="C"><span>(C) bound</span></label>
+    <label><input type="radio" name="q3" value="D"><span>(D) docked</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">apt</span><span class="word">due</span><span class="word">bound</span><span class="word">docked</span></div>
+</div>
+
+<div class="question" data-q="4">
+  <div class="q-text autowrap"><span class="q-num">4</span>The roasting heat and high <span class="blank">______</span> made me feel hot and sticky, no matter what I did to cool off.</div>
+  <div class="options" data-qid="4">
+    <label><input type="radio" name="q4" value="A"><span>(A) density</span></label>
+    <label><input type="radio" name="q4" value="B"><span>(B) humidity</span></label>
+    <label><input type="radio" name="q4" value="C"><span>(C) circulation</span></label>
+    <label><input type="radio" name="q4" value="D"><span>(D) atmosphere</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">density</span><span class="word">humidity</span><span class="word">circulation</span><span class="word">atmosphere</span></div>
+</div>
+
+<div class="question" data-q="5">
+  <div class="q-text autowrap"><span class="q-num">5</span>Artwork created by truly great artists such as Picasso and Monet will no doubt <span class="blank">______</span> the test of time.</div>
+  <div class="options" data-qid="5">
+    <label><input type="radio" name="q5" value="A"><span>(A) stay</span></label>
+    <label><input type="radio" name="q5" value="B"><span>(B) take</span></label>
+    <label><input type="radio" name="q5" value="C"><span>(C) serve</span></label>
+    <label><input type="radio" name="q5" value="D"><span>(D) stand</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">stay</span><span class="word">take</span><span class="word">serve</span><span class="word">stand</span></div>
+</div>
+
+<div class="question" data-q="6">
+  <div class="q-text autowrap"><span class="q-num">6</span>In some countries, military service is <span class="blank">______</span> for men only; women do not have to serve in the military.</div>
+  <div class="options" data-qid="6">
+    <label><input type="radio" name="q6" value="A"><span>(A) forceful</span></label>
+    <label><input type="radio" name="q6" value="B"><span>(B) realistic</span></label>
+    <label><input type="radio" name="q6" value="C"><span>(C) compulsory</span></label>
+    <label><input type="radio" name="q6" value="D"><span>(D) distinctive</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">forceful</span><span class="word">realistic</span><span class="word">compulsory</span><span class="word">distinctive</span></div>
+</div>
+
+<div class="question" data-q="7">
+  <div class="q-text autowrap"><span class="q-num">7</span>The team complained that its leader always took the <span class="blank">______</span> for all the hard work done by the team members.</div>
+  <div class="options" data-qid="7">
+    <label><input type="radio" name="q7" value="A"><span>(A) advantage</span></label>
+    <label><input type="radio" name="q7" value="B"><span>(B) revenge</span></label>
+    <label><input type="radio" name="q7" value="C"><span>(C) remedy</span></label>
+    <label><input type="radio" name="q7" value="D"><span>(D) credit</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">advantage</span><span class="word">revenge</span><span class="word">remedy</span><span class="word">credit</span></div>
+</div>
+
+<div class="question" data-q="8">
+  <div class="q-text autowrap"><span class="q-num">8</span>Located at the center of the city, the business hotel <span class="blank">______</span> not only good service but also convenient public transport.</div>
+  <div class="options" data-qid="8">
+    <label><input type="radio" name="q8" value="A"><span>(A) proposes</span></label>
+    <label><input type="radio" name="q8" value="B"><span>(B) contains</span></label>
+    <label><input type="radio" name="q8" value="C"><span>(C) promises</span></label>
+    <label><input type="radio" name="q8" value="D"><span>(D) confirms</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">proposes</span><span class="word">contains</span><span class="word">promises</span><span class="word">confirms</span></div>
+</div>
+
+<div class="question" data-q="9">
+  <div class="q-text autowrap"><span class="q-num">9</span>As blood supplies have fallen to a critically low level, many hospitals are making an <span class="blank">______</span> for the public to donate blood.</div>
+  <div class="options" data-qid="9">
+    <label><input type="radio" name="q9" value="A"><span>(A) appeal</span></label>
+    <label><input type="radio" name="q9" value="B"><span>(B) approach</span></label>
+    <label><input type="radio" name="q9" value="C"><span>(C) operation</span></label>
+    <label><input type="radio" name="q9" value="D"><span>(D) observation</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">appeal</span><span class="word">approach</span><span class="word">operation</span><span class="word">observation</span></div>
+</div>
+
+<div class="question" data-q="10">
+  <div class="q-text autowrap"><span class="q-num">10</span>David felt disappointed when he found out that he could not choose his study partners, but would be <span class="blank">______</span> placed in a study group.</div>
+  <div class="options" data-qid="10">
+    <label><input type="radio" name="q10" value="A"><span>(A) eligibly</span></label>
+    <label><input type="radio" name="q10" value="B"><span>(B) randomly</span></label>
+    <label><input type="radio" name="q10" value="C"><span>(C) apparently</span></label>
+    <label><input type="radio" name="q10" value="D"><span>(D) consequently</span></label>
+  </div>
+  <div class="vocab-row"><span class="word">eligibly</span><span class="word">randomly</span><span class="word">apparently</span><span class="word">consequently</span></div>
+</div>
+
+<!-- ============ 二、綜合測驗 (11-20) — 已位置變換 ============ -->
+<div class="section-title">二、綜合測驗（第 11-20 題，每題 1 分）⚙ 已位置變換</div>
+
+<div class="group-label">【第 11-15 題為題組】Mystery shoppers</div>
+
+<!-- Para 1 (with 11, 12) -->
+<div class="passage autowrap">
+<p>Mystery shoppers are paid consumers who are hired to shop in stores and collect data. They are sent to a wide variety of service-based businesses, including stores, restaurants, and banks—potentially anywhere customers are served. Sometimes referred to as secret shoppers, mystery shoppers <span class="blank">[11]</span> regular customers to purchase items, eat in restaurants, make inquiries, or return items. They grade and report on the quality of products, customer service, and environment of the stores <span class="blank">[12]</span> they are assigned.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">11.</span>
+  <div class="options" data-qid="11">
+    <label><input type="radio" name="q11" value="A"><span>(A) pose as</span></label>
+    <label><input type="radio" name="q11" value="B"><span>(B) engage in</span></label>
+    <label><input type="radio" name="q11" value="C"><span>(C) call for</span></label>
+    <label><input type="radio" name="q11" value="D"><span>(D) attend to</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">pose</span><span class="word">engage</span><span class="word">call</span><span class="word">attend</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">12.</span>
+  <div class="options" data-qid="12">
+    <label><input type="radio" name="q12" value="A"><span>(A) to which</span></label>
+    <label><input type="radio" name="q12" value="B"><span>(B) with which</span></label>
+    <label><input type="radio" name="q12" value="C"><span>(C) in that</span></label>
+    <label><input type="radio" name="q12" value="D"><span>(D) for that</span></label>
+  </div>
+</div>
+
+<!-- Para 2a (with 13) -->
+<div class="passage autowrap">
+<p>When evaluating a business, mystery shoppers have to follow certain standard procedures to avoid <span class="blank">[13]</span>.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">13.</span>
+  <div class="options" data-qid="13">
+    <label><input type="radio" name="q13" value="A"><span>(A) personal bias</span></label>
+    <label><input type="radio" name="q13" value="B"><span>(B) racial conflicts</span></label>
+    <label><input type="radio" name="q13" value="C"><span>(C) financial hardship</span></label>
+    <label><input type="radio" name="q13" value="D"><span>(D) keen competitions</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">personal</span><span class="word">bias</span><span class="word">racial</span><span class="word">conflicts</span><span class="word">financial</span><span class="word">hardship</span><span class="word">keen</span><span class="word">competitions</span></div>
+
+<!-- Para 2b (with 14, 15) -->
+<div class="passage autowrap">
+<p>They are often given a checklist that provides directions on what to observe or look out for to ensure consistency. Sometimes these shoppers collect data about their "normal" observations, such as cleanliness of the store or timeliness of the service. They may also pretend to be <span class="blank">[14]</span> customers, arguing with a salesperson without a good reason. With the data they collect, mystery shoppers can identify areas for <span class="blank">[15]</span> and thereby help enhance the quality of products and services. In this way, these secret shoppers may help a business gain a competitive edge.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">14.</span>
+  <div class="options" data-qid="14">
+    <label><input type="radio" name="q14" value="A"><span>(A) potential</span></label>
+    <label><input type="radio" name="q14" value="B"><span>(B) difficult</span></label>
+    <label><input type="radio" name="q14" value="C"><span>(C) anonymous</span></label>
+    <label><input type="radio" name="q14" value="D"><span>(D) constant</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">potential</span><span class="word">difficult</span><span class="word">anonymous</span><span class="word">constant</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">15.</span>
+  <div class="options" data-qid="15">
+    <label><input type="radio" name="q15" value="A"><span>(A) improvement</span></label>
+    <label><input type="radio" name="q15" value="B"><span>(B) management</span></label>
+    <label><input type="radio" name="q15" value="C"><span>(C) distribution</span></label>
+    <label><input type="radio" name="q15" value="D"><span>(D) expectation</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">improvement</span><span class="word">management</span><span class="word">distribution</span><span class="word">expectation</span></div>
+
+<div class="group-label">【第 16-20 題為題組】Knocker-up</div>
+
+<!-- Intro + Para 2 (with 16, 17) -->
+<div class="passage autowrap">
+<p>The modern worker rolls out of bed, groans, and turns off an alarm clock before reluctantly getting up for the day's work. But how did people get to work on time before alarm clocks were widely used?</p>
+<p>During the second Industrial Age, people toiled at unusual hours in mines or factories and often had to get up for work early in the morning. They <span class="blank">[16]</span> alarm clocks because adjustable alarms had been invented by the mid-19th century. But the new device was still relatively expensive and unreliable. British workers thus relied on a human alarm clock known as a "knocker-up." <span class="blank">[17]</span> sticks or pea shooters, the human alarms would tour the streets, tap on windows, or blast them with dried peas, trying to wake paying customers in time for work.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">16.</span>
+  <div class="options" data-qid="16">
+    <label><input type="radio" name="q16" value="A"><span>(A) were mostly using</span></label>
+    <label><input type="radio" name="q16" value="B"><span>(B) had hardly used</span></label>
+    <label><input type="radio" name="q16" value="C"><span>(C) could have used</span></label>
+    <label><input type="radio" name="q16" value="D"><span>(D) must be using</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">17.</span>
+  <div class="options" data-qid="17">
+    <label><input type="radio" name="q17" value="A"><span>(A) Trained for</span></label>
+    <label><input type="radio" name="q17" value="B"><span>(B) Equipped with</span></label>
+    <label><input type="radio" name="q17" value="C"><span>(C) Aimed at</span></label>
+    <label><input type="radio" name="q17" value="D"><span>(D) Exhausted by</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">Trained</span><span class="word">Equipped</span><span class="word">Aimed</span><span class="word">Exhausted</span></div>
+
+<!-- Para 3 (with 18) -->
+<div class="passage autowrap">
+<p>Whether they wielded rods or pea shooters, knockers-up became <span class="blank">[18]</span> throughout the United Kingdom. Every morning, these people, often older in age, were seen in big streets and small alleys, waking up their customers professionally. They usually would not leave people's houses until they were sure their customers were awake.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">18.</span>
+  <div class="options" data-qid="18">
+    <label><input type="radio" name="q18" value="A"><span>(A) public eyesores</span></label>
+    <label><input type="radio" name="q18" value="B"><span>(B) vague images</span></label>
+    <label><input type="radio" name="q18" value="C"><span>(C) distant memories</span></label>
+    <label><input type="radio" name="q18" value="D"><span>(D) familiar presences</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">eyesores</span><span class="word">vague</span><span class="word">distant</span><span class="word">familiar</span><span class="word">presences</span></div>
+
+<!-- Para 4 (with 19, 20) -->
+<div class="passage autowrap">
+<p>While the practice continued in some parts of the country until the 1970s, it <span class="blank">[19]</span> as alarm clocks became more widespread and affordable. Today, beeping alarm clocks and smartphones that play morning music are surely simpler and more convenient. However, they cannot <span class="blank">[20]</span> the personal attention coming from the distinctive tap of a pea shooter.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">19.</span>
+  <div class="options" data-qid="19">
+    <label><input type="radio" name="q19" value="A"><span>(A) declined</span></label>
+    <label><input type="radio" name="q19" value="B"><span>(B) remained</span></label>
+    <label><input type="radio" name="q19" value="C"><span>(C) dismissed</span></label>
+    <label><input type="radio" name="q19" value="D"><span>(D) revised</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">declined</span><span class="word">remained</span><span class="word">dismissed</span><span class="word">revised</span></div>
+
+<div class="q-inline">
+  <span class="q-num-sq">20.</span>
+  <div class="options" data-qid="20">
+    <label><input type="radio" name="q20" value="A"><span>(A) change</span></label>
+    <label><input type="radio" name="q20" value="B"><span>(B) match</span></label>
+    <label><input type="radio" name="q20" value="C"><span>(C) forget</span></label>
+    <label><input type="radio" name="q20" value="D"><span>(D) regret</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">change</span><span class="word">match</span><span class="word">forget</span><span class="word">regret</span></div>
+
+<!-- ============ 三、文意選填 (21-30) — 已位置變換 + 題目交錯排列 ============ -->
+<div class="section-title">三、文意選填（第 21-30 題，每題 1 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+<div class="group-label">【第 21-30 題為題組】Wind Phone</div>
+
+<!-- Para 1 (with 21, 22) -->
+<div class="passage autowrap">
+<p>On a hilltop overlooking the 2011-tsunami hit Otsuchi Town in northeastern Japan, there is a white phone booth standing all alone in the wind. The lonely "wind phone" serves to connect family members to their <span class="blank">[21]</span> loved ones who died in the tsunami that claimed 18,000 lives. People come to speak to those they have lost, to say the words they never got to say on that <span class="blank">[22]</span> day.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">21.</span>
+  <div class="options options-ci" data-qid="21">
+    <label><input type="radio" name="q21" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q21" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q21" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q21" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q21" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q21" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q21" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q21" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q21" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q21" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">22.</span>
+  <div class="options options-ci" data-qid="22">
+    <label><input type="radio" name="q22" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q22" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q22" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q22" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q22" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q22" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q22" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q22" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q22" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q22" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<!-- Para 2 (with 23, 24) -->
+<div class="passage autowrap">
+<p>The idea for the wind phone was first <span class="blank">[23]</span> by a Japanese garden designer named Itaru Sasaki, who was grieving over the death of his cousin in 2010, before the tsunami. Feeling that he needed a private space to help him navigate through the <span class="blank">[24]</span>, Sasaki positioned a booth where he could "speak" to the dead relative.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">23.</span>
+  <div class="options options-ci" data-qid="23">
+    <label><input type="radio" name="q23" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q23" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q23" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q23" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q23" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q23" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q23" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q23" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q23" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q23" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">24.</span>
+  <div class="options options-ci" data-qid="24">
+    <label><input type="radio" name="q24" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q24" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q24" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q24" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q24" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q24" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q24" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q24" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q24" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q24" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<!-- Para 3a (with 25, 26) -->
+<div class="passage autowrap">
+<p>The booth he built <span class="blank">[25]</span> only an old dial phone with a disconnected phone line. When he stepped into the booth, he could pick up the phone to call his cousin, telling him how he was, and how he missed him. Sasaki stated in an interview: "Because my thoughts couldn't be <span class="blank">[26]</span> through a regular phone line,</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">25.</span>
+  <div class="options options-ci" data-qid="25">
+    <label><input type="radio" name="q25" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q25" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q25" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q25" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q25" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q25" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q25" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q25" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q25" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q25" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">26.</span>
+  <div class="options options-ci" data-qid="26">
+    <label><input type="radio" name="q26" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q26" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q26" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q26" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q26" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q26" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q26" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q26" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q26" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q26" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<!-- Para 3b (with 27) -->
+<div class="passage autowrap">
+<p>I wanted them to be carried on the wind." Hence, the wind phone allows Sasaki to create a one-way conversation with deep, soulful personal meaning, and renders the grieving process more <span class="blank">[27]</span> for him.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">27.</span>
+  <div class="options options-ci" data-qid="27">
+    <label><input type="radio" name="q27" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q27" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q27" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q27" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q27" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q27" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q27" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q27" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q27" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q27" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<!-- Para 4 (with 28) -->
+<div class="passage autowrap">
+<p>Sasaki opened his wind phone to the public in 2011, after the devastating tsunami. News about the phone gradually spread, and the booth has become a <span class="blank">[28]</span> between the living and the dead. Phones resembling the wind phone have since been built around the world. Some were even set up to allow people to call their loved ones lost in the COVID-19 pandemic.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">28.</span>
+  <div class="options options-ci" data-qid="28">
+    <label><input type="radio" name="q28" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q28" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q28" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q28" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q28" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q28" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q28" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q28" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q28" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q28" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<!-- Para 5 (with 29, 30) -->
+<div class="passage autowrap">
+<p>Grieving is a natural <span class="blank">[29]</span> for coping with loss of a loved one, and people grieve in various ways. For those who speak into the wind phone, <span class="blank">[30]</span> is always there: They believe that their messages will—through some unknown way—reach the deceased.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">29.</span>
+  <div class="options options-ci" data-qid="29">
+    <label><input type="radio" name="q29" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q29" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q29" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q29" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q29" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q29" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q29" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q29" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q29" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q29" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">30.</span>
+  <div class="options options-ci" data-qid="30">
+    <label><input type="radio" name="q30" value="A"><span>(A) brought forth</span></label>
+    <label><input type="radio" name="q30" value="B"><span>(B) bridge</span></label>
+    <label><input type="radio" name="q30" value="C"><span>(C) mechanism</span></label>
+    <label><input type="radio" name="q30" value="D"><span>(D) passed on</span></label>
+    <label><input type="radio" name="q30" value="E"><span>(E) fateful</span></label>
+    <label><input type="radio" name="q30" value="F"><span>(F) sorrow</span></label>
+    <label><input type="radio" name="q30" value="G"><span>(G) manageable</span></label>
+    <label><input type="radio" name="q30" value="H"><span>(H) departed</span></label>
+    <label><input type="radio" name="q30" value="I"><span>(I) hope</span></label>
+    <label><input type="radio" name="q30" value="J"><span>(J) housed</span></label>
+  </div>
+</div>
+
+<!-- 文意選填 10 個單字選項，重複出現於文章最後給學生挑不熟悉的單字 -->
+<div class="vocab-row"><span class="word">brought forth</span><span class="word">bridge</span><span class="word">mechanism</span><span class="word">passed on</span><span class="word">fateful</span><span class="word">sorrow</span><span class="word">manageable</span><span class="word">departed</span><span class="word">hope</span><span class="word">housed</span></div>
+
+<!-- ============ 四、篇章結構 (31-34) — 已位置變換 + 題目就近排列 ============ -->
+<div class="section-title">四、篇章結構（第 31-34 題，每題 2 分）⚙ 已位置變換 ‧ 題目就近排列</div>
+<div class="group-label">【第 31-34 題為題組】Exercising When Injured</div>
+
+<!-- Para opening (intro) -->
+<div class="passage autowrap">
+<p>While Dr. Weinstein, a surgeon at Dartmouth College, was trying to lift a heavy box, he twisted his back. The pain was agonizing. The surgeon could not sit, and when he lay down he could barely get up. So he decided to go out for a run. He took an aspirin, iced the injured area, and off he went. When he returned, he felt "pretty good."</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">31.</span>
+  <div class="options options-ps" data-qid="31">
+    <label><input type="radio" name="q31" value="A"><span>(A) This seems to run counter to the common practice.</span></label>
+    <label><input type="radio" name="q31" value="B"><span>(B) For example, an injured runner might end up cycling and swimming instead of running.</span></label>
+    <label><input type="radio" name="q31" value="C"><span>(C) Over time, researchers have come to realize the importance of exercising when injured.</span></label>
+    <label><input type="radio" name="q31" value="D"><span>(D) Many suggest that most patients can continue with the sport they love.</span></label>
+  </div>
+</div>
+
+<!-- Para 2 (with 31) -->
+<div class="passage autowrap">
+<p><span class="blank">[31]</span> When people have sprained a muscle or tendon, they are usually advised not to go right back to exercising until the pain goes away. But Dr. Weinstein says that approach is outdated and counterproductive. In fact, when active people consult him, he usually tells them to just keep exercising.</p>
+<p>Dr. Weinstein is not alone in his treatment of sports injury, but the specific advice can differ from specialist to specialist.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">32.</span>
+  <div class="options options-ps" data-qid="32">
+    <label><input type="radio" name="q32" value="A"><span>(A) This seems to run counter to the common practice.</span></label>
+    <label><input type="radio" name="q32" value="B"><span>(B) For example, an injured runner might end up cycling and swimming instead of running.</span></label>
+    <label><input type="radio" name="q32" value="C"><span>(C) Over time, researchers have come to realize the importance of exercising when injured.</span></label>
+    <label><input type="radio" name="q32" value="D"><span>(D) Many suggest that most patients can continue with the sport they love.</span></label>
+  </div>
+</div>
+
+<!-- Para 3a (with 32) -->
+<div class="passage autowrap">
+<p><span class="blank">[32]</span> They nevertheless caution that a cutback may be necessary, such as running shorter distances or going more slowly. Others say the patients may need to engage in sports outside of their usual, main sport (that is, to cross-train), at least some of the time. Still others say the safest thing to do is cross-train all the time until the pain is gone.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">33.</span>
+  <div class="options options-ps" data-qid="33">
+    <label><input type="radio" name="q33" value="A"><span>(A) This seems to run counter to the common practice.</span></label>
+    <label><input type="radio" name="q33" value="B"><span>(B) For example, an injured runner might end up cycling and swimming instead of running.</span></label>
+    <label><input type="radio" name="q33" value="C"><span>(C) Over time, researchers have come to realize the importance of exercising when injured.</span></label>
+    <label><input type="radio" name="q33" value="D"><span>(D) Many suggest that most patients can continue with the sport they love.</span></label>
+  </div>
+</div>
+
+<!-- Para 3b (with 33) -->
+<div class="passage autowrap">
+<p><span class="blank">[33]</span> Their consensus, however, is that unless the injury involves something as serious as a broken bone or a ripped muscle, moderate exercise can actually speed healing.</p>
+</div>
+
+<div class="q-inline">
+  <span class="q-num-sq">34.</span>
+  <div class="options options-ps" data-qid="34">
+    <label><input type="radio" name="q34" value="A"><span>(A) This seems to run counter to the common practice.</span></label>
+    <label><input type="radio" name="q34" value="B"><span>(B) For example, an injured runner might end up cycling and swimming instead of running.</span></label>
+    <label><input type="radio" name="q34" value="C"><span>(C) Over time, researchers have come to realize the importance of exercising when injured.</span></label>
+    <label><input type="radio" name="q34" value="D"><span>(D) Many suggest that most patients can continue with the sport they love.</span></label>
+  </div>
+</div>
+
+<!-- Para 4 (with 34) -->
+<div class="passage autowrap">
+<p><span class="blank">[34]</span> Thus, more and more patients are now advised to keep moving despite the pain. The rule of thumb, however, is to see a doctor first and get an accurate diagnosis. If a serious injury is ruled out and the pain is not getting worse after exercising, then the exercise "makes a lot of sense."</p>
+</div>
+
+<!-- 篇章結構選項句子重複出現（不用題號），給學生挑單字 -->
+<div class="vocab-sentences autowrap">
+  <div class="sent-line">This seems to run counter to the common practice.</div>
+  <div class="sent-line">For example, an injured runner might end up cycling and swimming instead of running.</div>
+  <div class="sent-line">Over time, researchers have come to realize the importance of exercising when injured.</div>
+  <div class="sent-line">Many suggest that most patients can continue with the sport they love.</div>
+</div>
+
+<!-- ============ 五、閱讀測驗 (35-46) — 已位置變換 ============ -->
+<div class="section-title">五、閱讀測驗（第 35-46 題，每題 2 分）⚙ 已位置變換</div>
+
+<div class="group-label">【第 35-38 題為題組】Velcro</div>
+
+<!-- Para 1 of Velcro -->
+<div class="passage autowrap">
+<p>One fine morning in 1941, Swiss engineer George de Mestral went for a walk in the woods with his dog. Upon their return home, he found a lot of burrs (from plants) stuck to the dog's fur and his pants. He immediately rushed to his microscope and examined the burrs attached on his pants—feeling a lightbulb moment coming on.</p>
+</div>
+
+<div class="question" data-q="36">
+  <div class="q-text autowrap"><span class="q-num">36</span>What does the author mean by "a lightbulb moment" in the first paragraph?</div>
+  <div class="options options-rd" data-qid="36">
+    <label><input type="radio" name="q36" value="A"><span>(A) A sudden inspiration.</span></label>
+    <label><input type="radio" name="q36" value="B"><span>(B) A happy ending.</span></label>
+    <label><input type="radio" name="q36" value="C"><span>(C) A blessing in disguise.</span></label>
+    <label><input type="radio" name="q36" value="D"><span>(D) An unpredictable future.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">inspiration</span><span class="word">blessing</span><span class="word">disguise</span><span class="word">unpredictable</span></div>
+
+<!-- Paras 2-4 of Velcro -->
+<div class="passage autowrap">
+<p>Upon closer examination, de Mestral observed that the burrs, which appeared straight to the naked eye, actually contained many small hooks that clung firmly to the loops in the fabric of his pants. He determined that if he could recreate the same thing, making hooks-and-loops that bind to each other firmly, he could produce a strong fastener with many uses.</p>
+<p>De Mestral's first challenge was finding a fabric for a strong bonding system. He first tried cotton, but it proved too soft and could not withstand repeated openings and closures. After years of research and testing, he learned that synthetics worked best and eventually settled on heat-treated nylon, a strong and durable substance. By 1955, he had completed an improved version of the product, with each square inch of material containing 300 hooks, which made it stay fastened and yet easy enough to pull apart when needed. Named "Velcro," from the French words velours (velvet) and crochet (hook), the new product received a patent from the Swiss government in 1955. De Mestral thus began mass-producing Velcro, opening plants in Europe and eventually into Canada and the United States.</p>
+<p>Initially Velcro did not fare well. As most fashion critics considered it ugly and cheap-looking, the use of Velcro was limited to athletic equipment. In the early 1960s, the product received a huge boost in popularity when NASA began using it in a lot of equipment that went into space along with astronauts. Today, de Mestral's design is found almost everywhere: clothing and footwear, toys, airline seat cushions, blood pressure cuffs and surgeons' gowns. Most impressively, the magical fastener was used in the first human artificial heart transplantation to hold together parts of the device.</p>
+</div>
+
+<div class="question" data-q="35">
+  <div class="q-text autowrap"><span class="q-num">35</span>Which of the following pictures shows de Mestral's invention?</div>
+  <div class="pic-grid">
+    <label class="pic-opt"><input type="radio" name="q35" value="A">
+      <svg viewBox="0 0 100 70" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="8" width="42" height="22" fill="#9b7e5a" stroke="#5d4a30" rx="3"/>
+        <g stroke="#3d2d18" stroke-width="1.6" fill="none">
+          <path d="M11 8 q3 -5 6 0"/><path d="M19 8 q3 -5 6 0"/>
+          <path d="M27 8 q3 -5 6 0"/><path d="M35 8 q3 -5 6 0"/>
+        </g>
+        <rect x="52" y="40" width="42" height="22" fill="#bca48a" stroke="#7d6450" rx="3"/>
+        <g stroke="#5a4830" stroke-width="1.2" fill="none">
+          <ellipse cx="58" cy="62" rx="3" ry="2"/><ellipse cx="68" cy="62" rx="3" ry="2"/>
+          <ellipse cx="78" cy="62" rx="3" ry="2"/><ellipse cx="88" cy="62" rx="3" ry="2"/>
+        </g>
+      </svg>
+      <span class="pic-cap">(A) 鉤毛搭扣（魔鬼氈）</span>
+    </label>
+    <label class="pic-opt"><input type="radio" name="q35" value="B">
+      <svg viewBox="0 0 100 70" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="28" cy="35" r="18" fill="#d8d8d8" stroke="#666" stroke-width="1.5"/>
+        <circle cx="28" cy="35" r="10" fill="#888"/>
+        <circle cx="28" cy="35" r="3" fill="#444"/>
+        <circle cx="72" cy="35" r="18" fill="#e6e6e6" stroke="#666" stroke-width="1.5"/>
+        <circle cx="72" cy="35" r="6" fill="none" stroke="#444" stroke-width="2"/>
+      </svg>
+      <span class="pic-cap">(B) 按扣 (snap)</span>
+    </label>
+    <label class="pic-opt"><input type="radio" name="q35" value="C">
+      <svg viewBox="0 0 100 70" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="20" width="42" height="30" fill="#f4f4f4" stroke="#aaa"/>
+        <g stroke="#666" stroke-width="2.2" fill="none">
+          <circle cx="14" cy="30" r="2.5"/><circle cx="14" cy="42" r="2.5"/>
+          <circle cx="26" cy="30" r="2.5"/><circle cx="26" cy="42" r="2.5"/>
+          <circle cx="38" cy="30" r="2.5"/><circle cx="38" cy="42" r="2.5"/>
+        </g>
+        <rect x="54" y="20" width="42" height="30" fill="#f4f4f4" stroke="#aaa"/>
+        <g stroke="#666" stroke-width="2.2" fill="none">
+          <path d="M62 28 q5 0 5 7 q0 7 -5 7"/>
+          <path d="M76 28 q5 0 5 7 q0 7 -5 7"/>
+          <path d="M90 28 q5 0 5 7 q0 7 -5 7"/>
+        </g>
+      </svg>
+      <span class="pic-cap">(C) 胸罩鉤眼</span>
+    </label>
+    <label class="pic-opt"><input type="radio" name="q35" value="D">
+      <svg viewBox="0 0 100 70" class="pic-svg" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 10 L20 60 L70 60 Q85 60 85 45 L85 25 Q85 10 70 10 Z" fill="none" stroke="#555" stroke-width="4"/>
+        <line x1="25" y1="22" x2="65" y2="22" stroke="#555" stroke-width="2.5"/>
+        <circle cx="83" cy="50" r="3" fill="#888"/>
+        <circle cx="22" cy="32" r="3" fill="#888"/>
+      </svg>
+      <span class="pic-cap">(D) 彈簧扣環</span>
+    </label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">fastener</span><span class="word">snap</span><span class="word">closures</span><span class="word">carabiner</span></div>
+
+<div class="question" data-q="37">
+  <div class="q-text autowrap"><span class="q-num">37</span>Which of the following statements about Velcro is true?</div>
+  <div class="options options-rd" data-qid="37">
+    <label><input type="radio" name="q37" value="A"><span>(A) Cotton was not durable enough to be used as its materials.</span></label>
+    <label><input type="radio" name="q37" value="B"><span>(B) It has been a market favorite since its first appearance.</span></label>
+    <label><input type="radio" name="q37" value="C"><span>(C) The design was intended to look as shiny and smooth as velvet.</span></label>
+    <label><input type="radio" name="q37" value="D"><span>(D) It was given a French name because it was first produced in France.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">durable</span><span class="word">favorite</span><span class="word">appearance</span><span class="word">intended</span><span class="word">velvet</span></div>
+
+<div class="question" data-q="38">
+  <div class="q-text autowrap"><span class="q-num">38</span>Which of the following fields is NOT mentioned for Velcro uses in the passage?</div>
+  <div class="options options-rd" data-qid="38">
+    <label><input type="radio" name="q38" value="A"><span>(A) Aerospace industry.</span></label>
+    <label><input type="radio" name="q38" value="B"><span>(B) Medical technology.</span></label>
+    <label><input type="radio" name="q38" value="C"><span>(C) Civil engineering.</span></label>
+    <label><input type="radio" name="q38" value="D"><span>(D) Sports and recreation.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">Aerospace</span><span class="word">Civil</span><span class="word">recreation</span></div>
+
+<div class="group-label">【第 39-42 題為題組】Thomas Moran &amp; Yellowstone</div>
+
+<!-- Para 1, 2 of Moran -->
+<div class="passage autowrap">
+<p>Thomas Moran, a famous painter in the 19th century, played an important role in the establishment of American national parks. His vivid paintings brought the splendor of the extraordinary landscapes before the eyes of American people, thus setting the stage for the regions to be widely recognized and officially established as national parks.</p>
+<p>Moran came to the United States at age 7 with his family and settled in Philadelphia. They came from northwest England, the blackened heart of the Industrial Revolution: Its main street was "a dark, unattractive hole" and the river running through it was a string of dirty water. That was all the nature that Moran knew. Moran began painting by age 15, inspired by the landscape paintings of the British master J.M.W. Turner. There was plenty of landscape for him to paint in America, much different from his hometown. Showing great talent in painting, Moran was soon hired as an illustrator at Scribner's Monthly, and later appointed chief illustrator by age 34. In 1871, he was appointed to illustrate The Wonders of Yellowstone, a story by Nathaniel P. Langford, who had participated in an expedition to Yellowstone. Captivated by the utterly fantastic sights Langford described, Moran became eager to see this odd territory for himself.</p>
+</div>
+
+<div class="question" data-q="40">
+  <div class="q-text autowrap"><span class="q-num">40</span>Why does the author use "the blackened heart" in paragraph 2 to describe Moran's hometown?</div>
+  <div class="options options-rd" data-qid="40">
+    <label><input type="radio" name="q40" value="A"><span>(A) There were many evil-hearted industry owners.</span></label>
+    <label><input type="radio" name="q40" value="B"><span>(B) The town was filled with darkened holes.</span></label>
+    <label><input type="radio" name="q40" value="C"><span>(C) The place was severely polluted.</span></label>
+    <label><input type="radio" name="q40" value="D"><span>(D) The laborers mostly wore dark and dirty uniforms.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">evil-hearted</span><span class="word">darkened</span><span class="word">severely</span><span class="word">polluted</span><span class="word">laborers</span></div>
+
+<!-- Para 3, 4 of Moran -->
+<div class="passage autowrap">
+<p>In 1871 Moran joined the first US government survey of the Yellowstone region with photographer William Henry Jackson. For two weeks he filled his sketchbook with the landscape's most stunning sights. Moran's watercolors—the first color renderings of the area—as well as Jackson's photos and the survey results were presented to the Congress. His powerful images of Yellowstone fired the imagination of Congress members. In March 1872, lawmakers officially made Yellowstone a national park, the world's first.</p>
+<p>Before Moran arrived, Yellowstone in the popular imagination was a harsh, wild place with hot water and steam coming out of hellish holes in the ground. Since the painter's work appeared, Yellowstone National Park has come to be known as a picturesque wonderland. By the time Moran died, he had painted a dozen other areas that would become national parks or monuments.</p>
+</div>
+
+<div class="question" data-q="39">
+  <div class="q-text autowrap"><span class="q-num">39</span>What can we learn from the passage?</div>
+  <div class="options options-rd" data-qid="39">
+    <label><input type="radio" name="q39" value="A"><span>(A) Why Moran started painting Yellowstone.</span></label>
+    <label><input type="radio" name="q39" value="B"><span>(B) Why Moran's family moved to the United States.</span></label>
+    <label><input type="radio" name="q39" value="C"><span>(C) How national parks around the world were established.</span></label>
+    <label><input type="radio" name="q39" value="D"><span>(D) How Yellowstone's natural features were formed.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">established</span><span class="word">features</span></div>
+
+<div class="question" data-q="41">
+  <div class="q-text autowrap"><span class="q-num">41</span>Which of the following statements is true about the Yellowstone National Park?</div>
+  <div class="options options-rd" data-qid="41">
+    <label><input type="radio" name="q41" value="A"><span>(A) Americans knew little about its beauty before the 1870s.</span></label>
+    <label><input type="radio" name="q41" value="B"><span>(B) It was the only national park established because of Moran's works.</span></label>
+    <label><input type="radio" name="q41" value="C"><span>(C) Its establishment was proposed by Langford.</span></label>
+    <label><input type="radio" name="q41" value="D"><span>(D) The government project was started due to its rich natural resources.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">establishment</span><span class="word">proposed</span></div>
+
+<div class="question" data-q="42">
+  <div class="q-text autowrap"><span class="q-num">42</span>What can be inferred from the passage?</div>
+  <div class="options options-rd" data-qid="42">
+    <label><input type="radio" name="q42" value="A"><span>(A) Color photos were not common when Moran started painting Yellowstone.</span></label>
+    <label><input type="radio" name="q42" value="B"><span>(B) Scribner's Monthly was a magazine promoting national parks.</span></label>
+    <label><input type="radio" name="q42" value="C"><span>(C) Moran had visited Yellowstone before he started painting its landscapes.</span></label>
+    <label><input type="radio" name="q42" value="D"><span>(D) Watercolor was the most popular form of landscape painting in the 19th century.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">promoting</span><span class="word">landscapes</span><span class="word">watercolor</span></div>
+
+<div class="group-label">【第 43-46 題為題組】100% Fish</div>
+
+<div class="passage autowrap">
+<p>In 2020, Petur Oddsson, a power station worker in Iceland, was struck by a 60,000-volt current. The electrical shock burned almost half of his body and melted layers of his skin off. Such deep and extensive burns can be fatal. But Oddsson's life was saved by a creative invention: transplanting codfish skins onto human bodies.</p>
+<p>A triumph for medical technology, Oddsson's fish skin transplantation was actually part of the astonishing achievement of "100% Fish," an ambitious task in promoting environmental efficiency. The Icelandic project, from which this pioneering procedure emerged, strives for making a fundamental change in the marine industry. It aims to encourage full utilization of each fish caught, and to strengthen innovation in seafood products.</p>
+<p>Reducing waste of fish catch has become a serious issue today, when many countries are faced with food crises. According to a 2003 study, about 60% of a codfish caught in Iceland was lost or wasted during the production process for human consumption. Under the guidance of 100% Fish, however, Icelanders are now using almost 95% of a cod. Cod skin, for example, is made into calcium supplement and energy drinks, and even as material for skin transplantation as in Oddsson's case. Dried fish heads and spines are exported to West Africa, where they are used as the base of a protein-rich soup. Other groundbreaking products, including Omega-3 capsules, cold virus pretreatment sprays, and dog snacks are made from what was once cod catch detritus.</p>
+<p>The Icelandic success is accomplished largely through cooperative efforts across various industries. 100% Fish takes the initiative to show seafood companies the importance of collaboration, and facilitate valuable connections between fishing companies and other participants of the project, including academia, start-ups, and research and development teams. By sharing knowledge and information, the different sectors are able to come up with improved processing and handling, through which creation of various innovative products was made possible. The project not only helps Icelanders to get 30% more value from each cod than most developed countries, but also provides an effective model to promote resource efficiency worldwide.</p>
+</div>
+
+<div class="question" data-q="43">
+  <div class="q-text autowrap"><span class="q-num">43</span>What is the primary goal of 100% Fish?</div>
+  <div class="options options-rd" data-qid="43">
+    <label><input type="radio" name="q43" value="A"><span>(A) To make the most of marine resources.</span></label>
+    <label><input type="radio" name="q43" value="B"><span>(B) To reduce food crises worldwide.</span></label>
+    <label><input type="radio" name="q43" value="C"><span>(C) To enhance cross-industry cooperation.</span></label>
+    <label><input type="radio" name="q43" value="D"><span>(D) To advance ocean technology.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">marine</span><span class="word">crises</span><span class="word">cross-industry</span><span class="word">cooperation</span></div>
+
+<div class="question" data-q="44">
+  <div class="q-text autowrap"><span class="q-num">44</span>What does "this pioneering procedure" in the second paragraph refer to?</div>
+  <div class="options options-rd" data-qid="44">
+    <label><input type="radio" name="q44" value="A"><span>(A) Oddsson's skin transplant.</span></label>
+    <label><input type="radio" name="q44" value="B"><span>(B) A new approach to protect the environment.</span></label>
+    <label><input type="radio" name="q44" value="C"><span>(C) 100% Fish's mission.</span></label>
+    <label><input type="radio" name="q44" value="D"><span>(D) A fundamental change in seafood business.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">transplant</span><span class="word">approach</span><span class="word">mission</span><span class="word">fundamental</span></div>
+
+<div class="question" data-q="45">
+  <div class="q-text autowrap"><span class="q-num">45</span>Which of the following is true according to the passage?</div>
+  <div class="options options-rd" data-qid="45">
+    <label><input type="radio" name="q45" value="A"><span>(A) Cross-field collaboration has proved to be very fruitful for 100% Fish.</span></label>
+    <label><input type="radio" name="q45" value="B"><span>(B) Iceland has increased their fish catch by 30% in the last 20 years.</span></label>
+    <label><input type="radio" name="q45" value="C"><span>(C) 100% Fish is a big international enterprise marketing seafood products.</span></label>
+    <label><input type="radio" name="q45" value="D"><span>(D) Petur Oddsson was an important member of the Icelandic project.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">collaboration</span><span class="word">fruitful</span><span class="word">enterprise</span></div>
+
+<div class="question" data-q="46">
+  <div class="q-text autowrap"><span class="q-num">46</span>Here is a sentence: "Almost nothing of a fish is left for the trash bin." Which paragraph is most suitable to have it as the final sentence?</div>
+  <div class="options options-rd" data-qid="46">
+    <label><input type="radio" name="q46" value="A"><span>(A) Paragraph 2.</span></label>
+    <label><input type="radio" name="q46" value="B"><span>(B) Paragraph 3.</span></label>
+    <label><input type="radio" name="q46" value="C"><span>(C) Paragraph 4.</span></label>
+    <label><input type="radio" name="q46" value="D"><span>(D) Paragraph 1.</span></label>
+  </div>
+</div>
+
+<!-- ============ 第貳部分 混合題 (47-50) ============ -->
+<div class="section-title">第 貳 部 分 ‧ 混 合 題（第 47-50 題）</div>
+<div class="group-label">【第 47-50 題為題組】Jackdaws &amp; Turtle Ants</div>
+
+<div class="passage autowrap">
+<p>Many animals are known to live and move in groups to secure food and avoid predators. Over the years, people have been curious about the way they deal with disturbances arising from the environment, and the operations underlying their responses as a group. Studies on jackdaws and turtle ants may provide some insights into the issue.</p>
+<p><strong>Jackdaws:</strong> Jackdaws are birds in the crow family often found in the English countryside. They are highly social birds and often travel in large flocks. Normally, the birds enjoy a smooth flight together as a group when "commuting" between two locations, such as from their nesting site to their feeding ground. However, if a predator (such as a fox) is present, the pattern of their flight will change immediately. Instead of paying attention to all the other members and following the group pattern, they now focus only on the birds within a fixed distance from them, based on information coming from other members. By doing so, the flock members are able to keep a safe distance between themselves, and thus avoid crashing into each other while they flee from the predator.</p>
+<p><strong>Turtle Ants:</strong> Turtle ants often live in the cavities of dead branches in American forests. They have evolved search strategies to link their food source to their nests. They travel entirely along tree branches and vines, laying down trails of pheromone (a chemical substance) behind them so that other ants can follow. The trails connect the ants' colonies and sources of food, forming a sort of communication network. However, since these trails can easily be broken by wind or rain, the ants have to find new paths to get around the broken points and reestablish the network. Often they have to work together to explore alternative routes many times before they finally settle on the most efficient one. By working collectively, the ants are able to improve the efficiency of their network and adapt to their ever-changing environment.</p>
+</div>
+
+<div class="question" data-q="47">
+  <div class="q-text autowrap"><span class="q-num">47-48</span>下列簡短敘述摘記上方文章重點。請從文章中找出最適當的單詞（word）填入下列句子空格中，並視句型結構需要做適當的字形變化。</div>
+  <div class="autowrap" style="background:#f8fbfd;padding:10px;border-radius:6px;margin-top:6px;">
+    Studies show that animals like jackdaws and turtle ants are able to use
+    <input type="text" class="fill-blank" id="q47" placeholder="Q47">
+    intelligence in both solving problems and
+    <input type="text" class="fill-blank" id="q48" placeholder="Q48">
+    to new challenging environment.
+  </div>
+</div>
+<div class="vocab-row"><span class="word">collective</span><span class="word">collectively</span><span class="word">adapt</span><span class="word">adapting</span><span class="word">intelligence</span></div>
+
+<div class="question" data-q="49">
+  <div class="q-text autowrap"><span class="q-num">49</span>From (A) to (F) below, choose the ONES that are true for both jackdaws and turtle ants.（多選題，4 分；點選兩個正確答案）</div>
+  <div class="options options-multi" data-qid="49">
+    <label><input type="checkbox" name="q49" value="A"><span>(A) They share information with their group members.</span></label>
+    <label><input type="checkbox" name="q49" value="B"><span>(B) They have special strategies to locate food sources.</span></label>
+    <label><input type="checkbox" name="q49" value="C"><span>(C) They show behavior governed by a unique system of communication.</span></label>
+    <label><input type="checkbox" name="q49" value="D"><span>(D) They have complex interactions led by a leader.</span></label>
+    <label><input type="checkbox" name="q49" value="E"><span>(E) They establish rules to stay away from enemies.</span></label>
+    <label><input type="checkbox" name="q49" value="F"><span>(F) They change their nesting sites from time to time.</span></label>
+  </div>
+</div>
+<div class="vocab-row"><span class="word">strategies</span><span class="word">interactions</span><span class="word">governed</span><span class="word">unique</span><span class="word">enemies</span><span class="word">nesting</span></div>
+
+<div class="question" data-q="50">
+  <div class="q-text autowrap"><span class="q-num">50</span>What is the "disturbance" for jackdaws mentioned in the passage?（簡答 2 分，請以英文一句回答）</div>
+  <textarea id="q50" class="short-ans" placeholder="請以英文回答..."></textarea>
+</div>
+<div class="vocab-row"><span class="word">disturbance</span><span class="word">predator</span></div>
+
+<!-- ============ 第 參 部 分 、 非 選 擇 題 ============ -->
+<div class="section-title">第 參 部 分 ‧ 非選擇題（占 28 分）</div>
+
+<!-- 中譯英 -->
+<div class="group-label">一、中譯英（占 8 分，每題 4 分）</div>
+<div class="instruction" style="margin-bottom:10px;">
+  <strong>說明：</strong>依題號將以下中文句子譯成正確、通順、達意的英文。
+</div>
+
+<div class="trans-item">
+  <div class="ch-line">1. 每逢選舉季節，總會看到政治人物造訪各地著名廟宇。</div>
+  <textarea id="trans1" class="short-ans" placeholder="請寫下你的英文翻譯..."></textarea>
+</div>
+
+<div class="trans-item">
+  <div class="ch-line">2. 除了祈求好的選舉結果，他們也希望展現對在地文化與習俗的尊重。</div>
+  <textarea id="trans2" class="short-ans" placeholder="請寫下你的英文翻譯..."></textarea>
+</div>
+
+<!-- 英文作文 -->
+<div class="group-label">二、英文作文（占 20 分）</div>
+<div class="instruction autowrap" style="margin-bottom:10px;">
+  <strong>提示：</strong>這個世代的青少年除了有課業壓力外，生活上也常面對一些困擾與挑戰。下列三張圖分別呈現青少年經常遭遇的三種問題，如果你有一個機器人小幫手可以幫你解決其中一個問題，你會選擇哪一個？請寫一篇英文作文（至少 120 個 words），文分兩段：第一段說明你最想解決哪一個問題，並解釋原因；第二段說明你希望這個機器人小幫手具備什麼特質或能力、可以如何和你分工合作來解決此問題。
+</div>
+
+<div class="essay-pics">
+  <div class="essay-pic-item">
+    <span class="pic-num">1</span>
+    <svg viewBox="0 0 100 100" class="essay-svg" xmlns="http://www.w3.org/2000/svg">
+      <!-- broken heart -->
+      <path d="M50 25 C40 12, 22 18, 22 35 C22 50, 50 70, 50 70 C50 70, 78 50, 78 35 C78 18, 60 12, 50 25 Z" fill="#888" stroke="#444" stroke-width="1.5"/>
+      <path d="M50 25 L42 38 L52 48 L42 60 L50 70" stroke="#fff" stroke-width="2.5" fill="none"/>
+      <!-- crying figure -->
+      <circle cx="32" cy="83" r="6" fill="#aaa" stroke="#666"/>
+      <path d="M30 88 L26 94" stroke="#3498db" stroke-width="1.5"/>
+      <path d="M34 88 L38 94" stroke="#3498db" stroke-width="1.5"/>
+      <path d="M30 84 q2 2 4 0" stroke="#444" stroke-width="1" fill="none"/>
+    </svg>
+    <span class="pic-label">First Heartbreak<br>失戀</span>
+  </div>
+  <div class="essay-pic-item">
+    <span class="pic-num">2</span>
+    <svg viewBox="0 0 100 100" class="essay-svg" xmlns="http://www.w3.org/2000/svg">
+      <!-- mirror -->
+      <rect x="14" y="14" width="34" height="44" fill="#cce0f0" stroke="#888" stroke-width="1.5" rx="2"/>
+      <circle cx="31" cy="32" r="6" fill="#aaa" stroke="#666"/>
+      <rect x="25" y="38" width="12" height="14" fill="#aaa" stroke="#666"/>
+      <!-- person looking -->
+      <circle cx="70" cy="38" r="9" fill="#bbb" stroke="#666" stroke-width="1.5"/>
+      <rect x="60" y="46" width="20" height="22" fill="#bbb" stroke="#666"/>
+      <!-- thought bubble with ? -->
+      <ellipse cx="78" cy="20" rx="14" ry="10" fill="#fff" stroke="#888" stroke-width="1.5"/>
+      <text x="73" y="25" font-size="14" fill="#444" font-weight="bold">?</text>
+      <circle cx="68" cy="28" r="2" fill="#fff" stroke="#888"/>
+    </svg>
+    <span class="pic-label">Caring What Others Think<br>在意他人想法</span>
+  </div>
+  <div class="essay-pic-item">
+    <span class="pic-num">3</span>
+    <svg viewBox="0 0 100 100" class="essay-svg" xmlns="http://www.w3.org/2000/svg">
+      <!-- center person -->
+      <circle cx="50" cy="50" r="11" fill="#aaa" stroke="#666" stroke-width="1.5"/>
+      <path d="M40 60 L60 60 L58 75 L42 75 Z" fill="#aaa" stroke="#666"/>
+      <!-- 4 emotion faces around -->
+      <circle cx="20" cy="20" r="9" fill="#fce38a" stroke="#666"/>
+      <path d="M16 18 L18 20 M22 18 L24 20" stroke="#444" stroke-width="1.5"/>
+      <path d="M16 24 q4 3 8 0" stroke="#444" stroke-width="1.5" fill="none"/>
+      <circle cx="80" cy="20" r="9" fill="#f38181" stroke="#666"/>
+      <path d="M76 16 L80 20 M84 16 L80 20" stroke="#444" stroke-width="1.5"/>
+      <path d="M76 26 q4 -3 8 0" stroke="#444" stroke-width="1.5" fill="none"/>
+      <circle cx="20" cy="80" r="9" fill="#aacccc" stroke="#666"/>
+      <path d="M16 78 L20 80 M24 78 L20 80" stroke="#444" stroke-width="1.5"/>
+      <path d="M16 84 q4 3 8 0" stroke="#444" stroke-width="1.5" fill="none"/>
+      <circle cx="80" cy="80" r="9" fill="#95e1d3" stroke="#666"/>
+      <path d="M76 78 L80 80 M84 78 L80 80" stroke="#444" stroke-width="1.5"/>
+      <path d="M76 84 q4 -3 8 0" stroke="#444" stroke-width="1.5" fill="none"/>
+    </svg>
+    <span class="pic-label">Mood Swings<br>情緒起伏</span>
+  </div>
+</div>
+
+<div class="trans-item">
+  <div class="ch-line"><strong>請寫下你的英文作文（至少 120 字）：</strong></div>
+  <textarea id="essay" class="short-ans" placeholder="First paragraph: Which problem you want to solve and why...&#10;&#10;Second paragraph: What qualities/abilities the robot helper should have, and how you would collaborate..." style="min-height: 220px;"></textarea>
+  <div style="text-align:right; font-size:0.85em; color:#7f8c8d; margin-top:4px;">字數：<span id="essayWordCount">0</span> words</div>
+</div>
+
+<div class="button-row">
+  <button type="button" class="submit-btn" onclick="submitQuiz()">送出作答</button>
+</div>
+
+</form>
+
+<div id="results">
+
+  <div class="result-card score">
+    <h3>📊 你的成績</h3>
+    <div class="score-big" id="scoreBig"></div>
+    <div class="score-detail" id="scoreDetail"></div>
+  </div>
+
+  <div class="result-card teacher">
+    <h3>📋 結果 1：選項結果 + 不熟悉單字（複製貼到 LINE 群給老師）</h3>
+    <div class="copyable" id="teacherReport"></div>
+    <button class="copy-btn" onclick="copyText('teacherReport', this)">📋 複製結果 1</button>
+  </div>
+
+  <div class="result-card feedback">
+    <h3>💡 結果 2：錯題詳解（自己看，檢討訂正；可選擇複製給自己留存）</h3>
+    <div id="feedbackReport"></div>
+    <div class="copyable" id="feedbackTextArea" style="margin-top:14px;"></div>
+    <button class="copy-btn" onclick="copyText('feedbackTextArea', this)">📋 複製結果 2</button>
+  </div>
+
+</div>
+
+</div>
+
+<div class="unknown-counter" id="unknownCounter">🔖 已標記 <span id="unknownCount">0</span> 個</div>
+
+<script>
+  // ===== 正確答案（已套用 Q11-46 位置變換，Q21-30 文意選填亦重新編號） =====
+  // 原始答案 → 新答案對照
+  // 1-10: 維持原樣
+  // 11:B→A, 12:D→A, 13:D→A, 14:A→B, 15:C→A
+  // 16:B→C, 17:C→B, 18:A→D, 19:D→A, 20:C→B
+  // 21:E→H, 22:I→E, 23:J→A, 24:C→F, 25:G→J, 26:A→D, 27:H→G, 28:B→B, 29:F→C, 30:D→I
+  // 31:D→A, 32:C→D, 33:A→B, 34:B→C
+  // 35:B→A, 36:D→A, 37:B→A, 38:A→C
+  // 39:D→A, 40:A→C, 41:B→A, 42:C→A
+  // 43:D→A, 44:B→A, 45:C→A, 46:C→B
+  const ANSWERS = {
+    1:'B', 2:'A', 3:'B', 4:'B', 5:'D', 6:'C', 7:'D', 8:'C', 9:'A', 10:'B',
+    11:'A', 12:'A', 13:'A', 14:'B', 15:'A',
+    16:'C', 17:'B', 18:'D', 19:'A', 20:'B',
+    21:'H', 22:'E', 23:'A', 24:'F', 25:'J', 26:'D', 27:'G', 28:'B', 29:'C', 30:'I',
+    31:'A', 32:'D', 33:'B', 34:'C',
+    35:'A', 36:'A', 37:'A', 38:'C',
+    39:'A', 40:'C', 41:'A', 42:'A',
+    43:'A', 44:'A', 45:'A', 46:'B'
+  };
+  // Q47/Q48 填空答案（接受字根）
+  const FILL_ANSWERS = {
+    47: { keys: ['collective'], display: 'collective' },
+    48: { keys: ['adapting'],   display: 'adapting' }
+  };
+  // Q49 多選正確（顯示答案 = AC，原始為 CF）
+  const MULTI_ANSWERS = { 49: ['A','C'] };
+  // Q50 簡答關鍵字（包含其中一組即視為正確）
+  const SHORT_ANSWERS = {
+    50: {
+      keys: [['predator'], ['fox'], ['threat']],
+      display: 'The disturbance is the presence of a predator (such as a fox).'
+    }
+  };
+
+  // ===== 錯題詳解 =====
+  const EXPLANATIONS = {
+    1: { ans:'(B) slender 苗條的', detail:'desire a slender figure = 想要苗條身材，與後文「規律運動、健康飲食」呼應。(A) spicy 辛辣的 (C) slight 輕微的 (D) slippery 滑的，皆不合。' },
+    2: { ans:'(A) emerging 浮現', detail:'雲海中「浮現」的太陽是阿里山必看景點。(B) flashing 閃爍 (C) rushing 衝刺 (D) floating 飄浮，皆不及 emerging 自然。' },
+    3: { ans:'(B) due (預定到達)', detail:'be due = 預定／到達，問下班公車「何時到」。(A) apt 易於 (C) bound 必定 (D) docked 停靠，皆不合。' },
+    4: { ans:'(B) humidity 濕度', detail:'高溫＋高「濕度」會讓人黏黏的。(A) density 密度 (C) circulation 循環 (D) atmosphere 氣氛／大氣，皆不合。' },
+    5: { ans:'(D) stand (the test of time)', detail:'stand the test of time = 通過時間考驗，固定搭配。(A)(B)(C) 不能與 the test of time 搭配。' },
+    6: { ans:'(C) compulsory 強制的', detail:'兵役對男性是「強制的」。(A) forceful 強勁 (B) realistic 寫實 (D) distinctive 獨特，皆不合。' },
+    7: { ans:'(D) credit 功勞', detail:'take the credit = 把功勞攬在自己身上。(A) advantage 優勢 (B) revenge 復仇 (C) remedy 補救，皆不合。' },
+    8: { ans:'(C) promises (承諾／提供)', detail:'飯店承諾良好服務與便利交通。promise 後可接抽象名詞表「擔保提供」。(A) proposes 提議 (B) contains 包含 (D) confirms 確認，皆不合語意。' },
+    9: { ans:'(A) appeal 呼籲', detail:'make an appeal for = 向…呼籲，搭配公開募血情境。(B) approach 方法 (C) operation 手術 (D) observation 觀察，皆不合。' },
+    10:{ ans:'(B) randomly 隨機地', detail:'David 失望，因為不能選 partner，必須「被隨機分組」。(A) eligibly 合格地 (C) apparently 顯然地 (D) consequently 因此地，皆不合。' },
+    11:{ ans:'(A) pose as 假扮成 (原 B)', detail:'神秘客「假扮成」一般顧客去消費。pose as 為固定搭配。' },
+    12:{ ans:'(A) to which (原 D)', detail:'介系詞 + 關代 → assigned to (the stores)，故用 to which。' },
+    13:{ ans:'(A) personal bias 個人偏見 (原 D)', detail:'要遵循標準程序以避免「個人偏見」，下文「checklist 確保 consistency」呼應。' },
+    14:{ ans:'(B) difficult 難搞的 (原 A)', detail:'無理由地與店員爭吵，是假扮「難搞的」客人。' },
+    15:{ ans:'(A) improvement 改進 (原 C)', detail:'identify areas for improvement = 找出可改進之處，下文 enhance the quality 呼應。' },
+    16:{ ans:'(C) could have used (原 B)', detail:'到 19 世紀中已發明可調式鬧鐘，工人「本來可以用」鬧鐘。表「過去本可而未必」。' },
+    17:{ ans:'(B) Equipped with 配備著 (原 C)', detail:'分詞構句：「配備著」棍子或豆吹槍，去敲窗戶叫人起床。' },
+    18:{ ans:'(D) familiar presences 熟悉的存在 (原 A)', detail:'敲窗人在英國各地是「熟悉的存在」，每天清晨都看得到。' },
+    19:{ ans:'(A) declined 衰退 (原 D)', detail:'隨著鬧鐘普及，敲窗職業「逐漸消失/衰退」。' },
+    20:{ ans:'(B) match 比得上 (原 C)', detail:'cannot match the personal attention = 比不上人為的親切。' },
+    21:{ ans:'(H) departed 已逝的 (原 E)', detail:'wind phone 連繫家人與「已逝的」摯愛。departed = 死去的。' },
+    22:{ ans:'(E) fateful 命運的／致命的 (原 I)', detail:'on that fateful day = 在那「命運攸關／不幸」的一天（海嘯日）。' },
+    23:{ ans:'(A) brought forth 提出／產生 (原 J)', detail:'被動語態 was first brought forth by Sasaki = 由 Sasaki 首次提出。' },
+    24:{ ans:'(F) sorrow 悲傷 (原 C)', detail:'navigate through the sorrow = 穿越悲傷，他喪親後需要私人空間度過悲傷。' },
+    25:{ ans:'(J) housed 容納 (原 G)', detail:'The booth he built housed only an old dial phone = 電話亭裡「容納」一台老舊轉盤電話。' },
+    26:{ ans:'(D) passed on 傳達 (原 A)', detail:'be passed on through a regular phone line = 透過一般電話線「傳遞」（被動）。' },
+    27:{ ans:'(G) manageable 可承受的 (原 H)', detail:'render the grieving process more manageable = 讓哀傷過程更「可承受／可管理」。' },
+    28:{ ans:'(B) bridge 橋樑 (原 B，無變動)', detail:'a bridge between the living and the dead = 生者與死者間的「橋樑」。' },
+    29:{ ans:'(C) mechanism 機制 (原 F)', detail:'a natural mechanism for coping with loss = 應對失去的「自然機制」。' },
+    30:{ ans:'(I) hope 希望 (原 D)', detail:'hope is always there = 對於對風電話訴說的人，「希望」永遠都在。' },
+    31:{ ans:'(A) This seems to run counter to the common practice. (原 D)', detail:'承上段 Weinstein 受傷後跑步反而舒服，本句點出「這似乎違反常理」，再接後文「常見作法是不要動」。' },
+    32:{ ans:'(D) Many suggest that most patients can continue with the sport they love. (原 C)', detail:'前句「不同醫師建議不同」，本句承接「許多醫師說可以繼續做喜愛運動」，後句 nevertheless 補充「但需減量」。' },
+    33:{ ans:'(B) For example, an injured runner might end up cycling and swimming instead of running. (原 A)', detail:'前句說「全程交叉訓練」，本句舉例「跑者改騎車游泳」是交叉訓練的例子。' },
+    34:{ ans:'(C) Over time, researchers have come to realize the importance of exercising when injured. (原 B)', detail:'總結段開頭：「研究者已逐漸了解受傷時運動的重要性」，呼應 Thus 後面的「越來越多病人被建議繼續運動」。' },
+    35:{ ans:'(A) 魔鬼氈 Velcro hook-and-loop fastener (原 B)', detail:'文章主角即為 de Mestral 發明的 Velcro 魔鬼氈（鉤狀＋環狀）。' },
+    36:{ ans:'(A) A sudden inspiration 突發靈感 (原 D)', detail:'a lightbulb moment = 燈泡亮起的瞬間 = 突如其來的靈感。' },
+    37:{ ans:'(A) Cotton was not durable enough... (原 B)', detail:'文中說 cotton too soft, could not withstand repeated openings → 不夠耐用。' },
+    38:{ ans:'(C) Civil engineering 土木工程 (原 A)', detail:'文中提到的應用：服飾、玩具、太空、醫療等；未提及「土木工程」。' },
+    39:{ ans:'(A) Why Moran started painting Yellowstone (原 D)', detail:'文中說明 Moran 受 Langford 描述吸引，急於親見黃石，故開始畫黃石。其他選項皆未明確提及原因。' },
+    40:{ ans:'(C) The place was severely polluted (原 A)', detail:'blackened heart of Industrial Revolution → 工業革命污染嚴重，主街黑暗、河流污濁。' },
+    41:{ ans:'(A) Americans knew little about its beauty before the 1870s (原 B)', detail:'在 Moran 之前，美國人對黃石的印象是 harsh, wild place，少有人知其美。' },
+    42:{ ans:'(A) Color photos were not common when Moran started painting Yellowstone (原 C)', detail:'文中強調 Moran 的水彩畫是「該地區首批彩色呈現」(first color renderings)，可推論當時彩色照片尚不普及。' },
+    43:{ ans:'(A) To make the most of marine resources (原 D)', detail:'文中說明 100% Fish 致力於 full utilization of each fish caught，即「充分利用海洋資源」。' },
+    44:{ ans:'(A) Oddsson\'s skin transplant (原 B)', detail:'this pioneering procedure 指前句的 Oddsson 魚皮移植開創性手術。' },
+    45:{ ans:'(A) Cross-field collaboration has proved to be very fruitful for 100% Fish (原 C)', detail:'文中強調 cooperative efforts across various industries 帶來成功，跨領域合作確實成果豐碩。' },
+    46:{ ans:'(B) Paragraph 3 (原 C)', detail:'Paragraph 3 列舉魚的各種利用：皮、骨、頭、刺都被使用，故「幾乎沒有東西丟掉」適合作為段落結尾。' }
+  };
+
+  // ===== JS 自動將文章/題目段落內所有英文單字包成可點選 span（選項 .options 內的不包） =====
+  function wrapWordsIn(root) {
+    const skipTags = new Set(['SCRIPT','STYLE','INPUT','LABEL','TEXTAREA','BUTTON']);
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => {
+        let p = n.parentNode;
+        while (p && p !== root) {
+          if (skipTags.has(p.tagName)) return NodeFilter.FILTER_REJECT;
+          if (p.classList && (
+            p.classList.contains('word') ||
+            p.classList.contains('blank') ||
+            p.classList.contains('q-num') ||
+            p.classList.contains('q-num-sq') ||
+            p.classList.contains('options') ||
+            p.classList.contains('options-ci') ||
+            p.classList.contains('options-ps') ||
+            p.classList.contains('options-rd') ||
+            p.classList.contains('options-multi')
+          )) return NodeFilter.FILTER_REJECT;
+          p = p.parentNode;
+        }
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const nodes = [];
+    let n;
+    while ((n = walker.nextNode())) nodes.push(n);
+
+    const re = /[A-Za-z]+(?:['’\-][A-Za-z]+)*/g;
+    nodes.forEach(tn => {
+      const text = tn.nodeValue;
+      if (!re.test(text)) return;
+      re.lastIndex = 0;
+      const frag = document.createDocumentFragment();
+      let lastIdx = 0, m;
+      while ((m = re.exec(text)) !== null) {
+        if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = m[0];
+        frag.appendChild(span);
+        lastIdx = m.index + m[0].length;
+      }
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+      tn.parentNode.replaceChild(frag, tn);
+    });
+  }
+
+  // 對所有 .autowrap 區塊（passage / q-text / 篇章結構句子）執行包字
+  document.querySelectorAll('.autowrap, .vocab-sentences').forEach(wrapWordsIn);
+
+  // 單字點擊切換
+  const counter = document.getElementById('unknownCounter');
+  const counterNum = document.getElementById('unknownCount');
+  function updateCounter() {
+    const set = new Set();
+    document.querySelectorAll('.word.unfamiliar').forEach(w => set.add(w.textContent.trim().toLowerCase()));
+    counterNum.textContent = set.size;
+    counter.style.display = set.size ? 'block' : 'none';
+  }
+  document.body.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('word')) {
+      // 同步切換所有相同字（不分大小寫）
+      const t = e.target.textContent.trim().toLowerCase();
+      const isOn = !e.target.classList.contains('unfamiliar');
+      document.querySelectorAll('.word').forEach(w => {
+        if (w.textContent.trim().toLowerCase() === t) {
+          w.classList.toggle('unfamiliar', isOn);
+        }
+      });
+      updateCounter();
+    }
+  });
+
+  // 選項選取樣式（單選）
+  document.querySelectorAll('.options input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const name = r.name;
+      document.querySelectorAll(`.options input[name="${name}"]`).forEach(x => x.closest('label').classList.remove('selected'));
+      r.closest('label').classList.add('selected');
+    });
+  });
+  // 圖片題 Q35 選取樣式
+  document.querySelectorAll('.pic-opt input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      const name = r.name;
+      document.querySelectorAll(`.pic-opt input[name="${name}"]`).forEach(x => x.closest('label').classList.remove('selected'));
+      r.closest('label').classList.add('selected');
+    });
+  });
+  // 選項選取樣式（多選）
+  document.querySelectorAll('.options-multi input[type="checkbox"]').forEach(c => {
+    c.addEventListener('change', () => {
+      c.closest('label').classList.toggle('selected', c.checked);
+    });
+  });
+  // 作文字數計算
+  const essayEl = document.getElementById('essay');
+  const essayCountEl = document.getElementById('essayWordCount');
+  if (essayEl) {
+    essayEl.addEventListener('input', () => {
+      const text = essayEl.value.trim();
+      const words = text ? text.split(/\s+/).length : 0;
+      essayCountEl.textContent = words;
+      essayCountEl.style.color = words >= 120 ? '#27ae60' : '#e67e22';
+    });
+  }
+
+  // ===== 送出作答 =====
+  function submitQuiz() {
+    const name = document.getElementById('studentName').value.trim() || '（未填）';
+    const sid  = document.getElementById('studentId').value.trim() || '（未填）';
+
+    const answers = {};
+    const unanswered = [];
+    // Q1-46 單選
+    for (let i=1; i<=46; i++) {
+      const sel = document.querySelector(`input[name="q${i}"]:checked`);
+      if (sel) answers[i] = sel.value;
+      else { answers[i] = '-'; unanswered.push(i); }
+    }
+    // Q47/Q48 填空
+    answers[47] = (document.getElementById('q47').value || '').trim();
+    answers[48] = (document.getElementById('q48').value || '').trim();
+    if (!answers[47]) unanswered.push(47);
+    if (!answers[48]) unanswered.push(48);
+    // Q49 多選
+    const q49Sel = Array.from(document.querySelectorAll('input[name="q49"]:checked')).map(x => x.value).sort();
+    answers[49] = q49Sel;
+    if (q49Sel.length === 0) unanswered.push(49);
+    // Q50 簡答
+    answers[50] = (document.getElementById('q50').value || '').trim();
+    if (!answers[50]) unanswered.push(50);
+
+    // 中譯英 + 作文（不自動評分，僅匯出）
+    const trans1 = (document.getElementById('trans1').value || '').trim();
+    const trans2 = (document.getElementById('trans2').value || '').trim();
+    const essayTxt = (document.getElementById('essay').value || '').trim();
+    const essayWordCount = essayTxt ? essayTxt.split(/\s+/).length : 0;
+    if (!trans1) unanswered.push('中譯英1');
+    if (!trans2) unanswered.push('中譯英2');
+    if (!essayTxt) unanswered.push('作文');
+
+    if (unanswered.length > 0) {
+      if (!confirm(`尚有 ${unanswered.length} 題未作答（${unanswered.slice(0,8).join(', ')}${unanswered.length>8?'…':''}），確定要送出嗎？`)) return;
+    }
+
+    // 評分
+    let correct = 0;
+    const wrongList = [];
+    for (let i=1; i<=46; i++) {
+      if (answers[i] === ANSWERS[i]) correct++;
+      else wrongList.push(i);
+    }
+    // Q47/Q48
+    let q47ok = false, q48ok = false;
+    const ans47 = (answers[47]||'').toLowerCase().replace(/[^a-z]/g,'');
+    if (FILL_ANSWERS[47].keys.some(k => k.toLowerCase() === ans47)) { q47ok = true; correct++; } else { wrongList.push(47); }
+    const ans48 = (answers[48]||'').toLowerCase().replace(/[^a-z]/g,'');
+    if (FILL_ANSWERS[48].keys.some(k => k.toLowerCase() === ans48)) { q48ok = true; correct++; } else { wrongList.push(48); }
+    // Q49
+    const corr49 = MULTI_ANSWERS[49].slice().sort();
+    let q49ok = false;
+    if (q49Sel.length === corr49.length && q49Sel.every((v,i)=>v===corr49[i])) { q49ok = true; correct++; } else { wrongList.push(49); }
+    // Q50（關鍵字判斷）
+    const ans50low = (answers[50]||'').toLowerCase();
+    let q50ok = false;
+    if (SHORT_ANSWERS[50].keys.some(group => group.every(k => ans50low.includes(k)))) { q50ok = true; correct++; } else if (answers[50]) { wrongList.push(50); }
+    else { wrongList.push(50); }
+
+    const total = 50;
+    const percent = Math.round(correct/total*100);
+
+    // 蒐集不熟悉單字
+    const unfamiliarSet = new Set();
+    document.querySelectorAll('.word.unfamiliar').forEach(w => {
+      const t = w.textContent.trim().toLowerCase();
+      if (t) unfamiliarSet.add(t);
+    });
+    const unfamiliar = Array.from(unfamiliarSet).sort();
+
+    // 顯示分數
+    document.getElementById('scoreBig').textContent = `${correct} / ${total}`;
+    document.getElementById('scoreDetail').textContent =
+      `答對 ${correct} 題 ‧ 答錯 ${total-correct} 題 ‧ 正確率 ${percent}% ‧ 不熟悉單字 ${unfamiliar.length} 個`;
+
+    const now = new Date();
+    const ts = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')} ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;
+
+    // ===== 結果 1：選項結果 + 不熟悉單字（給老師） =====
+    let r1 = `【113學測英文 第1-50題 作答結果】\n`;
+    r1 += `姓名：${name}　座號：${sid}\n作答時間：${ts}\n得分：${correct}/${total}（${percent}%）\n---\n`;
+    r1 += `題號\t學生答案\t正確答案\t對錯\n`;
+    for (let i=1; i<=46; i++) {
+      const ok = answers[i]===ANSWERS[i] ? '✓' : (answers[i]==='-' ? '✗(未答)' : '✗');
+      r1 += `${i}\t${answers[i]}\t${ANSWERS[i]}\t${ok}\n`;
+    }
+    r1 += `47\t${answers[47]||'-'}\t${FILL_ANSWERS[47].display}\t${q47ok?'✓':'✗'}\n`;
+    r1 += `48\t${answers[48]||'-'}\t${FILL_ANSWERS[48].display}\t${q48ok?'✓':'✗'}\n`;
+    r1 += `49\t${q49Sel.join('')||'-'}\t${corr49.join('')}\t${q49ok?'✓':'✗'}\n`;
+    r1 += `50\t${(answers[50]||'-').replace(/\n/g,' ')}\t${SHORT_ANSWERS[50].display}\t${q50ok?'✓':'(關鍵字未涵蓋)'}\n`;
+    r1 += `---\n【中譯英 1】${trans1 || '(未作答)'}\n`;
+    r1 += `【中譯英 2】${trans2 || '(未作答)'}\n`;
+    r1 += `---\n【英文作文】（${essayWordCount} words）\n${essayTxt || '(未作答)'}\n`;
+    r1 += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n`;
+    r1 += unfamiliar.length ? unfamiliar.join(', ') : '（無）';
+    document.getElementById('teacherReport').textContent = r1;
+
+    // ===== 結果 2：錯題詳解（給學生） =====
+    const fb = document.getElementById('feedbackReport');
+    fb.innerHTML = '';
+    let fbText = `【113學測英文 第1-50題 錯題詳解】\n姓名：${name}　座號：${sid}\n作答時間：${ts}\n---\n`;
+
+    if (wrongList.length === 0) {
+      fb.innerHTML = '<p style="color:#27ae60;font-weight:600;font-size:1.1em;">🎉 全部答對！太棒了！</p>';
+      fbText += '🎉 全部答對！太棒了！';
+    } else {
+      wrongList.sort((a,b)=>a-b).forEach(i => {
+        const div = document.createElement('div');
+        div.className = 'wrong-item';
+        let stuAns, expl, correctText;
+        if (i <= 46) {
+          stuAns = answers[i] === '-' ? '未作答' : answers[i];
+          expl = EXPLANATIONS[i] || { ans: ANSWERS[i], detail: '' };
+          correctText = `${ANSWERS[i]}　${expl.ans}`;
+          div.innerHTML = `
+            <div class="q-head">第 ${i} 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">${expl.detail}</div>`;
+          fbText += `第 ${i} 題：你寫 ${stuAns}，正解 ${correctText}\n   → ${expl.detail}\n\n`;
+        } else if (i === 47) {
+          stuAns = answers[47] || '未作答';
+          correctText = FILL_ANSWERS[47].display;
+          div.innerHTML = `<div class="q-head">第 47 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">由文章末段「By working collectively」可知，動物展現的是 collective intelligence（集體智慧）。形容詞形式 collective 修飾 intelligence。</div>`;
+          fbText += `第 47 題：你寫 ${stuAns}，正解 ${correctText} → 用 collective 修飾 intelligence。\n\n`;
+        } else if (i === 48) {
+          stuAns = answers[48] || '未作答';
+          correctText = FILL_ANSWERS[48].display;
+          div.innerHTML = `<div class="q-head">第 48 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">in both solving problems and ___ to new... 平行結構需要 V-ing，動詞 adapt（適應）→ adapting。</div>`;
+          fbText += `第 48 題：你寫 ${stuAns}，正解 ${correctText} → 平行結構需要動名詞 adapting。\n\n`;
+        } else if (i === 49) {
+          stuAns = q49Sel.join('') || '未作答';
+          correctText = corr49.join('');
+          div.innerHTML = `<div class="q-head">第 49 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 正確答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">兩種動物都會「分享資訊給群體成員」(A)、且「行為由獨特溝通系統支配」(C)。寒鴉靠視覺距離，烏龜蟻靠費洛蒙，都屬獨特的群體溝通機制。</div>`;
+          fbText += `第 49 題：你選 ${stuAns}，正解 ${correctText} → 兩動物皆有獨特的群體溝通系統並分享資訊。\n\n`;
+        } else if (i === 50) {
+          stuAns = (answers[50] || '未作答').replace(/\n/g,' ');
+          correctText = SHORT_ANSWERS[50].display;
+          div.innerHTML = `<div class="q-head">第 50 題 ‧ 你的答案：<span class="wrong-mark">${stuAns}</span> ‧ 參考答案：<span class="correct-mark">${correctText}</span></div>
+            <div class="explain">文章中明確提到對寒鴉而言，「干擾」就是「掠食者（如狐狸）的出現」。關鍵字應包含 predator 或 fox。</div>`;
+          fbText += `第 50 題：你寫「${stuAns}」，參考答案：${correctText}\n   → 關鍵字應包含 predator 或 fox。\n\n`;
+        }
+        fb.appendChild(div);
+      });
+    }
+
+    fbText += `---\n不熟悉單字（共 ${unfamiliar.length} 個）：\n${unfamiliar.length?unfamiliar.join(', '):'（無）'}\n`;
+    document.getElementById('feedbackTextArea').textContent = fbText;
+
+    document.getElementById('results').style.display = 'block';
+    document.getElementById('results').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // ===== 複製文字 =====
+  function copyText(elId, btn) {
+    const txt = document.getElementById(elId).textContent;
+    const fallback = () => {
+      const ta = document.createElement('textarea');
+      ta.value = txt;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch(e) {}
+      document.body.removeChild(ta);
+    };
+    const ok = () => {
+      const orig = btn.textContent;
+      btn.textContent = '✓ 已複製！';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 2000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(ok).catch(() => { fallback(); ok(); });
+    } else { fallback(); ok(); }
+  }
+</script>
+
+</body>
+</html>
