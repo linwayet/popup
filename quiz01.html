@@ -264,6 +264,110 @@
   <div class="legend-row"><span class="tag tag-ot">其他原因</span> 自行填寫——你獨有的思考路徑也很重要</div>
 </div>
 
+<style>
+  .form-card {
+    background: #FFFCF5;
+    border: 3px solid #4A7C59;
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 12px rgba(74,124,89,0.15);
+  }
+  .form-card h3 { font-size: 22px; color: #4A7C59; margin-bottom: 14px; font-weight: 700; }
+  .form-card .field { margin-bottom: 14px; }
+  .form-card label { display: block; font-size: 18px; font-weight: 700; color: #4A331F; margin-bottom: 6px; }
+  .form-card input[type=text], .form-card input[type=date] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #D4A574;
+    border-radius: 8px;
+    font-size: 19px;
+    font-family: inherit;
+    background: #FAF5EA;
+    color: #2D2A26;
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+  .form-card input:focus { outline: none; border-color: #4A7C59; background: #FFF8E8; }
+  .submit-area { text-align: center; margin: 36px 0 24px; }
+  .big-btn {
+    background: #4A7C59;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 18px 36px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    min-height: 60px;
+    box-shadow: 0 4px 14px rgba(74,124,89,0.35);
+    font-family: inherit;
+    touch-action: manipulation;
+  }
+  .big-btn:hover { background: #3A6649; }
+  .big-btn:active { transform: translateY(1px); }
+  .secondary-btn {
+    background: #8B5E3C;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    min-height: 50px;
+    font-family: inherit;
+    touch-action: manipulation;
+  }
+  .secondary-btn:hover { background: #6F4A2D; }
+  .modal-bg {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(45,42,38,0.75);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+  }
+  .modal-bg.active { display: flex; }
+  .modal-content {
+    background: #FFFCF5;
+    border: 3px solid #8B5E3C;
+    border-radius: 16px;
+    padding: 28px 24px;
+    max-width: 720px;
+    width: 100%;
+    max-height: 86vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .modal-content h3 { font-size: 24px; color: #8B5E3C; margin-bottom: 12px; font-weight: 700; }
+  .modal-content .hint { font-size: 17px; color: #6B4A2F; margin-bottom: 14px; line-height: 1.7; }
+  #report-text {
+    width: 100%;
+    min-height: 320px;
+    padding: 14px;
+    border: 2px solid #D4A574;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Courier New', 'Menlo', monospace;
+    line-height: 1.6;
+    background: #FAF5EA;
+    color: #2D2A26;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  .modal-btns { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+</style>
+
+<!-- 學生基本資料 -->
+<div class="form-card">
+  <h3>📋 學生基本資料（請先填寫，送出時會放入報告）</h3>
+  <div class="field"><label for="student-name">姓名</label><input type="text" id="student-name" placeholder="例：王小明"></div>
+  <div class="field"><label for="student-class">班級</label><input type="text" id="student-class" placeholder="例：高三忠"></div>
+  <div class="field"><label for="student-seat">座號</label><input type="text" id="student-seat" placeholder="例：15"></div>
+  <div class="field"><label for="exam-date">完成日期</label><input type="date" id="exam-date"></div>
+</div>
+
 <!-- ============================================ -->
 <!-- 第壹部分　詞彙題 -->
 <!-- ============================================ -->
@@ -2751,13 +2855,686 @@ Taking a nap in the middle of the day is by no means <u>__21__</u>. ... napping 
   </details>
 </article>
 
+<!-- ============================================ -->
+<!-- 第貳部分　混合題 47-50 -->
+<!-- ============================================ -->
+<div class="section-title">第貳部分　混合題（47–50）<small>共 10 分　Wonder Village 題組</small></div>
+
+<div class="q-passage">
+<strong>題組摘要</strong>　Wonder Village 為東台灣原住民特色商圈，融合傳統與現代。六家特色商店：A. Oh Eco（環保用品）／B. After Work（手工啤酒餐廳）／C. Aroma Paradise（客製香水，老闆 Joseph Tang 名言）／D. Something Different（傳統風格家飾古董店，1996 年開業）／E. Beyond World（在地原住民工藝品）／F. The Pinery（鳳凰主題餐廳，描述 old meets the new）。
+</div>
+
+<!-- Q47 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">47</span><p class="q-stem">空格 47　tradition coexists harmoniously with ______（從文中找一個單詞，必要時做字形變化）</p></div>
+  <ol class="opts">
+    <li class="ok">正解：innovation（取自 F. The Pinery 的 innovative menu items，名詞化）</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開「可能誤填詞」心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：innovation — 與 tradition 形成「傳統 vs 創新」對比</div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 modernity / new / novelty</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 想到「old vs new」直接套 new，但 new 在文中只是形容詞、不通順</label>
+        <label><input type="checkbox"> 用 modernity 表「現代化」，但文中根本沒出現</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道題目要從文中找詞，但找不到 modernity，硬寫合理英文</label>
+        <label><input type="checkbox"> 把 unique / uniqueness 當作 tradition 對比詞，忽略 unique 偏「獨特」非「創新」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 innovative / innovate（沒做名詞變化）</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 找到 innovative 但忘記「視句型結構需要做適當的字形變化」</label>
+        <label><input type="checkbox"> 把形容詞直接填入名詞位置（with __ 後接名詞）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道要變化，但不確定 innovate 名詞是 innovation 還是 innovativeness</label>
+        <label><input type="checkbox"> 緊張時忘記 with + N 結構</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 diversity / surprises</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 F 段「diverse, unique, full of surprises」直接抓字</label>
+        <label><input type="checkbox"> 不分「文中重點詞」與「正確對應詞」差別</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 diversity 與 tradition 視為對比，忽略 diversity 是「多樣性」非「創新」</label>
+        <label><input type="checkbox"> 過度推論：tradition vs surprises 也是「舊 vs 新意外」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q48 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">48</span><p class="q-stem">空格 48　local features are perfectly ______ with foreign elements（從文中找一個單詞，必要時做字形變化）</p></div>
+  <ol class="opts">
+    <li class="ok">正解：blended（取自 B. After Work 的 a truly unique blend!，動詞 blend 過去分詞）</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開「可能誤填詞」心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：blended — be blended with 結構，與 local + foreign 完美融合</div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 combined / mixed / integrated</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 寫出「合理英文」但忘記題目要求「從文中找詞」</label>
+        <label><input type="checkbox"> 找不到 blend 字眼就改用熟字</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到題目找不到 mixed，自行創造合理替代字</label>
+        <label><input type="checkbox"> 漏看 B 段最後一句 a truly unique blend! 的關鍵線索</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 blend / blending（沒做被動分詞變化）</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 直接抄 blend 沒注意 are perfectly ___ with 是被動句</label>
+        <label><input type="checkbox"> 不熟動詞變化規則</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道是被動但寫成 are blending（進行式）</label>
+        <label><input type="checkbox"> 緊張時忘記 are + 過去分詞表被動</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 paired / matched / customized</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 customized 在 C 段熟悉就抓</label>
+        <label><input type="checkbox"> 把 pair 與 blend 視為同義</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：customized to meet... 與「融合」混淆</label>
+        <label><input type="checkbox"> 知道 paired with 是英文常用搭配，但忽略題目限制</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q49 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">49</span><p class="q-stem">49. 陳家想買：(1) 19世紀油燈　(2) 環保塑膠太陽眼鏡　(3) 原住民木珠項鍊。應去哪些店？</p></div>
+  <ol class="opts">
+    <li class="ok">正解：A、D、E（A. Oh Eco→塑膠眼鏡；D. Something Different→油燈；E. Beyond World→原住民項鍊）</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開「可能誤選店家」心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：A + D + E — 對應關係：環保 (A)、古董 (D)、原住民工藝 (E)</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 B（After Work）</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 unique blend 以為「啤酒店也賣特色品」</label>
+        <label><input type="checkbox"> 沒注意 B 是餐廳賣啤酒披薩</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 truly unique blend! 誤推為紀念品店</label>
+        <label><input type="checkbox"> 忽略 menu, beer, pizzas 等只屬餐廳的詞</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤選 B 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 C（Aroma Paradise）</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 customized 以為可以客製化任何商品</label>
+        <label><input type="checkbox"> 沒注意 C 只賣香水 fragrances</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：客製香水店 = 可訂製油燈或項鍊</label>
+        <label><input type="checkbox"> 把「客製化」誤等同於「萬物皆有」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤選 C 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 F（The Pinery）</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 pineapple farms 以為是農產品店</label>
+        <label><input type="checkbox"> 把 The Pinery 誤當作土產店</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 old meets the new 引言誤推為「賣古董也賣新品」</label>
+        <label><input type="checkbox"> 忽略 restaurant 與 menu 已限定為餐廳</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤選 F 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q50 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">50</span><p class="q-stem">50. Joseph Tang 用什麼片語形容 Wonder Village 商店的 uniqueness？</p></div>
+  <ol class="opts">
+    <li class="ok">正解：one of a kind（C 段：Each store is one of a kind in Wonder Village）</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開「可能誤答片語」心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：one of a kind 獨一無二的</div>
+
+      <div class="wa">
+        <h4>❌ 若你寫了 a paradise / a fragrance paradise</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 paradise 字眼就抄</label>
+        <label><input type="checkbox"> 不分「形容店家獨特」與「店名意涵」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 create a paradise 誤當作描述 uniqueness 的片語</label>
+        <label><input type="checkbox"> 忽略題目「形容 stores 的獨特性」需找對店家描述句</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤答的片語與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你寫了 special preferences / individual taste</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 從 C 段隨便抓「特別」相關字</label>
+        <label><input type="checkbox"> 不熟「片語 phrase」與「短語意義」差別</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「滿足個人喜好」與「店家獨特性」混淆</label>
+        <label><input type="checkbox"> 忽略 each store is one of a kind 才是核心金句</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤答的片語與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你寫了 most fascinating area / good goods</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 E 段 Foting Mayaw 的話誤當 Joseph Tang 的話</label>
+        <label><input type="checkbox"> 沒看清「誰說的」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 most fascinating area 解為「獨特」</label>
+        <label><input type="checkbox"> 漏看題目限定主詞為 Joseph Tang（C 段）</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤答的片語與真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- ============================================ -->
+<!-- 第參部分　非選擇題　反思區 -->
+<!-- ============================================ -->
+<div class="section-title">第參部分　一、中譯英反思（51–52）<small>共 8 分　請標記你「不會寫」「亂猜」的部分</small></div>
+
+<!-- 中譯英 1 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">51</span><p class="q-stem">中譯英 1：<br>現在越來越多高中英文老師已經增加在課堂上使用英文的百分比。</p></div>
+
+  <div style="background:#FAF5EA;padding:16px;border-radius:10px;margin-bottom:12px;border-left:4px solid #4A7C59;">
+    <strong style="color:#4A7C59;">參考翻譯（將難點分段標記）：</strong><br>
+    <span style="font-size:20px;line-height:2;">
+      【①現在】<u>Nowadays</u> / Now,
+      【②越來越多】<u>more and more</u> / an increasing number of
+      【③高中英文老師】<u>(senior) high school English teachers</u>
+      【④已經增加】<u>have increased</u>
+      【⑤在課堂上使用英文的百分比】<u>the percentage of English (used) in class</u>.
+    </span>
+  </div>
+
+  <details class="ana">
+    <summary><span>📝 展開「我哪裡不會寫／亂猜」反思區</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">💡 請勾選你「考試時不確定」「靠感覺亂寫」的部分（複選）</div>
+
+      <div class="wa">
+        <h4>🔸 難點 ①「現在」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 不知道用 Nowadays 還是 Today，亂選</label>
+        <label><input type="checkbox"> 寫成 Now is more and more... 句首就出錯</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 Currently / These days 但拼字沒把握</label>
+        <label><input type="checkbox"> 知道副詞位置但仍誤放在 are 後面</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫成 Now days，因為記混了…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ②「越來越多」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 more more 漏掉 and</label>
+        <label><input type="checkbox"> 寫成 more and more many 累贅</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 an increasing number of 但拼錯 increasing</label>
+        <label><input type="checkbox"> 不確定接複數動詞還是單數動詞</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我猜寫 a lot of more…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ③「高中英文老師」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 high school's English teacher 多了 's</label>
+        <label><input type="checkbox"> 不確定 high school 要不要連字號 high-school</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想加 senior 但不確定是否必要</label>
+        <label><input type="checkbox"> 多寫成 teachers of English 不夠地道</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我亂寫 senior school 因為臨時忘記…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ④「已經增加」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 用 increase 過去式 increased，沒注意「已經」要用現在完成式</label>
+        <label><input type="checkbox"> 寫成 already increase 沒加 ed</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 知道 have increased 但不確定主詞複數所以動詞要 have</label>
+        <label><input type="checkbox"> 想用 have raised / have boosted 但搭配不對</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 has increase，動詞時態完全猜的…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ⑤「在課堂上使用英文的百分比」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 不知道「百分比」是 percentage 還是 percent</label>
+        <label><input type="checkbox"> 寫成 percent of using English 介系詞錯</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 the percentage that they use English in class，太囉嗦</label>
+        <label><input type="checkbox"> 不確定 in class / in classes / in the class</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我把「百分比」整段省略不翻…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 整句結構／其他困難</h4>
+        <p class="lvl lvl-other">我整句寫作的最大困難（自填）</p>
+        <input type="text" placeholder="例：我句子順序與中文一樣，沒翻成英文語序…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- 中譯英 2 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">52</span><p class="q-stem">中譯英 2：<br>他們將學生依英語能力分成不同組別，進行多樣的聽、說活動。</p></div>
+
+  <div style="background:#FAF5EA;padding:16px;border-radius:10px;margin-bottom:12px;border-left:4px solid #4A7C59;">
+    <strong style="color:#4A7C59;">參考翻譯（將難點分段標記）：</strong><br>
+    <span style="font-size:20px;line-height:2;">
+      【①他們】<u>They</u>
+      【②將學生分成不同組別】<u>divide / group students into different groups</u>
+      【③依英語能力】<u>based on / according to their English proficiency (ability)</u>
+      【④進行多樣的活動】<u>(and) conduct / carry out various / a variety of</u>
+      【⑤聽、說活動】<u>listening and speaking activities</u>.
+    </span>
+  </div>
+
+  <details class="ana">
+    <summary><span>📝 展開「我哪裡不會寫／亂猜」反思區</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">💡 請勾選你「考試時不確定」「靠感覺亂寫」的部分（複選）</div>
+
+      <div class="wa">
+        <h4>🔸 難點 ②「將學生分成不同組別」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 用 separate / split 但搭配介系詞錯</label>
+        <label><input type="checkbox"> 寫成 divide students to 而非 into</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想寫 group sb into groups 但覺得 group + groups 重複很怪</label>
+        <label><input type="checkbox"> 改用 classify 但搭配 into 不熟</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 make students in groups 完全亂猜…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ③「依英語能力」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 by their English ability，介系詞用錯</label>
+        <label><input type="checkbox"> 不會寫「能力」乾脆省略整段</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 proficiency 但不確定拼字</label>
+        <label><input type="checkbox"> based on 與 according to 不確定哪個對</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 follow English level…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ④「進行多樣的」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 do many activities，太簡單失分</label>
+        <label><input type="checkbox"> various 拼成 varies / variety 詞性錯</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> conduct 與 hold / carry out 不確定哪個搭配活動</label>
+        <label><input type="checkbox"> a variety of 後面接單複數猶豫</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 make many of activity…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ⑤「聽、說活動」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 listen and speak activities，動詞當形容詞</label>
+        <label><input type="checkbox"> 不知道要用 -ing 形式做形容詞</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 知道要 -ing，但不確定要不要 hyphen 連字號</label>
+        <label><input type="checkbox"> 寫成 listening-speaking activities 結構不對</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我把「聽說」省略不寫…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 整句連接／其他困難</h4>
+        <p class="lvl lvl-other">我整句寫作的最大困難（自填）</p>
+        <input type="text" placeholder="例：兩個動詞 divide 與 conduct 不知怎麼連接…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- ============================================ -->
+<!-- 第參部分　二、英文作文反思 -->
+<!-- ============================================ -->
+<div class="section-title">第參部分　二、英文作文反思（53）<small>共 20 分　主題：寵物在臺灣人生活中的角色</small></div>
+
+<article class="q">
+  <div class="q-head"><span class="q-num">53</span><p class="q-stem">英文作文：<br>近年來養寵物的風氣在臺灣日漸普遍。請以圖片為本，第一段描述圖片現象（遛狗、推寵物車、寵物與家人共餐共玩等），第二段說明此現象的原因以及可能的影響。</p></div>
+
+  <div style="background:#FAF5EA;padding:16px;border-radius:10px;margin-bottom:12px;border-left:4px solid #4A7C59;">
+    <strong style="color:#4A7C59;">作文骨架建議（兩段式）：</strong><br>
+    <span style="font-size:19px;line-height:1.9;">
+      <strong>第一段（描述現象）：</strong> 主題句 → 圖一描述 → 圖二描述 → 圖三描述 → 小結句<br>
+      <strong>第二段（原因＋影響）：</strong> 過渡句 → 原因 1（少子化／高齡化／單身）→ 原因 2（情感寄託）→ 影響 1（寵物經濟興起）→ 影響 2（家庭關係改變）→ 收尾句
+    </span>
+  </div>
+
+  <details class="ana">
+    <summary><span>📝 展開「我寫作時遇到的困難」反思區</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">💡 請勾選你寫這篇作文時「卡關」「亂寫」「省略」的部分（複選）</div>
+
+      <div class="wa">
+        <h4>🔸 困難 1　基礎詞彙（pet, owner, walk a dog…）</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 不會寫「遛狗」walk a dog，寫成 walk with dog</label>
+        <label><input type="checkbox"> 不知道「寵物車」pet stroller，整段省略不寫</label>
+        <label><input type="checkbox"> 把 owner 寫成 master 或 keeper</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 pamper / spoil 寵愛但拼字沒把握</label>
+        <label><input type="checkbox"> furry friend / fur baby 想用但怕用錯</label>
+        <p class="lvl lvl-other">我自己的詞彙困難（自填）</p>
+        <input type="text" placeholder="例：「家人」與「家庭成員」family member 我不會分…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 2　第一段「描述圖片」的句型</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 句句以 In the picture, we can see… 開頭，重複單調</label>
+        <label><input type="checkbox"> 不會寫 As shown in the pictures…</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用分詞構句 Walking their dogs, owners… 但不確定文法</label>
+        <label><input type="checkbox"> 想用 it is common to see + V-ing 但漏掉 see</label>
+        <p class="lvl lvl-other">我自己的句型困難（自填）</p>
+        <input type="text" placeholder="例：我整段都用 There is / There are 沒變化…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 3　第二段「原因」的展開</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 想到「少子化」「高齡化」但不會翻譯</label>
+        <label><input type="checkbox"> 寫成 because, because, because… 結構單調</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 declining birth rate / aging society 但拼字沒把握</label>
+        <label><input type="checkbox"> 知道 emotional companionship 但不確定 companionship 拼法</label>
+        <p class="lvl lvl-other">我自己的內容困難（自填）</p>
+        <input type="text" placeholder="例：我想不出兩個原因，硬擠一個就帶過…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 4　第二段「影響」的展開</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 不會寫「寵物經濟」pet economy / pet industry</label>
+        <label><input type="checkbox"> 想到「家庭關係改變」但不會表達</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 redefine the role of family 但句型沒把握</label>
+        <label><input type="checkbox"> 想加入「正反兩面影響」但時間不夠</label>
+        <p class="lvl lvl-other">我自己的影響面困難（自填）</p>
+        <input type="text" placeholder="例：我影響只寫一句就結束了…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 5　轉折詞、連接詞</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 整篇只用 and, but, so</label>
+        <label><input type="checkbox"> 不會用 furthermore, in addition</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 Consequently / Therefore 但搞混兩者</label>
+        <label><input type="checkbox"> not only... but also 結構不平衡</label>
+        <p class="lvl lvl-other">我自己的轉折詞困難（自填）</p>
+        <input type="text" placeholder="例：段落之間我沒寫過渡句直接跳…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 6　時態、語態、主動詞一致</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 描述現況用過去式</label>
+        <label><input type="checkbox"> people are 與 people is 混用</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 該用現在完成式 (has become) 卻用一般現在式</label>
+        <label><input type="checkbox"> 主詞 phenomenon 後動詞用單數常忘記</label>
+        <p class="lvl lvl-other">我自己的文法困難（自填）</p>
+        <input type="text" placeholder="例：被動語態想用又怕錯，整篇都用主動…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 7　時間／字數控管</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫到一半時間不夠，第二段草草結束</label>
+        <label><input type="checkbox"> 字數沒達 120 字</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 第一段寫太長導致第二段精華被壓縮</label>
+        <label><input type="checkbox"> 想加細節寫到 200 字超出建議</label>
+        <p class="lvl lvl-other">我自己的時間／字數情況（自填）</p>
+        <input type="text" placeholder="例：我只寫到 80 字就結尾因為想不出內容…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 8　最讓我崩潰的部分</h4>
+        <p class="lvl lvl-other">本次作文我覺得最困難 ／ 最後悔沒寫好的地方（自填一段話）</p>
+        <input type="text" placeholder="例：我整篇沒寫主題句，全部都是描述細節…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- 送出區 -->
+<div class="submit-area">
+  <button class="big-btn" id="generate-report">📤 送出　產生錯誤分析報告</button>
+</div>
+
+<!-- 報告 Modal -->
+<div class="modal-bg" id="report-modal">
+  <div class="modal-content">
+    <h3>📄 你的錯誤分析報告</h3>
+    <p class="hint">請點下方「複製到剪貼簿」按鈕，再貼到 LINE 群組傳給林威老師。<br>手機若複製失敗，可長按下方文字框選取全部後複製。</p>
+    <textarea id="report-text" readonly></textarea>
+    <div class="modal-btns">
+      <button class="big-btn" id="copy-report">📋 複製到剪貼簿</button>
+      <button class="secondary-btn" id="close-modal">關閉</button>
+    </div>
+  </div>
+</div>
+
 <div class="foot">
-  ✅ 全部完成　1–46 題（38 題為圖片題僅標註正解）<br>
+  ✅ 全份完成　1–46 選擇題　＋　47–50 混合題　＋　51–52 中譯英反思　＋　53 作文反思<br>
   💡 使用建議：考完試 24 小時內完成本份反思，誤選原因記憶最鮮明<br>
-  📝 此份檔案勾選不會自動儲存，列印時記號將保留為列印標記<br><br>
+  📝 填寫完畢請點上方「送出」產生報告，貼到 LINE 給老師<br><br>
   <strong>林威老師與 AI agent 團隊</strong>
 </div>
 
 </div>
+<script>
+(function(){
+  var TITLE = '115學測英文 錯誤分析報告';
+
+  function getStudentInfo(){
+    return {
+      name: (document.getElementById('student-name').value || '').trim() || '(未填寫)',
+      cls:  (document.getElementById('student-class').value || '').trim() || '(未填寫)',
+      seat: (document.getElementById('student-seat').value || '').trim() || '(未填寫)',
+      date: document.getElementById('exam-date').value || new Date().toISOString().slice(0,10)
+    };
+  }
+
+  function generateReport(){
+    var info = getStudentInfo();
+    var report = '';
+    report += '═══════════════════════════════\n';
+    report += '  ' + TITLE + '\n';
+    report += '═══════════════════════════════\n\n';
+    report += '【學生基本資料】\n';
+    report += '姓名：' + info.name + '\n';
+    report += '班級：' + info.cls + '\n';
+    report += '座號：' + info.seat + '\n';
+    report += '完成日期：' + info.date + '\n\n';
+    report += '═══════════════════════════════\n';
+    report += '【錯誤分析詳情】\n';
+    report += '═══════════════════════════════\n';
+
+    var articles = document.querySelectorAll('article.q');
+    var totalChecked = 0;
+    var totalQuestions = 0;
+    var totalOwn = 0;
+
+    articles.forEach(function(article){
+      var qNumEl = article.querySelector('.q-num');
+      if (!qNumEl) return;
+      var qNum = qNumEl.textContent.trim();
+      var stemEl = article.querySelector('.q-stem');
+      var stem = stemEl ? stemEl.textContent.trim().replace(/\s+/g, ' ') : '';
+      var stemShort = stem.length > 80 ? stem.substring(0, 80) + '...' : stem;
+      var correct = article.querySelector('.opts li.ok');
+      var correctText = correct ? correct.textContent.trim().replace('✓ 正解', '').trim() : '';
+
+      var questionReport = '';
+      var hasContent = false;
+
+      var waList = article.querySelectorAll('.wa');
+      waList.forEach(function(wa){
+        var titleEl = wa.querySelector('h4');
+        var title = titleEl ? titleEl.textContent.trim() : '';
+        var currentLevel = '';
+        var checked8 = [];
+        var checked10 = [];
+        var ownReason = '';
+
+        Array.prototype.forEach.call(wa.children, function(child){
+          if (child.tagName === 'P' && child.classList) {
+            if (child.classList.contains('lvl-8')) currentLevel = '8';
+            else if (child.classList.contains('lvl-10')) currentLevel = '10';
+            else if (child.classList.contains('lvl-other')) currentLevel = 'other';
+          } else if (child.tagName === 'LABEL') {
+            var cb = child.querySelector('input[type="checkbox"]');
+            if (cb && cb.checked) {
+              var text = (child.textContent || '').trim();
+              if (currentLevel === '8') checked8.push(text);
+              else if (currentLevel === '10') checked10.push(text);
+              totalChecked++;
+            }
+          } else if (child.tagName === 'INPUT' && child.type === 'text') {
+            if (child.value && child.value.trim()) {
+              ownReason = child.value.trim();
+            }
+          }
+        });
+
+        if (checked8.length || checked10.length || ownReason) {
+          questionReport += '\n' + title + '\n';
+          if (checked8.length) {
+            questionReport += '  【AI 八級分視角】\n';
+            checked8.forEach(function(t){ questionReport += '    ✓ ' + t + '\n'; });
+          }
+          if (checked10.length) {
+            questionReport += '  【AI 十級分視角】\n';
+            checked10.forEach(function(t){ questionReport += '    ✓ ' + t + '\n'; });
+          }
+          if (ownReason) {
+            questionReport += '  【我的補充】\n';
+            questionReport += '    📝 ' + ownReason + '\n';
+            totalOwn++;
+          }
+          hasContent = true;
+        }
+      });
+
+      if (hasContent) {
+        totalQuestions++;
+        report += '\n────────────────\n';
+        report += '▌第 ' + qNum + ' 題\n';
+        if (stemShort) report += '  題目：' + stemShort + '\n';
+        if (correctText) report += '  正解：' + correctText + '\n';
+        report += questionReport;
+      }
+    });
+
+    report += '\n═══════════════════════════════\n';
+    report += '【統計】\n';
+    report += '  涵蓋題數：' + totalQuestions + ' 題\n';
+    report += '  AI 提供原因勾選：' + totalChecked + ' 條\n';
+    report += '  自填補充：' + totalOwn + ' 條\n';
+    report += '  送出時間：' + new Date().toLocaleString('zh-TW') + '\n';
+    report += '═══════════════════════════════\n';
+    report += '\n— 林威老師與 AI agent 團隊 —';
+
+    if (totalQuestions === 0) {
+      report += '\n\n（提醒：你還沒勾選任何錯誤分析喔！請先勾選後再送出。）';
+    }
+    return report;
+  }
+
+  // 自動填入今日日期
+  var dateEl = document.getElementById('exam-date');
+  if (dateEl && !dateEl.value) {
+    try { dateEl.valueAsDate = new Date(); } catch(e){}
+  }
+
+  document.getElementById('generate-report').addEventListener('click', function(){
+    var txt = generateReport();
+    var ta = document.getElementById('report-text');
+    ta.value = txt;
+    document.getElementById('report-modal').classList.add('active');
+    setTimeout(function(){ ta.scrollTop = 0; }, 50);
+  });
+
+  document.getElementById('copy-report').addEventListener('click', function(){
+    var ta = document.getElementById('report-text');
+    var btn = this;
+    ta.select();
+    ta.setSelectionRange(0, 999999);
+    function showCopied(){
+      btn.textContent = '✅ 已複製！可貼到 LINE 了';
+      setTimeout(function(){ btn.textContent = '📋 複製到剪貼簿'; }, 2500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ta.value).then(showCopied).catch(function(){
+        try { document.execCommand('copy'); showCopied(); } catch(e){ alert('複製失敗，請長按文字框手動全選複製'); }
+      });
+    } else {
+      try { document.execCommand('copy'); showCopied(); } catch(e){ alert('複製失敗，請長按文字框手動全選複製'); }
+    }
+  });
+
+  document.getElementById('close-modal').addEventListener('click', function(){
+    document.getElementById('report-modal').classList.remove('active');
+  });
+
+  document.getElementById('report-modal').addEventListener('click', function(e){
+    if (e.target === this) this.classList.remove('active');
+  });
+})();
+</script>
 </body>
 </html>

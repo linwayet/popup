@@ -3,669 +3,1996 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>吳鼎濬 115 學測單字閱讀練習</title>
+  <title>115學測英文｜全卷錯誤分析（Q1-50＋翻譯＋作文）</title>
   <style>
     :root {
-      --ink: #1f2937;
+      --ink: #172033;
       --muted: #667085;
-      --line: #d8e0eb;
-      --paper: #f6f8fc;
-      --card: #ffffff;
-      --navy: #24476f;
-      --teal: #06746f;
-      --amber: #b65f10;
-      --rose: #b43c5d;
-      --green: #267354;
-      --violet: #6251b8;
-      --good: #0f7b45;
-      --bad: #b42318;
-      --soft-blue: #edf4ff;
+      --line: #d9e2ef;
+      --paper: #ffffff;
+      --bg: #f3f7fb;
+      --blue: #2563eb;
+      --cyan: #0284c7;
+      --green: #16815b;
+      --amber: #b45309;
+      --red: #be123c;
+      --violet: #6d28d9;
+      --soft-blue: #eaf2ff;
+      --soft-green: #eaf8f1;
       --soft-amber: #fff4df;
-      --soft-green: #eaf8f0;
+      --soft-red: #ffe8ee;
+      --soft-violet: #f1eaff;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", Arial, sans-serif;
       color: var(--ink);
       background:
-        linear-gradient(135deg, rgba(36,71,111,.10), transparent 32%),
-        linear-gradient(315deg, rgba(6,116,111,.10), transparent 30%),
-        var(--paper);
-      line-height: 1.65;
-    }
-
-    header {
-      color: white;
-      background: linear-gradient(135deg, #1f3658 0%, #066f69 58%, #8d4f17 100%);
-      padding: 42px 18px 30px;
-      border-bottom: 1px solid rgba(255,255,255,.25);
+        radial-gradient(circle at top left, rgba(37,99,235,.15), transparent 32%),
+        radial-gradient(circle at top right, rgba(22,129,91,.14), transparent 30%),
+        linear-gradient(180deg, #fbfdff 0%, var(--bg) 42%, #eef4f8 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.62;
     }
 
     .wrap {
-      width: min(1120px, calc(100% - 32px));
+      width: min(1240px, calc(100% - 28px));
       margin: 0 auto;
+      padding: 30px 0 64px;
     }
 
-    h1, h2, h3, p { margin-top: 0; }
-
-    h1 {
-      margin-bottom: 10px;
-      font-size: clamp(1.9rem, 5vw, 3.6rem);
-      line-height: 1.15;
-      letter-spacing: 0;
+    header {
+      background: linear-gradient(135deg, #10203e 0%, #1d4ed8 48%, #0f766e 100%);
+      color: white;
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 18px 42px rgba(15, 32, 62, .22);
     }
+
+    h1, h2, h3, h4 { margin: 0; line-height: 1.25; letter-spacing: 0; }
+    h1 { font-size: clamp(1.7rem, 4vw, 2.8rem); }
+    h2 { font-size: clamp(1.28rem, 2.2vw, 1.75rem); }
+    h3 { font-size: 1.05rem; }
+    h4 { font-size: .98rem; }
 
     .lead {
-      max-width: 860px;
-      margin: 0;
-      color: rgba(255,255,255,.88);
-      font-size: 1.04rem;
+      max-width: 880px;
+      margin: 10px 0 0;
+      color: rgba(255,255,255,.86);
     }
 
-    .top-stats {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .stat {
-      min-height: 108px;
-      padding: 16px;
-      border-radius: 8px;
-      background: rgba(255,255,255,.13);
-      border: 1px solid rgba(255,255,255,.25);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.5rem;
-      line-height: 1.15;
-    }
-
-    .stat span {
-      display: block;
-      margin-top: 5px;
-      color: rgba(255,255,255,.82);
-      font-size: .92rem;
-    }
-
-    .tabs {
-      position: sticky;
-      top: 0;
-      z-index: 3;
-      background: rgba(246,248,252,.94);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
-    }
-
-    .tab-row {
-      display: flex;
-      gap: 8px;
-      overflow-x: auto;
-      padding: 12px 0;
-    }
-
-    .tab {
-      flex: 0 0 auto;
-      min-height: 42px;
-      padding: 0 14px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      color: var(--ink);
-      background: white;
-      font: inherit;
+    .signature {
+      margin-top: 14px;
       font-weight: 800;
-      cursor: pointer;
+      color: rgba(255,255,255,.95);
+      letter-spacing: 1px;
     }
 
-    .tab.active {
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+      border: 1px solid rgba(255,255,255,.24);
       color: white;
-      background: var(--navy);
-      border-color: var(--navy);
+      font-size: .88rem;
+      font-weight: 800;
     }
 
-    main { padding: 24px 0 56px; }
-
-    .section { display: none; }
-    .section.active { display: block; }
-
-    .panel, .vocab-card, .question {
-      background: var(--card);
+    .panel, .card {
+      background: rgba(255,255,255,.96);
       border: 1px solid var(--line);
       border-radius: 8px;
-      box-shadow: 0 12px 30px rgba(22, 34, 51, .07);
+      box-shadow: 0 12px 34px rgba(25, 39, 68, .08);
     }
 
     .panel {
       padding: 22px;
-      margin-bottom: 18px;
+      margin-top: 18px;
     }
 
     .section-title {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 16px;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
     }
 
-    h2 {
-      margin: 0;
-      font-size: clamp(1.4rem, 3vw, 2rem);
-      line-height: 1.25;
-    }
-
-    .pill {
+    .section-title .pill {
       display: inline-flex;
       align-items: center;
-      min-height: 28px;
-      padding: 0 10px;
+      padding: 3px 10px;
       border-radius: 999px;
-      color: #214f9a;
       background: var(--soft-blue);
-      font-size: .86rem;
-      font-weight: 800;
-      white-space: nowrap;
+      color: #1d4ed8;
+      font-size: .82rem;
+      font-weight: 900;
     }
 
-    .pill.green { color: #236843; background: var(--soft-green); }
-    .pill.amber { color: #915004; background: var(--soft-amber); }
-    .pill.rose { color: #9a2f4e; background: #ffeaf1; }
+    .section-title .pill.green { background: var(--soft-green); color: var(--green); }
+    .section-title .pill.amber { background: var(--soft-amber); color: var(--amber); }
+    .section-title .pill.red { background: var(--soft-red); color: var(--red); }
+    .section-title .pill.violet { background: var(--soft-violet); color: var(--violet); }
 
-    .study-note {
-      margin: 0 0 18px;
-      color: var(--muted);
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
     }
 
-    .vocab-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 16px;
-    }
-
-    .filter {
-      min-height: 36px;
-      padding: 0 12px;
+    .stat {
+      background: white;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: white;
-      color: var(--ink);
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
+      padding: 15px;
+      border-top: 6px solid var(--blue);
     }
 
-    .filter.active {
-      color: white;
-      background: var(--teal);
-      border-color: var(--teal);
+    .stat:nth-child(2) { border-top-color: var(--green); }
+    .stat:nth-child(3) { border-top-color: var(--amber); }
+    .stat:nth-child(4) { border-top-color: var(--red); }
+    .stat strong {
+      display: block;
+      font: 900 1.55rem/1.1 "SF Mono", Menlo, monospace;
     }
+    .stat span { display: block; margin-top: 4px; color: var(--muted); font-size: .9rem; }
 
-    .vocab-grid {
+    .nav-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .vocab-card {
-      padding: 16px;
-      border-top: 6px solid var(--accent, var(--navy));
-      min-height: 210px;
-    }
-
-    .word-line {
-      display: flex;
-      justify-content: space-between;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 10px;
-      align-items: start;
+      margin-top: 14px;
     }
 
-    .word {
-      font-size: 1.35rem;
-      font-weight: 900;
-      overflow-wrap: anywhere;
-    }
-
-    .pos {
-      color: white;
-      background: var(--accent, var(--navy));
-      border-radius: 999px;
-      padding: 2px 8px;
-      font-size: .78rem;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .zh {
-      margin: 4px 0 10px;
-      color: #475467;
-      font-weight: 800;
-    }
-
-    .usage {
-      padding: 10px 12px;
+    .nav-grid a {
+      display: block;
+      padding: 12px 14px;
       border-radius: 8px;
-      background: #f3f6fb;
-      color: #46566b;
-      font-size: .93rem;
+      background: white;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .15s, box-shadow .15s;
     }
 
-    .mini {
-      margin-top: 10px;
+    .nav-grid a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 9px 18px rgba(37, 47, 64, .1);
+      border-color: var(--blue);
+    }
+
+    .nav-grid a small {
+      display: block;
+      margin-top: 4px;
       color: var(--muted);
-      font-size: .91rem;
+      font-weight: 600;
+      font-size: .82rem;
     }
 
-    .reading {
-      font-size: 1.03rem;
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 16px;
     }
 
-    .reading p {
-      margin-bottom: 16px;
+    .q-card {
+      border-left: 7px solid var(--green);
+      overflow: hidden;
     }
 
-    .target {
-      padding: 1px 4px;
-      border-radius: 5px;
-      background: #fff0bf;
-      font-weight: 900;
-    }
-
-    .question {
-      padding: 18px;
-      margin-bottom: 14px;
-      border-left: 6px solid var(--accent, var(--navy));
-    }
+    .q-card.level-mid { border-left-color: var(--amber); }
+    .q-card.level-high { border-left-color: var(--red); }
 
     .q-head {
       display: flex;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 9px;
-      color: var(--muted);
-      font-size: .9rem;
-      font-weight: 800;
-    }
-
-    .q-text {
-      font-size: 1.04rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    .blank {
-      display: inline-block;
-      min-width: 128px;
-      padding: 0 8px 1px;
-      border-bottom: 3px solid #8ea2bd;
-      color: #5d6b80;
-      text-align: center;
-    }
-
-    .options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .option {
-      min-height: 38px;
-      padding: 0 12px;
-      border: 1px solid #bfccdc;
-      border-radius: 8px;
-      background: white;
-      color: var(--ink);
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .option:hover { border-color: var(--navy); }
-    .option.correct { color: white; background: var(--good); border-color: var(--good); }
-    .option.wrong { color: white; background: var(--bad); border-color: var(--bad); }
-    .option:disabled { cursor: default; opacity: .95; }
-
-    .feedback {
-      min-height: 24px;
-      margin-top: 10px;
-      font-weight: 800;
-    }
-
-    .feedback.ok { color: var(--good); }
-    .feedback.no { color: var(--bad); }
-
-    .scorebox {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 14px 16px;
-      margin: 16px 0;
-      border: 1px solid var(--line);
-      border-radius: 8px;
+      align-items: flex-start;
+      padding: 15px 16px;
       background: #f8fafc;
+      border-bottom: 1px solid var(--line);
     }
 
-    .score {
-      font-size: 1.05rem;
+    .q-title {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
       font-weight: 900;
     }
 
-    .reset {
-      min-height: 38px;
-      padding: 0 12px;
-      border: 1px solid var(--navy);
+    .q-num {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
       border-radius: 8px;
-      background: var(--navy);
+      background: #14213d;
       color: white;
-      font: inherit;
-      font-weight: 800;
-      cursor: pointer;
+      font: 900 1rem/1 "SF Mono", Menlo, monospace;
     }
 
-    .strategy-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--soft-blue);
+      color: #1d4ed8;
+      font-size: .78rem;
+      font-weight: 900;
     }
 
-    .strategy {
-      padding: 14px;
+    .tag.green { background: var(--soft-green); color: var(--green); }
+    .tag.amber { background: var(--soft-amber); color: var(--amber); }
+    .tag.red { background: var(--soft-red); color: var(--red); }
+    .tag.violet { background: var(--soft-violet); color: var(--violet); }
+
+    .level-badge {
+      text-align: right;
+      white-space: nowrap;
+      font-size: .85rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .level-badge strong {
+      display: block;
+      font: 900 .95rem/1.05 -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+
+    .q-body {
+      padding: 16px;
+    }
+
+    .q-text {
+      margin: 0 0 10px;
+      font-weight: 700;
+      color: #253044;
+      line-height: 1.65;
+      background: #fcfdff;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px dashed #d6e1f0;
+    }
+
+    .answer-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 12px;
+    }
+
+    .answer-pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 3px 10px;
+      border-radius: 999px;
       border: 1px solid var(--line);
+      background: #f8fafc;
+      font-weight: 900;
+      font-size: .9rem;
+    }
+
+    .answer-pill.correct {
+      background: var(--soft-green);
+      border-color: #b7ecd4;
+      color: var(--green);
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .opt {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      padding: 10px 12px;
       border-radius: 8px;
-      background: #fbfcff;
+      background: #fff7f9;
+      border: 1px solid #fed7df;
+      font-size: .94rem;
     }
 
-    .strategy b { color: var(--navy); }
-
-    @media (max-width: 920px) {
-      .top-stats, .vocab-grid, .strategy-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .opt.correct {
+      background: var(--soft-green);
+      border-color: #b7ecd4;
     }
 
-    @media (max-width: 640px) {
-      header { padding-top: 32px; }
-      .top-stats, .vocab-grid, .strategy-grid { grid-template-columns: 1fr; }
-      .section-title { display: block; }
-      .section-title .pill { margin-top: 8px; }
-      .panel, .question { padding: 16px; }
-      .word { font-size: 1.22rem; }
-      .tab { min-height: 40px; padding: 0 11px; }
+    .opt .letter {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #fda4af;
+      color: white;
+      font: 900 .92rem/1 "SF Mono", Menlo, monospace;
+    }
+
+    .opt.correct .letter {
+      background: var(--green);
+    }
+
+    .opt .opt-content strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .opt .opt-content em {
+      display: block;
+      font-style: normal;
+      color: #4a5568;
+      font-size: .9rem;
+      line-height: 1.55;
+    }
+
+    .opt.correct .opt-content em {
+      color: #1f4d34;
+    }
+
+    .trap {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 8px;
+      background: #fff8eb;
+      border: 1px solid #fed7aa;
+      color: #713f12;
+      font-size: .94rem;
+      line-height: 1.65;
+    }
+
+    .trap strong { color: #9a3412; }
+
+    .reading-passage {
+      background: #f7fafc;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      margin: 12px 0;
+      font-size: .95rem;
+      line-height: 1.7;
+      color: #2d3748;
+    }
+
+    .reading-passage h4 {
+      color: var(--blue);
+      margin-bottom: 6px;
+    }
+
+    .word-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .word {
+      padding: 8px 10px;
+      background: #f8fafc;
+      border-radius: 6px;
+      border: 1px solid var(--line);
+      font-size: .92rem;
+    }
+
+    .word strong {
+      color: var(--blue);
+      font-weight: 900;
+    }
+
+    .word em {
+      font-style: normal;
+      color: var(--muted);
+      margin-left: 6px;
+    }
+
+    .write-tip {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background: #f1eaff;
+      border: 1px solid #d8c5ff;
+      color: #4c1d95;
+      font-size: .94rem;
+      line-height: 1.7;
+    }
+
+    .write-tip strong { color: #6d28d9; }
+
+    .compare-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .compare-box > div {
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .compare-box > div.bad {
+      background: #fff1f2;
+      border-color: #fecdd3;
+    }
+
+    .compare-box > div.good {
+      background: #ecfdf5;
+      border-color: #a7f3d0;
+    }
+
+    .compare-box h4 {
+      font-size: .92rem;
+      margin-bottom: 6px;
+    }
+
+    .compare-box .bad h4 { color: #be123c; }
+    .compare-box .good h4 { color: var(--green); }
+
+    .compare-box p {
+      margin: 0;
+      font-size: .92rem;
+      line-height: 1.6;
+      color: #2d3748;
+    }
+
+    .grade-callout {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #fff5f7 0%, #ffe8ee 100%);
+      border: 1px solid #fda4af;
+      color: #881337;
+    }
+
+    .grade-callout h4 {
+      color: #be123c;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    .grade-callout ul {
+      margin: 6px 0 0;
+      padding-left: 22px;
+      line-height: 1.8;
+    }
+
+    .grade-callout li::marker { color: var(--red); }
+
+    .muted { color: var(--muted); }
+
+    .toc-link {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: .88rem;
+    }
+
+    .toc-link:hover { text-decoration: underline; }
+
+    @media (max-width: 940px) {
+      .question-grid { grid-template-columns: 1fr; }
+      .summary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .compare-box { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 20px, 1240px); padding-top: 18px; }
+      header, .panel { padding: 16px; }
+      .summary { grid-template-columns: 1fr; }
+      .q-head { display: block; }
+      .level-badge { margin-top: 10px; text-align: left; }
+      .opt { grid-template-columns: 30px 1fr; }
+    }
+
+    @media print {
+      body { background: white; }
+      header, .panel, .card { box-shadow: none; }
+      .question-grid { grid-template-columns: 1fr; }
+      .q-card { break-inside: avoid; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>115 學測英文｜單字閱讀練習</h1>
-      <p class="lead">為吳鼎濬設計：先複習不熟單字，再用一篇接近學測語氣的閱讀文章做填充，最後練直接單字選擇。內容適合 17-18 歲高三學生，重點放在精準字義、搭配、詞形與推論。</p>
-      <div class="top-stats">
-        <div class="stat"><strong>41 words</strong><span>納入本次不熟單字清單</span></div>
-        <div class="stat"><strong>12 blanks</strong><span>練摘要填空與詞形判斷</span></div>
-        <div class="stat"><strong>16 choices</strong><span>練詞彙題常見干擾選項</span></div>
-        <div class="stat"><strong>4 skills</strong><span>字義、搭配、推論、詞形</span></div>
+  <div class="wrap">
+    <header>
+      <h1>115學測英文｜全卷錯誤分析</h1>
+      <p class="lead">Q1-50 ＋ 中譯英 ＋ 英文作文。每題提供題目、正確答案、其餘三個選項學生最可能踩進去的陷阱，並標示「級分 8-12 學生最容易選錯的選項」。閱讀題與作文段落附上常見不會的單字、慣用語與寫作引導。</p>
+      <p class="signature">林威老師與 AI agent 團隊</p>
+      <div class="chips">
+        <span class="chip">Q1-10 詞彙題</span>
+        <span class="chip">Q11-20 綜合測驗</span>
+        <span class="chip">Q21-30 文意選填</span>
+        <span class="chip">Q31-34 篇章結構</span>
+        <span class="chip">Q35-46 閱讀測驗</span>
+        <span class="chip">Q47-50 混合題</span>
+        <span class="chip">中譯英＋英文作文</span>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <nav class="tabs">
-    <div class="wrap tab-row">
-      <button class="tab active" data-tab="vocab">1. 單字複習</button>
-      <button class="tab" data-tab="cloze">2. 閱讀填充</button>
-      <button class="tab" data-tab="choice">3. 單字選擇</button>
-      <button class="tab" data-tab="strategy">學測提醒</button>
-    </div>
-  </nav>
-
-  <main class="wrap">
-    <section id="vocab" class="section active">
-      <div class="section-title">
-        <h2>Unit 1｜單字複習</h2>
-        <span class="pill">先看用法，不只背中文</span>
+    <section class="panel">
+      <h2>本卷錯誤分析重點</h2>
+      <p class="muted">本檔針對全國高三考生中「級分 8-12」段（中段偏中上）做出最可能誤答的分析。每題列出正確答案、三個錯誤選項的「為什麼會被選」、以及該題對 8-12 級分學生的「主陷阱」。</p>
+      <div class="summary">
+        <div class="stat"><strong>50 題</strong><span>選擇題＋混合題全題目</span></div>
+        <div class="stat"><strong>4 大題</strong><span>選擇題型 ＋ 混合題</span></div>
+        <div class="stat"><strong>2 句</strong><span>中譯英＋常錯詞句</span></div>
+        <div class="stat"><strong>1 篇</strong><span>英文作文＋常用語料</span></div>
       </div>
-      <p class="study-note">點分類可以縮小範圍。建議先讀「核心用法」，再進入填充練習；這位學生最需要把單字放回句子裡判斷詞性與搭配。</p>
-      <div class="vocab-tools" id="filters"></div>
-      <div class="vocab-grid" id="vocabGrid"></div>
+      <div class="nav-grid">
+        <a href="#sec-vocab"><span>Q1-10</span><small>詞彙題</small></a>
+        <a href="#sec-cloze1"><span>Q11-15</span><small>綜合測驗｜白犀牛</small></a>
+        <a href="#sec-cloze2"><span>Q16-20</span><small>綜合測驗｜港式飲茶</small></a>
+        <a href="#sec-bank"><span>Q21-30</span><small>文意選填｜午睡</small></a>
+        <a href="#sec-struct"><span>Q31-34</span><small>篇章結構｜微笑</small></a>
+        <a href="#sec-read1"><span>Q35-38</span><small>閱讀｜堅忍號</small></a>
+        <a href="#sec-read2"><span>Q39-42</span><small>閱讀｜旋轉樓梯</small></a>
+        <a href="#sec-read3"><span>Q43-46</span><small>閱讀｜地圖方位</small></a>
+        <a href="#sec-mix"><span>Q47-50</span><small>混合題｜奇蹟村</small></a>
+        <a href="#sec-translate"><span>中譯英</span><small>2 句翻譯</small></a>
+        <a href="#sec-essay"><span>英文作文</span><small>寵物角色變化</small></a>
+      </div>
     </section>
 
-    <section id="cloze" class="section">
+    <!-- ============ Q1-10 詞彙題 ============ -->
+    <section class="panel" id="sec-vocab">
       <div class="section-title">
-        <h2>Unit 2｜閱讀填充練習</h2>
-        <span class="pill amber">主題：傳統街區如何轉型</span>
+        <h2>第 1-10 題｜詞彙題</h2>
+        <span class="pill">每題 1 分｜共 10 分</span>
       </div>
+      <p class="muted">詞彙題型重點：固定搭配（collocation）、語意對比、近義字辨析、語境邏輯。級分 8-12 學生最常輸在「看到熟悉字就選」與「不熟搭配」。</p>
 
-      <article class="panel reading">
-        <h3>Reading Passage: When an Old District Learns to Face a New Direction</h3>
-        <p>For decades, Harbor Lane was treated as a quiet stop between the train station and the coast. Its wooden houses, narrow alleys, and stone staircases attracted only a few visitors. Recently, however, the district has become more <span class="target">prominent</span>. Young shop owners have <span class="target">founded</span> small businesses there, while older <span class="target">artisans</span> continue to make baskets, wooden beads, and hand-carved signs.</p>
-        <p>The change did not simply replace tradition with fashion. Instead, local leaders tried to create a careful <span class="target">blend</span> of memory and <span class="target">innovation</span>. A tiny <span class="target">boutique</span> sells clothes made by indigenous designers. A scent studio offers customized <span class="target">fragrances</span>. A restaurant serves <span class="target">gourmet</span> pizzas with local pineapples and mountain herbs. The goal is not to make the neighborhood a tourist <span class="target">mecca</span>, but to let residents earn a living without losing their cultural roots.</p>
-        <p>Even the map at the visitor center teaches a lesson. Unlike most modern maps, it is not fixed with north at the top. Its <span class="target">orientation</span> changes according to the path a visitor chooses. Some historians explain that map <span class="target">layouts</span> have always reflected power: during the age of European <span class="target">imperialism</span>, many maps became <span class="target">Eurocentric</span>, while today GPS systems are often <span class="target">oriented</span> toward the user. In that sense, the north-up habit may be only a historical <span class="target">blip</span>.</p>
-        <p>Harbor Lane still faces problems. During a recent storm, a shop window was <span class="target">shattered</span> and several signboards were <span class="target">overturned</span>. Some residents expressed <span class="target">grave</span> concerns about safety. Yet the shop owners did not <span class="target">resort</span> to blaming one another. They repaired the damage, raised money to <span class="target">compensate</span> affected stores, and agreed that community needs should take <span class="target">precedence</span> over quick profits.</p>
-      </article>
-
-      <div class="scorebox">
-        <div class="score" id="clozeScore">填充得分：0 / 12</div>
-        <button class="reset" data-reset="cloze">重新作答</button>
-      </div>
-      <div id="clozeQuestions"></div>
-    </section>
-
-    <section id="choice" class="section">
-      <div class="section-title">
-        <h2>Unit 3｜直接單字選擇</h2>
-        <span class="pill rose">練學測詞彙題判斷</span>
-      </div>
-      <p class="study-note">這一段專門練他錯題常見的「選項都看過，但只有一個搭配最自然」。答錯時會顯示短解釋。</p>
-      <div class="scorebox">
-        <div class="score" id="choiceScore">選擇得分：0 / 16</div>
-        <button class="reset" data-reset="choice">重新作答</button>
-      </div>
-      <div id="choiceQuestions"></div>
-    </section>
-
-    <section id="strategy" class="section">
-      <div class="section-title">
-        <h2>學測提醒</h2>
-        <span class="pill green">針對本學生錯題</span>
-      </div>
-      <div class="strategy-grid">
-        <div class="strategy"><b>1. 搭配先行</b><br>看到 concern 要想到 grave / serious；看到 take ___ over 要想到 precedence。</div>
-        <div class="strategy"><b>2. 詞形檢查</b><br>be perfectly ___ with foreign elements 需要過去分詞 blended，不是原形 blend。</div>
-        <div class="strategy"><b>3. 推論詞義</b><br>blip 不用硬背，從 less a rule and more a blip 推出「短暫狀態」。</div>
-        <div class="strategy"><b>4. 細節回文</b><br>閱讀題問 true / inferred 時，回到原文找時間、方向、主詞，不靠印象答。</div>
-      </div>
-      <article class="panel" style="margin-top:18px">
-        <h3>建議練習順序</h3>
-        <p>第一輪：單字卡只看英文，遮住中文回想意思。第二輪：做 Unit 2 填充，逼自己判斷詞性。第三輪：做 Unit 3 選擇題，練干擾選項。最後把錯題整理成「搭配短語」，例如 <i>dread the thought of V-ing</i>、<i>resort to V-ing</i>、<i>take precedence over</i>。</p>
-      </article>
-    </section>
-  </main>
-
-  <script>
-    const colors = {
-      "高頻核心": "#24476f",
-      "閱讀進階": "#06746f",
-      "題目關鍵": "#b65f10",
-      "文化地理": "#6251b8",
-      "易混詞形": "#b43c5d"
-    };
-
-    const vocab = [
-      {w:"assaulted", pos:"v.", zh:"攻擊；襲擊", cat:"題目關鍵", use:"assault someone with something：用某物攻擊某人"},
-      {w:"compensate", pos:"v.", zh:"補償；彌補", cat:"高頻核心", use:"compensate A for B / compensate for a loss"},
-      {w:"condemned", pos:"v.", zh:"譴責；宣告有罪", cat:"題目關鍵", use:"condemn behavior：譴責行為；不是實際攻擊"},
-      {w:"dimension", pos:"n.", zh:"尺寸；面向；維度", cat:"閱讀進階", use:"a cultural/social dimension：文化/社會層面"},
-      {w:"dreads", pos:"v.", zh:"害怕；畏懼", cat:"題目關鍵", use:"dread the thought of V-ing：害怕想到做某事"},
-      {w:"elbow", pos:"v./n.", zh:"用手肘推擠；手肘", cat:"題目關鍵", use:"elbow one's way through the crowd：在人群中擠出路"},
-      {w:"found", pos:"v.", zh:"創立；建立", cat:"易混詞形", use:"found-founded-founded；不要和 find-found-found 混淆"},
-      {w:"grave", pos:"adj./n.", zh:"嚴重的；墳墓", cat:"題目關鍵", use:"grave concerns：嚴重關切"},
-      {w:"just", pos:"adv./adj.", zh:"只是；剛剛；公正的", cat:"高頻核心", use:"not just A but also B；a just decision"},
-      {w:"overturned", pos:"v.", zh:"翻倒；推翻", cat:"題目關鍵", use:"overturn a car / overturn a decision"},
-      {w:"shattered", pos:"v./adj.", zh:"打碎；粉碎的", cat:"題目關鍵", use:"shatter glass / shattered dreams"},
-      {w:"smell at", pos:"phr.", zh:"聞；嗅", cat:"易混詞形", use:"英文較自然常用 smell 或 sniff at"},
-      {w:"cramming", pos:"v-ing", zh:"臨時抱佛腳；密集準備", cat:"閱讀進階", use:"cram for an exam：為考試臨時硬背"},
-      {w:"enhance", pos:"v.", zh:"提升；增強", cat:"高頻核心", use:"enhance memory / performance / appeal"},
-      {w:"hand", pos:"n./v.", zh:"手；交給；方面", cat:"高頻核心", use:"right-hand side；hand in homework"},
-      {w:"manifestations", pos:"n.", zh:"表現；顯示；徵兆", cat:"閱讀進階", use:"manifestations of stress：壓力的表現"},
-      {w:"nappers", pos:"n.", zh:"小睡的人", cat:"閱讀進階", use:"habitual nappers：有固定小睡習慣的人"},
-      {w:"planks", pos:"n.", zh:"木板；厚板", cat:"閱讀進階", use:"wooden planks；ship's planks"},
-      {w:"precedence", pos:"n.", zh:"優先；優先權", cat:"閱讀進階", use:"take precedence over：優先於"},
-      {w:"resort", pos:"v./n.", zh:"訴諸；度假勝地", cat:"高頻核心", use:"resort to violence / smiling：訴諸暴力/微笑"},
-      {w:"smiling", pos:"n./v-ing", zh:"微笑；正在笑", cat:"高頻核心", use:"Smiling can be a social signal."},
-      {w:"stemmed", pos:"v.", zh:"源自；起因於", cat:"閱讀進階", use:"stem from：起因於"},
-      {w:"artisans", pos:"n.", zh:"工匠；手藝人", cat:"文化地理", use:"local artisans：在地工藝師"},
-      {w:"ascend", pos:"v.", zh:"上升；攀登", cat:"題目關鍵", use:"ascend the stairs/mountain：上樓梯/登山"},
-      {w:"blip", pos:"n.", zh:"短暫現象；小波動", cat:"題目關鍵", use:"a historical blip：歷史上的短暫現象"},
-      {w:"boutique", pos:"n.", zh:"精品店；小型特色店", cat:"文化地理", use:"a boutique that sells local designs"},
-      {w:"descend", pos:"v.", zh:"下降；下來", cat:"題目關鍵", use:"descend the stairs；the plane descends"},
-      {w:"eurocentric", pos:"adj.", zh:"以歐洲為中心的", cat:"文化地理", use:"a Eurocentric view/map：歐洲中心觀點/地圖"},
-      {w:"fragrances", pos:"n.", zh:"香氣；香水", cat:"文化地理", use:"customized fragrances：客製化香氣"},
-      {w:"gourmet", pos:"adj./n.", zh:"美食的；美食家", cat:"文化地理", use:"gourmet pizza / a gourmet restaurant"},
-      {w:"imperialism", pos:"n.", zh:"帝國主義", cat:"文化地理", use:"European imperialism：歐洲帝國主義"},
-      {w:"layouts", pos:"n.", zh:"版面；配置；布局", cat:"閱讀進階", use:"map layouts / page layouts"},
-      {w:"marble", pos:"n.", zh:"大理石", cat:"文化地理", use:"stone and marble steps：石頭和大理石階梯"},
-      {w:"mecca", pos:"n.", zh:"麥加；嚮往之地", cat:"文化地理", use:"a mecca for food lovers：美食愛好者聖地"},
-      {w:"orientation", pos:"n.", zh:"方向；取向；迎新", cat:"題目關鍵", use:"map orientation：地圖方向"},
-      {w:"oriented", pos:"adj./v.", zh:"朝向的；以……為導向的", cat:"題目關鍵", use:"oriented toward the east / user-oriented"},
-      {w:"prominent", pos:"adj.", zh:"顯著的；重要的；知名的", cat:"閱讀進階", use:"a prominent feature/person：顯著特色/知名人物"},
-      {w:"rejoiced", pos:"v.", zh:"欣喜；高興", cat:"文化地理", use:"residents rejoiced at the news"},
-      {w:"sparkling", pos:"adj.", zh:"閃閃發光的；氣泡的", cat:"文化地理", use:"sparkling coastline / sparkling water"},
-      {w:"blend", pos:"v./n.", zh:"混合；融合", cat:"易混詞形", use:"blend A with B；a blend of old and new"},
-      {w:"innovation", pos:"n.", zh:"創新", cat:"易混詞形", use:"tradition coexists with innovation"}
-    ];
-
-    const cloze = [
-      {q:"Local leaders wanted tradition to coexist with ____ rather than disappear.", ans:"innovation", opts:["innovation","imperialism","dimension","marble"], note:"coexist with innovation 是第 47 題的關鍵搭配。"},
-      {q:"The new stores created a careful ____ of local culture and modern business.", ans:"blend", opts:["blend","blip","grave","hand"], note:"a blend of A and B 表示 A 與 B 的融合。"},
-      {q:"The scent studio sells customized ____ for visitors with different tastes.", ans:"fragrances", opts:["fragrances","planks","layouts","manifestations"], note:"scent studio 對應 fragrances。"},
-      {q:"The visitor map changes its ____ according to the path chosen by each user.", ans:"orientation", opts:["orientation","precedence","compensation","assault"], note:"map orientation 是地圖方向。"},
-      {q:"Some maps became ____ during the European age of exploration.", ans:"Eurocentric", opts:["Eurocentric","sparkling","gourmet","grave"], note:"以歐洲為中心的地圖是 Eurocentric maps。"},
-      {q:"The north-up habit may be a historical ____, not a permanent rule.", ans:"blip", opts:["blip","boutique","resort","dimension"], note:"blip 在此是短暫狀態。"},
-      {q:"After the storm, several signboards were ____ by the wind.", ans:"overturned", opts:["overturned","condemned","founded","oriented"], note:"signboards 被風吹翻，用 overturned。"},
-      {q:"A shop window was ____ into pieces during the storm.", ans:"shattered", opts:["shattered","enhanced","rejoiced","stemmed"], note:"玻璃碎裂用 shattered。"},
-      {q:"Residents had ____ concerns about safety after the damage.", ans:"grave", opts:["grave","just","gourmet","sparkling"], note:"grave concerns 是嚴重關切。"},
-      {q:"The owners raised money to ____ shops affected by the storm.", ans:"compensate", opts:["compensate","ascend","descend","elbow"], note:"compensate affected stores 表示補償受影響店家。"},
-      {q:"The group agreed that community needs should take ____ over quick profits.", ans:"precedence", opts:["precedence","orientation","fragrance","imperialism"], note:"take precedence over 是優先於。"},
-      {q:"Instead of blaming others, the owners did not ____ to public arguments.", ans:"resort", opts:["resort","found","enhance","smell at"], note:"resort to 表示訴諸某手段。"}
-    ];
-
-    const choice = [
-      {q:"As a shy student, Kevin ____ the thought of speaking before hundreds of people.", ans:"dreads", opts:["dreads","wanders","escapes","stresses"], note:"dread the thought of V-ing 是固定搭配。"},
-      {q:"The driver was arrested after he ____ a passer-by with a bottle.", ans:"assaulted", opts:["shattered","assaulted","overturned","condemned"], note:"用瓶子攻擊人，選 assaulted。"},
-      {q:"There were so many people that I had to ____ my way through the crowd.", ans:"elbow", opts:["elbow","descend","found","enhance"], note:"elbow one's way through 是在人群中擠過去。"},
-      {q:"The shootings raised ____ concerns about campus safety.", ans:"grave", opts:["just","grave","sparkling","gourmet"], note:"grave concerns 表示嚴重關切。"},
-      {q:"The problem ____ from poor communication between the two teams.", ans:"stemmed", opts:["rejoiced","stemmed","compensated","oriented"], note:"stem from 表示起因於。"},
-      {q:"Students ____ for exams may remember less if they never sleep.", ans:"cramming", opts:["cramming","smiling","nappers","planks"], note:"cram for exams 是臨時抱佛腳準備考試。"},
-      {q:"A twenty-minute nap can ____ memory and attention.", ans:"enhance", opts:["condemn","enhance","descend","resort"], note:"enhance memory 是提升記憶力。"},
-      {q:"The absence of smiles was once seen as a ____ of good manners.", ans:"manifestation", opts:["manifestation","fragrance","boutique","mecca"], note:"manifestation 是表現；此題練單複數概念。"},
-      {q:"Attackers had to ____ the narrow staircase one at a time.", ans:"ascend", opts:["ascend","compensate","shatter","rejoice"], note:"ascend the staircase 是上樓梯。"},
-      {q:"It is harder to ____ uneven steps in the dark.", ans:"descend", opts:["descend","found","condemn","smell at"], note:"descend 是往下走。"},
-      {q:"The old staircase was carved in stone and ____.", ans:"marble", opts:["marble","layouts","precedence","imperialism"], note:"marble 是大理石。"},
-      {q:"The district became a ____ for coffee lovers.", ans:"mecca", opts:["mecca","blip","hand","plank"], note:"a mecca for... 表示某族群嚮往之地。"},
-      {q:"The shop sells items made by local ____.", ans:"artisans", opts:["artisans","nappers","dimensions","manifestations"], note:"artisans 是工匠。"},
-      {q:"The company was ____ in 1996 by two young designers.", ans:"founded", opts:["found","founded","foundeded","finding"], note:"創立是 found-founded-founded。"},
-      {q:"The GPS map is ____ toward the driver's travel path.", ans:"oriented", opts:["oriented","overturned","condemned","shattered"], note:"be oriented toward 是朝向/以……為導向。"},
-      {q:"A leader should make a ____ decision, not one based on anger.", ans:"just", opts:["just","grave","blip","sparkling"], note:"just 作形容詞可表示公正的。"}
-    ];
-
-    const sections = document.querySelectorAll(".section");
-    const tabs = document.querySelectorAll(".tab");
-    tabs.forEach(tab => {
-      tab.addEventListener("click", () => {
-        tabs.forEach(item => item.classList.toggle("active", item === tab));
-        sections.forEach(sec => sec.classList.toggle("active", sec.id === tab.dataset.tab));
-        window.scrollTo({top: 0, behavior: "smooth"});
-      });
-    });
-
-    const filtersEl = document.querySelector("#filters");
-    const vocabGrid = document.querySelector("#vocabGrid");
-    const cats = ["全部", ...Array.from(new Set(vocab.map(item => item.cat)))];
-
-    function renderFilters(active = "全部") {
-      filtersEl.innerHTML = cats.map(cat => `<button class="filter ${cat === active ? "active" : ""}" data-cat="${cat}">${cat}</button>`).join("");
-    }
-
-    function renderVocab(cat = "全部") {
-      renderFilters(cat);
-      const list = cat === "全部" ? vocab : vocab.filter(item => item.cat === cat);
-      vocabGrid.innerHTML = list.map(item => `
-        <article class="vocab-card" style="--accent:${colors[item.cat]}">
-          <div class="word-line"><div class="word">${item.w}</div><div class="pos">${item.pos}</div></div>
-          <div class="zh">${item.zh}</div>
-          <div class="usage">${item.use}</div>
-          <div class="mini">分類：${item.cat}</div>
-        </article>
-      `).join("");
-    }
-
-    filtersEl.addEventListener("click", event => {
-      const btn = event.target.closest(".filter");
-      if (btn) renderVocab(btn.dataset.cat);
-    });
-
-    function buildExercise(target, data, scoreId, type) {
-      const host = document.querySelector(target);
-      host.innerHTML = data.map((item, index) => `
-        <article class="question" data-answer="${item.ans}" data-type="${type}" style="--accent:${index % 2 ? "var(--teal)" : "var(--amber)"}">
-          <div class="q-head"><span>Question ${index + 1}</span><span>${type === "cloze" ? "Fill in the blank" : "Choose the best word"}</span></div>
-          <div class="q-text">${type === "cloze" ? item.q.replace("____", '<span class="blank">____</span>') : item.q}</div>
-          <div class="options">
-            ${item.opts.map(opt => `<button class="option" data-opt="${opt}">${opt}</button>`).join("")}
+      <div class="question-grid">
+        <!-- Q1 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">1</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">形容詞搭配</span>
+            </div>
+            <div class="level-badge">難度<strong>★☆☆</strong></div>
           </div>
-          <div class="feedback"></div>
-          <div class="mini">${item.note}</div>
+          <div class="q-body">
+            <p class="q-text">The mayor has such a ______ schedule that it takes weeks to arrange an interview with her.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>hasty 匆促的</strong><em>形容「快速、倉促做的決定」（hasty decision）。雖然 mayor 很忙，但 hasty schedule 不是搭配。學生若只看到「忙→快」會誤選。</em></div></div>
+              <div class="opt correct"><span class="letter">B</span><div class="opt-content"><strong>tight 緊湊的（正解）</strong><em>tight schedule = 行程緊湊，是固定搭配。後句「需要好幾週才能安排訪問」呼應「行程很滿」。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>diligent 勤勉的</strong><em>diligent 用來形容人，不能修飾 schedule。學生看到 mayor 容易把形容人的字套到行程上。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>routine 例行的</strong><em>routine schedule 邏輯與後句「需好幾週安排」矛盾。例行行程應該很容易安排。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (D) routine。看到 schedule 就直譯成「日程表」並聯想到「routine 規律」，忽略了後句「needs weeks to arrange」其實是說「滿到擠不出時間」。</div>
+          </div>
         </article>
-      `).join("");
-      updateScore(type, scoreId);
-    }
 
-    function updateScore(type, scoreId) {
-      const cards = [...document.querySelectorAll(`.question[data-type="${type}"]`)];
-      const correct = cards.filter(card => card.dataset.done === "true").length;
-      document.querySelector(scoreId).textContent = `${type === "cloze" ? "填充" : "選擇"}得分：${correct} / ${cards.length}`;
-    }
+        <!-- Q2 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">2</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">對比語意</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Jane started as an ______ art designer, but now she has a professional studio of her own.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>official 官方的</strong><em>official designer 不通；學生看到 designer 想到「正式」可能誤選。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>instant 立即的</strong><em>形容速食、即時，instant designer 不是搭配；看到 started 容易誤聯想到「立刻」。</em></div></div>
+              <div class="opt correct"><span class="letter">C</span><div class="opt-content"><strong>amateur 業餘的（正解）</strong><em>amateur ↔ professional 是典型對比。「一開始是業餘，現在有專業工作室」邏輯通順。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>elementary 基礎的；國小的</strong><em>elementary 通常修飾 school、level、education，不修飾人或職業。但有「初級」意涵，最易誤選。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (D) elementary。學生只記得「elementary = 基礎、初級」，忽略它幾乎不修飾「人物職業」。amateur 字較不熟，反而被避開。</div>
+          </div>
+        </article>
 
-    document.addEventListener("click", event => {
-      const opt = event.target.closest(".option");
-      if (!opt) return;
-      const card = opt.closest(".question");
-      if (card.dataset.answered === "true") return;
+        <!-- Q3 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">3</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">名詞語境</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">The teaching ______ at the famous high school soon attracted more than a dozen well-qualified applicants.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>career 職涯</strong><em>teaching career 雖是常見搭配，但指「個人的教學生涯」，不會「吸引應聘者」。</em></div></div>
+              <div class="opt correct"><span class="letter">B</span><div class="opt-content"><strong>vacancy 職缺（正解）</strong><em>後句「吸引十幾位合格應聘者」是徵才情境，teaching vacancy = 教師職缺。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>expectation 期待</strong><em>expectation 與 attract applicants 邏輯不通。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>inspiration 靈感</strong><em>「教學靈感」吸引應聘者邏輯完全不通。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (A) career。teaching career 是耳熟能詳的高頻片語，學生直接套用，忽略 applicants（應聘者）暗示這是「徵才公告」，要的是 vacancy（職缺）。</div>
+          </div>
+        </article>
 
-      const answer = card.dataset.answer;
-      const type = card.dataset.type;
-      const feedback = card.querySelector(".feedback");
-      const isCorrect = opt.dataset.opt === answer;
+        <!-- Q4 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">4</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">副詞邏輯</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Designed by a young engineer, the new product has created far more profit than ______ expected.</p>
+            <div class="options">
+              <div class="opt correct"><span class="letter">A</span><div class="opt-content"><strong>initially 最初地（正解）</strong><em>than initially expected = 比起最初預期。固定句型，描述「結果超乎一開始的預估」。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>genuinely 真誠地</strong><em>修飾 expected 邏輯怪。genuinely surprised / interested 才是常見搭配。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>alternatively 替代地；或者</strong><em>用於「另一個方案」的轉折，不是修飾預期。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>fundamentally 根本上</strong><em>「根本上預期的」邏輯怪，且不符 than 的時間對比結構。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (D) fundamentally，因為「fundamentally」聽起來最「正式高級」。提醒學生比較句中常用 initially、originally、previously 這類「時間副詞」，而不是抽象副詞。</div>
+          </div>
+        </article>
 
-      card.dataset.answered = "true";
-      card.dataset.done = isCorrect ? "true" : "false";
-      card.querySelectorAll(".option").forEach(button => {
-        button.disabled = true;
-        if (button.dataset.opt === answer) button.classList.add("correct");
-      });
-      if (!isCorrect) opt.classList.add("wrong");
-      feedback.className = `feedback ${isCorrect ? "ok" : "no"}`;
-      feedback.textContent = isCorrect ? "Correct. 這個搭配很自然。" : `答案是 ${answer}。先看主詞、動詞搭配和句意。`;
-      updateScore(type, type === "cloze" ? "#clozeScore" : "#choiceScore");
-    });
+        <!-- Q5 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">5</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">飲食搭配</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">It has been confirmed that a balanced ______ of fruit and vegetables is a key element to good health.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>dimension 維度；面向</strong><em>抽象空間概念，與蔬果無關。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>integration 整合</strong><em>balanced integration 看似可，但與「個人攝取量」語境不合，較適合社會、種族議題。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>provision 提供；供給</strong><em>偏向「提供方」立場，這裡語境是個人「食用」蔬果，與健康相關。</em></div></div>
+              <div class="opt correct"><span class="letter">D</span><div class="opt-content"><strong>consumption 攝取；消費（正解）</strong><em>balanced consumption of fruit and vegetables = 蔬果均衡攝取，飲食健康話題的固定講法。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (B) integration。「均衡整合蔬菜水果」字面上似乎通，但學生忽略 consumption 在飲食、營養語境的高頻地位。提醒：good health 暗示是「人吃進去」的角度。</div>
+          </div>
+        </article>
 
-    document.querySelectorAll(".reset").forEach(button => {
-      button.addEventListener("click", () => {
-        if (button.dataset.reset === "cloze") {
-          buildExercise("#clozeQuestions", cloze, "#clozeScore", "cloze");
-        } else {
-          buildExercise("#choiceQuestions", choice, "#choiceScore", "choice");
-        }
-      });
-    });
+        <!-- Q6 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">6</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">動詞搭配</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">As a shy boy afraid of making public appearances, Timmy ______ the thought of speaking before large audiences.</p>
+            <div class="options">
+              <div class="opt correct"><span class="letter">A</span><div class="opt-content"><strong>dreads 害怕、畏懼（正解）</strong><em>dread the thought of V-ing = 一想到…就害怕，固定搭配。對應前面 shy / afraid。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>stresses 強調；使有壓力</strong><em>stress + 名詞當「強調」，stress + 人當「使緊張」。stress the thought 不通。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>wanders 徘徊；漫遊</strong><em>不及物動詞為主，wander the thought 不通。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>escapes 逃跑；逃避</strong><em>escape from / escape doing 才是常見用法，escape the thought 不是固定講法。但「害怕→逃避」的中文直覺很強。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (D) escapes。中文「害怕→逃避」直覺非常強，且 dread 這個字許多學生沒學過。提醒：dread 是學測級必背字，意思 = fear，後接 V-ing 或 the thought of。</div>
+          </div>
+        </article>
 
-    renderVocab();
-    buildExercise("#clozeQuestions", cloze, "#clozeScore", "cloze");
-    buildExercise("#choiceQuestions", choice, "#choiceScore", "choice");
-  </script>
+        <!-- Q7 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">7</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">名詞語意</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">To the newly-crowned winner of the piano competition, music is his life's ______, which he has devoted himself to whole-heartedly.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>resource 資源</strong><em>life's resource 不是固定搭配；resource 偏物質性。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>impact 影響、衝擊</strong><em>life's impact 邏輯怪，且與「全心奉獻」不對應。</em></div></div>
+              <div class="opt correct"><span class="letter">C</span><div class="opt-content"><strong>passion 熱情（正解）</strong><em>life's passion = 一生熱情所在，後句 devote himself whole-heartedly 完美呼應。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>emphasis 強調</strong><em>emphasis on N 是常見搭配，但 life's emphasis 不通；學生會被熟悉字面誤導。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (D) emphasis。emphasis 是高頻熟字，學生看到「強調」就放心選。提醒：passion 後常接 for / passion to V，life's passion 是抒情語體的固定用法。</div>
+          </div>
+        </article>
+
+        <!-- Q8 -->
+        <article class="card q-card level-high">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">8</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">動詞語意</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">The drunk driver who shouted at passers-by and ______ them with glass bottles was quickly arrested by the police.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>shattered 打碎、粉碎</strong><em>shatter 通常以「物」為受詞（shatter the glass），這裡受詞是 them（行人），不通。但看到 glass bottles 容易直接被吸引。</em></div></div>
+              <div class="opt correct"><span class="letter">B</span><div class="opt-content"><strong>assaulted 攻擊、毆打（正解）</strong><em>assault sb. with sth. = 用某物攻擊某人。對應後句被警方逮捕。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>overturned 推翻、翻倒</strong><em>overturn 通常用於翻倒物體或推翻判決，不會用瓶子做工具。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>condemned 譴責</strong><em>condemn 是抽象的「譴責」，不會「用瓶子譴責人」。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (A) shattered。glass bottles 字面強烈勾引「打碎」聯想。但 shatter 後面接的是「被打碎的物」，不能接「人」。assault 是學測必背字，需精準掌握「assault sb. with sth.」結構。</div>
+          </div>
+        </article>
+
+        <!-- Q9 -->
+        <article class="card q-card level-high">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">9</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">慣用語</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">There were so many people at the bus station that I had to ______ my way through the crowd to board the bus in time.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>crash 撞</strong><em>crash one's way 不是固定講法；crash into 才常見。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>tumble 跌倒、翻滾</strong><em>tumble 通常不及物，且帶「失去平衡」意涵，不適合「擠出去」。</em></div></div>
+              <div class="opt correct"><span class="letter">C</span><div class="opt-content"><strong>elbow 用手肘擠（正解）</strong><em>elbow one's way through the crowd = 用手肘擠過人群。固定慣用語，名詞 elbow 當動詞用。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>struggle 掙扎、奮力</strong><em>struggle through 是合理英文，但 struggle one's way 不如 elbow 精確；且 elbow 才是這個情境的固定動詞。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (D) struggle。struggle 是熟字、且「擠人群」語意對。但這題考的是「one's way through」前面慣用搭配字。學測常考 push / elbow / fight one's way through。</div>
+          </div>
+        </article>
+
+        <!-- Q10 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">10</span>
+              <span class="tag">詞彙</span>
+              <span class="tag violet">形容詞搭配</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Deadly shootings on US campuses have raised ______ concerns about how to prevent such tragic incidents from happening again.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>swift 迅速的</strong><em>swift action / response 才是常見搭配，swift concerns 不通。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>brutal 殘忍的</strong><em>brutal 修飾 shootings、attack 合理，但修飾 concerns（憂慮）不通。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>harsh 嚴厲的</strong><em>harsh criticism / words 才搭，harsh concerns 不是固定講法。</em></div></div>
+              <div class="opt correct"><span class="letter">D</span><div class="opt-content"><strong>grave 嚴重的（正解）</strong><em>grave concerns = 嚴重的關切，新聞、政治、社會議題的固定搭配。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (B) brutal。受 deadly shootings、tragic 等強烈字眼影響，學生想找「最沉重的形容詞」。但 grave 才是修飾 concerns / doubts / situation 的固定字。</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grade-callout">
+        <h4>級分 8-12 學生詞彙題總結</h4>
+        <ul>
+          <li><strong>最容易輸的題型</strong>：固定搭配（Q1 tight schedule、Q3 vacancy、Q9 elbow one's way、Q10 grave concerns）。</li>
+          <li><strong>策略</strong>：背單字時，至少多背一個搭配字。例如 grave 不只記「嚴重」，要記 grave concerns / grave situation。</li>
+          <li><strong>陷阱字</strong>：emphasis、struggle、escape、shatter、brutal — 這些是「熟字干擾」的代表。要在練習時主動辨析。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Q11-15 綜合測驗（白犀牛） ============ -->
+    <section class="panel" id="sec-cloze1">
+      <div class="section-title">
+        <h2>第 11-15 題｜綜合測驗（白犀牛溝通）</h2>
+        <span class="pill green">每題 1 分｜共 5 分</span>
+      </div>
+      <div class="reading-passage">
+        <h4>文章主旨</h4>
+        <p>白犀牛透過糞便堆「分享訊息」，留下化學物質傳達年齡、性別、健康、繁殖狀態，類似人類在社群媒體留言。研究人員用「假糞便」測試，發現雄性對含繁殖期雌性化學訊號的糞便特別有反應。</p>
+      </div>
+
+      <div class="question-grid">
+        <!-- Q11 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">11</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">轉折銜接</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">From the campfire to the café, people have always gathered together to share the latest news. White rhinoceroses, ______, do the same thing—only their choice of meeting place is a giant pile of poop.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>what is more 此外</strong><em>用於補充新訊息，但這裡是「人類也是、犀牛也一樣」的對比，不是補充。</em></div></div>
+              <div class="opt correct"><span class="letter">B</span><div class="opt-content"><strong>it turns out 結果竟是、原來（正解）</strong><em>「原來犀牛也這樣做」帶有揭示意味，自然帶出後句的特殊行為（糞便堆）。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>in other words 換句話說</strong><em>用於同義改寫，但「犀牛」與「人類」並非同一個事物的改寫。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>all in all 總而言之</strong><em>用於文章結尾總結，不能放在文章開頭轉換主角。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (A) what is more 或 (D) all in all。學生混淆「銜接副詞」的功能位置。提醒：it turns out + 子句是學測閱讀高頻表達，意思接近「沒想到 / 原來」，常用於揭示出乎意料的事實。</div>
+          </div>
+        </article>
+
+        <!-- Q12 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">12</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">段落主旨字</span>
+            </div>
+            <div class="level-badge">難度<strong>★☆☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">A new study indicates that rhinos have a smelly way to ______.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>demonstrate 展示</strong><em>後文是「留訊息」不是「展示」。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>immigrate 移民</strong><em>動物不會 immigrate，且與糞便無關。</em></div></div>
+              <div class="opt correct"><span class="letter">C</span><div class="opt-content"><strong>communicate 溝通（正解）</strong><em>後文 leave messages、social media 都指向「溝通」。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>manipulate 操縱、操弄</strong><em>負面動詞，與「分享訊息」中性語氣不合。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>多數能答對。少數誤選 (D) manipulate，被「正式字」吸引。com- 開頭字辨析重點：communicate（溝通）、commemorate（紀念）、compensate（補償）。</div>
+          </div>
+        </article>
+
+        <!-- Q13 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">13</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">名詞搭配</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Different rhinos leave different chemicals in their poop, which provide important ______ about the age, sex, general health, and reproductive conditions of each specific rhino.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>doubts 疑慮</strong><em>反向語意，與 important（重要）邏輯不合。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>icons 圖示；象徵</strong><em>受 social media 干擾，但 provide icons about 不通。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>matches 比賽；火柴；相符</strong><em>provide matches 不通，且 about 後的內容是「資訊」不是比賽。</em></div></div>
+              <div class="opt correct"><span class="letter">D</span><div class="opt-content"><strong>clues 線索（正解）</strong><em>provide clues about = 提供關於…的線索。化學物質提供關於犀牛各項特徵的線索，邏輯通順。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (B) icons。前文 social media 強烈干擾。提醒：provide clues / hints / information about 是固定搭配，icons 是「視覺圖示」不是「資訊線索」。</div>
+          </div>
+        </article>
+
+        <!-- Q14 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">14</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">句意推論</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">When all members in a group know what's going on with each other, it is ______ that they will fight.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>hardly surprising 不令人意外</strong><em>「不令人意外牠們會打架」與前文「彼此了解→和諧」邏輯矛盾。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>more acceptable 更可接受</strong><em>「打架更可接受」與前文 peace and harmony 完全相反。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>truly important 非常重要</strong><em>「打架很重要」邏輯怪。</em></div></div>
+              <div class="opt correct"><span class="letter">D</span><div class="opt-content"><strong>less likely 較不可能（正解）</strong><em>互相了解→較不會打架。對應前句 peace and harmony。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (A) hardly surprising 或 (B) more acceptable。學生看到 fight 沒有逆轉句意。提醒：less likely + that 子句 = 比較不可能…。要從前文「和諧」反推結論。</div>
+          </div>
+        </article>
+
+        <!-- Q15 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">15</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">形容詞片語</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Dominant males are particularly ______ the "fake poop" that carries chemicals from females ready to mate.</p>
+            <div class="options">
+              <div class="opt correct"><span class="letter">A</span><div class="opt-content"><strong>responsive to 對…有反應（正解）</strong><em>後句說「聞得久、回來次數多」，正是有反應的表現。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>annoyed at 對…生氣</strong><em>負面情緒，與「聞得久、回來」的興趣行為矛盾。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>considerate of 體貼…</strong><em>用於人，rhinos「體貼糞便」擬人化過頭。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>tolerant with 容忍</strong><em>tolerant 後通常接 of 而非 with；且「容忍」邏輯不合。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (B) annoyed at。「poop」字眼讓學生覺得是負面情境。提醒：be responsive to 是學測必背片語，意思 = react positively to。</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ Q16-20 綜合測驗（港式飲茶） ============ -->
+    <section class="panel" id="sec-cloze2">
+      <div class="section-title">
+        <h2>第 16-20 題｜綜合測驗（港式飲茶）</h2>
+        <span class="pill green">每題 1 分｜共 5 分</span>
+      </div>
+      <div class="reading-passage">
+        <h4>文章主旨</h4>
+        <p>港式飲茶（dim sum）源於絲路茶館，原本只供茶讓旅人休息，後因發現茶有助消化才開始搭配小點。dim sum 字面「點心」（觸動心靈），是用餐體驗超過食物本身：小份量讓客人能多嚐、適合多人分享。</p>
+      </div>
+
+      <div class="question-grid">
+        <!-- Q16 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">16</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">動詞語境</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Teahouses thus sprang up to ______ the weary travelers, offering them a cup of tea to help them regain energy.</p>
+            <div class="options">
+              <div class="opt correct"><span class="letter">A</span><div class="opt-content"><strong>accommodate 招待、容納（正解）</strong><em>accommodate travelers = 接待旅人，後句「提供茶讓他們恢復體力」呼應。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>compensate 補償</strong><em>compensate sb. for sth.，旅人沒有失去什麼可補償。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>anticipate 預期、預料</strong><em>anticipate travelers 不通。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>reinforce 加強、強化</strong><em>reinforce travelers 不通。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (B) compensate。看到 weary travelers 想成「補償疲憊旅人」。提醒：accommodate 有兩個常見意思 — 「容納（人或數量）」、「適應」。在旅遊脈絡是「招待、提供住宿」。</div>
+          </div>
+        </article>
+
+        <!-- Q17 -->
+        <article class="card q-card level-high">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">17</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">時態與語意</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">But the culinary art of dim sum ______, for it was considered inappropriate to pair tea with food.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>would hardly develop 幾乎不會發展</strong><em>would 表「過去未來」需明確時間錨點，這裡不通。</em></div></div>
+              <div class="opt correct"><span class="letter">B</span><div class="opt-content"><strong>had yet to develop 尚未發展（正解）</strong><em>have yet to V = 尚未做某事。「當時點心藝術尚未出現」呼應後文 centuries later 才開始發展。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>was fast developing 正在快速發展</strong><em>與後句「不適合配茶配食物」矛盾，當時根本還沒發展。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>had almost developed 幾乎已發展</strong><em>已發展與 centuries later 才發展矛盾。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (A) would hardly develop 或 (D) had almost developed。「have yet to V」是高難度文法句型，許多學生不熟，等於 have not yet V-ed。</div>
+          </div>
+        </article>
+
+        <!-- Q18 -->
+        <article class="card q-card level-high">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">18</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">片語用法</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Dim sum is more than just an example of Chinese cuisine. It is ______ an enjoyable dining experience that can span hours.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>passed on to 傳承給</strong><em>後面接「人」，不能接名詞 an experience。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>brought up as 養大為</strong><em>用於小孩成長，不能用於食物。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>thought to have 被認為已經…</strong><em>後面要接過去分詞 V-ed，但這裡接的是名詞片語 an experience。</em></div></div>
+              <div class="opt correct"><span class="letter">D</span><div class="opt-content"><strong>meant to be 本意是、應該是（正解）</strong><em>be meant to be N = 本來就是 / 註定是。「飲茶本來就應該是長時間的用餐體驗」。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (C) thought to have。It is thought to + V 是熟悉句型，學生忽略後面接名詞片語不對。提醒：be meant to be / be meant to V 是必背片語，意思偏「設計、用意」。</div>
+          </div>
+        </article>
+
+        <!-- Q19 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">19</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">指涉銜接</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">The small portions were designed to merely "touch the heart," as the name literally means, and ______ were first enjoyed as snacks.</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>if so 如果是這樣</strong><em>引出條件假設，邏輯不對。</em></div></div>
+              <div class="opt correct"><span class="letter">B</span><div class="opt-content"><strong>as such 因此、就此身分（正解）</strong><em>as such = 以這樣的身分 / 因此作為小點心，承接前句的定義。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>by then 到那時</strong><em>需有具體時間點，這裡沒有。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>in that 在於、因為</strong><em>用法是「介係詞 + 名詞 / 子句」，不能單獨當副詞。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (C) by then。學生把它當「to that point」用，但 by then 必須有時間軸前提。as such 是學測閱讀高頻片語，意思 = 「以…的身分；正因為如此」。</div>
+          </div>
+        </article>
+
+        <!-- Q20 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">20</span>
+              <span class="tag">綜合測驗</span>
+              <span class="tag violet">主旨整合</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">It is customary for big groups to enjoy simple dishes together as ______.</p>
+            <div class="options">
+              <div class="opt correct"><span class="letter">A</span><div class="opt-content"><strong>a joyful social activity 愉快的社交活動（正解）</strong><em>big groups + together 直指社交，且呼應段落主旨「dim sum 不只是食物」。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>a widely known delicacy 廣為人知的美食</strong><em>回到「食物」本身，與段落「不只是食物」矛盾。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>an amazing local cuisine 驚人的當地料理</strong><em>同樣回到食物本身，矛盾。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>an intimate romantic dinner 親密浪漫晚餐</strong><em>big groups 與 intimate 矛盾。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (B) delicacy 或 (C) cuisine。學生看到「dim sum」直覺想到「食物」屬性，沒抓到段落最後一句結論「食物只是體驗的一小部分」。提醒：閱讀題的「主旨」要回到段落結尾的歸納句。</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ Q21-30 文意選填（午睡） ============ -->
+    <section class="panel" id="sec-bank">
+      <div class="section-title">
+        <h2>第 21-30 題｜文意選填（小睡的好處）</h2>
+        <span class="pill amber">每題 1 分｜共 10 分</span>
+      </div>
+      <div class="reading-passage">
+        <h4>文章主旨 ＆ 選項表</h4>
+        <p>10 個空格從 10 個選項中各填一個（不重複）。文章說明小睡能改善大腦功能、延緩萎縮、降低失智風險，並提供完美小睡建議（時間長短、環境）。</p>
+        <p><strong>選項：</strong>(A) retain 保留 (B) depend on 取決於 (C) atmosphere 氛圍 (D) delay 延遲 (E) unproductive 無生產力的 (F) risk 風險 (G) function 功能 (H) minimal 最少的 (I) dramatic 戲劇性的 (J) point to 指向</p>
+      </div>
+
+      <div class="question-grid">
+        <!-- Q21 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">21</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">語氣判斷</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Taking a nap in the middle of the day is by no means ______.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (E) unproductive 無生產力的</span></div>
+            <p class="muted">提示：by no means 「絕非」是強烈否定，後面要接負面形容詞。「絕非沒有生產力」呼應前句的安慰口吻。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(I) dramatic — 雖也是形容詞，但「絕非戲劇性」與「為什麼有罪惡感」邏輯不通。(C) minimal — 屬形容詞但意義模糊。(H) minimal 已用作 Q29。提醒：by no means 後接負面字才能形成「正面結論」。</div>
+          </div>
+        </article>
+
+        <!-- Q22 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">22</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">名詞並列</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Research has shown that napping is linked with brain size and ______; specifically, it can boost our cognition and memory.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (G) function 功能</span></div>
+            <p class="muted">提示：brain size and function 是固定並列，後句 boost cognition and memory 解釋「功能」。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(F) risk — 受後段 dementia risk 影響跨句誤套。(I) dramatic — 詞性不對，是形容詞。提醒：填空題第一步先判詞性，再判語意。</div>
+          </div>
+        </article>
+
+        <!-- Q23 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">23</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">醫學搭配</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Brain shrinking gradually slows cognition and increases dementia ______ in later life.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (F) risk 風險</span></div>
+            <p class="muted">提示：increase the risk of dementia 是醫學報導固定搭配。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(G) function — 與上一題混淆，但 increase function 不通。(D) delay — 動詞，詞性不對。提醒：dementia risk 是學測閱讀高頻字。</div>
+          </div>
+        </article>
+
+        <!-- Q24 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">24</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">動詞語意</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">This suggests that napping may significantly ______ age-related brain shrinkage.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (D) delay 延遲、延緩</span></div>
+            <p class="muted">提示：delay age-related brain shrinkage = 延緩老化相關的大腦萎縮。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(A) retain — 「保留萎縮」邏輯怪。(J) point to — 動詞但「指向萎縮」不通。提醒：delay 用於延後負面事件（delay aging、delay shrinkage、delay decision）。</div>
+          </div>
+        </article>
+
+        <!-- Q25 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">25</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">學習動詞</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">For students cramming for college exams, napping will help ______ acquired knowledge and learned skills.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (A) retain 保留、保持</span></div>
+            <p class="muted">提示：retain knowledge / skills = 保留知識、保住學會的技能。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(D) delay — 沿用上一題的 delay shrinkage，但「延遲知識」不通。提醒：retain knowledge 是學測必背搭配。</div>
+          </div>
+        </article>
+
+        <!-- Q26 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">26</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">研究動詞</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Some studies recommend napping for 20 to 40 minutes, while others ______ shorter naps, such as 15 to 20 minutes.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (J) point to 指向、表明</span></div>
+            <p class="muted">提示：studies point to shorter naps = 研究指向 / 支持較短的小睡。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(B) depend on — 看到下一句 may depend on 跨句干擾，誤選。提醒：point to 用於「研究結果指向、表明」，是學測必備動詞片語。</div>
+          </div>
+        </article>
+
+        <!-- Q27 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">27</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">片語搭配</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">The best nap length, however, may ______ a person's physical condition and fatigue level.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (B) depend on 取決於</span></div>
+            <p class="muted">提示：depend on physical condition = 取決於身體狀況。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(J) point to — 與上一題混淆。提醒：depend on 後接「依據、條件」；point to 後接「結論、方向」。</div>
+          </div>
+        </article>
+
+        <!-- Q28 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">28</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">形容詞語氣</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">For some people, even a five-minute nap can bring about surprisingly ______ benefits.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (I) dramatic 顯著的、戲劇性的</span></div>
+            <p class="muted">提示：surprisingly dramatic benefits = 出乎意料地顯著的好處。對應 even five minutes（短時間）vs. 顯著好處。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(H) minimal — 與 surprisingly + benefits 邏輯衝突，會變成「驚人地少的好處」。提醒：dramatic 在這語境是「顯著的、引人注目的」，不是字面戲劇。</div>
+          </div>
+        </article>
+
+        <!-- Q29 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">29</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">形容詞搭配</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Find yourself a quiet place with ______ light or with blackout curtains.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (H) minimal 最少的</span></div>
+            <p class="muted">提示：minimal light = 最少的光線，與 blackout curtains（遮光窗簾）並列。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(C) atmosphere — 名詞，詞性不對。(I) dramatic — 已用過。提醒：minimal 與 maximum 對比，是學測必考形容詞。</div>
+          </div>
+        </article>
+
+        <!-- Q30 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">30</span>
+              <span class="tag">文意選填</span>
+              <span class="tag violet">名詞搭配</span>
+            </div>
+            <div class="level-badge">難度<strong>★☆☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">You can also add some soothing nature sounds to create a relaxing ______, which can make your naps more effective.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (C) atmosphere 氛圍</span></div>
+            <p class="muted">提示：create a relaxing atmosphere = 營造放鬆氛圍。固定搭配。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>剩下選項在這時候已大多用掉，較少誤選。但若前面題目選錯導致這裡剩餘錯誤，會連帶錯。提醒：create a + 形容詞 + atmosphere / environment 是固定句型。</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grade-callout">
+        <h4>級分 8-12 文意選填策略</h4>
+        <ul>
+          <li><strong>順序很重要</strong>：先掃描全段、判斷詞性，再從「最有把握」的題目下手，剩下的選項自然縮小範圍。</li>
+          <li><strong>跨句陷阱</strong>：Q22→Q23 容易把 risk / function 互換、Q24→Q25 容易把 delay / retain 互換。考試時請逐題確認，不要憑印象延續。</li>
+          <li><strong>詞性快篩</strong>：(A)(B)(D)(J) 是動詞片語、(C)(F)(G) 是名詞、(E)(H)(I) 是形容詞。從詞性著手最快。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Q31-34 篇章結構（微笑） ============ -->
+    <section class="panel" id="sec-struct">
+      <div class="section-title">
+        <h2>第 31-34 題｜篇章結構（微笑的歷史與文化）</h2>
+        <span class="pill amber">每題 2 分｜共 8 分</span>
+      </div>
+      <div class="reading-passage">
+        <h4>文章主旨 ＆ 選項表</h4>
+        <p>微笑看似自然，但歷史與文化上並非如此。1700 年前西方畫像不笑（齒不健康＋自制觀念），近代研究發現某些文化把微笑視為「不聰明」。微笑頻率與個人主義、移民多樣性有關。</p>
+        <p><strong>選項：</strong>(A) Another crucial factor is a society's immigration diversity. / (B) Various factors have thus contributed to the phenomenon of smiling. / (C) For most of recorded human history, the open smile has been deeply unfashionable. / (D) A genuine smile indicates contentment, while a forced smile suggests underlying distress. / (E) In fact, there is a well-known Russian proverb that goes, "Smiling with no reason is a sign of stupidity."</p>
+      </div>
+
+      <div class="question-grid">
+        <!-- Q31 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">31</span>
+              <span class="tag">篇章結構</span>
+              <span class="tag violet">主題句</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">前句：But does this hold true across time and cultures?<br>後文：In the West, for example, portraits of men and women before the 1700s typically depicted them with a serious, unsmiling expression...</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (C) For most of recorded human history, the open smile has been deeply unfashionable.</span></div>
+            <p class="muted">提示：(C) 是新段的主題句，引出「微笑在歷史上其實不流行」這個翻轉觀點，後文舉例呼應。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(D) genuine smile vs. forced smile — 雖然在談微笑，但與「歷史/文化」主軸不合，是干擾項。(E) Russian proverb — 是 Q32 的補充例證。提醒：篇章結構的「段首空格」一定要填「總論句」。</div>
+          </div>
+        </article>
+
+        <!-- Q32 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">32</span>
+              <span class="tag">篇章結構</span>
+              <span class="tag violet">舉例補充</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">前句：...in certain cultures the same person can be judged as less intelligent when smiling.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (E) In fact, there is a well-known Russian proverb that goes, "Smiling with no reason is a sign of stupidity."</span></div>
+            <p class="muted">提示：less intelligent when smiling 直接呼應 Russian proverb 中的 sign of stupidity。In fact 強化前句論點。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(D) — 容易因為都在談微笑而誤選。提醒：In fact、Indeed、For example 開頭的句子，前面通常有對應論點等待呼應。</div>
+          </div>
+        </article>
+
+        <!-- Q33 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">33</span>
+              <span class="tag">篇章結構</span>
+              <span class="tag violet">轉折/新層次</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">前句：...These are often places where the needs and rights of the individual take precedence over those of the group.<br>後文：Newcomers from different parts of the world are found to smile more.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (A) Another crucial factor is a society's immigration diversity.</span></div>
+            <p class="muted">提示：Another crucial factor 引入新原因，後文 Newcomers from different parts of the world 正好對應 immigration diversity。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(D) — 仍會被誤選，但與移民多樣性無關。(B) — 是 Q34 結論句。提醒：看到「Another」要找前面提過的「first / one factor」呼應點。</div>
+          </div>
+        </article>
+
+        <!-- Q34 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">34</span>
+              <span class="tag">篇章結構</span>
+              <span class="tag violet">結論句</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">後句：As many psychologists now point out, this simple gesture is in fact far more complicated than it may appear.</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (B) Various factors have thus contributed to the phenomenon of smiling.</span></div>
+            <p class="muted">提示：thus 表示總結，「各種因素…」對應前面所有討論。後句用 simple gesture / far more complicated 收尾。</p>
+            <div class="trap"><strong>學生易犯錯選：</strong>(D) — 仍是干擾，但 (D) 講的是 genuine vs. forced smile 的二分，不是「各種因素」。提醒：thus、therefore、in conclusion 開頭通常是結論段第一句。</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grade-callout">
+        <h4>級分 8-12 篇章結構策略</h4>
+        <ul>
+          <li><strong>(D) 是經典干擾項</strong>：四題裡 (D) 都看似可行（在談微笑），但實際只與「微笑種類」相關，與本文「歷史/文化/因素」主軸不合。要學會排除「正確但離題」的選項。</li>
+          <li><strong>關鍵字配對</strong>：Another → first；In fact → 前句強化；thus → 結論；In the West → 開啟舉例。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ Q35-38 閱讀（堅忍號） ============ -->
+    <section class="panel" id="sec-read1">
+      <div class="section-title">
+        <h2>第 35-38 題｜閱讀測驗（堅忍號的南極遠征）</h2>
+        <span class="pill red">每題 2 分｜共 8 分</span>
+      </div>
+      <div class="reading-passage">
+        <h4>文章主旨</h4>
+        <p>1914 年 Shackleton 率 27 名船員乘 Endurance（堅忍號）前往南極，被浮冰困住 9 個月，最後棄船。船員露營浮冰 5 個月，乘救生艇到 Elephant Island；Shackleton 帶 5 人航行 800 哩到 South Georgia 求救，再徒步 36 小時到捕鯨站。1916 年 8 月救回所有人，全員生還。船 2022 年才被找到。</p>
+        <h4>學測級不會的單字 / 慣用語</h4>
+        <div class="word-list">
+          <div class="word"><strong>vessel</strong><em> 船隻；容器</em></div>
+          <div class="word"><strong>polar explorer</strong><em> 極地探險家</em></div>
+          <div class="word"><strong>perseverance</strong><em> 毅力</em></div>
+          <div class="word"><strong>set sail</strong><em> 啟航</em></div>
+          <div class="word"><strong>encounter</strong><em> 遭遇</em></div>
+          <div class="word"><strong>pack ice</strong><em> 浮冰、凍結的海冰</em></div>
+          <div class="word"><strong>buckle the planks</strong><em> 壓垮船板</em></div>
+          <div class="word"><strong>exacerbate</strong><em> 使惡化</em></div>
+          <div class="word"><strong>abandon ship</strong><em> 棄船</em></div>
+          <div class="word"><strong>pitch tents</strong><em> 紮營</em></div>
+          <div class="word"><strong>uninhabited</strong><em> 無人居住的</em></div>
+          <div class="word"><strong>whaling station</strong><em> 捕鯨站</em></div>
+          <div class="word"><strong>hinder</strong><em> 阻礙</em></div>
+          <div class="word"><strong>add fuel to the fire</strong><em> 火上加油</em></div>
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <!-- Q35 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">35</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">主旨題</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">What is this passage mainly about?</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>A renowned Antarctic explorer.</strong><em>雖提到 Shackleton，但文章重點是航程，不是人物傳記。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>The extreme weather in Antarctica.</strong><em>天氣只是航程的一部分，非主軸。</em></div></div>
+              <div class="opt correct"><span class="letter">C</span><div class="opt-content"><strong>A challenging voyage to Antarctica.（正解）</strong><em>整篇敘述船被困、棄船、求救、生還，正是「充滿挑戰的航程」。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>The amazing discovery of a sunken ship.</strong><em>沉船發現只在第一段提及，是引子，不是主旨。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (D)。學生看到首段「2022 年發現沉船」就選；但這只是新聞引子。提醒：主旨題要看「整篇敘述哪件事」，不是看引子。</div>
+          </div>
+        </article>
+
+        <!-- Q36 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">36</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">慣用語</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Which idiom is closest in meaning to "exacerbated the situation"?</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>Broke the ice. 打破僵局</strong><em>正面語意，與惡化相反。但學生看到 ice 直接聯想南極場景容易誤選。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>Cost an arm and a leg. 花一大筆錢</strong><em>與情境惡化無關。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>Missed the boat. 錯失機會</strong><em>看到 boat 字面相關，但意思不對。</em></div></div>
+              <div class="opt correct"><span class="letter">D</span><div class="opt-content"><strong>Added fuel to the fire. 火上加油（正解）</strong><em>exacerbate = 使惡化，add fuel to the fire 中文「雪上加霜、火上加油」最貼合。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (A) Broke the ice。場景「冰凍」強烈暗示，學生忽略「打破僵局」是正面語意。提醒：慣用語題目不要被字面字（ice / boat）干擾，要先看本句語意。</div>
+          </div>
+        </article>
+
+        <!-- Q37 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">37</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">細節推論</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Which is true about Shackleton and his Antarctic expedition?</p>
+            <div class="options">
+              <div class="opt correct"><span class="letter">A</span><div class="opt-content"><strong>His journey lasted more than two years.（正解）</strong><em>1914.8 啟航 → 1916.8 救援，超過兩年。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>He was the first man to cross over the Antarctic.</strong><em>原文 hoping to make the first land crossing — 是「希望」不是「成功」，且船員實際上沒成功穿越。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>His team camped out on Elephant Island for five months.</strong><em>5 個月是露營在「浮冰」上，不是 Elephant Island。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>He sent five crew members on a lifeboat to get help from a whaling station.</strong><em>是 Shackleton 親自帶著 5 人去，不是「派 5 人」。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (D)。受到「5 人 + 救生艇 + 捕鯨站」三個細節影響，誤以為是派出 5 人。原文 with five crew members, he sailed = 他和 5 人一起航行。也容易誤選 (B)，沒注意 hoping 是「希望」非「成就」。</div>
+          </div>
+        </article>
+
+        <!-- Q38 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">38</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">圖表整合</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Which shows the correct route of the Endurance after leaving South Georgia?</p>
+            <div class="answer-line"><span class="answer-pill correct">正解 (C)</span></div>
+            <p class="muted">路線：South Georgia 啟航 → 進入 Weddell Sea（南極東邊海）被冰困 → 浮冰漂流向北 → 棄船後乘救生艇到 Elephant Island。圖 (C) 顯示這條從 South Georgia 進入 Weddell Sea 再北上到 Elephant Island 的路徑。</p>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最容易與 (D) 混淆。(D) 通常是把方向、海域標示位置畫錯。學生粗心會看反方向。提醒：閱讀時可以邊讀邊用手畫路線圖，記下海域名稱（Weddell Sea）的相對位置。</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ Q39-42 閱讀（旋轉樓梯） ============ -->
+    <section class="panel" id="sec-read2">
+      <div class="section-title">
+        <h2>第 39-42 題｜閱讀測驗（旋轉樓梯的歷史）</h2>
+        <span class="pill red">每題 2 分｜共 8 分</span>
+      </div>
+      <div class="reading-passage">
+        <h4>文章主旨</h4>
+        <p>旋轉樓梯歷史悠久，舊約已有記載，現存最早為羅馬 Trajan's Column（113 AD）。中世紀城堡採用，因為窄、順時針、階高不一，能阻擋攻擊者。後來材料演變：石、鑄鐵、鋼、玻璃。今日仍是豪宅與公共建築的設計亮點。</p>
+        <h4>學測級不會的單字 / 慣用語</h4>
+        <div class="word-list">
+          <div class="word"><strong>spiral staircase</strong><em> 旋轉樓梯</em></div>
+          <div class="word"><strong>captivating</strong><em> 迷人的</em></div>
+          <div class="word"><strong>focal point</strong><em> 焦點</em></div>
+          <div class="word"><strong>heritage</strong><em> 遺產</em></div>
+          <div class="word"><strong>marble</strong><em> 大理石</em></div>
+          <div class="word"><strong>medieval</strong><em> 中世紀的</em></div>
+          <div class="word"><strong>defenders / attackers</strong><em> 防守者／攻擊者</em></div>
+          <div class="word"><strong>ascend / retreat</strong><em> 上升／後退</em></div>
+          <div class="word"><strong>clockwise</strong><em> 順時針</em></div>
+          <div class="word"><strong>stumble</strong><em> 跌倒、絆倒</em></div>
+          <div class="word"><strong>dimly lit</strong><em> 光線昏暗的</em></div>
+          <div class="word"><strong>cast iron</strong><em> 鑄鐵</em></div>
+          <div class="word"><strong>cost-effective</strong><em> 划算的</em></div>
+          <div class="word"><strong>fire escape</strong><em> 緊急逃生梯</em></div>
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <!-- Q39 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">39</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">主旨／能回答的問題</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Which question can the passage answer?</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>Where was the first spiral staircase constructed?</strong><em>原文只說 Solomon Temple 與 Trajan's Column，沒明確指出第一座是哪。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>Who was the first designer of the spiral staircase?</strong><em>文章未提設計者。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>What is the world's most famous spiral staircase?</strong><em>未做最有名排名。</em></div></div>
+              <div class="opt correct"><span class="letter">D</span><div class="opt-content"><strong>Why is the spiral staircase popular in modern times?（正解）</strong><em>最後一段提到 timeless appeal、much-desired feature in luxury homes，明確回答現代為何流行。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (A)。第二段提到 1,000 BC、113 AD，學生以為文章說了「第一座」。但 the oldest still standing today 不是「第一座」。提醒：閱讀題要找原文「明確回答」的問題，不是「相關但模糊」的問題。</div>
+          </div>
+        </article>
+
+        <!-- Q40 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">40</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">代名詞指涉</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">What does "them" in the third paragraph refer to? (...could retreat up them very swiftly)</p>
+            <div class="options">
+              <div class="opt correct"><span class="letter">A</span><div class="opt-content"><strong>Stairs.（正解）</strong><em>retreat up them = 沿著樓梯後退，them = the stairs / the staircases。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>Confines.</strong><em>confines 是「界限、範圍」單複數皆有，但與 retreat up 不通。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>Attackers.</strong><em>defenders 不會 retreat up attackers。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>Defenders.</strong><em>主詞已是 defenders，不能指涉自己。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (C) Attackers，因為前面剛提到 attackers。提醒：代名詞要找最近的「能讓動詞合理」的名詞。retreat up + 樓梯，邏輯只能是 stairs。</div>
+          </div>
+        </article>
+
+        <!-- Q41 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">41</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">時序整合</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Correct time sequence of materials used in spiral staircases?</p>
+            <div class="options">
+              <div class="opt correct"><span class="letter">A</span><div class="opt-content"><strong>stone → iron → steel → glass（正解）</strong><em>113 AD 石頭 / 大理石；維多利亞時代鑄鐵；20 世紀後半鋼；最近玻璃。順序正確。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>stone → wood → iron → steel</strong><em>原文沒提木頭出現的時間順序。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>iron → marble → wood → glass</strong><em>順序錯，鑄鐵在中世紀後才用。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>marble → wood → stone → concrete</strong><em>順序錯。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (B)。學生看到 today 段落列出 steel, wood, concrete, glass，誤以為「木」是早期材料。提醒：要按段落「時序」走（中世紀 → 維多利亞 → 20 世紀 → 今日），不是看「材料清單」。</div>
+          </div>
+        </article>
+
+        <!-- Q42 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">42</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">推論題</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">What can be inferred about spiral staircases in the Medieval Ages?</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>Too narrow to allow any quick retreat.</strong><em>原文說 defenders could retreat up them very swiftly，矛盾。</em></div></div>
+              <div class="opt correct"><span class="letter">B</span><div class="opt-content"><strong>The clockwise design favored right-handed castle defenders.（正解）</strong><em>順時針上升使攻擊者右手貼牆無法揮劍，反推 defenders（從上方下來）的右手握劍空間較大，有利右撇子。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>The uneven steps made it easier to ascend than descend.</strong><em>原文說攻擊者上樓更容易絆倒，與「easier to ascend」矛盾。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>The staircase was dark enough for defenders to hide.</strong><em>原文是說攻擊者在昏暗中容易跌倒，不是 defenders 躲藏。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (D)，受 dimly lit 字眼影響。也會誤選 (A)，因為原文確實說 narrow。提醒：推論題要從原文反推「沒明說但合邏輯」的事實。clockwise + right hand 的反推較難，需要空間想像力。</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ Q43-46 閱讀（地圖方位） ============ -->
+    <section class="panel" id="sec-read3">
+      <div class="section-title">
+        <h2>第 43-46 題｜閱讀測驗（地圖方位的演變）</h2>
+        <span class="pill red">每題 2 分｜共 8 分</span>
+      </div>
+      <div class="reading-passage">
+        <h4>文章主旨</h4>
+        <p>地圖朝北並非天經地義。古印度面向東（dakshina「南」也指「右」）；古埃及朝南（尼羅河源於南）；伊斯蘭朝南（朝向麥加）。歐洲大航海時代依賴北極星，16 世紀以後北朝上成標準。今日 GPS 動態定位，地圖方位再度回到「以使用者為中心」。</p>
+        <h4>學測級不會的單字 / 慣用語</h4>
+        <div class="word-list">
+          <div class="word"><strong>orient / orientation</strong><em> 朝向／方位</em></div>
+          <div class="word"><strong>ample evidence</strong><em> 充足的證據</em></div>
+          <div class="word"><strong>pre-Biblical / Biblical era</strong><em> 聖經前/聖經時代</em></div>
+          <div class="word"><strong>the Orient</strong><em> 東方（指亞洲）</em></div>
+          <div class="word"><strong>vital to</strong><em> 對…至關重要</em></div>
+          <div class="word"><strong>livelihood</strong><em> 生計</em></div>
+          <div class="word"><strong>the followers</strong><em> 信徒</em></div>
+          <div class="word"><strong>holy city</strong><em> 聖城</em></div>
+          <div class="word"><strong>Eurocentric</strong><em> 以歐洲為中心的</em></div>
+          <div class="word"><strong>imperialism</strong><em> 帝國主義</em></div>
+          <div class="word"><strong>cease to be</strong><em> 不再是</em></div>
+          <div class="word"><strong>blip</strong><em> 短暫現象、小插曲</em></div>
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <!-- Q43 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">43</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">主旨題</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">What is the passage mainly about?</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>Why east is referred to as the "Orient."</strong><em>只是文章中的小細節。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>How maps differ from GPS in function.</strong><em>GPS 只在最後一段提及。</em></div></div>
+              <div class="opt correct"><span class="letter">C</span><div class="opt-content"><strong>How map orientation evolved over time.（正解）</strong><em>整篇從古至今談地圖方位變化。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>Why maps were important during the age of exploration.</strong><em>大航海時代只是其中一段。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>較少誤答。少數誤選 (D)，因為大航海段落字數較多。</div>
+          </div>
+        </article>
+
+        <!-- Q44 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">44</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">代名詞指涉</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">What does "this" refer to? (Though there is no physical evidence to support this...)</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>The word dakshina.</strong><em>指字本身？但「沒證據支持一個字」邏輯怪。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>Physical evidence.</strong><em>this 不會等於「Physical evidence」這個概念本身。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>Ancient India.</strong><em>this 不指地點。</em></div></div>
+              <div class="opt correct"><span class="letter">D</span><div class="opt-content"><strong>East-orientation of maps.（正解）</strong><em>this = 「古印度地圖朝東」這個說法，雖無實物證據，但語言證據支持。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (A) The word dakshina。dakshina 字眼鮮明，學生直接抓字。提醒：this 通常指「前面提到的概念或主張」，不是「字本身」。前句的主張是「地圖朝東」。</div>
+          </div>
+        </article>
+
+        <!-- Q45 -->
+        <article class="card q-card">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">45</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">字義推測</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Closest in meaning to "a blip" in the last paragraph?</p>
+            <div class="options">
+              <div class="opt correct"><span class="letter">A</span><div class="opt-content"><strong>A temporary state.（正解）</strong><em>blip = 短暫、轉眼即逝的小插曲。前面說 less a rule and more a blip 對比 rule（規則）。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>An urgent need.</strong><em>沒有「緊急」意涵。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>A critical decision.</strong><em>沒有「決策」意涵。</em></div></div>
+              <div class="opt"><span class="letter">D</span><div class="opt-content"><strong>An advanced system.</strong><em>沒有「先進系統」意涵。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>blip 是非常少見的字，多數學生靠上下文推。提醒：less X and more Y 結構表「比起 X，更像 Y」，rule（規則）的相反 = 短暫例外。</div>
+          </div>
+        </article>
+
+        <!-- Q46 -->
+        <article class="card q-card level-mid">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">46</span>
+              <span class="tag">閱讀</span>
+              <span class="tag violet">細節題</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Which statement is true?</p>
+            <div class="options">
+              <div class="opt"><span class="letter">A</span><div class="opt-content"><strong>Sailors took the North Star as their final destination.</strong><em>北極星是「方向參考」，不是目的地。</em></div></div>
+              <div class="opt"><span class="letter">B</span><div class="opt-content"><strong>The GPS system has a fixed direction for orientation.</strong><em>原文說 GPS 是 dynamic 動態方位，與固定相反。</em></div></div>
+              <div class="opt"><span class="letter">C</span><div class="opt-content"><strong>South was placed at the top of maps in the pre-Biblical era.</strong><em>原文說 pre-Biblical era 是「東朝上」。</em></div></div>
+              <div class="opt correct"><span class="letter">D</span><div class="opt-content"><strong>Old Islamic maps put south at the top for religious purposes.（正解）</strong><em>原文說伊斯蘭地圖朝南，因為信徒在麥加之北，朝南可仰望聖城。</em></div></div>
+            </div>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>最常誤選 (C)。pre-Biblical era 與 Egyptian / Islamic 三組「南朝上」的資訊容易混淆。提醒：細節題要逐項對照原文，特別注意 pre-Biblical（聖經前）= 東朝上，不是南朝上。</div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ Q47-50 混合題（奇蹟村） ============ -->
+    <section class="panel" id="sec-mix">
+      <div class="section-title">
+        <h2>第 47-50 題｜混合題（Wonder Village 奇蹟村）</h2>
+        <span class="pill violet">10 分（填充 4 分／多選 4 分／簡答 2 分）</span>
+      </div>
+      <div class="reading-passage">
+        <h4>文章主旨</h4>
+        <p>東部臺灣原住民商圈 Wonder Village，介紹六家特色商店：Oh Eco（環保用品）、After Work（手工啤酒披薩）、Aroma Paradise（客製香氛）、Something Different（古董家飾）、Beyond World（原住民匠人精品）、The Pinery（鳳梨主題餐廳）。整體氛圍：「old meets the new、diverse、unique、full of surprises」。</p>
+        <h4>學測級不會的單字 / 慣用語</h4>
+        <div class="word-list">
+          <div class="word"><strong>indigenous</strong><em> 原住民的</em></div>
+          <div class="word"><strong>specialty stores</strong><em> 特色店</em></div>
+          <div class="word"><strong>environmentally friendly</strong><em> 環保的</em></div>
+          <div class="word"><strong>reusable</strong><em> 可重複使用的</em></div>
+          <div class="word"><strong>handcrafted</strong><em> 手工製作的</em></div>
+          <div class="word"><strong>fragrance</strong><em> 香氛、香味</em></div>
+          <div class="word"><strong>customized</strong><em> 客製化的</em></div>
+          <div class="word"><strong>antique</strong><em> 古董</em></div>
+          <div class="word"><strong>artisan</strong><em> 工匠</em></div>
+          <div class="word"><strong>boutique</strong><em> 精品店</em></div>
+          <div class="word"><strong>one of a kind</strong><em> 獨一無二</em></div>
+          <div class="word"><strong>blend</strong><em> 融合、混合</em></div>
+        </div>
+      </div>
+
+      <div class="question-grid">
+        <!-- Q47-48 -->
+        <article class="card q-card level-high" style="grid-column: 1 / -1;">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">47/48</span>
+              <span class="tag">混合題</span>
+              <span class="tag violet">填充題（4分）</span>
+            </div>
+            <div class="level-badge">難度<strong>★★★★</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Wonder Village... is a place where the old meets the new—where tradition coexists harmoniously with <strong>(47)</strong>, and local features are perfectly <strong>(48)</strong> with foreign elements.</p>
+            <div class="answer-line">
+              <span class="answer-pill correct">參考答案 (47) modernity / innovation</span>
+              <span class="answer-pill correct">參考答案 (48) blended</span>
+            </div>
+            <p class="muted">解題：</p>
+            <ul class="muted" style="line-height:1.8;">
+              <li><strong>(47)</strong>：tradition 對應「the old」，空格要對應「the new」。文章中 The Pinery 提到 "diverse, unique, and always full of surprises"。最自然的字是 <strong>modernity</strong>（現代性），如果嚴格找原文出現過的字，可寫 <strong>innovation</strong>（從 innovative menu items 衍生）。要做名詞型變化。</li>
+              <li><strong>(48)</strong>：「local features are perfectly _____ with foreign elements」需被動形式的過去分詞。文章 After Work 寫 "A truly unique blend!"，所以 <strong>blended</strong>（被動 PP）是固定搭配 be blended with。</li>
+            </ul>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>
+              <ul style="margin:6px 0 0 18px; line-height:1.8;">
+                <li>(47) 學生常忘記做詞性變化，誤填 modern（形容詞）。要寫名詞 modernity。或誤填 new（形容詞）也不對。</li>
+                <li>(48) 學生常誤填 blend（原型）或 blending（V-ing）。要看清「are perfectly ___ with」是被動結構，要 PP。</li>
+                <li>有些學生誤把 unique 填入 (47)，但 unique 是形容詞且文中 unique 已用於別處。</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Q49 -->
+        <article class="card q-card" style="grid-column: 1 / -1;">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">49</span>
+              <span class="tag">混合題</span>
+              <span class="tag violet">多選題（4分）</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Items: (1) a 19th century oil lamp ／ (2) recycled plastic sunglasses ／ (3) an aboriginal wooden beads necklace</p>
+            <div class="answer-line">
+              <span class="answer-pill correct">正解：A、D、E</span>
+            </div>
+            <p class="muted">配對：</p>
+            <ul class="muted" style="line-height:1.8;">
+              <li>(1) 19 世紀油燈 → <strong>D. Something Different</strong>（古董店：traditional-style home accessories, picture frames）</li>
+              <li>(2) 回收塑膠太陽眼鏡 → <strong>A. Oh Eco</strong>（環保用品：reusable bottles, environmentally friendly items）</li>
+              <li>(3) 原住民木珠項鍊 → <strong>E. Beyond World</strong>（原住民工匠手作：fashion items, indigenous people）</li>
+            </ul>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>多選題容易少選或多選導致零分。學生可能把 (3) 誤配到 F. The Pinery（餐廳）或 C. Aroma Paradise（香氛）。提醒：beads necklace 是配件，要找有 fashion items 字眼的店，且配上 indigenous 即 E。</div>
+          </div>
+        </article>
+
+        <!-- Q50 -->
+        <article class="card q-card" style="grid-column: 1 / -1;">
+          <div class="q-head">
+            <div class="q-title">
+              <span class="q-num">50</span>
+              <span class="tag">混合題</span>
+              <span class="tag violet">簡答題（2分）</span>
+            </div>
+            <div class="level-badge">難度<strong>★★☆</strong></div>
+          </div>
+          <div class="q-body">
+            <p class="q-text">Which phrase is used by Joseph Tang to describe the "uniqueness" of the stores in Wonder Village?</p>
+            <div class="answer-line">
+              <span class="answer-pill correct">正解：one of a kind</span>
+            </div>
+            <p class="muted">解題：原文 C. Aroma Paradise 段，Joseph Tang 說 "Each store is one of a kind in Wonder Village."「one of a kind」= 獨一無二，正是描述店家獨特性的固定片語。</p>
+            <div class="trap"><strong>級分 8-12 主陷阱：</strong>學生可能寫 "unique" 或 "special"，但題目問「Joseph Tang 用的片語」，必須抄原文。也可能誤抄成 "looking for fragrance made for their special preferences" 這類較長句子。提醒：簡答題要直接抄原文最精準的關鍵詞，不要自己改寫。</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="grade-callout">
+        <h4>級分 8-12 混合題策略</h4>
+        <ul>
+          <li><strong>填充題 (47/48)</strong>：先判詞性 → 再回原文找同概念字 → 最後做型變。多數學生輸在型變、被動語態認知不足。</li>
+          <li><strong>多選題 (49)</strong>：少選、多選都零分。練習時要刻意每個店家對照「關鍵字」。</li>
+          <li><strong>簡答題 (50)</strong>：抄原文 ≠ 抄整句。要抓最精簡的「片語」。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 中譯英 ============ -->
+    <section class="panel" id="sec-translate">
+      <div class="section-title">
+        <h2>中譯英｜每題 4 分，共 8 分</h2>
+        <span class="pill amber">非選題｜2 句</span>
+      </div>
+
+      <article class="card" style="padding:18px; margin-top:14px;">
+        <h3 style="color:var(--blue); margin-bottom:8px;">第 1 句</h3>
+        <p style="font-weight:800; color:#253044;">現在越來越多高中英文老師已經增加在課堂上使用英文的百分比。</p>
+
+        <div class="compare-box">
+          <div class="good">
+            <h4>✅ 標準參考譯文</h4>
+            <p>Nowadays, more and more high school English teachers have <strong>increased the percentage</strong> of English (that) they use in class.</p>
+          </div>
+          <div class="bad">
+            <h4>❌ 學生常見錯誤</h4>
+            <p>Now, more and more <em>high schools English</em> teacher <em>increase</em> the <em>percentages</em> of English using in class.</p>
+          </div>
+        </div>
+
+        <h4 style="margin-top:14px; color:var(--violet);">學生最常不會 / 寫錯的字</h4>
+        <div class="word-list">
+          <div class="word"><strong>nowadays / these days</strong><em> 現在（不要寫 now adays）</em></div>
+          <div class="word"><strong>more and more</strong><em> 越來越多（記得 N 用複數）</em></div>
+          <div class="word"><strong>high school English teachers</strong><em> 三個名詞做形容詞要用單數，最後一個加 s</em></div>
+          <div class="word"><strong>increase</strong><em> 增加（這裡用現在完成式 have increased）</em></div>
+          <div class="word"><strong>percentage</strong><em> 百分比（不可數，前面用 the）</em></div>
+          <div class="word"><strong>in class</strong><em> 在課堂上（不要寫 in the class，那是「教室裡」）</em></div>
+        </div>
+
+        <div class="write-tip"><strong>級分 8-12 主陷阱：</strong>
+          <ol style="margin:6px 0 0 18px; line-height:1.8;">
+            <li>時態：「已經增加」要用 <strong>have increased</strong>（現在完成式），多數學生只寫 increase 或 are increasing。</li>
+            <li>單複數：teachers 必須加 s。寫 high school English teacher（單數）會扣分。</li>
+            <li>「使用英文的百分比」結構：the percentage of English (that) they use。許多學生寫 the percentage using English 文法錯。</li>
+            <li>in class vs. in the class：前者是「上課時」，後者是「在那間教室」。要寫 in class。</li>
+          </ol>
+        </div>
+      </article>
+
+      <article class="card" style="padding:18px; margin-top:14px;">
+        <h3 style="color:var(--blue); margin-bottom:8px;">第 2 句</h3>
+        <p style="font-weight:800; color:#253044;">他們將學生依英語能力分成不同組別，進行多樣的聽、說活動。</p>
+
+        <div class="compare-box">
+          <div class="good">
+            <h4>✅ 標準參考譯文</h4>
+            <p>They <strong>divide</strong> the students <strong>into</strong> different groups <strong>based on</strong> their English <strong>proficiency / ability</strong>, <strong>(in order) to carry out</strong> a variety of listening and speaking activities.</p>
+          </div>
+          <div class="bad">
+            <h4>❌ 學生常見錯誤</h4>
+            <p>They <em>divide students to</em> different groups <em>by</em> their English <em>level</em> and do many <em>listen and speak</em> activities.</p>
+          </div>
+        </div>
+
+        <h4 style="margin-top:14px; color:var(--violet);">學生最常不會 / 寫錯的字</h4>
+        <div class="word-list">
+          <div class="word"><strong>divide A into B</strong><em> 將 A 分成 B（不是 divide A to B）</em></div>
+          <div class="word"><strong>based on</strong><em> 根據（不要寫 by 或 according）</em></div>
+          <div class="word"><strong>English proficiency</strong><em> 英語能力（學測高頻字，比 ability 更精準）</em></div>
+          <div class="word"><strong>carry out / conduct</strong><em> 進行（活動）</em></div>
+          <div class="word"><strong>a variety of</strong><em> 多樣的（後接複數 N）</em></div>
+          <div class="word"><strong>listening and speaking activities</strong><em> 聽說活動（V-ing 當形容詞）</em></div>
+        </div>
+
+        <div class="write-tip"><strong>級分 8-12 主陷阱：</strong>
+          <ol style="margin:6px 0 0 18px; line-height:1.8;">
+            <li>divide ___ into：許多學生寫 divide to / divide in，要記住固定介係詞 into。</li>
+            <li>based on：用「根據」就應寫 based on，不要寫 by 或 according to their。注意 according to 後接「人/資料」，不接「能力」。</li>
+            <li>聽、說活動：要寫 listening and speaking activities（用 V-ing 當形容詞），不要寫 listen and speak activities（兩個原形動詞當形容詞，文法錯）。</li>
+            <li>「進行」：carry out / conduct 比 do 高級，學測作文評分會加分。</li>
+            <li>「多樣的」：a variety of / various / a wide range of，避免重複用 many。</li>
+          </ol>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 英文作文 ============ -->
+    <section class="panel" id="sec-essay">
+      <div class="section-title">
+        <h2>英文作文｜20 分</h2>
+        <span class="pill red">至少 120 字｜分兩段</span>
+      </div>
+
+      <article class="card" style="padding:18px;">
+        <h3 style="color:var(--blue);">主題：寵物在臺灣人生活中的角色變化</h3>
+        <p style="margin-top:8px; line-height:1.7;">第一段：描述圖片所呈現的現象。<br>第二段：根據自身經驗或觀察，說明此現象的原因以及可能的影響。</p>
+
+        <h4 style="margin-top:14px; color:var(--violet);">學生最常不會 / 用錯的單字、片語、慣用語</h4>
+        <div class="word-list">
+          <div class="word"><strong>raise pets / keep pets</strong><em> 養寵物（不要寫 grow pets）</em></div>
+          <div class="word"><strong>pet ownership</strong><em> 養寵物的風氣</em></div>
+          <div class="word"><strong>fur baby / furry friend</strong><em> 毛小孩</em></div>
+          <div class="word"><strong>treat pets as family members</strong><em> 把寵物當家人</em></div>
+          <div class="word"><strong>companionship</strong><em> 陪伴</em></div>
+          <div class="word"><strong>emotional support</strong><em> 情感支持</em></div>
+          <div class="word"><strong>aging society</strong><em> 高齡化社會</em></div>
+          <div class="word"><strong>declining birthrate</strong><em> 少子化</em></div>
+          <div class="word"><strong>pet-friendly cafés / hotels</strong><em> 寵物友善餐廳／旅館</em></div>
+          <div class="word"><strong>pet stroller</strong><em> 寵物推車</em></div>
+          <div class="word"><strong>pet grooming salon</strong><em> 寵物美容沙龍</em></div>
+          <div class="word"><strong>pet insurance</strong><em> 寵物保險</em></div>
+          <div class="word"><strong>spoil pets</strong><em> 寵壞寵物</em></div>
+          <div class="word"><strong>relieve stress</strong><em> 紓解壓力</em></div>
+          <div class="word"><strong>nuclear family</strong><em> 小家庭</em></div>
+          <div class="word"><strong>heal one's loneliness</strong><em> 療癒孤單</em></div>
+          <div class="word"><strong>dress up pets</strong><em> 把寵物打扮</em></div>
+          <div class="word"><strong>celebrate pets' birthdays</strong><em> 慶祝寵物生日</em></div>
+        </div>
+
+        <h4 style="margin-top:18px; color:var(--violet);">第一段：現象描述（建議句型）</h4>
+        <div class="reading-passage">
+          <p style="line-height:1.8;">As shown in the pictures, pets in Taiwan have taken on a brand-new role in people's lives. In the past, dogs and cats were often kept simply as guards or hunters. Today, however, the pictures depict a totally different scene: people pushing their dogs in pet strollers, dressing them up in fancy clothes, taking them to pet-friendly cafés, and even celebrating their birthdays with cakes. <strong>Pets are no longer just animals — they are treated as fur babies and family members.</strong></p>
+        </div>
+
+        <h4 style="margin-top:14px; color:var(--violet);">第二段：原因與影響（建議架構）</h4>
+        <div class="reading-passage">
+          <p style="line-height:1.8;"><strong>原因（causes）：</strong>(1) declining birthrate ＋ aging society → 寵物填補家庭空缺 (2) urban life is stressful → people seek companionship (3) more single households / nuclear families.<br><br>
+          <strong>影響（effects）：</strong>(1) the pet industry is booming — pet hotels, grooming salons, insurance (2) some owners spend more on pets than on themselves, raising concerns about over-spoiling (3) more public spaces become pet-friendly, but conflicts arise with non-pet owners.<br><br>
+          <strong>結尾範例：</strong>From my own experience, my grandmother adopted a Shiba Inu after my grandfather passed away. The dog has not only relieved her loneliness but also given her a reason to walk every morning. <strong>Pets, as I see it, are no longer "things we own" — they are family members who heal us emotionally and connect us with our community.</strong></p>
+        </div>
+
+        <h4 style="margin-top:14px; color:var(--violet);">高分句型 ＆ 連接詞</h4>
+        <div class="word-list">
+          <div class="word"><strong>As is shown / depicted in the pictures, ...</strong><em> 圖片所示</em></div>
+          <div class="word"><strong>Pets are no longer ___; instead, ___</strong><em> 不再…而是</em></div>
+          <div class="word"><strong>There are several reasons behind this trend.</strong><em> 此趨勢有幾個原因</em></div>
+          <div class="word"><strong>One major cause is...</strong><em> 主要原因之一是</em></div>
+          <div class="word"><strong>What's more, ... / Furthermore, ...</strong><em> 更重要的是</em></div>
+          <div class="word"><strong>This phenomenon has both positive and negative impacts.</strong><em> 此現象有正反影響</em></div>
+          <div class="word"><strong>From my own experience / observation, ...</strong><em> 從我自身經驗</em></div>
+          <div class="word"><strong>In conclusion, pets have become ___ rather than ___.</strong><em> 結尾總結</em></div>
+        </div>
+
+        <div class="write-tip"><strong>級分 8-12 學生最常踩的雷：</strong>
+          <ol style="margin:6px 0 0 18px; line-height:1.8;">
+            <li><strong>單字錯誤</strong>：grow pets（誤）→ raise / keep pets。care pets（誤）→ take care of pets / care for pets。</li>
+            <li><strong>圖片描述只用 there is / there are</strong>：應改用 depict / show / illustrate / present 變化句型。</li>
+            <li><strong>第二段論點空泛</strong>：寫 "because pets are cute" 過於簡化。要連結社會脈絡（少子化、高齡化、都市壓力）才能拿高分。</li>
+            <li><strong>原因結果不分段</strong>：原因 (causes) 與影響 (effects/impacts) 混在一起寫，老師難以辨識結構，分數會被扣。</li>
+            <li><strong>結尾沒有 takeaway</strong>：許多學生用 "I love pets" 草草結束。要回到「寵物 = 家人」的核心觀點，呼應第一段。</li>
+            <li><strong>字數不足 120 字</strong>：自動扣分。建議目標寫 150-180 字。</li>
+            <li><strong>常見拼字錯</strong>：companion / companionship / loneliness / emotional / society / phenomenon。</li>
+          </ol>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 結尾總結 ============ -->
+    <section class="panel">
+      <h2>級分 8-12 學生整卷錯誤分析總結</h2>
+      <p class="muted">從本卷整體來看，級分 8-12 段學生最常輸在以下三大類型：</p>
+      <div class="theme-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-top:14px;">
+        <div class="card" style="padding:16px; border-top:6px solid var(--red);">
+          <h4 style="color:var(--red);">① 固定搭配（Collocation）</h4>
+          <p style="margin-top:6px; font-size:.94rem; line-height:1.65;">tight schedule、grave concerns、elbow one's way through、retain knowledge、create a relaxing atmosphere、divide into、based on、be meant to be、as such — 這類「中文邏輯通但英文搭配不對」的字最容易丟分。</p>
+        </div>
+        <div class="card" style="padding:16px; border-top:6px solid var(--amber);">
+          <h4 style="color:var(--amber);">② 熟字干擾</h4>
+          <p style="margin-top:6px; font-size:.94rem; line-height:1.65;">看到 emphasis、struggle、escape、shatter、brutal、icons、function 這些「認得的字」就先選，沒檢查搭配是否成立。級分 8-12 學生與 13+ 學生的差距常在於「能否拒絕熟字陷阱」。</p>
+        </div>
+        <div class="card" style="padding:16px; border-top:6px solid var(--blue);">
+          <h4 style="color:var(--blue);">③ 句意推論與細節整合</h4>
+          <p style="margin-top:6px; font-size:.94rem; line-height:1.65;">Q14、Q17、Q37、Q42、Q44、Q46 這類題目要逐字精讀＋反向推論。級分 8-12 學生常因為「跳讀」漏掉時態、主詞與否定，建議改用「邊讀邊圈關鍵字」的精讀模式。</p>
+        </div>
+      </div>
+
+      <div class="grade-callout" style="margin-top:18px;">
+        <h4>對 8-12 級分學生的具體建議</h4>
+        <ul>
+          <li>每題詞彙背 <strong>單字＋至少 1 個搭配</strong>，最有 CP 值。</li>
+          <li>篇章結構與閱讀題遇到不確定，<strong>先排除「正確但離題」</strong>的選項（Q31-34 的 (D) 是經典）。</li>
+          <li>非選題（中譯英 ＋ 作文）時間至少留 <strong>40 分鐘</strong>。級分 8-12 段學生選擇題若拼速度通常後段非選會失分。</li>
+          <li>作文要有 <strong>明確結構</strong>：第一段現象、第二段原因＋影響＋自身經驗＋結論。每段建議 70-90 字。</li>
+        </ul>
+      </div>
+
+      <p style="margin-top:18px; text-align:center; color:var(--muted); font-size:.9rem;">林威老師與 AI agent 團隊｜115 學測英文｜全卷錯誤分析</p>
+    </section>
+
+  </div>
 </body>
 </html>
