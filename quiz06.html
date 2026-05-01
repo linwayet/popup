@@ -1,262 +1,659 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-        }
-        .header {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .question {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-        }
-        .option-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-            position: relative;
-            transition: background 0.2s;
-        }
-        .option-item:hover {
-            background-color: #fafafa;
-        }
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #eee;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
-        .special-btn {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .footer-tools {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        .tool-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        /* 彈出視窗樣式 */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.95);
-            z-index: 1000;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .overlay-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            font-weight: bold;
-            padding: 10px;
-        }
-        .overlay-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-left: 4px solid #000;
-            padding-left: 10px;
-        }
-        .example-box {
-            background: #f4f4f4;
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border-left: 3px solid #ccc;
-        }
-        h4 { margin: 15px 0 5px 0; color: #333; }
-        .eg-item { margin-bottom: 10px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bridging the World: Famous Suspension Bridges</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #F8F4ED;
+      --text: #2D2A26;
+      --main: #8B5E3C;
+      --accent: #D4A574;
+      --paper: #FFFDF9;
+      --original-head: #1A3C5E;
+      --original-line: #A8BDD0;
+      --reading-head: #7A4F2D;
+      --reading-line: #D4A574;
+      --reading-bg: #FEF6EC;
+      --vocab-head: #3D6B4F;
+      --vocab-line: #82B89A;
+      --vocab-bg: #EFF7F2;
+      --grammar-head: #4A5568;
+      --grammar-line: #9BAAB8;
+      --grammar-bg: #F0F2F5;
+      --fold-head: #4A3728;
+      --fold-line: #C4A06A;
+      --fold-bg: #FAF6F0;
+      --mark: #7B3F96;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "BIZ UDPGothic", system-ui, sans-serif;
+      font-size: 22px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 34px 0 72px;
+    }
+    header {
+      margin-bottom: 30px;
+      padding: 24px 0 12px;
+      border-bottom: 4px solid var(--accent);
+    }
+    h1 {
+      margin: 0 0 10px;
+      color: var(--original-head);
+      font-size: clamp(28px, 5vw, 42px);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    .subtitle {
+      margin: 0 0 8px;
+      color: var(--main);
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .credit {
+      margin: 0;
+      color: #1A5E8A;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    section { margin-top: 34px; }
+    h2 {
+      margin: 0;
+      padding: 13px 18px;
+      color: #fff;
+      border-radius: 8px 8px 0 0;
+      font-size: 26px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+    .card {
+      padding: 22px;
+      border: 2px solid;
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      background: var(--paper);
+    }
+    .original h2 { background: var(--original-head); }
+    .original .card { border-color: var(--original-line); background: var(--paper); }
+    .reading h2 { background: var(--reading-head); }
+    .reading .card { border-color: var(--reading-line); background: var(--reading-bg); }
+    .vocab h2 { background: var(--vocab-head); }
+    .vocab .card { border-color: var(--vocab-line); background: var(--vocab-bg); }
+    .grammar h2 { background: var(--grammar-head); }
+    .grammar .card { border-color: var(--grammar-line); background: var(--grammar-bg); }
+    .folds h2 { background: var(--fold-head); }
+    p { margin: 0 0 16px; }
+    strong.keyword {
+      color: var(--mark);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .sentence, .word, .grammar-point {
+      padding: 18px 0;
+      border-top: 1px solid rgba(45, 42, 38, .18);
+    }
+    .sentence:first-child, .word:first-child, .grammar-point:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--reading-head);
+      color: #fff;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+    .quote {
+      display: block;
+      margin: 10px 0 12px;
+      font-style: italic;
+      color: #3A312A;
+    }
+    .analysis {
+      margin: 10px 0;
+      padding: 14px 16px;
+      border-left: 6px solid var(--accent);
+      background: rgba(255, 253, 249, .72);
+      border-radius: 6px;
+    }
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #FFFDF9;
+      border: 1px solid var(--reading-line);
+      font-size: 18px;
+      line-height: 1.45;
+    }
+    .word-title {
+      margin: 0 0 12px;
+      color: #244A35;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .tag-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin: 8px 0;
+    }
+    .tag {
+      min-height: 44px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #fff;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+    }
+    .derivative { background: #5D8A6B; }
+    .root { background: #4E78A0; }
+    .phrase { background: #A0722A; }
+    .idiom { background: #7B5EA7; }
+    .confuse { background: #A04040; }
+    .examples {
+      margin-top: 12px;
+      padding: 14px 16px;
+      background: rgba(255, 253, 249, .8);
+      border-radius: 6px;
+    }
+    .grammar-point h3 {
+      margin: 0 0 12px;
+      color: #374151;
+      font-size: 25px;
+    }
+    .g-label {
+      margin: 16px 0 6px;
+      color: #334155;
+      font-weight: 700;
+    }
+    ul {
+      margin: 8px 0 16px;
+      padding-left: 1.4em;
+    }
+    li { margin: 6px 0; }
+    details {
+      margin-top: 16px;
+      border: 2px solid var(--fold-line);
+      border-radius: 8px;
+      background: var(--fold-bg);
+      overflow: hidden;
+    }
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      padding: 14px 18px;
+      background: var(--fold-head);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .arrow {
+      display: inline-block;
+      transition: transform .2s ease;
+      font-size: 22px;
+    }
+    details[open] .arrow { transform: rotate(180deg); }
+    .fold-body { padding: 18px 22px 22px; }
+    .compact-list p { margin-bottom: 8px; }
+    @media (max-width: 640px) {
+      body { font-size: 20px; }
+      main { width: min(100% - 24px, 860px); padding-top: 22px; }
+      h2 { font-size: 24px; }
+      .card { padding: 18px 14px; }
+      .tag-row { grid-template-columns: 1fr; }
+      .tag { width: max-content; max-width: 100%; }
+    }
+  </style>
 </head>
 <body>
+  <main>
+    <header>
+      <h1>Bridging the World: Famous Suspension Bridges</h1>
+      <p class="subtitle">跨越世界：著名懸索橋的設計與魅力</p>
+      <p class="credit">林威老師與 AI agent 團隊製作</p>
+    </header>
 
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
-    
-    <div class="question">
-        As a shy boy afraid of making public appearances, Timmy ______ the thought of speaking before large audiences.
-    </div>
+    <section class="original">
+      <h2>【區塊一】英文文章原文</h2>
+      <div class="card">
+        <p>A <strong class="keyword">suspension</strong> <strong class="keyword">bridge</strong> is a type of <strong class="keyword">bridge</strong> where the road is hung from thick steel <strong class="keyword">cables</strong> that <strong class="keyword">stretch</strong> between tall <strong class="keyword">towers</strong>. These main <strong class="keyword">cables</strong> are fixed <strong class="keyword">firmly</strong> at both ends of the <strong class="keyword">bridge</strong> in huge blocks of <strong class="keyword">concrete</strong> or rock called <strong class="keyword">anchorages</strong>, which help keep the whole <strong class="keyword">structure</strong> in <strong class="keyword">balance</strong>. Because of this special <strong class="keyword">design</strong>, <strong class="keyword">suspension</strong> <strong class="keyword">bridges</strong> are lighter than many other <strong class="keyword">bridges</strong> and can cross very wide rivers, bays, or <strong class="keyword">valleys</strong> with just a few <strong class="keyword">supports</strong> in the water.</p>
+        <p>Some of the most famous <strong class="keyword">bridges</strong> in the world use this <strong class="keyword">design</strong>. The Golden Gate <strong class="keyword">Bridge</strong> in San Francisco is known for its orange color and beautiful art deco style, and it has become a <strong class="keyword">symbol</strong> of the United States. In Japan, the Akashi Kaikyō <strong class="keyword">Bridge</strong> was long considered the world’s longest <strong class="keyword">suspension</strong> <strong class="keyword">bridge</strong> and shows <strong class="keyword">advanced</strong> <strong class="keyword">engineering</strong> that can <strong class="keyword">resist</strong> strong <strong class="keyword">earthquakes</strong> and typhoons. More recently, Turkey’s 1915 Çanakkale <strong class="keyword">Bridge</strong> became the longest <strong class="keyword">suspension</strong> <strong class="keyword">bridge</strong> span, connecting the European and Asian sides of the country and carrying thousands of vehicles every day.</p>
+        <p><strong class="keyword">Suspension</strong> <strong class="keyword">bridges</strong> are not just <strong class="keyword">convenient</strong> roads; they are also <strong class="keyword">engineering</strong> wonders and popular tourist spots. Their long spans make travel faster by cutting down driving time between important cities and regions. At the same time, their elegant shapes and impressive height often <strong class="keyword">inspire</strong> photographers, filmmakers, and travelers from around the world. For many people, walking or driving across a world-famous <strong class="keyword">suspension</strong> <strong class="keyword">bridge</strong> is a special experience that combines daily transportation with views they will never forget.</p>
+      </div>
+    </section>
 
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) dreads <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) stresses <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) wanders <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) escapes <span class="info-icon">ⓘ</span></div>
-    </div>
+    <section class="reading">
+      <h2>【區塊二】8句精讀</h2>
+      <div class="card">
+        <div class="sentence">
+          <span class="num">①</span><span class="quote">A suspension bridge is a type of bridge where the road is hung from thick steel cables that stretch between tall towers.</span>
+          <p>懸索橋是一種橋梁，它的道路懸掛在粗大的鋼纜上，而鋼纜延伸在高塔之間。</p>
+          <div class="analysis">where the road is hung from thick steel cables 是形容詞子句，修飾前面的 bridge，說明這種橋的結構位置。that stretch between tall towers 也是形容詞子句，修飾 cables，補充鋼纜的延伸方式。句中 is hung 是被動語態，表示道路「被懸掛」。</div>
+          <div class="pills"><span class="pill">suspension bridge 懸索橋</span><span class="pill">steel cables 鋼纜</span><span class="pill">stretch between 延伸於……之間</span></div>
+        </div>
+        <div class="sentence">
+          <span class="num">②</span><span class="quote">These main cables are fixed firmly at both ends of the bridge in huge blocks of concrete or rock called anchorages, which help keep the whole structure in balance.</span>
+          <p>這些主鋼纜被牢牢固定在橋兩端巨大的混凝土或岩石塊中，這些結構稱為錨碇，有助於讓整座橋保持平衡。</p>
+          <div class="analysis">called anchorages 是過去分詞片語，修飾 concrete or rock，意思是「被稱為錨碇的」。which help keep the whole structure in balance 是非限定形容詞子句，補充 anchorages 的功能。help keep 中的 keep 是原形動詞，因為 help 後面可接原形動詞。</div>
+          <div class="pills"><span class="pill">be fixed firmly 被牢牢固定</span><span class="pill">anchorages 錨碇</span><span class="pill">in balance 保持平衡</span></div>
+        </div>
+        <div class="sentence">
+          <span class="num">③</span><span class="quote">Because of this special design, suspension bridges are lighter than many other bridges and can cross very wide rivers, bays, or valleys with just a few supports in the water.</span>
+          <p>因為這種特殊設計，懸索橋比許多其他橋梁更輕，而且只需要水中少數支撐，就能跨越很寬的河流、海灣或山谷。</p>
+          <div class="analysis">Because of 後面接名詞片語 this special design，表示原因，不同於 because 後面要接完整子句。lighter than many other bridges 是比較級結構，用來比較懸索橋與其他橋梁。can cross 表能力，說明這種設計帶來的實際功能。</div>
+          <div class="pills"><span class="pill">because of 因為</span><span class="pill">lighter than 比……更輕</span><span class="pill">with just a few supports 只靠少數支撐</span></div>
+        </div>
+        <div class="sentence">
+          <span class="num">④</span><span class="quote">The Golden Gate Bridge in San Francisco is known for its orange color and beautiful art deco style, and it has become a symbol of the United States.</span>
+          <p>位於舊金山的金門大橋以橘色外觀和美麗的裝飾藝術風格聞名，並且已成為美國的象徵。</p>
+          <div class="analysis">be known for 表示「以……聞名」，for 後面接出名的原因。and 連接兩個主要子句，前半描述特色，後半說明文化意義。has become 是現在完成式，表示從過去到現在逐漸形成的結果。</div>
+          <div class="pills"><span class="pill">be known for 以……聞名</span><span class="pill">art deco style 裝飾藝術風格</span><span class="pill">a symbol of ……的象徵</span></div>
+        </div>
+        <div class="sentence">
+          <span class="num">⑤</span><span class="quote">In Japan, the Akashi Kaikyō Bridge was long considered the world’s longest suspension bridge and shows advanced engineering that can resist strong earthquakes and typhoons.</span>
+          <p>在日本，明石海峽大橋長期被認為是世界最長的懸索橋，並展現出能抵抗強震與颱風的先進工程技術。</p>
+          <div class="analysis">was long considered 是被動語態，表示「長期被認為」。the world’s longest suspension bridge 是受詞補語，補充說明 Akashi Kaikyō Bridge 的身分。that can resist strong earthquakes and typhoons 是形容詞子句，修飾 engineering。</div>
+          <div class="pills"><span class="pill">be considered 被認為</span><span class="pill">advanced engineering 先進工程技術</span><span class="pill">resist earthquakes 抵抗地震</span></div>
+        </div>
+        <div class="sentence">
+          <span class="num">⑥</span><span class="quote">More recently, Turkey’s 1915 Çanakkale Bridge became the longest suspension bridge span, connecting the European and Asian sides of the country and carrying thousands of vehicles every day.</span>
+          <p>近年來，土耳其的 1915 恰納卡萊大橋成為最長的懸索橋跨距，連接該國的歐洲與亞洲兩側，並每天承載數千輛車。</p>
+          <div class="analysis">became 是主要動詞，後面接名詞片語 the longest suspension bridge span 作主詞補語。connecting 和 carrying 是現在分詞片語，用來補充說明這座橋的功能。這種分詞結構能讓句子更精簡，也讓動作關係更緊密。</div>
+          <div class="pills"><span class="pill">bridge span 橋梁跨距</span><span class="pill">connecting ... and ... 連接……與……</span><span class="pill">carry vehicles 承載車輛</span></div>
+        </div>
+        <div class="sentence">
+          <span class="num">⑦</span><span class="quote">Their long spans make travel faster by cutting down driving time between important cities and regions.</span>
+          <p>它們長長的跨距透過縮短重要城市與地區之間的行車時間，使旅行更快速。</p>
+          <div class="analysis">make + O + adj. 是常見使役句型，travel 是受詞，faster 是受詞補語。by cutting down driving time 表示方法，by 是介係詞，所以後面接 V-ing。cut down 在這裡表示「減少、縮短」。</div>
+          <div class="pills"><span class="pill">make travel faster 使旅行更快</span><span class="pill">cut down 縮短；減少</span><span class="pill">driving time 行車時間</span></div>
+        </div>
+        <div class="sentence">
+          <span class="num">⑧</span><span class="quote">For many people, walking or driving across a world-famous suspension bridge is a special experience that combines daily transportation with views they will never forget.</span>
+          <p>對許多人來說，走過或開車穿越世界知名的懸索橋，是一種特殊經驗，結合了日常交通與他們永遠難忘的景色。</p>
+          <div class="analysis">walking or driving across a world-famous suspension bridge 是動名詞片語，作整句主詞。that combines daily transportation with views 是形容詞子句，修飾 experience。they will never forget 是省略關係代名詞的形容詞子句，修飾 views。</div>
+          <div class="pills"><span class="pill">walking or driving across 走過或開車穿越</span><span class="pill">combine A with B 結合 A 與 B</span><span class="pill">never forget 永遠不忘</span></div>
+        </div>
+      </div>
+    </section>
 
-    <div class="special-btn" onclick="showOverlay('E')">
-        (E) 查看答案與詳細解析
-    </div>
+    <section class="vocab">
+      <h2>【區塊三】20個單字整理</h2>
+      <div class="card">
+        <div class="word">
+          <p class="word-title">1　suspension　[səˈspɛnʃən]　n. 懸掛；暫停；懸吊系統</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>suspend (v.) 懸掛；暫停；suspended (adj.) 懸掛的；暫停的</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>pend「懸掛」：suspend（懸掛；暫停）、pending（待定的）、pendant（垂飾）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>suspension bridge（懸索橋）；suspension system（懸吊系統）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a long suspension bridge（一座長懸索橋）；temporary suspension（暫時停止）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>suspension 指「懸掛或暫停」；suspense 指故事中的「懸疑、緊張感」。</span></div>
+          <div class="examples"><p>The suspension bridge crosses a wide bay with only a few supports.<br>（這座懸索橋只靠少數支撐就跨越寬闊海灣。）</p><p>The game was delayed because of the temporary suspension of power.<br>（比賽因暫時停電而延後。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">2　bridge　[brɪdʒ]　n. 橋；橋梁；連結　v. 連結；縮短差距</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>bridging (n./adj.) 連結；作為連結的；bridgeable (adj.) 可跨越的</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>cross a bridge（過橋）；build a bridge（建橋）；bridge the gap（縮短差距）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a famous bridge（一座著名的橋）；a bridge between cultures（文化之間的橋梁）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>bridge 作名詞是「橋」；作動詞時常表示「連結兩者」。</span></div>
+          <div class="examples"><p>The bridge connects two busy parts of the city.<br>（這座橋連接城市中兩個繁忙區域。）</p><p>Good communication can bridge the gap between parents and teenagers.<br>（良好溝通能縮短父母與青少年之間的差距。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">3　cable　[ˈkebəl]　n. 纜線；電纜；鋼索</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>cabled (adj.) 有纜線的；cabling (n.) 佈線</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>steel cable（鋼纜）；cable car（纜車）；power cable（電纜）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>thick steel cables（粗大的鋼纜）；a broken cable（一條斷裂的纜線）</span></div>
+          <div class="examples"><p>Thick steel cables hold up the road of a suspension bridge.<br>（粗大的鋼纜支撐懸索橋的道路。）</p><p>Please keep the charging cable in your bag.<br>（請把充電線放在你的包包裡。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">4　stretch　[strɛtʃ]　v. 延伸；伸展　n. 一段時間或距離</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>stretched (adj.) 被拉長的；stretchy (adj.) 有彈性的</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>stretch between A and B（延伸在 A 與 B 之間）；stretch out（伸展）；a long stretch of road（一長段路）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>stretch across the river（橫跨河流）；a wide stretch of water（一大片水域）</span></div>
+          <div class="examples"><p>The cables stretch between two tall towers.<br>（鋼纜延伸在兩座高塔之間。）</p><p>Remember to stretch before you run.<br>（跑步前記得伸展。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">5　tower　[ˈtaʊɚ]　n. 塔；高樓</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>towering (adj.) 高聳的；towered (adj.) 有塔的</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>tall tower（高塔）；clock tower（鐘塔）；observation tower（觀景塔）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>towering structures（高聳結構）；a famous tower（一座著名的塔）</span></div>
+          <div class="examples"><p>The tall towers support the main cables of the bridge.<br>（高塔支撐橋上的主鋼纜。）</p><p>We took photos beside the old clock tower.<br>（我們在古老鐘塔旁拍照。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">6　firmly　[ˈfɝmlɪ]　adv. 牢固地；堅定地</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>firm (adj.) 牢固的；堅定的；firmness (n.) 牢固；堅定</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>firm「堅定」：confirm（確認）、affirm（斷言）、firmament（蒼穹）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>hold firmly（牢牢握住）；stand firmly（堅定站立）；be firmly fixed（被牢牢固定）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>firmly fixed cables（牢牢固定的鋼纜）；firmly believe（堅信）</span></div>
+          <div class="examples"><p>The main cables are fixed firmly at both ends of the bridge.<br>（主鋼纜被牢牢固定在橋的兩端。）</p><p>She firmly believes that hard work brings progress.<br>（她堅信努力會帶來進步。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">7　concrete　[ˈkɑnˌkrit]　n. 混凝土　adj. 具體的</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>concretely (adv.) 具體地；concreteness (n.) 具體性</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>concrete block（混凝土塊）；concrete example（具體例子）；reinforced concrete（鋼筋混凝土）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>huge concrete blocks（巨大混凝土塊）；a concrete plan（一個具體計畫）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>concrete 可指建材「混凝土」，也可作形容詞表示「具體的」。</span></div>
+          <div class="examples"><p>The cables are fixed in huge blocks of concrete or rock.<br>（鋼纜被固定在巨大的混凝土或岩石塊中。）</p><p>The teacher asked us to give a concrete example.<br>（老師要我們提出一個具體例子。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">8　anchorage　[ˈæŋkərɪdʒ]　n. 錨碇；固定處；停泊地</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>anchor (n.) 錨；支柱人物；anchor (v.) 固定；anchored (adj.) 固定的</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>bridge anchorage（橋梁錨碇）；anchor point（固定點）；be anchored in（固定於）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>strong anchorages（堅固錨碇）；a safe anchorage（安全停泊地）</span></div>
+          <div class="examples"><p>Anchorages help keep the whole bridge structure in balance.<br>（錨碇有助於讓整座橋梁結構保持平衡。）</p><p>The small island provided a safe anchorage for fishing boats.<br>（這座小島為漁船提供安全停泊處。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">9　structure　[ˈstrʌktʃɚ]　n. 結構；建築物；組織方式</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>structural (adj.) 結構的；construct (v.) 建造；construction (n.) 建設</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>struct「建設」：construct（建造）、destruction（破壞）、infrastructure（基礎設施）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>bridge structure（橋梁結構）；sentence structure（句子結構）；social structure（社會結構）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a strong structure（堅固結構）；the whole structure（整個結構）</span></div>
+          <div class="examples"><p>The whole structure must stay in balance during strong winds.<br>（整個結構在強風中必須保持平衡。）</p><p>This paragraph has a clear structure.<br>（這一段有清楚的結構。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">10　balance　[ˈbæləns]　n. 平衡　v. 使平衡；權衡</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>balanced (adj.) 平衡的；imbalance (n.) 不平衡</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>in balance（保持平衡）；keep balance（保持平衡）；balance A with B（兼顧 A 與 B）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a balanced design（平衡的設計）；a good balance between safety and beauty（安全與美感之間的良好平衡）</span></div>
+          <div class="examples"><p>Anchorages keep the bridge structure in balance.<br>（錨碇讓橋梁結構保持平衡。）</p><p>Students need to balance schoolwork with rest.<br>（學生需要兼顧課業與休息。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">11　design　[dɪˈzaɪn]　n. 設計；圖案　v. 設計</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>designer (n.) 設計師；designed (adj.) 經設計的</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>sign「記號」：signal（信號）、signature（簽名）、significant（重要的）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>bridge design（橋梁設計）；special design（特殊設計）；design a plan（設計計畫）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>an elegant design（優雅設計）；a practical design（實用設計）</span></div>
+          <div class="examples"><p>Because of this special design, suspension bridges can cross wide rivers.<br>（因為這種特殊設計，懸索橋能跨越寬闊河流。）</p><p>My sister wants to design a poster for the school fair.<br>（我姊姊想為校慶設計海報。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">12　support　[səˈpɔrt]　n. 支撐；支持　v. 支撐；支持</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>supporter (n.) 支持者；supportive (adj.) 支持的；supporting (adj.) 支撐的</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>port「運送」：transportation（運輸）、export（輸出）、portable（可攜帶的）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>provide support（提供支撐／支持）；support a bridge（支撐橋梁）；with few supports（只靠少數支撐）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>strong public support（強大的公眾支持）；a supporting tower（支撐塔）</span></div>
+          <div class="examples"><p>The bridge crosses the bay with just a few supports in the water.<br>（這座橋只靠水中少數支撐就跨越海灣。）</p><p>Her family gave her strong support before the exam.<br>（考試前，她的家人給她強大的支持。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">13　valley　[ˈvælɪ]　n. 山谷；溪谷</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>valley-like (adj.) 像山谷的；river valley (n.) 河谷</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>deep valley（深谷）；river valley（河谷）；cross a valley（跨越山谷）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a beautiful valley（一座美麗山谷）；a wide valley（一片寬闊山谷）</span></div>
+          <div class="examples"><p>Suspension bridges can cross very wide valleys.<br>（懸索橋能跨越非常寬闊的山谷。）</p><p>The village lies in a quiet valley.<br>（這個村莊位於一處安靜的山谷中。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">14　symbol　[ˈsɪmbəl]　n. 象徵；符號</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>symbolic (adj.) 象徵性的；symbolize (v.) 象徵；symbolism (n.) 象徵意義</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>a symbol of（……的象徵）；national symbol（國家象徵）；symbol of hope（希望的象徵）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a powerful symbol（一個強而有力的象徵）；a cultural symbol（一個文化象徵）</span></div>
+          <div class="examples"><p>The Golden Gate Bridge has become a symbol of the United States.<br>（金門大橋已成為美國的象徵。）</p><p>The dove is often used as a symbol of peace.<br>（鴿子常被用作和平的象徵。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">15　advanced　[ədˈvænst]　adj. 先進的；高階的</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>advance (v.) 前進；進步；advancement (n.) 進步；發展</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>advanced engineering（先進工程技術）；advanced technology（先進科技）；advanced class（高階班）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>highly advanced technology（高度先進的科技）；advanced medical care（先進醫療照護）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>advanced 是形容詞「先進的」；advance 可作動詞或名詞，表示「前進；進步」。</span></div>
+          <div class="examples"><p>The Akashi Kaikyō Bridge shows advanced engineering.<br>（明石海峽大橋展現先進工程技術。）</p><p>This course is too advanced for beginners.<br>（這門課對初學者來說太高階了。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">16　engineering　[ˌɛndʒəˈnɪrɪŋ]　n. 工程；工程學</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>engineer (n.) 工程師；engineer (v.) 設計建造；engineered (adj.) 經工程設計的</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>civil engineering（土木工程）；advanced engineering（先進工程技術）；engineering wonder（工程奇蹟）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>modern engineering（現代工程）；an engineering challenge（一項工程挑戰）</span></div>
+          <div class="examples"><p>Suspension bridges are engineering wonders.<br>（懸索橋是工程奇蹟。）</p><p>He hopes to study engineering at university.<br>（他希望在大學讀工程學。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">17　resist　[rɪˈzɪst]　v. 抵抗；抗拒；耐得住</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>resistance (n.) 抵抗；resistant (adj.) 有抵抗力的；抗……的</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>resist earthquakes（抵抗地震）；resist change（抗拒改變）；water-resistant（防水的）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>strongly resist（強烈抵抗）；resistant materials（耐用材料）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>resist 後面若接動作，通常接 V-ing，例如 resist changing（抗拒改變）。</span></div>
+          <div class="examples"><p>Advanced engineering helps the bridge resist earthquakes and typhoons.<br>（先進工程技術幫助這座橋抵抗地震與颱風。）</p><p>Many people find it hard to resist sweet drinks.<br>（許多人覺得很難抗拒含糖飲料。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">18　earthquake　[ˈɝθˌkwek]　n. 地震</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>quake (v./n.) 震動；earthquake-proof (adj.) 防震的</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>strong earthquake（強震）；earthquake damage（地震損害）；earthquake-proof building（防震建築）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a powerful earthquake（一場強烈地震）；earthquake safety（地震安全）</span></div>
+          <div class="examples"><p>The bridge was designed to resist strong earthquakes.<br>（這座橋被設計來抵抗強震。）</p><p>Students practiced what to do during an earthquake.<br>（學生練習地震時該怎麼做。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">19　convenient　[kənˈvinjənt]　adj. 方便的；便利的</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>convenience (n.) 便利；conveniently (adv.) 方便地</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>convenient roads（便利道路）；convenient location（便利地點）；be convenient for（對……方便）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>highly convenient（非常方便的）；a convenient way（一種方便的方法）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>convenient 的主詞通常是事物，不說 I am convenient，應說 It is convenient for me。</span></div>
+          <div class="examples"><p>Suspension bridges are convenient roads between important regions.<br>（懸索橋是連接重要地區的便利道路。）</p><p>Online payment is convenient for busy people.<br>（線上付款對忙碌的人來說很方便。）</p></div>
+        </div>
+        <div class="word">
+          <p class="word-title">20　inspire　[ɪnˈspaɪr]　v. 啟發；激勵；使產生靈感</p>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>inspiration (n.) 靈感；鼓舞；inspiring (adj.) 鼓舞人心的；inspired (adj.) 受到啟發的</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>inspire someone to V（激勵某人去做某事；to 是不定詞，非介係詞）；be inspired by（受到……啟發）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>deeply inspire（深深啟發）；an inspiring view（鼓舞人心的景色）</span></div>
+          <div class="examples"><p>The bridge’s impressive height can inspire photographers and travelers.<br>（這座橋令人印象深刻的高度能啟發攝影師與旅人。）</p><p>Her speech inspired me to study harder.<br>（她的演講激勵我更努力讀書。）</p></div>
+        </div>
+      </div>
+    </section>
 
-    <div class="special-btn" onclick="showOverlay('F')">
-        (F) 林威老師的話 (衍生詞與音標)
-    </div>
+    <section class="grammar">
+      <h2>【區塊五】文法解析</h2>
+      <div class="card">
+        <div class="grammar-point">
+          <h3>1. 形容詞子句：where / that / which</h3>
+          <p class="g-label">【引句 Quote】</p>
+          <p class="quote">A suspension bridge is a type of bridge where the road is hung from thick steel cables that stretch between tall towers.</p>
+          <p class="g-label">【句型】</p>
+          <p><strong><em>N + where + S + V / N + that or which + V...</em></strong></p>
+          <p class="g-label">【核心說明】</p>
+          <p>形容詞子句用來修飾前面的名詞，也就是先行詞。where 常修飾地點或有位置概念的名詞，that / which 則常修飾事物，並可在子句中作主詞或受詞。</p>
+          <p>本句中 where 修飾 bridge，說明道路懸掛的位置；that 修飾 cables，說明鋼纜會延伸在高塔之間。</p>
+          <p class="g-label">【使用規則】</p>
+          <ul>
+            <li>where = in / at / on which，常用於地點或空間概念。</li>
+            <li>that 可修飾人或物，但通常不用在非限定子句中。</li>
+            <li>which 修飾事物，可用在限定或非限定子句。</li>
+            <li>若關係代名詞在子句中作受詞，有時可以省略。</li>
+          </ul>
+          <p class="g-label">【主題例句】</p>
+          <p>The tower that supports the cables must be extremely strong.<br>（支撐鋼纜的塔必須非常堅固。）</p>
+          <p class="g-label">【學習提醒】</p>
+          <p>不要看到地點名詞就一定用 where；如果關係詞在子句中作主詞或受詞，仍要用 which 或 that。例如 the bridge that crosses the river 中，that 是 crosses 的主詞。</p>
+          <p class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</p>
+          <p>✗ The bridge where crosses the bay is famous.<br>✓ The bridge that crosses the bay is famous.（關係詞作 crosses 的主詞，要用 that / which。）</p>
+          <p>選擇：The city ______ the bridge stands attracts many tourists.<br>A. which　B. where　C. what<br>答案：B</p>
+        </div>
 
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
-</div>
+        <div class="grammar-point">
+          <h3>2. 不定詞表目的：to + V</h3>
+          <p class="g-label">【引句 Quote】</p>
+          <p class="quote">Engineers use strong materials to help the bridge resist earthquakes and typhoons.</p>
+          <p class="g-label">【句型】</p>
+          <p><strong><em>S + V + O + to + V...</em></strong></p>
+          <p class="g-label">【核心說明】</p>
+          <p>to + 原形動詞可表示目的，意思是「為了……」。這裡的 to 是不定詞符號，不是介係詞，所以後面接原形動詞，不接 V-ing。</p>
+          <p>文章談到橋梁能抵抗地震與颱風，若改寫成目的句，就可用 to help the bridge resist... 表示工程設計的目的。</p>
+          <p class="g-label">【使用規則】</p>
+          <ul>
+            <li>to 表目的時，後面接原形動詞。</li>
+            <li>較正式可用 in order to + V 或 so as to + V。</li>
+            <li>否定目的常用 in order not to + V。</li>
+            <li>不要把不定詞 to 和介係詞 to 混淆；look forward to 後面才接 V-ing。</li>
+          </ul>
+          <p class="g-label">【主題例句】</p>
+          <p>Workers check the cables regularly to keep the bridge safe.<br>（工人定期檢查鋼纜，以保持橋梁安全。）</p>
+          <p class="g-label">【學習提醒】</p>
+          <p>表目的的不定詞常放在主要動作之後，回答「為了什麼」。若句子已經有 because of 表原因，不要誤把原因和目的混成同一個結構。</p>
+          <p class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</p>
+          <p>✗ Engineers designed the bridge to resisting earthquakes.<br>✓ Engineers designed the bridge to resist earthquakes.（to 是不定詞，後面用原形動詞。）</p>
+          <p>改錯：The city built a new bridge to reducing traffic.<br>答案：reducing → reduce</p>
+        </div>
 
-<div id="infoOverlay" class="overlay">
-    <span class="close-btn" onclick="closeOverlay()">×</span>
-    <div id="contentArea" class="overlay-content"></div>
-</div>
+        <div class="grammar-point">
+          <h3>3. 現在分詞片語補充說明</h3>
+          <p class="g-label">【引句 Quote】</p>
+          <p class="quote">Turkey’s 1915 Çanakkale Bridge became the longest suspension bridge span, connecting the European and Asian sides of the country and carrying thousands of vehicles every day.</p>
+          <p class="g-label">【句型】</p>
+          <p><strong><em>S + V..., V-ing... and V-ing...</em></strong></p>
+          <p class="g-label">【核心說明】</p>
+          <p>現在分詞片語可以放在主要子句後面，補充說明主詞的動作、結果或伴隨狀況。這種寫法常見於說明文，能把資訊濃縮在同一句中。</p>
+          <p>本句的 connecting 和 carrying 都補充說明 1915 Çanakkale Bridge 的功能：它連接兩側，也承載車輛。</p>
+          <p class="g-label">【使用規則】</p>
+          <ul>
+            <li>分詞片語的邏輯主詞通常要和主要子句主詞一致。</li>
+            <li>現在分詞 V-ing 表主動或正在進行的概念。</li>
+            <li>過去分詞 V-ed 表被動或完成的概念。</li>
+            <li>分詞片語放在句尾時，常用逗號與主要子句分開。</li>
+            <li>若主詞不清楚，容易造成修飾對象錯誤。</li>
+          </ul>
+          <p class="g-label">【主題例句】</p>
+          <p>The bridge rises above the river, offering visitors a beautiful view.<br>（這座橋矗立在河上，提供遊客美麗景色。）</p>
+          <p class="g-label">【學習提醒】</p>
+          <p>使用分詞片語時，要先確認分詞動作是誰做的。若句首或句尾的 V-ing 找不到合理主詞，句子就會變得不自然或有文法問題。</p>
+          <p class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</p>
+          <p>✗ Walking across the bridge, the view was unforgettable.<br>✓ Walking across the bridge, we found the view unforgettable.（walking 的主詞應是人，不是 view。）</p>
+          <p>選擇：The new bridge opened last year, ______ two towns across the valley.<br>A. connect　B. connecting　C. connected<br>答案：B</p>
+        </div>
+      </div>
+    </section>
 
-<script>
-    const data = {
-        'A': {
-            title: '(A) dreads',
-            desc: '解釋：恐懼；害怕',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. He <b>dreads</b> the thought of failing the exam.<br>(一想到考試不及格他就感到恐懼。)</div>
-                    <div class="eg-item">2. I <b>dread</b> to think what would happen if he found out.<br>(我不敢想像如果他發現了會發生什麼事。)</div>
-                    <div class="eg-item">3. She <b>dreads</b> going to the dentist.<br>(她很害怕去看牙醫。)</div>
-                </div>`
-        },
-        'B': {
-            title: '(B) stresses',
-            desc: '解釋：強調；使壓力大',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The teacher <b>stresses</b> the importance of daily practice.<br>(老師強調每日練習的重要性。)</div>
-                    <div class="eg-item">2. This job <b>stresses</b> me out.<br>(這份工作讓我壓力很大。)</div>
-                    <div class="eg-item">3. He <b>stresses</b> that every detail must be perfect.<br>(他強調每個細節都必須完美。)</div>
-                </div>`
-        },
-        'C': {
-            title: '(C) wanders',
-            desc: '解釋：漫遊；閒逛；走神',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. We <b>wandered</b> around the old town for hours.<br>(我們在老城區漫步了好幾個小時。)</div>
-                    <div class="eg-item">2. My mind <b>wandered</b> during the long speech.<br>(在漫長的演說中，我走神了。)</div>
-                    <div class="eg-item">3. The cattle <b>wandered</b> off into the hills.<br>(牛群漫步走進了山丘。)</div>
-                </div>`
-        },
-        'D': {
-            title: '(D) escapes',
-            desc: '解釋：逃脫；避開',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The prisoner <b>escaped</b> from the jail last night.<br>(囚犯昨晚從監獄逃走了。)</div>
-                    <div class="eg-item">2. Nothing <b>escapes</b> her attention.<br>(什麼都逃不過她的注意力。)</div>
-                    <div class="eg-item">3. He <b>escaped</b> injury in the car accident.<br>(他在車禍中倖免於難。)</div>
-                </div>`
-        },
-        'E': {
-            title: '正確答案：(A)',
-            desc: '解析：題幹提到 Timmy 是個害羞且害怕公開露面的男孩，因此他會對在大眾面前演講的想法感到「恐懼」。',
-            example: 'stresses (強調)、wanders (漫遊)、escapes (逃脫) 在此處語意不通。'
-        },
-        'F': {
-            title: '林威老師的話',
-            desc: '衍生詞與音標學習：',
-            detail: `
-                <h4>1. dreadful (形容詞)</h4>
-                <p>KK: [ˈdrɛdfəl] | 中文：可怕的；糟糕的</p>
-                <h4>2. stressful (形容詞)</h4>
-                <p>KK: [ˈstrɛsfəl] | 中文：壓力大的</p>
-                <h4>3. wanderer (名詞)</h4>
-                <p>KK: [ˈwɑndərɚ] | 中文：流浪者；漫遊者</p>
-                <h4>4. escapism (名詞)</h4>
-                <p>KK: [ɪˈskepɪzəm] | 中文：逃避現實</p>
-            `
-        },
-        'G': {
-            title: '衍生詞更多例句',
-            detail: `
-                <div class="example-box">1. What a <b>dreadful</b> weather we are having!<br>(我們現在的天氣真是太糟糕了！)</div>
-                <div class="example-box">2. Moving house is a very <b>stressful</b> experience.<br>(搬家是一次壓力很大的經驗。)</div>
-                <div class="example-box">3. He has been a <b>wanderer</b> all his life.<br>(他一生都是個漫遊者。)</div>
-                <div class="example-box">4. Video games are often seen as a form of <b>escapism</b>.<br>(電子遊戲常被視為一種逃避現實的形式。)</div>
-            `
-        },
-        'H': {
-            title: '台灣學測必備片語',
-            detail: `
-                <h4>1. consist of (由...組成)</h4>
-                <p>例句：A healthy diet should <b>consist of</b> plenty of fruits and vegetables.<br>(健康的飲食應由大量的蔬菜和水果組成。)</p>
-                <h4>2. consistent with (與...一致)</h4>
-                <p>例句：Your actions should be <b>consistent with</b> your words.<br>(你的行為應該與你的言論一致。)</p>
-            `
-        }
-    };
-
-    function showOverlay(key) {
-        const item = data[key];
-        let html = `<div class="overlay-title">${item.title}</div>`;
-        if(item.desc) html += `<p>${item.desc}</p>`;
-        if(item.detail) html += `<div>${item.detail}</div>`;
-        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
-        
-        document.getElementById('contentArea').innerHTML = html;
-        document.getElementById('infoOverlay').style.display = 'block';
-    }
-
-    function closeOverlay() {
-        document.getElementById('infoOverlay').style.display = 'none';
-    }
-</script>
-
+    <section class="folds">
+      <h2>【底部折疊區塊】補充整理</h2>
+      <details>
+        <summary>常見字首整理 <span class="arrow">⌄</span></summary>
+        <div class="fold-body compact-list">
+          <p>ab-　離開、相反　—　abnormal（異常的）</p><p>ad-　向、加　—　advance（前進）</p><p>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</p><p>anti-　反對、抗　—　antibiotic（抗生素）</p><p>arch-　主要、首要　—　archenemy（死敵）</p><p>auto-　自動、自我　—　autograph（親筆簽名）</p><p>bene-　好的、善　—　benefit（好處）</p><p>bi-　二、雙　—　bilingual（雙語的）</p><p>circum-　環繞、周圍　—　circumstance（情況）</p><p>co-/con-/com-　一起、共同　—　cooperate（合作）</p><p>contra-　相反、對抗　—　contradict（反駁）</p><p>de-　去除、下降　—　decode（解碼）</p><p>dia-　穿過、透過　—　dialogue（對話）</p><p>dis-　否定、分離　—　disagree（不同意）</p><p>en-/em-　使成為　—　enable（使能夠）</p><p>epi-　在上、在外　—　epidemic（流行病）</p><p>ex-　外、前任　—　export（出口）；ex-president（前總統）</p><p>extra-　額外、外部　—　extraordinary（非凡的）</p><p>hetero-　不同　—　heterogeneous（異質的）</p><p>homo-　相同　—　homogeneous（同質的）</p><p>hyper-　過度、超　—　hyperactive（過動的）</p><p>hypo-　低於、不足　—　hypodermic（皮下的）</p><p>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</p><p>inter-　在…之間　—　international（國際的）</p><p>iso-　相等、相同　—　isolate（隔離）</p><p>mal-　壞、不良　—　malfunction（故障）</p><p>micro-　微小　—　microscope（顯微鏡）</p><p>mis-　錯誤　—　misunderstand（誤解）</p><p>mono-　單一　—　monologue（獨白）</p><p>multi-　多　—　multicultural（多元文化的）</p><p>neo-　新的　—　neonatal（新生的）</p><p>non-　非、沒有　—　nonsense（無意義）</p><p>pan-　全部　—　pandemic（大流行病）</p><p>peri-　周圍　—　perimeter（周長）</p><p>poly-　多　—　polygon（多邊形）</p><p>post-　之後　—　postwar（戰後的）</p><p>pre-　之前　—　preview（預覽）</p><p>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</p><p>pseudo-　假的　—　pseudonym（筆名）</p><p>re-　再、回　—　review（複習）</p><p>semi-　一半、部分　—　semicircle（半圓）</p><p>sub-　在下、次級　—　subway（地鐵）</p><p>super-　超越、在上　—　superstar（超級明星）</p><p>syn-/sym-　一起、共同　—　synchronize（同步）</p><p>tele-　遠距　—　telephone（電話）</p><p>trans-　穿越、轉變　—　transport（運輸）</p><p>tri-　三　—　triangle（三角形）</p><p>un-　否定、不　—　unhappy（不快樂的）</p><p>vice-　副、代替　—　vice-president（副總統）</p>
+        </div>
+      </details>
+      <details>
+        <summary>常見英文字尾整理 <span class="arrow">⌄</span></summary>
+        <div class="fold-body">
+          <p><strong>名詞字尾</strong></p>
+          <p>-tion / -sion / -ation　動作、過程或結果　—　education（教育）、decision（決定）</p><p>-ment　行為或結果　—　agreement（協議）、development（發展）</p><p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p><p>-ity / -ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p><p>-er / -or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p><p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p><p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p><p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
+          <p><strong>形容詞字尾</strong></p>
+          <p>-able / -ible　能夠…的　—　readable（可讀的）、credible（可信的）</p><p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p><p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p><p>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</p><p>-al / -ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
+          <p><strong>動詞字尾</strong></p>
+          <p>-ize / -ise　使成為…　—　realize（實現）、industrialize（工業化）</p><p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p><p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p><p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
+          <p><strong>副詞字尾</strong></p>
+          <p>-ly　把形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</p><p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p><p>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
+        </div>
+      </details>
+      <details>
+        <summary>30個單詞快速整理 <span class="arrow">⌄</span></summary>
+        <div class="fold-body">
+          <p>1. suspension [səˈspɛnʃən] (n. 懸掛；懸索) — suspend [səˈspɛnd] (v. 懸掛；暫停)</p>
+          <p>• suspension bridge（懸索橋） • main cable（主鋼纜） • bridge tower（橋塔） • in balance（保持平衡） • cross a bay（跨越海灣）</p>
+          <p>2. bridge [brɪdʒ] (n. 橋) — bridge the gap（縮短差距）</p>
+          <p>• build a bridge（建橋） • cross a bridge（過橋） • bridge design（橋梁設計） • famous bridge（著名橋梁） • bridge span（橋梁跨距）</p>
+          <p>3. cable [ˈkebəl] (n. 纜線) — cabled [ˈkebəld] (adj. 有纜線的)</p>
+          <p>• steel cable（鋼纜） • main cable（主鋼纜） • cable car（纜車） • power cable（電纜） • cable system（纜線系統）</p>
+          <p>4. stretch [strɛtʃ] (v. 延伸) — stretch out（伸展）</p>
+          <p>• stretch between（延伸在……之間） • stretch across（橫跨） • a long stretch（一長段） • stretch over water（延伸於水面上） • stretch your legs（活動腿部）</p>
+          <p>5. tower [ˈtaʊɚ] (n. 塔) — towering [ˈtaʊərɪŋ] (adj. 高聳的)</p>
+          <p>• tall tower（高塔） • bridge tower（橋塔） • observation tower（觀景塔） • clock tower（鐘塔） • tower above（高聳於……之上）</p>
+          <p>6. firmly [ˈfɝmlɪ] (adv. 牢固地) — firm [fɝm] (adj. 牢固的)</p>
+          <p>• fix firmly（牢牢固定） • hold firmly（牢牢握住） • stand firmly（站穩） • firmly believe（堅信） • firmly attached（牢固附著）</p>
+          <p>7. concrete [ˈkɑnˌkrit] (n. 混凝土；adj. 具體的) — concrete example（具體例子）</p>
+          <p>• concrete block（混凝土塊） • reinforced concrete（鋼筋混凝土） • concrete wall（混凝土牆） • concrete plan（具體計畫） • concrete evidence（具體證據）</p>
+          <p>8. anchorage [ˈæŋkərɪdʒ] (n. 錨碇；固定處) — anchor [ˈæŋkɚ] (v. 固定)</p>
+          <p>• bridge anchorage（橋梁錨碇） • anchor point（固定點） • be anchored in（固定於） • safe anchorage（安全停泊地） • anchor a cable（固定纜線）</p>
+          <p>9. structure [ˈstrʌktʃɚ] (n. 結構) — structural [ˈstrʌktʃərəl] (adj. 結構的)</p>
+          <p>• bridge structure（橋梁結構） • strong structure（堅固結構） • sentence structure（句子結構） • social structure（社會結構） • structural safety（結構安全）</p>
+          <p>10. balance [ˈbæləns] (n./v. 平衡) — balanced [ˈbælənst] (adj. 平衡的)</p>
+          <p>• in balance（保持平衡） • keep balance（保持平衡） • lose balance（失去平衡） • balanced design（平衡設計） • balance A with B（兼顧 A 與 B）</p>
+          <p>11. design [dɪˈzaɪn] (n./v. 設計) — designer [dɪˈzaɪnɚ] (n. 設計師)</p>
+          <p>• special design（特殊設計） • bridge design（橋梁設計） • elegant design（優雅設計） • design a bridge（設計橋梁） • by design（故意地；按設計）</p>
+          <p>12. support [səˈpɔrt] (n./v. 支撐；支持) — supportive [səˈpɔrtɪv] (adj. 支持的)</p>
+          <p>• provide support（提供支撐） • support a bridge（支撐橋梁） • public support（大眾支持） • few supports（少數支撐） • support system（支撐系統）</p>
+          <p>13. valley [ˈvælɪ] (n. 山谷) — river valley（河谷）</p>
+          <p>• deep valley（深谷） • wide valley（寬闊山谷） • cross a valley（跨越山谷） • valley view（山谷景色） • mountain valley（山間谷地）</p>
+          <p>14. symbol [ˈsɪmbəl] (n. 象徵) — symbolize [ˈsɪmbəˌlaɪz] (v. 象徵)</p>
+          <p>• a symbol of（……的象徵） • national symbol（國家象徵） • cultural symbol（文化象徵） • symbol of hope（希望象徵） • powerful symbol（強大象徵）</p>
+          <p>15. advanced [ədˈvænst] (adj. 先進的) — advancement [ədˈvænsmənt] (n. 進步)</p>
+          <p>• advanced engineering（先進工程技術） • advanced technology（先進科技） • advanced class（高階班） • highly advanced（高度先進的） • advanced materials（先進材料）</p>
+          <p>16. engineering [ˌɛndʒəˈnɪrɪŋ] (n. 工程；工程學) — engineer [ˌɛndʒəˈnɪr] (n. 工程師)</p>
+          <p>• civil engineering（土木工程） • engineering wonder（工程奇蹟） • engineering design（工程設計） • engineering project（工程專案） • engineering challenge（工程挑戰）</p>
+          <p>17. resist [rɪˈzɪst] (v. 抵抗) — resistance [rɪˈzɪstəns] (n. 抵抗)</p>
+          <p>• resist earthquakes（抵抗地震） • resist change（抗拒改變） • resist pressure（承受壓力） • water-resistant（防水的） • wind-resistant（抗風的）</p>
+          <p>18. earthquake [ˈɝθˌkwek] (n. 地震) — quake [kwek] (n./v. 震動)</p>
+          <p>• strong earthquake（強震） • earthquake damage（地震損害） • earthquake safety（地震安全） • earthquake-proof building（防震建築） • natural disaster（天然災害）</p>
+          <p>19. convenient [kənˈvinjənt] (adj. 方便的) — convenience [kənˈvinjəns] (n. 便利)</p>
+          <p>• convenient roads（便利道路） • convenient location（便利地點） • be convenient for（對……方便） • for convenience（為了方便） • convenience store（便利商店）</p>
+          <p>20. inspire [ɪnˈspaɪr] (v. 啟發；激勵) — inspiration [ˌɪnspəˈreʃən] (n. 靈感)</p>
+          <p>• inspire travelers（啟發旅人） • inspire someone to V（激勵某人做某事） • be inspired by（受到……啟發） • inspiring view（鼓舞人心的景色） • source of inspiration（靈感來源）</p>
+          <p>21. famous [ˈfeməs] (adj. 著名的) — fame [fem] (n. 名聲)</p>
+          <p>• world-famous bridge（世界著名橋梁） • famous for（以……聞名） • become famous（成名） • famous landmark（著名地標） • famous example（著名例子）</p>
+          <p>22. connect [kəˈnɛkt] (v. 連接) — connection [kəˈnɛkʃən] (n. 連接；關係)</p>
+          <p>• connect A with B（連接 A 與 B） • connect two sides（連接兩側） • direct connection（直接連結） • internet connection（網路連線） • social connection（社交關係）</p>
+          <p>23. vehicle [ˈvihɪkəl] (n. 車輛) — vehicular [viˈhɪkjələr] (adj. 車輛的)</p>
+          <p>• carry vehicles（承載車輛） • electric vehicle（電動車） • private vehicle（私人車輛） • vehicle traffic（車流） • heavy vehicle（重型車輛）</p>
+          <p>24. span [spæn] (n. 跨距；一段時間) — life span（壽命）</p>
+          <p>• bridge span（橋梁跨距） • long span（長跨距） • time span（時間跨度） • span a river（跨越河流） • attention span（注意力持續時間）</p>
+          <p>25. region [ˈridʒən] (n. 地區) — regional [ˈridʒənəl] (adj. 地區的)</p>
+          <p>• important region（重要地區） • mountain region（山區） • regional development（區域發展） • in the region（在該地區） • region around the bridge（橋梁周邊地區）</p>
+          <p>26. elegant [ˈɛləgənt] (adj. 優雅的) — elegance [ˈɛləgəns] (n. 優雅)</p>
+          <p>• elegant shape（優雅形狀） • elegant design（優雅設計） • look elegant（看起來優雅） • simple but elegant（簡單但優雅） • elegant style（優雅風格）</p>
+          <p>27. impressive [ɪmˈprɛsɪv] (adj. 令人印象深刻的) — impress [ɪmˈprɛs] (v. 使留下印象)</p>
+          <p>• impressive height（驚人高度） • impressive view（令人印象深刻的景色） • impressive result（亮眼成果） • look impressive（看起來壯觀） • highly impressive（非常令人佩服的）</p>
+          <p>28. transportation [ˌtrænspɚˈteʃən] (n. 交通；運輸) — transport [ˈtrænspɔrt] (v./n. 運輸)</p>
+          <p>• daily transportation（日常交通） • public transportation（大眾運輸） • transportation system（交通系統） • transportation cost（交通成本） • means of transportation（交通方式）</p>
+          <p>29. tourist [ˈtʊrɪst] (n. 觀光客) — tourism [ˈtʊrɪzəm] (n. 觀光業)</p>
+          <p>• tourist spot（觀光景點） • tourist attraction（旅遊景點） • foreign tourist（外國觀光客） • tourist area（觀光區） • tourism industry（觀光產業）</p>
+          <p>30. experience [ɪkˈspɪriəns] (n. 經驗；體驗) — experienced [ɪkˈspɪriənst] (adj. 有經驗的)</p>
+          <p>• special experience（特殊體驗） • unforgettable experience（難忘經驗） • travel experience（旅行經驗） • gain experience（獲得經驗） • learning experience（學習經驗）</p>
+        </div>
+      </details>
+      <details>
+        <summary>練文筆食材 <span class="arrow">⌄</span></summary>
+        <div class="fold-body">
+          <p>① A is a type of B where...（A 是一種……，其……）<br>→ 適用：介紹事物定義與特色時<br>例：A suspension bridge is a type of bridge where the road is hung from thick steel cables.</p>
+          <p>② be fixed firmly at...（被牢牢固定在……）<br>→ 適用：描述建築、機械或制度的穩定性<br>例：The cables are fixed firmly at both ends of the bridge.</p>
+          <p>③ which help keep... in balance（這有助於讓……保持平衡）<br>→ 適用：補充說明某設計或方法的功能<br>例：Anchorages help keep the whole structure in balance.</p>
+          <p>④ Because of this special design,...（因為這種特殊設計，……）<br>→ 適用：說明原因與結果<br>例：Because of this special design, suspension bridges can cross wide rivers.</p>
+          <p>⑤ be known for...（以……聞名）<br>→ 適用：介紹城市、人物、景點特色<br>例：The Golden Gate Bridge is known for its orange color.</p>
+          <p>⑥ has become a symbol of...（已成為……的象徵）<br>→ 適用：描述文化意義或代表性<br>例：It has become a symbol of the United States.</p>
+          <p>⑦ show advanced engineering that can...（展現能夠……的先進工程）<br>→ 適用：科技、建築、產品介紹<br>例：The bridge shows advanced engineering that can resist earthquakes.</p>
+          <p>⑧ connecting A and B（連接 A 與 B）<br>→ 適用：用分詞片語補充功能<br>例：The bridge connects the European and Asian sides of the country.</p>
+          <p>⑨ not just...; also...（不只是……；也是……）<br>→ 適用：強調雙重身分或價值<br>例：Suspension bridges are not just convenient roads; they are also engineering wonders.</p>
+          <p>⑩ make O + adj. by V-ing（透過……使……變得……）<br>→ 適用：說明方法與效果<br>例：Their long spans make travel faster by cutting down driving time.</p>
+          <p>⑪ At the same time,...（同時，……）<br>→ 適用：加入並列觀點<br>例：At the same time, their elegant shapes inspire travelers.</p>
+          <p>⑫ often inspire... from around the world（常啟發來自世界各地的……）<br>→ 適用：描述藝術、自然或文化影響<br>例：Their impressive height often inspires photographers from around the world.</p>
+          <p>⑬ For many people,... is a special experience（對許多人來說，……是一種特殊體驗）<br>→ 適用：個人經驗、旅遊心得、作文結尾<br>例：For many people, walking across the bridge is a special experience.</p>
+          <p>⑭ combine A with B（結合 A 與 B）<br>→ 適用：說明產品、活動或經驗的雙重特色<br>例：The experience combines daily transportation with unforgettable views.</p>
+        </div>
+      </details>
+    </section>
+  </main>
 </body>
 </html>
