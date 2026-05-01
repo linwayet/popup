@@ -1,0 +1,3492 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>114學測英文｜錯誤答案心理剖析互動版</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 22px; }
+  body {
+    font-family: 'BIZ UDPGothic', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    background: #F8F4ED;
+    color: #2D2A26;
+    line-height: 1.7;
+    font-weight: 400;
+    padding: 24px 16px 80px;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  .hero {
+    background: linear-gradient(135deg, #8B5E3C 0%, #A87045 100%);
+    color: #F8F4ED;
+    padding: 36px 28px;
+    border-radius: 18px;
+    margin-bottom: 32px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(139,94,60,0.25);
+  }
+  .hero h1 { font-size: 30px; font-weight: 700; margin-bottom: 12px; letter-spacing: 1px; }
+  .hero .sub { font-size: 18px; opacity: 0.95; margin-bottom: 8px; }
+  .hero .author { font-size: 18px; font-weight: 700; color: #FFE9C8; margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,233,200,0.4); }
+  .section-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #8B5E3C;
+    background: #F0E4D0;
+    padding: 16px 22px;
+    border-left: 8px solid #D4A574;
+    border-radius: 10px;
+    margin: 36px 0 22px;
+  }
+  .section-title small { display: block; font-size: 17px; color: #6B4A2F; margin-top: 4px; font-weight: 400; }
+  .q {
+    background: #FFFCF5;
+    border: 2px solid #E5D5B7;
+    border-radius: 14px;
+    padding: 22px 20px;
+    margin-bottom: 22px;
+    box-shadow: 0 2px 6px rgba(45,42,38,0.05);
+  }
+  .q-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+  .q-num {
+    background: #8B5E3C;
+    color: #FFFCF5;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    min-width: 56px;
+    text-align: center;
+  }
+  .q-stem { font-size: 22px; line-height: 1.7; flex: 1; }
+  .q-passage { background: #FAF5EA; padding: 16px 18px; border-radius: 10px; margin: 12px 0; font-size: 20px; line-height: 1.85; border-left: 4px solid #D4A574; }
+  .opts { list-style: none; margin: 16px 0; }
+  .opts li {
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border: 2px solid #E5D5B7;
+    border-radius: 10px;
+    font-size: 21px;
+    background: #FFFCF5;
+    min-height: 44px;
+  }
+  .opts li.ok {
+    background: #E5F0E0;
+    border-color: #4A7C59;
+    color: #2D5A3F;
+    font-weight: 700;
+    position: relative;
+  }
+  .opts li.ok::after {
+    content: '✓ 正解';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #4A7C59;
+    color: #fff;
+    font-size: 16px;
+    padding: 4px 10px;
+    border-radius: 6px;
+  }
+  details.ana {
+    margin-top: 18px;
+    border: 2px solid #D4A574;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #FAF5EA;
+  }
+  details.ana summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 16px 20px;
+    background: #D4A574;
+    color: #2D2A26;
+    font-size: 20px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    touch-action: manipulation;
+    min-height: 56px;
+  }
+  details.ana summary::-webkit-details-marker { display: none; }
+  details.ana summary::marker { display: none; }
+  .arrow { display: inline-block; transition: transform 0.25s ease; font-size: 18px; }
+  details[open].ana summary .arrow { transform: rotate(180deg); }
+  .ac { padding: 18px 16px; }
+  .key {
+    background: #4A7C59;
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
+  .wa {
+    background: #FFFCF5;
+    border: 2px solid #E5D5B7;
+    border-radius: 12px;
+    padding: 16px 14px;
+    margin-bottom: 16px;
+  }
+  .wa h4 {
+    font-size: 20px;
+    color: #B5483D;
+    font-weight: 700;
+    padding: 10px 14px;
+    background: #FBE9E4;
+    border-radius: 8px;
+    margin-bottom: 14px;
+  }
+  .lvl {
+    font-size: 17px;
+    font-weight: 700;
+    margin: 14px 0 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    display: inline-block;
+  }
+  .lvl-8  { background: #E8DCC4; color: #6B4A2F; border-left: 4px solid #B89968; }
+  .lvl-10 { background: #D4B896; color: #4A331F; border-left: 4px solid #8B5E3C; }
+  .lvl-other { background: #DDD0B8; color: #4A3A26; border-left: 4px solid #A8895E; }
+  .wa label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    background: #FAF5EA;
+    border: 2px solid #E5D5B7;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 19px;
+    line-height: 1.6;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+  .wa label:hover { background: #F0E4D0; border-color: #D4A574; }
+  .wa label:has(input:checked) { background: #FFF0CC; border-color: #B89968; }
+  .wa input[type=checkbox] {
+    width: 24px;
+    height: 24px;
+    accent-color: #8B5E3C;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .wa input[type=text] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #D4A574;
+    border-radius: 10px;
+    font-size: 19px;
+    font-family: inherit;
+    background: #FFFCF5;
+    color: #2D2A26;
+    min-height: 50px;
+  }
+  .wa input[type=text]:focus { outline: none; border-color: #8B5E3C; background: #FFF8E8; }
+  .legend {
+    background: #F0E4D0;
+    border: 2px solid #D4A574;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 28px;
+    font-size: 18px;
+    line-height: 1.8;
+  }
+  .legend h3 { font-size: 20px; color: #8B5E3C; margin-bottom: 10px; }
+  .legend-row { display: flex; align-items: center; gap: 12px; margin: 6px 0; flex-wrap: wrap; }
+  .legend .tag {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .tag-8  { background: #E8DCC4; color: #6B4A2F; }
+  .tag-10 { background: #D4B896; color: #4A331F; }
+  .tag-ot { background: #DDD0B8; color: #4A3A26; }
+  .foot {
+    text-align: center;
+    padding: 24px 16px;
+    color: #6B4A2F;
+    font-size: 17px;
+    border-top: 2px dashed #D4A574;
+    margin-top: 40px;
+  }
+  @media (max-width: 480px) {
+    body { padding: 16px 10px 60px; }
+    .hero h1 { font-size: 24px; }
+    .q { padding: 18px 14px; }
+    .q-stem { font-size: 20px; }
+    .opts li { font-size: 19px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hero">
+  <h1>114學測英文｜錯誤答案心理剖析</h1>
+  <p class="sub">兩級分視角 × 互動勾選 × 自填原因</p>
+  <p class="sub">為自己錯誤找出真正原因，下一次就不會再錯</p>
+  <p class="author">林威老師與 AI agent 團隊</p>
+</div>
+
+<div class="legend">
+  <h3>📋 使用說明</h3>
+  <p>每題展開分析後，會看到三個錯誤答案的可能誤選原因：</p>
+  <div class="legend-row"><span class="tag tag-8">八級分</span> 平均標準學生最常見的錯誤思維（基礎詞義混淆、字面翻譯）</div>
+  <div class="legend-row"><span class="tag tag-10">十級分</span> 均標到前標學生的高階陷阱（過度推論、忽略搭配）</div>
+  <div class="legend-row"><span class="tag tag-ot">其他原因</span> 自行填寫——你獨有的思考路徑也很重要</div>
+</div>
+
+<style>
+  .form-card {
+    background: #FFFCF5;
+    border: 3px solid #4A7C59;
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 12px rgba(74,124,89,0.15);
+  }
+  .form-card h3 { font-size: 22px; color: #4A7C59; margin-bottom: 14px; font-weight: 700; }
+  .form-card .field { margin-bottom: 14px; }
+  .form-card label { display: block; font-size: 18px; font-weight: 700; color: #4A331F; margin-bottom: 6px; }
+  .form-card input[type=text], .form-card input[type=date] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid #D4A574;
+    border-radius: 8px;
+    font-size: 19px;
+    font-family: inherit;
+    background: #FAF5EA;
+    color: #2D2A26;
+    min-height: 48px;
+    box-sizing: border-box;
+  }
+  .form-card input:focus { outline: none; border-color: #4A7C59; background: #FFF8E8; }
+  .submit-area { text-align: center; margin: 36px 0 24px; }
+  .big-btn {
+    background: #4A7C59;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 18px 36px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    min-height: 60px;
+    box-shadow: 0 4px 14px rgba(74,124,89,0.35);
+    font-family: inherit;
+    touch-action: manipulation;
+  }
+  .big-btn:hover { background: #3A6649; }
+  .big-btn:active { transform: translateY(1px); }
+  .secondary-btn {
+    background: #8B5E3C;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    min-height: 50px;
+    font-family: inherit;
+    touch-action: manipulation;
+  }
+  .secondary-btn:hover { background: #6F4A2D; }
+  .modal-bg {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(45,42,38,0.75);
+    display: none;
+    align-items: center; justify-content: center;
+    z-index: 9999;
+    padding: 20px;
+  }
+  .modal-bg.active { display: flex; }
+  .modal-content {
+    background: #FFFCF5;
+    border: 3px solid #8B5E3C;
+    border-radius: 16px;
+    padding: 28px 24px;
+    max-width: 720px;
+    width: 100%;
+    max-height: 86vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  }
+  .modal-content h3 { font-size: 24px; color: #8B5E3C; margin-bottom: 12px; font-weight: 700; }
+  .modal-content .hint { font-size: 17px; color: #6B4A2F; margin-bottom: 14px; line-height: 1.7; }
+  #report-text {
+    width: 100%;
+    min-height: 320px;
+    padding: 14px;
+    border: 2px solid #D4A574;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Courier New', 'Menlo', monospace;
+    line-height: 1.6;
+    background: #FAF5EA;
+    color: #2D2A26;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  .modal-btns { display: flex; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
+</style>
+
+<!-- 學生基本資料 -->
+<div class="form-card">
+  <h3>📋 學生基本資料（請先填寫，送出時會放入報告）</h3>
+  <div class="field"><label for="student-name">姓名</label><input type="text" id="student-name" placeholder="例：王小明"></div>
+  <div class="field"><label for="student-class">班級</label><input type="text" id="student-class" placeholder="例：高三忠"></div>
+  <div class="field"><label for="student-seat">座號</label><input type="text" id="student-seat" placeholder="例：15"></div>
+  <div class="field"><label for="exam-date">完成日期</label><input type="date" id="exam-date"></div>
+</div>
+
+<div class="section-title">第壹部分　一、詞彙題（1–10）<small>每題 1 分　共 10 分</small></div>
+
+<!-- Q1 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">1</span><p class="q-stem">If you put a ______ under a leaking faucet, you will be surprised at the amount of water collected in 24 hours.</p></div>
+  <ol class="opts">
+    <li>(A) border</li>
+    <li>(B) timer</li>
+    <li class="ok">(C) container</li>
+    <li>(D) marker</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) container 容器 — 用來「裝水」的東西</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) border 邊界</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 border 看成「邊邊」想成擋水的東西</label>
+        <label><input type="checkbox"> 看到 under 就猜是「邊框」放底下</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道 border 是邊界但被「leaking faucet 漏水邊邊」誘導</label>
+        <label><input type="checkbox"> 過度推論：邊界 = 圍住水的東西</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) timer 計時器</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 24 hours 就直覺配「計時」</label>
+        <label><input type="checkbox"> 把「測量水量」誤想成需要計時器</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：要在 24 小時內收集就要 timer 計時</label>
+        <label><input type="checkbox"> 忽略 collected in 24 hours 是「結果」非「方法」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) marker 標記筆／標記</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 marker 想成「標記水位」的東西</label>
+        <label><input type="checkbox"> 不熟 marker 多指筆或記號</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：要量水量先「做標記」</label>
+        <label><input type="checkbox"> 忽略 put a marker under a faucet 邏輯怪異（標記怎麼裝水）</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q2 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">2</span><p class="q-stem">The local farmers' market is popular as it offers a variety of fresh seasonal ______ to people in the community.</p></div>
+  <ol class="opts">
+    <li class="ok">(A) produce</li>
+    <li>(B) fashion</li>
+    <li>(C) brand</li>
+    <li>(D) trend</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) produce（名詞）農產品 — farmers' market + fresh seasonal 鎖定</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) fashion 流行、時尚</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 produce 當名詞「農產品」用法</label>
+        <label><input type="checkbox"> 把 fashion 誤套到「時令的東西」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 seasonal fashion 季節時尚誤套到 farmers' market</label>
+        <label><input type="checkbox"> 忽略 farmers' market 限定為農產品市集</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) brand 品牌</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 popular + variety 想成「多品牌」</label>
+        <label><input type="checkbox"> 不知 fresh seasonal 修飾的是物品本身非品牌</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：農夫市集賣多種品牌</label>
+        <label><input type="checkbox"> 忽略 fresh seasonal brand 邏輯怪</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) trend 趨勢</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 popular 與 trend 配對</label>
+        <label><input type="checkbox"> 不熟 trend 修飾的是「現象」非「商品」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 seasonal trend 流行趨勢硬套到市集</label>
+        <label><input type="checkbox"> 忽略「offer to people」是販售商品的動作</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q3 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">3</span><p class="q-stem">As the years have passed by, many of my childhood memories are already ______; I can no longer recall clearly what happened back then.</p></div>
+  <ol class="opts">
+    <li class="ok">(A) blurring</li>
+    <li>(B) trimming</li>
+    <li>(C) draining</li>
+    <li>(D) glaring</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) blurring 變模糊 — 與 no longer recall clearly 呼應</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) trimming 修剪</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 trim 是「修剪」物理動作</label>
+        <label><input type="checkbox"> 隨機猜 -ing 結尾</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：記憶被「修剪、刪減」</label>
+        <label><input type="checkbox"> 把記憶比喻成樹枝硬接 trim</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) draining 流失</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把記憶比作「水流走」</label>
+        <label><input type="checkbox"> 不熟 drain 多指液體排出或精力耗盡</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詩意化：「記憶流失」</label>
+        <label><input type="checkbox"> 知道 drain 偏負面但忽略它強調「全部消失」非「變模糊」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) glaring 刺眼的；明顯的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 glaring 字義隨機猜</label>
+        <label><input type="checkbox"> 把 glare 當「閃過腦海」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 glaring memory 鮮明記憶反向選錯</label>
+        <label><input type="checkbox"> 忽略後句 no longer recall 是邏輯反推</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q4 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">4</span><p class="q-stem">Racist remarks are by nature ______ and hurtful, and should be avoided on all occasions.</p></div>
+  <ol class="opts">
+    <li>(A) excessive</li>
+    <li>(B) furious</li>
+    <li class="ok">(C) offensive</li>
+    <li>(D) stubborn</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) offensive 冒犯的 — 與 hurtful 並列描述種族言論</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) excessive 過度的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 excessive 當「過分的」誤套到言論</label>
+        <label><input type="checkbox"> 不分 excessive（量過多）vs offensive（冒犯）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：種族歧視「太過分」</label>
+        <label><input type="checkbox"> 把 excessive remarks 當作「過頭的話」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) furious 暴怒的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 racist 種族歧視 = furious 憤怒</label>
+        <label><input type="checkbox"> 不熟 furious 修飾「人或情緒」非「言論本質」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：仇恨言論 = 充滿怒氣</label>
+        <label><input type="checkbox"> 忽略 by nature 強調「本質上」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) stubborn 頑固的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「歧視難以改變」當作 stubborn</label>
+        <label><input type="checkbox"> 不熟 stubborn 修飾人</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度延伸：歧視觀念頑固</label>
+        <label><input type="checkbox"> 忽略 stubborn remarks 不是常見搭配</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q5 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">5</span><p class="q-stem">Not satisfied with the first ______ of her essay, Mary revised it several times before turning it in to the teacher.</p></div>
+  <ol class="opts">
+    <li>(A) text</li>
+    <li>(B) brush</li>
+    <li class="ok">(C) draft</li>
+    <li>(D) plot</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) draft 草稿 — first draft + revised 是固定寫作流程</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) text 文本</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 essay 直接配 text「文章」</label>
+        <label><input type="checkbox"> 不熟 first draft 是「初稿」固定詞</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道 text 是文章但忽略 first text 不是常見搭配</label>
+        <label><input type="checkbox"> 把 first text 誤當作「第一版文本」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) brush 刷子；輕觸</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 brush 字義隨意填</label>
+        <label><input type="checkbox"> 把 brush 想成「描繪」誤套寫作</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 brush 與「初步描繪」做藝術延伸</label>
+        <label><input type="checkbox"> 過度比喻：作文「初次落筆」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) plot 情節</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 essay 想到「故事情節」</label>
+        <label><input type="checkbox"> 不分 plot（小說情節）vs essay（議論文）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：作文也有 plot 結構</label>
+        <label><input type="checkbox"> 忽略 essay 多是論說文，不是有情節的故事</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q6 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">6</span><p class="q-stem">Left ______ for years, the deserted house was filled with a thick coating of dust and a smell of old damp wood.</p></div>
+  <ol class="opts">
+    <li>(A) casual</li>
+    <li>(B) fragile</li>
+    <li>(C) remote</li>
+    <li class="ok">(D) vacant</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(D) vacant 空置的 — Left vacant 為「空閒未用」固定搭配</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) casual 隨意的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 casual 誤當「隨意空著」</label>
+        <label><input type="checkbox"> 不熟 casual 多形容「不正式」非「空置」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「隨意丟著沒人管」</label>
+        <label><input type="checkbox"> 知道 casual 多形容人或場合，但仍硬套</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) fragile 脆弱的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 deserted house 想到「老舊脆弱」</label>
+        <label><input type="checkbox"> 不分 fragile（易碎）vs vacant（空著）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度延伸：年久失修的房子是 fragile 的</label>
+        <label><input type="checkbox"> 忽略 left fragile 不是常見搭配</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) remote 偏遠的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 deserted 與 remote 視為同義「偏僻」</label>
+        <label><input type="checkbox"> 不熟 remote 強調「地理距離」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：偏遠地區的廢屋</label>
+        <label><input type="checkbox"> 忽略 left remote 不能修飾被「閒置」的房屋</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q7 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">7</span><p class="q-stem">The high school student showed ______ courage when she helped the old man escape from the fire.</p></div>
+  <ol class="opts">
+    <li>(A) gigantic</li>
+    <li>(B) exclusive</li>
+    <li>(C) multiple</li>
+    <li class="ok">(D) enormous</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(D) enormous 巨大的 — enormous courage 是固定搭配「莫大勇氣」</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) gigantic 巨大的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「巨大」就選 gigantic，與 enormous 視為完全同義</label>
+        <label><input type="checkbox"> 不熟 gigantic 多修飾「物理大小」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道 gigantic 與 enormous 字義近，但忽略 collocation 差異</label>
+        <label><input type="checkbox"> 把 gigantic statue/wave 的搭配誤套到 courage</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) exclusive 獨家的；專屬的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 exclusive 字義隨機猜</label>
+        <label><input type="checkbox"> 把 exclusive 誤譯為「特別的」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：「獨有的勇氣」</label>
+        <label><input type="checkbox"> 忽略 exclusive 多用於商品、權利</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) multiple 多重的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 multiple 誤當「許多的」修飾 courage</label>
+        <label><input type="checkbox"> 不熟 multiple 強調「多項、多次」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「多重勇氣」</label>
+        <label><input type="checkbox"> 忽略 courage 是抽象不可數，無法用 multiple</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q8 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">8</span><p class="q-stem">Publicly financed projects are often ______ or delayed during tough economic times due to a lack of resources.</p></div>
+  <ol class="opts">
+    <li class="ok">(A) halted</li>
+    <li>(B) hatched</li>
+    <li>(C) possessed</li>
+    <li>(D) reinforced</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) halted 停止 — 與 delayed 並列：經費短缺時「停止或延遲」</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) hatched 孵化；策劃</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 hatched 誤當「啟動」</label>
+        <label><input type="checkbox"> 不熟 hatch 是孵蛋或秘密策劃</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道 hatch a plan 是策劃，但忽略此處需要「停止」</label>
+        <label><input type="checkbox"> 與 delayed 邏輯衝突仍硬選</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) possessed 擁有</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 possess 字義隨機猜</label>
+        <label><input type="checkbox"> 把 possess 誤套為「持續、保有」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度延伸：「政府擁有的工程」</label>
+        <label><input type="checkbox"> 忽略主詞 projects 是被動受詞</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) reinforced 強化</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 reinforced 誤當「重新啟動」</label>
+        <label><input type="checkbox"> 沒看 due to a lack of resources 暗示負面</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度反向推論：經濟不景氣時「加強」工程振興</label>
+        <label><input type="checkbox"> 忽略 or delayed 邏輯：要與 delayed 同向（負面）</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q9 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">9</span><p class="q-stem">Despite his busy schedule, the President ______ the school's graduation ceremony with his presence and a heartwarming speech.</p></div>
+  <ol class="opts">
+    <li>(A) praised</li>
+    <li class="ok">(B) graced</li>
+    <li>(C) addressed</li>
+    <li>(D) credited</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(B) graced 為…增光 — grace sth with one's presence 是正式用語</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) praised 讚美</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 heartwarming speech 直接配「讚美」</label>
+        <label><input type="checkbox"> 不熟 praise + 「典禮」搭配不通</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：總統讚揚畢業典禮</label>
+        <label><input type="checkbox"> 忽略 praised the ceremony with his presence 不通順</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) addressed 致詞；對…講話</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 speech 直覺配 addressed</label>
+        <label><input type="checkbox"> 不熟 address sth with presence 結構</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道 address a speech 但忽略此句受詞是 ceremony 非 audience</label>
+        <label><input type="checkbox"> 過度推論：總統「致辭」典禮 = 出席講話</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) credited 歸功</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 credit 字義隨機猜</label>
+        <label><input type="checkbox"> 把 credit 誤當「肯定、讚揚」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 credit sb with sth 結構誤套</label>
+        <label><input type="checkbox"> 把「總統肯定畢業生」過度推論</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q10 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">10</span><p class="q-stem">The manager of the company was sued for ______ abusing his colleagues, calling them "hopeless losers."</p></div>
+  <ol class="opts">
+    <li class="ok">(A) verbally</li>
+    <li>(B) dominantly</li>
+    <li>(C) legitimately</li>
+    <li>(D) relevantly</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) verbally 言語上 — calling them "losers" 是言語霸凌</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) dominantly 主導地</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 manager 想到「主管」與 dominantly 配對</label>
+        <label><input type="checkbox"> 不熟 dominantly 字義隨意填</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：主管「強勢地」霸凌</label>
+        <label><input type="checkbox"> 忽略 calling them losers 是「言語」線索</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) legitimately 合法地</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 sued 想到法律相關</label>
+        <label><input type="checkbox"> 不熟 legitimate 與 abuse 邏輯衝突</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 sued + legitimately 強行連結「合法被告」</label>
+        <label><input type="checkbox"> 忽略 legitimately abusing 邏輯反義</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) relevantly 相關地</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 relevant 字義隨機猜</label>
+        <label><input type="checkbox"> 把 relevantly 視為合理副詞填入</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「以相關方式批評」</label>
+        <label><input type="checkbox"> 忽略 relevantly abusing 不是合理搭配</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<div class="section-title">第壹部分　二、綜合測驗（11–20）<small>每題 1 分　共 10 分</small></div>
+
+<div class="q-passage">
+<strong>第 11–15 題　World Café 的誕生</strong><br>
+1995 年，一群商業與學術領袖原計畫在加州 Mill Valley 的花園進行大型圓桌討論。突然下起傾盆大雨，他們擠進客廳，分成小桌討論並用桌布記錄想法，定期換桌讓想法 <u>__13__</u>。新想法不斷湧現，<u>__14__</u> 一種全新的集體思考方式。World Café 就此 <u>__15__</u> 誕生，沒人想到他們正在創造一個將迅速 <u>__11__</u> 全球的社會創新——一個被雨打亂計畫 <u>__12__</u> 而意外催生的方法。
+</div>
+
+<!-- Q11 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">11</span><p class="q-stem">空格 11　a social innovation that ______ rapidly around the world</p></div>
+  <ol class="opts">
+    <li>(A) had spread</li>
+    <li class="ok">(B) would spread</li>
+    <li>(C) had been spreading</li>
+    <li>(D) would have spread</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(B) would spread — 過去時的「未來式」：當時沒人知道日後會傳播</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) had spread 過去完成式</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 None of them had any idea，反射選 had + p.p.</label>
+        <label><input type="checkbox"> 不熟「過去視角的未來」用 would</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道 had 是過去完成式但忽略「尚未發生」要用 would</label>
+        <label><input type="checkbox"> 把「他們不知道之前已傳播」邏輯倒置</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) had been spreading 過去完成進行式</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到時態最複雜就以為最對</label>
+        <label><input type="checkbox"> 不分「過去完成進行」與「過去未來」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度想表達「持續傳播」忽略時間順序</label>
+        <label><input type="checkbox"> 知道 had been + Ving 但用錯時序</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) would have spread 與過去事實相反</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 would 就配最完整的時態</label>
+        <label><input type="checkbox"> 不熟 would have + p.p. 是假設語氣</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論「假設成功」用假設語氣</label>
+        <label><input type="checkbox"> 忽略此處是事實陳述非與事實相反</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q12 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">12</span><p class="q-stem">空格 12　With their plan ______ by the rain</p></div>
+  <ol class="opts">
+    <li>(A) facilitated</li>
+    <li class="ok">(B) disrupted</li>
+    <li>(C) disclosed</li>
+    <li>(D) fulfilled</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(B) disrupted 被打亂 — 暴雨打亂原計畫</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) facilitated 促成</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 facilitate 字義隨機選</label>
+        <label><input type="checkbox"> 把 facilitate 與 finish 混淆</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度反向：「下雨反而促成新計畫」</label>
+        <label><input type="checkbox"> 忽略 With + N + 過去分詞表「被…」應為負面</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) disclosed 揭露</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 disclose 字義</label>
+        <label><input type="checkbox"> 把 disclose 與 disrupt 字形混淆</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「計畫被揭露」</label>
+        <label><input type="checkbox"> 忽略 by the rain 不會「揭露」計畫</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) fulfilled 實現</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 fulfilled 當「完成」誤套</label>
+        <label><input type="checkbox"> 不分「被實現」與「被打亂」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度反向：「雨意外實現了計畫」</label>
+        <label><input type="checkbox"> 忽略下文 squeezed into the living room 表計畫被改</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q13 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">13</span><p class="q-stem">空格 13　insights and ideas might ______ and deepen</p></div>
+  <ol class="opts">
+    <li class="ok">(A) circulate</li>
+    <li>(B) emphasize</li>
+    <li>(C) recover</li>
+    <li>(D) preserve</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) circulate 流通 — 換桌讓想法在群體間傳遞</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) emphasize 強調</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 emphasize 當「加深印象」誤套</label>
+        <label><input type="checkbox"> 不熟 emphasize 多帶受詞</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：換桌「強調」想法</label>
+        <label><input type="checkbox"> 忽略 emphasize 通常需受詞，此處不及物</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) recover 恢復</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 recover 字義隨意填</label>
+        <label><input type="checkbox"> 把 recover 誤當「重新啟動」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：想法被「恢復」</label>
+        <label><input type="checkbox"> 忽略 recover and deepen 邏輯不順</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) preserve 保留</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「想法被保留」當合理</label>
+        <label><input type="checkbox"> 不熟 preserve 強調靜止保存</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：紀錄在桌布上 = preserve 想法</label>
+        <label><input type="checkbox"> 忽略 deepen 暗示「動態加深」需要 circulate 配合</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q14 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">14</span><p class="q-stem">空格 14　the innovative discussion process ______ a new form of collective effort</p></div>
+  <ol class="opts">
+    <li>(A) made up for</li>
+    <li>(B) kept track of</li>
+    <li class="ok">(C) gave rise to</li>
+    <li>(D) looked out for</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) gave rise to 引起／催生 — 新討論方式催生集體思考新形式</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) made up for 彌補</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 made 直覺選熟悉片語</label>
+        <label><input type="checkbox"> 不熟 make up for 是「彌補」非「創造」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「新方式彌補了舊討論」</label>
+        <label><input type="checkbox"> 忽略 a new form 是被「催生出」的結果</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) kept track of 追蹤</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 keep track of 想成「持續討論」</label>
+        <label><input type="checkbox"> 不熟此片語意思</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：他們追蹤討論進度</label>
+        <label><input type="checkbox"> 忽略主詞是 process 而非「人」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) looked out for 留意；尋找</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 look out for 是「警戒、尋找」</label>
+        <label><input type="checkbox"> 把 looked out 當「展望」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「他們在找新方式」</label>
+        <label><input type="checkbox"> 忽略主詞是抽象 process 不是人</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q15 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">15</span><p class="q-stem">空格 15　The World Café was ______ created.</p></div>
+  <ol class="opts">
+    <li>(A) still</li>
+    <li>(B) also</li>
+    <li>(C) further</li>
+    <li class="ok">(D) thus</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(D) thus 因此 — 整段描述後的「結論性」副詞</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) still 仍然</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 still 當「就這樣、依然」</label>
+        <label><input type="checkbox"> 不熟 still 通常表「持續至今」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「至今仍被這樣創造」</label>
+        <label><input type="checkbox"> 忽略 was created 是過去式，不是進行中</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) also 也</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「也被創造」直覺套 also</label>
+        <label><input type="checkbox"> 不分 also（並列）vs thus（因果）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「另外也創造出 World Café」</label>
+        <label><input type="checkbox"> 忽略前段已是創造的過程，本句是結果</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) further 進一步</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 further 當「更進一步創造」</label>
+        <label><input type="checkbox"> 不熟 further 多表「再加深、後續」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「進一步衍生出 World Café」</label>
+        <label><input type="checkbox"> 忽略此處是「總結」而非「再進一步」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<div class="q-passage">
+<strong>第 16–20 題　暈動病（Motion Sickness）</strong><br>
+暈船、暈車的不適會突然 <u>__16__</u> 發作。當你的眼睛、耳朵與身體傳給大腦的訊號 <u>__17__</u>，大腦就無法判斷你是靜止還是移動：平衡系統的一部分偵測到身體在動，但其他部分 <u>__18__</u>，這種困惑反應讓你不適。可採取一些 <u>__19__</u> 來避免，例如坐在前排、看遠方也能 <u>__20__</u> 幫助。
+</div>
+
+<!-- Q16 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">16</span><p class="q-stem">空格 16　It can ______ suddenly, progressing from a feeling of uneasiness</p></div>
+  <ol class="opts">
+    <li>(A) crash</li>
+    <li>(B) flush</li>
+    <li>(C) burst</li>
+    <li class="ok">(D) strike</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(D) strike 突然發作 — 疾病、災難 strike 是固定搭配</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) crash 撞擊</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 boat / car ride 想到「撞擊」</label>
+        <label><input type="checkbox"> 不熟 crash 多指物體碰撞，不修飾「症狀」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：暈動病像「撞上來」</label>
+        <label><input type="checkbox"> 把 crash a wave 衝擊感誤套</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) flush 沖洗；臉紅</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 flush 字義</label>
+        <label><input type="checkbox"> 看到 cold sweat 反向想 flush 臉紅</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「症狀像潮水般湧上」</label>
+        <label><input type="checkbox"> 忽略 flush 不修飾疾病發作</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) burst 爆發</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 burst 當「症狀爆發」</label>
+        <label><input type="checkbox"> 不熟 burst 多接 into / out</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道 burst 有突發感但忽略它需要介系詞</label>
+        <label><input type="checkbox"> 過度推論：「不適感爆發」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q17 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">17</span><p class="q-stem">空格 17　signals your brain receives from your eyes, ears, and body ______</p></div>
+  <ol class="opts">
+    <li>(A) are not regular</li>
+    <li>(B) can hardly move</li>
+    <li class="ok">(C) do not match</li>
+    <li>(D) are rarely cued</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) do not match — 後文 conflicting information 直接呼應</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) are not regular 不規律</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「訊號不規律」當合理</label>
+        <label><input type="checkbox"> 不熟「不一致 mismatch」與「不規律 irregular」差別</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：訊號頻率不穩定</label>
+        <label><input type="checkbox"> 忽略 conflicting 才是核心線索</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) can hardly move 幾乎不動</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 hardly move 字義</label>
+        <label><input type="checkbox"> 隨機選</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：「訊號傳遞困難」</label>
+        <label><input type="checkbox"> 主詞 signals 不能 move，邏輯怪</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) are rarely cued 鮮少被提示</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 cue 動詞用法</label>
+        <label><input type="checkbox"> 隨機選</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：訊號「鮮少被提示」邏輯不通</label>
+        <label><input type="checkbox"> 忽略 conflicting 表「衝突」非「缺失」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q18 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">18</span><p class="q-stem">空格 18　One part... detects that your body is moving, but the other parts ______.</p></div>
+  <ol class="opts">
+    <li>(A) aren't</li>
+    <li>(B) won't</li>
+    <li class="ok">(C) don't</li>
+    <li>(D) haven't</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) don't — 省略 detect that your body is moving，主詞單純現在式 detect</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) aren't</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 is moving 反射選 aren't 配 be 動詞</label>
+        <label><input type="checkbox"> 不熟省略時要還原前面的「動詞」（detect）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把對比焦點放在「在動 vs 不動」誤選 aren't</label>
+        <label><input type="checkbox"> 忽略對比的不是 moving，而是 detect</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) won't 將不會</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不分時態，隨意選</label>
+        <label><input type="checkbox"> 把「未來不會偵測」誤套</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：時間延伸到「未來不會」</label>
+        <label><input type="checkbox"> 忽略前句 detects 是現在式</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) haven't 還沒</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨意填現在完成式</label>
+        <label><input type="checkbox"> 不熟省略需配前句時態</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「至今未偵測到」</label>
+        <label><input type="checkbox"> 忽略 detects 是現在式而非完成式</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q19 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">19</span><p class="q-stem">空格 19　You can take some ______ to help avoid the discomfort.</p></div>
+  <ol class="opts">
+    <li>(A) special opportunities</li>
+    <li class="ok">(B) preventive measures</li>
+    <li>(C) potential risks</li>
+    <li>(D) significant advantages</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(B) preventive measures 預防措施 — to help avoid the discomfort 直接呼應</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) special opportunities 特別機會</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 take some 想到「把握機會」</label>
+        <label><input type="checkbox"> 不熟 take measures 是「採取措施」固定搭配</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：搭車有特殊機會避免暈車</label>
+        <label><input type="checkbox"> 忽略 to help avoid 才是邏輯線索</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) potential risks 潛在風險</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 avoid 直接配「風險」</label>
+        <label><input type="checkbox"> 不分「採取風險」與「採取措施」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「承擔風險來避免不適」邏輯怪</label>
+        <label><input type="checkbox"> 忽略 take a risk 與 take measures 不同</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) significant advantages 顯著優勢</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 some 想配「優勢」</label>
+        <label><input type="checkbox"> 不熟 take advantages 用法</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 take advantage of 結構誤套</label>
+        <label><input type="checkbox"> 忽略此處需要「具體可採取的措施」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q20 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">20</span><p class="q-stem">空格 20　Looking out into the distance from the vehicle can help ______.</p></div>
+  <ol class="opts">
+    <li class="ok">(A) as well</li>
+    <li>(B) by far</li>
+    <li>(C) at least</li>
+    <li>(D) after all</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) as well 也 — 與前句「reserve seats」並列另一種預防方法</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) by far 大大、遠遠地</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 distance 直覺配 by far</label>
+        <label><input type="checkbox"> 不熟 by far 修飾比較級</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：「能大大幫助」</label>
+        <label><input type="checkbox"> 忽略 by far 必須與比較級或最高級搭配</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) at least 至少</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「至少能幫忙」誤套</label>
+        <label><input type="checkbox"> 不分 as well（也）vs at least（至少）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「就算沒大用至少有點幫助」</label>
+        <label><input type="checkbox"> 忽略本句是補充建議而非保守程度</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) after all 畢竟</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 after all 當「總之」</label>
+        <label><input type="checkbox"> 不熟 after all 多用於回應或解釋</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「畢竟看遠方有幫助」</label>
+        <label><input type="checkbox"> 忽略 after all 通常表「畢竟、總歸是」表理由</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<div class="section-title">第壹部分　三、文意選填（21–30）<small>每題 1 分　共 10 分　巴黎聖母院鐘聲主題</small></div>
+
+<div class="q-passage">
+<strong>選項清單</strong>　(A) reference　(B) bearing　(C) familiar　(D) retained　(E) faithful　(F) survived　(G) celebration　(H) restoration　(I) noted　(J) silent<br><br>
+this medieval cathedral is <u>__21__</u> for its intricate architecture... documented <u>__22__</u> to the ringing of bells... each <u>__23__</u> a name. ... the only one... that <u>__24__</u> the French Revolution... Emmanuel, which <u>__25__</u> its renowned, excellent sound... the bells have become a <u>__26__</u> part of life... to call the <u>__27__</u> to prayer... rung in times of <u>__28__</u> and of mourning... the bells fell <u>__29__</u>... a complex process of <u>__30__</u>.
+</div>
+
+<!-- Q21 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">21</span><p class="q-stem">空格 21　this medieval cathedral is ______ for its intricate architecture</p></div>
+  <ol class="opts">
+    <li class="ok">(I) noted 著名</li>
+    <li>(C) familiar</li>
+    <li>(D) retained</li>
+    <li>(E) faithful</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(I) noted — be noted for 以…著稱</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) familiar 熟悉的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 familiar for 當「熟悉於…」</label>
+        <label><input type="checkbox"> 不熟 familiar 接 with／to 才正確</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 familiar for 當「廣為人知」誤推</label>
+        <label><input type="checkbox"> 26 題的 familiar 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) retained 被保留</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「保留古蹟特色」誤套</label>
+        <label><input type="checkbox"> 不分 retained 是動詞要受詞</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：被「保留」這些建築特色</label>
+        <label><input type="checkbox"> 25 題的 retained 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (E) faithful 忠誠的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 medieval cathedral 直覺與「忠誠信仰」連結</label>
+        <label><input type="checkbox"> 不熟 faithful 修飾「人」非「建築特色」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度延伸：忠實呈現建築美</label>
+        <label><input type="checkbox"> 27 題的 faithful 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (E) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q22 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">22</span><p class="q-stem">空格 22　there is documented ______ to the ringing of bells even before...</p></div>
+  <ol class="opts">
+    <li class="ok">(A) reference 提及</li>
+    <li>(B) bearing</li>
+    <li>(G) celebration</li>
+    <li>(H) restoration</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) reference — make reference to / documented reference to「文件中提及」</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) bearing 承載</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 bearing 字義隨機選</label>
+        <label><input type="checkbox"> 把 bearing 當「記載」誤套</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 bearing 解為「文件承載」</label>
+        <label><input type="checkbox"> 23 題該用 bearing 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (G) celebration 慶典</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「鐘聲響起」想到「慶典」</label>
+        <label><input type="checkbox"> 不熟 documented celebration 邏輯</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：歷史記錄的慶典</label>
+        <label><input type="checkbox"> 28 題該用 celebration 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (G) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (H) restoration 修復</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 12 世紀想到「修復記錄」</label>
+        <label><input type="checkbox"> 不分 restoration 與 reference 字義</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：歷史文件中的「修復」</label>
+        <label><input type="checkbox"> 30 題該用 restoration 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (H) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q23 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">23</span><p class="q-stem">空格 23　The 10 bells vary in size, each ______ a name.</p></div>
+  <ol class="opts">
+    <li class="ok">(B) bearing 帶有</li>
+    <li>(D) retained</li>
+    <li>(F) survived</li>
+    <li>(I) noted</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(B) bearing — each + Ving，bear a name = 帶有名字</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) retained 保留</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「保留名字」當合理</label>
+        <label><input type="checkbox"> 不分 each + Ving 與 each + V-ed 結構</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：每個鐘「保留各自名字」</label>
+        <label><input type="checkbox"> 忽略 each 後接分詞應為現在分詞</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (F) survived 倖存</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 each + Ving 結構</label>
+        <label><input type="checkbox"> 把 survived a name 想成「留下名字」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 24 題該用 survived 提前誤填</label>
+        <label><input type="checkbox"> 過度推論：每個鐘倖存後得名</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (F) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (I) noted 標記</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「被標記名字」當合理</label>
+        <label><input type="checkbox"> 與 each 後分詞結構衝突</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 21 題已用 noted 卻重複</label>
+        <label><input type="checkbox"> 把 noted 解為「以名字標記」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (I) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q24 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">24</span><p class="q-stem">空格 24　the only one... that ______ the French Revolution</p></div>
+  <ol class="opts">
+    <li class="ok">(F) survived 倖存</li>
+    <li>(D) retained</li>
+    <li>(I) noted</li>
+    <li>(B) bearing</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(F) survived — 與下文「others were melted down」對比，唯一倖存</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) retained 保留</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「保留」與「倖存」視為同義</label>
+        <label><input type="checkbox"> 不分 retain（保有屬性）vs survive（活下來）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「保留下來度過革命」</label>
+        <label><input type="checkbox"> 25 題該用 retained 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (I) noted</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 noted the Revolution 當「記下了革命」</label>
+        <label><input type="checkbox"> 不熟 noted 多用被動</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「目睹革命」</label>
+        <label><input type="checkbox"> 21 題已用 noted 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (I) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) bearing</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨機填，不分時態</label>
+        <label><input type="checkbox"> 把 bearing the Revolution 當「承擔革命」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「承受革命的衝擊」</label>
+        <label><input type="checkbox"> 23 題已用 bearing 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q25 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">25</span><p class="q-stem">空格 25　Emmanuel, which ______ its renowned, excellent sound</p></div>
+  <ol class="opts">
+    <li class="ok">(D) retained 保留</li>
+    <li>(F) survived</li>
+    <li>(I) noted</li>
+    <li>(B) bearing</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(D) retained — Emmanuel 保有了原本優美音色</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (F) survived</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 survived sound 當「聲音存活」</label>
+        <label><input type="checkbox"> 不分 survive（避過劫難）vs retain（保有特質）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「聲音倖存下來」</label>
+        <label><input type="checkbox"> 24 題已用 survived 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (F) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (I) noted</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 renowned 想到 noted「聞名」</label>
+        <label><input type="checkbox"> 把 noted its sound 當「聲音被記住」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「鐘記住自己聲音」邏輯怪</label>
+        <label><input type="checkbox"> 21 題已用 noted 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (I) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) bearing</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 bearing its sound 當「帶有聲音」</label>
+        <label><input type="checkbox"> 不分時態 which ___ 應接過去式</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「鐘承載著它的聲音」</label>
+        <label><input type="checkbox"> 23 題已用 bearing 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q26 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">26</span><p class="q-stem">空格 26　the bells have become a ______ part of life in Paris</p></div>
+  <ol class="opts">
+    <li class="ok">(C) familiar 熟悉的</li>
+    <li>(E) faithful</li>
+    <li>(J) silent</li>
+    <li>(I) noted</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) familiar — 熟悉的、日常的一部分</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (E) faithful 忠誠的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「忠實的一部分」當合理</label>
+        <label><input type="checkbox"> 不熟 faithful 修飾「人或盟友」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詩意化：忠實陪伴的鐘聲</label>
+        <label><input type="checkbox"> 27 題該用 faithful 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (E) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (J) silent 安靜的</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨機選</label>
+        <label><input type="checkbox"> 把鐘的「靜默時刻」誤套</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度反向：寂靜的存在感</label>
+        <label><input type="checkbox"> 29 題該用 silent 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (J) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (I) noted</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「巴黎著名」想到 noted</label>
+        <label><input type="checkbox"> 不熟 noted part of 不是搭配</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「著名的一部分」</label>
+        <label><input type="checkbox"> 21 題已用 noted 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (I) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q27 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">27</span><p class="q-stem">空格 27　call the ______ to prayer</p></div>
+  <ol class="opts">
+    <li class="ok">(E) faithful 信徒</li>
+    <li>(C) familiar</li>
+    <li>(D) retained</li>
+    <li>(B) bearing</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(E) faithful — the faithful 集合名詞「信徒們」</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) familiar</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 the familiar 當「熟悉的人」</label>
+        <label><input type="checkbox"> 不知 the + adj 表整類人，需符合語境</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：召喚「常去教堂的人」</label>
+        <label><input type="checkbox"> 26 題已用 familiar 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) retained</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 the retained 不是合理名詞片語</label>
+        <label><input type="checkbox"> 隨機選</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「保留的人們」</label>
+        <label><input type="checkbox"> 25 題已用 retained 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) bearing</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 詞性錯誤，把分詞填到名詞位置</label>
+        <label><input type="checkbox"> 隨機選</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：the bearing「承擔者」</label>
+        <label><input type="checkbox"> 23 題已用 bearing 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q28 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">28</span><p class="q-stem">空格 28　rung in times of ______ and of mourning</p></div>
+  <ol class="opts">
+    <li class="ok">(G) celebration 慶典</li>
+    <li>(H) restoration</li>
+    <li>(J) silent</li>
+    <li>(A) reference</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(G) celebration — 與 mourning 對比「歡慶 vs 哀悼」</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (H) restoration</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到後文 reopened 直覺與「修復」連結</label>
+        <label><input type="checkbox"> 不分對比結構，沒注意 mourning 反義</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「修復時期的鐘響」</label>
+        <label><input type="checkbox"> 30 題該用 restoration 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (H) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (J) silent</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 mourning 想成「沉默」相關</label>
+        <label><input type="checkbox"> 不熟 in times of + N（事件）</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「寂靜時刻」與哀悼平行</label>
+        <label><input type="checkbox"> 29 題該用 silent 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (J) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) reference</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨意填名詞</label>
+        <label><input type="checkbox"> 不分 reference 與 celebration 字義</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：「在參考時刻響起」</label>
+        <label><input type="checkbox"> 22 題已用 reference 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q29 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">29</span><p class="q-stem">空格 29　after the devastating fire... the bells fell ______</p></div>
+  <ol class="opts">
+    <li class="ok">(J) silent 安靜</li>
+    <li>(F) survived</li>
+    <li>(D) retained</li>
+    <li>(C) familiar</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(J) silent — fall silent「靜默無聲」固定搭配</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (F) survived</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 fire 想到「倖存」</label>
+        <label><input type="checkbox"> 不分 fall + adj 與 survived 動詞</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「鐘倖存下來」</label>
+        <label><input type="checkbox"> 24 題已用 survived 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (F) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) retained</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「fell retained」當「保留下來」</label>
+        <label><input type="checkbox"> 不熟 fell + adj 結構</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「鐘聲保留」</label>
+        <label><input type="checkbox"> 25 題已用 retained 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) familiar</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨意填形容詞</label>
+        <label><input type="checkbox"> 不分 fell + 狀態形容詞語意</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：「鐘聲變熟悉」邏輯反</label>
+        <label><input type="checkbox"> 26 題已用 familiar 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q30 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">30</span><p class="q-stem">空格 30　a complex and time-consuming process of ______</p></div>
+  <ol class="opts">
+    <li class="ok">(H) restoration 修復</li>
+    <li>(G) celebration</li>
+    <li>(A) reference</li>
+    <li>(D) retained</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(H) restoration — 大火後修復重建是合理結論</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (G) celebration</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 reopened 想到「慶祝」</label>
+        <label><input type="checkbox"> 不熟 process of celebration 邏輯怪</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「漫長慶祝過程」</label>
+        <label><input type="checkbox"> 28 題已用 celebration 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (G) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) reference</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨意填名詞</label>
+        <label><input type="checkbox"> 不分 reference 與 restoration 字義</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：「參考過程」</label>
+        <label><input type="checkbox"> 22 題已用 reference 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) retained</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 詞性錯誤：動詞填入 of + N 結構</label>
+        <label><input type="checkbox"> 隨意填</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：「保留的過程」</label>
+        <label><input type="checkbox"> 25 題已用 retained 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<div class="section-title">第壹部分　四、篇章結構（31–34）<small>每題 2 分　共 8 分　膠囊旅館主題</small></div>
+
+<div class="q-passage">
+<strong>主題</strong>　膠囊旅館源自日本商務客需求。<u>__31__</u>。典型房間長寬如單人床，可坐起的高度，材質多為玻璃纖維或塑膠。<u>__32__</u>。每個膠囊配備舒適床墊、小燈、有時還有電視。第一家 Capsule Inn Osaka 於 1979 年開業，後快速蔓延至台、星、峇里、紐約、倫敦、巴黎。<u>__33__</u>。但仍有缺點：可能沒空調，<u>__34__</u>，浴室共用，幽閉恐懼者要三思。
+</div>
+
+<!-- Q31 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">31</span><p class="q-stem">空格 31　第一段末（在「膠囊旅館原為商務人士」之後）</p></div>
+  <ol class="opts">
+    <li>(A) In response to rising demands, these hotels are embracing a wave of innovation.</li>
+    <li>(B) The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</li>
+    <li>(C) The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</li>
+    <li class="ok">(D) Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(D) — 從「最初為商務人士」過渡到「今日全球大城市」的時間延伸</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) 因應需求擁抱創新</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 demand 想到首段「商務需求」</label>
+        <label><input type="checkbox"> 不熟此句帶 innovation 應放後段</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 33 題該用 (A) 提前誤填</label>
+        <label><input type="checkbox"> 過度推論：商務需求驅動創新</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) 薄牆傳遞鼾聲</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「商務人士住宿」想到吵雜</label>
+        <label><input type="checkbox"> 不分主題段落與缺點段</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：商務人士也介意鼾聲</label>
+        <label><input type="checkbox"> 34 題該用 (B) 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) 雙層膠囊以梯子上下</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「業務出差」想到「上下舖」</label>
+        <label><input type="checkbox"> 沒分清描述「房間結構」屬第二段</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 32 題該用 (C) 提前誤填</label>
+        <label><input type="checkbox"> 過度推論：開頭就介紹結構</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q32 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">32</span><p class="q-stem">空格 32　第二段中（在「材質為玻璃纖維或塑膠」之後）</p></div>
+  <ol class="opts">
+    <li>(A) In response to rising demands, these hotels are embracing a wave of innovation.</li>
+    <li>(B) The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</li>
+    <li class="ok">(C) The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</li>
+    <li>(D) Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) — 在材質介紹後接「結構排列方式」最自然</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) 薄牆傳鼾聲</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 plastic walls 直接配薄牆透音</label>
+        <label><input type="checkbox"> 沒分「客觀結構」與「使用缺點」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：材質薄就接傳音問題</label>
+        <label><input type="checkbox"> 34 題該用 (B) 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) 因應需求擁抱創新</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 minimalist design 想到創新</label>
+        <label><input type="checkbox"> 沒分「物質結構」與「品牌進化」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：簡約設計就是創新</label>
+        <label><input type="checkbox"> 33 題該用 (A) 提前誤填</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) 全球大城市低預算住宿</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨機選</label>
+        <label><input type="checkbox"> 沒注意此處是描述單個膠囊內部</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 31 題已用 (D) 仍重複</label>
+        <label><input type="checkbox"> 把全球分布插入結構描述段</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q33 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">33</span><p class="q-stem">空格 33　第三段中（在「擴展到歐美大城市」之後）</p></div>
+  <ol class="opts">
+    <li class="ok">(A) In response to rising demands, these hotels are embracing a wave of innovation.</li>
+    <li>(B) The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</li>
+    <li>(C) The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</li>
+    <li>(D) Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) — 後文「new chains feature interior design」對應「擁抱創新」</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) 全球大城市低預算住宿</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到大城市再選 (D)</label>
+        <label><input type="checkbox"> 31 題已用過卻重複</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：總結性句子放這裡</label>
+        <label><input type="checkbox"> 忽略後文 new chains 暗示創新</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) 薄牆傳鼾聲</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨機選</label>
+        <label><input type="checkbox"> 把缺點插入發展段</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：擴展遭遇問題</label>
+        <label><input type="checkbox"> 34 題該用 (B) 仍重複</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) 雙層膠囊以梯子上下</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨機選</label>
+        <label><input type="checkbox"> 把結構描述放錯段</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 32 題已用 (C) 仍重複</label>
+        <label><input type="checkbox"> 過度推論：擴展同時介紹結構</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q34 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">34</span><p class="q-stem">空格 34　第四段中（在「沒有空調導致空氣不流通」之後）</p></div>
+  <ol class="opts">
+    <li>(A) In response to rising demands, these hotels are embracing a wave of innovation.</li>
+    <li class="ok">(B) The room's thin plastic walls easily transmit the sound of snoring made by neighboring guests.</li>
+    <li>(C) The chambers are stacked side-by-side, two units high, with the upper rooms reached by a ladder.</li>
+    <li>(D) Today, they provide low-budget, overnight lodging in commerce centers in large cities worldwide.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(B) — 與前句「不適合所有人」並列另一個缺點</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) 雙層膠囊以梯子上下</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把上下舖視為缺點</label>
+        <label><input type="checkbox"> 32 題已用 (C) 仍重複</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：爬梯不便算缺點</label>
+        <label><input type="checkbox"> 忽略缺點段已具備幽閉、共浴等元素</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) 因應需求擁抱創新</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 隨機選</label>
+        <label><input type="checkbox"> 33 題已用 (A) 仍重複</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度反向：在缺點段插入正面創新</label>
+        <label><input type="checkbox"> 忽略段落主題是「不適合每個人」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) 全球大城市低預算住宿</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 31 題已用 (D) 仍重複</label>
+        <label><input type="checkbox"> 隨機選</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：這裡放結語</label>
+        <label><input type="checkbox"> 忽略缺點段才能呼應「不適合所有人」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<div class="section-title">第壹部分　五、閱讀測驗（35–46）<small>每題 2 分　共 24 分</small></div>
+
+<div class="q-passage">
+<strong>第 35–38 題　紅綠燈的演變</strong>　1860 年代英國工程師 John Knight 將鐵路號誌應用於倫敦交通：橫臂示停、斜臂示行，配紅綠瓦斯燈夜用，警員操作。1868 年安裝於西敏橋，但一個月後瓦斯爆炸傷警員而停用。20 世紀初美國各大城市出現各種版本，1920 年底特律警員 William Potts 發明黃燈三色系統。今日自駕車興起，研究者建議未來或許不再需要紅綠燈。
+</div>
+
+<!-- Q35 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">35</span><p class="q-stem">35. What is this passage mainly about?</p></div>
+  <ol class="opts">
+    <li class="ok">(A) The evolution of traffic control systems.</li>
+    <li>(B) The inventors of traffic lights in history.</li>
+    <li>(C) The functions of different traffic signals.</li>
+    <li>(D) The development of modern transportation.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) — 全文按時序講「紅綠燈的演變」直至自駕未來</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) The inventors of traffic lights 紅綠燈發明者們</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 Knight、Potts 兩位人名直接配「發明者」</label>
+        <label><input type="checkbox"> 沒分「主題」與「主要人物」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度聚焦人物，忽略最後一段自駕車議題</label>
+        <label><input type="checkbox"> 把人物傳記化當主題</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) The functions of different traffic signals 不同號誌的功能</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到紅、綠、黃燈描述就配「功能」</label>
+        <label><input type="checkbox"> 不分「演變過程」與「現有功能比較」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：每段在介紹不同號誌</label>
+        <label><input type="checkbox"> 忽略全文是時序敘述非並列比較</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) The development of modern transportation 現代運輸發展</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 self-driving cars 想到「現代交通」</label>
+        <label><input type="checkbox"> 不分「號誌」與「整體運輸」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度泛化：將號誌延伸到整體運輸發展</label>
+        <label><input type="checkbox"> 忽略主軸是 traffic light 演變</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q36 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">36</span><p class="q-stem">36. 圖片題：哪張圖呈現 Knight 提議的號誌？（依原試卷圖片作答，正解 (C)）</p></div>
+  <ol class="opts">
+    <li class="ok">(C) 為原試卷正解（橫臂示停、斜臂示行 + 紅綠瓦斯燈，無黃燈）</li>
+  </ol>
+</article>
+
+<!-- Q37 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">37</span><p class="q-stem">37. Which statement is true according to the passage?</p></div>
+  <ol class="opts">
+    <li>(A) Knight was injured in the explosion of his traffic light.</li>
+    <li>(B) Potts' traffic light was the first one to appear in the USA.</li>
+    <li>(C) The first traffic signal originated from the idea of a traffic director.</li>
+    <li class="ok">(D) Future vehicles may not need traffic lights to cross an intersection.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(D) — 末段明示自駕車可自動調整速度通過路口</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) Knight was injured 騎士受傷</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 explosion 直覺以為發明者受傷</label>
+        <label><input type="checkbox"> 沒讀清「injuring the policeman」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：發明者親自操作號誌</label>
+        <label><input type="checkbox"> 忽略文中明確主詞是 policeman</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) Potts' was the first in USA Potts 是美國首例</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 Potts + Detroit 直覺以為他第一</label>
+        <label><input type="checkbox"> 沒讀「In the early 1900s, versions appeared in big cities」表已有</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：Potts 三色系統 = 美國第一個</label>
+        <label><input type="checkbox"> 忽略 Potts 是「重大突破」非「首例」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) originated from a traffic director 源於交通指揮的想法</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 resembling a traffic director's gestures 反推</label>
+        <label><input type="checkbox"> 沒分「相像」與「源於」差別</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：指揮的手勢 = 號誌起源</label>
+        <label><input type="checkbox"> 忽略文中明確 originated from railway signal</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q38 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">38</span><p class="q-stem">38. 句子「This design was adopted in later traffic light designs across the world.」最適合放在哪一段最後？</p></div>
+  <ol class="opts">
+    <li>(A) Paragraph 1.</li>
+    <li>(B) Paragraph 2.</li>
+    <li class="ok">(C) Paragraph 3.</li>
+    <li>(D) Paragraph 4.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) — 第三段介紹 Potts 三色系統，「This design」指三色系統，被全球採用</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) Paragraph 1</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 Knight 設計誤當「被全球採用」</label>
+        <label><input type="checkbox"> 沒注意第二段已說 banned 直到 1929</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：發明者的設計被採用</label>
+        <label><input type="checkbox"> 忽略 Knight 設計後來中止</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) Paragraph 2</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 banned until 1929 後反推為被採用</label>
+        <label><input type="checkbox"> 沒看清第二段是「失敗紀錄」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：英國設計被全球延用</label>
+        <label><input type="checkbox"> 忽略段末 dropped 與被全球採用矛盾</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) Paragraph 4</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 self-driving cars 以為是新設計</label>
+        <label><input type="checkbox"> 沒分「未來無燈」與「設計被採用」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：自駕車的設計也是 design</label>
+        <label><input type="checkbox"> 忽略第四段是「未來假設」非「歷史延用」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<div class="q-passage">
+<strong>第 39–42 題　恐怖片的好處與壞處</strong>　恐怖片有「安全恐懼」效益：在受控環境下觀看，反而能變強韌；觀眾代入角色學習面對威脅；釋放壓抑情緒。COVID-19 期間恐怖／疫情驚悚片成為最熱門類型。但壞處也存在：焦慮敏感者觀後恐慌、觸發創傷、影響睡眠導致疲倦易怒。14 歲以下兒童觀看恐怖片，成年後焦慮機率較高，並可能對暴力鈍化。
+</div>
+
+<!-- Q39 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">39</span><p class="q-stem">39. What field of study does the research most likely belong to?</p></div>
+  <ol class="opts">
+    <li class="ok">(A) Psychology.</li>
+    <li>(B) Education.</li>
+    <li>(C) Philosophy.</li>
+    <li>(D) Communication.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) Psychology — 全文研究人類情緒、行為、心理影響</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) Education 教育</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「14 歲以下兒童」想到教育</label>
+        <label><input type="checkbox"> 把「learning vicariously」當教育研究</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：兒童 + 學習 = 教育學</label>
+        <label><input type="checkbox"> 忽略全文重點是情緒、焦慮、創傷</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) Philosophy 哲學</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「concept of safe fear」概念就配哲學</label>
+        <label><input type="checkbox"> 不熟哲學主要研究範疇</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：探討恐懼意義 = 哲學</label>
+        <label><input type="checkbox"> 忽略文中提及的具體實證研究</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) Communication 傳播學</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 movies / digital movie apps 想到傳播</label>
+        <label><input type="checkbox"> 把「電影研究」直接歸傳播</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：媒體效應屬傳播學</label>
+        <label><input type="checkbox"> 忽略研究焦點在「個人心理反應」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q40 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">40</span><p class="q-stem">40. What does "learning vicariously" mean?</p></div>
+  <ol class="opts">
+    <li>(A) Making inquiries without reservation.</li>
+    <li class="ok">(B) Gaining knowledge through observation.</li>
+    <li>(C) Acquiring insights by face-to-face interaction.</li>
+    <li>(D) Obtaining information from personal experience.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(B) — vicariously = 透過他人經驗、間接觀察學習</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) Making inquiries without reservation 毫無保留地詢問</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 vicariously 字義隨意選</label>
+        <label><input type="checkbox"> 把「學習」配「詢問」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：觀眾被動發問</label>
+        <label><input type="checkbox"> 忽略觀眾不能向角色發問</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) face-to-face interaction 面對面互動</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把觀影當作「面對面看角色」</label>
+        <label><input type="checkbox"> 不熟 vicarious 是「替代性的」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：銀幕上的角色像面對面</label>
+        <label><input type="checkbox"> 忽略 vicarious 強調「代入」非「互動」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) personal experience 個人經驗</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把「代入角色」誤當作「親身經歷」</label>
+        <label><input type="checkbox"> 不熟 vicarious 與 personal 反義</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：代入 = 自己經歷</label>
+        <label><input type="checkbox"> 忽略前文 take the perspective 是觀察他人視角</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q41 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">41</span><p class="q-stem">41. Which can be inferred about horror movies?</p></div>
+  <ol class="opts">
+    <li>(A) Most horror movie lovers are prone to aggressive behavior.</li>
+    <li>(B) There are far more benefits to horror movies than disadvantages.</li>
+    <li>(C) COVID-19 was an important source of inspiration for horror movies.</li>
+    <li class="ok">(D) Watching horror movies may have a long-term effect on personality.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(D) — 兒童觀後成年焦慮 + 對暴力鈍化都是長期人格影響</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) lovers are prone to aggressive behavior 愛好者易暴力</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「對暴力鈍化」直覺等同「會暴力」</label>
+        <label><input type="checkbox"> 不分「鈍化」與「攻擊性」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：觀眾 = 大多數愛好者</label>
+        <label><input type="checkbox"> 忽略文中限定為「14 歲以下兒童」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) far more benefits than disadvantages 好處遠多於壞處</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到第二段先講好處就以為好處多</label>
+        <label><input type="checkbox"> 沒比較第二段與第三段比例</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：作者偏向支持</label>
+        <label><input type="checkbox"> 忽略文章中性，並未量化比較</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) COVID-19 was source of inspiration 疫情啟發創作</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 COVID-19 + horror 直接配「啟發」</label>
+        <label><input type="checkbox"> 不分「期間最受歡迎」與「啟發創作」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：疫情啟發新片</label>
+        <label><input type="checkbox"> 忽略文中只說「COVID 期間最常被觀看」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q42 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">42</span><p class="q-stem">42. How does the author develop the ideas?</p></div>
+  <ol class="opts">
+    <li>(A) By defining and illustrating a concept.</li>
+    <li class="ok">(B) By showing opposing views of an issue.</li>
+    <li>(C) By presenting cause and effect of a problem.</li>
+    <li>(D) By providing steps for settling a disagreement.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(B) — 二段「好處」vs 三段「壞處」是典型對立觀點寫法</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) defining and illustrating a concept 定義並舉例</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 safe fear 概念就配「定義」</label>
+        <label><input type="checkbox"> 不分「概念定義」與「正反論述」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：safe fear 就是核心概念</label>
+        <label><input type="checkbox"> 忽略文中除了 safe fear 還有 vicarious 等多概念</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) cause and effect of a problem 因果關係</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「導致疲倦、易怒」就配因果</label>
+        <label><input type="checkbox"> 不分「列舉」與「因果」差別</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：好處壞處皆有原因</label>
+        <label><input type="checkbox"> 忽略全文是「正反並列」結構</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) steps for settling disagreement 解決歧見步驟</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 firstly, secondly 想到「步驟」</label>
+        <label><input type="checkbox"> 不分「列點」與「解決歧見」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：作者試圖解決爭議</label>
+        <label><input type="checkbox"> 忽略文末未提供解決方案</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<div class="q-passage">
+<strong>第 43–46 題　俄國酒精文化迷思</strong>　俄國常被視為最依賴酒精的國家，但古俄羅斯（10 世紀基督教傳入前）不釀葡萄酒。伏特加非俄國發明，14 世紀末從法國傳入，本國釀製到 18 世紀中含酒精量仍低。中世紀歐洲最嗜酒者其實是德國人。19 世紀國家壟斷生產帶來大量稅收卻促進消費；工業化壓低售價使低收入者也能購買。同時反酒精運動興起。今日俄國人均消費接近頂端但非第一。
+</div>
+
+<!-- Q43 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">43</span><p class="q-stem">43. What is the main purpose of the second paragraph?</p></div>
+  <ol class="opts">
+    <li>(A) To discuss the content of alcoholic drinks in ancient Europe.</li>
+    <li>(B) To highlight the French impact on Russians' drinking habits.</li>
+    <li class="ok">(C) To argue against the assumption that Russians are born drinkers.</li>
+    <li>(D) To link Russians' vodka consumption to their adoption of Christianity.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(C) — 第二段反駁第一段「俄國人天生愛酒」的迷思</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) ancient Europe 古歐洲酒精含量</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 ancient + alcohol 直覺配</label>
+        <label><input type="checkbox"> 不分主旨與細節</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把段落焦點放在「酒精含量」</label>
+        <label><input type="checkbox"> 忽略 main purpose 應是反駁第一段</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) French impact 法國影響</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「from France」就配法國</label>
+        <label><input type="checkbox"> 不分「事實提及」與「全段主旨」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：強調法國伏特加來源</label>
+        <label><input type="checkbox"> 忽略本段論點是「不是天生愛酒」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) link to Christianity 連結基督教</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 Christianity 直接配「連結」</label>
+        <label><input type="checkbox"> 不分背景資訊與主要目的</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：基督教引入 = 酒精消費起源</label>
+        <label><input type="checkbox"> 忽略文中是「基督教傳入前無葡萄酒」反駁</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q44 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">44</span><p class="q-stem">44. Which is true about vodka production?</p></div>
+  <ol class="opts">
+    <li class="ok">(A) Vodka production in Russia started in the 15th century.</li>
+    <li>(B) The first vodka made from wheat was imported from France.</li>
+    <li>(C) Germany was the biggest vodka producer in medieval Europe.</li>
+    <li>(D) Russian people were encouraged to make their own vodka in the 19th century.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) — 文中明示 The first Russian-made vodka appeared in the 15th century</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) first vodka from wheat from France 法國麥製伏特加</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 France + vodka 配對</label>
+        <label><input type="checkbox"> 把 grape alcohol 看錯成 wheat</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：伏特加從法國來且為麥製</label>
+        <label><input type="checkbox"> 忽略文中是 grape alcohol 葡萄酒精</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) Germany biggest producer 德國最大產地</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「drunk as a German」直覺德國產量大</label>
+        <label><input type="checkbox"> 不分「酒量大」與「生產量大」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：愛喝 = 大量生產</label>
+        <label><input type="checkbox"> 忽略文中只說「最重的飲酒者」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) Russians encouraged in 19th century 19 世紀鼓勵自釀</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 19th century 配「鼓勵」</label>
+        <label><input type="checkbox"> 沒分「壟斷」與「鼓勵自釀」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：政府讓人民自釀以增稅</label>
+        <label><input type="checkbox"> 忽略 state monopoly = 國家壟斷生產，禁止私釀</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q45 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">45</span><p class="q-stem">45. What does "This" in the fourth paragraph refer to?<br>原句：only the government was permitted to produce the alcohol. <strong>This</strong> soon filled the state treasury...</p></div>
+  <ol class="opts">
+    <li>(A) The alcohol.</li>
+    <li>(B) The government.</li>
+    <li>(C) The illegal production.</li>
+    <li class="ok">(D) The state monopoly.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(D) — This 指前句「政府獨占生產」這個壟斷制度</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (A) The alcohol 酒精</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 produce the alcohol 直接配酒精</label>
+        <label><input type="checkbox"> 不熟 This 多指「制度、行為」非「物品」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：酒精填滿國庫</label>
+        <label><input type="checkbox"> 忽略 filled treasury 主詞應是「政策」非「物質」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (A) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) The government 政府</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把最近名詞 government 直接配 This</label>
+        <label><input type="checkbox"> 不熟 This 通常指前一整件事</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：政府填滿自己國庫</label>
+        <label><input type="checkbox"> 忽略 This 是中性指代「政策」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) The illegal production 非法生產</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到上文 illegal production 就配對</label>
+        <label><input type="checkbox"> 不分「政策原因」與「政策本身」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：非法生產也能填國庫</label>
+        <label><input type="checkbox"> 忽略 illegal production 是設立壟斷的「原因」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q46 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">46</span><p class="q-stem">46. How does the author conclude the passage?</p></div>
+  <ol class="opts">
+    <li class="ok">(A) By providing further facts.</li>
+    <li>(B) By summarizing the main ideas.</li>
+    <li>(C) By raising a new problem.</li>
+    <li>(D) By making a future prediction.</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開錯誤答案心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：(A) — 末段補充「人均消費接近頂端但非第一」這個事實</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (B) summarizing main ideas 總結主旨</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到末段直覺「總結」</label>
+        <label><input type="checkbox"> 不分「補充事實」與「總結」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：所有結尾都是總結</label>
+        <label><input type="checkbox"> 忽略末段提供新數據而非回顧</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (B) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (C) raising a new problem 提出新問題</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 problem remains 配「新問題」</label>
+        <label><input type="checkbox"> 不分「持續問題」與「新問題」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：問題仍在 = 提出新問題</label>
+        <label><input type="checkbox"> 忽略 problem remains 是延續舊議題</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (C) 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 (D) making a future prediction 預測未來</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到「持續」誤認為「預測」</label>
+        <label><input type="checkbox"> 不分「現狀延續」與「未來預測」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：問題會繼續 = 預測</label>
+        <label><input type="checkbox"> 忽略文中沒有 will / future 等預測詞</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你選 (D) 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- ============================================ -->
+<!-- 第貳部分　混合題 47-50 -->
+<!-- ============================================ -->
+<div class="section-title">第貳部分　混合題（47–50）<small>共 10 分　動物園論壇題組</small></div>
+
+<div class="q-passage">
+<strong>論壇摘要</strong>　現代動物園強調保育與教育，但動物權益人士質疑代價。十位網友表態：A. Amy（反對籠養）／B. Ben（質疑人類權力）／C. Cathy（傳統家庭活動）／D. Daniel（拯救瀕危）／E. Eddie（北極熊不適環境）／F. Frank（既然存在須提供最佳條件）／G. George（教育意義）／H. Henry（捕獸難放歸）／I. Irene（培養同理心）／J. Jack（商業需求驅動）。
+</div>
+
+<!-- Q47 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">47</span><p class="q-stem">空格 47　Modern zoos serve the purposes of conserving endangered species as well as ______ visitors.</p></div>
+  <ol class="opts">
+    <li class="ok">正解：educating（取自 G. George 的 educational aspect，動詞化）</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開「可能誤填詞」心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：educating — as well as 後接動名詞，與前面 conserving 對等</div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 educate / education（沒做動名詞變化）</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 找到 educational 但忘記字形變化</label>
+        <label><input type="checkbox"> 直接填原形 educate 沒注意對等結構</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道要對等 conserving，但寫成 education 名詞</label>
+        <label><input type="checkbox"> 緊張時忘記 as well as 後跟動名詞</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 entertaining / enjoying</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 想到「動物園娛樂遊客」自己造詞</label>
+        <label><input type="checkbox"> 不熟題目要求「從文中找詞」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道要對等動名詞但找不到 educate 改 entertain</label>
+        <label><input type="checkbox"> 漏看 G. George「educational aspect」線索</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 displaying / exhibiting</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到首段 put on display 直接抓 displaying</label>
+        <label><input type="checkbox"> 不分「展示動物」與「教育遊客」目的</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：展示給遊客看 = 動物園目的</label>
+        <label><input type="checkbox"> 忽略 visitors 是受教者非觀展者</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q48 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">48</span><p class="q-stem">空格 48　the animals ______ there will lose the freedom they enjoy in the wild</p></div>
+  <ol class="opts">
+    <li class="ok">正解：kept（取自 F. Frank 的 live in captivity，及 H. Henry 的 captive-bred；keep animals 被動分詞）</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開「可能誤填詞」心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：kept — animals (that are) kept there 後位修飾被動分詞</div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 caged / captured</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 A. Amy 的 caging animals 直接抓 caged</label>
+        <label><input type="checkbox"> 不熟題目限定「從文中選一個單詞」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 B. Ben 的 capture 也以為對</label>
+        <label><input type="checkbox"> 漏看 keep 是更通用的動詞</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 keep / keeping（沒做被動分詞變化）</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 找到 keep 但忘記變化</label>
+        <label><input type="checkbox"> 不熟「animals (which are) kept」省略結構</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道要分詞但寫成 keeping（主動誤套）</label>
+        <label><input type="checkbox"> 緊張時忘記動物被養為「被動」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你誤填了 confined / restricted</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 confining animals 直接抓 confined</label>
+        <label><input type="checkbox"> 不熟 confine 與 keep 字義差異</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 把 confining 當形容詞填入</label>
+        <label><input type="checkbox"> 過度詮釋：confine 比 keep 更精確</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤填的詞與真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q49 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">49</span><p class="q-stem">49. 哪些網友（A–J）對動物園持「正面」態度？</p></div>
+  <ol class="opts">
+    <li class="ok">正解：C、D、G、I（C 傳統家庭活動；D 拯救瀕危；G 教育意義；I 培養同理心）</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開「可能誤選網友」心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：C + D + G + I — 都直接表達肯定動物園的價值</div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 F（Frank）為正面</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 best possible conditions 配「正面」</label>
+        <label><input type="checkbox"> 不分「條件改善」與「支持動物園存在」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：談條件 = 接受動物園</label>
+        <label><input type="checkbox"> 忽略 if zoos are an inevitability「萬不得已」是條件接受</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤選 F 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你漏選 I（Irene）</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 不熟 fostering empathy 是正面詞</label>
+        <label><input type="checkbox"> 看到 facing extinction 以為負面</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度集中在「滅絕」字眼忽略整體論述</label>
+        <label><input type="checkbox"> 把「培養同理心」誤當作中性</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你漏選 I 的真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你選了 J（Jack）為正面</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 zoos will continue to exist 配「正面」</label>
+        <label><input type="checkbox"> 不分「現實描述」與「正面支持」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：肯定動物園商業價值就算正面</label>
+        <label><input type="checkbox"> 忽略 J 中性敘述：「不論你喜不喜歡」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤選 J 的真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- Q50 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">50</span><p class="q-stem">50. 論壇上哪個片語意指「培養理解他人感受的能力」？</p></div>
+  <ol class="opts">
+    <li class="ok">正解：fostering empathy（出自 I. Irene 段）</li>
+  </ol>
+  <details class="ana">
+    <summary><span>🔍 展開「可能誤答片語」心理剖析</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">✅ 正解：fostering empathy — empathy 即「理解並分享他人感受」</div>
+
+      <div class="wa">
+        <h4>❌ 若你寫了 wholesome family activity 健全家庭活動</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 family activity 想到「分享感受」</label>
+        <label><input type="checkbox"> 不分「家庭活動」與「培養同理心」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度推論：家庭活動能促進感情</label>
+        <label><input type="checkbox"> 忽略題目限定「對他人感受的理解能力」</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤答的片語與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你寫了 sensitive and compassionate 敏感且富同情心</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 抓到形容詞「同情心」就以為是答案</label>
+        <label><input type="checkbox"> 不分「形容詞」與「動名詞片語」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 知道意思相近，但格式錯誤</label>
+        <label><input type="checkbox"> 忽略題目要 phrase = fostering empathy</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤答的片語與真實思考路徑…">
+      </div>
+
+      <div class="wa">
+        <h4>❌ 若你寫了 unforgettable experiences 難忘經驗</h4>
+        <p class="lvl lvl-8">八級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 看到 wildlife encounters 配「經驗」</label>
+        <label><input type="checkbox"> 不分「難忘」與「同理心」</label>
+        <p class="lvl lvl-10">十級分學生可能誤選原因</p>
+        <label><input type="checkbox"> 過度詮釋：難忘經驗也培養感受能力</label>
+        <label><input type="checkbox"> 漏看 I 段是更精準對應</label>
+        <p class="lvl lvl-other">其他原因</p>
+        <input type="text" placeholder="寫下你誤答的片語與真實思考路徑…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- ============================================ -->
+<!-- 第參部分　非選擇題　反思區 -->
+<!-- ============================================ -->
+<div class="section-title">第參部分　一、中譯英反思（51–52）<small>共 8 分　請標記你「不會寫」「亂猜」的部分</small></div>
+
+<!-- 中譯英 1 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">51</span><p class="q-stem">中譯英 1：<br>人類的想像和創意是科技進步最大的驅動力。</p></div>
+
+  <div style="background:#FAF5EA;padding:16px;border-radius:10px;margin-bottom:12px;border-left:4px solid #4A7C59;">
+    <strong style="color:#4A7C59;">參考翻譯（將難點分段標記）：</strong><br>
+    <span style="font-size:20px;line-height:2;">
+      【①人類的】<u>Human</u> / Humans'
+      【②想像和創意】<u>imagination and creativity</u>
+      【③是…驅動力】<u>are the (biggest) driving force(s)</u>
+      【④最大的】<u>greatest / biggest</u>
+      【⑤科技進步的】<u>of / behind technological advancement (progress)</u>.
+    </span>
+  </div>
+
+  <details class="ana">
+    <summary><span>📝 展開「我哪裡不會寫／亂猜」反思區</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">💡 請勾選你「考試時不確定」「靠感覺亂寫」的部分（複選）</div>
+
+      <div class="wa">
+        <h4>🔸 難點 ①「人類的」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 Human's（單數所有格但 human 在此是形容詞）</label>
+        <label><input type="checkbox"> 寫成 People's 怕用錯</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 mankind / humanity 但不確定搭配</label>
+        <label><input type="checkbox"> 不知用 Human imagination（形容詞）還是 Humans' imagination（所有格）</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 Human's 加了一撇，因為猜成所有格…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ②「想像和創意」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 把 imagination 拼成 imagine / imaginary</label>
+        <label><input type="checkbox"> creative 與 creativity 詞性不分</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 ingenuity 取代 creativity 但拼不出</label>
+        <label><input type="checkbox"> 不確定兩者用 and 連接時要不要加 the</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫成 imagine and create 兩個動詞…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ③「是…驅動力」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 主詞兩個（imagination + creativity）動詞用 is 還是 are 猶豫</label>
+        <label><input type="checkbox"> 不會寫「驅動力」直接省略</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 driver / motivator 替代 driving force</label>
+        <label><input type="checkbox"> 不確定 force 要單數還複數</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 push 動詞當「推動」名詞用…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ④「最大的」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 用 most big 不分最高級規則</label>
+        <label><input type="checkbox"> 寫成 the biggest 但忘記 the</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 the greatest 但怕「greatest force」太誇張</label>
+        <label><input type="checkbox"> 不確定要不要加 the</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 a biggest 用了不定冠詞…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ⑤「科技進步」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 science progress 而非 technological</label>
+        <label><input type="checkbox"> technology 拼字錯誤</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 advancement 但不確定拼字</label>
+        <label><input type="checkbox"> behind / of / in 介系詞猶豫</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 progress in technology 不知道對不對…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 整句結構／其他困難</h4>
+        <p class="lvl lvl-other">我整句寫作的最大困難（自填）</p>
+        <input type="text" placeholder="例：兩個並列主詞讓我整個動詞時態大亂…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- 中譯英 2 -->
+<article class="q">
+  <div class="q-head"><span class="q-num">52</span><p class="q-stem">中譯英 2：<br>過去在科幻電影中出現的神奇物件，現在正逐一成真。</p></div>
+
+  <div style="background:#FAF5EA;padding:16px;border-radius:10px;margin-bottom:12px;border-left:4px solid #4A7C59;">
+    <strong style="color:#4A7C59;">參考翻譯（將難點分段標記）：</strong><br>
+    <span style="font-size:20px;line-height:2;">
+      【①神奇物件】<u>The magical (amazing/wondrous) objects</u>
+      【②過去出現於】<u>that (once) appeared in / used to appear in</u>
+      【③科幻電影】<u>science fiction (sci-fi) movies / films</u>
+      【④現在正逐一】<u>are now... one by one / one after another</u>
+      【⑤成真】<u>coming true / being realized</u>.
+    </span>
+  </div>
+
+  <details class="ana">
+    <summary><span>📝 展開「我哪裡不會寫／亂猜」反思區</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">💡 請勾選你「考試時不確定」「靠感覺亂寫」的部分（複選）</div>
+
+      <div class="wa">
+        <h4>🔸 難點 ①「神奇物件」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 magic objects（magic 形容詞用法奇怪）</label>
+        <label><input type="checkbox"> 不會寫「物件」改用 things</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 wondrous / fantastical 但不確定拼字</label>
+        <label><input type="checkbox"> 不知 device / gadget 哪個更精準</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 magic things 太簡單怕失分…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ②「過去在…出現的」（形容詞子句）</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 不會用關係代名詞寫成兩個短句</label>
+        <label><input type="checkbox"> 把 that 寫成 which 但時態錯</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用分詞「once appearing」但時態不對</label>
+        <label><input type="checkbox"> appeared / used to appear 不確定哪個</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫成兩句：物件出現過了。它們現在…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ③「科幻電影」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 science movies 漏掉 fiction</label>
+        <label><input type="checkbox"> sci-fi 不確定能不能用</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 不確定 movies 還是 films 哪個正式</label>
+        <label><input type="checkbox"> 介系詞 in / on movies 不確定</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 SF 縮寫怕看不懂…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ④「現在正逐一」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 不會寫現在進行式 are coming</label>
+        <label><input type="checkbox"> 「逐一」直接省略不寫</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> one by one / one after another / gradually 三選一猶豫</label>
+        <label><input type="checkbox"> 副詞位置不確定</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 step by step 完全用錯片語…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 難點 ⑤「成真」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫成 become true（come true 才對）</label>
+        <label><input type="checkbox"> 寫成 be true 漏掉動態感</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 being realized 被動但拼字沒把握</label>
+        <label><input type="checkbox"> turn into reality / materialize 想用但怕用錯</label>
+        <p class="lvl lvl-other">我自己的情況（自填）</p>
+        <input type="text" placeholder="例：我寫 happen 動詞單數複數搞錯…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 整句結構／其他困難</h4>
+        <p class="lvl lvl-other">我整句寫作的最大困難（自填）</p>
+        <input type="text" placeholder="例：形容詞子句太長把主動詞寫不見…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- ============================================ -->
+<!-- 第參部分　二、英文作文反思 -->
+<!-- ============================================ -->
+<div class="section-title">第參部分　二、英文作文反思（53）<small>共 20 分　主題：颱風假的兩種情景</small></div>
+
+<article class="q">
+  <div class="q-head"><span class="q-num">53</span><p class="q-stem">英文作文：<br>每逢颱風逼近臺灣，各縣市政府會依氣象預報決定隔日是否停止上班上課。請以此為題，文分兩段：第一段根據圖片描述颱風假可能出現的兩種對比情景；第二段說明你對放颱風假的看法與經驗。</p></div>
+
+  <div style="background:#FAF5EA;padding:16px;border-radius:10px;margin-bottom:12px;border-left:4px solid #4A7C59;">
+    <strong style="color:#4A7C59;">作文骨架建議（兩段式）：</strong><br>
+    <span style="font-size:19px;line-height:1.9;">
+      <strong>第一段（描述兩種對比情景）：</strong> 主題句 → 情景一（如：暴雨中強風吹倒招牌、淹水、待在家避難）→ 情景二（如：天空放晴、街道擠滿出遊人潮、被戲稱「颱風假變天氣假」）→ 對比小結句<br>
+      <strong>第二段（看法與經驗）：</strong> 自身經驗（如：曾經放假後天空放晴／曾經未放假途中遇暴雨）→ 看法 1（縣市首長兩難）→ 看法 2（個人應有的應對態度）→ 收尾句
+    </span>
+  </div>
+
+  <details class="ana">
+    <summary><span>📝 展開「我寫作時遇到的困難」反思區</span><span class="arrow">▼</span></summary>
+    <div class="ac">
+      <div class="key">💡 請勾選你寫這篇作文時「卡關」「亂寫」「省略」的部分（複選）</div>
+
+      <div class="wa">
+        <h4>🔸 困難 1　主題詞彙（typhoon, day-off, suspend, forecast）</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 不會寫「颱風假」typhoon day-off / typhoon holiday</label>
+        <label><input type="checkbox"> 把 typhoon 拼成 tycoon / typhone</label>
+        <label><input type="checkbox"> 不會寫「氣象預報」weather forecast</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 suspend classes / call off work 但搭配不熟</label>
+        <label><input type="checkbox"> 想用 issue a typhoon warning 但怕拼錯</label>
+        <p class="lvl lvl-other">我自己的詞彙困難（自填）</p>
+        <input type="text" placeholder="例：「縣市政府」直接寫 government 太籠統…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 2　第一段「描述對比圖片」的句型</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 整段都用 In picture A... In picture B... 太單調</label>
+        <label><input type="checkbox"> 不會用 in contrast / on the other hand 連接</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 As shown in the pictures 但句構亂</label>
+        <label><input type="checkbox"> 想用 while / whereas 對比連接詞</label>
+        <p class="lvl lvl-other">我自己的句型困難（自填）</p>
+        <input type="text" placeholder="例：我整段都用「There is...」開頭…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 3　描寫「災情」情景</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 不會寫「淹水」flooded streets</label>
+        <label><input type="checkbox"> 不會寫「強風吹倒」blown down by strong winds</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 torrential rain 但拼字沒把握</label>
+        <label><input type="checkbox"> 想用 power outage / fallen trees 但怕誤用</label>
+        <p class="lvl lvl-other">我自己的情景描寫困難（自填）</p>
+        <input type="text" placeholder="例：我整段都用 bad weather 太籠統…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 4　描寫「天氣放晴出遊」情景</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 不會寫「天空放晴」the sky clears up</label>
+        <label><input type="checkbox"> 不會寫「街道擠滿人」streets are packed</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 unexpected sunshine / blessing in disguise 但怕誤用</label>
+        <label><input type="checkbox"> 想用 jokingly called 但結構不確定</label>
+        <p class="lvl lvl-other">我自己的情景描寫困難（自填）</p>
+        <input type="text" placeholder="例：我把放晴寫成 sunny day too 不夠精彩…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 5　第二段「分享個人經驗」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 想不出具體經驗，硬擠一個</label>
+        <label><input type="checkbox"> 經驗描述用過去式但時態忽略</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 Last year, I once experienced... 但句構複雜</label>
+        <label><input type="checkbox"> 不知道經驗該寫多長</label>
+        <p class="lvl lvl-other">我自己的經驗困難（自填）</p>
+        <input type="text" placeholder="例：我直接編一個經驗，怕太假但時間不夠…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 6　表達「個人看法」</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 整段只用 I think... I think... 重複</label>
+        <label><input type="checkbox"> 不會表達兩難 dilemma</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 想用 In my opinion / From my perspective 但選擇困難</label>
+        <label><input type="checkbox"> 想討論「首長的兩難」但不會表達 face a dilemma</label>
+        <p class="lvl lvl-other">我自己的看法表達困難（自填）</p>
+        <input type="text" placeholder="例：我直接說「政府很難決定」太簡單…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 7　時態、語態、主動詞一致</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 描述圖片用過去式（應為現在式）</label>
+        <label><input type="checkbox"> 經驗用現在式（應為過去式）</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 主詞 government / mayor 後動詞混亂</label>
+        <label><input type="checkbox"> 被動語態與主動語態混用</label>
+        <p class="lvl lvl-other">我自己的文法困難（自填）</p>
+        <input type="text" placeholder="例：我整篇時態混用，描述景象用過去式…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 8　時間／字數控管</h4>
+        <p class="lvl lvl-8">八級分學生常見困難</p>
+        <label><input type="checkbox"> 寫到一半時間不夠，第二段草草結束</label>
+        <label><input type="checkbox"> 字數沒達 120 字</label>
+        <p class="lvl lvl-10">十級分學生常見困難</p>
+        <label><input type="checkbox"> 第一段描述太細導致第二段擠壓</label>
+        <label><input type="checkbox"> 想加細節寫到 200 字超出建議</label>
+        <p class="lvl lvl-other">我自己的時間／字數情況（自填）</p>
+        <input type="text" placeholder="例：我只寫 90 字就交卷因為想不出第二段…">
+      </div>
+
+      <div class="wa">
+        <h4>🔸 困難 9　最讓我崩潰的部分</h4>
+        <p class="lvl lvl-other">本次作文我覺得最困難 ／ 最後悔沒寫好的地方（自填一段話）</p>
+        <input type="text" placeholder="例：兩個情景的對比寫得不夠鮮明，看起來像同一個…">
+      </div>
+    </div>
+  </details>
+</article>
+
+<!-- 送出區 -->
+<div class="submit-area">
+  <button class="big-btn" id="generate-report">📤 送出　產生錯誤分析報告</button>
+</div>
+
+<!-- 報告 Modal -->
+<div class="modal-bg" id="report-modal">
+  <div class="modal-content">
+    <h3>📄 你的錯誤分析報告</h3>
+    <p class="hint">請點下方「複製到剪貼簿」按鈕，再貼到 LINE 群組傳給林威老師。<br>手機若複製失敗，可長按下方文字框選取全部後複製。</p>
+    <textarea id="report-text" readonly></textarea>
+    <div class="modal-btns">
+      <button class="big-btn" id="copy-report">📋 複製到剪貼簿</button>
+      <button class="secondary-btn" id="close-modal">關閉</button>
+    </div>
+  </div>
+</div>
+
+<div class="foot">
+  ✅ 全份完成　1–46 選擇題　＋　47–50 混合題　＋　51–52 中譯英反思　＋　53 作文反思<br>
+  💡 使用建議：考完試 24 小時內完成本份反思，誤選原因記憶最鮮明<br>
+  📝 填寫完畢請點上方「送出」產生報告，貼到 LINE 給老師<br><br>
+  <strong>林威老師與 AI agent 團隊</strong>
+</div>
+
+</div>
+<script>
+(function(){
+  var TITLE = '114學測英文 錯誤分析報告';
+
+  function getStudentInfo(){
+    return {
+      name: (document.getElementById('student-name').value || '').trim() || '(未填寫)',
+      cls:  (document.getElementById('student-class').value || '').trim() || '(未填寫)',
+      seat: (document.getElementById('student-seat').value || '').trim() || '(未填寫)',
+      date: document.getElementById('exam-date').value || new Date().toISOString().slice(0,10)
+    };
+  }
+
+  function generateReport(){
+    var info = getStudentInfo();
+    var report = '';
+    report += '═══════════════════════════════\n';
+    report += '  ' + TITLE + '\n';
+    report += '═══════════════════════════════\n\n';
+    report += '【學生基本資料】\n';
+    report += '姓名：' + info.name + '\n';
+    report += '班級：' + info.cls + '\n';
+    report += '座號：' + info.seat + '\n';
+    report += '完成日期：' + info.date + '\n\n';
+    report += '═══════════════════════════════\n';
+    report += '【錯誤分析詳情】\n';
+    report += '═══════════════════════════════\n';
+
+    var articles = document.querySelectorAll('article.q');
+    var totalChecked = 0;
+    var totalQuestions = 0;
+    var totalOwn = 0;
+
+    articles.forEach(function(article){
+      var qNumEl = article.querySelector('.q-num');
+      if (!qNumEl) return;
+      var qNum = qNumEl.textContent.trim();
+      var stemEl = article.querySelector('.q-stem');
+      var stem = stemEl ? stemEl.textContent.trim().replace(/\s+/g, ' ') : '';
+      var stemShort = stem.length > 80 ? stem.substring(0, 80) + '...' : stem;
+      var correct = article.querySelector('.opts li.ok');
+      var correctText = correct ? correct.textContent.trim().replace('✓ 正解', '').trim() : '';
+
+      var questionReport = '';
+      var hasContent = false;
+
+      var waList = article.querySelectorAll('.wa');
+      waList.forEach(function(wa){
+        var titleEl = wa.querySelector('h4');
+        var title = titleEl ? titleEl.textContent.trim() : '';
+        var currentLevel = '';
+        var checked8 = [];
+        var checked10 = [];
+        var ownReason = '';
+
+        Array.prototype.forEach.call(wa.children, function(child){
+          if (child.tagName === 'P' && child.classList) {
+            if (child.classList.contains('lvl-8')) currentLevel = '8';
+            else if (child.classList.contains('lvl-10')) currentLevel = '10';
+            else if (child.classList.contains('lvl-other')) currentLevel = 'other';
+          } else if (child.tagName === 'LABEL') {
+            var cb = child.querySelector('input[type="checkbox"]');
+            if (cb && cb.checked) {
+              var text = (child.textContent || '').trim();
+              if (currentLevel === '8') checked8.push(text);
+              else if (currentLevel === '10') checked10.push(text);
+              totalChecked++;
+            }
+          } else if (child.tagName === 'INPUT' && child.type === 'text') {
+            if (child.value && child.value.trim()) {
+              ownReason = child.value.trim();
+            }
+          }
+        });
+
+        if (checked8.length || checked10.length || ownReason) {
+          questionReport += '\n' + title + '\n';
+          if (checked8.length) {
+            questionReport += '  【AI 八級分視角】\n';
+            checked8.forEach(function(t){ questionReport += '    ✓ ' + t + '\n'; });
+          }
+          if (checked10.length) {
+            questionReport += '  【AI 十級分視角】\n';
+            checked10.forEach(function(t){ questionReport += '    ✓ ' + t + '\n'; });
+          }
+          if (ownReason) {
+            questionReport += '  【我的補充】\n';
+            questionReport += '    📝 ' + ownReason + '\n';
+            totalOwn++;
+          }
+          hasContent = true;
+        }
+      });
+
+      if (hasContent) {
+        totalQuestions++;
+        report += '\n────────────────\n';
+        report += '▌第 ' + qNum + ' 題\n';
+        if (stemShort) report += '  題目：' + stemShort + '\n';
+        if (correctText) report += '  正解：' + correctText + '\n';
+        report += questionReport;
+      }
+    });
+
+    report += '\n═══════════════════════════════\n';
+    report += '【統計】\n';
+    report += '  涵蓋題數：' + totalQuestions + ' 題\n';
+    report += '  AI 提供原因勾選：' + totalChecked + ' 條\n';
+    report += '  自填補充：' + totalOwn + ' 條\n';
+    report += '  送出時間：' + new Date().toLocaleString('zh-TW') + '\n';
+    report += '═══════════════════════════════\n';
+    report += '\n— 林威老師與 AI agent 團隊 —';
+
+    if (totalQuestions === 0) {
+      report += '\n\n（提醒：你還沒勾選任何錯誤分析喔！請先勾選後再送出。）';
+    }
+    return report;
+  }
+
+  var dateEl = document.getElementById('exam-date');
+  if (dateEl && !dateEl.value) {
+    try { dateEl.valueAsDate = new Date(); } catch(e){}
+  }
+
+  document.getElementById('generate-report').addEventListener('click', function(){
+    var txt = generateReport();
+    var ta = document.getElementById('report-text');
+    ta.value = txt;
+    document.getElementById('report-modal').classList.add('active');
+    setTimeout(function(){ ta.scrollTop = 0; }, 50);
+  });
+
+  document.getElementById('copy-report').addEventListener('click', function(){
+    var ta = document.getElementById('report-text');
+    var btn = this;
+    ta.select();
+    ta.setSelectionRange(0, 999999);
+    function showCopied(){
+      btn.textContent = '✅ 已複製！可貼到 LINE 了';
+      setTimeout(function(){ btn.textContent = '📋 複製到剪貼簿'; }, 2500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(ta.value).then(showCopied).catch(function(){
+        try { document.execCommand('copy'); showCopied(); } catch(e){ alert('複製失敗，請長按文字框手動全選複製'); }
+      });
+    } else {
+      try { document.execCommand('copy'); showCopied(); } catch(e){ alert('複製失敗，請長按文字框手動全選複製'); }
+    }
+  });
+
+  document.getElementById('close-modal').addEventListener('click', function(){
+    document.getElementById('report-modal').classList.remove('active');
+  });
+
+  document.getElementById('report-modal').addEventListener('click', function(e){
+    if (e.target === this) this.classList.remove('active');
+  });
+})();
+</script>
+</body>
+</html>
