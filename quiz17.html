@@ -1,103 +1,983 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
-        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
-        .options-list { list-style: none; padding: 0; }
-        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
-        .option-item:hover { background-color: #f9f9f9; }
-        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
-        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
-        .special-btn:hover { background-color: #f0f0f0; }
-        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
-        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
-        .tool-link:hover { color: #333; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
-        .overlay-content { max-width: 500px; margin: 0 auto; }
-        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
-        .close-btn:hover { color: #666; }
-        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
-        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
-        .eg-item { margin-bottom: 10px; }
-        .kk-text { color: #666; font-style: italic; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>癌症完全指南｜200回原子習慣架構課程</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Noto+Serif+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F6F8FC;
+    --text: #202938;
+    --muted: #647184;
+    --accent-warm: #F97316;
+    --accent-deep: #2563EB;
+    --accent-soft: #FBBF24;
+    --accent-sage: #10B981;
+    --accent-rose: #E11D48;
+    --accent-violet: #7C3AED;
+    --accent-cyan: #0891B2;
+    --card-bg: #FFFFFF;
+    --border: #DDE5F0;
+    --shadow: rgba(31, 41, 55, 0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'BIZ UDPGothic', 'Noto Serif TC', serif;
+    background:
+      radial-gradient(circle at top left, rgba(37, 99, 235, 0.14), transparent 32vw),
+      radial-gradient(circle at top right, rgba(225, 29, 72, 0.12), transparent 30vw),
+      linear-gradient(180deg, #F6F8FC 0%, #FFF7ED 54%, #F0FDF4 100%);
+    color: var(--text);
+    font-size: clamp(17px, 1.55vw, 22px);
+    line-height: 1.85;
+    padding: clamp(22px, 4vw, 60px) clamp(14px, 3vw, 24px);
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ===== 頂部 Hero ===== */
+  .hero {
+    text-align: center;
+    padding: clamp(42px, 7vw, 76px) clamp(18px, 4vw, 48px);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 18px;
+    margin-bottom: clamp(44px, 7vw, 80px);
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(239, 246, 255, 0.86)),
+      linear-gradient(135deg, rgba(37, 99, 235, 0.16), rgba(249, 115, 22, 0.12));
+    box-shadow: 0 24px 60px rgba(30, 41, 59, 0.12);
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    color: var(--accent-warm);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(34px, 7vw, 62px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 20px;
+    letter-spacing: 0;
+    line-height: 1.3;
+  }
+
+  .hero .subtitle {
+    font-size: 20px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .meta-item {
+    text-align: center;
+    min-width: 120px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.78);
+    border: 1px solid rgba(221, 229, 240, 0.88);
+  }
+
+  .meta-number {
+    font-size: 36px;
+    color: var(--accent-deep);
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+  }
+
+  .meta-label {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  /* ===== 課程與聯絡連結 ===== */
+  .course-links {
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(240, 253, 250, 0.92)),
+      linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(16, 185, 129, 0.10));
+    border: 1px solid rgba(221, 229, 240, 0.9);
+    border-top: 5px solid var(--accent-deep);
+    border-radius: 18px;
+    box-shadow: 0 18px 50px rgba(30, 41, 59, 0.12);
+    padding: clamp(22px, 4vw, 34px);
+    margin: 0 0 40px;
+  }
+
+  .course-links.bottom {
+    margin: 80px 0 0;
+  }
+
+  .course-links h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(23px, 3vw, 30px);
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+
+  .link-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .link-card {
+    display: block;
+    height: 100%;
+    padding: clamp(18px, 2.4vw, 24px);
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 14px;
+    background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
+    color: var(--text);
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .link-card:nth-child(2) {
+    background: linear-gradient(135deg, #F0FDFA 0%, #FFFFFF 100%);
+  }
+
+  .link-card:nth-child(3) {
+    background: linear-gradient(135deg, #FFF1F2 0%, #FFFFFF 100%);
+  }
+
+  .link-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px var(--shadow);
+  }
+
+  .link-card .label {
+    display: block;
+    font-size: clamp(17px, 2vw, 20px);
+    font-weight: 700;
+    color: var(--accent-deep);
+    margin-bottom: 8px;
+    line-height: 1.45;
+  }
+
+  .link-card:nth-child(2) .label { color: var(--accent-sage); }
+  .link-card:nth-child(3) .label { color: var(--accent-rose); }
+
+  .link-card .desc {
+    display: block;
+    font-size: clamp(14px, 1.5vw, 15px);
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ===== 學習哲學 ===== */
+  .philosophy {
+    background: var(--card-bg);
+    padding: clamp(28px, 5vw, 50px);
+    border-radius: 18px;
+    box-shadow: 0 14px 40px rgba(30, 41, 59, 0.10);
+    margin-bottom: clamp(48px, 7vw, 80px);
+    border-left: 5px solid var(--accent-violet);
+  }
+
+  .philosophy h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 28px;
+    color: var(--accent-violet);
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+
+  .philosophy p {
+    font-size: clamp(16px, 1.7vw, 19px);
+    color: var(--text);
+    line-height: 2;
+    margin-bottom: 16px;
+  }
+
+  .philosophy .quote {
+    font-style: italic;
+    color: var(--muted);
+    border-left: 3px solid var(--accent-rose);
+    padding-left: 24px;
+    margin: 24px 0;
+    font-size: clamp(15px, 1.7vw, 18px);
+  }
+
+  /* ===== 區塊標題 ===== */
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(28px, 4.2vw, 38px);
+    color: var(--text);
+    margin: clamp(54px, 7vw, 84px) 0 clamp(24px, 4vw, 40px);
+    padding-bottom: 16px;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(90deg, var(--accent-deep), var(--accent-sage), var(--accent-warm)) 1;
+    font-weight: 700;
+  }
+
+  .section-subtitle {
+    font-size: clamp(15px, 1.7vw, 18px);
+    color: var(--muted);
+    margin-bottom: 40px;
+    line-height: 1.8;
+  }
+
+  /* ===== 主軸卡片 ===== */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .pillar {
+    background: var(--card-bg);
+    padding: clamp(26px, 3.4vw, 36px) clamp(22px, 3vw, 28px);
+    border-radius: 16px;
+    box-shadow: 0 12px 34px rgba(30, 41, 59, 0.10);
+    border-top: 5px solid var(--accent-warm);
+    transition: transform 0.3s ease;
+  }
+
+  .pillar:nth-child(2) { border-top-color: var(--accent-deep); }
+  .pillar:nth-child(3) { border-top-color: var(--accent-sage); }
+  .pillar:nth-child(4) { border-top-color: var(--accent-rose); }
+
+  .pillar:hover { transform: translateY(-4px); }
+
+  .pillar-num {
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: var(--accent-warm);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .pillar h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(21px, 2.5vw, 24px);
+    margin: 12px 0 16px;
+    color: var(--text);
+  }
+
+  .pillar .episodes {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .pillar p {
+    font-size: clamp(14px, 1.5vw, 16px);
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* ===== 模組區塊 ===== */
+  .module {
+    background: var(--card-bg);
+    margin-bottom: 32px;
+    border-radius: 18px;
+    box-shadow: 0 14px 34px rgba(30, 41, 59, 0.10);
+    overflow: hidden;
+  }
+
+  .module-header {
+    background: linear-gradient(135deg, #EFF6FF 0%, #F0FDFA 100%);
+    padding: clamp(24px, 4vw, 36px) clamp(22px, 4vw, 42px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .module:nth-of-type(4n + 1) .module-header { background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); }
+  .module:nth-of-type(4n + 2) .module-header { background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%); }
+  .module:nth-of-type(4n + 3) .module-header { background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%); }
+  .module:nth-of-type(4n + 4) .module-header { background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%); }
+
+  .module-tag {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--accent-warm);
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .module-header h3 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(23px, 3vw, 30px);
+    color: var(--text);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .module-header .range {
+    font-size: 16px;
+    color: var(--muted);
+    font-family: 'BIZ UDPGothic', sans-serif;
+  }
+
+  .module-header .desc {
+    font-size: clamp(15px, 1.7vw, 17px);
+    color: var(--text);
+    margin-top: 16px;
+    line-height: 1.8;
+  }
+
+  .episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: 0;
+  }
+
+  .episode {
+    padding: clamp(15px, 2.4vw, 18px) clamp(16px, 3vw, 24px);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: background 0.2s ease;
+  }
+
+  .episode:hover { background: #F8FAFC; }
+
+  .ep-num {
+    font-family: 'BIZ UDPGothic', sans-serif;
+    font-size: 13px;
+    color: var(--accent-cyan);
+    font-weight: 700;
+    min-width: 38px;
+    padding-top: 2px;
+  }
+
+  .ep-title {
+    font-size: clamp(14px, 1.55vw, 16px);
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  /* ===== 學習路徑 ===== */
+  .path-section {
+    background: linear-gradient(135deg, #EEF2FF 0%, #ECFEFF 50%, #FFF7ED 100%);
+    padding: clamp(28px, 5vw, 60px) clamp(22px, 5vw, 50px);
+    border-radius: 18px;
+    margin-top: clamp(54px, 7vw, 80px);
+    box-shadow: 0 18px 50px rgba(30, 41, 59, 0.10);
+  }
+
+  .path-step {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px dashed var(--border);
+  }
+
+  .path-step:last-child { border-bottom: none; }
+
+  .path-num {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 48px;
+    color: var(--accent-rose);
+    font-weight: 700;
+    min-width: 80px;
+    line-height: 1;
+  }
+
+  .path-content h4 {
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+
+  .path-content p {
+    font-size: 17px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  /* ===== 頁尾 ===== */
+  footer {
+    text-align: center;
+    margin-top: 100px;
+    padding: 40px 20px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ===== 響應式 ===== */
+  @media (max-width: 980px) {
+    .link-list { grid-template-columns: 1fr; }
+    .hero-meta { gap: 14px; }
+    .meta-item { flex: 1 1 150px; }
+  }
+
+  @media (max-width: 768px) {
+    body { font-size: 17px; padding: 22px 14px; line-height: 1.75; }
+    .container { max-width: 100%; }
+    .hero { margin-bottom: 46px; }
+    .hero h1 { font-size: 36px; }
+    .hero .subtitle { font-size: 17px; line-height: 1.7; }
+    .hero p br { display: none; }
+    .hero-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .meta-item { min-width: 0; padding: 14px 10px; }
+    .meta-number { font-size: 30px; }
+    .meta-label { font-size: 11px; letter-spacing: 0.08em; }
+    .section-title { font-size: 28px; line-height: 1.35; }
+    .philosophy, .path-section { padding: 28px 22px; }
+    .philosophy p { line-height: 1.85; }
+    .module-header { padding: 24px 24px; }
+    .episodes-grid { grid-template-columns: 1fr; }
+    .episode { border-right: none; }
+    .pillars { grid-template-columns: 1fr; }
+    .course-links { padding: 24px; }
+    .link-list { grid-template-columns: 1fr; }
+    .link-card { border-radius: 12px; }
+    .path-step { gap: 18px; }
+    .path-num { min-width: 52px; font-size: 36px; }
+    footer { margin-top: 70px; }
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 14px 10px; }
+    .course-links,
+    .hero,
+    .philosophy,
+    .module,
+    .path-section {
+      border-radius: 14px;
+    }
+    .course-links h2 { font-size: 22px; }
+    .hero { padding: 34px 16px; }
+    .hero-tag { font-size: 11px; letter-spacing: 0.14em; }
+    .hero h1 { font-size: 32px; }
+    .hero-meta { grid-template-columns: 1fr; }
+    .pillar { padding: 24px 20px; }
+    .module-header h3 { font-size: 22px; }
+    .episode { gap: 10px; }
+    .ep-num { min-width: 32px; font-size: 12px; }
+    .path-step { display: block; }
+    .path-num { margin-bottom: 10px; }
+  }
+
+  /* 滾動進度條 */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: var(--accent-warm);
+    z-index: 1000;
+    transition: width 0.1s ease;
+  }
+</style>
 </head>
 <body>
+
+<div class="progress-bar" id="progressBar"></div>
+
 <div class="container">
-    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
-    <div class="question">The design was innovative; however, the lack of user-friendly features greatly _______ its appeal to customers.</div>
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) weakened <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) halted <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) implied <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) held <span class="info-icon">ⓘ</span></div>
+
+  <section class="course-links" aria-label="七月課程與聯絡資訊">
+    <h2>七月課程與聯絡資訊</h2>
+    <div class="link-list">
+      <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <span class="label">七月課程介紹：錯中學ECHO 計劃</span>
+        <span class="desc">今年七月開課，透過錯誤分析、回饋循環與 ECHO 式練習，建立可持續修正的學習節奏。</span>
+      </a>
+      <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+        <span class="label">學生分析</span>
+        <span class="desc">今年七月課程搭配的學生分析工具，協助整理學習狀況、弱點分布與後續複習方向。</span>
+      </a>
+      <a class="link-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+        <span class="label">我的 Line 帳號：linwayet</span>
+        <span class="desc">課程詢問、報名與學習規劃討論，可透過 Line 聯絡。</span>
+      </a>
     </div>
-    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
-    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
+  </section>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-tag">CANCER · ATOMIC HABITS CURRICULUM</div>
+    <h1>癌症完全指南</h1>
+    <p class="subtitle">從分子機制到臨床治療｜200回循序漸進的進階課程</p>
+    <p style="font-size: 16px; color: var(--muted); max-width: 720px; margin: 0 auto;">
+      以「原子習慣」概念設計：每日一回，每回 15 分鐘，<br>
+      將龐雜的癌症知識切分為可消化的最小學習單位。
+    </p>
+
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-number">200</span>
+        <div class="meta-label">回 Episodes</div>
+      </div>
+      <div class="meta-item">
+        <span class="meta-number">8</span>
+        <div class="meta-label">大模組</div>
+      </div>
+      <div class="meta-item">
+        <span class="meta-number">4</span>
+        <div class="meta-label">主軸 Pillars</div>
+      </div>
+      <div class="meta-item">
+        <span class="meta-number">~7</span>
+        <div class="meta-label">月完課</div>
+      </div>
     </div>
+  </header>
+
+  <!-- 學習哲學 -->
+  <section class="philosophy">
+    <h2>為什麼是 200 回？</h2>
+    <p>
+      癌症不是單一疾病，而是上百種疾病的集合。它牽涉到 DNA 突變、細胞訊號傳遞、免疫逃避、血管新生、轉移機制⋯⋯每一個面向都是一座知識山脈。若一次傾倒所有資訊，學習者只會被淹沒。
+    </p>
+    <div class="quote">
+      「進步不來自於一次的飛躍，而來自於每天 1% 的累積。」<br>
+      ──James Clear《原子習慣》
+    </div>
+    <p>
+      本課程依「原子習慣」原則設計：<strong>每天一回，一個概念，可獨立理解</strong>。第 1 回從「細胞為何會失控」開始，到第 200 回收束於「精準醫療與未來方向」，每一塊知識磚緊扣前後文，最終堆疊成完整的癌症認知地圖。
+    </p>
+    <p style="margin-top: 16px;">
+      進階級的設定意味著我們不只停留在「癌症是什麼」，而是深入分子層次：致癌基因如何活化、p53 如何守門、PD-1 如何被劫持、CAR-T 如何重編免疫細胞。
+    </p>
+  </section>
+
+  <!-- 四大主軸 -->
+  <h2 class="section-title">四大主軸</h2>
+  <p class="section-subtitle">
+    本課程依您指定的四個重點面向建構，比例與順序經過精心安排：先打底（生物學）、再廣度（各類癌症）、後深度（治療）、終於實踐（預防）。
+  </p>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 01</div>
+      <h3>癌症生物學原理</h3>
+      <div class="episodes">第 1–60 回｜60 episodes</div>
+      <p>從正常細胞如何癌變開始，深入致癌基因、抑癌基因、訊號傳遞、轉移、免疫微環境等核心機制。</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 02</div>
+      <h3>各類癌症介紹</h3>
+      <div class="episodes">第 61–120 回｜60 episodes</div>
+      <p>系統性介紹十大癌症與重要罕見癌症，每一種都剖析其分子特徵、流行病學、診斷與分期。</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 03</div>
+      <h3>治療方法與藥物</h3>
+      <div class="episodes">第 121–170 回｜50 episodes</div>
+      <p>從傳統手術放化療，到標靶、免疫、CAR-T、ADC、mRNA 疫苗等前沿療法的機制與應用。</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-num">PILLAR 04</div>
+      <h3>預防與生活方式</h3>
+      <div class="episodes">第 171–200 回｜30 episodes</div>
+      <p>實證為基礎的防癌策略：飲食、運動、睡眠、環境致癌物、篩檢、疫苗、心理因素。</p>
+    </div>
+  </div>
+
+  <!-- 模組詳細 -->
+  <h2 class="section-title">八大模組｜200 回詳細課表</h2>
+  <p class="section-subtitle">
+    每一回設計為 15 分鐘可消化的單位，包含核心概念、生活類比、關鍵術語、延伸思考。
+  </p>
+
+  <!-- 模組 1 -->
+  <div class="module">
+    <div class="module-header">
+      <div class="module-tag">MODULE 01 ｜ 主軸一</div>
+      <h3>癌症的起源｜細胞為何失控</h3>
+      <div class="range">第 1–25 回</div>
+      <div class="desc">從一個正常細胞如何踏上癌變之路說起。理解癌症的本質：是基因的疾病，也是進化的疾病。</div>
+    </div>
+    <div class="episodes-grid">
+      <div class="episode"><div class="ep-num">01</div><div class="ep-title">什麼是癌症？正常細胞 vs 癌細胞</div></div>
+      <div class="episode"><div class="ep-num">02</div><div class="ep-title">癌症的十大特徵（Hallmarks of Cancer）總覽</div></div>
+      <div class="episode"><div class="ep-num">03</div><div class="ep-title">細胞週期與檢查點機制</div></div>
+      <div class="episode"><div class="ep-num">04</div><div class="ep-title">DNA 突變的種類：點突變、缺失、易位</div></div>
+      <div class="episode"><div class="ep-num">05</div><div class="ep-title">致癌基因（Oncogene）入門：RAS 家族</div></div>
+      <div class="episode"><div class="ep-num">06</div><div class="ep-title">致癌基因深入：MYC 與細胞增殖</div></div>
+      <div class="episode"><div class="ep-num">07</div><div class="ep-title">抑癌基因（Tumor Suppressor）入門：p53「基因組守護者」</div></div>
+      <div class="episode"><div class="ep-num">08</div><div class="ep-title">抑癌基因深入：RB 與視網膜母細胞瘤</div></div>
+      <div class="episode"><div class="ep-num">09</div><div class="ep-title">DNA 修復系統：BRCA1/2 的故事</div></div>
+      <div class="episode"><div class="ep-num">10</div><div class="ep-title">端粒與端粒酶：永生的代價</div></div>
+      <div class="episode"><div class="ep-num">11</div><div class="ep-title">細胞凋亡（Apoptosis）：失靈的自殺程式</div></div>
+      <div class="episode"><div class="ep-num">12</div><div class="ep-title">自噬（Autophagy）與癌症的雙面關係</div></div>
+      <div class="episode"><div class="ep-num">13</div><div class="ep-title">表觀遺傳學：DNA 甲基化與癌症</div></div>
+      <div class="episode"><div class="ep-num">14</div><div class="ep-title">組蛋白修飾與染色質重塑</div></div>
+      <div class="episode"><div class="ep-num">15</div><div class="ep-title">非編碼 RNA：miRNA 在癌症中的角色</div></div>
+      <div class="episode"><div class="ep-num">16</div><div class="ep-title">癌症幹細胞理論</div></div>
+      <div class="episode"><div class="ep-num">17</div><div class="ep-title">克隆演化與腫瘤異質性</div></div>
+      <div class="episode"><div class="ep-num">18</div><div class="ep-title">突變累積：從正常細胞到癌前病變</div></div>
+      <div class="episode"><div class="ep-num">19</div><div class="ep-title">致癌物質的分類：化學、物理、生物</div></div>
+      <div class="episode"><div class="ep-num">20</div><div class="ep-title">遺傳性癌症症候群概論</div></div>
+      <div class="episode"><div class="ep-num">21</div><div class="ep-title">Li-Fraumeni 症候群：p53 的家族悲劇</div></div>
+      <div class="episode"><div class="ep-num">22</div><div class="ep-title">林奇症候群（HNPCC）與錯配修復</div></div>
+      <div class="episode"><div class="ep-num">23</div><div class="ep-title">家族性大腸瘜肉症（FAP）與 APC 基因</div></div>
+      <div class="episode"><div class="ep-num">24</div><div class="ep-title">癌症的進化論觀點：選擇壓力下的細胞</div></div>
+      <div class="episode"><div class="ep-num">25</div><div class="ep-title">小結：癌症作為「演化失敗」的綜合疾病</div></div>
+    </div>
+  </div>
+
+  <!-- 模組 2 -->
+  <div class="module">
+    <div class="module-header">
+      <div class="module-tag">MODULE 02 ｜ 主軸一</div>
+      <h3>訊號傳遞與微環境</h3>
+      <div class="range">第 26–60 回</div>
+      <div class="desc">深入細胞如何接收與傳遞訊號，以及腫瘤微環境如何被「徵召」成為癌症的共犯。</div>
+    </div>
+    <div class="episodes-grid">
+      <div class="episode"><div class="ep-num">26</div><div class="ep-title">受體酪胺酸激酶（RTK）總覽</div></div>
+      <div class="episode"><div class="ep-num">27</div><div class="ep-title">EGFR 訊號通路與肺癌</div></div>
+      <div class="episode"><div class="ep-num">28</div><div class="ep-title">HER2 訊號通路與乳癌</div></div>
+      <div class="episode"><div class="ep-num">29</div><div class="ep-title">RAS-RAF-MEK-ERK 通路（MAPK）</div></div>
+      <div class="episode"><div class="ep-num">30</div><div class="ep-title">PI3K-AKT-mTOR 通路</div></div>
+      <div class="episode"><div class="ep-num">31</div><div class="ep-title">Wnt/β-catenin 通路與大腸癌</div></div>
+      <div class="episode"><div class="ep-num">32</div><div class="ep-title">Notch 訊號通路</div></div>
+      <div class="episode"><div class="ep-num">33</div><div class="ep-title">Hedgehog 通路與基底細胞癌</div></div>
+      <div class="episode"><div class="ep-num">34</div><div class="ep-title">TGF-β 通路：抑癌與促癌的雙面刃</div></div>
+      <div class="episode"><div class="ep-num">35</div><div class="ep-title">JAK-STAT 通路與血液癌症</div></div>
+      <div class="episode"><div class="ep-num">36</div><div class="ep-title">NF-κB 通路與發炎促癌</div></div>
+      <div class="episode"><div class="ep-num">37</div><div class="ep-title">細胞代謝重編：Warburg 效應</div></div>
+      <div class="episode"><div class="ep-num">38</div><div class="ep-title">麩醯胺酸成癮（Glutamine Addiction）</div></div>
+      <div class="episode"><div class="ep-num">39</div><div class="ep-title">脂質代謝與癌症</div></div>
+      <div class="episode"><div class="ep-num">40</div><div class="ep-title">缺氧反應與 HIF-1α</div></div>
+      <div class="episode"><div class="ep-num">41</div><div class="ep-title">血管新生（Angiogenesis）機制</div></div>
+      <div class="episode"><div class="ep-num">42</div><div class="ep-title">VEGF 通路與抗血管新生療法</div></div>
+      <div class="episode"><div class="ep-num">43</div><div class="ep-title">侵襲與轉移：上皮間質轉化（EMT）</div></div>
+      <div class="episode"><div class="ep-num">44</div><div class="ep-title">基底膜降解與基質金屬蛋白酶（MMP）</div></div>
+      <div class="episode"><div class="ep-num">45</div><div class="ep-title">轉移的「種子與土壤」假說</div></div>
+      <div class="episode"><div class="ep-num">46</div><div class="ep-title">循環腫瘤細胞（CTC）與液態切片</div></div>
+      <div class="episode"><div class="ep-num">47</div><div class="ep-title">器官特異性轉移：為何乳癌易轉骨骼？</div></div>
+      <div class="episode"><div class="ep-num">48</div><div class="ep-title">腫瘤微環境（TME）總覽</div></div>
+      <div class="episode"><div class="ep-num">49</div><div class="ep-title">癌症相關纖維母細胞（CAF）</div></div>
+      <div class="episode"><div class="ep-num">50</div><div class="ep-title">腫瘤相關巨噬細胞（TAM）的雙面性</div></div>
+      <div class="episode"><div class="ep-num">51</div><div class="ep-title">免疫系統的抗癌哨兵：T 細胞與 NK 細胞</div></div>
+      <div class="episode"><div class="ep-num">52</div><div class="ep-title">免疫檢查點：PD-1/PD-L1 的發現</div></div>
+      <div class="episode"><div class="ep-num">53</div><div class="ep-title">CTLA-4 檢查點機制</div></div>
+      <div class="episode"><div class="ep-num">54</div><div class="ep-title">癌症免疫編輯三階段：清除、平衡、逃逸</div></div>
+      <div class="episode"><div class="ep-num">55</div><div class="ep-title">腫瘤抗原與新抗原（Neoantigen）</div></div>
+      <div class="episode"><div class="ep-num">56</div><div class="ep-title">微生物組與癌症：腸道菌的角色</div></div>
+      <div class="episode"><div class="ep-num">57</div><div class="ep-title">慢性發炎與癌症的關係</div></div>
+      <div class="episode"><div class="ep-num">58</div><div class="ep-title">病毒致癌：HPV、EBV、HBV、HCV</div></div>
+      <div class="episode"><div class="ep-num">59</div><div class="ep-title">細菌致癌：幽門螺旋桿菌</div></div>
+      <div class="episode"><div class="ep-num">60</div><div class="ep-title">主軸一總結：癌症的分子地圖</div></div>
+    </div>
+  </div>
+
+  <!-- 模組 3 -->
+  <div class="module">
+    <div class="module-header">
+      <div class="module-tag">MODULE 03 ｜ 主軸二</div>
+      <h3>常見癌症（一）｜消化系統與呼吸系統</h3>
+      <div class="range">第 61–90 回</div>
+      <div class="desc">系統性介紹台灣與全球高發的消化系統癌與呼吸系統癌，每一種都從流行病學到分子機制完整剖析。</div>
+    </div>
+    <div class="episodes-grid">
+      <div class="episode"><div class="ep-num">61</div><div class="ep-title">肺癌總論：流行病學與分類</div></div>
+      <div class="episode"><div class="ep-num">62</div><div class="ep-title">非小細胞肺癌（NSCLC）：腺癌</div></div>
+      <div class="episode"><div class="ep-num">63</div><div class="ep-title">非小細胞肺癌：鱗狀細胞癌</div></div>
+      <div class="episode"><div class="ep-num">64</div><div class="ep-title">小細胞肺癌（SCLC）的特殊性</div></div>
+      <div class="episode"><div class="ep-num">65</div><div class="ep-title">EGFR 突變肺癌與亞洲人特性</div></div>
+      <div class="episode"><div class="ep-num">66</div><div class="ep-title">ALK、ROS1、KRAS 等驅動基因</div></div>
+      <div class="episode"><div class="ep-num">67</div><div class="ep-title">大腸直腸癌：流行病學與分期</div></div>
+      <div class="episode"><div class="ep-num">68</div><div class="ep-title">大腸癌的分子分型（CMS 分類）</div></div>
+      <div class="episode"><div class="ep-num">69</div><div class="ep-title">微衛星不穩定性（MSI）與大腸癌</div></div>
+      <div class="episode"><div class="ep-num">70</div><div class="ep-title">胃癌：與幽門桿菌的關聯</div></div>
+      <div class="episode"><div class="ep-num">71</div><div class="ep-title">胃癌的彌漫型 vs 腸型（Lauren 分類）</div></div>
+      <div class="episode"><div class="ep-num">72</div><div class="ep-title">食道癌：鱗癌 vs 腺癌</div></div>
+      <div class="episode"><div class="ep-num">73</div><div class="ep-title">肝細胞癌（HCC）：B 肝、C 肝、脂肪肝</div></div>
+      <div class="episode"><div class="ep-num">74</div><div class="ep-title">肝癌的分子機制與 TERT 啟動子突變</div></div>
+      <div class="episode"><div class="ep-num">75</div><div class="ep-title">膽管癌與膽囊癌</div></div>
+      <div class="episode"><div class="ep-num">76</div><div class="ep-title">胰臟癌：「癌中之王」的挑戰</div></div>
+      <div class="episode"><div class="ep-num">77</div><div class="ep-title">胰臟癌的 KRAS 突變與纖維化微環境</div></div>
+      <div class="episode"><div class="ep-num">78</div><div class="ep-title">神經內分泌腫瘤（NET）</div></div>
+      <div class="episode"><div class="ep-num">79</div><div class="ep-title">口腔癌：檳榔、菸、酒的三重打擊</div></div>
+      <div class="episode"><div class="ep-num">80</div><div class="ep-title">鼻咽癌：EBV 病毒與華南族群</div></div>
+      <div class="episode"><div class="ep-num">81</div><div class="ep-title">喉癌與下咽癌</div></div>
+      <div class="episode"><div class="ep-num">82</div><div class="ep-title">甲狀腺癌：乳突狀、濾泡狀、髓質、未分化</div></div>
+      <div class="episode"><div class="ep-num">83</div><div class="ep-title">RET 基因與遺傳性甲狀腺髓質癌</div></div>
+      <div class="episode"><div class="ep-num">84</div><div class="ep-title">乳癌總論：流行病學與風險因子</div></div>
+      <div class="episode"><div class="ep-num">85</div><div class="ep-title">乳癌的四大分子亞型（Luminal A/B、HER2+、TNBC）</div></div>
+      <div class="episode"><div class="ep-num">86</div><div class="ep-title">三陰性乳癌（TNBC）的挑戰</div></div>
+      <div class="episode"><div class="ep-num">87</div><div class="ep-title">男性乳癌的特殊性</div></div>
+      <div class="episode"><div class="ep-num">88</div><div class="ep-title">BRCA 突變與遺傳性乳癌卵巢癌</div></div>
+      <div class="episode"><div class="ep-num">89</div><div class="ep-title">乳癌的 Oncotype DX 與 MammaPrint</div></div>
+      <div class="episode"><div class="ep-num">90</div><div class="ep-title">乳癌轉移路徑與骨轉移特性</div></div>
+    </div>
+  </div>
+
+  <!-- 模組 4 -->
+  <div class="module">
+    <div class="module-header">
+      <div class="module-tag">MODULE 04 ｜ 主軸二</div>
+      <h3>常見癌症（二）｜泌尿、婦科、血液與其他</h3>
+      <div class="range">第 91–120 回</div>
+      <div class="desc">泌尿、婦科、血液系統癌症，以及皮膚癌、腦瘤、骨肉瘤等重要主題。</div>
+    </div>
+    <div class="episodes-grid">
+      <div class="episode"><div class="ep-num">91</div><div class="ep-title">攝護腺癌：流行病學與篩檢爭議</div></div>
+      <div class="episode"><div class="ep-num">92</div><div class="ep-title">攝護腺癌的雄性素軸與抗藥機制</div></div>
+      <div class="episode"><div class="ep-num">93</div><div class="ep-title">膀胱癌：尿路上皮癌</div></div>
+      <div class="episode"><div class="ep-num">94</div><div class="ep-title">腎細胞癌（RCC）：清亮細胞型</div></div>
+      <div class="episode"><div class="ep-num">95</div><div class="ep-title">VHL 基因與遺傳性腎癌</div></div>
+      <div class="episode"><div class="ep-num">96</div><div class="ep-title">睪丸癌：年輕男性的可治癒癌症</div></div>
+      <div class="episode"><div class="ep-num">97</div><div class="ep-title">子宮頸癌與 HPV</div></div>
+      <div class="episode"><div class="ep-num">98</div><div class="ep-title">子宮內膜癌：分型與荷爾蒙因素</div></div>
+      <div class="episode"><div class="ep-num">99</div><div class="ep-title">卵巢癌：高死亡率的「沉默殺手」</div></div>
+      <div class="episode"><div class="ep-num">100</div><div class="ep-title">卵巢癌的 BRCA 與 HRD 概念</div></div>
+      <div class="episode"><div class="ep-num">101</div><div class="ep-title">急性骨髓性白血病（AML）</div></div>
+      <div class="episode"><div class="ep-num">102</div><div class="ep-title">急性淋巴性白血病（ALL）：兒童白血病</div></div>
+      <div class="episode"><div class="ep-num">103</div><div class="ep-title">慢性骨髓性白血病（CML）與費城染色體</div></div>
+      <div class="episode"><div class="ep-num">104</div><div class="ep-title">慢性淋巴性白血病（CLL）</div></div>
+      <div class="episode"><div class="ep-num">105</div><div class="ep-title">何杰金氏淋巴瘤</div></div>
+      <div class="episode"><div class="ep-num">106</div><div class="ep-title">非何杰金氏淋巴瘤：DLBCL</div></div>
+      <div class="episode"><div class="ep-num">107</div><div class="ep-title">濾泡性淋巴瘤與 BCL-2</div></div>
+      <div class="episode"><div class="ep-num">108</div><div class="ep-title">多發性骨髓瘤（MM）</div></div>
+      <div class="episode"><div class="ep-num">109</div><div class="ep-title">骨髓增生不良症候群（MDS）</div></div>
+      <div class="episode"><div class="ep-num">110</div><div class="ep-title">皮膚黑色素瘤與 BRAF 突變</div></div>
+      <div class="episode"><div class="ep-num">111</div><div class="ep-title">非黑色素皮膚癌：基底與鱗狀細胞癌</div></div>
+      <div class="episode"><div class="ep-num">112</div><div class="ep-title">膠質母細胞瘤（GBM）：最致命腦瘤</div></div>
+      <div class="episode"><div class="ep-num">113</div><div class="ep-title">腦瘤分類：星狀細胞瘤、寡突膠質瘤、腦膜瘤</div></div>
+      <div class="episode"><div class="ep-num">114</div><div class="ep-title">兒童腦瘤：髓母細胞瘤</div></div>
+      <div class="episode"><div class="ep-num">115</div><div class="ep-title">骨肉瘤與軟組織肉瘤</div></div>
+      <div class="episode"><div class="ep-num">116</div><div class="ep-title">尤文氏肉瘤與融合基因</div></div>
+      <div class="episode"><div class="ep-num">117</div><div class="ep-title">腸胃道間質瘤（GIST）與 KIT 突變</div></div>
+      <div class="episode"><div class="ep-num">118</div><div class="ep-title">兒童癌症總覽：與成人的差異</div></div>
+      <div class="episode"><div class="ep-num">119</div><div class="ep-title">不明原發癌（CUP）的挑戰</div></div>
+      <div class="episode"><div class="ep-num">120</div><div class="ep-title">主軸二總結：癌症的多元面貌</div></div>
+    </div>
+  </div>
+
+  <!-- 模組 5 -->
+  <div class="module">
+    <div class="module-header">
+      <div class="module-tag">MODULE 05 ｜ 主軸三</div>
+      <h3>傳統治療三大支柱</h3>
+      <div class="range">第 121–145 回</div>
+      <div class="desc">手術、放射治療、化學治療仍是現代癌症治療的基石，理解其原理才能理解新療法的突破點。</div>
+    </div>
+    <div class="episodes-grid">
+      <div class="episode"><div class="ep-num">121</div><div class="ep-title">癌症診斷：從病理切片到分子檢測</div></div>
+      <div class="episode"><div class="ep-num">122</div><div class="ep-title">影像學：CT、MRI、PET-CT</div></div>
+      <div class="episode"><div class="ep-num">123</div><div class="ep-title">腫瘤標誌物（Tumor Marker）的角色與限制</div></div>
+      <div class="episode"><div class="ep-num">124</div><div class="ep-title">癌症分期系統：TNM 系統</div></div>
+      <div class="episode"><div class="ep-num">125</div><div class="ep-title">手術治療：從根治性切除到微創手術</div></div>
+      <div class="episode"><div class="ep-num">126</div><div class="ep-title">機器人手術（達文西）的應用</div></div>
+      <div class="episode"><div class="ep-num">127</div><div class="ep-title">前哨淋巴結（Sentinel Node）概念</div></div>
+      <div class="episode"><div class="ep-num">128</div><div class="ep-title">放射治療基本原理</div></div>
+      <div class="episode"><div class="ep-num">129</div><div class="ep-title">3D 順形放療與調強放療（IMRT）</div></div>
+      <div class="episode"><div class="ep-num">130</div><div class="ep-title">立體定位放療（SBRT/SRS）</div></div>
+      <div class="episode"><div class="ep-num">131</div><div class="ep-title">質子治療與重離子治療</div></div>
+      <div class="episode"><div class="ep-num">132</div><div class="ep-title">放射敏感性與抗性機制</div></div>
+      <div class="episode"><div class="ep-num">133</div><div class="ep-title">化學治療總論：細胞週期攻擊策略</div></div>
+      <div class="episode"><div class="ep-num">134</div><div class="ep-title">烷化劑：環磷醯胺、鉑類</div></div>
+      <div class="episode"><div class="ep-num">135</div><div class="ep-title">抗代謝藥物：5-FU、Methotrexate、Gemcitabine</div></div>
+      <div class="episode"><div class="ep-num">136</div><div class="ep-title">紡錘體毒物：紫杉醇、長春鹼</div></div>
+      <div class="episode"><div class="ep-num">137</div><div class="ep-title">拓樸異構酶抑制劑：Doxorubicin、Irinotecan</div></div>
+      <div class="episode"><div class="ep-num">138</div><div class="ep-title">化療副作用機制：骨髓抑制、噁心、落髮</div></div>
+      <div class="episode"><div class="ep-num">139</div><div class="ep-title">化療抗藥性的分子機制</div></div>
+      <div class="episode"><div class="ep-num">140</div><div class="ep-title">荷爾蒙治療：乳癌與攝護腺癌</div></div>
+      <div class="episode"><div class="ep-num">141</div><div class="ep-title">SERM、AI、Fulvestrant 的差異</div></div>
+      <div class="episode"><div class="ep-num">142</div><div class="ep-title">輔助治療 vs 新輔助治療概念</div></div>
+      <div class="episode"><div class="ep-num">143</div><div class="ep-title">姑息治療與安寧照護</div></div>
+      <div class="episode"><div class="ep-num">144</div><div class="ep-title">癌症疼痛管理與三階段止痛</div></div>
+      <div class="episode"><div class="ep-num">145</div><div class="ep-title">傳統治療的綜合運用：多模式治療</div></div>
+    </div>
+  </div>
+
+  <!-- 模組 6 -->
+  <div class="module">
+    <div class="module-header">
+      <div class="module-tag">MODULE 06 ｜ 主軸三</div>
+      <h3>標靶治療與精準醫療</h3>
+      <div class="range">第 146–160 回</div>
+      <div class="desc">基於分子機制的精準打擊，從第一個標靶藥物 Imatinib 到今日數百種標靶藥物的世界。</div>
+    </div>
+    <div class="episodes-grid">
+      <div class="episode"><div class="ep-num">146</div><div class="ep-title">標靶治療的概念誕生：Imatinib（基立克）的故事</div></div>
+      <div class="episode"><div class="ep-num">147</div><div class="ep-title">小分子激酶抑制劑（TKI）總覽</div></div>
+      <div class="episode"><div class="ep-num">148</div><div class="ep-title">EGFR-TKI：Gefitinib、Erlotinib、Osimertinib</div></div>
+      <div class="episode"><div class="ep-num">149</div><div class="ep-title">EGFR T790M 抗藥突變與第三代 TKI</div></div>
+      <div class="episode"><div class="ep-num">150</div><div class="ep-title">ALK 抑制劑與肺癌</div></div>
+      <div class="episode"><div class="ep-num">151</div><div class="ep-title">BRAF 抑制劑與黑色素瘤</div></div>
+      <div class="episode"><div class="ep-num">152</div><div class="ep-title">CDK4/6 抑制劑與乳癌（Palbociclib 等）</div></div>
+      <div class="episode"><div class="ep-num">153</div><div class="ep-title">PARP 抑制劑與合成致死</div></div>
+      <div class="episode"><div class="ep-num">154</div><div class="ep-title">單株抗體療法總論：Rituximab、Trastuzumab</div></div>
+      <div class="episode"><div class="ep-num">155</div><div class="ep-title">抗血管新生藥物：Bevacizumab</div></div>
+      <div class="episode"><div class="ep-num">156</div><div class="ep-title">抗體藥物複合體（ADC）：T-DM1、Enhertu</div></div>
+      <div class="episode"><div class="ep-num">157</div><div class="ep-title">雙特異性抗體（Bispecific Antibody）</div></div>
+      <div class="episode"><div class="ep-num">158</div><div class="ep-title">次世代定序（NGS）與全基因組檢測</div></div>
+      <div class="episode"><div class="ep-num">159</div><div class="ep-title">液態切片（Liquid Biopsy）：ctDNA 應用</div></div>
+      <div class="episode"><div class="ep-num">160</div><div class="ep-title">伴隨式診斷（Companion Diagnostics）</div></div>
+    </div>
+  </div>
+
+  <!-- 模組 7 -->
+  <div class="module">
+    <div class="module-header">
+      <div class="module-tag">MODULE 07 ｜ 主軸三</div>
+      <h3>免疫治療與細胞治療前沿</h3>
+      <div class="range">第 161–170 回</div>
+      <div class="desc">2018 年諾貝爾醫學獎肯定的領域。從檢查點抑制劑到 CAR-T、TCR-T、TIL，正在改寫癌症治療的版圖。</div>
+    </div>
+    <div class="episodes-grid">
+      <div class="episode"><div class="ep-num">161</div><div class="ep-title">免疫檢查點抑制劑（ICI）總覽</div></div>
+      <div class="episode"><div class="ep-num">162</div><div class="ep-title">PD-1/PD-L1 抑制劑：Nivolumab、Pembrolizumab</div></div>
+      <div class="episode"><div class="ep-num">163</div><div class="ep-title">CTLA-4 抑制劑：Ipilimumab</div></div>
+      <div class="episode"><div class="ep-num">164</div><div class="ep-title">免疫治療的副作用：免疫相關不良事件（irAE）</div></div>
+      <div class="episode"><div class="ep-num">165</div><div class="ep-title">CAR-T 細胞療法原理</div></div>
+      <div class="episode"><div class="ep-num">166</div><div class="ep-title">CAR-T 在血液癌症的成功與細胞激素風暴</div></div>
+      <div class="episode"><div class="ep-num">167</div><div class="ep-title">TCR-T、TIL 療法的差異</div></div>
+      <div class="episode"><div class="ep-num">168</div><div class="ep-title">癌症疫苗：預防型 vs 治療型</div></div>
+      <div class="episode"><div class="ep-num">169</div><div class="ep-title">mRNA 癌症疫苗的崛起</div></div>
+      <div class="episode"><div class="ep-num">170</div><div class="ep-title">主軸三總結：治療武器庫的全貌</div></div>
+    </div>
+  </div>
+
+  <!-- 模組 8 -->
+  <div class="module">
+    <div class="module-header">
+      <div class="module-tag">MODULE 08 ｜ 主軸四</div>
+      <h3>預防、生活方式與未來</h3>
+      <div class="range">第 171–200 回</div>
+      <div class="desc">最重要的回合：你能做什麼來降低罹癌風險？實證為基礎的生活策略，以及癌症研究的未來方向。</div>
+    </div>
+    <div class="episodes-grid">
+      <div class="episode"><div class="ep-num">171</div><div class="ep-title">癌症的流行病學：全球與台灣現況</div></div>
+      <div class="episode"><div class="ep-num">172</div><div class="ep-title">可改變的危險因子 vs 不可改變的</div></div>
+      <div class="episode"><div class="ep-num">173</div><div class="ep-title">菸害：肺癌之外的全身性傷害</div></div>
+      <div class="episode"><div class="ep-num">174</div><div class="ep-title">二手菸、三手菸與電子煙</div></div>
+      <div class="episode"><div class="ep-num">175</div><div class="ep-title">酒精與癌症：沒有「安全劑量」</div></div>
+      <div class="episode"><div class="ep-num">176</div><div class="ep-title">飲食與癌症：紅肉、加工肉的證據</div></div>
+      <div class="episode"><div class="ep-num">177</div><div class="ep-title">地中海飲食與防癌證據</div></div>
+      <div class="episode"><div class="ep-num">178</div><div class="ep-title">糖、肥胖與癌症的關聯</div></div>
+      <div class="episode"><div class="ep-num">179</div><div class="ep-title">運動防癌：劑量反應關係</div></div>
+      <div class="episode"><div class="ep-num">180</div><div class="ep-title">睡眠、生理時鐘與癌症</div></div>
+      <div class="episode"><div class="ep-num">181</div><div class="ep-title">慢性壓力、心理因素與癌症</div></div>
+      <div class="episode"><div class="ep-num">182</div><div class="ep-title">日曬、紫外線與皮膚癌防護</div></div>
+      <div class="episode"><div class="ep-num">183</div><div class="ep-title">環境致癌物：空污、PM2.5</div></div>
+      <div class="episode"><div class="ep-num">184</div><div class="ep-title">職業致癌物：石綿、苯、甲醛</div></div>
+      <div class="episode"><div class="ep-num">185</div><div class="ep-title">輻射暴露：醫療輻射與氡氣</div></div>
+      <div class="episode"><div class="ep-num">186</div><div class="ep-title">食品中的致癌物：黃麴毒素、亞硝胺、丙烯醯胺</div></div>
+      <div class="episode"><div class="ep-num">187</div><div class="ep-title">塑化劑、雙酚 A 等內分泌干擾物</div></div>
+      <div class="episode"><div class="ep-num">188</div><div class="ep-title">癌症篩檢策略：哪些有效，哪些爭議？</div></div>
+      <div class="episode"><div class="ep-num">189</div><div class="ep-title">大腸癌篩檢：糞便潛血、大腸鏡</div></div>
+      <div class="episode"><div class="ep-num">190</div><div class="ep-title">乳癌篩檢：乳房攝影 vs 超音波</div></div>
+      <div class="episode"><div class="ep-num">191</div><div class="ep-title">子宮頸癌篩檢：抹片與 HPV 檢測</div></div>
+      <div class="episode"><div class="ep-num">192</div><div class="ep-title">低劑量 CT 與肺癌篩檢</div></div>
+      <div class="episode"><div class="ep-num">193</div><div class="ep-title">癌症疫苗：HPV、B 肝疫苗的成功</div></div>
+      <div class="episode"><div class="ep-num">194</div><div class="ep-title">化學預防（Chemoprevention）：阿斯匹靈、Tamoxifen</div></div>
+      <div class="episode"><div class="ep-num">195</div><div class="ep-title">基因檢測與預防性手術（如 Angelina Jolie 案例）</div></div>
+      <div class="episode"><div class="ep-num">196</div><div class="ep-title">癌症存活者照護：長期追蹤與生活品質</div></div>
+      <div class="episode"><div class="ep-num">197</div><div class="ep-title">人工智慧在癌症診斷與治療的應用</div></div>
+      <div class="episode"><div class="ep-num">198</div><div class="ep-title">癌症研究的未來：類器官、單細胞定序</div></div>
+      <div class="episode"><div class="ep-num">199</div><div class="ep-title">癌症全球負擔與醫療公平性</div></div>
+      <div class="episode"><div class="ep-num">200</div><div class="ep-title">完課總回顧：你已建立的癌症知識地圖</div></div>
+    </div>
+  </div>
+
+  <!-- 學習路徑 -->
+  <h2 class="section-title">建議學習路徑</h2>
+
+  <div class="path-section">
+    <div class="path-step">
+      <div class="path-num">01</div>
+      <div class="path-content">
+        <h4>每日一回，固定時段</h4>
+        <p>選定每天同一時段（如早上通勤、午餐後、睡前），每次 15 分鐘專注一回。原子習慣的核心是「不間斷」，而非「一次很多」。</p>
+      </div>
+    </div>
+    <div class="path-step">
+      <div class="path-num">02</div>
+      <div class="path-content">
+        <h4>每 25 回小總結</h4>
+        <p>每完成一個模組（約 25–35 回），用 1–2 天時間複習核心概念，繪製自己的概念圖。模組間的連結比單回的細節更重要。</p>
+      </div>
+    </div>
+    <div class="path-step">
+      <div class="path-num">03</div>
+      <div class="path-content">
+        <h4>遇到難關不跳過</h4>
+        <p>分子訊號傳遞章節（模組 2）是難關，但也是後續理解標靶治療的鑰匙。寧可一回讀兩天，也不要跳過。</p>
+      </div>
+    </div>
+    <div class="path-step">
+      <div class="path-num">04</div>
+      <div class="path-content">
+        <h4>結合臨床新聞</h4>
+        <p>學完前 60 回後，建議開始追蹤癌症相關新聞（如 NEJM、Lancet Oncology 摘要）。讓知識與真實世界連結。</p>
+      </div>
+    </div>
+    <div class="path-step">
+      <div class="path-num">05</div>
+      <div class="path-content">
+        <h4>第 200 回後的延伸</h4>
+        <p>完課不是結束。接下來可深入特定癌症（如 BRCA 與遺傳諮詢）、特定療法（如 ADC 藥物開發），或進入臨床試驗閱讀。</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="course-links bottom" aria-label="七月課程與聯絡資訊">
+    <h2>七月課程與聯絡資訊</h2>
+    <div class="link-list">
+      <a class="link-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+        <span class="label">七月課程介紹：錯中學ECHO 計劃</span>
+        <span class="desc">今年七月開課，透過錯誤分析、回饋循環與 ECHO 式練習，建立可持續修正的學習節奏。</span>
+      </a>
+      <a class="link-card" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+        <span class="label">學生分析</span>
+        <span class="desc">今年七月課程搭配的學生分析工具，協助整理學習狀況、弱點分布與後續複習方向。</span>
+      </a>
+      <a class="link-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+        <span class="label">我的 Line 帳號：linwayet</span>
+        <span class="desc">課程詢問、報名與學習規劃討論，可透過 Line 聯絡。</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div>癌症完全指南 ｜ 200 回原子習慣架構課程</div>
+    <div style="margin-top: 8px;">CURATED FOR LIFELONG LEARNERS · 2026</div>
+  </footer>
+
 </div>
-<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
+
 <script>
-    const data = {
-        'A': { 
-            title: '(A) weakened', 
-            desc: '解釋：削弱；減弱；衰弱；變軟弱', 
-            detail: '<div class="example-box"><div class="eg-item">1. The economic crisis <b>weakened</b> the company\'s position.<br>(經濟危機削弱了公司的地位。)</div><div class="eg-item">2. His health has <b>weakened</b> over the years.<br>(多年來他的健康狀況衰退了。)</div><div class="eg-item">3. The storm <b>weakened</b> as it moved inland.<br>(風暴向內陸移動時減弱了。)</div></div>' 
-        },
-        'B': { 
-            title: '(B) halted', 
-            desc: '解釋：停止；暫停；停頓；中止', 
-            detail: '<div class="example-box"><div class="eg-item">1. The project <b>halted</b> due to funding issues.<br>(該項目因資金問題而停止。)</div><div class="eg-item">2. The train <b>halted</b> at the station.<br>(火車在車站停了下來。)</div><div class="eg-item">3. Production was <b>halted</b> temporarily.<br>(生產暫時停止。)</div></div>' 
-        },
-        'C': { 
-            title: '(C) implied', 
-            desc: '解釋：暗示；隱含；意味著；含蓄地表達', 
-            detail: '<div class="example-box"><div class="eg-item">1. Her silence <b>implied</b> agreement.<br>(她的沉默暗示了同意。)</div><div class="eg-item">2. The report <b>implied</b> that changes were needed.<br>(報告暗示需要進行改變。)</div><div class="eg-item">3. His words <b>implied</b> criticism of the decision.<br>(他的話隱含著對這個決定的批評。)</div></div>' 
-        },
-        'D': { 
-            title: '(D) held', 
-            desc: '解釋：持有；保持；握住；舉辦；認為', 
-            detail: '<div class="example-box"><div class="eg-item">1. She <b>held</b> the book carefully.<br>(她小心地握著書。)</div><div class="eg-item">2. The company <b>holds</b> the record for fastest service.<br>(該公司保持了最快服務的記錄。)</div><div class="eg-item">3. They <b>held</b> a meeting to discuss the issue.<br>(他們舉辦了一次會議討論這個問題。)</div></div>' 
-        },
-        'E': { 
-            title: '✓ 正確答案：(A) weakened', 
-            desc: '詳細解析：題目的邏輯是「雖然設計是創新的，但是缺乏用戶友好的功能大大___了它對顧客的吸引力」。這裡應該填入表示「減弱」「降低」的動詞，(A) weakened 正是表示「削弱；減弱」，完美符合句意。', 
-            example: '<b>為什麼不選其他選項？</b><br>• (B) halted：停止，無法用於描述「削弱吸引力」<br>• (C) implied：暗示，文法和語意都不符合<br>• (D) held：保持，與句意相反，應為「削弱」而非「保持」' 
-        },
-        'F': { 
-            title: '林威老師的話 - 衍生詞與音標', 
-            detail: '<h4>1. weakness (名詞)</h4><p class="kk-text">KK: [ˈwekənəs]</p><p>中文：弱點；缺陷；衰弱；弱勢</p><h4>2. weaken (動詞原形/不同形式)</h4><p class="kk-text">KK: [ˈwikən]</p><p>中文：削弱；減弱；衰落；軟化</p>' 
-        },
-        'G': { 
-            title: '衍生詞更多例句', 
-            detail: '<div class="example-box"><div class="eg-item">1. The <b>weakness</b> of the argument undermined his position.<br>(這個論證的弱點削弱了他的立場。)</div></div><div class="example-box"><div class="eg-item">2. Lack of sleep can <b>weaken</b> your immune system.<br>(睡眠不足會削弱你的免疫系統。)</div></div><div class="example-box"><div class="eg-item">3. The dollar\'s <b>weakness</b> affects international trade.<br>(美元的疲軟影響了國際貿易。)</div></div><div class="example-box"><div class="eg-item">4. Time gradually <b>weakened</b> his resolve.<br>(時間逐漸削弱了他的決心。)</div></div>' 
-        },
-        'H': { 
-            title: '高三學測必備片語', 
-            detail: '<h4>1. lack of (缺乏；缺少...)</h4><p>例句: The <b>lack of</b> communication caused problems.<br>(溝通不足導致了問題。)</p><h4>2. appeal to (吸引；呼籲；對...有吸引力)</h4><p>例句: This product <b>appeals to</b> young consumers.<br>(這個產品吸引年輕消費者。)</p><h4>3. weaken the appeal (削弱吸引力；減少吸引力)</h4><p>例句: The high price <b>weakened the appeal</b> of the product.<br>(高價格削弱了產品的吸引力。)</p>' 
-        }
-    };
-    function showOverlay(key) { 
-        const item = data[key]; 
-        let html = `<div class="overlay-title">${item.title}</div>`; 
-        if(item.desc) html += `<p>${item.desc}</p>`; 
-        if(item.detail) html += `<div>${item.detail}</div>`; 
-        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
-        document.getElementById('contentArea').innerHTML = html; 
-        document.getElementById('infoOverlay').style.display = 'block'; 
-    }
-    function closeOverlay() { 
-        document.getElementById('infoOverlay').style.display = 'none'; 
-    }
+  // 滾動進度條
+  window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    document.getElementById('progressBar').style.width = scrolled + '%';
+  });
 </script>
+
 </body>
 </html>
