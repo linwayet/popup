@@ -1,103 +1,971 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
-        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
-        .options-list { list-style: none; padding: 0; }
-        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
-        .option-item:hover { background-color: #f9f9f9; }
-        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
-        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
-        .special-btn:hover { background-color: #f0f0f0; }
-        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
-        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
-        .tool-link:hover { color: #333; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
-        .overlay-content { max-width: 500px; margin: 0 auto; }
-        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
-        .close-btn:hover { color: #666; }
-        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
-        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
-        .eg-item { margin-bottom: 10px; }
-        .kk-text { color: #666; font-style: italic; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蛋白質300天｜完整課程設計</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=BIZ+UDPGothic:wght@400;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f8fc;
+  --bg2: #fff7ed;
+  --card: #ffffff;
+  --border: rgba(148,163,184,0.28);
+  --text: #202938;
+  --muted: #637083;
+  --p1: #e11d48;   /* rose */
+  --p2: #f97316;   /* orange */
+  --p3: #10b981;   /* green */
+  --p4: #2563eb;   /* blue */
+  --p5: #7c3aed;   /* purple */
+  --p6: #0891b2;   /* cyan */
+  --done: #10b981;
+  --glow: rgba(37,99,235,0.14);
+  --shadow: rgba(30,41,59,0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'BIZ UDPGothic', 'Noto Serif TC', sans-serif;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(37,99,235,0.14), transparent 34vw),
+    radial-gradient(circle at 100% 4%, rgba(225,29,72,0.12), transparent 32vw),
+    radial-gradient(circle at 50% 100%, rgba(16,185,129,0.14), transparent 38vw),
+    linear-gradient(180deg, #f6f8fc 0%, #fff7ed 48%, #f0fdf4 100%);
+  color: var(--text);
+  font-size: clamp(16px, 1.55vw, 18px);
+  line-height: 1.8;
+  min-height: 100vh;
+}
+
+/* ===== PROMO BANNER (top + bottom) ===== */
+.promo-banner {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,0.96), rgba(239,246,255,0.92)),
+    linear-gradient(135deg, rgba(37,99,235,0.18), rgba(124,58,237,0.14));
+  border-bottom: 1px solid rgba(37,99,235,0.18);
+  padding: clamp(18px, 3vw, 26px) 20px;
+  box-shadow: 0 16px 42px rgba(30,41,59,0.10);
+}
+.promo-banner.bottom {
+  border-bottom: none;
+  border-top: 1px solid rgba(37,99,235,0.18);
+}
+.promo-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.promo-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--p5);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  text-align: center;
+}
+.promo-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.promo-card {
+  flex: 1 1 260px;
+  max-width: 320px;
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+  border: 1px solid rgba(37,99,235,0.18);
+  border-radius: 18px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.25s;
+  display: block;
+}
+.promo-card:hover {
+  background: linear-gradient(135deg, #eef2ff 0%, #ffffff 100%);
+  border-color: var(--p5);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(30,41,59,0.12);
+}
+.promo-card-icon { font-size: 22px; margin-bottom: 6px; }
+.promo-card-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--p4);
+  margin-bottom: 4px;
+}
+.promo-card-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.promo-card-badge {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 11px;
+  background: rgba(249,115,22,0.10);
+  color: var(--p2);
+  border: 1px solid rgba(249,115,22,0.22);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.line-card {
+  flex: 0 0 auto;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  border: 1px solid rgba(16,185,129,0.28);
+  border-radius: 18px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all 0.25s;
+}
+.line-card:hover {
+  background: linear-gradient(135deg, #dcfce7 0%, #ffffff 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(30,41,59,0.12);
+}
+.line-icon {
+  width: 36px;
+  height: 36px;
+  background: #06c755;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.line-info { font-size: 13px; color: var(--muted); }
+.line-info strong { display: block; font-size: 15px; color: var(--p3); margin-bottom: 2px; }
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(52px, 8vw, 82px) 20px clamp(58px, 8vw, 88px);
+  text-align: center;
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(37,99,235,0.14) 0%, transparent 64%),
+    linear-gradient(135deg, rgba(255,255,255,0.72), rgba(240,253,244,0.58));
+  border-bottom: 1px solid rgba(148,163,184,0.20);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* floating dna dots */
+.dna-dot {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: float 6s ease-in-out infinite;
+}
+.dna-dot:nth-child(1) { width:8px; height:8px; background:var(--p1); top:20%; left:10%; animation-delay:0s; }
+.dna-dot:nth-child(2) { width:5px; height:5px; background:var(--p3); top:50%; left:5%; animation-delay:1s; }
+.dna-dot:nth-child(3) { width:10px; height:10px; background:var(--p4); top:30%; right:8%; animation-delay:2s; }
+.dna-dot:nth-child(4) { width:6px; height:6px; background:var(--p2); top:70%; right:12%; animation-delay:0.5s; }
+.dna-dot:nth-child(5) { width:8px; height:8px; background:var(--p5); top:15%; right:20%; animation-delay:3s; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-14px); }
+}
+
+.hero-tag {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--p4);
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: rgba(37,99,235,0.08);
+  border: 1px solid rgba(37,99,235,0.18);
+  border-radius: 20px;
+  padding: 4px 16px;
+}
+.hero h1 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(32px, 8vw, 60px);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--p4) 0%, var(--p3) 36%, var(--p2) 66%, var(--p5) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-subtitle {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.stat-pill {
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(148,163,184,0.24);
+  border-radius: 30px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.stat-pill span { color: var(--p3); }
+
+/* ===== PROGRESS BAR ===== */
+.progress-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px 20px 10px;
+}
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.progress-label strong { color: var(--p3); font-size: 15px; }
+.progress-track {
+  height: 10px;
+  background: rgba(148,163,184,0.20);
+  border-radius: 20px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  width: 20%;
+  background: linear-gradient(90deg, var(--p4), var(--p3), var(--p2));
+  border-radius: 20px;
+  position: relative;
+  animation: growBar 1.5s ease-out;
+}
+@keyframes growBar {
+  from { width: 0; }
+  to { width: 20%; }
+}
+
+/* ===== MAIN CONTENT ===== */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 16px 60px;
+}
+
+/* ===== SECTION HEADER ===== */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 46px 0 18px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.82);
+  box-shadow: 0 12px 34px rgba(30,41,59,0.08);
+}
+.section-header:has(.stage-badge[style*="--p1"]) {
+  background: linear-gradient(135deg, #fff1f2 0%, #ffffff 100%);
+  border-color: rgba(225,29,72,0.22);
+}
+.section-header:has(.stage-badge[style*="--p2"]) {
+  background: linear-gradient(135deg, #fff7ed 0%, #ffffff 100%);
+  border-color: rgba(249,115,22,0.24);
+}
+.section-header:has(.stage-badge[style*="--p3"]) {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+  border-color: rgba(16,185,129,0.24);
+}
+.section-header:has(.stage-badge[style*="--p4"]) {
+  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+  border-color: rgba(37,99,235,0.24);
+}
+.section-header:has(.stage-badge[style*="--p5"]) {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%);
+  border-color: rgba(124,58,237,0.24);
+}
+.section-header:has(.stage-badge[style*="--p6"]) {
+  background: linear-gradient(135deg, #ecfeff 0%, #ffffff 100%);
+  border-color: rgba(8,145,178,0.24);
+}
+.stage-badge {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  color: #ffffff;
+  box-shadow: 0 10px 24px rgba(30,41,59,0.18);
+}
+.section-header h2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px;
+  font-weight: 700;
+  flex: 1;
+}
+.section-header .day-range {
+  font-size: 12px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+.done-flag {
+  font-size: 12px;
+  background: rgba(16,185,129,0.10);
+  color: var(--done);
+  border: 1px solid rgba(16,185,129,0.22);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.planned-flag {
+  font-size: 12px;
+  background: rgba(124,58,237,0.10);
+  color: var(--p5);
+  border: 1px solid rgba(124,58,237,0.22);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* ===== LESSON GRID ===== */
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.lesson-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px 18px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 28px rgba(30,41,59,0.08);
+}
+.lesson-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37,99,235,0.22);
+  box-shadow: 0 16px 36px rgba(30,41,59,0.12);
+}
+.lesson-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+  border-radius: 3px 0 0 3px;
+}
+.lesson-card.done::before { background: var(--done); }
+.lesson-card.planned::before { background: var(--muted); }
+.lesson-card.review::before { background: var(--p6); }
+.lesson-card:has(.lesson-day[style*="--p1"])::before { background: var(--p1); }
+.lesson-card:has(.lesson-day[style*="--p2"])::before { background: var(--p2); }
+.lesson-card:has(.lesson-day[style*="--p3"])::before { background: var(--p3); }
+.lesson-card:has(.lesson-day[style*="--p4"])::before { background: var(--p4); }
+.lesson-card:has(.lesson-day[style*="--p5"])::before { background: var(--p5); }
+.lesson-card:has(.lesson-day[style*="--p6"])::before { background: var(--p6); }
+.lesson-day {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+  opacity: 0.7;
+}
+.lesson-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 4px;
+}
+.lesson-en {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+.done-check {
+  position: absolute;
+  top: 12px; right: 14px;
+  font-size: 16px;
+}
+.review-star {
+  position: absolute;
+  top: 10px; right: 12px;
+  font-size: 18px;
+}
+
+/* ===== RANGE CARD (multi-day block) ===== */
+.range-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  margin-bottom: 10px;
+}
+.range-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(30,41,59,0.08);
+}
+.range-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+}
+.range-card.planned::before { background: var(--muted); }
+.range-card:has(.range-days[style*="--p1"])::before { background: var(--p1); }
+.range-card:has(.range-days[style*="--p2"])::before { background: var(--p2); }
+.range-card:has(.range-days[style*="--p3"])::before { background: var(--p3); }
+.range-card:has(.range-days[style*="--p4"])::before { background: var(--p4); }
+.range-card:has(.range-days[style*="--p5"])::before { background: var(--p5); }
+.range-card:has(.range-days[style*="--p6"])::before { background: var(--p6); }
+.range-card:has(.range-days[style*="--p4"]) { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); }
+.range-card:has(.range-days[style*="--p5"]) { background: linear-gradient(135deg, #f5f3ff 0%, #ffffff 100%); }
+.range-card:has(.range-days[style*="--p6"]) { background: linear-gradient(135deg, #ecfeff 0%, #ffffff 100%); }
+.range-days {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+.range-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.range-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+/* ===== DESIGN PRINCIPLES ===== */
+.principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 34px 0;
+}
+.principle-item {
+  flex: 1 1 180px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px 18px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(30,41,59,0.08);
+}
+.principle-icon { font-size: 28px; margin-bottom: 8px; }
+.principle-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.principle-desc { font-size: 12px; color: var(--muted); }
+
+/* ===== FOOTER ===== */
+.site-footer {
+  text-align: center;
+  padding: 20px 20px 10px;
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 760px) {
+  .section-header {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .section-header h2 {
+    flex: 1 1 calc(100% - 70px);
+  }
+  .section-header .day-range,
+  .done-flag,
+  .planned-flag {
+    margin-left: 58px;
+  }
+}
+
+@media (max-width: 520px) {
+  body { line-height: 1.72; }
+  .promo-banner { padding-left: 12px; padding-right: 12px; }
+  .promo-card { max-width: 100%; flex-basis: 100%; }
+  .line-card { width: 100%; }
+  .hero { padding-left: 14px; padding-right: 14px; }
+  .hero-tag { letter-spacing: 0.16em; }
+  .stat-pill { width: 100%; text-align: center; }
+  .progress-section { padding-left: 14px; padding-right: 14px; }
+  .container { padding-left: 12px; padding-right: 12px; }
+  .principle-item { flex-basis: 100%; }
+  .lesson-grid { grid-template-columns: 1fr; }
+  .range-grid { grid-template-columns: 1fr; }
+  .section-header {
+    padding: 16px;
+    gap: 10px;
+  }
+  .section-header .day-range,
+  .done-flag,
+  .planned-flag {
+    margin-left: 0;
+  }
+}
+</style>
 </head>
 <body>
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
-    <div class="question">The design was innovative; however, the lack of user-friendly features greatly _______ its appeal to customers.</div>
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) weakened <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) halted <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) implied <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) held <span class="info-icon">ⓘ</span></div>
+
+<!-- ====== TOP PROMO BANNER ====== -->
+<div class="promo-banner">
+  <div class="promo-inner">
+    <div class="promo-title">🔥 2025年七月開課 × 聯絡我</div>
+    <div class="promo-cards">
+      <a class="promo-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <div class="promo-card-icon">🎯</div>
+        <div class="promo-card-name">錯中學 ECHO 計劃</div>
+        <div class="promo-card-desc">透過錯誤分析深化英文學習，科學化反饋系統，讓每次犯錯都變成進步的燃料。</div>
+        <div class="promo-card-badge">七月開課</div>
+      </a>
+      <a class="promo-card" href="https://linwayet.github.io/popup/index" target="_blank">
+        <div class="promo-card-icon">📊</div>
+        <div class="promo-card-name">學生分析系統</div>
+        <div class="promo-card-desc">個人化學習軌跡追蹤，精準診斷學習弱點，為每位學生打造專屬成長路徑。</div>
+        <div class="promo-card-badge">七月開課</div>
+      </a>
+      <a class="line-card" href="https://line.me/ti/p/linwayet" target="_blank">
+        <div class="line-icon">💬</div>
+        <div class="line-info">
+          <strong>LINE 直接聯絡</strong>
+          ID：linwayet<br>歡迎詢問課程
+        </div>
+      </a>
     </div>
-    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
-    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+  </div>
 </div>
-<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
-<script>
-    const data = {
-        'A': { 
-            title: '(A) weakened', 
-            desc: '解釋：削弱；減弱；衰弱；變軟弱', 
-            detail: '<div class="example-box"><div class="eg-item">1. The economic crisis <b>weakened</b> the company\'s position.<br>(經濟危機削弱了公司的地位。)</div><div class="eg-item">2. His health has <b>weakened</b> over the years.<br>(多年來他的健康狀況衰退了。)</div><div class="eg-item">3. The storm <b>weakened</b> as it moved inland.<br>(風暴向內陸移動時減弱了。)</div></div>' 
-        },
-        'B': { 
-            title: '(B) halted', 
-            desc: '解釋：停止；暫停；停頓；中止', 
-            detail: '<div class="example-box"><div class="eg-item">1. The project <b>halted</b> due to funding issues.<br>(該項目因資金問題而停止。)</div><div class="eg-item">2. The train <b>halted</b> at the station.<br>(火車在車站停了下來。)</div><div class="eg-item">3. Production was <b>halted</b> temporarily.<br>(生產暫時停止。)</div></div>' 
-        },
-        'C': { 
-            title: '(C) implied', 
-            desc: '解釋：暗示；隱含；意味著；含蓄地表達', 
-            detail: '<div class="example-box"><div class="eg-item">1. Her silence <b>implied</b> agreement.<br>(她的沉默暗示了同意。)</div><div class="eg-item">2. The report <b>implied</b> that changes were needed.<br>(報告暗示需要進行改變。)</div><div class="eg-item">3. His words <b>implied</b> criticism of the decision.<br>(他的話隱含著對這個決定的批評。)</div></div>' 
-        },
-        'D': { 
-            title: '(D) held', 
-            desc: '解釋：持有；保持；握住；舉辦；認為', 
-            detail: '<div class="example-box"><div class="eg-item">1. She <b>held</b> the book carefully.<br>(她小心地握著書。)</div><div class="eg-item">2. The company <b>holds</b> the record for fastest service.<br>(該公司保持了最快服務的記錄。)</div><div class="eg-item">3. They <b>held</b> a meeting to discuss the issue.<br>(他們舉辦了一次會議討論這個問題。)</div></div>' 
-        },
-        'E': { 
-            title: '✓ 正確答案：(A) weakened', 
-            desc: '詳細解析：題目的邏輯是「雖然設計是創新的，但是缺乏用戶友好的功能大大___了它對顧客的吸引力」。這裡應該填入表示「減弱」「降低」的動詞，(A) weakened 正是表示「削弱；減弱」，完美符合句意。', 
-            example: '<b>為什麼不選其他選項？</b><br>• (B) halted：停止，無法用於描述「削弱吸引力」<br>• (C) implied：暗示，文法和語意都不符合<br>• (D) held：保持，與句意相反，應為「削弱」而非「保持」' 
-        },
-        'F': { 
-            title: '林威老師的話 - 衍生詞與音標', 
-            detail: '<h4>1. weakness (名詞)</h4><p class="kk-text">KK: [ˈwekənəs]</p><p>中文：弱點；缺陷；衰弱；弱勢</p><h4>2. weaken (動詞原形/不同形式)</h4><p class="kk-text">KK: [ˈwikən]</p><p>中文：削弱；減弱；衰落；軟化</p>' 
-        },
-        'G': { 
-            title: '衍生詞更多例句', 
-            detail: '<div class="example-box"><div class="eg-item">1. The <b>weakness</b> of the argument undermined his position.<br>(這個論證的弱點削弱了他的立場。)</div></div><div class="example-box"><div class="eg-item">2. Lack of sleep can <b>weaken</b> your immune system.<br>(睡眠不足會削弱你的免疫系統。)</div></div><div class="example-box"><div class="eg-item">3. The dollar\'s <b>weakness</b> affects international trade.<br>(美元的疲軟影響了國際貿易。)</div></div><div class="example-box"><div class="eg-item">4. Time gradually <b>weakened</b> his resolve.<br>(時間逐漸削弱了他的決心。)</div></div>' 
-        },
-        'H': { 
-            title: '高三學測必備片語', 
-            detail: '<h4>1. lack of (缺乏；缺少...)</h4><p>例句: The <b>lack of</b> communication caused problems.<br>(溝通不足導致了問題。)</p><h4>2. appeal to (吸引；呼籲；對...有吸引力)</h4><p>例句: This product <b>appeals to</b> young consumers.<br>(這個產品吸引年輕消費者。)</p><h4>3. weaken the appeal (削弱吸引力；減少吸引力)</h4><p>例句: The high price <b>weakened the appeal</b> of the product.<br>(高價格削弱了產品的吸引力。)</p>' 
-        }
-    };
-    function showOverlay(key) { 
-        const item = data[key]; 
-        let html = `<div class="overlay-title">${item.title}</div>`; 
-        if(item.desc) html += `<p>${item.desc}</p>`; 
-        if(item.detail) html += `<div>${item.detail}</div>`; 
-        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
-        document.getElementById('contentArea').innerHTML = html; 
-        document.getElementById('infoOverlay').style.display = 'block'; 
-    }
-    function closeOverlay() { 
-        document.getElementById('infoOverlay').style.display = 'none'; 
-    }
-</script>
+
+<!-- ====== HERO ====== -->
+<div class="hero">
+  <div class="dna-dot"></div>
+  <div class="dna-dot"></div>
+  <div class="dna-dot"></div>
+  <div class="dna-dot"></div>
+  <div class="dna-dot"></div>
+
+  <div class="hero-tag">🧬 自學計畫 · Protein Science</div>
+  <h1>蛋白質300天<br>完整課程設計</h1>
+  <p class="hero-subtitle">
+    從胺基酸到蛋白質組學，從分子伴護蛋白到 AlphaFold，<br>每天 10–30 分鐘，300天建構完整蛋白質生物學視野。
+  </p>
+  <div class="hero-stats">
+    <div class="stat-pill">🎙️ 雙語 Podcast 腳本<span> 全集</span></div>
+    <div class="stat-pill">📅 <span>300</span> 堂課</div>
+    <div class="stat-pill">✅ Day 1–60 <span>已完成</span></div>
+    <div class="stat-pill">🔄 每 10 天<span>整合回顧</span></div>
+  </div>
+</div>
+
+<!-- ====== PROGRESS ====== -->
+<div class="progress-section">
+  <div class="progress-label">
+    <span>課程進度</span>
+    <strong>Day 1–60 完成（20%）</strong>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill"></div>
+  </div>
+</div>
+
+<!-- ====== DESIGN PRINCIPLES ====== -->
+<div class="container">
+  <div class="principles">
+    <div class="principle-item">
+      <div class="principle-icon">⏰</div>
+      <div class="principle-title">每日 10–30 分鐘</div>
+      <div class="principle-desc">原子習慣，小步快跑</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-icon">🔄</div>
+      <div class="principle-title">每 10 天整合回顧</div>
+      <div class="principle-desc">深化記憶，螺旋式學習</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-icon">🇨🇳🇬🇧</div>
+      <div class="principle-title">雙語 TTS 腳本</div>
+      <div class="principle-desc">中文 ＋ 英文，可直接朗讀</div>
+    </div>
+    <div class="principle-item">
+      <div class="principle-icon">📖</div>
+      <div class="principle-title">術語白話解說</div>
+      <div class="principle-desc">每集附好記的記憶口訣</div>
+    </div>
+  </div>
+
+  <!-- ========= STAGE 1 ========= -->
+  <div class="section-header">
+    <div class="stage-badge" style="background:var(--p1);">S1</div>
+    <h2>第一階段｜蛋白質概覽與細胞基礎</h2>
+    <span class="day-range">Day 1–15</span>
+    <span class="done-flag">✅ 完成</span>
+  </div>
+  <div class="lesson-grid">
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p1);">Day 1–10</div>
+      <div class="lesson-title">細胞與生物大分子概覽</div>
+      <div class="lesson-en">Cells & Biomolecules Overview</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p1);">Day 11–14</div>
+      <div class="lesson-title">蛋白質的多樣功能</div>
+      <div class="lesson-en">Protein Diversity & Functions</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card review">
+      <div class="lesson-day" style="color:var(--p6);">Day 15 · 整合回顧</div>
+      <div class="lesson-title">蛋白質無所不在的直覺建立</div>
+      <div class="lesson-en">Phase Review — Protein Everywhere</div>
+      <div class="review-star">⭐</div>
+    </div>
+  </div>
+
+  <!-- ========= STAGE 2 ========= -->
+  <div class="section-header">
+    <div class="stage-badge" style="background:var(--p2);">S2</div>
+    <h2>第二階段｜胺基酸基礎</h2>
+    <span class="day-range">Day 16–30</span>
+    <span class="done-flag">✅ 完成</span>
+  </div>
+  <div class="lesson-grid">
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p2);">Day 16–20</div>
+      <div class="lesson-title">胺基酸結構四部分</div>
+      <div class="lesson-en">Amino Acid Structure — 4 Parts</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p2);">Day 21–25</div>
+      <div class="lesson-title">20 種胺基酸分類與側鏈</div>
+      <div class="lesson-en">20 Amino Acids — Side Chain Properties</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p2);">Day 26–29</div>
+      <div class="lesson-title">必需胺基酸、手性、甘胺酸與脯胺酸</div>
+      <div class="lesson-en">Essential AA, Chirality, Gly & Pro</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card review">
+      <div class="lesson-day" style="color:var(--p6);">Day 30 · 整合回顧</div>
+      <div class="lesson-title">蛋白質語言的字母表</div>
+      <div class="lesson-en">Phase Review — Alphabet of Protein Language</div>
+      <div class="review-star">⭐</div>
+    </div>
+  </div>
+
+  <!-- ========= STAGE 3 ========= -->
+  <div class="section-header">
+    <div class="stage-badge" style="background:var(--p3);">S3</div>
+    <h2>第三階段｜從胺基酸到多肽 · 結構與功能</h2>
+    <span class="day-range">Day 31–60</span>
+    <span class="done-flag">✅ 完成</span>
+  </div>
+  <div class="lesson-grid">
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 31</div>
+      <div class="lesson-title">肽鍵的形成</div>
+      <div class="lesson-en">Peptide Bond Formation</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 32</div>
+      <div class="lesson-title">二肽、三肽、多肽；穀胱甘肽</div>
+      <div class="lesson-en">Dipeptides, Polypeptides & Glutathione</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 33</div>
+      <div class="lesson-title">蛋白質骨架與側鏈</div>
+      <div class="lesson-en">Backbone & Side Chains (R groups)</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 34</div>
+      <div class="lesson-title">一級結構：序列就是一切的起點</div>
+      <div class="lesson-en">Primary Structure — Sequence is Everything</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 35</div>
+      <div class="lesson-title">肌紅蛋白序列實例</div>
+      <div class="lesson-en">Myoglobin Sequence — A Real Case</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 36</div>
+      <div class="lesson-title">同義突變 vs 非同義突變；鐮刀型貧血</div>
+      <div class="lesson-en">Synonymous vs Missense Mutations</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 37–39</div>
+      <div class="lesson-title">蛋白質組的動態性</div>
+      <div class="lesson-en">Proteome Dynamics</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card review">
+      <div class="lesson-day" style="color:var(--p6);">Day 40 · 整合回顧</div>
+      <div class="lesson-title">蛋白質是什麼？用自己的話說清楚</div>
+      <div class="lesson-en">Phase Review — What Is a Protein?</div>
+      <div class="review-star">⭐</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 41–45</div>
+      <div class="lesson-title">二、三、四級結構</div>
+      <div class="lesson-en">Secondary / Tertiary / Quaternary Structure</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 46</div>
+      <div class="lesson-title">蛋白質有多大？分子量與 SDS-PAGE</div>
+      <div class="lesson-en">Protein Size — Molecular Weight & SDS-PAGE</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 48</div>
+      <div class="lesson-title">蛋白質序列語言：Motif 與 Domain</div>
+      <div class="lesson-en">Protein Language — Motif & Domain</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 51</div>
+      <div class="lesson-title">蛋白質折疊：從序列到形狀</div>
+      <div class="lesson-en">Protein Folding — Sequence to Shape</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 52</div>
+      <div class="lesson-title">折疊驅動力：疏水效應與熱力學</div>
+      <div class="lesson-en">Hydrophobic Effect & Thermodynamics</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 53</div>
+      <div class="lesson-title">錯誤折疊與疾病</div>
+      <div class="lesson-en">Misfolding — Alzheimer's, Parkinson's, Prions</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 54</div>
+      <div class="lesson-title">分子伴護蛋白：細胞的折疊助手</div>
+      <div class="lesson-en">Molecular Chaperones — HSP70 & Chaperonins</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 55</div>
+      <div class="lesson-title">蛋白酶體：細胞廢棄物處理系統</div>
+      <div class="lesson-en">Ubiquitin-Proteasome System</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 56</div>
+      <div class="lesson-title">酵素的基本概念：活化能與催化</div>
+      <div class="lesson-en">Enzyme Basics — Activation Energy</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 57</div>
+      <div class="lesson-title">活性位點與受質結合（溶菌酶）</div>
+      <div class="lesson-en">Active Site & Substrate — Lysozyme</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 58</div>
+      <div class="lesson-title">米氏方程式：Km 與 Vmax</div>
+      <div class="lesson-en">Michaelis-Menten Kinetics</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card done">
+      <div class="lesson-day" style="color:var(--p3);">Day 59</div>
+      <div class="lesson-title">酵素調控：抑制劑與變構調節</div>
+      <div class="lesson-en">Enzyme Regulation & Allostery</div>
+      <div class="done-check">✅</div>
+    </div>
+    <div class="lesson-card review">
+      <div class="lesson-day" style="color:var(--p6);">Day 60 · 整合回顧</div>
+      <div class="lesson-title">折疊、降解與催化的完整圖景</div>
+      <div class="lesson-en">Phase Review — Folding, Degradation & Catalysis</div>
+      <div class="review-star">⭐</div>
+    </div>
+  </div>
+
+  <!-- ========= STAGE 4 ========= -->
+  <div class="section-header">
+    <div class="stage-badge" style="background:var(--p4);">S4</div>
+    <h2>第四階段｜蛋白質功能深化</h2>
+    <span class="day-range">Day 61–120</span>
+    <span class="planned-flag">📌 規劃中</span>
+  </div>
+  <div class="range-grid">
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p4);">Day 61–70</div>
+      <div class="range-title">訊號傳遞蛋白</div>
+      <div class="range-desc">受體、激酶、G 蛋白、第二信使系統</div>
+    </div>
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p4);">Day 71–80</div>
+      <div class="range-title">結構蛋白</div>
+      <div class="range-desc">膠原蛋白、肌動蛋白、微管蛋白、細胞骨架</div>
+    </div>
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p4);">Day 81–90</div>
+      <div class="range-title">免疫蛋白</div>
+      <div class="range-desc">抗體結構、MHC 分子、補體系統</div>
+    </div>
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p4);">Day 91–100</div>
+      <div class="range-title">轉錄因子與 DNA 結合蛋白</div>
+      <div class="range-desc">鋅指蛋白、亮胺酸拉鍊、螺旋-迴轉-螺旋</div>
+    </div>
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p4);">Day 101–110</div>
+      <div class="range-title">膜蛋白與離子通道</div>
+      <div class="range-desc">整合膜蛋白、GPCR、Na⁺/K⁺ 幫浦、通道蛋白</div>
+    </div>
+    <div class="range-card planned" style="border-left: 3px solid var(--p6);">
+      <div class="range-days" style="color:var(--p6);">Day 120 · 整合回顧</div>
+      <div class="range-title">蛋白質功能全景 + 資料庫實戰</div>
+      <div class="range-desc">UniProt、PDB、Human Protein Atlas 的使用入門</div>
+    </div>
+  </div>
+
+  <!-- ========= STAGE 5 ========= -->
+  <div class="section-header">
+    <div class="stage-badge" style="background:var(--p5);">S5</div>
+    <h2>第五階段｜代謝酵素與翻譯後修飾</h2>
+    <span class="day-range">Day 121–180</span>
+    <span class="planned-flag">📌 規劃中</span>
+  </div>
+  <div class="range-grid">
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p5);">Day 121–140</div>
+      <div class="range-title">代謝路徑中的酵素</div>
+      <div class="range-desc">糖解作用、TCA 循環、氧化磷酸化關鍵酵素</div>
+    </div>
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p5);">Day 141–160</div>
+      <div class="range-title">翻譯後修飾（PTM）</div>
+      <div class="range-desc">磷酸化、糖基化、泛素化、乙醯化，如何改變蛋白質命運</div>
+    </div>
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p5);">Day 161–180</div>
+      <div class="range-title">蛋白質與疾病機制</div>
+      <div class="range-desc">癌症驅動突變、糖尿病、罕見遺傳病的分子根源</div>
+    </div>
+  </div>
+
+  <!-- ========= STAGE 6 ========= -->
+  <div class="section-header">
+    <div class="stage-badge" style="background:var(--p6);">S6</div>
+    <h2>第六階段｜前沿應用與蛋白質組學</h2>
+    <span class="day-range">Day 181–300</span>
+    <span class="planned-flag">📌 規劃中</span>
+  </div>
+  <div class="range-grid">
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p6);">Day 181–210</div>
+      <div class="range-title">蛋白質工程與設計</div>
+      <div class="range-desc">AlphaFold、ESM-2、de novo 蛋白質設計的革命</div>
+    </div>
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p6);">Day 211–240</div>
+      <div class="range-title">生技藥物的蛋白質科學</div>
+      <div class="range-desc">單株抗體、ADC 藥物、基因治療、mRNA 疫苗</div>
+    </div>
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p6);">Day 241–270</div>
+      <div class="range-title">蛋白質組學（Proteomics）</div>
+      <div class="range-desc">質譜法、2D 電泳、定量蛋白質組分析技術</div>
+    </div>
+    <div class="range-card planned">
+      <div class="range-days" style="color:var(--p6);">Day 271–290</div>
+      <div class="range-title">神經科學中的蛋白質</div>
+      <div class="range-desc">突觸蛋白、神經退化疾病的分子機制</div>
+    </div>
+    <div class="range-card planned" style="background:linear-gradient(135deg,rgba(249,202,36,0.08),rgba(126,232,162,0.08));border-color:rgba(249,202,36,0.3);">
+      <div class="range-days" style="color:var(--p6);">Day 291–300 · 總整合回顧</div>
+      <div class="range-title">🎓 蛋白質300天：全景總覽</div>
+      <div class="range-desc">從胺基酸到 AlphaFold，回顧整個旅程，建立完整知識地圖，展望未來學習方向。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<div class="site-footer">
+  <p>蛋白質300天自學計畫 · 雙語 Podcast 腳本系列</p>
+</div>
+
+<!-- ====== BOTTOM PROMO BANNER ====== -->
+<div class="promo-banner bottom">
+  <div class="promo-inner">
+    <div class="promo-title">🔥 2025年七月開課 × 聯絡我</div>
+    <div class="promo-cards">
+      <a class="promo-card" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <div class="promo-card-icon">🎯</div>
+        <div class="promo-card-name">錯中學 ECHO 計劃</div>
+        <div class="promo-card-desc">透過錯誤分析深化英文學習，科學化反饋系統，讓每次犯錯都變成進步的燃料。</div>
+        <div class="promo-card-badge">七月開課</div>
+      </a>
+      <a class="promo-card" href="https://linwayet.github.io/popup/index" target="_blank">
+        <div class="promo-card-icon">📊</div>
+        <div class="promo-card-name">學生分析系統</div>
+        <div class="promo-card-desc">個人化學習軌跡追蹤，精準診斷學習弱點，為每位學生打造專屬成長路徑。</div>
+        <div class="promo-card-badge">七月開課</div>
+      </a>
+      <a class="line-card" href="https://line.me/ti/p/linwayet" target="_blank">
+        <div class="line-icon">💬</div>
+        <div class="line-info">
+          <strong>LINE 直接聯絡</strong>
+          ID：linwayet<br>歡迎詢問課程
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
