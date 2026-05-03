@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>三位學生 ｜ 一週英文課程提案（6 天 + 1 複習）</title>
+<style>
+  :root{
+    --c1:#264653; --c2:#2a9d8f; --c3:#e9c46a; --c4:#f4a261; --c5:#e76f51;
+    --wu:#9d4edd; --yun:#1d6fa5; --xuan:#c8336a;
+    --ink:#1d3557;
+  }
+  *{box-sizing:border-box}
+  html{font-size:17px}
+  body{margin:0;padding:0;
+    background:linear-gradient(135deg,#fef9f3 0%,#fff5d6 30%,#e0f4f1 60%,#f3e7ff 100%);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    color:var(--ink);line-height:1.7;}
+  header{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c3));
+    color:#fff;padding:38px 22px 30px;text-align:center;position:relative;overflow:hidden;}
+  header::after{content:"📅 📚 ✏️ 📊 🎯";position:absolute;bottom:10px;right:18px;
+    font-size:20px;opacity:.55;}
+  header h1{margin:0 0 8px;font-size:26px;letter-spacing:.5px;}
+  header .sub{font-size:15px;opacity:.95;}
+  header .badge{display:inline-block;background:rgba(255,255,255,.25);
+    color:#fff;padding:6px 14px;border-radius:20px;font-size:13px;
+    margin-top:10px;font-weight:600;}
+  main{max-width:1100px;margin:0 auto;padding:24px 16px 60px;}
+  section{margin:30px 0;}
+  h2.section-title{font-size:23px;margin:0 0 18px;padding:14px 20px;
+    background:linear-gradient(90deg,var(--c5),var(--c4));color:#fff;
+    border-radius:14px;box-shadow:0 5px 14px rgba(231,111,81,.25);
+    border-left:8px solid var(--c1);}
+
+  /* Confirmation banner */
+  .confirm-banner{background:linear-gradient(120deg,#fff8e1,#ffe5b4);
+    border:3px dashed var(--c5);border-radius:16px;padding:18px 22px;
+    margin:20px 0;text-align:center;}
+  .confirm-banner h3{margin:0 0 8px;color:var(--c5);font-size:19px;}
+  .confirm-banner p{margin:0;color:#444;font-size:15px;}
+
+  /* 3-student profile cards */
+  .student-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+  .student-card{background:#fff;border-radius:16px;padding:18px 22px;
+    box-shadow:0 5px 16px rgba(0,0,0,.08);border-top:7px solid var(--wu);}
+  .student-card.yun{border-top-color:var(--yun);}
+  .student-card.xuan{border-top-color:var(--xuan);}
+  .student-card h3{margin:0 0 8px;font-size:19px;display:flex;align-items:center;gap:8px;}
+  .student-card.wu h3{color:var(--wu);}
+  .student-card.yun h3{color:var(--yun);}
+  .student-card.xuan h3{color:var(--xuan);}
+  .student-card .level{display:inline-block;padding:3px 10px;border-radius:12px;
+    font-size:13px;font-weight:700;}
+  .student-card.wu .level{background:#f5e9ff;color:var(--wu);}
+  .student-card.yun .level{background:#e3f0fa;color:var(--yun);}
+  .student-card.xuan .level{background:#fce0e8;color:var(--xuan);}
+  .student-card .info{margin-top:10px;font-size:14.5px;color:#555;line-height:1.85;}
+  .student-card .info b{color:#222;}
+  @media(min-width:760px){.student-grid{grid-template-columns:1fr 1fr 1fr;}}
+
+  /* Week table */
+  .week-table-wrap{background:#fff;border-radius:14px;overflow:hidden;
+    box-shadow:0 5px 16px rgba(0,0,0,.08);overflow-x:auto;}
+  .week-table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px;}
+  .week-table th{background:linear-gradient(120deg,var(--c1),var(--c2));
+    color:#fff;padding:12px 8px;font-size:14px;text-align:center;}
+  .week-table td{padding:10px 8px;border-bottom:1px solid #eee;
+    border-right:1px solid #f0f0f0;text-align:center;font-size:13.5px;}
+  .week-table tr:last-child td{border-bottom:none;}
+  .week-table .day-col{background:#f8f9fa;font-weight:700;color:var(--c1);
+    min-width:55px;}
+  .week-table .review-row td{background:linear-gradient(90deg,#fff8e1,#ffe5b4);
+    font-weight:600;}
+  .week-table .wu-cell{color:var(--wu);}
+  .week-table .yun-cell{color:var(--yun);}
+  .week-table .xuan-cell{color:var(--xuan);}
+
+  /* Per-student weekly proposals */
+  details.day-details{margin-top:14px;border-radius:12px;overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);}
+  details.day-details summary{padding:14px 18px;color:#fff;font-weight:700;
+    font-size:16px;cursor:pointer;list-style:none;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  details.day-details summary::-webkit-details-marker{display:none;}
+  details.day-details summary::marker{content:"";}
+  details.day-details .arrow{display:inline-block;transition:transform .25s ease;font-size:18px;}
+  details.day-details[open] .arrow{transform:rotate(180deg);}
+  details.day-details.wu summary{background:linear-gradient(120deg,var(--wu),#c77dff);}
+  details.day-details.yun summary{background:linear-gradient(120deg,var(--yun),#3aa9c9);}
+  details.day-details.xuan summary{background:linear-gradient(120deg,var(--xuan),#f4a261);}
+  details.day-details .day-content{padding:18px 20px;background:#fff;}
+
+  .day-card{background:#fafbfd;border-radius:12px;padding:14px 16px;margin:10px 0;
+    border-left:5px solid var(--c2);}
+  .day-card.review{border-left-color:var(--c5);background:linear-gradient(90deg,#fff8e1,#fff);}
+  .day-card h4{margin:0 0 6px;font-size:16px;color:var(--c1);
+    display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .day-card .dnum{background:var(--c2);color:#fff;
+    padding:3px 10px;border-radius:14px;font-size:13px;font-weight:700;}
+  .day-card.review .dnum{background:var(--c5);}
+  .day-card .theme{font-size:15.5px;font-weight:700;color:#333;margin:4px 0 8px;}
+  .day-card .meta{font-size:14px;color:#555;line-height:1.85;}
+  .day-card .meta b{color:#222;}
+  .day-card .word-preview{margin-top:8px;padding:8px 12px;background:#fff;
+    border-radius:8px;font-size:13.5px;color:#666;
+    border:1px dashed #ddd;}
+  .day-card .word-preview b{color:var(--c2);}
+  .day-card.review .word-preview b{color:var(--c5);}
+
+  /* Format note section */
+  .format-note{background:#fff;border-radius:14px;padding:18px 22px;
+    box-shadow:0 4px 12px rgba(0,0,0,.07);border-left:8px solid var(--c3);}
+  .format-note h3{margin:0 0 10px;color:var(--c1);font-size:18px;}
+  .format-note ul{margin:8px 0 0 0;padding-left:22px;font-size:14.5px;line-height:1.9;}
+  .format-note li{margin:4px 0;}
+  .format-note b{color:var(--c5);}
+
+  footer{text-align:center;padding:24px;color:#666;font-size:13.5px;
+    border-top:2px dashed #ccc;margin-top:40px;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📅 三位學生 ｜ 一週英文課程提案</h1>
+  <div class="sub">6 天主題課程 + 1 天綜合複習｜每天 6 字（3 不熟 + 3 熟悉）</div>
+  <div class="badge">⏳ 提案版本｜尚未開始製作內容｜等老師確認</div>
+</header>
+
+<main>
+
+<!-- ============ Confirmation Banner ============ -->
+<div class="confirm-banner">
+  <h3>⚠️ 此為「課程提案」非「課程內容」</h3>
+  <p>下方為 3 位學生的一週主題、每日 6 字配置與文法重點規劃。<br>
+  老師確認以下主題後，再依此規劃製作每天的彩色 HTML 教材。</p>
+</div>
+
+<!-- ============ 三位學生程度速覽 ============ -->
+<section>
+  <h2 class="section-title">👥 三位學生程度速覽</h2>
+  <div class="student-grid">
+
+    <div class="student-card wu">
+      <h3>🟣 吳鼎濬</h3>
+      <span class="level">A 版・基礎強化</span>
+      <div class="info">
+        <b>班級：</b>高二一　<b>座號：</b>二一<br>
+        <b>學測：</b>13/20（65%）<br>
+        <b>主要弱點：</b>單字基礎不足（47%）、過度延伸（29%）、隨機猜測（24%）<br>
+        <b>不熟詞：</b>41 字（偏市集／情緒／犯罪）<br>
+        <b>已完成：</b>Day 01-02
+      </div>
+    </div>
+
+    <div class="student-card yun">
+      <h3>🔵 昀軒</h3>
+      <span class="level">B 版・進階</span>
+      <div class="info">
+        <b>學測：</b>15/20（75%）+ 114 學測 17/20<br>
+        <b>主要弱點：</b>抽象詞彙、推論題、倒裝句辨識<br>
+        <b>不熟詞：</b>80 字（偏航海／極地／文化）<br>
+        <b>強項：</b>文法基礎穩、有閱讀耐力<br>
+        <b>已完成：</b>Day 01-02
+      </div>
+    </div>
+
+    <div class="student-card xuan">
+      <h3>🩷 璇</h3>
+      <span class="level">中上版</span>
+      <div class="info">
+        <b>學測：</b>35/50（70%）｜詞彙題 9/10<br>
+        <b>主要弱點：</b>綜合測驗 6/10、篇章 2/4、混合題詞形<br>
+        <b>不熟詞：</b>66 字（偏建築／地圖／微笑文化）<br>
+        <b>強項：</b>單字辨識能力強<br>
+        <b>已完成：</b>Day 01
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 一週課程速覽表 ============ -->
+<section>
+  <h2 class="section-title">📊 一週主題速覽（橫向比較）</h2>
+  <div class="week-table-wrap">
+    <table class="week-table">
+      <thead>
+        <tr>
+          <th>日</th>
+          <th>🟣 吳鼎濬（A）</th>
+          <th>🔵 昀軒（B）</th>
+          <th>🩷 璇（中上）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day-col">Day 1</td>
+          <td class="wu-cell">市集精品<br>（已完成）</td>
+          <td class="yun-cell">航海探險<br>（已完成）</td>
+          <td class="xuan-cell">城堡堡壘<br>（已完成）</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 2</td>
+          <td class="wu-cell">情緒反應<br>（已完成）</td>
+          <td class="yun-cell">生存野外<br>（已完成）</td>
+          <td class="xuan-cell">地圖方位<br>（提案）</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 3</td>
+          <td class="wu-cell">犯罪與正義<br>（提案）</td>
+          <td class="yun-cell">極地氣候<br>（提案）</td>
+          <td class="xuan-cell">極地遠征<br>（提案）</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 4</td>
+          <td class="wu-cell">身體與動作<br>（提案）</td>
+          <td class="yun-cell">原住民文化<br>（提案）</td>
+          <td class="xuan-cell">大腦與睡眠<br>（提案）</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 5</td>
+          <td class="wu-cell">旅遊文化<br>（提案）</td>
+          <td class="yun-cell">貿易路線<br>（提案）</td>
+          <td class="xuan-cell">微笑與肢體<br>（提案）</td>
+        </tr>
+        <tr>
+          <td class="day-col">Day 6</td>
+          <td class="wu-cell">飲食料理<br>（提案）</td>
+          <td class="yun-cell">大腦健康<br>（提案）</td>
+          <td class="xuan-cell">現代生活<br>（提案）</td>
+        </tr>
+        <tr class="review-row">
+          <td class="day-col">Day 7<br>📝</td>
+          <td>本週 36 字綜合複習<br>+ 文法錯題重練</td>
+          <td>本週 36 字綜合複習<br>+ 倒裝句進階</td>
+          <td>本週 36 字綜合複習<br>+ 混合題詞形</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============ 吳鼎濬 詳細提案 ============ -->
+<section>
+  <h2 class="section-title" style="background:linear-gradient(90deg,var(--wu),#c77dff);">
+    🟣 吳鼎濬（A 版・基礎強化）｜詳細提案
+  </h2>
+
+  <details class="day-details wu">
+    <summary><span>📖 點開查看 Day 1-7 詳細規劃</span><span class="arrow">▼</span></summary>
+    <div class="day-content">
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 1</span>市集．工藝．精品 ✅ 已完成</h4>
+        <div class="meta">已完成的 20 字版本可保留作為主檔，本週 6 字版可從中精選。</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 2</span>情緒．反應．生活場景 ✅ 已完成</h4>
+        <div class="meta">同上，已完成 20 字版本。</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 3</span></h4>
+        <div class="theme">主題：Crime &amp; Justice 犯罪與正義</div>
+        <div class="meta">
+          <b>選字依據：</b>學生不熟詞中 assault, condemn, overturn, witness, brutal 集中於犯罪／審判題型<br>
+          <b>文法重點：</b>被動語態 + 介系詞（be condemned for / be charged with / be sentenced to）<br>
+          <b>閱讀情境：</b>校園安全或法庭新聞短篇
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 condemn, overturn, witness）+ 3 熟悉（如 punish, evidence, justice）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 4</span></h4>
+        <div class="theme">主題：Body &amp; Daily Movement 身體與日常動作</div>
+        <div class="meta">
+          <b>選字依據：</b>學生不熟詞中 elbow, hand, planks, smiling, sparkling 屬具體動作詞<br>
+          <b>文法重點：</b>動詞 + one's way + 介系詞（elbow / push / squeeze one's way through）<br>
+          <b>閱讀情境：</b>擁擠的車站／演唱會等動感場景
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 elbow, plank, sparkle）+ 3 熟悉（如 wave, lean, stretch）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 5</span></h4>
+        <div class="theme">主題：Travel &amp; Tourism 旅遊與觀光</div>
+        <div class="meta">
+          <b>選字依據：</b>學生不熟詞中 orientation, oriented, eurocentric, layouts 與旅遊文化相關<br>
+          <b>文法重點：</b>be + adj + 介系詞（be oriented toward / be famous for / be located in）<br>
+          <b>閱讀情境：</b>歐洲老城旅行紀實
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 orientation, layout, oriented）+ 3 熟悉（如 destination, souvenir, landmark）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 6</span></h4>
+        <div class="theme">主題：Food &amp; Dining 飲食與用餐</div>
+        <div class="meta">
+          <b>選字依據：</b>學生不熟詞中 cuisine, gourmet, cramming（cram = 填塞）與飲食相關，承接 Day 1 boutique 主題<br>
+          <b>文法重點：</b>be considered / be regarded as + N（被視為⋯）<br>
+          <b>閱讀情境：</b>夜市美食或茶館介紹
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 cram, cuisine, gourmet）+ 3 熟悉（如 flavor, recipe, ingredient）</div>
+      </div>
+
+      <div class="day-card review">
+        <h4><span class="dnum">Day 7</span>📝 綜合複習日</h4>
+        <div class="theme">本週 36 字綜合複習 + 4 大錯誤模式對症練習</div>
+        <div class="meta">
+          <b>內容：</b>10 題單字單選（含 5 題還原本週主題、5 題還原學測 Q1/Q6/Q8/Q15/Q17 錯題）<br>
+          <b>加碼：</b>1 篇 200 字綜合閱讀（融入本週 18 字以上）+ 5 題閱讀題<br>
+          <b>追蹤：</b>對照「下次出題標準」確認 4 大錯誤模式有改善
+        </div>
+      </div>
+
+    </div>
+  </details>
+</section>
+
+<!-- ============ 昀軒 詳細提案 ============ -->
+<section>
+  <h2 class="section-title" style="background:linear-gradient(90deg,var(--yun),#3aa9c9);">
+    🔵 昀軒（B 版・進階）｜詳細提案
+  </h2>
+
+  <details class="day-details yun">
+    <summary><span>📖 點開查看 Day 1-7 詳細規劃</span><span class="arrow">▼</span></summary>
+    <div class="day-content">
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 1</span>航海與探險 ✅ 已完成</h4>
+        <div class="meta">已完成 20 字版本（含進階字 transcend, encompass, impede, orient）。</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 2</span>生存與野外 ✅ 已完成</h4>
+        <div class="meta">已完成 20 字版本（含倒裝句 Under no circumstances 進階文法）。</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 3</span></h4>
+        <div class="theme">主題：Polar Climate &amp; Cold Regions 極地氣候與寒帶</div>
+        <div class="meta">
+          <b>選字依據：</b>不熟詞 polar, northward, sunken, whaling, stormy, sailors 集中於極地航海<br>
+          <b>文法重點：</b>分詞片語（freezing wind, sunken ship）作後位修飾<br>
+          <b>閱讀情境：</b>南極／北極探險（Endurance、Shackleton 等真實故事改編）
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 polar, sunken, stormy）+ 3 熟悉（如 freeze, glacier, breeze）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 4</span></h4>
+        <div class="theme">主題：Indigenous Cultures &amp; Heritage 原住民文化與傳統</div>
+        <div class="meta">
+          <b>選字依據：</b>不熟詞 indigenous, aboriginal, dakshina, pre-biblical, islamic, defenders 屬文化背景詞<br>
+          <b>文法重點：</b>關係子句進階（whose / by which / in which）<br>
+          <b>閱讀情境：</b>玻里尼西亞航海或印度文化方位概念
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 indigenous, aboriginal, heritage）+ 3 熟悉（如 culture, ritual, tribe）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 5</span></h4>
+        <div class="theme">主題：Trade Routes &amp; History 貿易路線與歷史</div>
+        <div class="meta">
+          <b>選字依據：</b>不熟詞 medieval, antique, narrow, urgent, blip 與絲路／歷史相關<br>
+          <b>文法重點：</b>It is + adj + that + 子句（強調與虛主詞）<br>
+          <b>閱讀情境：</b>絲路或威尼斯商人歷史短篇
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 medieval, antique, blip）+ 3 熟悉（如 merchant, trade, route）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 6</span></h4>
+        <div class="theme">主題：Brain &amp; Health 大腦與健康</div>
+        <div class="meta">
+          <b>選字依據：</b>不熟詞 consumption, dementia（從 115 學測午睡題）, manipulate, hindered, reinforce 屬腦科學<br>
+          <b>文法重點：</b>名詞化結構（the rise of / the decline in）<br>
+          <b>閱讀情境：</b>午睡與記憶研究短篇
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 dementia, manipulate, hindered）+ 3 熟悉（如 memory, recover, focus）</div>
+      </div>
+
+      <div class="day-card review">
+        <h4><span class="dnum">Day 7</span>📝 綜合複習日</h4>
+        <div class="theme">本週 36 字綜合複習 + 倒裝句進階家族</div>
+        <div class="meta">
+          <b>內容：</b>10 題單字單選（含 Q5/Q17/Q29 學測錯題還原 + 倒裝句 5 題）<br>
+          <b>加碼：</b>1 篇 250 字進階閱讀（融入 20 字以上）+ 5 題推論題<br>
+          <b>追蹤：</b>能否獨立看出 Not until / Under no circumstances / Hardly had S Vp.p. 倒裝句型
+        </div>
+      </div>
+
+    </div>
+  </details>
+</section>
+
+<!-- ============ 璇 詳細提案 ============ -->
+<section>
+  <h2 class="section-title" style="background:linear-gradient(90deg,var(--xuan),#f4a261);">
+    🩷 璇（中上版）｜詳細提案
+  </h2>
+
+  <details class="day-details xuan">
+    <summary><span>📖 點開查看 Day 1-7 詳細規劃</span><span class="arrow">▼</span></summary>
+    <div class="day-content">
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 1</span>城堡．樓梯．堡壘 ✅ 已完成</h4>
+        <div class="meta">已完成 20 字版本（含字根 scend / struct / tract / press / fend / capt）。</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 2</span></h4>
+        <div class="theme">主題：Maps &amp; Orientation 地圖與方位</div>
+        <div class="meta">
+          <b>選字依據：</b>不熟詞 orient, orientation, oriented, dakshina, dynamic, trading, evidence 集中於地圖文章<br>
+          <b>文法重點：</b>邏輯連接詞 (it turns out / in other words / what is more) ─ 對應 Q11 錯題<br>
+          <b>閱讀情境：</b>地圖方向演變的歷史短篇（接續 Q43 主旨題）
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 orient, dakshina, dynamic）+ 3 熟悉（如 direction, compass, region）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 3</span></h4>
+        <div class="theme">主題：Polar Expedition &amp; Endurance 極地遠征</div>
+        <div class="meta">
+          <b>選字依據：</b>不熟詞 voyage, vessel, expedition, encountered, buckled 全來自 Q35-38 Endurance 文章<br>
+          <b>文法重點：</b>過去完成式 vs 過去式（had been Vp.p. / had Vp.p.）─ 還原 Q17 had yet to develop 結構<br>
+          <b>閱讀情境：</b>Shackleton 真實探險改編
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 vessel, buckled, encountered）+ 3 熟悉（如 ship, ice, crew）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 4</span></h4>
+        <div class="theme">主題：Brain &amp; Sleep 大腦與睡眠</div>
+        <div class="meta">
+          <b>選字依據：</b>不熟詞 dementia, fatigue, shrinking, enhance, indicates, gradually 來自 Q21-30 午睡文章<br>
+          <b>文法重點：</b>動詞片語完整性（point to / contribute to / lead to）─ 對應 Q26 錯題<br>
+          <b>閱讀情境：</b>午睡與記憶／腦容量研究
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 dementia, fatigue, shrinking）+ 3 熟悉（如 memory, brain, sleep）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 5</span></h4>
+        <div class="theme">主題：Smile &amp; Body Language 微笑與肢體語言</div>
+        <div class="meta">
+          <b>選字依據：</b>不熟詞 judged, precedence, typically, underlying, diversity, proverb 來自 Q31-34 微笑文章<br>
+          <b>文法重點：</b>篇章結構連接句（Another crucial factor is / In fact）─ 對應 Q31-34 錯題<br>
+          <b>閱讀情境：</b>跨文化非語言溝通短篇
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 precedence, underlying, proverb）+ 3 熟悉（如 gesture, expression, signal）</div>
+      </div>
+
+      <div class="day-card">
+        <h4><span class="dnum">Day 6</span></h4>
+        <div class="theme">主題：Modern Lifestyle &amp; Wellness 現代生活風格</div>
+        <div class="meta">
+          <b>選字依據：</b>不熟詞 paradise, accessories, accommodate, blend, coexist, harmoniously, reusable 來自 Q47-48 Wonder Village<br>
+          <b>文法重點：</b>be + Vp.p. + 介系詞（be blended with / be designed for）─ 對應 Q48 錯題<br>
+          <b>閱讀情境：</b>新生活風格街區（融合傳統與創新）
+        </div>
+        <div class="word-preview"><b>預計 6 字：</b>3 不熟（如 accommodate, blend, coexist）+ 3 熟悉（如 lifestyle, modern, mix）</div>
+      </div>
+
+      <div class="day-card review">
+        <h4><span class="dnum">Day 7</span>📝 綜合複習日</h4>
+        <div class="theme">本週 36 字綜合複習 + 混合題（Q47-50）詞形練習</div>
+        <div class="meta">
+          <b>內容：</b>10 題單字單選（含 Q11/Q26/Q18/Q48/Q50 全部錯題還原）<br>
+          <b>加碼：</b>1 篇 230 字混合題型練習（含填空 + 詞形變化）<br>
+          <b>追蹤：</b>確認 3 大弱點是否改善：邏輯連接詞、動詞片語完整性、被動結構詞形
+        </div>
+      </div>
+
+    </div>
+  </details>
+</section>
+
+<!-- ============ 統一規格說明 ============ -->
+<section>
+  <h2 class="section-title green" style="background:linear-gradient(90deg,var(--c2),var(--c3));color:#022;">
+    📐 每日教材統一規格（所有學生）
+  </h2>
+  <div class="format-note">
+    <h3>📦 每天輸出包含 4 大區塊</h3>
+    <ul>
+      <li><b>Part 1 ｜ 6 字主題單字卡</b> — 3 不熟（取自學生不熟詞表）+ 3 同等級熟悉字；每字附 KK 音標、中文釋義、衍生詞（取自 vocabulary_database_dotm.txt）、字根（如有）、3 個英中對照例句</li>
+      <li><b>Part 2 ｜ 1 個文法重點</b> — 對症學生 115 學測錯題（每天聚焦 1 個，整週累積 6 個）</li>
+      <li><b>Part 3 ｜ 主題短閱讀</b> — 約 130-160 字（學測長度的 1/2，比 Day 01-02 短，因為單字量也少了）</li>
+      <li><b>Part 4 ｜ 3 題單字複習</b> — 含答案＆解析（原生 <code>&lt;details&gt;/&lt;summary&gt;</code>，無 JS）</li>
+    </ul>
+    <h3 style="margin-top:18px;">🎨 共通規格</h3>
+    <ul>
+      <li>彩色 HTML，每位學生有專屬色系（吳＝紫橙、昀＝藍橙、璇＝紫粉黃）</li>
+      <li>手機友善：字體 17px 起跳、行高 1.7-1.9</li>
+      <li>折疊區塊全部用 <b>原生 <code>&lt;details&gt;/&lt;summary&gt;</code></b>（符合 LINE WebView 規範）</li>
+      <li>輸出位置：對應的學生資料夾內（<code>~/Downloads/claude-code-1/2026-XXX/</code>）</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 確認流程 ============ -->
+<section>
+  <h2 class="section-title">✋ 老師請確認以下事項</h2>
+  <div class="format-note" style="border-left-color:var(--c5);">
+    <h3 style="color:var(--c5);">在開始製作每天的內容前，請老師回覆以下決定：</h3>
+    <ul style="font-size:15px;">
+      <li><b>① 主題確認：</b>每位學生 Day 3-6 的主題（共 12 個主題）有沒有要調整？或者完全換主題？</li>
+      <li><b>② Day 1-2 處理：</b>已完成的 Day 1-2 是 20 字版，本週改 6 字版。老師要重做 Day 1-2 為 6 字版？還是保留原本 20 字版？</li>
+      <li><b>③ 順序確認：</b>表中的天數順序可以調整。例如吳鼎濬 Day 5 旅遊 vs Day 6 飲食可互換。</li>
+      <li><b>④ 輸出時程：</b>一次做完一週？還是一天做一份再傳給學生？</li>
+      <li><b>⑤ Day 7 複習形式：</b>提案是「10 單選 + 1 篇閱讀 + 5 閱讀題」，老師可調整題量。</li>
+    </ul>
+    <p style="margin-top:14px;color:#444;font-size:14.5px;">
+      回覆「確認，開始做 [學生] Day [X]」即可開始製作。<br>
+      也可以指定：「先做某 1 位學生整週」或「3 位學生同步做 Day 3」。
+    </p>
+  </div>
+</section>
+
+<footer>
+  三位學生 ｜ 一週英文課程提案 ｜ 2026-05-03 ｜ 提案版本（待老師確認）<br>
+  資料來源：吳鼎濬 / 昀軒 / 璇 之 115 學測作答結果與不熟詞表
+</footer>
+
+</main>
+</body>
+</html>
