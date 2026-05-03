@@ -1,103 +1,1521 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
-        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
-        .options-list { list-style: none; padding: 0; }
-        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
-        .option-item:hover { background-color: #f9f9f9; }
-        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
-        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
-        .special-btn:hover { background-color: #f0f0f0; }
-        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
-        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
-        .tool-link:hover { color: #333; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
-        .overlay-content { max-width: 500px; margin: 0 auto; }
-        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
-        .close-btn:hover { color: #666; }
-        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
-        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
-        .eg-item { margin-bottom: 10px; }
-        .kk-text { color: #666; font-style: italic; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蘋果在中國 · 14回合原子習慣課程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --coral: #FF6B4A;
+    --coral-light: #FFE8E2;
+    --coral-dark: #C13A1E;
+    --teal: #00B09B;
+    --teal-light: #E0F7F5;
+    --teal-dark: #007A6E;
+    --gold: #F5A623;
+    --gold-light: #FEF3DC;
+    --gold-dark: #B5731A;
+    --indigo: #5B4BDB;
+    --indigo-light: #EAE8FF;
+    --indigo-dark: #3B2EB0;
+    --rose: #E8436F;
+    --rose-light: #FDEAEF;
+    --green: #2EC486;
+    --green-light: #E1F8EF;
+    --navy: #1A1A3E;
+    --bg: #FDF6EE;
+    --card-bg: #FFFDF9;
+    --text: #2D1F0E;
+    --text-muted: #8A7060;
+    --border-r: 20px;
+    --warm1: #FFF3E0;
+    --warm2: #FFE0B2;
+    --warm3: #FFCC80;
+    --warm4: #FFA726;
+    --amber-dk: #7B4F1A;
+    --line-green: #00B900;
+    --line-green-dk: #008A00;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--navy);
+    padding: 48px 20px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,107,74,0.35) 0%, transparent 70%);
+    top: -80px; right: -60px;
+    border-radius: 50%;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(0,176,155,0.25) 0%, transparent 70%);
+    bottom: -40px; left: -40px;
+    border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,107,74,0.2);
+    color: #FF9B82;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255,107,74,0.3);
+    position: relative; z-index: 1;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 7vw, 42px);
+    font-weight: 900;
+    color: #FFFFFF;
+    line-height: 1.15;
+    margin-bottom: 10px;
+    position: relative; z-index: 1;
+  }
+  .hero h1 span { color: var(--coral); }
+  .hero-sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    position: relative; z-index: 1;
+  }
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    position: relative; z-index: 1;
+  }
+  .stat-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .stat-pill .num {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFF;
+    display: block;
+  }
+  .stat-pill .label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    background: #FFFBF5;
+    padding: 16px 20px;
+    border-bottom: 1px solid #FFE0B2;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(180,100,20,0.08);
+  }
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .progress-label span:first-child {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .progress-label span:last-child {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--coral);
+    font-weight: 700;
+  }
+  .progress-bar-bg {
+    height: 6px;
+    background: #FFE5C8;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--coral), var(--gold));
+    border-radius: 100px;
+    transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 0%;
+  }
+  .round-dots {
+    display: flex;
+    gap: 4px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .round-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: #F5DFC0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .round-dot.done { background: var(--teal); }
+  .round-dot.active { background: var(--coral); transform: scale(1.3); }
+
+  /* ── SECTION LABELS ── */
+  .section-label {
+    padding: 24px 20px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+  }
+  .section-label-text {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* ── ROUND CARDS ── */
+  .rounds-list {
+    padding: 0 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .round-card {
+    background: var(--card-bg);
+    border-radius: var(--border-r);
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    border: 1.5px solid transparent;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.2s;
+    cursor: pointer;
+  }
+  .round-card:active { transform: scale(0.985); }
+  .round-card.done { border-color: rgba(0,176,155,0.3); }
+  .round-card.active-card { border-color: var(--coral); box-shadow: 0 4px 24px rgba(255,107,74,0.18); }
+
+  .card-header {
+    padding: 18px 18px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .round-badge {
+    min-width: 44px; height: 44px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .round-badge .rnum {
+    font-family: 'Space Mono', monospace;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1;
+    color: #FFF;
+  }
+  .round-badge .rlabel {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.75);
+    text-transform: uppercase;
+  }
+  .card-meta { flex: 1; min-width: 0; }
+  .card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 6px;
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .card-company {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .time-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--bg);
+    color: var(--text-muted);
+  }
+  .check-btn {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 2px solid #E0DDD5;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 16px;
+  }
+  .check-btn.done {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: white;
+  }
+
+  /* ── EXPANDABLE CONTENT ── */
+  .card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-body.open { max-height: 1200px; }
+  .card-body-inner {
+    padding: 0 18px 20px;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    margin: 0 0 0 0;
+  }
+
+  .section-block {
+    margin-top: 16px;
+  }
+  .section-block-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .story-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .key-number {
+    background: #FFF8F0;
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #FFE5C8;
+  }
+  .key-number .num-big {
+    font-family: 'Space Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .key-number .num-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .company-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 8px 0;
+  }
+  .chip {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .reflect-box {
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-radius: 14px;
+    position: relative;
+  }
+  .reflect-box::before {
+    content: '💭';
+    font-size: 14px;
+    margin-right: 6px;
+  }
+  .reflect-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    opacity: 0.7;
+  }
+  .reflect-text {
+    font-size: 13px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .new-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 100px;
+    background: var(--gold);
+    color: var(--navy);
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── COMPLETE BTN ── */
+  .complete-btn {
+    width: calc(100% - 4px);
+    margin: 10px 2px 0;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .complete-btn:active { transform: scale(0.97); }
+
+  /* ── BOTTOM SUMMARY ── */
+  .summary-box {
+    margin: 8px 16px 32px;
+    background: var(--navy);
+    border-radius: var(--border-r);
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .summary-box::before {
+    content: '';
+    position: absolute;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(255,107,74,0.25) 0%, transparent 70%);
+    top: -60px; right: -40px;
+    border-radius: 50%;
+  }
+  .summary-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: #FFF;
+    margin-bottom: 6px;
+    position: relative; z-index: 1;
+  }
+  .summary-box p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+    position: relative; z-index: 1;
+  }
+  .summary-count {
+    font-family: 'Space Mono', monospace;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--coral);
+    display: block;
+    margin: 12px 0 4px;
+    position: relative; z-index: 1;
+  }
+
+  /* ── COLOR THEMES per section ── */
+  /* Theme A: Coral — Foundation (rounds 1-5) */
+  .theme-coral .round-badge { background: linear-gradient(135deg, var(--coral), #FF9066); }
+  .theme-coral .card-tag { background: var(--coral-light); color: var(--coral-dark); }
+  .theme-coral .key-number .num-big { color: var(--coral); }
+  .theme-coral .reflect-box { background: var(--coral-light); color: var(--coral-dark); }
+  .theme-coral .complete-btn { background: var(--coral); color: #FFF; }
+  .theme-coral .complete-btn.done { background: var(--teal); }
+  .theme-coral.done .card-header { background: linear-gradient(135deg, rgba(255,107,74,0.04), transparent); }
+
+  /* Theme B: Indigo — Strategy (rounds 6-8) */
+  .theme-indigo .round-badge { background: linear-gradient(135deg, var(--indigo), #7B6EF5); }
+  .theme-indigo .card-tag { background: var(--indigo-light); color: var(--indigo-dark); }
+  .theme-indigo .key-number .num-big { color: var(--indigo); }
+  .theme-indigo .reflect-box { background: var(--indigo-light); color: var(--indigo-dark); }
+  .theme-indigo .complete-btn { background: var(--indigo); color: #FFF; }
+  .theme-indigo .complete-btn.done { background: var(--teal); }
+
+  /* Theme C: Rose — India (rounds 7-8 = new) */
+  .theme-rose .round-badge { background: linear-gradient(135deg, var(--rose), #F5758A); }
+  .theme-rose .card-tag { background: var(--rose-light); color: #B0254A; }
+  .theme-rose .key-number .num-big { color: var(--rose); }
+  .theme-rose .reflect-box { background: var(--rose-light); color: #B0254A; }
+  .theme-rose .complete-btn { background: var(--rose); color: #FFF; }
+  .theme-rose .complete-btn.done { background: var(--teal); }
+
+  /* Theme D: Gold — Battle (rounds 9-11) */
+  .theme-gold .round-badge { background: linear-gradient(135deg, var(--gold), #FFBE4D); }
+  .theme-gold .card-tag { background: var(--gold-light); color: var(--gold-dark); }
+  .theme-gold .key-number .num-big { color: var(--gold-dark); }
+  .theme-gold .reflect-box { background: var(--gold-light); color: var(--gold-dark); }
+  .theme-gold .complete-btn { background: var(--gold); color: var(--navy); }
+  .theme-gold .complete-btn.done { background: var(--teal); color: #FFF; }
+
+  /* Theme E: Teal — Future (rounds 12-14) */
+  .theme-teal .round-badge { background: linear-gradient(135deg, var(--teal), #00C9AE); }
+  .theme-teal .card-tag { background: var(--teal-light); color: var(--teal-dark); }
+  .theme-teal .key-number .num-big { color: var(--teal-dark); }
+  .theme-teal .reflect-box { background: var(--teal-light); color: var(--teal-dark); }
+  .theme-teal .complete-btn { background: var(--teal); color: #FFF; }
+  .theme-teal .complete-btn.done { background: var(--indigo); }
+
+  .chip-coral { background: var(--coral-light); color: var(--coral-dark); }
+  .chip-teal { background: var(--teal-light); color: var(--teal-dark); }
+  .chip-indigo { background: var(--indigo-light); color: var(--indigo-dark); }
+  .chip-gold { background: var(--gold-light); color: var(--gold-dark); }
+  .chip-rose { background: var(--rose-light); color: #B0254A; }
+  .chip-green { background: var(--green-light); color: #1A8055; }
+  .chip-gray { background: #F5EFE6; color: #7A6050; }
+
+  /* ── LINK BANNER ── */
+  .link-banner {
+    background: linear-gradient(135deg, #FFF8F0 0%, #FFF3E2 50%, #FFF0D8 100%);
+    border-top: 3px solid var(--warm3);
+    border-bottom: 3px solid var(--warm3);
+    padding: 22px 16px 18px;
+  }
+  .link-banner-title {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--amber-dk);
+    margin-bottom: 14px;
+    opacity: 0.75;
+  }
+  .link-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #FFFFFF;
+    border-radius: 16px;
+    padding: 14px 16px;
+    text-decoration: none;
+    border: 1.5px solid #FFD8A8;
+    box-shadow: 0 2px 10px rgba(200,120,30,0.08);
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+  }
+  .link-card:active { transform: scale(0.97); box-shadow: 0 1px 4px rgba(200,120,30,0.1); }
+  .link-card:hover { border-color: var(--warm4); box-shadow: 0 4px 16px rgba(200,120,30,0.14); }
+  .link-icon {
+    width: 46px; height: 46px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .link-icon-echo { background: linear-gradient(135deg, #FFB347, #FF6B4A); }
+  .link-icon-student { background: linear-gradient(135deg, #667EEA, #764BA2); }
+  .link-icon-line { background: linear-gradient(135deg, #00B900, #00D100); }
+  .link-text { flex: 1; min-width: 0; }
+  .link-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .link-label-echo { color: #C13A1E; }
+  .link-label-student { color: #4B35C0; }
+  .link-label-line { color: var(--line-green-dk); }
+  .link-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: #2D1F0E;
+    line-height: 1.25;
+    margin-bottom: 3px;
+  }
+  .link-desc {
+    font-size: 11px;
+    color: #9A7A60;
+    line-height: 1.4;
+  }
+  .link-arrow {
+    font-size: 18px;
+    color: #C8A070;
+    flex-shrink: 0;
+  }
+  .link-banner-bottom {
+    background: linear-gradient(135deg, #FFF3E0 0%, #FFE8C8 50%, #FFD8A8 100%);
+    border-top: 3px solid #FFA726;
+    border-bottom: 3px solid #FFA726;
+    padding: 22px 16px 18px;
+  }
+
+</style>
 </head>
 <body>
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
-    <div class="question">Known for being critical and demanding, our teacher often complains that very few students manage to hand in assignments that meet his _______.</div>
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) directions <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) opportunities <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) standards <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) decisions <span class="info-icon">ⓘ</span></div>
-    </div>
-    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
-    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+
+<!-- TOP LINK BANNER -->
+<div class="link-banner">
+  <div class="link-banner-title">✨ 2025 七月課程 · 講師資訊</div>
+  <div class="link-cards">
+
+    <a href="https://linwayet.github.io/4ulive/index.html" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon link-icon-echo">🔁</div>
+      <div class="link-text">
+        <div class="link-label link-label-echo">七月開課 · 課程一</div>
+        <div class="link-name">錯中學 ECHO 計劃</div>
+        <div class="link-desc">從錯誤中學習、從回聲中成長<br>2025 年七月全新開課</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <a href="https://linwayet.github.io/popup/index" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon link-icon-student">📊</div>
+      <div class="link-text">
+        <div class="link-label link-label-student">七月開課 · 課程二</div>
+        <div class="link-name">學生分析系統</div>
+        <div class="link-desc">深度了解學習者特質<br>個人化學習路徑規劃</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <a href="https://line.me/ti/p/~linwayet" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon link-icon-line">💬</div>
+      <div class="link-text">
+        <div class="link-label link-label-line">LINE · 直接聯繫講師</div>
+        <div class="link-name">加入 LINE 好友</div>
+        <div class="link-desc">ID：linwayet<br>歡迎詢問課程報名與合作</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+  </div>
 </div>
-<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📚 原子習慣學習計畫</div>
+  <h1>蘋果在<span>中國</span><br>& 台灣供應鏈</h1>
+  <p class="hero-sub">每回合 10–15 分鐘 · 一個概念 · 一個反思<br>共 14 回合 · 橫跨 20 年商業史</p>
+  <div class="hero-stats">
+    <div class="stat-pill">
+      <span class="num">14</span>
+      <span class="label">回合</span>
+    </div>
+    <div class="stat-pill">
+      <span class="num" id="done-count">0</span>
+      <span class="label">已完成</span>
+    </div>
+    <div class="stat-pill">
+      <span class="num" id="total-mins">175</span>
+      <span class="label">總分鐘</span>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY PROGRESS -->
+<div class="progress-wrap">
+  <div class="progress-label">
+    <span>學習進度</span>
+    <span id="pct-label">0 / 14</span>
+  </div>
+  <div class="progress-bar-bg">
+    <div class="progress-bar-fill" id="prog-fill"></div>
+  </div>
+  <div class="round-dots" id="dot-row"></div>
+</div>
+
+<!-- ── PART 1: FOUNDATION ── -->
+<div class="section-label">
+  <div class="section-label-line"></div>
+  <div class="section-label-text">🏗️ Part 1 · 基礎篇（回合 1–5）</div>
+  <div class="section-label-line"></div>
+</div>
+
+<div class="rounds-list" id="rounds-list">
+
+<!-- R1 -->
+<div class="round-card theme-coral" data-round="1" data-mins="10">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">01</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🍎 起源</div>
+      <div class="card-title">蘋果模式的誕生</div>
+      <div class="card-company">外包 × 控制 × 1996–2007</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">10 min</div>
+      <button class="check-btn" onclick="toggleDone(event,1)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">核心故事</div>
+        <div class="story-text">1996 年蘋果瀕臨破產，不得不賣掉美國工廠走外包路線。1999 年，鴻海郭台銘打電話給蘋果只說一句：「我可以搞定。」這通電話開啟了長達 20 年的危險交易。</div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">關鍵數字</div>
+        <div class="key-number">
+          <span class="num-big">73億</span>
+          <span class="num-desc">蘋果借放給中國供應商的設備資產（美元），超過蘋果在美國所有辦公大樓+零售店總和</span>
+        </div>
+        <div class="key-number">
+          <span class="num-big">50席</span>
+          <span class="num-desc">疫情前蘋果每天買下舊金山飛往上海的商務艙座位（聯合航空最大企業客戶）</span>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">核心概念</div>
+        <div class="story-text">蘋果「外包但不放控制權」——派遣成千上萬工程師到中國，把工廠當自己手腳，甚至推出「挽救婚姻計畫」支付工程師配偶機票。</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">你的工作或生活中，有哪些事「交出去了卻還是放不了手」？這種控制是保護，還是阻礙成長？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,1)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R2 -->
+<div class="round-card theme-coral" data-round="2" data-mins="12">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">02</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🏭 組裝五哥</div>
+      <div class="card-title">台灣供應鏈地圖（上）</div>
+      <div class="card-company">鴻海 · 和碩 · 緯創 · 廣達 · 仁寶</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">12 min</div>
+      <button class="check-btn" onclick="toggleDone(event,2)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">五大組裝廠</div>
+        <div class="company-chips">
+          <span class="chip chip-coral">鴻海 2317 · iPhone 主力</span>
+          <span class="chip chip-indigo">和碩 4938 · iPhone 次力</span>
+          <span class="chip chip-green">緯創 3231 · 已轉型 AI</span>
+          <span class="chip chip-gold">廣達 2382 · MacBook</span>
+          <span class="chip chip-gray">仁寶 2324 · MacBook</span>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">蘋果的分散策略</div>
+        <div class="story-text">蘋果刻意讓「電子代工五哥」全數入列，避免任一廠商做大而失去議價主導權。這是蘋果保持 40%+ 毛利的關鍵機制。</div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">8.1兆</span>
+        <span class="num-desc">鴻海 2025 年全年營收（台幣），年增 18%，創歷史新高</span>
+      </div>
+      <div class="key-number">
+        <span class="num-big">+50%</span>
+        <span class="num-desc">廣達 2025 年年增率，AI 伺服器成主要引擎</span>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">蘋果「故意分散訂單」的策略，你在工作或生活中用過類似邏輯嗎？是否曾刻意不讓任何人「太重要」？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,2)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R3 -->
+<div class="round-card theme-coral" data-round="3" data-mins="12">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">03</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🔬 零組件</div>
+      <div class="card-title">台灣供應鏈地圖（下）</div>
+      <div class="card-company">台積電 · 大立光 · 日月光 · 國巨</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">12 min</div>
+      <button class="check-btn" onclick="toggleDone(event,3)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">核心零組件廠商</div>
+        <div class="company-chips">
+          <span class="chip chip-coral">台積電 2330 · 晶圓代工</span>
+          <span class="chip chip-indigo">大立光 3008 · 鏡頭</span>
+          <span class="chip chip-teal">日月光 3711 · 封測</span>
+          <span class="chip chip-gold">國巨 2327 · 被動元件</span>
+          <span class="chip chip-rose">南電 8046 · IC 載板</span>
+          <span class="chip chip-green">臻鼎 4958 · 軟板</span>
+          <span class="chip chip-gray">晶技 3042 · 石英元件</span>
+        </div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">57%+</span>
+        <span class="num-desc">台積電毛利率，vs 鴻海組裝廠 2–3%。同樣是「蘋果供應商」，天壤之別</span>
+      </div>
+      <div class="key-number">
+        <span class="num-big">25%</span>
+        <span class="num-desc">台積電 2025 年預估來自蘋果的營收占比。N2 製程將讓售價比 N3 溢價 29%</span>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">核心洞察</div>
+        <div class="story-text">組裝廠賺規模，零組件廠賺技術壁壘。台積電、大立光的護城河讓紅色供應鏈難以複製，這才是台灣真正的底牌。</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">「組裝廠」vs「零組件廠」的議價能力差異，讓你聯想到職場裡哪種人的對比？你現在更像哪一種？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,3)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R4 -->
+<div class="round-card theme-coral" data-round="4" data-mins="10">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">04</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🎲 豪賭</div>
+      <div class="card-title">台商的豪賭邏輯</div>
+      <div class="card-company">用利潤換技術 · 常春藤學歷比喻</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">10 min</div>
+      <button class="check-btn" onclick="toggleDone(event,4)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">核心故事</div>
+        <div class="story-text">郭台銘主動提出免費替蘋果開發模具，一套模具成本高達 100 萬美元，鴻海選擇自行吸收。他的邏輯：先用低價組裝把蘋果綁進富士康體系，再靠零組件採購賺利潤。</div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">$100萬</span>
+        <span class="num-desc">郭台銘免費開發的模具單套成本（美元）。業界慣例是客戶付費，但鴻海主動吸收</span>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">名言金句</div>
+        <div class="story-text" style="font-style:italic;padding:10px 14px;background:#FFF5E8;border-radius:10px;border-left:3px solid var(--coral);">「如果你能滿足蘋果的需求，就能滿足世界上任何客戶的需求。蘋果是硬體業的常春藤學歷。」</div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">策略對比</div>
+        <div class="story-text">郭台銘（鴻海）：以規模 + 效率換技術知識 → 短期虧，長期大量訂單<br><br>林百里（大立光前身策略）：死守技術壁壘，永遠不讓競爭者追上 → 毛利率保持高位</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">你有沒有做過「眼前虧、長期賺」的投資？那個「代價」最終值得嗎？現在回頭看，你會做同樣的選擇嗎？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,4)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R5 -->
+<div class="round-card theme-coral" data-round="5" data-mins="10">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">05</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">⚡ 效率</div>
+      <div class="card-title">富士康的極致效率</div>
+      <div class="card-company">iPhone 城 · 96小時 · 8000人</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">10 min</div>
+      <button class="check-btn" onclick="toggleDone(event,5)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">傳奇故事</div>
+        <div class="story-text">2007 年 iPhone 上市前，賈伯斯發現塑膠螢幕會被刮傷，六個月內要求改成玻璃。富士康深夜叫醒宿舍 8000 名工人，發餅乾和茶，半小時全員到位。</div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">96小時</span>
+        <span class="num-desc">工廠日產能從零拉到 1 萬支玻璃螢幕 iPhone 所需時間</span>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">制度優勢</div>
+        <div class="story-text">郭台銘善用中國政治體制：承諾出口額與就業，官員就協助解決土地、勞動力、基礎建設問題。鄭州 iPhone 城從零到全球最大 iPhone 工廠，背後是整個政府機器的支撐。</div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">第二名</span>
+        <span class="num-desc">美國記者評：過去 50 年把中國打造為工業大國，鄧小平第一，郭台銘排第二</span>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">「效率」和「人的代價」——凌晨叫醒 8000 人這件事，你的直覺反應是欽佩還是不安？在你的工作現場，這條線在哪裡？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,5)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- end rounds-list part1 -->
+
+<!-- ── PART 2: TURNING POINT ── -->
+<div class="section-label">
+  <div class="section-label-line"></div>
+  <div class="section-label-text">⚔️ Part 2 · 逆轉篇（回合 6–8）</div>
+  <div class="section-label-line"></div>
+</div>
+
+<div class="rounds-list">
+
+<!-- R6 -->
+<div class="round-card theme-indigo" data-round="6" data-mins="12">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">06</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🔄 逆轉</div>
+      <div class="card-title">局勢逆轉：俘虜的誕生</div>
+      <div class="card-company">央視點名 · 庫克道歉 · 秘密協議</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">12 min</div>
+      <button class="check-btn" onclick="toggleDone(event,6)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">核心故事</div>
+        <div class="story-text">2013 年習近平上台後，央視點名批評 iPhone 差別待遇，掀起數月輿論風波，庫克被迫公開道歉。蘋果才驚覺完全不懂中國政治，緊急成立「中國小組」。</div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">2750億</span>
+        <span class="num-desc">2016 年庫克飛往北京，秘密承諾五年內在中國投入的金額（美元）</span>
+      </div>
+      <div class="key-number">
+        <span class="num-big">520億</span>
+        <span class="num-desc">美國晶片法案四年總預算（美元）。蘋果一年在中國的承諾，是晶片法案的 1.05 倍</span>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">台商的夾心困境</div>
+        <div class="story-text">台商在中國工廠既受蘋果持續壓低代工費，又受中國政府監管、要求留在當地。台商成為美中博弈中真正的「夾心餅乾」。</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">你有沒有當過「夾心餅乾」——上面有老闆壓，下面有客戶或廠商要求？那種處境你怎麼應對的？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,6)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R7 NEW - India Part 1 -->
+<div class="round-card theme-rose" data-round="7" data-mins="12">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">07</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🇮🇳 印度</div>
+      <div class="card-title">印度的真相（上）：假象與現實<span class="new-badge">NEW</span></div>
+      <div class="card-company">Made in India · 良率困境 · 中國鎖喉點</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">12 min</div>
+      <button class="check-btn" onclick="toggleDone(event,7)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">數字軌跡</div>
+        <div class="key-number">
+          <span class="num-big">7%→25%</span>
+          <span class="num-desc">印度 iPhone 生產占比：2023 年 7%，2025 年達 25%（約 5500 萬支），年增 53%</span>
+        </div>
+        <div class="key-number">
+          <span class="num-big">6000萬</span>
+          <span class="num-desc">蘋果目標：2026 年底前在美銷售的 iPhone 全部來自印度（約 6000 萬支）</span>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">但殘酷的現實</div>
+        <div class="story-text">《蘋果在中國》作者麥吉直言：「下一個中國不存在。」印度最終組裝的背後，關鍵零組件仍須從中國空運。有工程師形容：「在中國組裝再拆開，送往印度重新組裝。」</div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">三道難以跨越的牆</div>
+        <div class="story-text">
+          <strong>① 良率問題</strong>：塔塔工廠初期每兩個零件只有一個達蘋果標準<br><br>
+          <strong>② 動員能力</strong>：中國能凌晨召集百人解決問題，印度難以複製<br><br>
+          <strong>③ 北京鎖喉點</strong>：中國隨時可讓關鍵零組件工廠「剛好」斷電
+        </div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">你有沒有試圖「分散風險」，但後來發現根本沒有真正分散的經驗？表面換了形式，本質卻沒改變。</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,7)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R8 NEW - India Part 2 -->
+<div class="round-card theme-rose" data-round="8" data-mins="12">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">08</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🇮🇳 台商</div>
+      <div class="card-title">印度的真相（下）：台商的新戰場<span class="new-badge">NEW</span></div>
+      <div class="card-company">鴻海 · 緯創 · 和碩 · 塔塔三角</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">12 min</div>
+      <button class="check-btn" onclick="toggleDone(event,8)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">台商的三種選擇</div>
+        <div class="key-number">
+          <span class="num-big">🔨留守</span>
+          <span class="num-desc">鴻海 · 砸 25 億美元蓋中國以外第二大廠，將創造 4 萬個就業崗位</span>
+        </div>
+        <div class="key-number">
+          <span class="num-big">🚪出走</span>
+          <span class="num-desc">緯創 · 賣掉印度廠給塔塔，全力 AI 伺服器，股價五年近五倍</span>
+        </div>
+        <div class="key-number">
+          <span class="num-big">🤝合資</span>
+          <span class="num-desc">和碩 · 昆山廠讓給立訊，加速印度、越南、墨西哥多元布局</span>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">印度版「立訊」崛起</div>
+        <div class="story-text">塔塔集團（Tata Electronics）接收緯創工廠後，成為印度首家本土 iPhone 組裝廠，開始複製當年立訊崛起的路線：先接低利潤訂單，再靠蘋果認證取得資本市場背書。</div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">台商的機會窗口</div>
+        <div class="story-text">印度政府推出約 880 億台幣「電子零組件製造激勵計畫」，補貼相機模組、PCB、FPC 軟板等六年——這才是台灣零組件廠的真實機會，而非組裝。</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">緯創「賣掉轉型」vs 鴻海「砸錢擴大」，哪個更有遠見？你判斷一個決策好壞的標準是什麼——時間框架？風險承受度？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,8)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- end part2 -->
+
+<!-- ── PART 3: BATTLE ── -->
+<div class="section-label">
+  <div class="section-label-line"></div>
+  <div class="section-label-text">🔥 Part 3 · 博弈篇（回合 9–11）</div>
+  <div class="section-label-line"></div>
+</div>
+
+<div class="rounds-list">
+
+<!-- R9 -->
+<div class="round-card theme-gold" data-round="9" data-mins="10">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">09</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">💰 壓榨</div>
+      <div class="card-title">庫克的壓榨策略</div>
+      <div class="card-company">淨利率 11%→2% · 多家備料機制</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">10 min</div>
+      <button class="check-btn" onclick="toggleDone(event,9)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">核心故事</div>
+        <div class="story-text">蘋果毛利率維持 40%+ 的秘密：對供應商「多家備料」，同一零件永遠找兩家（例如鏡頭：大立光＋玉晶光）。供應商彼此競爭，蘋果永遠有議價籌碼。每季砍一次價，比每年更殘忍。</div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">10.6%→2.4%</span>
+        <span class="num-desc">富士康淨利率：2000 年開始接蘋果訂單 vs 2011 年，11 年被榨掉 8 個百分點</span>
+      </div>
+      <div class="key-number">
+        <span class="num-big">40%+</span>
+        <span class="num-desc">蘋果毛利率長期維持水準。鴻海 2020 Q4 最好成績才 10%，iPhone 同年上市</span>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">誰才是真贏家？</div>
+        <div class="story-text">鴻海越來越大、訂單越來越多，淨利率卻越來越低。規模和獲利能力走向分叉。台商靠蘋果滾出驚人規模，卻陷入「越大越難離開」的囚徒困境。</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">如果你是蘋果供應商，知道利潤被壓到這種程度，你的底線在哪裡？什麼時候該說不？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,9)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R10 -->
+<div class="round-card theme-gold" data-round="10" data-mins="12">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">10</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🚀 轉型</div>
+      <div class="card-title">台商的分手選擇</div>
+      <div class="card-company">緯創 · 廣達 · 仁寶 · 英業達</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">12 min</div>
+      <button class="check-btn" onclick="toggleDone(event,10)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">電子五哥的出走軌跡</div>
+        <div class="company-chips">
+          <span class="chip chip-green">緯創 · 售印度廠→AI 伺服器 · 股價×5</span>
+          <span class="chip chip-gold">廣達 · 守住 Mac · AI 伺服器 × 50%</span>
+          <span class="chip chip-gray">仁寶 · 淡出 Apple Watch</span>
+          <span class="chip chip-coral">英業達 · 退出 AirPods → NVIDIA B100</span>
+          <span class="chip chip-indigo">可成 · 退出 iPhone 機殼</span>
+        </div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">×5倍</span>
+        <span class="num-desc">緯創出售印度 iPhone 工廠後，股價五年近五倍。旗下緯穎股價突破 4000 元，台股 EPS 之王</span>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">分手最成功的案例</div>
+        <div class="story-text">緯創是台商分手最乾脆的教科書案例：面對蘋果極致壓榨，選擇出售印度 iPhone 工廠，把資源全押 AI 伺服器。結果——不只股價，整個公司價值都重估了一遍。</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">你人生中有沒有「早該分手卻拖太久」的關係——工作、合作、習慣？是什麼讓你一直留著？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,10)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R11 -->
+<div class="round-card theme-gold" data-round="11" data-mins="12">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">11</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🔴 紅鏈</div>
+      <div class="card-title">紅色供應鏈崛起</div>
+      <div class="card-company">立訊 · 零利潤 AirPods · 庫克親訪</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">12 min</div>
+      <button class="check-btn" onclick="toggleDone(event,11)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">傳奇故事</div>
+        <div class="story-text">立訊創辦人王來春是 1988 年第一批進入富士康產線的農民工。2017 年以零利潤承接 AirPods 組裝，條件只有一個：庫克必須親自來訪，留下公開影像。一個背書，換來資本市場與政府關係的無數紅利。</div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">五分之一→超車</span>
+        <span class="num-desc">立訊 2017 年市值是富士康的五分之一；兩年後超車，儘管富士康營收仍是立訊 13 倍</span>
+      </div>
+      <div class="key-number">
+        <span class="num-big">51家 vs 台商</span>
+        <span class="num-desc">2020 年蘋果前 200 大供應商中，中企首次以 51 家超越台商，成最大勢力</span>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">為什麼台積電、大立光不怕？</div>
+        <div class="story-text">立訊能模仿組裝，卻難以在短期內複製台積電 N2 製程或大立光潛望鏡頭的技術壁壘。技術護城河的厚度，決定了你對紅色供應鏈的免疫力。</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">你的工作技能，是「可以被複製的效率」還是「難以取代的技術」？誰有可能在五年後成為你的立訊？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,11)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- end part3 -->
+
+<!-- ── PART 4: FUTURE ── -->
+<div class="section-label">
+  <div class="section-label-line"></div>
+  <div class="section-label-text">🌏 Part 4 · 未來篇（回合 12–14）</div>
+  <div class="section-label-line"></div>
+</div>
+
+<div class="rounds-list">
+
+<!-- R12 -->
+<div class="round-card theme-teal" data-round="12" data-mins="12">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">12</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">💎 護城河</div>
+      <div class="card-title">台積電的特殊位置</div>
+      <div class="card-company">N2 製程 · 毛利 57% · 無可取代</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">12 min</div>
+      <button class="check-btn" onclick="toggleDone(event,12)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">為什麼台積電是最特殊的台廠</div>
+        <div class="story-text">同樣是「蘋果供應商」，台積電毛利 57% vs 鴻海 2–3%。差距來自三個特點：技術壟斷、無法分散、地緣政治槓桿。</div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">+29%</span>
+        <span class="num-desc">N2 製程晶圓售價較 N3 溢價幅度。2026 年起三款新 iPhone 全面採用 N2</span>
+      </div>
+      <div class="key-number">
+        <span class="num-big">25%</span>
+        <span class="num-desc">台積電 2025 年預估來自蘋果的營收占比，且蘋果無法找到替代供應商</span>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">供應鏈裡唯一有反制能力的台廠</div>
+        <div class="story-text">蘋果可以壓榨鴻海，但無法壓榨台積電——因為沒有人能複製台積電的先進製程。這是台灣在整條供應鏈裡，唯一真正具備議價籌碼的位置。</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">台積電的護城河來自「技術難以複製」。你如何評估自己工作中哪些能力是真正的護城河，而哪些只是「暫時別人還不會」？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,12)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R13 -->
+<div class="round-card theme-teal" data-round="13" data-mins="10">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">13</span>
+      <span class="rlabel">Round</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🧬 後果</div>
+      <div class="card-title">中國科技實力的養成</div>
+      <div class="card-company">50%規則 · Nokia之死 · 反噬</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">10 min</div>
+      <button class="check-btn" onclick="toggleDone(event,13)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">意外的後果</div>
+        <div class="story-text">蘋果為避免供應商過度依賴，要求對方來自蘋果的營收不超過 50%。結果這些受過蘋果訓練、擁有頂尖製程的供應商，開始為華為、小米、OPPO 供貨——直接孕育了中國智慧手機產業。</div>
+      </div>
+      <div class="key-number">
+        <span class="num-big">10%→74%</span>
+        <span class="num-desc">中國國產手機品牌市占率：2009 年 10%，到 2014 年已達 74%</span>
+      </div>
+      <div class="key-number">
+        <span class="num-big">3000萬</span>
+        <span class="num-desc">蘋果供應鏈自 2008 年以來在中國累計訓練的人數（書中數字）</span>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">殘酷結論</div>
+        <div class="story-text" style="font-style:italic;padding:10px 14px;background:#FFF5E8;border-radius:10px;border-left:3px solid var(--teal);">「殺死 Nokia 的不是 iPhone，而是中國競爭者。而中國競爭者之所以如此成功，是因為蘋果訓練了他們所有的供應商。」</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">今日反思</div>
+        <div class="reflect-text">你有沒有「無意中培養了競爭對手」的經驗？哪條規則或習慣，最後反而傷害了你自己？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,13)">標記完成 ✓</button>
+    </div>
+  </div>
+</div>
+
+<!-- R14 FINALE -->
+<div class="round-card theme-teal" data-round="14" data-mins="15">
+  <div class="card-header">
+    <div class="round-badge">
+      <span class="rnum">14</span>
+      <span class="rlabel">Final</span>
+    </div>
+    <div class="card-meta">
+      <div class="card-tag">🏆 終局</div>
+      <div class="card-title">大結局：三角博弈的終局</div>
+      <div class="card-company">中國 × 印度 × 台灣 · 下一個 20 年</div>
+    </div>
+    <div class="card-right">
+      <div class="time-badge">15 min</div>
+      <button class="check-btn" onclick="toggleDone(event,14)">✓</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="card-body-inner">
+      <div class="section-block">
+        <div class="section-block-title">三種台灣廠商的結局</div>
+        <div class="key-number">
+          <span class="num-big">🔵留守</span>
+          <span class="num-desc">鴻海 · 中國+印度+越南同時布局，靠 AI 伺服器找新成長軸</span>
+        </div>
+        <div class="key-number">
+          <span class="num-big">🟢轉型</span>
+          <span class="num-desc">緯創 · 賣掉蘋果鏈，全押 AI 伺服器，股價五年新高</span>
+        </div>
+        <div class="key-number">
+          <span class="num-big">💎守住</span>
+          <span class="num-desc">台積電、大立光 · 技術壁壘不動，紅色供應鏈難以複製</span>
+        </div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">最終的大哉問</div>
+        <div class="story-text">書中最殘酷的結論：「問題不在蘋果有沒有剝削中國工人，蘋果當然有；但中國也找到了剝削蘋果的方法。」<br><br>台商是這場博弈的「翻譯者」——在全球市場與中國生產體系之間整合。這是宿命，還是可以主動選擇的位置？</div>
+      </div>
+      <div class="section-block">
+        <div class="section-block-title">如果時間回到 1999 年</div>
+        <div class="story-text" style="font-style:italic;padding:10px 14px;background:#FFF5E8;border-radius:10px;border-left:3px solid var(--teal);">「如果有機會重來，我相信他們大概還是會做出一樣的選擇。因為當時眼前的規模利益已經大到難以拒絕，就算終究變成俘虜，好像也只能一路走下去。」</div>
+      </div>
+      <div class="reflect-box">
+        <div class="reflect-label">課程最終反思</div>
+        <div class="reflect-text">如果你是 2026 年的台灣年輕人，你希望站在這條供應鏈的哪個節點上？「翻譯者」這個位置，對你來說是機會還是陷阱？</div>
+      </div>
+      <button class="complete-btn" onclick="toggleDone(event,14)">🎓 完成課程！</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- end part4 -->
+
+<!-- SUMMARY BOX -->
+<div class="summary-box" id="summary-box">
+  <h3>你的學習進度</h3>
+  <span class="summary-count" id="summary-num">0</span>
+  <p>/ 14 回合已完成</p>
+  <p style="margin-top:8px;font-size:12px;">每天一回合，14 天讀完 20 年商業史</p>
+</div>
+
+<!-- BOTTOM LINK BANNER -->
+<div class="link-banner-bottom">
+  <div class="link-banner-title">🎓 想深入學習？七月課程等你來</div>
+  <div class="link-cards">
+
+    <a href="https://linwayet.github.io/4ulive/index.html" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon link-icon-echo">🔁</div>
+      <div class="link-text">
+        <div class="link-label link-label-echo">七月開課 · 課程一</div>
+        <div class="link-name">錯中學 ECHO 計劃</div>
+        <div class="link-desc">在真實錯誤中建立學習迴路<br>點擊了解課程詳情 →</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <a href="https://linwayet.github.io/popup/index" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon link-icon-student">📊</div>
+      <div class="link-text">
+        <div class="link-label link-label-student">七月開課 · 課程二</div>
+        <div class="link-name">學生分析系統</div>
+        <div class="link-desc">用數據讀懂每一位學習者<br>點擊了解課程詳情 →</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+    <a href="https://line.me/ti/p/~linwayet" class="link-card" target="_blank" rel="noopener">
+      <div class="link-icon link-icon-line">💬</div>
+      <div class="link-text">
+        <div class="link-label link-label-line">LINE · 直接聯繫講師</div>
+        <div class="link-name">加入 LINE 好友</div>
+        <div class="link-desc">ID：linwayet · 課程諮詢 · 報名優惠<br>歡迎任何時間來訊</div>
+      </div>
+      <div class="link-arrow">›</div>
+    </a>
+
+  </div>
+  <p style="text-align:center;margin-top:18px;font-size:11px;color:#B08050;letter-spacing:0.5px;">© 2025 linwayet · 蘋果在中國 14回合原子習慣課程</p>
+</div>
+
 <script>
-    const data = {
-        'A': { 
-            title: '(A) directions', 
-            desc: '解釋：方向；指示；指導；說明；路線', 
-            detail: '<div class="example-box"><div class="eg-item">1. Follow the <b>directions</b> on the package carefully.<br>(請仔細按照包裝上的指示進行。)</div><div class="eg-item">2. The teacher gave clear <b>directions</b> for the project.<br>(老師為這個項目給出了清楚的指示。)</div><div class="eg-item">3. I need <b>directions</b> to get to the station.<br>(我需要去車站的路線指引。)</div></div>' 
-        },
-        'B': { 
-            title: '(B) opportunities', 
-            desc: '解釋：機會；機遇；條件；時機', 
-            detail: '<div class="example-box"><div class="eg-item">1. This job is a great <b>opportunity</b> for career advancement.<br>(這份工作是職業發展的絕佳機會。)</div><div class="eg-item">2. She had several <b>opportunities</b> to travel abroad.<br>(她有過多次出國旅遊的機會。)</div><div class="eg-item">3. We should take every <b>opportunity</b> to improve ourselves.<br>(我們應該抓住每個改進自己的機會。)</div></div>' 
-        },
-        'C': { 
-            title: '(C) standards', 
-            desc: '解釋：標準；規範；水準；要求；尺度', 
-            detail: '<div class="example-box"><div class="eg-item">1. This product meets international quality <b>standards</b>.<br>(這個產品符合國際質量標準。)</div><div class="eg-item">2. The teacher has high <b>standards</b> for student work.<br>(老師對學生作業有很高的標準。)</div><div class="eg-item">3. We must maintain the highest <b>standards</b> of professionalism.<br>(我們必須保持最高的專業標準。)</div></div>' 
-        },
-        'D': { 
-            title: '(D) decisions', 
-            desc: '解釋：決定；決策；裁決；判決；結論', 
-            detail: '<div class="example-box"><div class="eg-item">1. She made a difficult <b>decision</b> to change careers.<br>(她做出了改行的困難決定。)</div><div class="eg-item">2. The manager\'s <b>decisions</b> affect the entire company.<br>(經理的決策影響整個公司。)</div><div class="eg-item">3. We respect the referee\'s <b>decision</b>.<br>(我們尊重裁判的裁決。)</div></div>' 
-        },
-        'E': { 
-            title: '✓ 正確答案：(C) standards', 
-            desc: '詳細解析：題目說明老師以苛刻和要求高著稱，經常抱怨很少有學生能交出符合他的___的作業。這裡應該填入表示「標準；要求；水準」的詞，(C) standards 正是表示「標準」，完美符合句意。老師對作業的要求就是他的標準。', 
-            example: '<b>為什麼不選其他選項？</b><br>• (A) directions：指示，無法用於描述「作業品質要求」<br>• (B) opportunities：機會，文法和語意都不符合<br>• (D) decisions：決定，無法表達「標準」或「要求」的含義' 
-        },
-        'F': { 
-            title: '林威老師的話 - 衍生詞與音標', 
-            detail: '<h4>1. standardize (動詞)</h4><p class="kk-text">KK: [ˈstændɚdaɪz]</p><p>中文：標準化；統一標準；使符合標準</p><h4>2. standardized (形容詞)</h4><p class="kk-text">KK: [ˈstændɚdaɪzd]</p><p>中文：標準化的；統一的；按標準的</p>' 
-        },
-        'G': { 
-            title: '衍生詞更多例句', 
-            detail: '<div class="example-box"><div class="eg-item">1. Many companies <b>standardize</b> their procedures to ensure consistency.<br>(許多公司標準化其程序以確保一致性。)</div></div><div class="example-box"><div class="eg-item">2. The <b>standardized</b> test measures students\' academic abilities.<br>(標準化考試測量學生的學術能力。)</div></div><div class="example-box"><div class="eg-item">3. We need to <b>standardize</b> our quality control process.<br>(我們需要標準化我們的質量控制過程。)</div></div><div class="example-box"><div class="eg-item">4. <b>Standardized</b> units make international trade easier.<br>(標準化的單位使國際貿易更容易。)</div></div>' 
-        },
-        'H': { 
-            title: '高三學測必備片語', 
-            detail: '<h4>1. hand in (上交；遞交；交出作業或文件)</h4><p>例句: Please <b>hand in</b> your homework by Friday.<br>(請在星期五之前上交你的作業。)</p><h4>2. meet someone\'s standards (符合...的標準；達到...的要求)</h4><p>例句: Your essay does not <b>meet the</b> required <b>standards</b>.<br>(你的文章不符合所需的標準。)</p><h4>3. live up to (達到；符合；不辜負)</h4><p>例句: The product <b>lives up to</b> its promises.<br>(這個產品符合它的承諾。)</p>' 
-        }
-    };
-    function showOverlay(key) { 
-        const item = data[key]; 
-        let html = `<div class="overlay-title">${item.title}</div>`; 
-        if(item.desc) html += `<p>${item.desc}</p>`; 
-        if(item.detail) html += `<div>${item.detail}</div>`; 
-        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
-        document.getElementById('contentArea').innerHTML = html; 
-        document.getElementById('infoOverlay').style.display = 'block'; 
+const totalRounds = 14;
+const doneSet = new Set(JSON.parse(localStorage.getItem('apple_course_done') || '[]'));
+
+function save() {
+  localStorage.setItem('apple_course_done', JSON.stringify([...doneSet]));
+}
+
+function updateProgress() {
+  const done = doneSet.size;
+  document.getElementById('done-count').textContent = done;
+  document.getElementById('pct-label').textContent = done + ' / ' + totalRounds;
+  document.getElementById('prog-fill').style.width = (done / totalRounds * 100) + '%';
+  document.getElementById('summary-num').textContent = done;
+
+  const dots = document.querySelectorAll('.round-dot');
+  dots.forEach((d, i) => {
+    d.classList.remove('done', 'active');
+    if (doneSet.has(i + 1)) d.classList.add('done');
+  });
+
+  document.querySelectorAll('.round-card').forEach(card => {
+    const r = parseInt(card.dataset.round);
+    card.classList.remove('done', 'active-card');
+    if (doneSet.has(r)) card.classList.add('done');
+    const btn = card.querySelector('.check-btn');
+    const completeBtn = card.querySelector('.complete-btn');
+    if (btn) { btn.classList.toggle('done', doneSet.has(r)); btn.textContent = doneSet.has(r) ? '✓' : '✓'; }
+    if (completeBtn) {
+      completeBtn.classList.toggle('done', doneSet.has(r));
+      if (r === 14) completeBtn.textContent = doneSet.has(r) ? '✅ 已完成全部課程！' : '🎓 完成課程！';
+      else completeBtn.textContent = doneSet.has(r) ? '✅ 已完成' : '標記完成 ✓';
     }
-    function closeOverlay() { 
-        document.getElementById('infoOverlay').style.display = 'none'; 
-    }
+  });
+}
+
+function toggleDone(e, roundNum) {
+  e.stopPropagation();
+  if (doneSet.has(roundNum)) doneSet.delete(roundNum);
+  else doneSet.add(roundNum);
+  save();
+  updateProgress();
+}
+
+function toggleCard(card) {
+  const body = card.querySelector('.card-body');
+  const isOpen = body.classList.contains('open');
+  document.querySelectorAll('.card-body.open').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.round-card.active-card').forEach(c => c.classList.remove('active-card'));
+  if (!isOpen) {
+    body.classList.add('open');
+    card.classList.add('active-card');
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 50);
+  }
+}
+
+// Build dot row
+const dotRow = document.getElementById('dot-row');
+for (let i = 1; i <= totalRounds; i++) {
+  const d = document.createElement('button');
+  d.className = 'round-dot';
+  d.title = '回合 ' + i;
+  d.onclick = () => {
+    const card = document.querySelector('[data-round="' + i + '"]');
+    if (card) { card.scrollIntoView({ behavior: 'smooth', block: 'center' }); toggleCard(card); }
+  };
+  dotRow.appendChild(d);
+}
+
+// Card click
+document.querySelectorAll('.round-card').forEach(card => {
+  card.querySelector('.card-header').addEventListener('click', () => toggleCard(card));
+});
+
+updateProgress();
 </script>
 </body>
 </html>
