@@ -1,103 +1,1399 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
-        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
-        .options-list { list-style: none; padding: 0; }
-        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
-        .option-item:hover { background-color: #f9f9f9; }
-        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
-        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
-        .special-btn:hover { background-color: #f0f0f0; }
-        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
-        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
-        .tool-link:hover { color: #333; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
-        .overlay-content { max-width: 500px; margin: 0 auto; }
-        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
-        .close-btn:hover { color: #666; }
-        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
-        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
-        .eg-item { margin-bottom: 10px; }
-        .kk-text { color: #666; font-style: italic; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🇬🇧 英國脫歐全景課程｜27回完整規劃</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     色彩對比規範 / Color Contrast Specifications
+     文字 #2D2A26 配 背景 #F8F4ED，對比度 12.5:1
+     背景亮度 L*96，避開純白刺眼與純黑OLED問題
+     安全暖色系：暖棕 #8B5E3C、暖金 #D4A574、暖奶油 #F8F4ED
+  ============================================================ */
+  :root {
+    --bg:        #F8F4ED;
+    --text:      #2D2A26;
+    --text-sub:  #5C4A32;
+    --accent1:   #8B5E3C;   /* 暖赤褐 */
+    --accent2:   #D4A574;   /* 暖金   */
+    --accent3:   #C0392B;   /* 英國紅 */
+    --accent4:   #1B3A6B;   /* 深海藍 */
+    --accent5:   #2E7D52;   /* 植物綠 */
+    --card-bg:   #FFFDF8;
+    --divider:   #E8E0D0;
+    --shadow:    rgba(45,42,38,0.10);
+
+/* 單元色票 */
+--u1: #C0392B;   /* 根源    紅 */
+--u2: #1B3A6B;   /* 法律    深藍 */
+--u3: #8B4513;   /* 富人    赤褐 */
+--u4: #2C5F8A;   /* 經濟    鋼藍 */
+--u5: #4A7C59;   /* 中產    橄欖綠 */
+--u6: #7B5EA7;   /* 產業    紫 */
+--u7: #B8480A;   /* 弱勢    橘赤 */
+--u8: #1A6B5A;   /* 人口    翠綠 */
+--u9: #8B2FC9;   /* 政治    深紫 */
+--u10:#C0392B;   /* 未來    紅（呼應開頭）*/
+
+}
+
+/* ============================================================
+字體與排版規範 / Typography and Layout Specifications
+正文 22px｜標題 ≥24px｜行高 1.75（CJK建議1.7+）
+每行 ≤40字｜內容寬 ≤720px｜字重 ≥400
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+font-size: 22px;
+-webkit-text-size-adjust: 100%;
+scroll-behavior: smooth;
+}
+
+body {
+font-family: ‘Noto Sans TC’, sans-serif;
+font-weight: 400;
+background: var(--bg);
+color: var(--text);
+line-height: 1.75;
+max-width: 720px;
+margin: 0 auto;
+padding: 0 0 80px;
+}
+
+/* ============================================================
+HERO
+============================================================ */
+.hero {
+background: linear-gradient(160deg, var(--accent4) 0%, #0D2547 60%, #1a0a00 100%);
+color: #F8F4ED;
+padding: 56px 24px 48px;
+text-align: center;
+position: relative;
+overflow: hidden;
+}
+.hero::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: url(“data:image/svg+xml,%3Csvg width=‘60’ height=‘60’ viewBox=‘0 0 60 60’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cg fill=‘none’ fill-rule=‘evenodd’%3E%3Cg fill=’%23ffffff’ fill-opacity=‘0.04’%3E%3Cpath d=‘M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z’/%3E%3C/g%3E%3C/g%3E%3C/svg%3E”);
+}
+.flag {
+font-size: 52px;
+display: block;
+margin-bottom: 12px;
+filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+}
+.hero h1 {
+font-family: ‘Playfair Display’, ‘Noto Serif TC’, serif;
+font-size: 28px;
+font-weight: 900;
+line-height: 1.35;
+letter-spacing: 0.02em;
+color: #F8F4ED;
+margin-bottom: 8px;
+}
+.hero-sub {
+font-size: 15px;
+color: var(--accent2);
+font-weight: 500;
+letter-spacing: 0.08em;
+margin-bottom: 20px;
+}
+.hero-stats {
+display: flex;
+justify-content: center;
+gap: 24px;
+margin-top: 24px;
+}
+.stat-box {
+background: rgba(255,255,255,0.10);
+border: 1px solid rgba(212,165,116,0.35);
+border-radius: 12px;
+padding: 10px 18px;
+text-align: center;
+}
+.stat-num {
+display: block;
+font-family: ‘Playfair Display’, serif;
+font-size: 28px;
+font-weight: 900;
+color: var(--accent2);
+line-height: 1;
+}
+.stat-label {
+display: block;
+font-size: 12px;
+color: rgba(248,244,237,0.75);
+margin-top: 4px;
+}
+
+/* ============================================================
+目錄導航
+============================================================ */
+.toc {
+background: var(--card-bg);
+border-bottom: 2px solid var(--divider);
+padding: 20px 24px;
+}
+.toc-title {
+font-size: 13px;
+font-weight: 700;
+letter-spacing: 0.12em;
+color: var(--text-sub);
+margin-bottom: 14px;
+text-transform: uppercase;
+}
+.toc-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 8px;
+}
+/* 觸控目標規範 / Touch Target Specifications
+最低44px (WCAG)，高齡推薦72px (19mm)，按鈕間距≥16px */
+.toc-btn {
+display: flex;
+align-items: center;
+gap: 8px;
+padding: 12px 14px;
+min-height: 52px;
+border-radius: 10px;
+border: none;
+cursor: pointer;
+text-decoration: none;
+font-size: 13px;
+font-weight: 700;
+font-family: ‘Noto Sans TC’, sans-serif;
+color: #fff;
+transition: transform 180ms ease, opacity 180ms ease;
+-webkit-tap-highlight-color: transparent;
+}
+.toc-btn:active { transform: scale(0.97); opacity: 0.88; }
+.toc-dot {
+width: 8px; height: 8px;
+border-radius: 50%;
+background: rgba(255,255,255,0.6);
+flex-shrink: 0;
+}
+
+/* ============================================================
+單元區塊
+============================================================ */
+.unit {
+margin: 0;
+border-bottom: 3px solid var(--divider);
+}
+
+.unit-header {
+padding: 28px 24px 20px;
+position: relative;
+}
+.unit-badge {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+padding: 4px 12px;
+border-radius: 20px;
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.10em;
+color: #fff;
+margin-bottom: 10px;
+text-transform: uppercase;
+}
+.unit-title {
+font-family: ‘Noto Serif TC’, ‘Playfair Display’, serif;
+font-size: 22px;
+font-weight: 900;
+line-height: 1.4;
+color: var(--text);
+}
+.unit-title span {
+display: block;
+font-size: 13px;
+font-weight: 500;
+color: var(--text-sub);
+font-family: ‘Noto Sans TC’, sans-serif;
+margin-top: 2px;
+letter-spacing: 0.05em;
+}
+.unit-desc {
+font-size: 15px;
+color: var(--text-sub);
+margin-top: 8px;
+font-style: italic;
+line-height: 1.6;
+padding: 10px 14px;
+border-left: 3px solid var(--divider);
+border-radius: 0 6px 6px 0;
+background: rgba(0,0,0,0.02);
+}
+
+/* ============================================================
+集數卡片
+============================================================ */
+.episodes {
+padding: 0 16px 24px;
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
+.ep-card {
+background: var(--card-bg);
+border-radius: 14px;
+border: 1.5px solid var(--divider);
+overflow: hidden;
+box-shadow: 0 2px 8px var(--shadow);
+transition: transform 180ms ease;
+}
+.ep-card:active { transform: scale(0.99); }
+
+.ep-top {
+display: flex;
+align-items: flex-start;
+gap: 0;
+}
+.ep-num {
+flex-shrink: 0;
+width: 56px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+padding: 14px 0;
+font-family: ‘Playfair Display’, serif;
+font-weight: 900;
+font-size: 20px;
+color: #fff;
+line-height: 1;
+min-height: 72px;
+}
+.ep-num-label {
+font-size: 9px;
+font-weight: 700;
+letter-spacing: 0.12em;
+opacity: 0.75;
+margin-bottom: 2px;
+font-family: ‘Noto Sans TC’, sans-serif;
+}
+.ep-body {
+flex: 1;
+padding: 14px 16px 14px 12px;
+}
+.ep-title {
+font-size: 16px;
+font-weight: 700;
+line-height: 1.45;
+color: var(--text);
+margin-bottom: 6px;
+}
+.ep-sub {
+font-size: 13px;
+color: var(--text-sub);
+line-height: 1.55;
+}
+
+/* 故事卡片：人物 */
+.ep-character {
+border-top: 1px solid var(--divider);
+padding: 10px 16px 12px;
+background: rgba(0,0,0,0.015);
+}
+.char-row {
+display: flex;
+align-items: flex-start;
+gap: 10px;
+margin-bottom: 6px;
+}
+.char-row:last-child { margin-bottom: 0; }
+.char-avatar {
+flex-shrink: 0;
+width: 36px;
+height: 36px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 18px;
+border: 2px solid rgba(255,255,255,0.5);
+}
+.char-info { flex: 1; }
+.char-name {
+font-size: 13px;
+font-weight: 700;
+color: var(--text);
+line-height: 1.3;
+}
+.char-desc {
+font-size: 12px;
+color: var(--text-sub);
+line-height: 1.5;
+margin-top: 2px;
+}
+
+/* ============================================================
+2026結局特殊區塊
+============================================================ */
+.finale-grid {
+padding: 0 16px 24px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 8px;
+}
+.finale-card {
+background: var(--card-bg);
+border-radius: 12px;
+border: 1.5px solid var(--divider);
+padding: 12px;
+box-shadow: 0 2px 6px var(--shadow);
+}
+.finale-tag {
+font-size: 10px;
+font-weight: 700;
+letter-spacing: 0.10em;
+padding: 2px 8px;
+border-radius: 10px;
+color: #fff;
+display: inline-block;
+margin-bottom: 6px;
+text-transform: uppercase;
+}
+.finale-name {
+font-size: 14px;
+font-weight: 700;
+color: var(--text);
+margin-bottom: 4px;
+}
+.finale-status {
+font-size: 12px;
+color: var(--text-sub);
+line-height: 1.5;
+}
+
+/* ============================================================
+Footer
+============================================================ */
+.footer {
+background: var(--text);
+color: var(--accent2);
+text-align: center;
+padding: 32px 24px;
+font-size: 13px;
+line-height: 1.7;
+}
+.footer strong { color: #F8F4ED; }
+
+/* ============================================================
+Utilities
+============================================================ */
+.section-sep {
+height: 6px;
+background: linear-gradient(90deg, transparent, var(--divider), transparent);
+margin: 0;
+}
+
+/* ============================================================
+課程報名 Banner / CTA Banner
+上下各出現一次，暖金底色，觸控目標 ≥72px
+============================================================ */
+.cta-banner {
+background: linear-gradient(135deg, #7B3F00 0%, #B8480A 50%, #D4A574 100%);
+padding: 20px 20px 16px;
+position: relative;
+overflow: hidden;
+}
+.cta-banner::before {
+content: ‘’;
+position: absolute;
+inset: 0;
+background: url(“data:image/svg+xml,%3Csvg width=‘40’ height=‘40’ viewBox=‘0 0 40 40’ xmlns=‘http://www.w3.org/2000/svg’%3E%3Cg fill=’%23ffffff’ fill-opacity=‘0.05’%3E%3Cpath d=‘M0 40L40 0H20L0 20M40 40V20L20 40’/%3E%3C/g%3E%3C/svg%3E”);
+pointer-events: none;
+}
+.cta-label {
+font-size: 11px;
+font-weight: 700;
+letter-spacing: 0.14em;
+color: rgba(255,255,255,0.75);
+text-transform: uppercase;
+margin-bottom: 6px;
+}
+.cta-headline {
+font-family: ‘Noto Serif TC’, serif;
+font-size: 18px;
+font-weight: 900;
+color: #FFF8EE;
+line-height: 1.35;
+margin-bottom: 4px;
+}
+.cta-desc {
+font-size: 13px;
+color: rgba(255,248,238,0.80);
+line-height: 1.6;
+margin-bottom: 14px;
+}
+.cta-buttons {
+display: flex;
+gap: 10px;
+flex-wrap: wrap;
+}
+/* 觸控目標規範：min-height 72px，間距 ≥16px */
+.cta-btn-course {
+flex: 1;
+min-height: 58px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background: #FFF8EE;
+color: #7B3F00;
+border-radius: 12px;
+text-decoration: none;
+font-weight: 700;
+font-family: ‘Noto Sans TC’, sans-serif;
+padding: 10px 14px;
+text-align: center;
+transition: transform 180ms ease, box-shadow 180ms ease;
+box-shadow: 0 3px 10px rgba(0,0,0,0.20);
+-webkit-tap-highlight-color: transparent;
+min-width: 140px;
+}
+.cta-btn-course:active { transform: scale(0.97); }
+.cta-btn-course .btn-icon { font-size: 20px; margin-bottom: 2px; }
+.cta-btn-course .btn-main { font-size: 14px; font-weight: 900; line-height: 1.2; }
+.cta-btn-course .btn-sub  { font-size: 11px; font-weight: 500; opacity: 0.70; margin-top: 2px; }
+
+.cta-btn-line {
+flex: 1;
+min-height: 58px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background: #06C755;
+color: #fff;
+border-radius: 12px;
+text-decoration: none;
+font-weight: 700;
+font-family: ‘Noto Sans TC’, sans-serif;
+padding: 10px 14px;
+text-align: center;
+transition: transform 180ms ease, box-shadow 180ms ease;
+box-shadow: 0 3px 10px rgba(0,0,0,0.20);
+-webkit-tap-highlight-color: transparent;
+min-width: 140px;
+}
+.cta-btn-line:active { transform: scale(0.97); }
+.cta-btn-line .btn-icon { font-size: 20px; margin-bottom: 2px; }
+.cta-btn-line .btn-main { font-size: 14px; font-weight: 900; line-height: 1.2; }
+.cta-btn-line .btn-sub  { font-size: 11px; font-weight: 500; opacity: 0.85; margin-top: 2px; }
+
+  /* ============================================================
+     CONTRAST & READABILITY ENHANCEMENTS
+  ============================================================ */
+  
+  /* Increase body font size slightly for readability */
+  html { font-size: 18px; }
+  
+  /* Stronger text contrast */
+  :root {
+    --text:      #1A1714;
+    --text-sub:  #4A3828;
+    --card-bg:   #FFFFFF;
+    --divider:   #DDD5C5;
+  }
+  
+  /* Episode title - bolder, larger */
+  .ep-title {
+    font-size: 17px;
+    font-weight: 800;
+    color: #1A1714;
+    margin-bottom: 8px;
+  }
+  
+  /* Sub text - higher contrast */
+  .ep-sub {
+    font-size: 14px;
+    color: #4A3828;
+    line-height: 1.65;
+  }
+  
+  /* Character section */
+  .char-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #1A1714;
+  }
+  .char-desc {
+    font-size: 13px;
+    color: #4A3828;
+    line-height: 1.6;
+  }
+  
+  /* Unit title stronger */
+  .unit-title {
+    font-size: 23px;
+    color: #1A1714;
+  }
+  .unit-title span {
+    font-size: 14px;
+    color: #5C4A32;
+    font-weight: 600;
+  }
+  
+  /* Unit description - more visible */
+  .unit-desc {
+    font-size: 15px;
+    color: #4A3828;
+    border-left: 3px solid var(--accent1);
+    background: rgba(139,94,60,0.06);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+  }
+  
+  /* TOC title */
+  .toc-title {
+    font-size: 14px;
+    color: #2D2A26;
+  }
+  
+  /* TOC buttons - ensure white text is visible */
+  .toc-btn {
+    font-size: 13px;
+    font-weight: 800;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  }
+  
+  /* Unit badge stronger */
+  .unit-badge {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    padding: 5px 14px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.20);
+  }
+  
+  /* EP number column */
+  .ep-num {
+    font-size: 22px;
+    font-weight: 900;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+  }
+  .ep-num-label {
+    font-size: 10px;
+    opacity: 0.85;
+    font-weight: 800;
+  }
+  
+  /* Card shadow improvement */
+  .ep-card {
+    box-shadow: 0 3px 12px rgba(45,42,38,0.12);
+    border: 1.5px solid #DDD5C5;
+  }
+  
+  /* Finale cards */
+  .finale-name {
+    font-size: 15px;
+    font-weight: 800;
+    color: #1A1714;
+  }
+  .finale-status {
+    font-size: 13px;
+    color: #4A3828;
+    line-height: 1.6;
+  }
+  .finale-tag {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 3px 10px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+  
+  /* Footer contrast */
+  .footer {
+    color: #D4A574;
+    line-height: 1.8;
+  }
+  .footer strong { 
+    color: #F8F4ED; 
+    font-size: 15px;
+  }
+  
+  /* Stat boxes */
+  .stat-box {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(212,165,116,0.5);
+  }
+  .stat-num {
+    color: #FFD89A;
+    font-size: 30px;
+  }
+  .stat-label {
+    color: rgba(248,244,237,0.90);
+    font-size: 13px;
+  }
+  
+  /* Hero sub */
+  .hero-sub {
+    color: #D4A574;
+    font-size: 13px;
+  }
+  
+  /* Section separator */
+  .unit {
+    border-bottom: 3px solid #DDD5C5;
+  }
+  
+  /* Improve unit header background */
+  .unit-header {
+    padding: 28px 24px 20px;
+    background: #FDFAF5;
+  }
+
+</style>
+
 </head>
 <body>
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
-    <div class="question">Although Susan had never visited Japan before, she felt quite _______ with the culture because of the books and films she had enjoyed for years.</div>
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) similar <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) equal <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) familiar <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) generous <span class="info-icon">ⓘ</span></div>
-    </div>
-    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
-    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+
+<!-- ══════════════════════════════════
+     頂部 CTA Banner（課程 + Line）
+══════════════════════════════════ -->
+
+<div class="cta-banner">
+  <div class="cta-label">📢 2025年7月即將開課</div>
+  <div class="cta-headline">七月新課程<br>現正開放報名</div>
+  <div class="cta-buttons" style="margin-top:12px;">
+    <a href="https://linwayet.github.io/popup/index" target="_blank" class="cta-btn-course">
+      <span class="btn-icon">🎓</span>
+      <span class="btn-main">點此了解七月課程詳情</span>
+    </a>
+    <a href="https://line.me/ti/p/linwayet" target="_blank" class="cta-btn-line">
+      <span class="btn-icon">💬</span>
+      <span class="btn-main">Line私訊：linwayet</span>
+    </a>
+  </div>
 </div>
-<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
-<script>
-    const data = {
-        'A': { 
-            title: '(A) similar', 
-            desc: '解釋：相似的；類似的；相像的；差不多的', 
-            detail: '<div class="example-box"><div class="eg-item">1. My sister and I have <b>similar</b> interests.<br>(我和我妹妹有類似的興趣。)</div><div class="eg-item">2. These two products are <b>similar</b> in price.<br>(這兩種產品價格相似。)</div><div class="eg-item">3. Their ideas are <b>similar</b> to mine.<br>(他們的想法與我的相似。)</div></div>' 
-        },
-        'B': { 
-            title: '(B) equal', 
-            desc: '解釋：相等的；平等的；相同的；勝任的', 
-            detail: '<div class="example-box"><div class="eg-item">1. All people are <b>equal</b> before the law.<br>(所有人在法律面前都是平等的。)</div><div class="eg-item">2. Five plus five is <b>equal</b> to ten.<br>(五加五等於十。)</div><div class="eg-item">3. He is <b>equal</b> to the task ahead.<br>(他能勝任眼前的任務。)</div></div>' 
-        },
-        'C': { 
-            title: '(C) familiar', 
-            desc: '解釋：熟悉的；親密的；常見的；知道的', 
-            detail: '<div class="example-box"><div class="eg-item">1. This place is <b>familiar</b> to me.<br>(這個地方我很熟悉。)</div><div class="eg-item">2. Her voice sounds <b>familiar</b>.<br>(她的聲音聽起來很熟悉。)</div><div class="eg-item">3. I am <b>familiar</b> with that author\'s work.<br>(我熟悉那位作者的作品。)</div></div>' 
-        },
-        'D': { 
-            title: '(D) generous', 
-            desc: '解釋：慷慨的；寬宏大量的；大方的；豐富的', 
-            detail: '<div class="example-box"><div class="eg-item">1. She is a <b>generous</b> person who always helps others.<br>(她是一個慷慨的人，總是幫助他人。)</div><div class="eg-item">2. He made a <b>generous</b> donation to the charity.<br>(他向慈善機構做了慷慨的捐獻。)</div><div class="eg-item">3. The portions at this restaurant are <b>generous</b>.<br>(這家餐廳的份量很大。)</div></div>' 
-        },
-        'E': { 
-            title: '✓ 正確答案：(C) familiar', 
-            desc: '詳細解析：題目說蘇珊雖然從未去過日本，但因為多年來看過的書籍和電影，她對日本文化感到「熟悉」。(C) familiar 是最適合的詞選，常搭配 "feel familiar with" 或 "be familiar with" 表示對某事物感到熟悉或了解。', 
-            example: '<b>為什麼不選其他選項？</b><br>• (A) similar：相似，文法上「feel similar with」不正確，應為「similar to」<br>• (B) equal：相等，無法表達「對文化的了解程度」<br>• (D) generous：慷慨，完全無關，不符合句意' 
-        },
-        'F': { 
-            title: '林威老師的話 - 衍生詞與音標', 
-            detail: '<h4>1. familiarity (名詞)</h4><p class="kk-text">KK: [fəˌmɪliˈærəti]</p><p>中文：熟悉；親密；熟悉的事物；常識</p><h4>2. unfamiliar (形容詞)</h4><p class="kk-text">KK: [ˌʌnfəˈmɪljɚ]</p><p>中文：陌生的；不熟悉的；陌生人</p>' 
-        },
-        'G': { 
-            title: '衍生詞更多例句', 
-            detail: '<div class="example-box"><div class="eg-item">1. Their <b>familiarity</b> with the subject made the presentation excellent.<br>(他們對該主題的熟悉使報告非常出色。)</div></div><div class="example-box"><div class="eg-item">2. The <b>unfamiliar</b> surroundings made him feel uncomfortable.<br>(陌生的環境使他感到不舒服。)</div></div><div class="example-box"><div class="eg-item">3. Long <b>familiarity</b> with the city made navigation easy.<br>(對這座城市長期的熟悉使導航變得容易。)</div></div><div class="example-box"><div class="eg-item">4. This is an <b>unfamiliar</b> concept to most people.<br>(這對大多數人來說是一個陌生的概念。)</div></div>' 
-        },
-        'H': { 
-            title: '高三學測必備片語', 
-            detail: '<h4>1. be familiar with (對...很熟悉；了解...)</h4><p>例句：Are you <b>familiar with</b> this software?<br>(你熟悉這個軟體嗎？)</p><h4>2. feel familiar with (對...感到熟悉；因...而感到熟悉)</h4><p>例句：She <b>felt familiar with</b> the city because she had lived there before.<br>(她對這座城市感到熟悉，因為她以前住過那裡。)</p><h4>3. become familiar to (變得為...所熟悉；逐漸為人所知)</h4><p>例句: His name soon <b>became familiar to</b> everyone in the office.<br>(他的名字很快就在辦公室裡為人所熟知。)</p>' 
-        }
-    };
-    function showOverlay(key) { 
-        const item = data[key]; 
-        let html = `<div class="overlay-title">${item.title}</div>`; 
-        if(item.desc) html += `<p>${item.desc}</p>`; 
-        if(item.detail) html += `<div>${item.detail}</div>`; 
-        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
-        document.getElementById('contentArea').innerHTML = html; 
-        document.getElementById('infoOverlay').style.display = 'block'; 
-    }
-    function closeOverlay() { 
-        document.getElementById('infoOverlay').style.display = 'none'; 
-    }
-</script>
+
+<!-- HERO -->
+
+<header class="hero">
+  <span class="flag">🇬🇧</span>
+  <p class="hero-sub">PODCAST COURSE SERIES 2024–2026</p>
+  <h1>英國脫歐全景課程<br>從起源到2026年的生活衝擊</h1>
+  <div class="hero-stats">
+    <div class="stat-box">
+      <span class="stat-num">27</span>
+      <span class="stat-label">集數</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">10</span>
+      <span class="stat-label">單元</span>
+    </div>
+    <div class="stat-box">
+      <span class="stat-num">12</span>
+      <span class="stat-label">人物故事</span>
+    </div>
+  </div>
+</header>
+
+<!-- 目錄 -->
+
+<nav class="toc">
+  <div class="toc-title">📋 課程單元導覽</div>
+  <div class="toc-grid">
+    <a href="#u1" class="toc-btn" style="background:var(--u1)"><span class="toc-dot"></span>第1單元｜脫歐根源</a>
+    <a href="#u2" class="toc-btn" style="background:var(--u2)"><span class="toc-dot"></span>第2單元｜法律架構</a>
+    <a href="#u3" class="toc-btn" style="background:var(--u3)"><span class="toc-dot"></span>第3單元｜富人故事</a>
+    <a href="#u4" class="toc-btn" style="background:var(--u4)"><span class="toc-dot"></span>第4單元｜總體經濟</a>
+    <a href="#u5" class="toc-btn" style="background:var(--u5)"><span class="toc-dot"></span>第5單元｜中產故事</a>
+    <a href="#u6" class="toc-btn" style="background:var(--u6)"><span class="toc-dot"></span>第6單元｜產業衝擊</a>
+    <a href="#u7" class="toc-btn" style="background:var(--u7)"><span class="toc-dot"></span>第7單元｜弱勢故事</a>
+    <a href="#u8" class="toc-btn" style="background:var(--u8)"><span class="toc-dot"></span>第8單元｜人口洗牌</a>
+    <a href="#u9" class="toc-btn" style="background:var(--u9)"><span class="toc-dot"></span>第9單元｜政治震盪</a>
+    <a href="#u10" class="toc-btn" style="background:var(--u10)"><span class="toc-dot"></span>第10單元｜2026現況</a>
+  </div>
+</nav>
+
+<!-- ======================================================
+     第一單元｜脫歐根源
+====================================================== -->
+
+<section class="unit" id="u1">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u1)">🔥 第一單元｜Unit 1</div>
+    <div class="unit-title">脫歐的根源<span>The Origins of Brexit｜第1–4回</span></div>
+    <p class="unit-desc">英國為何走到公投這一步？從歷史積怨、移民焦慮到政客操弄，追溯脫歐的深層基因。</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u1)">
+      <div class="ep-num-label">EP</div>01
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">英國與歐盟的愛恨情仇</div>
+      <div class="ep-sub">從1973年加入歐共體，到2016年公投脫歐——英國從未真正心甘情願地「融入」歐洲。半世紀的疑歐主義從何而來？</div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u1)">
+      <div class="ep-num-label">EP</div>02
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">為什麼人民投票脫歐？</div>
+      <div class="ep-sub">移民焦慮、主權意識、媒體操弄——Leave陣營如何打動了英格蘭中部與北部的勞動階層？</div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u1)">
+      <div class="ep-num-label">EP</div>03
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">Leave vs Remain：「每週3.5億英鎊」的謊言</div>
+      <div class="ep-sub">那輛紅色宣傳巴士說謊了嗎？兩陣營的核心論點，以及後真相政治如何重塑了英國民主。</div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u1)">
+      <div class="ep-num-label">EP</div>04
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">公投當晚到脫歐談判：混亂的三年</div>
+      <div class="ep-sub">Cameron辭職、May三度否決、Boris強行脫歐——2016到2019年，英國政壇如何陷入史上最大的憲政危機？</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     第二單元｜法律架構
+====================================================== -->
+
+<section class="unit" id="u2">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u2)">📜 第二單元｜Unit 2</div>
+    <div class="unit-title">脫歐的法律與制度架構<span>Legal & Institutional Framework｜第5–6回</span></div>
+    <p class="unit-desc">TCA是什麼？北愛爾蘭邊界為何是最難解的死結？用白話解釋法律文件背後的現實衝擊。</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u2)">
+      <div class="ep-num-label">EP</div>05
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">《貿易與合作協議》TCA是什麼？</div>
+      <div class="ep-sub">關稅、單一市場、海關邊境——脫歐後英歐之間的新遊戲規則，以及為何「有協議」不代表「沒摩擦」。</div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u2)">
+      <div class="ep-num-label">EP</div>06
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">北愛爾蘭問題：溫莎框架與最難解的邊界難題</div>
+      <div class="ep-sub">一條看不見的邊界，牽動愛爾蘭和平進程與英國憲政結構。溫莎框架如何試圖解套，又留下哪些未爆彈？</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     第三單元｜富人故事
+====================================================== -->
+
+<section class="unit" id="u3">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u3)">👑 第三單元｜Unit 3</div>
+    <div class="unit-title">富人階層的故事<span>The Wealthy Class｜第7–9回</span></div>
+    <p class="unit-desc">有人在脫歐中找到機會，有人損失慘重，有人悄悄搬家。菁英階層用選票之外的方式回應了脫歐。</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u3)">
+      <div class="ep-num-label">EP</div>07
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">金融城出走：避險基金經理人的都柏林新生活</div>
+      <div class="ep-sub">倫敦金融城在脫歐後失去歐盟護照通行權，資金與人才悄悄外流。</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u3)">🏦</div>
+      <div class="char-info">
+        <div class="char-name">James · 對沖基金經理</div>
+        <div class="char-desc">2017年將公司從倫敦遷往都柏林，是金融城出走潮的第一波先行者。倫敦辦公室如今只剩象徵性存在。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u3)">
+      <div class="ep-num-label">EP</div>08
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">豪宅市場震盪：房產大亨的算盤怎麼打</div>
+      <div class="ep-sub">英鎊貶值讓外國買家猶豫，但也讓部分富豪趁機抄底。高端房產市場如何在不確定性中重新定價？</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u3)">🏛️</div>
+      <div class="char-info">
+        <div class="char-name">Diana · 倫敦高端房產開發商</div>
+        <div class="char-desc">歐洲買家撤退後，她轉攻中東與亞洲富豪市場，靠鎊弱吸引外資，意外在危機中找到新路。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u3)">
+      <div class="ep-num-label">EP</div>09
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">脫歐受益者？超市老闆押注英國本土品牌</div>
+      <div class="ep-sub">進口替代與本土供應鏈崛起，讓部分本地商人看到機遇。但關稅壁壘終究是隱形成本。</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u3)">🛒</div>
+      <div class="char-info">
+        <div class="char-name">Richard · 英格蘭中部超市集團老闆</div>
+        <div class="char-desc">力推本土農產品、主打「Buy British」，策略初期成功，但進口成本上升的壓力正在追上來。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     第四單元｜總體經濟
+====================================================== -->
+
+<section class="unit" id="u4">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u4)">💷 第四單元｜Unit 4</div>
+    <div class="unit-title">總體經濟衝擊<span>Macroeconomic Impact｜第10–12回</span></div>
+    <p class="unit-desc">GDP損失6–8%、投資萎縮12–18%——用數字說真相，也用比較讓你看出英國到底輸在哪。</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u4)">
+      <div class="ep-num-label">EP</div>10
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">脫歐讓英國損失了多少？</div>
+      <div class="ep-sub">NBER與Stanford研究估計GDP下滑6–8%。「合成控制法」是怎麼算出來的？為什麼損失是慢慢積累、而非一夕崩潰？</div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u4)">
+      <div class="ep-num-label">EP</div>11
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">英鎊貶值、通膨、投資外逃：數字背後的故事</div>
+      <div class="ep-sub">公投隔天英鎊閃崩8%，此後從未完全回升。弱鎊如何推高進口物價，又如何讓普通家庭的購物清單縮水？</div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u4)">
+      <div class="ep-num-label">EP</div>12
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">英國 vs 德國 vs 法國：誰跑更快？</div>
+      <div class="ep-sub">用同期比較還原真相：脫歐前英國GDP成長與歐洲同步；脫歐後逐年落後。十年差距有多大？</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     第五單元｜中產故事
+====================================================== -->
+
+<section class="unit" id="u5">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u5)">🏠 第五單元｜Unit 5</div>
+    <div class="unit-title">中產階級的故事<span>The Middle Class｜第13–15回</span></div>
+    <p class="unit-desc">脫歐的代價，中產階級最真實地用荷包感受。退休計畫、生意、職涯——一切都要重算。</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u5)">
+      <div class="ep-num-label">EP</div>13
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">教師夫婦的歐洲夢碎</div>
+      <div class="ep-sub">EHIC歐洲健保卡消失、護照排外國人隊、西班牙長居資格程序繁瑣——退休移居計畫如何被脫歐打亂？</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u5)">👨‍👩‍👧</div>
+      <div class="char-info">
+        <div class="char-name">Sarah & Tom · 50歲教師夫婦</div>
+        <div class="char-desc">原計畫55歲退休移居西班牙，脫歐後長居手續大幅增加，計畫延宕五年，最終改往葡萄牙。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u5)">
+      <div class="ep-num-label">EP</div>14
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">中小企業主的噩夢：報關文件、邊境延誤</div>
+      <div class="ep-sub">每一批貨都要填一疊文件，每一次延誤都是損失。脫歐後英歐貿易的行政成本暴增，壓垮了多少小企業？</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u5)">📦</div>
+      <div class="char-info">
+        <div class="char-name">Mark · 伯明罕食品進出口商</div>
+        <div class="char-desc">脫歐後行政成本暴增40%，公司規模被迫縮小一半，轉型做英國本地供應鏈才止住失血。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u5)">
+      <div class="ep-num-label">EP</div>15
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">IT工程師的歐洲職涯終結與重生</div>
+      <div class="ep-sub">脫歐前，她可以無縫到柏林或阿姆斯特丹工作。脫歐後，工作簽證讓夢想變成了手續。</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u5)">💻</div>
+      <div class="char-info">
+        <div class="char-name">Priya · 印裔英籍軟體工程師</div>
+        <div class="char-desc">放棄赴德工作計畫後，轉向遠端工作模式，意外服務了更多歐洲客戶，用危機換到意外突圍。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     第六單元｜產業衝擊
+====================================================== -->
+
+<section class="unit" id="u6">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u6)">🏭 第六單元｜Unit 6</div>
+    <div class="unit-title">產業別衝擊<span>Industry Impact｜第16–18回</span></div>
+    <p class="unit-desc">農場、工廠、醫院、漁港、大學——脫歐的代價平均分攤在每一個產業身上，卻又各有不同的傷。</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u6)">
+      <div class="ep-num-label">EP</div>16
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">農業與食品業：缺工、邊境費、超市貨架</div>
+      <div class="ep-sub">7萬名季節農工回流東歐，草莓爛在地裡無人採。新進口邊境費又讓每批生鮮食品多一道關卡。</div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u6)">
+      <div class="ep-num-label">EP</div>17
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">金融城、汽車業、NHS缺醫護</div>
+      <div class="ep-sub">倫敦金融城失去歐盟護照；Toyota、BMW在英國廠因零件卡關暫停生產；NHS缺少數萬名歐盟護士與醫師。</div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u6)">
+      <div class="ep-num-label">EP</div>18
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">漁業、旅遊業、留學與高等教育</div>
+      <div class="ep-sub">漁業是脫歐最大象徵，現實卻是英國漁民出口更難；Erasmus退出讓英國學生失去歐洲交換機會。</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     第七單元｜弱勢故事
+====================================================== -->
+
+<section class="unit" id="u7">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u7)">🧱 第七單元｜Unit 7</div>
+    <div class="unit-title">弱勢階層的故事<span>The Vulnerable Class｜第19–21回</span></div>
+    <p class="unit-desc">脫歐的苦果，往往最先、最重壓在社會底層。農工、單親媽媽、移工——他們沒有緩衝墊。</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u7)">
+      <div class="ep-num-label">EP</div>19
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">羅馬尼亞農工的消失：誰來摘草莓？</div>
+      <div class="ep-sub">英國農場長期依賴東歐季節工。脫歐後自由移動終止，農業陷入結構性缺工，農民、農工、消費者三輸。</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u7)">🌾</div>
+      <div class="char-info">
+        <div class="char-name">Ion · 羅馬尼亞季節農工</div>
+        <div class="char-desc">在英務農八年，2020年後被迫離開。回到羅馬尼亞後當地薪資追上，他說：「不會再回去了。」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u7)">
+      <div class="ep-num-label">EP</div>20
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">食物銀行的常客：單親媽媽的通膨日記</div>
+      <div class="ep-sub">英國食物銀行使用量創歷史新高。通膨、能源費、食物漲價——三重壓力如何讓低收入家庭的生存算術失衡？</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u7)">👩‍👧‍👦</div>
+      <div class="char-info">
+        <div class="char-name">Karen · 諾丁漢單親媽媽</div>
+        <div class="char-desc">三個孩子、兼職工作、每月固定去食物銀行。她說：「我投票脫歐，因為他們說會讓生活變好。」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u7)">
+      <div class="ep-num-label">EP</div>21
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">波蘭水電工的故事：留下還是回家？</div>
+      <div class="ep-sub">脫歐公投後，英國街頭出現「回家去」的仇恨塗鴉。在英工作15年的移工，面對定居申請的龐大壓力。</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u7)">🔧</div>
+      <div class="char-info">
+        <div class="char-name">Tomasz · 波蘭水電工，在英15年</div>
+        <div class="char-desc">身份焦慮、定居申請、孩子在英出生——他決定留下。如今水電工奇缺，薪資反而比脫歐前更高。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     第八單元｜人口洗牌
+====================================================== -->
+
+<section class="unit" id="u8">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u8)">🌍 第八單元｜Unit 8</div>
+    <div class="unit-title">人口大洗牌<span>The Great Population Reshuffle｜第22–23回</span></div>
+    <p class="unit-desc">前半：數據與結構。後半：三個遷徙者的真實故事。英國不只換了制度，也換了人口的臉孔。</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u8)">
+      <div class="ep-num-label">EP</div>22
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">誰離開了英國？歐盟移工大撤退與英國人出走潮</div>
+      <div class="ep-sub">130萬歐盟公民陸續離英；英國人移居歐洲卻碰上90天免簽限制；28歲設計師Liam移居柏林，說生活品質好多了。</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u8)">✈️</div>
+      <div class="char-info">
+        <div class="char-name">Liam · 倫敦設計師，現居柏林</div>
+        <div class="char-desc">2023年移居柏林：「薪水差不多，但租金少一半、生活品質好很多。我不後悔，但我想念媽媽的燉肉。」</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u8)">
+      <div class="ep-num-label">EP</div>23
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">誰來到了英國？香港人、非洲護士、英吉利海峽小船</div>
+      <div class="ep-sub">非歐盟移民激增，2023年淨移民74萬創歷史新高；BN(O)港人湧入曼徹斯特；盧安達驅逐計畫爭議始末。</div>
+    </div>
+  </div>
+  <div class="ep-character">
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u8)">🇭🇰</div>
+      <div class="char-info">
+        <div class="char-name">Winnie · 香港會計師，現居曼徹斯特</div>
+        <div class="char-desc">2022年持BN(O)簽證移英。孩子適應良好，她卻每晚想念維多利亞港的天際線。</div>
+      </div>
+    </div>
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u8)">🏥</div>
+      <div class="char-info">
+        <div class="char-name">Chidi · 奈及利亞護士，NHS</div>
+        <div class="char-desc">NHS全球招募下來英填補空缺，如今卻面臨新一波移民限縮政策威脅，身份再度懸而未決。</div>
+      </div>
+    </div>
+    <div class="char-row">
+      <div class="char-avatar" style="background:var(--u8)">🚤</div>
+      <div class="char-info">
+        <div class="char-name">Amara · 蘇丹難民，小船偷渡者</div>
+        <div class="char-desc">英吉利海峽那一夜，28人擠在充氣艇上。抵達英國後在拘留中心等待，面對盧安達驅逐的陰影。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     第九單元｜政治震盪
+====================================================== -->
+
+<section class="unit" id="u9">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u9)">🏛️ 第九單元｜Unit 9</div>
+    <div class="unit-title">政治震盪與民心轉向<span>Political Turmoil｜第24–25回</span></div>
+    <p class="unit-desc">五位首相、十年動盪。英國政治如何在脫歐後失去重心，民心又如何悄悄走向另一個方向？</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u9)">
+      <div class="ep-num-label">EP</div>24
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">五位首相的走馬燈：脫歐如何摧毀政治穩定性</div>
+      <div class="ep-sub">Cameron → May → Johnson → Truss → Sunak → Starmer，十年六位首相，英國史上前所未有。脫歐如何讓保守黨從百年大黨走向潰敗？</div>
+    </div>
+  </div>
+</div>
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u9)">
+      <div class="ep-num-label">EP</div>25
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">民調大翻轉：超過半數英國人想重返歐盟？</div>
+      <div class="ep-sub">2016年投票離開，2026年多數人想回去。年輕世代80%支持重返，Reform UK卻靠反移民議題重新燃起脫歐情緒——英國的政治矛盾如何撕裂世代？</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<!-- ======================================================
+     第十單元｜2026現況
+====================================================== -->
+
+<section class="unit" id="u10">
+  <div class="unit-header">
+    <div class="unit-badge" style="background:var(--u10)">🔭 第十單元｜Unit 10</div>
+    <div class="unit-title">2026年的英國<span>The UK in 2026｜第26–27回</span></div>
+    <p class="unit-desc">十年後，英國站在哪裡？史塔默的修復外交、生活成本危機、以及課程所有人物的最終命運。</p>
+  </div>
+  <div class="episodes">
+
+<div class="ep-card">
+  <div class="ep-top">
+    <div class="ep-num" style="background:var(--u10)">
+      <div class="ep-num-label">EP</div>26
+    </div>
+    <div class="ep-body">
+      <div class="ep-title">史塔默的修復計畫與生活成本危機</div>
+      <div class="ep-sub">「深度損害」、「更雄心壯志」——史塔默承認脫歐傷了經濟，卻不敢說重返。44%家庭三個月內難以繳付食物費用，脫歐要負多少責任？</div>
+    </div>
+  </div>
+</div>
+
+  </div>
+
+  <!-- 大結局：十二人命運 -->
+
+  <div class="unit-header" style="padding-top:8px;">
+    <div class="unit-badge" style="background:#8B2FC9">🎬 第27回｜大結局</div>
+    <div class="unit-title" style="font-size:19px;">十年後的十二個人<span>2026年：三個階層的最終命運</span></div>
+  </div>
+
+  <div class="finale-grid">
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u3)">👑 富人</div>
+      <div class="finale-name">James 基金經理</div>
+      <div class="finale-status">都柏林業務蒸蒸日上，倫敦辦公室縮編為象徵性存在</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u3)">👑 富人</div>
+      <div class="finale-name">Diana 房產商</div>
+      <div class="finale-status">轉攻中東買家，倫敦豪宅市場局部復甦</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u3)">👑 富人</div>
+      <div class="finale-name">Richard 超市老闆</div>
+      <div class="finale-status">本土品牌策略初成，進口成本仍是隱憂</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u5)">🏠 中產</div>
+      <div class="finale-name">Sarah & Tom 教師夫婦</div>
+      <div class="finale-status">退休計畫改為葡萄牙，手續繁瑣但終於成行</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u5)">🏠 中產</div>
+      <div class="finale-name">Mark 進出口商</div>
+      <div class="finale-status">公司縮小一半，轉型本地供應鏈後止住失血</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u5)">🏠 中產</div>
+      <div class="finale-name">Priya 工程師</div>
+      <div class="finale-status">遠端工作反讓她服務歐洲客戶，意外突圍</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u7)">🧱 弱勢</div>
+      <div class="finale-name">Ion 羅馬尼亞農工</div>
+      <div class="finale-status">留在羅馬尼亞，當地薪資追上，不想再回英</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u7)">🧱 弱勢</div>
+      <div class="finale-name">Karen 單親媽媽</div>
+      <div class="finale-status">食物銀行仍是每月固定行程，等待局面改變</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u7)">🧱 弱勢</div>
+      <div class="finale-name">Tomasz 波蘭水電工</div>
+      <div class="finale-status">留在英國，緊缺工種讓薪資反而比脫歐前更高</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u8)">🌍 移民</div>
+      <div class="finale-name">Winnie 香港人</div>
+      <div class="finale-status">孩子適應良好，她每晚仍想念維多利亞港</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u8)">🌍 移民</div>
+      <div class="finale-name">Chidi 奈及利亞護士</div>
+      <div class="finale-status">NHS支柱，卻面臨新移民限縮政策的威脅</div>
+    </div>
+    <div class="finale-card">
+      <div class="finale-tag" style="background:var(--u8)">🌍 移民</div>
+      <div class="finale-name">Liam 出走設計師</div>
+      <div class="finale-status">在柏林落地生根，「我不後悔，但想念媽媽的燉肉」</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════
+     底部 CTA Banner（課程 + Line）
+══════════════════════════════════ -->
+
+<div class="cta-banner">
+  <div class="cta-label">📢 2025年7月即將開課</div>
+  <div class="cta-headline">七月新課程<br>現正開放報名</div>
+  <div class="cta-buttons" style="margin-top:12px;">
+    <a href="https://linwayet.github.io/popup/index" target="_blank" class="cta-btn-course">
+      <span class="btn-icon">🎓</span>
+      <span class="btn-main">點此了解七月課程詳情</span>
+    </a>
+    <a href="https://line.me/ti/p/linwayet" target="_blank" class="cta-btn-line">
+      <span class="btn-icon">💬</span>
+      <span class="btn-main">Line私訊：linwayet</span>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+  <div style="font-size:32px;margin-bottom:12px">🇬🇧</div>
+  <strong>英國脫歐全景課程｜27回完整規劃</strong><br>
+  涵蓋2016年公投 → 2026年現況<br>
+  三大階層 × 12個人物故事 × 10個知識單元<br>
+  <div style="margin-top:16px;opacity:0.6;font-size:12px">
+    4U, Live, IVY 各種英文雜誌 Economist, 一對一教學 (托福多益雅思) 每月開班！
+請私訊林威老師 lineID: linwayet 
+各位同學好，我是林威老師，
+英文教學已達34年
+邁向經濟學人4000篇文章 (講解累積時間已達15年)
+</footer>
+
 </body>
 </html>
