@@ -1,103 +1,997 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
-        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
-        .options-list { list-style: none; padding: 0; }
-        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
-        .option-item:hover { background-color: #f9f9f9; }
-        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
-        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
-        .special-btn:hover { background-color: #f0f0f0; }
-        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
-        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
-        .tool-link:hover { color: #333; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
-        .overlay-content { max-width: 500px; margin: 0 auto; }
-        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
-        .close-btn:hover { color: #666; }
-        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
-        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
-        .eg-item { margin-bottom: 10px; }
-        .kk-text { color: #666; font-style: italic; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Are Bird Skeletons Hollow?</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF8F0;
+  --ink:#1A0F00;
+  --h1:#C0392B;
+  --h2:#1565C0;
+  --h3:#2E7D32;
+  --word:#0D47A1;
+  --orange:#E65100;
+  --purple:#6A1B9A;
+  --paper:#FFFDF8;
+  --line:#C4A06A;
+  --article-head:#0D47A1;
+  --article-border:#90CAF9;
+  --article-bg:#F3F8FF;
+  --read-head:#BF360C;
+  --read-border:#FFAB91;
+  --read-bg:#FFF3EF;
+  --vocab-head:#1B5E20;
+  --vocab-border:#81C784;
+  --vocab-bg:#F1F8F2;
+  --grammar-head:#4A148C;
+  --grammar-border:#CE93D8;
+  --grammar-bg:#F9F0FF;
+  --fold-head:#4A3728;
+  --fold-bg:#FAF6F0;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'BIZ UDPGothic',sans-serif;
+  font-size:23px;
+  line-height:1.85;
+  font-weight:400;
+  padding:28px 14px 72px;
+}
+.page{max-width:880px;margin:0 auto}
+.hero{
+  background:var(--paper);
+  border:4px solid var(--h1);
+  border-radius:8px;
+  padding:28px 22px 26px;
+  text-align:center;
+  box-shadow:0 10px 24px rgba(74,55,40,.16);
+}
+h1{
+  display:inline-block;
+  margin:0 0 18px;
+  padding:14px 20px;
+  border:4px double var(--h1);
+  color:var(--h1);
+  font-size:3.05rem;
+  line-height:1.25;
+  font-weight:700;
+  background:#FFF4EA;
+}
+.subtitle{
+  margin:0 0 12px;
+  color:var(--h2);
+  font-size:2.2rem;
+  line-height:1.35;
+  font-weight:700;
+}
+.credit{
+  margin:0;
+  color:#0D47A1;
+  font-size:1.55rem;
+  line-height:1.45;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-shadow:1px 1px 0 #BBDEFB;
+}
+h2{
+  color:var(--h2);
+  font-size:2.2rem;
+  line-height:1.35;
+  margin:42px 0 14px;
+  font-weight:700;
+}
+h3{
+  color:var(--h3);
+  font-size:1.6rem;
+  line-height:1.45;
+  margin:0 0 12px;
+  font-weight:700;
+}
+p{margin:12px 0}
+strong.key{color:var(--word);font-weight:700;text-decoration:none}
+.section-card{
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--paper);
+  box-shadow:0 8px 20px rgba(74,55,40,.12);
+}
+.section-head{
+  min-height:72px;
+  display:flex;
+  align-items:center;
+  padding:16px 22px;
+  color:#FFFDF8;
+  font-size:1.25rem;
+  font-weight:700;
+}
+.section-body{padding:24px}
+.article{border:3px solid var(--article-border)}
+.article .section-head{background:var(--article-head)}
+.article .section-body{background:var(--article-bg)}
+.reading{border:3px solid var(--read-border)}
+.reading .section-head{background:var(--read-head)}
+.reading .section-body{background:var(--read-bg)}
+.vocab{border:3px solid var(--vocab-border)}
+.vocab .section-head{background:var(--vocab-head)}
+.vocab .section-body{background:var(--vocab-bg)}
+.grammar{border:3px solid var(--grammar-border)}
+.grammar .section-head{background:var(--grammar-head)}
+.grammar .section-body{background:var(--grammar-bg)}
+.analysis-block,.vocab-item,.grammar-item{
+  padding:20px 0;
+  border-top:2px solid rgba(26,15,0,.16);
+}
+.analysis-block:first-child,.vocab-item:first-child,.grammar-item:first-child{border-top:0;padding-top:0}
+.num-circle{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  background:var(--read-head);
+  color:#FFFDF8;
+  font-size:1.25rem;
+  font-weight:700;
+  margin-right:10px;
+}
+.quote{
+  background:#FFFDF8;
+  border-left:8px solid var(--orange);
+  padding:14px 16px;
+  border-radius:8px;
+  font-style:normal;
+  font-weight:700;
+}
+.quote em{font-style:normal}
+.subbox{
+  background:rgba(255,253,248,.86);
+  border:2px solid rgba(196,160,106,.46);
+  border-radius:8px;
+  padding:14px 16px;
+  margin-top:12px;
+}
+.pill{
+  display:inline-block;
+  padding:5px 12px;
+  border-radius:999px;
+  margin:4px 6px 4px 0;
+  font-size:1rem;
+  font-weight:700;
+  background:#EAFAF1;
+  color:#2E7D32;
+}
+.vocab-top{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:baseline;
+  margin-bottom:10px;
+}
+.vocab-num{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  color:#FFFDF8;
+  background:var(--vocab-head);
+  font-weight:700;
+}
+.vocab-word{font-size:1.6rem;color:var(--word);font-weight:700}
+.kk{color:var(--orange);font-weight:700}
+.tag-row{
+  display:grid;
+  grid-template-columns:minmax(110px,150px) 1fr;
+  gap:0;
+  margin:10px 0;
+  border:2px solid rgba(26,15,0,.12);
+  border-radius:8px;
+  overflow:hidden;
+  background:#FFFDF8;
+}
+.tag-label{
+  padding:10px 12px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+}
+.tag-body{padding:10px 14px}
+.deriv .tag-label{background:#FDEDEC;color:#C0392B}
+.root .tag-label{background:#EBF5FB;color:#1565C0}
+.phrase .tag-label{background:#EAFAF1;color:#2E7D32}
+.idiom .tag-label{background:#FEF9E7;color:#D68910}
+.confuse .tag-label{background:#F5EEF8;color:#6A1B9A}
+.pattern .tag-label{background:#FEF0E7;color:#E65100}
+ul{margin:10px 0 0 28px;padding:0}
+li{margin:8px 0}
+.grammar-title{color:var(--purple);font-weight:700;font-size:1.45rem}
+.grammar-label{color:var(--grammar-head);font-weight:700;margin-top:18px}
+.formula{font-weight:700;font-style:normal;color:var(--word)}
+details{
+  border:3px solid var(--line);
+  border-radius:8px;
+  overflow:hidden;
+  margin-top:20px;
+  background:var(--fold-bg);
+}
+summary{
+  min-height:72px;
+  background:var(--fold-head);
+  color:#FFFDF8;
+  padding:16px 20px;
+  font-size:1.25rem;
+  font-weight:700;
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+summary::-webkit-details-marker{display:none}
+.arrow{transition:transform .3s ease;font-weight:700}
+details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:20px 24px;background:var(--fold-bg)}
+.prefix-item,.suffix-item,.small-item{
+  padding:8px 0;
+  border-bottom:1px solid rgba(74,55,40,.25);
+}
+.prefix-item:last-child,.suffix-item:last-child,.small-item:last-child{border-bottom:0}
+.term{color:#0D47A1;font-weight:700}
+.exam-prediction{
+  background:#FFFDF8;
+  border:4px solid #C0392B;
+  border-radius:8px;
+  padding:22px;
+  margin:0 0 32px;
+  box-shadow:0 10px 24px rgba(74,55,40,.16);
+}
+.exam-prediction-title{
+  display:block;
+  color:#C0392B;
+  border:4px double #C0392B;
+  border-radius:8px;
+  background:#FFF4EA;
+  padding:14px 18px;
+  margin:0 0 18px;
+  text-align:center;
+  font-size:3.05rem;
+  line-height:1.25;
+  font-weight:700;
+}
+.exam-prediction-subtitle{
+  color:#1565C0;
+  font-size:1.65rem;
+  line-height:1.45;
+  font-weight:700;
+  margin:0 0 18px;
+  text-align:center;
+}
+.prediction-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+  gap:14px;
+}
+.prediction-card{
+  background:#FFF8F0;
+  border:2px solid #C4A06A;
+  border-radius:8px;
+  padding:16px 18px;
+}
+.prediction-card-top{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin-bottom:8px;
+}
+.prediction-num{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  font-size:1rem;
+  font-weight:700;
+}
+.prediction-card-title{
+  color:#1A0F00;
+  font-size:1.15rem;
+  line-height:1.5;
+  font-weight:700;
+}
+.prediction-card-sub{
+  color:#4A3728;
+  font-size:1rem;
+  line-height:1.65;
+  margin-left:46px;
+}
+.prediction-tag{
+  display:inline-block;
+  font-size:.95rem;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:8px;
+  margin-left:46px;
+  margin-top:8px;
+}
+.course-links{
+  background:#FFF1E6;
+  border:4px solid #E65100;
+  border-radius:8px;
+  padding:22px;
+  margin:0 0 32px;
+  box-shadow:0 10px 24px rgba(74,55,40,.16);
+}
+.course-links.bottom{margin:42px 0 0}
+.course-links-title{
+  margin:0 0 6px;
+  color:#C0392B;
+  font-size:2rem;
+  line-height:1.35;
+  font-weight:700;
+  text-align:center;
+}
+.course-links-intro{
+  margin:0 0 18px;
+  color:#4A3728;
+  font-size:1.1rem;
+  line-height:1.65;
+  text-align:center;
+  font-weight:700;
+}
+.course-link-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.course-link-card{
+  display:block;
+  min-height:118px;
+  padding:16px 18px;
+  border-radius:8px;
+  text-decoration:none;
+  border:3px solid currentColor;
+  background:#FFFDF8;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.course-link-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(74,55,40,.18);
+}
+.course-link-name{
+  display:block;
+  font-size:1.25rem;
+  line-height:1.45;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.course-link-desc{
+  display:block;
+  color:#1A0F00;
+  font-size:1rem;
+  line-height:1.55;
+  font-weight:700;
+}
+.course-echo{color:#0D47A1;background:#F3F8FF}
+.course-analysis{color:#1B5E20;background:#F1F8F2}
+.course-line{color:#6A1B9A;background:#F9F0FF}
+@media(max-width:760px){
+  body{font-size:21px;padding:18px 10px 48px}
+  h1{font-size:2.35rem}
+  .exam-prediction-title{font-size:2.35rem}
+  .exam-prediction{padding:18px}
+  .prediction-card-sub,.prediction-tag{margin-left:0}
+  .course-links{padding:18px;margin-bottom:24px}
+  .course-links-title{font-size:1.7rem}
+  .course-link-grid{grid-template-columns:1fr}
+  .course-link-card{min-height:104px}
+  .subtitle{font-size:1.8rem}
+  .credit{font-size:1.25rem}
+  h2{font-size:1.85rem}
+  h3{font-size:1.42rem}
+  .section-body{padding:18px}
+  .tag-row{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body>
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
-    <div class="question">Even though she appeared calm, her trembling hands _______ the fear she was trying to hide.</div>
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) blocked <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) revealed <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) discouraged <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) allowed <span class="info-icon">ⓘ</span></div>
-    </div>
-    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
-    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+<main class="page">
+<section class="course-links">
+<h2 class="course-links-title">七月課程與聯絡方式</h2>
+<p class="course-links-intro">兩門七月開課資源，搭配個人 Line 聯絡入口，方便學生與家長快速查看與詢問。</p>
+<div class="course-link-grid">
+<a class="course-link-card course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="course-link-name">七月課程介紹：錯中學 ECHO 計劃</span>
+<span class="course-link-desc">用錯題回饋與學習循環，幫學生把英文弱點轉成可追蹤的進步路線。</span>
+</a>
+<a class="course-link-card course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="course-link-name">學生分析</span>
+<span class="course-link-desc">查看學生學習狀態與能力分析，協助安排更精準的複習與補強方向。</span>
+</a>
+<a class="course-link-card course-line" href="https://line.me/R/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="course-link-name">Line 聯絡：linwayet</span>
+<span class="course-link-desc">點擊加入或搜尋 Line ID：linwayet，詢問課程、教材與學習規劃。</span>
+</a>
 </div>
-<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
-<script>
-    const data = {
-        'A': { 
-            title: '(A) blocked', 
-            desc: '解釋：阻擋；封鎖；阻止；妨礙', 
-            detail: '<div class="example-box"><div class="eg-item">1. The car <b>blocked</b> the driveway.<br>(汽車阻擋了車道。)</div><div class="eg-item">2. She <b>blocked</b> the entrance with furniture.<br>(她用家具阻擋了入口。)</div><div class="eg-item">3. The building <b>blocked</b> the view of the mountains.<br>(建築物擋住了山景。)</div></div>' 
-        },
-        'B': { 
-            title: '(B) revealed', 
-            desc: '解釋：揭露；透露；泄露；暴露；顯示', 
-            detail: '<div class="example-box"><div class="eg-item">1. The investigation <b>revealed</b> the truth.<br>(調查揭露了真相。)</div><div class="eg-item">2. Her smile <b>revealed</b> her happiness.<br>(她的微笑透露了她的快樂。)</div><div class="eg-item">3. The torn dress <b>revealed</b> her shoulder.<br>(撕裂的衣服暴露了她的肩膀。)</div></div>' 
-        },
-        'C': { 
-            title: '(C) discouraged', 
-            desc: '解釋：使氣餒；勸阻；不贊成；使沮喪', 
-            detail: '<div class="example-box"><div class="eg-item">1. Bad grades <b>discouraged</b> him from trying harder.<br>(糟糕的成績使他灰心喪氣。)</div><div class="eg-item">2. The teacher <b>discouraged</b> late submissions.<br>(老師不贊成遲交作業。)</div><div class="eg-item">3. Constant failure <b>discouraged</b> the team.<br>(不斷的失敗使團隊沮喪。)</div></div>' 
-        },
-        'D': { 
-            title: '(D) allowed', 
-            desc: '解釋：允許；准許；讓；使能夠', 
-            detail: '<div class="example-box"><div class="eg-item">1. The teacher <b>allowed</b> students to leave early.<br>(老師允許學生提早離開。)</div><div class="eg-item">2. The rules do not <b>allow</b> smoking here.<br>(規則不允許在這裡抽菸。)</div><div class="eg-item">3. His wealth <b>allowed</b> him to travel widely.<br>(他的財富使他能夠廣泛旅遊。)</div></div>' 
-        },
-        'E': { 
-            title: '✓ 正確答案：(B) revealed', 
-            desc: '詳細解析：題目的邏輯是「雖然她看起來冷靜，但她顫抖的手___了她試圖隱藏的恐懼」。顫抖的手會「揭露」或「暴露」隱藏的情感，而不是「阻擋」「勸阻」或「允許」。(B) revealed 是最符合句意的選擇，表示她無法隱藏真實的恐懼。', 
-            example: '<b>為什麼不選其他選項？</b><br>• (A) blocked：阻擋，無法用於描述「暴露感情」<br>• (C) discouraged：勸阻，不符合句義<br>• (D) allowed：允許，語意無關，且文法不搭' 
-        },
-        'F': { 
-            title: '林威老師的話 - 衍生詞與音標', 
-            detail: '<h4>1. revelation (名詞)</h4><p class="kk-text">KK: [ˌrevəˈleʃən]</p><p>中文：啟示；揭露；顯示；令人驚奇的事實</p><h4>2. revealing (形容詞)</h4><p class="kk-text">KK: [rɪˈvilɪŋ]</p><p>中文：有啟發性的；能說明真相的；暴露性的</p>' 
-        },
-        'G': { 
-            title: '衍生詞更多例句', 
-            detail: '<div class="example-box"><div class="eg-item">1. The <b>revelation</b> shocked the entire community.<br>(這一揭露震驚了整個社區。)</div></div><div class="example-box"><div class="eg-item">2. His comments were very <b>revealing</b> about his true feelings.<br>(他的評論非常能說明他的真實感受。)</div></div><div class="example-box"><div class="eg-item">3. The <b>revelation</b> about the scandal came as a surprise.<br>(關於醜聞的揭露令人驚訝。)</div></div><div class="example-box"><div class="eg-item">4. This interview is <b>revealing</b> of her character.<br>(這次採訪揭示了她的性格。)</div></div>' 
-        },
-        'H': { 
-            title: '高三學測必備片語', 
-            detail: '<h4>1. appear + adjective (看起來...；似乎...)</h4><p>例句：She <b>appeared calm</b>, but inside she was nervous.<br>(她看起來冷靜，但內心很緊張。)</p><h4>2. try to hide / try to conceal (試圖隱藏；企圖隱瞞)</h4><p>例句：He <b>tried to hide</b> his disappointment.<br>(他試圖隱藏他的失望。)</p><h4>3. give away (泄露；暴露；背叛秘密)</h4><p>例句：Her nervous laugh <b>gave away</b> her true feelings.<br>(她緊張的笑聲泄露了她的真實感受。)</p>' 
-        }
-    };
-    function showOverlay(key) { 
-        const item = data[key]; 
-        let html = `<div class="overlay-title">${item.title}</div>`; 
-        if(item.desc) html += `<p>${item.desc}</p>`; 
-        if(item.detail) html += `<div>${item.detail}</div>`; 
-        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
-        document.getElementById('contentArea').innerHTML = html; 
-        document.getElementById('infoOverlay').style.display = 'block'; 
-    }
-    function closeOverlay() { 
-        document.getElementById('infoOverlay').style.display = 'none'; 
-    }
-</script>
+</section>
+<section class="exam-prediction">
+<h1 class="exam-prediction-title">116年學測猜題</h1>
+<p class="exam-prediction-subtitle">學測英文可能出現的10個工程設計主題</p>
+<div class="prediction-grid">
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#E6F1FB;color:#0C447C;">1</div>
+    <div class="prediction-card-title">鳥類骨骼為何是中空的？</div>
+  </div>
+  <div class="prediction-card-sub">輕量化結構與飛行演化的關係，兼顧強度與重量的生物工程邏輯</div>
+  <div class="prediction-tag" style="background:#E6F1FB;color:#185FA5;">生物 × 結構力學</div>
+</div>
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#E1F5EE;color:#085041;">2</div>
+    <div class="prediction-card-title">鯊魚皮紋路與競技泳衣的設計</div>
+  </div>
+  <div class="prediction-card-sub">仿生學應用：盾鱗的微結構如何降低水阻，啟發高科技運動材料</div>
+  <div class="prediction-tag" style="background:#E1F5EE;color:#0F6E56;">仿生學 × 材料科學</div>
+</div>
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#FAEEDA;color:#633806;">3</div>
+    <div class="prediction-card-title">橋梁為何要留伸縮縫？</div>
+  </div>
+  <div class="prediction-card-sub">熱脹冷縮原理在大型建築結構中的工程應用，防止因溫差造成損壞</div>
+  <div class="prediction-tag" style="background:#FAEEDA;color:#854F0B;">物理 × 土木工程</div>
+</div>
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#EEEDFE;color:#3C3489;">4</div>
+    <div class="prediction-card-title">蜂巢為何是六角形？</div>
+  </div>
+  <div class="prediction-card-sub">最省材料、最大空間利用率的幾何結構，自然界的最佳化演算</div>
+  <div class="prediction-tag" style="background:#EEEDFE;color:#534AB7;">數學 × 演化生物</div>
+</div>
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#EAF3DE;color:#27500A;">5</div>
+    <div class="prediction-card-title">觸控螢幕為何用玻璃不用塑膠？</div>
+  </div>
+  <div class="prediction-card-sub">電容式觸控需要特定導電特性，化學強化玻璃的硬度與透光性優勢</div>
+  <div class="prediction-tag" style="background:#EAF3DE;color:#3B6D11;">材料科學 × 電子工程</div>
+</div>
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#FAECE7;color:#712B13;">6</div>
+    <div class="prediction-card-title">為何賽車輪胎是光頭胎？</div>
+  </div>
+  <div class="prediction-card-sub">乾燥賽道上無紋路輪胎接觸面積更大、摩擦力更強，與日常道路胎設計邏輯相反</div>
+  <div class="prediction-tag" style="background:#FAECE7;color:#993C1D;">物理 × 賽車工程</div>
+</div>
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#FBEAF0;color:#72243E;">7</div>
+    <div class="prediction-card-title">子彈頭列車車頭為何呈鴨嘴形？</div>
+  </div>
+  <div class="prediction-card-sub">空氣動力學與音爆問題：穿越隧道時氣壓波的物理原理驅動仿翠鳥設計</div>
+  <div class="prediction-tag" style="background:#FBEAF0;color:#993556;">仿生 × 流體力學</div>
+</div>
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#E6F1FB;color:#0C447C;">8</div>
+    <div class="prediction-card-title">摩天大樓為何要能輕微搖晃？</div>
+  </div>
+  <div class="prediction-card-sub">柔性結構設計抵抗風力與地震：阻尼器原理讓建築以「動」來消能</div>
+  <div class="prediction-tag" style="background:#E6F1FB;color:#185FA5;">結構工程 × 地震學</div>
+</div>
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#E1F5EE;color:#085041;">9</div>
+    <div class="prediction-card-title">為何高爾夫球表面布滿凹痕？</div>
+  </div>
+  <div class="prediction-card-sub">凹坑製造亂流邊界層，反直覺地降低空氣阻力，大幅延長飛行距離</div>
+  <div class="prediction-tag" style="background:#E1F5EE;color:#0F6E56;">流體力學 × 運動科學</div>
+</div>
+<div class="prediction-card">
+  <div class="prediction-card-top">
+    <div class="prediction-num" style="background:#FAEEDA;color:#633806;">10</div>
+    <div class="prediction-card-title">為何急救毯是金屬反光材質？</div>
+  </div>
+  <div class="prediction-card-sub">太空技術轉民用：薄膜鍍鋁反射超過90%體熱輻射，輕薄卻比羽絨更保溫</div>
+  <div class="prediction-tag" style="background:#FAEEDA;color:#854F0B;">熱力學 × 太空科技</div>
+</div>
+</div>
+</section>
+<section class="hero">
+<h1>Why Are Bird Skeletons Hollow?</h1>
+<p class="subtitle">The Bioengineering Logic of Balancing Strength and Weight</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<section>
+<h2>英文文章原文</h2>
+<div class="section-card article">
+<div class="section-head">Original Article</div>
+<div class="section-body">
+<p>Why are bird <strong class="key">skeletons</strong> <strong class="key">hollow</strong>?</p>
+<p>Bird <strong class="key">skeletons</strong> are often described as “<strong class="key">hollow</strong>,” but this does not mean they are empty or weak. Many bird bones are <strong class="key">pneumatized</strong>, which means they contain air spaces connected to the lungs, instead of being filled with heavy marrow. These <strong class="key">internal</strong> spaces help <strong class="key">reduce</strong> <strong class="key">overall</strong> body weight while still keeping the <strong class="key">skeleton</strong> strong enough to support the <strong class="key">powerful</strong> wing strokes needed for flight.</p>
+<p>From a <strong class="key">bioengineering</strong> point of view, this design is similar to lightweight <strong class="key">structures</strong> in airplanes or bridges. <strong class="key">Engineers</strong> know that moving <strong class="key">material</strong> from the center of a beam to the outside makes it <strong class="key">stiffer</strong> and stronger, even if the inside is partly <strong class="key">hollow</strong>. Bird bones follow the same logic: their walls are thin but <strong class="key">dense</strong>, and many long bones have <strong class="key">internal</strong> <strong class="key">struts</strong> like tiny pillars, giving them a high strength‑to‑weight ratio. As a result, bird <strong class="key">skeletons</strong> can look thin and <strong class="key">delicate</strong>, but, kilogram for kilogram, they are as heavy as or even denser than the <strong class="key">skeletons</strong> of many mammals.</p>
+<p>These special bones also show the close relationship between <strong class="key">structure</strong> and the <strong class="key">evolution</strong> of flight. Over tens of millions of years, <strong class="key">natural selection</strong> <strong class="key">favored</strong> birds whose <strong class="key">skeletons</strong> saved weight yet stayed stiff under bending and twisting forces during flight. At the same time, connecting air-filled bones to the <strong class="key">respiratory</strong> system improved oxygen exchange, which is vital for long, energy‑hungry flights. In this way, bird <strong class="key">skeletons</strong> are a good model for high school students to understand how <strong class="key">evolution</strong> and <strong class="key">bioengineering</strong> both try to solve the same problem: how to balance strength and weight for <strong class="key">efficient</strong> movement in the air.</p>
+<p>The relationship between lightweight <strong class="key">structures</strong> and flight <strong class="key">evolution</strong>: the <strong class="key">bioengineering</strong> logic of balancing strength and weight.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>8句精讀</h2>
+<div class="section-card reading">
+<div class="section-head">8 Key Sentence Analyses</div>
+<div class="section-body">
+<div class="analysis-block">
+<h3><span class="num-circle">①</span>句 1</h3>
+<div class="quote"><em>Bird skeletons are often described as “hollow,” but this does not mean they are empty or weak.</em></div>
+<div class="subbox">鳥類骨骼常被描述為「中空的」，但這並不表示它們是空的或脆弱的。</div>
+<div class="subbox"><strong>文法解析：</strong>這是由 but 連接的對等句，前半句使用被動語態 are described as，表示「被描述為」。後半句的 this 指前面整個觀念，常用來承接上一句或上一個概念。empty or weak 是形容詞並列，用來補充說明 mean 後面的內容。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">be described as 被描述為</span><span class="pill">hollow 中空的</span><span class="pill">weak 脆弱的</span></div>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">②</span>句 2</h3>
+<div class="quote"><em>Many bird bones are pneumatized, which means they contain air spaces connected to the lungs, instead of being filled with heavy marrow.</em></div>
+<div class="subbox">許多鳥骨是氣腔化的，意思是它們含有連接肺部的空氣空間，而不是充滿沉重的骨髓。</div>
+<div class="subbox"><strong>文法解析：</strong>which means ... 是非限定關係子句，補充說明 pneumatized 這個概念。connected to the lungs 是過去分詞片語，修飾 air spaces，表示「與肺部相連的」。instead of 後面接 being filled，是動名詞被動形式，表示「不是被填滿」。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">pneumatized 氣腔化的</span><span class="pill">connected to 連接到</span><span class="pill">instead of 而不是</span></div>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">③</span>句 3</h3>
+<div class="quote"><em>These internal spaces help reduce overall body weight while still keeping the skeleton strong enough to support the powerful wing strokes needed for flight.</em></div>
+<div class="subbox">這些內部空間有助於減少整體體重，同時仍讓骨骼保持足夠強壯，能支撐飛行所需的有力拍翅動作。</div>
+<div class="subbox"><strong>文法解析：</strong>help reduce 中的 reduce 是原形動詞，表示「幫助減少」。while still keeping ... 是 while 引導的省略副詞子句，表示「同時仍然保持」。strong enough to support 中的 to support 是不定詞，說明「足夠強壯到可以支撐」，to 不是介係詞。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">overall body weight 整體體重</span><span class="pill">strong enough to 足夠強壯可以</span><span class="pill">wing strokes 拍翅動作</span></div>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">④</span>句 4</h3>
+<div class="quote"><em>From a bioengineering point of view, this design is similar to lightweight structures in airplanes or bridges.</em></div>
+<div class="subbox">從生物工程的角度來看，這種設計類似於飛機或橋梁中的輕量化結構。</div>
+<div class="subbox"><strong>文法解析：</strong>From a ... point of view 是介系詞片語，放在句首表示觀察角度。be similar to 是固定搭配，to 是介係詞，後面接名詞 lightweight structures。this design 指前文鳥骨的結構設計，讓段落銜接自然。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">from a point of view 從某角度</span><span class="pill">be similar to 類似於</span><span class="pill">lightweight structures 輕量化結構</span></div>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">⑤</span>句 5</h3>
+<div class="quote"><em>Engineers know that moving material from the center of a beam to the outside makes it stiffer and stronger, even if the inside is partly hollow.</em></div>
+<div class="subbox">工程師知道，把材料從樑的中心移到外側，會使它更硬、更強，即使內部部分是中空的。</div>
+<div class="subbox"><strong>文法解析：</strong>that moving material ... makes it ... 是 know 的名詞子句受詞。moving material from ... to ... 是動名詞片語，在名詞子句中當主詞。even if 引導讓步副詞子句，表示「即使」，用來承認一個可能條件但不改變主要結論。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">material 材料</span><span class="pill">beam 樑</span><span class="pill">even if 即使</span></div>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">⑥</span>句 6</h3>
+<div class="quote"><em>Bird bones follow the same logic: their walls are thin but dense, and many long bones have internal struts like tiny pillars, giving them a high strength‑to‑weight ratio.</em></div>
+<div class="subbox">鳥骨遵循同樣的邏輯：它們的骨壁薄但緻密，而且許多長骨內部有像小柱子一樣的支柱，使它們具有高強度重量比。</div>
+<div class="subbox"><strong>文法解析：</strong>冒號後面用完整句補充說明 the same logic 的內容。thin but dense 用 but 形成形容詞對比，表示「薄卻緻密」。giving them ... 是現在分詞構句，補充前面整個結構造成的結果。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">follow the same logic 遵循同樣邏輯</span><span class="pill">internal struts 內部支柱</span><span class="pill">strength-to-weight ratio 強度重量比</span></div>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">⑦</span>句 7</h3>
+<div class="quote"><em>Over tens of millions of years, natural selection favored birds whose skeletons saved weight yet stayed stiff under bending and twisting forces during flight.</em></div>
+<div class="subbox">在數千萬年間，天擇偏好那些骨骼能減重、卻仍在飛行時承受彎曲與扭轉力量而保持堅硬的鳥類。</div>
+<div class="subbox"><strong>文法解析：</strong>whose skeletons ... 是 whose 引導的形容詞子句，修飾 birds。saved weight yet stayed stiff 中的 yet 是對等連接詞，表示「然而仍然」，連接兩個動詞片語。under bending and twisting forces 是介系詞片語，說明受力情境。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">natural selection 天擇</span><span class="pill">favor 偏好</span><span class="pill">bending and twisting forces 彎曲與扭轉力</span></div>
+</div>
+<div class="analysis-block">
+<h3><span class="num-circle">⑧</span>句 8</h3>
+<div class="quote"><em>At the same time, connecting air-filled bones to the respiratory system improved oxygen exchange, which is vital for long, energy‑hungry flights.</em></div>
+<div class="subbox">同時，把充滿空氣的骨頭連接到呼吸系統改善了氧氣交換，而這對長時間、耗能的飛行至關重要。</div>
+<div class="subbox"><strong>文法解析：</strong>connecting air-filled bones to the respiratory system 是動名詞片語當主詞。improved 是主要動詞，oxygen exchange 是受詞。which is vital ... 是非限定關係子句，which 指前面的 oxygen exchange 這件事，說明它的重要性。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">at the same time 同時</span><span class="pill">respiratory system 呼吸系統</span><span class="pill">be vital for 對……至關重要</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>20個單字整理</h2>
+<div class="section-card vocab">
+<div class="section-head">Vocabulary List</div>
+<div class="section-body">
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">1</span><span class="vocab-word">hollow</span><span class="kk">[ˈhɑlo]</span><span>adj. 中空的；空洞的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">hollowness (n. 中空；空洞感)；hollowly (adv. 空洞地)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">a hollow bone 中空骨；sound hollow 聽起來空洞</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">partly hollow 部分中空的；a hollow promise 空洞的承諾</div></div>
+<div class="tag-row confuse"><div class="tag-label">容易混淆</div><div class="tag-body">hollow 強調內部有空間；empty 強調裡面沒有東西。</div></div>
+<ul><li>Bird skeletons are often described as hollow.<br>（鳥類骨骼常被描述為中空的。）</li><li>The old tree looked strong, but its trunk was hollow inside.<br>（那棵老樹看起來很強壯，但樹幹內部是中空的。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">2</span><span class="vocab-word">pneumatized</span><span class="kk">[ˈnuməˌtaɪzd]</span><span>adj. 氣腔化的；含氣腔的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">pneumatic (adj. 氣動的；充氣的)；pneumatize (v. 使形成氣腔)</div></div>
+<div class="tag-row root"><div class="tag-label">字根</div><div class="tag-body">pneuma「氣、呼吸」：pneumonia 肺炎；pneumatic 氣動的</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">pneumatized bones 氣腔化骨骼；air spaces 空氣腔室</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">highly pneumatized bones 高度氣腔化的骨骼</div></div>
+<ul><li>Many bird bones are pneumatized and contain air spaces connected to the lungs.<br>（許多鳥骨是氣腔化的，含有連接肺部的空氣空間。）</li><li>Scientists study pneumatized bones to understand how flying animals reduce weight.<br>（科學家研究氣腔化骨骼，以了解飛行動物如何減輕重量。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">3</span><span class="vocab-word">internal</span><span class="kk">[ɪnˈtɝnəl]</span><span>adj. 內部的；體內的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">internally (adv. 內部地)；interior (n./adj. 內部；內部的)</div></div>
+<div class="tag-row root"><div class="tag-label">字根</div><div class="tag-body">intra/inter「在內、在中間」：interior 內部；international 國際的</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">internal spaces 內部空間；internal organs 內臟</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">an internal structure 內部結構；strictly internal use 僅供內部使用</div></div>
+<ul><li>These internal spaces help reduce overall body weight.<br>（這些內部空間有助於減少整體體重。）</li><li>The doctor checked whether the patient had internal injuries.<br>（醫生檢查病人是否有內傷。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">4</span><span class="vocab-word">reduce</span><span class="kk">[rɪˈdjus]</span><span>v. 減少；降低；縮小</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">reduction (n. 減少)；reduced (adj. 減少的)；reducible (adj. 可減少的)</div></div>
+<div class="tag-row root"><div class="tag-label">字根</div><div class="tag-body">duc/duct「引導」：produce 生產；introduce 介紹；conduct 引導、進行</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">reduce weight 減輕重量；reduce the risk 降低風險</div></div>
+<div class="tag-row pattern"><div class="tag-label">句型</div><div class="tag-body">reduce A by B 表示「把 A 減少 B 的幅度」；reduce A to B 表示「把 A 減少到 B」。</div></div>
+<ul><li>Internal spaces help reduce overall body weight.<br>（內部空間有助於減少整體體重。）</li><li>Turning off unused lights can reduce electricity use at home.<br>（關掉不用的燈可以降低家中的用電量。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">5</span><span class="vocab-word">overall</span><span class="kk">[ˌovɚˈɔl]</span><span>adj. 全面的；整體的 adv. 整體而言</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">over all (片語，全部加起來；需與 overall 區分)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">overall body weight 整體體重；overall performance 整體表現</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">an overall improvement 整體改善；overall, the result is positive 整體而言，結果正面</div></div>
+<div class="tag-row confuse"><div class="tag-label">容易混淆</div><div class="tag-body">overall 作形容詞或副詞；over all 常指「在全部之上」或「全部算起來」。</div></div>
+<ul><li>These spaces help reduce overall body weight.<br>（這些空間有助於減少整體體重。）</li><li>Overall, the experiment showed a clear improvement.<br>（整體而言，這項實驗顯示出明顯改善。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">6</span><span class="vocab-word">skeleton</span><span class="kk">[ˈskɛlətn]</span><span>n. 骨骼；骨架；架構</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">skeletal (adj. 骨骼的)；skeletonize (v. 使成骨架狀)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">bird skeleton 鳥類骨骼；human skeleton 人體骨骼</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">a strong skeleton 強健的骨架；a basic skeleton of an essay 文章的基本架構</div></div>
+<div class="tag-row confuse"><div class="tag-label">容易混淆</div><div class="tag-body">skeleton 指整副骨架；bone 指單一骨頭。</div></div>
+<ul><li>The skeleton stays strong enough to support wing strokes.<br>（骨骼保持足夠強壯，能支撐拍翅動作。）</li><li>A clear outline is the skeleton of a good essay.<br>（清楚的大綱是一篇好作文的骨架。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">7</span><span class="vocab-word">powerful</span><span class="kk">[ˈpaʊɚfəl]</span><span>adj. 強大的；有力的；有效的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">power (n. 力量；權力)；powerfully (adv. 強而有力地)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">powerful wing strokes 有力的拍翅動作；powerful evidence 有力證據</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">a highly powerful engine 高度強力的引擎；a powerful message 有力的訊息</div></div>
+<ul><li>The skeleton supports the powerful wing strokes needed for flight.<br>（骨骼支撐飛行所需的有力拍翅動作。）</li><li>The speaker gave a powerful speech about environmental protection.<br>（那位講者發表了一場有力的環保演說。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">8</span><span class="vocab-word">bioengineering</span><span class="kk">[ˌbaɪoˌɛndʒəˈnɪrɪŋ]</span><span>n. 生物工程</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">bioengineer (n. 生物工程師)；engineering (n. 工程學)</div></div>
+<div class="tag-row root"><div class="tag-label">字根</div><div class="tag-body">bio「生命」：biology 生物學；biography 傳記；biotechnology 生物科技</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">bioengineering logic 生物工程邏輯；bioengineering design 生物工程設計</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">modern bioengineering 現代生物工程；a bioengineering solution 生物工程解方</div></div>
+<ul><li>From a bioengineering point of view, this design is similar to lightweight structures.<br>（從生物工程角度看，這種設計類似輕量化結構。）</li><li>Bioengineering can help doctors design better artificial organs.<br>（生物工程可以幫助醫師設計更好的人工器官。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">9</span><span class="vocab-word">structure</span><span class="kk">[ˈstrʌktʃɚ]</span><span>n. 結構；建築物 v. 組織；安排</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">structural (adj. 結構的)；construct (v. 建造)；construction (n. 建造)</div></div>
+<div class="tag-row root"><div class="tag-label">字根</div><div class="tag-body">struct「建造」：construct 建造；instruct 指導；destruction 破壞</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">lightweight structures 輕量化結構；social structure 社會結構</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">a complex structure 複雜結構；a well-structured paragraph 結構良好的段落</div></div>
+<ul><li>The design is similar to lightweight structures in airplanes or bridges.<br>（這種設計類似於飛機或橋梁中的輕量化結構。）</li><li>A good paragraph needs a clear structure.<br>（好的段落需要清楚的結構。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">10</span><span class="vocab-word">engineer</span><span class="kk">[ˌɛndʒəˈnɪr]</span><span>n. 工程師 v. 設計；策劃</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">engineering (n. 工程學)；engineered (adj. 設計製造的)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">civil engineer 土木工程師；engineer a solution 設計解方</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">an experienced engineer 經驗豐富的工程師；a carefully engineered system 精心設計的系統</div></div>
+<ul><li>Engineers know that moving material outward can make a beam stiffer.<br>（工程師知道把材料往外移可以使樑更堅硬。）</li><li>My sister wants to become an engineer who designs green buildings.<br>（我姊姊想成為設計綠建築的工程師。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">11</span><span class="vocab-word">material</span><span class="kk">[məˈtɪriəl]</span><span>n. 材料；資料 adj. 物質的；重要的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">materially (adv. 實質上)；materialism (n. 物質主義)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">building material 建材；reading material 閱讀材料</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">strong material 堅固材料；raw materials 原料</div></div>
+<div class="tag-row confuse"><div class="tag-label">容易混淆</div><div class="tag-body">material 當名詞可指「材料」或「資料」；data 偏向數據資料。</div></div>
+<ul><li>Moving material from the center of a beam to the outside makes it stiffer.<br>（把材料從樑的中心移到外側會使它更堅硬。）</li><li>Plastic is a useful material, but it can harm the environment.<br>（塑膠是有用的材料，但可能傷害環境。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">12</span><span class="vocab-word">stiff</span><span class="kk">[stɪf]</span><span>adj. 堅硬的；僵硬的；嚴厲的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">stiffen (v. 使變硬)；stiffness (n. 僵硬；硬度)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">stay stiff 保持堅硬；a stiff neck 脖子僵硬</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">extremely stiff 非常堅硬的；stiff competition 激烈競爭</div></div>
+<div class="tag-row confuse"><div class="tag-label">容易混淆</div><div class="tag-body">stiff 強調不易彎曲；hard 強調材質硬或困難。</div></div>
+<ul><li>Natural selection favored birds whose skeletons stayed stiff during flight.<br>（天擇偏好骨骼在飛行時仍保持堅硬的鳥類。）</li><li>After sitting for three hours, my shoulders felt stiff.<br>（坐了三小時後，我的肩膀感到僵硬。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">13</span><span class="vocab-word">dense</span><span class="kk">[dɛns]</span><span>adj. 密集的；緻密的；濃厚的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">density (n. 密度)；densely (adv. 密集地)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">dense bone 緻密骨；dense forest 茂密森林</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">surprisingly dense 出乎意料地緻密；a densely populated city 人口稠密的城市</div></div>
+<ul><li>Bird bone walls are thin but dense.<br>（鳥骨的骨壁薄但緻密。）</li><li>The fog was so dense that drivers had to slow down.<br>（霧非常濃，駕駛必須減速。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">14</span><span class="vocab-word">strut</span><span class="kk">[strʌt]</span><span>n. 支柱；撐桿 v. 趾高氣揚地走</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">strutted (adj. 有支柱支撐的)；strutting (n. 支撐結構；昂首闊步)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">internal struts 內部支柱；support strut 支撐桿</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">tiny internal struts 微小的內部支柱</div></div>
+<div class="tag-row confuse"><div class="tag-label">容易混淆</div><div class="tag-body">strut 作名詞是「支柱」；作動詞可指「昂首闊步」，語境差異很大。</div></div>
+<ul><li>Many long bones have internal struts like tiny pillars.<br>（許多長骨有像小柱子一樣的內部支柱。）</li><li>The bridge uses metal struts to support the road above the river.<br>（那座橋使用金屬支柱支撐河上的道路。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">15</span><span class="vocab-word">delicate</span><span class="kk">[ˈdɛləkət]</span><span>adj. 精緻的；脆弱的；微妙的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">delicately (adv. 精緻地；小心地)；delicacy (n. 精緻；佳餚)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">look delicate 看起來脆弱；a delicate balance 微妙平衡</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">extremely delicate 極為精緻的；a delicate issue 敏感議題</div></div>
+<div class="tag-row confuse"><div class="tag-label">容易混淆</div><div class="tag-body">delicate 可指「精緻」或「脆弱」；fragile 更直接表示易碎。</div></div>
+<ul><li>Bird skeletons can look thin and delicate.<br>（鳥類骨骼可能看起來纖薄而脆弱。）</li><li>The museum keeps delicate objects behind glass.<br>（博物館把精緻易損的物品放在玻璃後方。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">16</span><span class="vocab-word">evolution</span><span class="kk">[ˌɛvəˈluʃən]</span><span>n. 演化；逐步發展</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">evolve (v. 演化；發展)；evolutionary (adj. 演化的)</div></div>
+<div class="tag-row root"><div class="tag-label">字根</div><div class="tag-body">volv/volut「轉」：revolve 旋轉；involve 涉及；revolution 革命</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">the evolution of flight 飛行的演化；cultural evolution 文化演變</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">a slow evolution 緩慢演化；evolutionary change 演化性改變</div></div>
+<ul><li>These bones show the relationship between structure and the evolution of flight.<br>（這些骨頭顯示結構與飛行演化之間的關係。）</li><li>Language evolution shows how society changes over time.<br>（語言演變顯示社會如何隨時間改變。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">17</span><span class="vocab-word">natural selection</span><span class="kk">[ˈnætʃərəl səˈlɛkʃən]</span><span>n. 天擇；自然選擇</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">select (v. 選擇)；selection (n. 選擇)；selective (adj. 選擇性的)</div></div>
+<div class="tag-row root"><div class="tag-label">字根</div><div class="tag-body">lect「選、讀」：select 選擇；collect 收集；elect 選舉</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">through natural selection 透過天擇；the force of natural selection 天擇的力量</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">powerful natural selection 強大的天擇作用</div></div>
+<ul><li>Natural selection favored birds whose skeletons saved weight.<br>（天擇偏好骨骼能減重的鳥類。）</li><li>Natural selection helps explain why some traits become common.<br>（天擇有助於解釋為何某些特徵會變得普遍。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">18</span><span class="vocab-word">favor</span><span class="kk">[ˈfevɚ]</span><span>v. 偏好；支持 n. 恩惠；好意</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">favorable (adj. 有利的；贊成的)；favorite (adj./n. 最喜愛的；最愛)</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">favor a design 偏好某設計；in favor of 支持</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">strongly favor 強烈偏好；a favorable condition 有利條件</div></div>
+<div class="tag-row confuse"><div class="tag-label">容易混淆</div><div class="tag-body">favor 作動詞是「偏好、支持」；favorite 作名詞是「最喜愛的人事物」。</div></div>
+<ul><li>Natural selection favored birds whose skeletons saved weight.<br>（天擇偏好骨骼能減重的鳥類。）</li><li>Many students favor online videos when reviewing English grammar.<br>（許多學生複習英文文法時偏好線上影片。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">19</span><span class="vocab-word">respiratory</span><span class="kk">[ˈrɛspərəˌtɔri]</span><span>adj. 呼吸的；呼吸系統的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">respiration (n. 呼吸作用)；respire (v. 呼吸)</div></div>
+<div class="tag-row root"><div class="tag-label">字根</div><div class="tag-body">spir「呼吸」：inspire 鼓舞；expire 期滿、吐氣；perspire 流汗</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">respiratory system 呼吸系統；respiratory disease 呼吸道疾病</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">a healthy respiratory system 健康的呼吸系統</div></div>
+<ul><li>Air-filled bones are connected to the respiratory system.<br>（充滿空氣的骨頭連接到呼吸系統。）</li><li>Regular exercise can improve respiratory health.<br>（規律運動可以改善呼吸健康。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-top"><span class="vocab-num">20</span><span class="vocab-word">efficient</span><span class="kk">[ɪˈfɪʃənt]</span><span>adj. 有效率的；效能高的</span></div>
+<div class="tag-row deriv"><div class="tag-label">衍生詞</div><div class="tag-body">efficiency (n. 效率)；efficiently (adv. 有效率地)；inefficient (adj. 沒有效率的)</div></div>
+<div class="tag-row root"><div class="tag-label">字根</div><div class="tag-body">fic/fac「做」：factory 工廠；effect 效果；beneficial 有益的</div></div>
+<div class="tag-row phrase"><div class="tag-label">片語</div><div class="tag-body">efficient movement 有效率的移動；energy-efficient 節能的</div></div>
+<div class="tag-row idiom"><div class="tag-label">慣用語</div><div class="tag-body">highly efficient 高效率的；an efficient method 有效率的方法</div></div>
+<ul><li>Bird skeletons help balance strength and weight for efficient movement in the air.<br>（鳥類骨骼有助於平衡強度與重量，讓空中移動更有效率。）</li><li>An efficient study plan saves time and improves results.<br>（有效率的讀書計畫能節省時間並提升成果。）</li></ul>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>文法解析</h2>
+<div class="section-card grammar">
+<div class="section-head">Grammar Focus</div>
+<div class="section-body">
+<div class="grammar-item">
+<div class="grammar-title">一、非限定關係子句：which 補充整句資訊</div>
+<div class="grammar-label">【引句 Quote】</div>
+<div class="quote"><em>Many bird bones are pneumatized, which means they contain air spaces connected to the lungs.</em></div>
+<div class="grammar-label">【句型】</div>
+<p class="formula"><em><strong>S + V ..., which + V ...</strong></em></p>
+<div class="grammar-label">【核心說明】</div>
+<p>非限定關係子句通常用逗號隔開，用來補充前面名詞、片語，或整個句子的資訊。在本句中，which means ... 不是限制某一種 bones，而是補充說明 pneumatized 的意思。</p>
+<p>這種句型很適合科普文章，因為作者常需要先提出專有名詞，再立刻用 which 解釋概念。</p>
+<div class="grammar-label">【使用規則】</div>
+<ul><li>非限定關係子句前通常有逗號。</li><li>which 可以指前面的單一名詞，也可以指前面整件事。</li><li>非限定用法不能用 that 取代 which。</li><li>翻譯時常譯為「這表示……」「而這……」。</li></ul>
+<div class="grammar-label">【主題例句】</div>
+<p>Bird bones contain air spaces, which help reduce body weight.<br>（鳥骨含有空氣空間，而這有助於減輕體重。）</p>
+<div class="grammar-label">【學習提醒】</div>
+<p>看到逗號加 which 時，不要急著往前只找一個名詞；它常常是在說明前面整個句子的結果或意義。</p>
+<div class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+<p>✗ Many bird bones are pneumatized, that means they contain air spaces.<br>✓ Many bird bones are pneumatized, which means they contain air spaces.（非限定關係子句不能用 that。）</p>
+<p>選擇：Bird bones are light, ___ helps them fly efficiently.<br>(A) that (B) which (C) what<br>答案：B</p>
+</div>
+<div class="grammar-item">
+<div class="grammar-title">二、動名詞片語當主詞</div>
+<div class="grammar-label">【引句 Quote】</div>
+<div class="quote"><em>Connecting air-filled bones to the respiratory system improved oxygen exchange.</em></div>
+<div class="grammar-label">【句型】</div>
+<p class="formula"><em><strong>V-ing phrase + V + O</strong></em></p>
+<div class="grammar-label">【核心說明】</div>
+<p>動名詞片語可以放在句首當主詞，表示一個動作、做法或概念。本句的主詞不是 bones，而是 Connecting air-filled bones to the respiratory system 這整件事。</p>
+<p>英文科普寫作常用動名詞主詞來描述「某種設計」或「某個過程」帶來的效果。</p>
+<div class="grammar-label">【使用規則】</div>
+<ul><li>動名詞片語當主詞時，動詞通常用單數。</li><li>動名詞強調「這件事」或「這種做法」。</li><li>不要把句首 V-ing 誤判成現在進行式。</li><li>若主詞太長，可改用 It is ... to V 句型。</li></ul>
+<div class="grammar-label">【主題例句】</div>
+<p>Reducing unnecessary weight makes flight easier.<br>（減少不必要的重量會讓飛行更容易。）</p>
+<div class="grammar-label">【學習提醒】</div>
+<p>句首看到 V-ing 時，要先判斷它是不是整個句子的主詞；若後面出現單數動詞，很可能就是動名詞片語當主詞。</p>
+<div class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+<p>✗ Connect air-filled bones to the respiratory system improves oxygen exchange.<br>✓ Connecting air-filled bones to the respiratory system improves oxygen exchange.（當主詞需用動名詞。）</p>
+<p>改錯：Reduce body weight are important for flight.<br>答案：Reducing body weight is important for flight.</p>
+</div>
+<div class="grammar-item">
+<div class="grammar-title">三、whose 引導形容詞子句</div>
+<div class="grammar-label">【引句 Quote】</div>
+<div class="quote"><em>Natural selection favored birds whose skeletons saved weight yet stayed stiff.</em></div>
+<div class="grammar-label">【句型】</div>
+<p class="formula"><em><strong>N + whose + N + V ...</strong></em></p>
+<div class="grammar-label">【核心說明】</div>
+<p>whose 表示「其……的」，可用來連接人、動物或事物與其擁有的名詞。本句中 whose skeletons 指「那些鳥的骨骼」。</p>
+<p>這個句型能把兩個句子合併，讓資訊更緊密：Natural selection favored birds. Their skeletons saved weight.</p>
+<div class="grammar-label">【使用規則】</div>
+<ul><li>whose 後面一定接名詞。</li><li>whose 可用於人，也可用於動物或事物。</li><li>whose 子句修飾前面的名詞。</li><li>不要把 whose 和 who is 混淆。</li></ul>
+<div class="grammar-label">【主題例句】</div>
+<p>Birds whose bones were lighter had an advantage in flight.<br>（骨頭較輕的鳥類在飛行上具有優勢。）</p>
+<div class="grammar-label">【學習提醒】</div>
+<p>whose 不是 who 的所有格而已，它的功能是帶出「某物屬於前面的名詞」。看到 whose 後面接名詞，就要往前找它修飾的是誰。</p>
+<div class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+<p>✗ Natural selection favored birds who skeletons saved weight.<br>✓ Natural selection favored birds whose skeletons saved weight.（whose 後接名詞 skeletons。）</p>
+<p>選擇：Animals ___ bodies are lighter may move faster.<br>(A) who (B) whose (C) which<br>答案：B</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>底部折疊區塊</h2>
+<details>
+<summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<div class="prefix-item"><span class="term">ab-</span>　離開、相反　—　abnormal（異常的）</div>
+<div class="prefix-item"><span class="term">ad-</span>　向、加　—　advance（前進）</div>
+<div class="prefix-item"><span class="term">ambi-</span>　雙方、兩面　—　ambiguous（模稜兩可的）</div>
+<div class="prefix-item"><span class="term">anti-</span>　反對、抗　—　antibiotic（抗生素）</div>
+<div class="prefix-item"><span class="term">arch-</span>　主要、首要　—　archenemy（死敵）</div>
+<div class="prefix-item"><span class="term">auto-</span>　自動、自我　—　autograph（親筆簽名）</div>
+<div class="prefix-item"><span class="term">bene-</span>　好的、善　—　benefit（好處）</div>
+<div class="prefix-item"><span class="term">bi-</span>　二、雙　—　bilingual（雙語的）</div>
+<div class="prefix-item"><span class="term">circum-</span>　環繞、周圍　—　circumstance（情況）</div>
+<div class="prefix-item"><span class="term">co-/con-/com-</span>　一起、共同　—　cooperate（合作）</div>
+<div class="prefix-item"><span class="term">contra-</span>　相反、對抗　—　contradict（反駁）</div>
+<div class="prefix-item"><span class="term">de-</span>　去除、下降　—　decode（解碼）</div>
+<div class="prefix-item"><span class="term">dia-</span>　穿過、透過　—　dialogue（對話）</div>
+<div class="prefix-item"><span class="term">dis-</span>　否定、分離　—　disagree（不同意）</div>
+<div class="prefix-item"><span class="term">en-/em-</span>　使成為　—　enable（使能夠）</div>
+<div class="prefix-item"><span class="term">epi-</span>　在上、在外　—　epidemic（流行病）</div>
+<div class="prefix-item"><span class="term">ex-</span>　外、前任　—　export（出口）；ex-president（前總統）</div>
+<div class="prefix-item"><span class="term">extra-</span>　額外、外部　—　extraordinary（非凡的）</div>
+<div class="prefix-item"><span class="term">hetero-</span>　不同　—　heterogeneous（異質的）</div>
+<div class="prefix-item"><span class="term">homo-</span>　相同　—　homogeneous（同質的）</div>
+<div class="prefix-item"><span class="term">hyper-</span>　過度、超　—　hyperactive（過動的）</div>
+<div class="prefix-item"><span class="term">hypo-</span>　低於、不足　—　hypodermic（皮下的）</div>
+<div class="prefix-item"><span class="term">in-/im-</span>　否定、進入　—　invisible（看不見的）；import（輸入）</div>
+<div class="prefix-item"><span class="term">inter-</span>　在…之間　—　international（國際的）</div>
+<div class="prefix-item"><span class="term">iso-</span>　相等、相同　—　isolate（隔離）</div>
+<div class="prefix-item"><span class="term">mal-</span>　壞、不良　—　malfunction（故障）</div>
+<div class="prefix-item"><span class="term">micro-</span>　微小　—　microscope（顯微鏡）</div>
+<div class="prefix-item"><span class="term">mis-</span>　錯誤　—　misunderstand（誤解）</div>
+<div class="prefix-item"><span class="term">mono-</span>　單一　—　monologue（獨白）</div>
+<div class="prefix-item"><span class="term">multi-</span>　多　—　multicultural（多元文化的）</div>
+<div class="prefix-item"><span class="term">neo-</span>　新的　—　neonatal（新生的）</div>
+<div class="prefix-item"><span class="term">non-</span>　非、沒有　—　nonsense（無意義）</div>
+<div class="prefix-item"><span class="term">pan-</span>　全部　—　pandemic（大流行病）</div>
+<div class="prefix-item"><span class="term">peri-</span>　周圍　—　perimeter（周長）</div>
+<div class="prefix-item"><span class="term">poly-</span>　多　—　polygon（多邊形）</div>
+<div class="prefix-item"><span class="term">post-</span>　之後　—　postwar（戰後的）</div>
+<div class="prefix-item"><span class="term">pre-</span>　之前　—　preview（預覽）</div>
+<div class="prefix-item"><span class="term">pro-</span>　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div>
+<div class="prefix-item"><span class="term">pseudo-</span>　假的　—　pseudonym（筆名）</div>
+<div class="prefix-item"><span class="term">re-</span>　再、回　—　review（複習）</div>
+<div class="prefix-item"><span class="term">semi-</span>　一半、部分　—　semicircle（半圓）</div>
+<div class="prefix-item"><span class="term">sub-</span>　在下、次級　—　subway（地鐵）</div>
+<div class="prefix-item"><span class="term">super-</span>　超越、在上　—　superstar（超級明星）</div>
+<div class="prefix-item"><span class="term">syn-/sym-</span>　一起、共同　—　synchronize（同步）</div>
+<div class="prefix-item"><span class="term">tele-</span>　遠距　—　telephone（電話）</div>
+<div class="prefix-item"><span class="term">trans-</span>　穿越、轉變　—　transport（運輸）</div>
+<div class="prefix-item"><span class="term">tri-</span>　三　—　triangle（三角形）</div>
+<div class="prefix-item"><span class="term">un-</span>　否定、不　—　unhappy（不快樂的）</div>
+<div class="prefix-item"><span class="term">vice-</span>　副、代替　—　vice-president（副總統）</div>
+</div>
+</details>
+<details>
+<summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<h3>名詞字尾</h3>
+<div class="suffix-item"><span class="term">-tion/-sion/-ation</span>　動作、過程或結果　—　education（教育）、decision（決定）</div>
+<div class="suffix-item"><span class="term">-ment</span>　行為或結果　—　agreement（協議）、development（發展）</div>
+<div class="suffix-item"><span class="term">-ness</span>　狀態或性質　—　happiness（快樂）、darkness（黑暗）</div>
+<div class="suffix-item"><span class="term">-ity/-ty</span>　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</div>
+<div class="suffix-item"><span class="term">-er/-or</span>　執行某動作的人或物　—　teacher（老師）、actor（演員）</div>
+<div class="suffix-item"><span class="term">-ist</span>　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</div>
+<div class="suffix-item"><span class="term">-ship</span>　身分或關係　—　friendship（友誼）、leadership（領導）</div>
+<div class="suffix-item"><span class="term">-hood</span>　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</div>
+<h3>形容詞字尾</h3>
+<div class="suffix-item"><span class="term">-able/-ible</span>　能夠…的　—　readable（可讀的）、credible（可信的）</div>
+<div class="suffix-item"><span class="term">-ous</span>　充滿…的　—　dangerous（危險的）、famous（著名的）</div>
+<div class="suffix-item"><span class="term">-ful</span>　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</div>
+<div class="suffix-item"><span class="term">-less</span>　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</div>
+<div class="suffix-item"><span class="term">-al/-ic</span>　與…相關的　—　natural（自然的）、poetic（詩意的）</div>
+<h3>動詞字尾</h3>
+<div class="suffix-item"><span class="term">-ize/-ise</span>　使成為…　—　realize（實現）、industrialize（工業化）</div>
+<div class="suffix-item"><span class="term">-ify</span>　使成為…　—　beautify（美化）、clarify（澄清）</div>
+<div class="suffix-item"><span class="term">-ate</span>　形成動詞　—　dominate（支配）、activate（啟動）</div>
+<div class="suffix-item"><span class="term">-en</span>　使變成…　—　strengthen（加強）、soften（使柔軟）</div>
+<h3>副詞字尾</h3>
+<div class="suffix-item"><span class="term">-ly</span>　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</div>
+<div class="suffix-item"><span class="term">-ward(s)</span>　表示方向　—　upwards（向上）、homeward（回家）</div>
+<div class="suffix-item"><span class="term">-wise</span>　表示方式或角度　—　clockwise（順時針方向）</div>
+</div>
+</details>
+<details>
+<summary>30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<div class="small-item">1. bird [bɝd] (n. 鳥) — birdlike (adj. 像鳥的)</div>
+<div class="small-item">2. skeleton [ˈskɛlətn] (n. 骨骼) — skeletal (adj. 骨骼的)</div>
+<div class="small-item">3. hollow [ˈhɑlo] (adj. 中空的) — hollow bone（中空骨）</div>
+<div class="small-item">4. weak [wik] (adj. 脆弱的) — weakness (n. 弱點)</div>
+<div class="small-item">5. bone [bon] (n. 骨頭) — backbone (n. 脊椎；骨氣)</div>
+<div class="small-item">6. contain [kənˈten] (v. 包含) — container (n. 容器)</div>
+<div class="small-item">7. connect [kəˈnɛkt] (v. 連接) — connection (n. 連結)</div>
+<div class="small-item">8. lung [lʌŋ] (n. 肺) — lung disease（肺部疾病）</div>
+<div class="small-item">9. heavy [ˈhɛvi] (adj. 沉重的) — heavily (adv. 沉重地；大量地)</div>
+<div class="small-item">10. internal [ɪnˈtɝnəl] (adj. 內部的) — internally (adv. 內部地)</div>
+<div class="small-item">11. reduce [rɪˈdjus] (v. 減少) — reduction (n. 減少)</div>
+<div class="small-item">12. weight [wet] (n. 重量) — lightweight (adj. 輕量的)</div>
+<div class="small-item">13. support [səˈpɔrt] (v./n. 支撐；支持) — supportive (adj. 支持的)</div>
+<div class="small-item">14. powerful [ˈpaʊɚfəl] (adj. 強大的) — power (n. 力量)</div>
+<div class="small-item">15. flight [flaɪt] (n. 飛行) — flight path（飛行路徑）</div>
+<div class="small-item">16. design [dɪˈzaɪn] (n./v. 設計) — designer (n. 設計師)</div>
+<div class="small-item">17. structure [ˈstrʌktʃɚ] (n. 結構) — structural (adj. 結構的)</div>
+<div class="small-item">18. engineer [ˌɛndʒəˈnɪr] (n. 工程師) — engineering (n. 工程學)</div>
+<div class="small-item">19. material [məˈtɪriəl] (n. 材料) — raw material（原料）</div>
+<div class="small-item">20. center [ˈsɛntɚ] (n. 中心) — central (adj. 中央的；重要的)</div>
+<div class="small-item">21. beam [bim] (n. 樑；光束) — light beam（光束）</div>
+<div class="small-item">22. stiff [stɪf] (adj. 堅硬的) — stiffness (n. 硬度；僵硬)</div>
+<div class="small-item">23. dense [dɛns] (adj. 緻密的) — density (n. 密度)</div>
+<div class="small-item">24. pillar [ˈpɪlɚ] (n. 柱子；支柱) — pillar of support（支柱）</div>
+<div class="small-item">25. ratio [ˈreʃio] (n. 比率) — strength-to-weight ratio（強度重量比）</div>
+<div class="small-item">26. delicate [ˈdɛləkət] (adj. 精緻的；脆弱的) — delicately (adv. 小心地)</div>
+<div class="small-item">27. mammal [ˈmæməl] (n. 哺乳動物) — mammalian (adj. 哺乳動物的)</div>
+<div class="small-item">28. evolution [ˌɛvəˈluʃən] (n. 演化) — evolve (v. 演化)</div>
+<div class="small-item">29. oxygen [ˈɑksədʒən] (n. 氧氣) — oxygen exchange（氧氣交換）</div>
+<div class="small-item">30. efficient [ɪˈfɪʃənt] (adj. 有效率的) — efficiency (n. 效率)</div>
+<h3>文章相關常用片語 5 個</h3>
+<p>• be connected to（連接到）</p>
+<p>• from a ... point of view（從……角度來看）</p>
+<p>• be similar to（類似於）</p>
+<p>• as a result（因此）</p>
+<p>• at the same time（同時）</p>
+</div>
+</details>
+<details>
+<summary>練文筆食材<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<p>① be often described as ...（常被描述為……）<br>→ 適用：介紹常見觀念或刻板印象時<br>例：Teenagers are often described as careless, but many of them are highly responsible.</p>
+<p>② this does not mean that ...（這並不表示……）<br>→ 適用：修正誤解、澄清概念<br>例：Getting a low score does not mean that a student cannot improve.</p>
+<p>③ instead of + V-ing/N（而不是……）<br>→ 適用：表達取代、對比<br>例：We should solve the problem instead of ignoring it.</p>
+<p>④ while still + V-ing（同時仍然……）<br>→ 適用：強調兼顧兩種目標<br>例：The new policy saves money while still protecting public safety.</p>
+<p>⑤ strong enough to + V（足夠強壯／充分到可以……）<br>→ 適用：說明能力或條件<br>例：The bridge is strong enough to survive typhoons.</p>
+<p>⑥ from a ... point of view（從……角度來看）<br>→ 適用：切換分析觀點<br>例：From an environmental point of view, public transportation is a smart choice.</p>
+<p>⑦ be similar to ...（類似於……）<br>→ 適用：用熟悉事物解釋陌生概念<br>例：Learning a language is similar to training a muscle.</p>
+<p>⑧ even if + S + V（即使……）<br>→ 適用：讓步與反差<br>例：Even if the task is difficult, we should not give up too early.</p>
+<p>⑨ as a result（因此）<br>→ 適用：呈現結果<br>例：The city planted more trees. As a result, the streets became cooler.</p>
+<p>⑩ kilogram for kilogram（以每公斤相比）<br>→ 適用：公平比較不同對象<br>例：Kilogram for kilogram, this material is stronger than steel.</p>
+<p>⑪ over tens of millions of years（在數千萬年間）<br>→ 適用：描述長期變化<br>例：Over tens of millions of years, the island developed unique plants.</p>
+<p>⑫ whose + N + V（其……的）<br>→ 適用：合併資訊、描述特徵<br>例：Students whose study plans are clear usually feel less stressed.</p>
+<p>⑬ at the same time（同時）<br>→ 適用：補充另一個同步發生的重點<br>例：Technology saves time; at the same time, it creates new challenges.</p>
+<p>⑭ be vital for ...（對……至關重要）<br>→ 適用：強調必要性<br>例：Clean water is vital for public health.</p>
+<p>⑮ how to balance A and B（如何平衡 A 與 B）<br>→ 適用：討論兩難或設計問題<br>例：Schools must learn how to balance freedom and discipline.</p>
+</div>
+</details>
+</section>
+<section class="course-links bottom">
+<h2 class="course-links-title">七月課程與聯絡方式</h2>
+<p class="course-links-intro">兩門七月開課資源，搭配個人 Line 聯絡入口，方便學生與家長快速查看與詢問。</p>
+<div class="course-link-grid">
+<a class="course-link-card course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="course-link-name">七月課程介紹：錯中學 ECHO 計劃</span>
+<span class="course-link-desc">用錯題回饋與學習循環，幫學生把英文弱點轉成可追蹤的進步路線。</span>
+</a>
+<a class="course-link-card course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="course-link-name">學生分析</span>
+<span class="course-link-desc">查看學生學習狀態與能力分析，協助安排更精準的複習與補強方向。</span>
+</a>
+<a class="course-link-card course-line" href="https://line.me/R/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="course-link-name">Line 聯絡：linwayet</span>
+<span class="course-link-desc">點擊加入或搜尋 Line ID：linwayet，詢問課程、教材與學習規劃。</span>
+</a>
+</div>
+</section>
+</main>
 </body>
 </html>
