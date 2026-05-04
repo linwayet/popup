@@ -1,0 +1,2467 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>蛋白質階段回顧｜折疊 · 降解 · 催化</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fef6e4;
+  --ink:#1a1a2e;
+  --fold:#3d5cff;
+  --degrade:#ff3d7f;
+  --catalyze:#00c896;
+  --warn:#ff6b35;
+  --gold:#ffb800;
+  --purple:#9333ea;
+  --teal:#06b6d4;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+html,body{background:var(--bg);color:var(--ink);font-family:'Noto Sans TC',sans-serif;line-height:1.7;overflow-x:hidden}
+
+/* ===== HEADER ===== */
+.hero{
+  background:
+    radial-gradient(circle at 15% 30%, rgba(61,92,255,.4), transparent 50%),
+    radial-gradient(circle at 85% 70%, rgba(0,200,150,.4), transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(255,61,127,.35), transparent 55%),
+    linear-gradient(135deg,#1a1a2e 0%,#3d3d5c 100%);
+  padding:56px 20px 72px;
+  position:relative;overflow:hidden;
+  border-bottom:6px solid var(--ink);
+}
+.hero-eyebrow{
+  display:inline-block;background:var(--gold);color:var(--ink);
+  padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;
+  border-radius:50px;letter-spacing:1px;margin-bottom:14px;
+  position:relative;z-index:2;font-weight:700;
+}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:800;
+  font-size:clamp(28px,7vw,52px);line-height:1.05;
+  color:#fff;text-shadow:3px 3px 0 var(--ink);
+  position:relative;z-index:2;
+}
+.hero-sub{
+  margin-top:14px;color:#fff;font-size:clamp(15px,3.5vw,18px);
+  font-weight:500;text-shadow:1px 1px 0 rgba(0,0,0,.3);
+  position:relative;z-index:2;max-width:680px;
+}
+.hero-trinity{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;
+  position:relative;z-index:2;
+}
+.trinity-pill{
+  background:rgba(255,255,255,.95);color:var(--ink);
+  padding:8px 16px;border-radius:50px;
+  font-weight:700;font-size:14px;
+  border:2.5px solid var(--ink);
+  display:flex;align-items:center;gap:6px;
+}
+.trinity-pill .dot{
+  width:10px;height:10px;border-radius:50%;
+}
+.hero-tip{
+  margin-top:18px;background:rgba(26,26,46,.8);color:#fff;
+  padding:10px 16px;border-radius:10px;font-size:14px;
+  position:relative;z-index:2;display:inline-block;
+  border:2px solid var(--gold);
+}
+
+/* ===== NAV ===== */
+.nav{
+  background:var(--ink);padding:14px 20px;
+  display:flex;gap:8px;flex-wrap:wrap;
+  position:sticky;top:0;z-index:50;
+  border-bottom:3px solid var(--gold);
+}
+.nav a{
+  color:#fff;background:transparent;border:1.5px solid #fff;
+  padding:6px 12px;font-size:13px;border-radius:50px;
+  text-decoration:none;font-weight:500;transition:.2s;
+}
+.nav a:hover,.nav a:active{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* ===== CONTAINER ===== */
+.wrap{max-width:880px;margin:0 auto;padding:32px 18px}
+section{margin-bottom:64px;scroll-margin-top:80px}
+.section-num{
+  display:inline-block;font-family:'JetBrains Mono',monospace;
+  background:var(--ink);color:var(--gold);
+  padding:4px 10px;font-size:13px;border-radius:6px;margin-bottom:10px;
+}
+.section-title{
+  font-family:'Fraunces',serif;font-weight:800;
+  font-size:clamp(24px,5.5vw,38px);line-height:1.15;margin-bottom:8px;
+}
+.section-sub{color:#666;margin-bottom:24px;font-size:15px}
+
+/* ===== INTRO CARDS ===== */
+.intro-card{
+  background:#fff;border:3px solid var(--ink);border-radius:18px;
+  padding:20px;margin-bottom:18px;box-shadow:6px 6px 0 var(--ink);
+}
+.intro-card h3{font-family:'Fraunces',serif;font-size:20px;margin-bottom:10px}
+.intro-card.fold{background:linear-gradient(135deg,#dbeafe,#fff)}
+.intro-card.degrade{background:linear-gradient(135deg,#ffe4ec,#fff)}
+.intro-card.catalyze{background:linear-gradient(135deg,#d1fae5,#fff)}
+
+/* ===== CAST CARDS ===== */
+.cast-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:14px;margin:24px 0;
+}
+.cast-card{
+  background:#fff;border:2.5px solid var(--ink);border-radius:16px;
+  padding:14px 12px;text-align:center;
+  box-shadow:4px 4px 0 var(--ink);
+  text-decoration:none;color:var(--ink);
+  transition:transform .15s;display:block;cursor:pointer;
+}
+.cast-card:hover,.cast-card:active{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.cast-icon{
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 8px;font-weight:900;font-size:18px;color:#fff;
+  font-family:'JetBrains Mono',monospace;border:3px solid var(--ink);
+}
+.cast-name{font-weight:700;font-size:14px;margin-bottom:2px}
+.cast-role{font-size:12px;color:#555;line-height:1.4}
+.tap-hint{
+  display:block;margin-top:6px;font-size:10px;color:var(--degrade);
+  font-family:'JetBrains Mono',monospace;font-weight:700;
+}
+
+/* ===== DIAGRAM ===== */
+.diagram-wrap{
+  background:#fff;border:3px solid var(--ink);border-radius:20px;
+  padding:16px;margin:18px 0;box-shadow:8px 8px 0 var(--ink);
+  overflow-x:auto;
+}
+.diagram-title{
+  font-family:'Fraunces',serif;font-size:17px;font-weight:700;
+  margin-bottom:8px;text-align:center;
+}
+.diagram-hint{
+  font-size:12px;color:#777;text-align:center;margin-bottom:12px;
+  font-family:'JetBrains Mono',monospace;
+}
+.diagram-hint b{color:var(--degrade)}
+svg{display:block;max-width:100%;height:auto;margin:0 auto}
+
+/* SVG clickable */
+.click-target{cursor:pointer}
+.click-target:hover rect,
+.click-target:hover circle,
+.click-target:hover ellipse,
+.click-target:hover path{
+  filter:brightness(1.15) drop-shadow(0 0 8px rgba(255,184,0,.6));
+}
+
+/* ===== STEP LIST ===== */
+.steps{margin:18px 0;display:grid;gap:12px}
+.step{
+  background:#fff;border:2.5px solid var(--ink);border-radius:14px;
+  padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:14px;
+  align-items:start;box-shadow:4px 4px 0 var(--ink);
+}
+.step-num{
+  background:var(--fold);color:#fff;width:36px;height:36px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-family:'JetBrains Mono',monospace;
+  border:2.5px solid var(--ink);flex-shrink:0;
+}
+.step.degrade-step .step-num{background:var(--degrade)}
+.step.catalyze-step .step-num{background:var(--catalyze)}
+.step h4{font-size:15px;margin-bottom:4px;font-weight:700}
+.step p{font-size:14px;color:#444}
+
+/* ===== ANALOGY ===== */
+.analogy{
+  background:linear-gradient(135deg,#fef3c7,#fff8e7);
+  border:3px dashed var(--warn);border-radius:16px;
+  padding:16px 18px;margin:18px 0;
+}
+.analogy-label{
+  display:inline-block;background:var(--warn);color:#fff;
+  padding:3px 10px;border-radius:50px;font-size:12px;font-weight:700;
+  margin-bottom:8px;font-family:'JetBrains Mono',monospace;
+}
+
+/* ===== DISEASE CARDS ===== */
+.disease-grid{display:grid;gap:14px;margin:18px 0}
+.disease-card{
+  background:#fff;border:2.5px solid var(--ink);border-left:8px solid var(--degrade);
+  border-radius:12px;padding:16px;box-shadow:4px 4px 0 var(--ink);
+}
+.disease-name{font-family:'Fraunces',serif;font-size:18px;font-weight:700;margin-bottom:6px}
+.disease-tag{
+  display:inline-block;background:var(--ink);color:var(--gold);
+  padding:2px 10px;border-radius:50px;font-size:12px;
+  font-family:'JetBrains Mono',monospace;margin-left:8px;
+}
+
+/* ============ MODAL ============ */
+.modal{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(26,26,46,0);
+  visibility:hidden;opacity:0;
+  transition:opacity .25s,visibility .25s,background .25s;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.modal:target{
+  visibility:visible;opacity:1;
+  background:rgba(26,26,46,.65);
+}
+.modal-overlay{position:absolute;inset:0;cursor:pointer}
+.modal-card{
+  position:relative;background:#fff;
+  width:100%;max-width:520px;max-height:88vh;
+  border-radius:24px 24px 0 0;
+  border:3px solid var(--ink);border-bottom:none;
+  box-shadow:0 -8px 24px rgba(0,0,0,.25);
+  transform:translateY(100%);
+  transition:transform .35s cubic-bezier(.2,.9,.3,1.2);
+  overflow-y:auto;padding:24px 22px 32px;
+}
+.modal:target .modal-card{transform:translateY(0)}
+@media (min-width:600px){
+  .modal{align-items:center;padding:20px}
+  .modal-card{
+    border-radius:24px;border:3px solid var(--ink);max-height:85vh;
+    transform:translateY(40px) scale(.96);
+  }
+  .modal:target .modal-card{transform:translateY(0) scale(1)}
+}
+.modal-close{
+  position:absolute;top:14px;right:14px;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:20px;font-weight:900;
+  z-index:2;border:2px solid var(--ink);
+}
+.modal-close:hover{background:var(--degrade)}
+.modal-icon{
+  width:64px;height:64px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 0 12px;font-weight:900;font-size:20px;color:#fff;
+  font-family:'JetBrains Mono',monospace;border:3px solid var(--ink);
+}
+.modal-en{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  color:var(--degrade);font-weight:700;letter-spacing:.5px;margin-bottom:4px;
+}
+.modal-zh{
+  font-family:'Fraunces',serif;font-size:26px;font-weight:800;
+  margin-bottom:4px;line-height:1.2;
+}
+.modal-tag{
+  display:inline-block;background:var(--catalyze);color:#fff;
+  padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700;
+  margin-top:6px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;
+}
+.modal-section{margin-bottom:14px}
+.modal-label{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--fold);font-weight:700;letter-spacing:.5px;
+  margin-bottom:4px;text-transform:uppercase;
+}
+.modal-body{font-size:15px;color:#222;line-height:1.65}
+.modal-body p{margin-bottom:6px}
+.modal-formula{
+  background:#1a1a2e;color:var(--gold);
+  padding:10px 14px;border-radius:8px;
+  font-family:'JetBrains Mono',monospace;font-size:14px;
+  font-weight:700;margin:8px 0;display:inline-block;
+  border:2px solid var(--gold);
+}
+.modal-analogy{
+  background:linear-gradient(135deg,#fef3c7,#fff);
+  border-left:4px solid var(--warn);
+  padding:10px 14px;border-radius:8px;font-size:14px;
+  margin-top:6px;
+}
+.modal-analogy::before{content:"💡 ";font-size:16px}
+
+/* ===== GLOSSARY ===== */
+.glossary-section details{
+  background:#fff;border:2.5px solid var(--ink);
+  border-radius:12px;margin-bottom:10px;
+  box-shadow:4px 4px 0 var(--ink);overflow:hidden;
+}
+.glossary-section details[open]{background:linear-gradient(135deg,#fef6e4,#fff)}
+.glossary-section summary{
+  padding:14px 16px;cursor:pointer;font-weight:700;font-size:15px;
+  display:flex;align-items:center;justify-content:space-between;
+  list-style:none;user-select:none;
+}
+.glossary-section summary::-webkit-details-marker{display:none}
+.glossary-section summary::marker{display:none}
+.summary-en{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  color:var(--degrade);margin-left:8px;flex-shrink:0;
+}
+.arrow{
+  display:inline-block;width:14px;height:14px;
+  border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);
+  transform:rotate(45deg);transition:transform .25s;
+  margin-left:10px;flex-shrink:0;margin-top:-4px;
+}
+.glossary-section details[open] .arrow{transform:rotate(225deg);margin-top:4px}
+.glossary-body{padding:0 16px 16px;border-top:2px dashed var(--ink);padding-top:12px}
+.glossary-body p{margin-bottom:6px;font-size:14px}
+.glossary-body .role{
+  display:inline-block;color:#fff;
+  padding:2px 8px;border-radius:50px;font-size:11px;font-weight:700;
+  margin-bottom:8px;font-family:'JetBrains Mono',monospace;
+}
+.glossary-body .role.fold{background:var(--fold)}
+.glossary-body .role.degrade{background:var(--degrade)}
+.glossary-body .role.catalyze{background:var(--catalyze)}
+
+.footer{background:var(--ink);color:#fff;padding:32px 20px;text-align:center;font-size:13px}
+.footer p{margin-bottom:6px}
+
+@media (max-width:600px){
+  .cast-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hero">
+  <span class="hero-eyebrow">PROTEIN 300 DAYS · PHASE REVIEW</span>
+  <h1>折疊 · 降解 · 催化<br>蛋白質的完整生命循環</h1>
+  <p class="hero-sub">Folding · Degradation · Catalysis<br>蛋白質如何誕生、執行、退場：三大基本生命過程的完整圖景</p>
+  <div class="hero-trinity">
+    <div class="trinity-pill"><span class="dot" style="background:var(--fold)"></span>FOLDING 折疊</div>
+    <div class="trinity-pill"><span class="dot" style="background:var(--catalyze)"></span>CATALYSIS 催化</div>
+    <div class="trinity-pill"><span class="dot" style="background:var(--degrade)"></span>DEGRADATION 降解</div>
+  </div>
+  <div class="hero-tip">👆 圖中所有元素 / 卡片可點擊查看英文、白話解釋與化學式</div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a href="#overview">總覽</a>
+  <a href="#folding">蛋白質折疊</a>
+  <a href="#catalysis">酵素催化</a>
+  <a href="#degradation">蛋白質降解</a>
+  <a href="#disease">疾病關聯</a>
+  <a href="#glossary">術語字典</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ SECTION 1: OVERVIEW ============ -->
+<section id="overview">
+  <span class="section-num">PART 01</span>
+  <h2 class="section-title">蛋白質的一生</h2>
+  <p class="section-sub">從基因被讀取，到蛋白質執行任務，再到被回收，每一步都精密控制。<b style="color:var(--degrade)">點擊任何角色</b>看詳細說明。</p>
+
+  <!-- LIFECYCLE BIG DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖一：蛋白質的完整生命循環</div>
+    <div class="diagram-hint">👆 點擊各階段查看 <b>角色說明</b></div>
+    <svg viewBox="0 0 600 460" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background -->
+      <rect x="0" y="0" width="600" height="460" fill="#fef6e4"/>
+      
+      <!-- Title -->
+      <text x="300" y="25" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">PROTEIN LIFECYCLE 蛋白質生命循環</text>
+
+      <!-- Stage 1: Synthesis (Ribosome) -->
+      <a href="#m-ribosome" class="click-target">
+        <ellipse cx="120" cy="100" rx="55" ry="40" fill="#ffb800" stroke="#1a1a2e" stroke-width="3"/>
+        <text x="120" y="98" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">Ribosome</text>
+        <text x="120" y="112" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#1a1a2e">核糖體</text>
+        <text x="120" y="155" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">① 合成</text>
+      </a>
+
+      <!-- Arrow -->
+      <line x1="180" y1="100" x2="220" y2="100" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#aBlack)"/>
+
+      <!-- Stage 2: Folding (with chaperone) -->
+      <a href="#m-folding" class="click-target">
+        <rect x="225" y="65" width="120" height="70" fill="#3d5cff" stroke="#1a1a2e" stroke-width="3" rx="10"/>
+        <text x="285" y="92" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#fff">FOLDING</text>
+        <text x="285" y="108" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#fff">蛋白質折疊</text>
+        <text x="285" y="124" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#fff">+ Chaperones 伴護蛋白</text>
+        <text x="285" y="155" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--fold)">② 折疊</text>
+      </a>
+
+      <!-- Arrow -->
+      <line x1="350" y1="100" x2="395" y2="100" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#aBlack)"/>
+
+      <!-- Stage 3: Function (Catalysis) -->
+      <a href="#m-catalysis" class="click-target">
+        <ellipse cx="475" cy="100" rx="65" ry="40" fill="#00c896" stroke="#1a1a2e" stroke-width="3"/>
+        <text x="475" y="92" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#fff">CATALYSIS</text>
+        <text x="475" y="108" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#fff">執行功能</text>
+        <text x="475" y="122" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#fff">酵素反應</text>
+        <text x="475" y="155" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--catalyze)">③ 工作</text>
+      </a>
+
+      <!-- Arrow down + BRANCH -->
+      <line x1="475" y1="143" x2="475" y2="180" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#aBlack)"/>
+
+      <!-- Decision diamond -->
+      <a href="#m-decision" class="click-target">
+        <polygon points="475,180 530,225 475,270 420,225" fill="#ffb800" stroke="#1a1a2e" stroke-width="3"/>
+        <text x="475" y="220" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">蛋白質</text>
+        <text x="475" y="234" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">狀態檢查</text>
+      </a>
+
+      <!-- Branch labels -->
+      <text x="365" y="200" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="var(--fold)">折疊正確</text>
+      <text x="585" y="200" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="var(--degrade)">折疊錯誤</text>
+      <text x="365" y="215" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#666">Native</text>
+      <text x="585" y="215" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#666">Misfolded</text>
+
+      <!-- Branch arrows -->
+      <path d="M 425 235 Q 360 250 295 280" fill="none" stroke="#3d5cff" stroke-width="2.5" marker-end="url(#aBlue)"/>
+      <path d="M 525 235 Q 560 270 555 305" fill="none" stroke="#ff3d7f" stroke-width="2.5" marker-end="url(#aPink)"/>
+
+      <!-- Stage 4: Degradation (proteasome) -->
+      <a href="#m-degradation" class="click-target">
+        <rect x="455" y="305" width="120" height="65" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="3" rx="10"/>
+        <text x="515" y="330" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#fff">DEGRADATION</text>
+        <text x="515" y="346" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#fff">蛋白質降解</text>
+        <text x="515" y="362" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#fff">蛋白酶體 / 自噬</text>
+        <text x="515" y="390" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--degrade)">④ 回收</text>
+      </a>
+
+      <!-- Stage 5: Recycle back to amino acids -->
+      <a href="#m-aa" class="click-target">
+        <ellipse cx="180" cy="345" rx="80" ry="35" fill="#06b6d4" stroke="#1a1a2e" stroke-width="3"/>
+        <text x="180" y="343" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#fff">Amino Acids</text>
+        <text x="180" y="358" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#fff">胺基酸（回收）</text>
+      </a>
+
+      <!-- Arrow from degradation back to amino acids -->
+      <path d="M 455 360 Q 350 380 260 345" fill="none" stroke="#06b6d4" stroke-width="2.5" marker-end="url(#aTeal)" stroke-dasharray="4 4"/>
+
+      <!-- Arrow from amino acids back to ribosome -->
+      <path d="M 130 320 Q 80 250 90 140" fill="none" stroke="#06b6d4" stroke-width="2.5" marker-end="url(#aTeal)" stroke-dasharray="4 4"/>
+
+      <!-- Recycle label -->
+      <text x="60" y="240" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--teal)">♻️ 回收</text>
+      <text x="60" y="254" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#666">Recycle</text>
+
+      <!-- Function label below catalyst -->
+      <a href="#m-substrate" class="click-target">
+        <text x="295" y="295" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="var(--fold)" text-decoration="underline">→ 完成催化</text>
+      </a>
+
+      <!-- Critical insight at bottom -->
+      <rect x="40" y="410" width="520" height="40" fill="#1a1a2e" rx="8"/>
+      <text x="300" y="430" text-anchor="middle" font-family="Noto Sans TC" font-size="12" font-weight="700" fill="var(--gold)">⚡ 折疊錯誤 → 失能、聚集、疾病｜降解失調 → 蛋白質堆積、神經退化</text>
+      <text x="300" y="446" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#fff">三大過程環環相扣，缺一不可</text>
+
+      <defs>
+        <marker id="aBlack" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1a1a2e"/></marker>
+        <marker id="aBlue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#3d5cff"/></marker>
+        <marker id="aPink" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#ff3d7f"/></marker>
+        <marker id="aTeal" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#06b6d4"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <h3 style="margin:24px 0 14px;font-family:'Fraunces',serif">三大主題的角色卡</h3>
+
+  <div class="cast-grid">
+    <a href="#m-folding" class="cast-card">
+      <div class="cast-icon" style="background:#3d5cff">F</div>
+      <div class="cast-name">Folding</div>
+      <div class="cast-role">折疊｜立體結構成形</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-chaperone" class="cast-card">
+      <div class="cast-icon" style="background:#3d5cff">CH</div>
+      <div class="cast-name">Chaperone</div>
+      <div class="cast-role">伴護蛋白｜折疊助手</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-misfolding" class="cast-card">
+      <div class="cast-icon" style="background:#ff6b35">MIS</div>
+      <div class="cast-name">Misfolding</div>
+      <div class="cast-role">錯誤折疊</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-prion" class="cast-card">
+      <div class="cast-icon" style="background:#ff3d7f">PR</div>
+      <div class="cast-name">Prion</div>
+      <div class="cast-role">普利昂｜會傳染的折疊</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-enzyme" class="cast-card">
+      <div class="cast-icon" style="background:#00c896">E</div>
+      <div class="cast-name">Enzyme</div>
+      <div class="cast-role">酵素｜催化引擎</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-substrate" class="cast-card">
+      <div class="cast-icon" style="background:#00c896">S</div>
+      <div class="cast-name">Substrate</div>
+      <div class="cast-role">基質｜被加工的對象</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-active" class="cast-card">
+      <div class="cast-icon" style="background:#00c896">AS</div>
+      <div class="cast-name">Active Site</div>
+      <div class="cast-role">活性位｜反應發生地</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-ubiquitin" class="cast-card">
+      <div class="cast-icon" style="background:#ff3d7f">Ub</div>
+      <div class="cast-name">Ubiquitin</div>
+      <div class="cast-role">泛素｜死亡標籤</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-proteasome" class="cast-card">
+      <div class="cast-icon" style="background:#ff3d7f">26S</div>
+      <div class="cast-name">Proteasome</div>
+      <div class="cast-role">蛋白酶體｜碎紙機</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-autophagy" class="cast-card">
+      <div class="cast-icon" style="background:#9333ea">AU</div>
+      <div class="cast-name">Autophagy</div>
+      <div class="cast-role">自噬｜大型清除</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-lysosome" class="cast-card">
+      <div class="cast-icon" style="background:#9333ea">LY</div>
+      <div class="cast-name">Lysosome</div>
+      <div class="cast-role">溶酶體｜消化袋</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-amyloid" class="cast-card">
+      <div class="cast-icon" style="background:#ff3d7f">AM</div>
+      <div class="cast-name">Amyloid</div>
+      <div class="cast-role">類澱粉｜異常聚集</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+  </div>
+
+  <div class="intro-card fold">
+    <h3>🎯 三大主題在這裡為何放在一起？</h3>
+    <p>蛋白質的一生有三個關鍵時刻：<strong>誕生（折疊成形）</strong>、<strong>工作（催化反應）</strong>、<strong>退場（被分解）</strong>。三者環環相扣，任何一環失調都會引發疾病。</p>
+    <p style="margin-top:8px"><strong>折疊 →</strong> 阿茲海默症、帕金森氏症（蛋白聚集）</p>
+    <p><strong>催化 →</strong> 各種代謝疾病、藥物作用機制</p>
+    <p><strong>降解 →</strong> 細胞老化、蛋白堆積、發炎</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: FOLDING ============ -->
+<section id="folding">
+  <span class="section-num">PART 02</span>
+  <h2 class="section-title">蛋白質折疊</h2>
+  <p class="section-sub">從一條胺基酸鏈，變成精準的立體結構，這個過程決定蛋白質能不能工作</p>
+
+  <!-- FOLDING LEVELS DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖二：蛋白質結構的四個層次</div>
+    <div class="diagram-hint">👆 點擊各層級查看 <b>結構說明</b></div>
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+      <!-- Stage labels -->
+      <text x="300" y="25" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">FROM CHAIN TO 3D STRUCTURE</text>
+
+      <!-- 1° Primary -->
+      <a href="#m-primary" class="click-target">
+        <rect x="40" y="55" width="140" height="65" fill="#fef3c7" stroke="#1a1a2e" stroke-width="3" rx="8"/>
+        <text x="110" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="#1a1a2e">1° Primary</text>
+        <text x="110" y="98" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700">一級結構</text>
+        <text x="110" y="113" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#666">胺基酸序列</text>
+        <!-- AA chain illustration -->
+        <circle cx="60" cy="135" r="6" fill="#3d5cff" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="66" y1="135" x2="74" y2="135" stroke="#1a1a2e" stroke-width="1.5"/>
+        <circle cx="80" cy="135" r="6" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="86" y1="135" x2="94" y2="135" stroke="#1a1a2e" stroke-width="1.5"/>
+        <circle cx="100" cy="135" r="6" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="106" y1="135" x2="114" y2="135" stroke="#1a1a2e" stroke-width="1.5"/>
+        <circle cx="120" cy="135" r="6" fill="#00c896" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="126" y1="135" x2="134" y2="135" stroke="#1a1a2e" stroke-width="1.5"/>
+        <circle cx="140" cy="135" r="6" fill="#9333ea" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="146" y1="135" x2="154" y2="135" stroke="#1a1a2e" stroke-width="1.5"/>
+        <circle cx="160" cy="135" r="6" fill="#ff6b35" stroke="#1a1a2e" stroke-width="1.5"/>
+      </a>
+
+      <!-- Arrow -->
+      <line x1="200" y1="95" x2="240" y2="95" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a2)"/>
+
+      <!-- 2° Secondary -->
+      <a href="#m-secondary" class="click-target">
+        <rect x="250" y="55" width="140" height="100" fill="#dbeafe" stroke="#1a1a2e" stroke-width="3" rx="8"/>
+        <text x="320" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="#1a1a2e">2° Secondary</text>
+        <text x="320" y="98" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700">二級結構</text>
+        <!-- α-helix illustration -->
+        <path d="M 270 115 Q 280 105 290 115 Q 300 125 310 115 Q 320 105 330 115" 
+              fill="none" stroke="#3d5cff" stroke-width="3"/>
+        <text x="290" y="138" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#3d5cff" font-weight="700">α-helix</text>
+        <!-- β-sheet illustration -->
+        <path d="M 340 110 L 360 105 L 360 120 L 380 115" fill="none" stroke="#ff3d7f" stroke-width="3"/>
+        <text x="362" y="138" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#ff3d7f" font-weight="700">β-sheet</text>
+      </a>
+
+      <!-- Arrow -->
+      <line x1="410" y1="95" x2="450" y2="95" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a2)"/>
+
+      <!-- 3° Tertiary -->
+      <a href="#m-tertiary" class="click-target">
+        <rect x="455" y="55" width="135" height="100" fill="#d1fae5" stroke="#1a1a2e" stroke-width="3" rx="8"/>
+        <text x="522" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="#1a1a2e">3° Tertiary</text>
+        <text x="522" y="98" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700">三級結構</text>
+        <!-- Folded blob -->
+        <path d="M 478 125 Q 500 110 520 130 Q 540 140 560 125 Q 575 130 565 145 Q 545 155 525 145 Q 510 135 490 145 Q 472 140 478 125 Z" 
+              fill="#00c896" stroke="#1a1a2e" stroke-width="2"/>
+      </a>
+
+      <!-- Arrow down -->
+      <line x1="522" y1="170" x2="522" y2="200" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a2)"/>
+
+      <!-- 4° Quaternary -->
+      <a href="#m-quaternary" class="click-target">
+        <rect x="320" y="205" width="180" height="110" fill="#ffe4ec" stroke="#1a1a2e" stroke-width="3" rx="8"/>
+        <text x="410" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="#1a1a2e">4° Quaternary</text>
+        <text x="410" y="248" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700">四級結構（多個次單元）</text>
+        <!-- Hemoglobin-like illustration: 4 subunits -->
+        <circle cx="370" cy="280" r="18" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="2"/>
+        <circle cx="410" cy="275" r="18" fill="#ffb800" stroke="#1a1a2e" stroke-width="2"/>
+        <circle cx="370" cy="300" r="18" fill="#3d5cff" stroke="#1a1a2e" stroke-width="2"/>
+        <circle cx="410" cy="300" r="18" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="460" y="285" font-family="JetBrains Mono" font-size="9" fill="#1a1a2e" font-weight="700">Hb 血紅素</text>
+        <text x="460" y="298" font-family="JetBrains Mono" font-size="9" fill="#666">α₂β₂</text>
+      </a>
+
+      <!-- Bottom: From sequence to function -->
+      <text x="100" y="220" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">序列決定結構</text>
+      <text x="100" y="237" font-family="JetBrains Mono" font-size="10" fill="#666">Sequence → Structure</text>
+      <text x="100" y="265" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">結構決定功能</text>
+      <text x="100" y="282" font-family="JetBrains Mono" font-size="10" fill="#666">Structure → Function</text>
+
+      <!-- AlphaFold mention -->
+      <a href="#m-alphafold" class="click-target">
+        <rect x="40" y="335" width="520" height="35" fill="#1a1a2e" rx="8"/>
+        <text x="300" y="355" text-anchor="middle" font-family="Noto Sans TC" font-size="12" font-weight="700" fill="var(--gold)">🤖 AlphaFold（2021 年諾貝爾化學獎）AI 解析了 2 億個蛋白質結構</text>
+      </a>
+
+      <defs>
+        <marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1a1a2e"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- CHAPERONE DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖三：伴護蛋白如何幫助折疊</div>
+    <div class="diagram-hint">👆 點擊各步驟查看 <b>機制</b></div>
+    <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+      <!-- Step 1: Unfolded chain -->
+      <text x="80" y="30" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#666">① 未折疊</text>
+      <a href="#m-unfolded" class="click-target">
+        <path d="M 30 60 Q 50 80 30 100 Q 50 120 30 140 Q 50 160 30 180 Q 50 200 80 195" 
+              fill="none" stroke="#ff6b35" stroke-width="3"/>
+        <circle cx="30" cy="60" r="5" fill="#ff6b35" stroke="#1a1a2e" stroke-width="1"/>
+        <circle cx="80" cy="195" r="5" fill="#ff6b35" stroke="#1a1a2e" stroke-width="1"/>
+        <text x="80" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#ff6b35" font-weight="700">Unfolded</text>
+        <text x="80" y="235" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">線狀</text>
+      </a>
+
+      <!-- Arrow + "without help" path -->
+      <text x="155" y="115" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">沒有幫助</text>
+      <line x1="120" y1="130" x2="190" y2="130" stroke="#666" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#a3)"/>
+
+      <!-- Aggregation -->
+      <a href="#m-aggregation" class="click-target">
+        <g>
+          <circle cx="225" cy="115" r="8" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="1.5"/>
+          <circle cx="240" cy="125" r="9" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="1.5"/>
+          <circle cx="220" cy="135" r="7" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="1.5"/>
+          <circle cx="245" cy="140" r="8" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="1.5"/>
+          <text x="232" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#ff3d7f" font-weight="700">Aggregation</text>
+          <text x="232" y="185" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">聚集（壞）</text>
+          <text x="232" y="200" text-anchor="middle" font-family="Noto Sans TC" font-size="10">⚠️ 不可逆</text>
+        </g>
+      </a>
+
+      <!-- Arrow up "with chaperone" -->
+      <text x="155" y="60" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--fold)">伴護蛋白協助</text>
+      <line x1="120" y1="75" x2="190" y2="75" stroke="#3d5cff" stroke-width="2.5" marker-end="url(#a4)"/>
+
+      <!-- Hsp70 chamber -->
+      <a href="#m-hsp70" class="click-target">
+        <ellipse cx="285" cy="60" rx="55" ry="22" fill="#3d5cff" stroke="#1a1a2e" stroke-width="2.5"/>
+        <text x="285" y="58" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#fff">Hsp70</text>
+        <text x="285" y="70" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#fff">熱休克蛋白</text>
+      </a>
+
+      <!-- Arrow to GroEL -->
+      <line x1="345" y1="60" x2="380" y2="60" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a3)"/>
+
+      <!-- GroEL chamber -->
+      <a href="#m-groel" class="click-target">
+        <rect x="385" y="35" width="80" height="55" fill="#9333ea" stroke="#1a1a2e" stroke-width="2.5" rx="8"/>
+        <!-- Lid -->
+        <rect x="385" y="30" width="80" height="8" fill="#ec4899" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="425" y="58" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#fff">GroEL/ES</text>
+        <text x="425" y="72" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#fff">折疊籠子</text>
+        <text x="425" y="84" text-anchor="middle" font-family="Noto Sans TC" font-size="8" fill="#fff">Hsp60</text>
+      </a>
+
+      <!-- Arrow to native -->
+      <line x1="470" y1="60" x2="510" y2="60" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a3)"/>
+
+      <!-- Native folded -->
+      <a href="#m-native" class="click-target">
+        <path d="M 525 45 Q 545 35 555 50 Q 575 55 570 75 Q 555 80 545 70 Q 530 75 525 60 Q 520 55 525 45 Z" 
+              fill="#00c896" stroke="#1a1a2e" stroke-width="2.5"/>
+        <text x="547" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="var(--catalyze)" font-weight="700">Native ✓</text>
+        <text x="547" y="120" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">正確折疊</text>
+      </a>
+
+      <!-- ATP energy -->
+      <a href="#m-atp-folding" class="click-target">
+        <text x="425" y="120" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="var(--warn)">+ ATP</text>
+        <text x="425" y="135" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#666">需要能量</text>
+      </a>
+
+      <!-- Bottom summary -->
+      <rect x="40" y="240" width="520" height="65" fill="#fef6e4" stroke="#1a1a2e" stroke-width="2" rx="8"/>
+      <text x="300" y="262" text-anchor="middle" font-family="Noto Sans TC" font-size="12" font-weight="700" fill="#1a1a2e">兩種伴護蛋白系統合作</text>
+      <text x="60" y="282" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e"><tspan font-weight="700" fill="#3d5cff">Hsp70：</tspan>抓住剛從核糖體出來的線狀蛋白，避免亂折</text>
+      <text x="60" y="298" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e"><tspan font-weight="700" fill="#9333ea">GroEL/ES：</tspan>提供「折疊籠子」，讓難折的蛋白質在裡面安靜成形</text>
+
+      <defs>
+        <marker id="a3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1a1a2e"/></marker>
+        <marker id="a4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#3d5cff"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <div class="analogy">
+    <span class="analogy-label">🎁 摺紙比喻</span>
+    <p>蛋白質折疊就像摺紙。一張紙（胺基酸序列）必須摺成精確的紙鶴（功能性蛋白質）才能用。如果亂摺，紙就只是一團廢紙。伴護蛋白就像專業的摺紙老師，在旁邊指導你不要摺壞，必要時還會給你一個安靜的房間（GroEL 籠子）讓你專心摺。</p>
+  </div>
+
+  <h3 style="margin:24px 0 12px;font-family:'Fraunces',serif">折疊的關鍵步驟</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div><h4>序列決定一切｜Anfinsen's Dogma</h4><p>胺基酸序列本身已經包含了所有折疊所需的資訊（1972 年諾貝爾獎）。</p></div></div>
+    <div class="step"><div class="step-num">2</div><div><h4>疏水驅動｜Hydrophobic Collapse</h4><p>怕水的疏水胺基酸往內擠，親水的留在外側，蛋白質快速塌縮。</p></div></div>
+    <div class="step"><div class="step-num">3</div><div><h4>二級結構形成｜α-Helix / β-Sheet</h4><p>區域內形成 α-螺旋或 β-摺疊，由氫鍵穩定。</p></div></div>
+    <div class="step"><div class="step-num">4</div><div><h4>三級結構成形｜Tertiary Folding</h4><p>整條鏈摺成最終的 3D 形狀，活性位也成形。</p></div></div>
+    <div class="step"><div class="step-num">5</div><div><h4>伴護蛋白協助｜Chaperones</h4><p>大型或複雜的蛋白需要 Hsp70、Hsp90、GroEL 等幫忙避免錯誤聚集。</p></div></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: CATALYSIS ============ -->
+<section id="catalysis">
+  <span class="section-num">PART 03</span>
+  <h2 class="section-title">酵素催化</h2>
+  <p class="section-sub">一個正確折疊的酵素，可以把化學反應加速 10⁶ 到 10¹⁷ 倍——這就是生命的速度</p>
+
+  <!-- ENZYME CATALYSIS DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖四：酵素如何催化反應</div>
+    <div class="diagram-hint">👆 點擊各角色查看 <b>說明</b></div>
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+      <!-- Energy diagram backdrop -->
+      <text x="300" y="25" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">ENZYME LOWERS ACTIVATION ENERGY</text>
+
+      <!-- Y axis -->
+      <line x1="60" y1="60" x2="60" y2="240" stroke="#1a1a2e" stroke-width="2"/>
+      <text x="40" y="65" font-family="JetBrains Mono" font-size="10" fill="#1a1a2e" font-weight="700">能量</text>
+      <text x="40" y="80" font-family="JetBrains Mono" font-size="9" fill="#666">Energy</text>
+
+      <!-- X axis -->
+      <line x1="60" y1="240" x2="540" y2="240" stroke="#1a1a2e" stroke-width="2"/>
+      <text x="540" y="260" text-anchor="end" font-family="JetBrains Mono" font-size="10" fill="#1a1a2e" font-weight="700">反應進程 →</text>
+
+      <!-- Without enzyme curve (high) -->
+      <a href="#m-noenzyme" class="click-target">
+        <path d="M 90 200 Q 200 80 310 200" fill="none" stroke="#ff3d7f" stroke-width="3" stroke-dasharray="6 4"/>
+        <text x="200" y="70" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#ff3d7f">沒有酵素</text>
+        <text x="200" y="85" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#ff3d7f">Without enzyme</text>
+      </a>
+
+      <!-- With enzyme curve (low) -->
+      <a href="#m-withenzyme" class="click-target">
+        <path d="M 90 200 Q 200 150 310 200" fill="none" stroke="#00c896" stroke-width="3"/>
+        <text x="200" y="170" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#00c896">有酵素</text>
+        <text x="200" y="185" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#00c896">With enzyme</text>
+      </a>
+
+      <!-- Activation energy bracket -->
+      <line x1="350" y1="200" x2="350" y2="80" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#a5)" marker-start="url(#a5b)"/>
+      <text x="380" y="135" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#ff3d7f">Ea (高)</text>
+      <text x="380" y="150" font-family="JetBrains Mono" font-size="9" fill="#666">活化能</text>
+
+      <line x1="430" y1="200" x2="430" y2="150" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#a5)" marker-start="url(#a5b)"/>
+      <text x="455" y="180" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#00c896">Ea (低)</text>
+
+      <!-- Substrate / product labels -->
+      <text x="90" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#1a1a2e">S</text>
+      <text x="90" y="232" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#666">基質</text>
+      <text x="310" y="220" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#1a1a2e">P</text>
+      <text x="310" y="232" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#666">產物</text>
+
+      <!-- Enzyme + Substrate cartoon -->
+      <text x="300" y="285" text-anchor="middle" font-family="Noto Sans TC" font-size="12" font-weight="700" fill="#1a1a2e">酵素-基質結合（鎖鑰模型）</text>
+
+      <a href="#m-enzyme" class="click-target">
+        <!-- Enzyme shape -->
+        <path d="M 100 305 L 150 305 L 165 320 L 165 345 L 150 360 L 100 360 L 100 340 L 115 332 L 115 320 L 100 312 Z" 
+              fill="#00c896" stroke="#1a1a2e" stroke-width="2.5"/>
+        <text x="125" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#fff">E</text>
+      </a>
+
+      <!-- Substrate -->
+      <a href="#m-substrate" class="click-target">
+        <rect x="180" y="320" width="40" height="20" fill="#ffb800" stroke="#1a1a2e" stroke-width="2.5" rx="3"/>
+        <text x="200" y="335" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#1a1a2e">S</text>
+      </a>
+
+      <!-- Combined ES -->
+      <text x="248" y="335" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#1a1a2e">→</text>
+
+      <a href="#m-es" class="click-target">
+        <path d="M 280 305 L 330 305 L 345 320 L 345 345 L 330 360 L 280 360 L 280 340 L 295 332 L 295 320 L 280 312 Z" 
+              fill="#00c896" stroke="#1a1a2e" stroke-width="2.5"/>
+        <rect x="300" y="322" width="22" height="15" fill="#ffb800" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="318" y="375" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#1a1a2e">ES 複合物</text>
+      </a>
+
+      <text x="378" y="335" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#1a1a2e">→</text>
+
+      <!-- Product -->
+      <a href="#m-enzyme" class="click-target">
+        <path d="M 410 305 L 460 305 L 475 320 L 475 345 L 460 360 L 410 360 L 410 340 L 425 332 L 425 320 L 410 312 Z" 
+              fill="#00c896" stroke="#1a1a2e" stroke-width="2.5"/>
+        <text x="435" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#fff">E</text>
+      </a>
+      <a href="#m-product" class="click-target">
+        <circle cx="510" cy="325" r="8" fill="#ec4899" stroke="#1a1a2e" stroke-width="2"/>
+        <circle cx="510" cy="345" r="8" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="510" y="375" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#1a1a2e">P 產物</text>
+      </a>
+
+      <defs>
+        <marker id="a5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1a1a2e"/></marker>
+        <marker id="a5b" markerWidth="10" markerHeight="10" refX="2" refY="3" orient="auto"><path d="M8,0 L8,6 L0,3 z" fill="#1a1a2e"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- MICHAELIS-MENTEN -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖五：酵素動力學（米氏方程式）</div>
+    <div class="diagram-hint">👆 點擊曲線元素查看 <b>說明</b></div>
+    <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="25" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">Michaelis-Menten Kinetics</text>
+
+      <!-- Axes -->
+      <line x1="80" y1="60" x2="80" y2="260" stroke="#1a1a2e" stroke-width="2"/>
+      <line x1="80" y1="260" x2="540" y2="260" stroke="#1a1a2e" stroke-width="2"/>
+      <text x="35" y="65" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">速率</text>
+      <text x="35" y="80" font-family="JetBrains Mono" font-size="9" fill="#666">v</text>
+      <text x="540" y="280" text-anchor="end" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">基質濃度 [S]</text>
+
+      <!-- Vmax line -->
+      <line x1="80" y1="90" x2="540" y2="90" stroke="#ff3d7f" stroke-width="2" stroke-dasharray="4 4"/>
+      <a href="#m-vmax" class="click-target">
+        <text x="490" y="80" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#ff3d7f">Vmax</text>
+        <text x="490" y="93" font-family="Noto Sans TC" font-size="9" fill="#666">最大速率</text>
+      </a>
+
+      <!-- Km line (vertical) -->
+      <line x1="200" y1="175" x2="200" y2="260" stroke="#3d5cff" stroke-width="2" stroke-dasharray="4 4"/>
+      <a href="#m-km" class="click-target">
+        <text x="180" y="280" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#3d5cff">Km</text>
+        <text x="160" y="295" font-family="Noto Sans TC" font-size="9" fill="#666">米氏常數</text>
+      </a>
+
+      <!-- v = Vmax/2 line -->
+      <line x1="80" y1="175" x2="200" y2="175" stroke="#3d5cff" stroke-width="1.5" stroke-dasharray="2 3"/>
+      <text x="50" y="178" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#3d5cff">½ Vmax</text>
+
+      <!-- Curve -->
+      <path d="M 80 260 Q 130 240 160 220 Q 200 175 250 145 Q 320 115 400 100 Q 480 95 540 92" 
+            fill="none" stroke="#00c896" stroke-width="3.5"/>
+
+      <!-- Annotations -->
+      <a href="#m-saturation" class="click-target">
+        <text x="430" y="135" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#00c896">飽和區</text>
+        <text x="430" y="148" font-family="JetBrains Mono" font-size="9" fill="#666">Saturation</text>
+      </a>
+
+      <text x="120" y="240" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">線性區</text>
+      <text x="120" y="252" font-family="JetBrains Mono" font-size="9" fill="#999">Linear</text>
+    </svg>
+  </div>
+
+  <div class="analogy">
+    <span class="analogy-label">🚪 鎖鑰比喻</span>
+    <p>酵素的活性位就像一把專門設計的鎖，基質就是專門的鑰匙。當鑰匙插進鎖（形成 ES 複合物），酵素的形狀稍微調整把它「卡得更緊」（誘導契合），然後催化反應發生，產物（被改造過的鑰匙）出來，鎖恢復原狀，準備下一把。</p>
+  </div>
+
+  <h3 style="margin:24px 0 12px;font-family:'Fraunces',serif">酵素的六大反應類型</h3>
+  <div class="steps">
+    <div class="step catalyze-step"><div class="step-num">1</div><div><h4>氧化還原酶｜Oxidoreductases</h4><p>催化氧化還原反應，例如脫氫酶。</p></div></div>
+    <div class="step catalyze-step"><div class="step-num">2</div><div><h4>轉移酶｜Transferases</h4><p>把官能基（如磷酸根）從一個分子轉到另一個。激酶就屬此類。</p></div></div>
+    <div class="step catalyze-step"><div class="step-num">3</div><div><h4>水解酶｜Hydrolases</h4><p>用水把鍵打斷，例如蛋白酶把蛋白質切成胺基酸。</p></div></div>
+    <div class="step catalyze-step"><div class="step-num">4</div><div><h4>裂解酶｜Lyases</h4><p>不用水也能斷鍵，例如脫羧酶。</p></div></div>
+    <div class="step catalyze-step"><div class="step-num">5</div><div><h4>異構酶｜Isomerases</h4><p>同一分子內重新排列原子，產生異構體。</p></div></div>
+    <div class="step catalyze-step"><div class="step-num">6</div><div><h4>連接酶｜Ligases</h4><p>把兩個分子連起來，通常需要 ATP 提供能量。</p></div></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: DEGRADATION ============ -->
+<section id="degradation">
+  <span class="section-num">PART 04</span>
+  <h2 class="section-title">蛋白質降解</h2>
+  <p class="section-sub">壞掉、用完、不需要的蛋白質必須被回收。細胞有兩套系統處理這件事</p>
+
+  <!-- UBIQUITIN-PROTEASOME DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖六：泛素-蛋白酶體系統（小型回收）</div>
+    <div class="diagram-hint">👆 點擊各步驟查看 <b>機制</b></div>
+    <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="25" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">UBIQUITIN-PROTEASOME PATHWAY</text>
+
+      <!-- Step 1: Target protein -->
+      <a href="#m-target" class="click-target">
+        <ellipse cx="80" cy="100" rx="40" ry="30" fill="#ffb800" stroke="#1a1a2e" stroke-width="3"/>
+        <text x="80" y="98" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#1a1a2e">Target</text>
+        <text x="80" y="112" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#1a1a2e">目標蛋白</text>
+        <text x="80" y="150" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">① 待降解</text>
+      </a>
+
+      <!-- Arrow -->
+      <line x1="125" y1="100" x2="160" y2="100" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a6)"/>
+
+      <!-- E1, E2, E3 enzymes -->
+      <a href="#m-e1e2e3" class="click-target">
+        <text x="142" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#9333ea">E1+E2+E3</text>
+      </a>
+
+      <!-- Step 2: Polyubiquitination -->
+      <a href="#m-polyub" class="click-target">
+        <ellipse cx="220" cy="100" rx="40" ry="30" fill="#ffb800" stroke="#1a1a2e" stroke-width="3"/>
+        <text x="220" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#1a1a2e">Target</text>
+        <!-- Ubiquitin chain -->
+        <circle cx="220" cy="60" r="10" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="1.5"/>
+        <text x="220" y="63" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">Ub</text>
+        <circle cx="220" cy="40" r="10" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="1.5"/>
+        <text x="220" y="43" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">Ub</text>
+        <circle cx="220" cy="20" r="10" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="1.5"/>
+        <text x="220" y="23" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">Ub</text>
+        <line x1="220" y1="70" x2="220" y2="78" stroke="#1a1a2e" stroke-width="1.5"/>
+        <text x="220" y="160" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">② 多泛素化</text>
+        <text x="220" y="174" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#999">「貼上死亡標籤」</text>
+      </a>
+
+      <!-- Arrow -->
+      <line x1="265" y1="100" x2="305" y2="100" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a6)"/>
+
+      <!-- Step 3: Proteasome -->
+      <a href="#m-proteasome" class="click-target">
+        <!-- Proteasome cylinder -->
+        <ellipse cx="380" cy="60" rx="45" ry="12" fill="#9333ea" stroke="#1a1a2e" stroke-width="2.5"/>
+        <rect x="335" y="60" width="90" height="80" fill="#9333ea" stroke="#1a1a2e" stroke-width="2.5"/>
+        <ellipse cx="380" cy="140" rx="45" ry="12" fill="#9333ea" stroke="#1a1a2e" stroke-width="2.5"/>
+        <text x="380" y="105" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#fff">26S</text>
+        <text x="380" y="120" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#fff">Proteasome</text>
+        <text x="380" y="160" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">③ 進入碎紙機</text>
+      </a>
+
+      <!-- Arrow down -->
+      <line x1="380" y1="170" x2="380" y2="200" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a6)"/>
+
+      <!-- Step 4: Peptide fragments -->
+      <a href="#m-peptide" class="click-target">
+        <g>
+          <line x1="320" y1="220" x2="345" y2="220" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="350" y1="220" x2="370" y2="220" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="375" y1="220" x2="395" y2="220" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="400" y1="220" x2="420" y2="220" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="320" y1="232" x2="340" y2="232" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="345" y1="232" x2="365" y2="232" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+          <line x1="370" y1="232" x2="395" y2="232" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+          <text x="380" y="255" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#06b6d4">Peptides</text>
+          <text x="380" y="270" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">④ 短肽片段</text>
+        </g>
+      </a>
+
+      <!-- Arrow down -->
+      <line x1="380" y1="285" x2="380" y2="310" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a6)"/>
+
+      <!-- Step 5: Amino acids recycle -->
+      <a href="#m-aa" class="click-target">
+        <g>
+          <circle cx="340" cy="335" r="10" fill="#00c896" stroke="#1a1a2e" stroke-width="2"/>
+          <circle cx="365" cy="335" r="10" fill="#00c896" stroke="#1a1a2e" stroke-width="2"/>
+          <circle cx="390" cy="335" r="10" fill="#00c896" stroke="#1a1a2e" stroke-width="2"/>
+          <circle cx="415" cy="335" r="10" fill="#00c896" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="350" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">A</text>
+          <text x="375" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">A</text>
+          <text x="400" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">A</text>
+          <text x="425" y="338" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">A</text>
+          <text x="380" y="365" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#1a1a2e">⑤ 胺基酸（回收使用）</text>
+        </g>
+      </a>
+
+      <!-- ATP energy mark -->
+      <a href="#m-atp-degrad" class="click-target">
+        <text x="500" y="105" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--warn)">+ ATP</text>
+        <text x="500" y="120" font-family="Noto Sans TC" font-size="9" fill="#666">需能量</text>
+      </a>
+    </svg>
+  </div>
+
+  <!-- AUTOPHAGY DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖七：自噬作用（大型清除）</div>
+    <div class="diagram-hint">👆 點擊各部位查看 <b>機制</b></div>
+    <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="25" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">AUTOPHAGY 自噬作用</text>
+
+      <!-- Step 1: Damaged organelle -->
+      <a href="#m-damaged" class="click-target">
+        <ellipse cx="100" cy="120" rx="40" ry="30" fill="#ff6b35" stroke="#1a1a2e" stroke-width="3"/>
+        <line x1="80" y1="105" x2="92" y2="115" stroke="#1a1a2e" stroke-width="2"/>
+        <line x1="92" y1="105" x2="80" y2="115" stroke="#1a1a2e" stroke-width="2"/>
+        <line x1="108" y1="125" x2="120" y2="135" stroke="#1a1a2e" stroke-width="2"/>
+        <line x1="120" y1="125" x2="108" y2="135" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="100" y="120" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">Damaged</text>
+        <text x="100" y="170" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">① 壞掉的胞器</text>
+      </a>
+
+      <!-- Arrow -->
+      <line x1="145" y1="120" x2="180" y2="120" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a7)"/>
+
+      <!-- Step 2: Phagophore (forming membrane) -->
+      <a href="#m-phagophore" class="click-target">
+        <path d="M 195 90 Q 220 70 250 90 Q 240 110 250 150 Q 220 170 195 150 Q 200 120 195 90 Z" 
+              fill="none" stroke="#9333ea" stroke-width="3"/>
+        <ellipse cx="225" cy="120" rx="20" ry="20" fill="#ff6b35" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="225" y="180" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">② 半月形膜</text>
+        <text x="225" y="194" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#9333ea">Phagophore</text>
+      </a>
+
+      <!-- Arrow -->
+      <line x1="270" y1="120" x2="305" y2="120" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a7)"/>
+
+      <!-- Step 3: Autophagosome (closed double membrane) -->
+      <a href="#m-autophagosome" class="click-target">
+        <ellipse cx="345" cy="120" rx="35" ry="35" fill="none" stroke="#9333ea" stroke-width="3"/>
+        <ellipse cx="345" cy="120" rx="30" ry="30" fill="none" stroke="#9333ea" stroke-width="2"/>
+        <ellipse cx="345" cy="120" rx="18" ry="18" fill="#ff6b35" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="345" y="170" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">③ 雙膜囊泡</text>
+        <text x="345" y="184" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#9333ea">Autophagosome</text>
+      </a>
+
+      <!-- Arrow -->
+      <line x1="385" y1="120" x2="420" y2="120" stroke="#1a1a2e" stroke-width="2.5" marker-end="url(#a7)"/>
+
+      <!-- Step 4: Fuse with lysosome -->
+      <a href="#m-lysosome" class="click-target">
+        <ellipse cx="490" cy="120" rx="50" ry="40" fill="#ec4899" stroke="#1a1a2e" stroke-width="3"/>
+        <text x="490" y="115" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#fff">Lysosome</text>
+        <text x="490" y="128" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#fff">溶酶體</text>
+        <!-- Enzymes inside -->
+        <text x="465" y="140" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">pH 4.5</text>
+        <text x="490" y="180" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="#666">④ 融合 + 消化</text>
+        <text x="490" y="194" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#999">水解酶分解</text>
+      </a>
+
+      <!-- Bottom: Recycle -->
+      <rect x="40" y="240" width="520" height="65" fill="#fef6e4" stroke="#1a1a2e" stroke-width="2" rx="8"/>
+      <text x="300" y="262" text-anchor="middle" font-family="Noto Sans TC" font-size="12" font-weight="700" fill="#1a1a2e">何時啟動自噬？</text>
+      <text x="60" y="282" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e">• <strong>飢餓</strong>：細胞缺營養，把舊胞器拆掉再利用</text>
+      <text x="60" y="298" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e">• <strong>感染</strong>：清除細胞內的病原體｜<strong>老化</strong>：清除受損粒線體</text>
+    </svg>
+  </div>
+
+  <div class="analogy">
+    <span class="analogy-label">🗑️ 兩套垃圾系統</span>
+    <p><strong>蛋白酶體（小型回收）：</strong>像辦公室的碎紙機，專門處理單個壞掉的蛋白質。先貼上「死亡標籤」（泛素），碎紙機才會處理。</p>
+    <p style="margin-top:8px"><strong>自噬（大型清除）：</strong>像市政垃圾車，可以一次清除整個壞掉的胞器（粒線體、過氧化物酶體），甚至病原體。需要時才出動。</p>
+  </div>
+
+  <h3 style="margin:24px 0 12px;font-family:'Fraunces',serif">兩套系統的比較</h3>
+  <div class="steps">
+    <div class="step degrade-step"><div class="step-num">1</div><div><h4>蛋白酶體｜Proteasome</h4><p>處理單個蛋白質，需要泛素標記，需要 ATP，反應快速。</p></div></div>
+    <div class="step degrade-step"><div class="step-num">2</div><div><h4>自噬｜Autophagy</h4><p>處理整個胞器或大型聚集體，用膜包起來送到溶酶體消化。</p></div></div>
+    <div class="step degrade-step"><div class="step-num">3</div><div><h4>溶酶體｜Lysosome</h4><p>細胞內的「胃」，pH 約 4.5，含多種水解酶能分解任何分子。</p></div></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: DISEASES ============ -->
+<section id="disease">
+  <span class="section-num">PART 05</span>
+  <h2 class="section-title">當系統失調｜疾病連結</h2>
+  <p class="section-sub">折疊或降解出問題，會導致蛋白質堆積，引發各種神經退化疾病</p>
+
+  <div class="disease-grid">
+    <div class="disease-card">
+      <div class="disease-name">阿茲海默症 <span class="disease-tag">Alzheimer's</span></div>
+      <p>β-類澱粉蛋白（Aβ）在腦中聚集形成斑塊，神經元死亡。Tau 蛋白也異常磷酸化形成纏結。<strong>降解系統無法清除</strong>是關鍵。</p>
+    </div>
+    <div class="disease-card">
+      <div class="disease-name">帕金森氏症 <span class="disease-tag">Parkinson's</span></div>
+      <p>α-突觸核蛋白（α-Synuclein）錯誤折疊聚集，形成路易體（Lewy Body），破壞分泌多巴胺的神經元，導致動作障礙。</p>
+    </div>
+    <div class="disease-card">
+      <div class="disease-name">普利昂疾病 <span class="disease-tag">Prion Disease</span></div>
+      <p>普利昂蛋白（PrP）的異常折疊形式（PrP^Sc）會「傳染」給正常 PrP，讓它們也變成異常折疊。例：庫賈氏病、狂牛症。</p>
+    </div>
+    <div class="disease-card">
+      <div class="disease-name">囊狀纖維化 <span class="disease-tag">Cystic Fibrosis</span></div>
+      <p>CFTR 蛋白突變後折疊不正確，被細胞當成廢物降解掉，無法到達細胞膜執行氯離子運輸功能。</p>
+    </div>
+  </div>
+
+  <div class="intro-card catalyze">
+    <h3>💊 治療策略</h3>
+    <p><strong>幫助折疊：</strong>化學伴護蛋白（Chemical Chaperones），如治療囊狀纖維化的 Lumacaftor。</p>
+    <p><strong>強化降解：</strong>促進自噬的藥物（如雷帕黴素 Rapamycin），有望延緩老化和神經退化。</p>
+    <p><strong>清除聚集：</strong>抗 Aβ 抗體（如 Aducanumab），用免疫方式清除腦中斑塊。</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: GLOSSARY ============ -->
+<section id="glossary" class="glossary-section">
+  <span class="section-num">PART 06</span>
+  <h2 class="section-title">完整術語字典</h2>
+  <p class="section-sub">三大主題的所有術語｜中英對照｜點擊摺疊區塊展開</p>
+
+  <details>
+    <summary>蛋白質折疊 <span class="summary-en">Protein Folding</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role fold">折疊</span>
+      <p>胺基酸序列摺成精準 3D 立體結構的過程。Anfinsen 定律：序列已含所有折疊資訊。</p>
+    </div>
+  </details>
+  <details>
+    <summary>伴護蛋白 <span class="summary-en">Chaperone</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role fold">折疊</span>
+      <p>幫助其他蛋白正確折疊的蛋白。不直接參與最終結構，但避免錯誤聚集。</p>
+    </div>
+  </details>
+  <details>
+    <summary>熱休克蛋白 <span class="summary-en">Hsp70 / Hsp90</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role fold">折疊</span>
+      <p>熱壓力下大量產生的伴護蛋白。Hsp70 抓住線狀蛋白，Hsp90 協助受體和激酶成熟。</p>
+    </div>
+  </details>
+  <details>
+    <summary>GroEL/ES <span class="summary-en">Chaperonin Cage</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role fold">折疊</span>
+      <p>桶狀的伴護蛋白系統，像一個「折疊籠子」，把蛋白關進去安靜成形。</p>
+    </div>
+  </details>
+  <details>
+    <summary>α-螺旋 / β-摺疊 <span class="summary-en">α-Helix / β-Sheet</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role fold">折疊</span>
+      <p>二級結構的兩種主要形式。由氫鍵穩定。Linus Pauling 1951 年發現。</p>
+    </div>
+  </details>
+  <details>
+    <summary>錯誤折疊 <span class="summary-en">Misfolding</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role fold">折疊</span>
+      <p>蛋白未能達到正確的天然構象。常導致聚集、失能、被降解、引發疾病。</p>
+    </div>
+  </details>
+  <details>
+    <summary>類澱粉聚集 <span class="summary-en">Amyloid Aggregation</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role fold">折疊</span>
+      <p>錯誤折疊的蛋白形成的不可溶纖維結構。和阿茲海默、帕金森等疾病相關。</p>
+    </div>
+  </details>
+  <details>
+    <summary>普利昂 <span class="summary-en">Prion</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role fold">折疊</span>
+      <p>會「傳染」的錯誤折疊蛋白。能催化正常蛋白變成異常形式。狂牛症、庫賈氏病。</p>
+    </div>
+  </details>
+  <details>
+    <summary>AlphaFold <span class="summary-en">DeepMind AI</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role fold">折疊</span>
+      <p>2021 年突破性 AI，能從序列預測蛋白質 3D 結構。2024 年諾貝爾化學獎。</p>
+    </div>
+  </details>
+  <details>
+    <summary>酵素 <span class="summary-en">Enzyme</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role catalyze">催化</span>
+      <p>能加速化學反應的蛋白質（少數是 RNA）。可加速 10⁶ 到 10¹⁷ 倍。</p>
+    </div>
+  </details>
+  <details>
+    <summary>基質 / 產物 <span class="summary-en">Substrate / Product</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role catalyze">催化</span>
+      <p>基質是酵素加工的對象，產物是反應後生成的新分子。</p>
+    </div>
+  </details>
+  <details>
+    <summary>活性位 <span class="summary-en">Active Site</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role catalyze">催化</span>
+      <p>酵素上負責催化反應的特定區域。形狀和基質互補（鎖鑰模型）。</p>
+    </div>
+  </details>
+  <details>
+    <summary>活化能 <span class="summary-en">Activation Energy (Ea)</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role catalyze">催化</span>
+      <p>反應發生需要跨越的能量障礙。酵素的工作就是降低 Ea，讓反應更容易發生。</p>
+    </div>
+  </details>
+  <details>
+    <summary>米氏常數 <span class="summary-en">Km · Michaelis Constant</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role catalyze">催化</span>
+      <p>達到 ½ Vmax 所需的基質濃度。Km 越小，酵素對基質的親和力越高。</p>
+    </div>
+  </details>
+  <details>
+    <summary>最大速率 <span class="summary-en">Vmax</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role catalyze">催化</span>
+      <p>酵素在飽和基質下的最快反應速率。Vmax = kcat × [E]total。</p>
+    </div>
+  </details>
+  <details>
+    <summary>泛素 <span class="summary-en">Ubiquitin</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role degrade">降解</span>
+      <p>76 個胺基酸的小蛋白，貼在目標蛋白上當作「死亡標籤」。多泛素鏈是蛋白酶體的進入信號。</p>
+    </div>
+  </details>
+  <details>
+    <summary>E1 / E2 / E3 酶 <span class="summary-en">Ubiquitin Ligases</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role degrade">降解</span>
+      <p>三種酵素接力把泛素接到目標蛋白上。E3 決定哪些蛋白被標記。</p>
+    </div>
+  </details>
+  <details>
+    <summary>蛋白酶體 <span class="summary-en">Proteasome (26S)</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role degrade">降解</span>
+      <p>細胞內的「碎紙機」，桶狀結構，把標記過的蛋白質切成短肽片段。需要 ATP。</p>
+    </div>
+  </details>
+  <details>
+    <summary>自噬 <span class="summary-en">Autophagy</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role degrade">降解</span>
+      <p>細胞「吃自己」的過程。用雙膜囊泡包住壞掉的胞器，送到溶酶體消化。2016 年諾貝爾醫學獎。</p>
+    </div>
+  </details>
+  <details>
+    <summary>溶酶體 <span class="summary-en">Lysosome</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role degrade">降解</span>
+      <p>細胞內的「胃」，pH 約 4.5，含多種水解酶。負責消化送進來的物質。</p>
+    </div>
+  </details>
+  <details>
+    <summary>自噬體 <span class="summary-en">Autophagosome</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role degrade">降解</span>
+      <p>自噬過程中形成的雙膜囊泡，把要回收的胞器包起來，運送到溶酶體融合。</p>
+    </div>
+  </details>
+  <details>
+    <summary>胺基酸回收 <span class="summary-en">Amino Acid Recycling</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role degrade">降解</span>
+      <p>降解後產生的胺基酸再被細胞用來合成新蛋白質。完成完整的生命循環。</p>
+    </div>
+  </details>
+</section>
+
+</div>
+
+<!-- ============================================
+   ALL MODAL DEFINITIONS
+   ============================================ -->
+
+<!-- RIBOSOME -->
+<div id="m-ribosome" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ffb800;color:#1a1a2e">RB</div>
+    <div class="modal-en">RIBOSOME</div>
+    <div class="modal-zh">核糖體</div>
+    <span class="modal-tag">蛋白質工廠</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>細胞裡製造蛋白質的工廠。讀取 mRNA 的指令，按順序把胺基酸串成長鏈。一個細胞裡有上萬個核糖體同時運作。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">結構</div>
+      <div class="modal-body">
+        <p>由蛋白質和 rRNA 組成。</p>
+        <p>• 真核生物：80S（60S + 40S 次單元）</p>
+        <p>• 細菌：70S（50S + 30S）</p>
+      </div>
+    </div>
+    <div class="modal-analogy">核糖體像 3D 列印機，根據 mRNA 圖紙印出蛋白質。</div>
+  </div>
+</div>
+
+<!-- FOLDING -->
+<div id="m-folding" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">F</div>
+    <div class="modal-en">PROTEIN FOLDING</div>
+    <div class="modal-zh">蛋白質折疊</div>
+    <span class="modal-tag">立體結構成形</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>剛從核糖體出來的蛋白質是一條線狀的胺基酸鏈，必須在毫秒到秒內摺成正確的 3D 形狀，才能執行功能。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼能自動折疊？</div>
+      <div class="modal-body"><p>胺基酸序列本身就決定了折疊方式（Anfinsen 定律，1972 諾貝爾獎）。疏水胺基酸往內擠是主要驅動力。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">折疊速度</div>
+      <div class="modal-body"><p>小蛋白：微秒到毫秒｜大蛋白：秒到分鐘｜需要伴護蛋白幫忙的：可能要幾分鐘以上</p></div>
+    </div>
+    <div class="modal-analogy">折疊就像一張紙摺成精準的紙鶴——只有正確摺法才能用。</div>
+  </div>
+</div>
+
+<!-- CHAPERONE -->
+<div id="m-chaperone" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">CH</div>
+    <div class="modal-en">CHAPERONE PROTEIN</div>
+    <div class="modal-zh">伴護蛋白</div>
+    <span class="modal-tag">折疊助手</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>幫助其他蛋白正確折疊的蛋白質。它們不參與最終結構，只在折疊過程中協助，避免蛋白質聚集成廢物。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">名字由來</div>
+      <div class="modal-body"><p>Chaperone 原意是「監護人」，像舞會上陪伴年輕人的長輩，避免出狀況。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">主要家族</div>
+      <div class="modal-body">
+        <p>• <strong>Hsp70</strong>：抓住剛從核糖體出來的線狀蛋白</p>
+        <p>• <strong>Hsp90</strong>：成熟受體和激酶</p>
+        <p>• <strong>Hsp60 (GroEL)</strong>：折疊籠子</p>
+      </div>
+    </div>
+    <div class="modal-analogy">伴護蛋白像舞蹈老師，在你練習新動作時站在旁邊指導，確保你不會摔跤。</div>
+  </div>
+</div>
+
+<!-- HSP70 -->
+<div id="m-hsp70" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">70</div>
+    <div class="modal-en">Hsp70 · Heat Shock Protein 70</div>
+    <div class="modal-zh">熱休克蛋白 70</div>
+    <span class="modal-tag">第一線伴護蛋白</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>當細胞處於熱壓力或其他壓力下，Hsp70 大量產生（所以叫熱休克蛋白）。日常工作是抓住剛合成、還沒折好的線狀蛋白，避免它們亂折亂聚。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">名字由來</div>
+      <div class="modal-body"><p>1962 年首次在熱衝擊的果蠅染色體中發現，分子量 70 kDa，因此命名 Hsp70。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">作用機制</div>
+      <div class="modal-body">
+        <p>• ATP 結合 → 開放（鬆開蛋白）</p>
+        <p>• ADP 結合 → 關閉（抓緊蛋白）</p>
+        <p>透過 ATP/ADP 循環反覆抓放，幫助蛋白慢慢摺好。</p>
+      </div>
+    </div>
+    <div class="modal-analogy">Hsp70 像幼兒園老師，緊緊牽著小朋友的手，避免他們亂跑撞到別人。</div>
+  </div>
+</div>
+
+<!-- GROEL -->
+<div id="m-groel" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#9333ea">60</div>
+    <div class="modal-en">GroEL/ES (Hsp60 family)</div>
+    <div class="modal-zh">折疊籠子</div>
+    <span class="modal-tag">隔離折疊室</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>桶狀的伴護蛋白系統。GroEL 是桶身，GroES 是蓋子。把難折的蛋白質關進桶內，提供一個隔離的環境讓它安靜成形，不被其他蛋白干擾。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">結構</div>
+      <div class="modal-body">
+        <p>• GroEL：14 個次單元組成的雙環桶</p>
+        <p>• GroES：7 個次單元組成的蓋子</p>
+        <p>• 每次折疊需要 7 個 ATP</p>
+      </div>
+    </div>
+    <div class="modal-analogy">GroEL/ES 像考試專用的隔離小房間，把難折的蛋白關進去專心折，外面的干擾都被擋掉。</div>
+  </div>
+</div>
+
+<!-- UNFOLDED -->
+<div id="m-unfolded" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff6b35">U</div>
+    <div class="modal-en">UNFOLDED PROTEIN</div>
+    <div class="modal-zh">未折疊蛋白</div>
+    <span class="modal-tag">線狀狀態</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>剛從核糖體出來的蛋白質就是這個狀態：一條線狀的胺基酸鏈，沒有功能，疏水區暴露在外，很容易和其他未折疊蛋白黏在一起聚集成廢物。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼危險？</div>
+      <div class="modal-body"><p>暴露的疏水區想躲避水，所以會和別的蛋白疏水區黏在一起，造成不可逆的聚集。</p></div>
+    </div>
+    <div class="modal-analogy">未折疊蛋白像剛出爐還很黏的麻糬，要趕快用伴護蛋白「包好」，否則會和別的麻糬黏成一團。</div>
+  </div>
+</div>
+
+<!-- NATIVE -->
+<div id="m-native" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">N</div>
+    <div class="modal-en">NATIVE STATE</div>
+    <div class="modal-zh">天然構象</div>
+    <span class="modal-tag">正確折疊</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>蛋白質摺成最終正確的 3D 結構，能執行功能的狀態。能量最低、最穩定。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">特徵</div>
+      <div class="modal-body">
+        <p>• 疏水核心藏在內部</p>
+        <p>• 親水表面暴露在外（和水共處）</p>
+        <p>• 活性位形狀正確</p>
+        <p>• 自由能最低</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AGGREGATION -->
+<div id="m-aggregation" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">AG</div>
+    <div class="modal-en">PROTEIN AGGREGATION</div>
+    <div class="modal-zh">蛋白質聚集</div>
+    <span class="modal-tag">折疊失敗的後果</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>未折疊或錯誤折疊的蛋白互相黏在一起，形成無法溶解、無法被分解的聚集體。對細胞有毒。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼會發生？</div>
+      <div class="modal-body"><p>暴露的疏水區想避開水，會和別的蛋白疏水區互相吸引。一旦黏住就很難分開（不可逆）。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">疾病連結</div>
+      <div class="modal-body">
+        <p>• 阿茲海默症：β-類澱粉斑塊</p>
+        <p>• 帕金森氏症：α-突觸核蛋白聚集</p>
+        <p>• 漸凍人 ALS：SOD1、TDP-43 聚集</p>
+        <p>• 普利昂病：PrP^Sc 聚集</p>
+      </div>
+    </div>
+    <div class="modal-analogy">蛋白聚集像炒蛋——一旦蛋白變性聚集，就再也回不去液體狀態。</div>
+  </div>
+</div>
+
+<!-- MISFOLDING -->
+<div id="m-misfolding" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff6b35">MIS</div>
+    <div class="modal-en">PROTEIN MISFOLDING</div>
+    <div class="modal-zh">錯誤折疊</div>
+    <span class="modal-tag">折疊失敗</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>蛋白質沒有摺成正確的天然形狀，可能變成失能、不穩定，或更糟糕——形成有毒的聚集體。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">原因</div>
+      <div class="modal-body">
+        <p>• 突變（胺基酸序列改變）</p>
+        <p>• 環境壓力（高溫、pH 異常）</p>
+        <p>• 伴護蛋白不足</p>
+        <p>• 折疊過程被中斷</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">細胞如何應對？</div>
+      <div class="modal-body">
+        <p>① 伴護蛋白嘗試重新折疊</p>
+        <p>② 如果失敗，貼上泛素標記送去蛋白酶體</p>
+        <p>③ 大型聚集體則由自噬清除</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRION -->
+<div id="m-prion" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">PR</div>
+    <div class="modal-en">PRION</div>
+    <div class="modal-zh">普利昂蛋白</div>
+    <span class="modal-tag">傳染性的折疊</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>一種特殊的錯誤折疊蛋白，最可怕的特性是「會傳染」——異常折疊的 PrP^Sc 接觸正常的 PrP 時，會誘導正常蛋白也變成異常形式。像連鎖反應。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">名字由來</div>
+      <div class="modal-body"><p>Prion = Proteinaceous Infectious Particle，「蛋白性感染粒子」。1982 年 Stanley Prusiner 提出，1997 年諾貝爾醫學獎。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">相關疾病</div>
+      <div class="modal-body">
+        <p>• <strong>狂牛症</strong>（牛海綿狀腦病）</p>
+        <p>• <strong>庫賈氏病</strong>（人類）</p>
+        <p>• <strong>羊搔癢症</strong>（綿羊）</p>
+        <p>• <strong>庫魯病</strong>（巴布亞新幾內亞食人族）</p>
+      </div>
+    </div>
+    <div class="modal-analogy">普利昂像活殭屍——咬到正常人，正常人也變殭屍，連鎖反應停不下來。</div>
+  </div>
+</div>
+
+<!-- PRIMARY -->
+<div id="m-primary" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#fef3c7;color:#1a1a2e">1°</div>
+    <div class="modal-en">PRIMARY STRUCTURE</div>
+    <div class="modal-zh">一級結構</div>
+    <span class="modal-tag">胺基酸序列</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>蛋白質最基本的層次，就是一條胺基酸鏈的順序。20 種胺基酸像 20 個字母，可以拼出無限多種「字」（蛋白質）。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">化學鍵</div>
+      <div class="modal-formula">胺基酸–CO–NH–胺基酸<br>（肽鍵 Peptide Bond）</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼重要？</div>
+      <div class="modal-body"><p>序列決定一切後續的結構（Anfinsen 定律）。改變一個胺基酸（突變）就可能讓整個蛋白失能或致病，例如鐮刀型紅血球症。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECONDARY -->
+<div id="m-secondary" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#dbeafe;color:#1a1a2e">2°</div>
+    <div class="modal-en">SECONDARY STRUCTURE</div>
+    <div class="modal-zh">二級結構</div>
+    <span class="modal-tag">局部摺疊</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>胺基酸鏈在局部摺出規則的形狀，主要兩種：α-螺旋（像彈簧）和 β-摺疊（像扇子折）。由氫鍵穩定。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">α-Helix 螺旋</div>
+      <div class="modal-body">
+        <p>每 3.6 個胺基酸繞一圈。常見於肌肉蛋白、髮絲（角蛋白）。</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">β-Sheet 摺疊</div>
+      <div class="modal-body">
+        <p>多條鏈平行或反平行排列，像扇子摺起來。常見於絲蛋白、抗體。</p>
+      </div>
+    </div>
+    <div class="modal-analogy">α-螺旋像電話線（捲曲），β-摺疊像紙扇（鋸齒）。</div>
+  </div>
+</div>
+
+<!-- TERTIARY -->
+<div id="m-tertiary" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#d1fae5;color:#1a1a2e">3°</div>
+    <div class="modal-en">TERTIARY STRUCTURE</div>
+    <div class="modal-zh">三級結構</div>
+    <span class="modal-tag">完整 3D 形狀</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>整條胺基酸鏈摺成最終的 3D 立體結構。包含所有 α-螺旋、β-摺疊和連接它們的環，組成完整的蛋白質形狀。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">穩定力量</div>
+      <div class="modal-body">
+        <p>• 疏水交互作用（最強驅動力）</p>
+        <p>• 氫鍵</p>
+        <p>• 鹽橋（離子鍵）</p>
+        <p>• 雙硫鍵（–S–S–，共價鍵）</p>
+      </div>
+    </div>
+    <div class="modal-analogy">三級結構像紙摺出最終的紙鶴，所有部分都到位才有功能。</div>
+  </div>
+</div>
+
+<!-- QUATERNARY -->
+<div id="m-quaternary" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ffe4ec;color:#1a1a2e">4°</div>
+    <div class="modal-en">QUATERNARY STRUCTURE</div>
+    <div class="modal-zh">四級結構</div>
+    <span class="modal-tag">多次單元組合</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>多條獨立的胺基酸鏈（次單元）組合成一個更大的蛋白質複合體。並非所有蛋白都有四級結構。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">經典例子</div>
+      <div class="modal-body">
+        <p>• <strong>血紅素 (Hb)</strong>：α₂β₂，4 個次單元</p>
+        <p>• <strong>抗體 (IgG)</strong>：2 重鏈 + 2 輕鏈</p>
+        <p>• <strong>胰島素</strong>：A 鏈 + B 鏈</p>
+        <p>• <strong>蛋白酶體</strong>：33 個次單元</p>
+      </div>
+    </div>
+    <div class="modal-analogy">四級結構像樂高玩具，多塊積木組合成一個完整的城堡。</div>
+  </div>
+</div>
+
+<!-- ALPHAFOLD -->
+<div id="m-alphafold" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#1a1a2e;color:#ffb800">AF</div>
+    <div class="modal-en">AlphaFold (DeepMind)</div>
+    <div class="modal-zh">阿爾法折疊</div>
+    <span class="modal-tag">AI 革命</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>Google DeepMind 開發的 AI 系統，能從胺基酸序列直接預測蛋白質的 3D 結構，準確度接近實驗水準。徹底改變結構生物學。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">里程碑</div>
+      <div class="modal-body">
+        <p>• 2018：AlphaFold 1 在 CASP13 領先</p>
+        <p>• 2020：AlphaFold 2 達到實驗精度</p>
+        <p>• 2021：開源，預測 2 億個蛋白質結構</p>
+        <p>• 2024：諾貝爾化學獎（Hassabis 等）</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">影響</div>
+      <div class="modal-body"><p>過去解一個結構要花博士生 5 年（X 光晶體繞射）。現在 AlphaFold 數秒搞定。藥物研發、酵素設計全面加速。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ATP FOLDING -->
+<div id="m-atp-folding" class="modal">
+  <a href="#folding" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#folding" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#1a1a2e;color:#ffb800">ATP</div>
+    <div class="modal-en">ATP IN FOLDING</div>
+    <div class="modal-zh">折疊需要的能量</div>
+    <span class="modal-tag">能量驅動</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>伴護蛋白的工作需要能量。Hsp70 和 GroEL 都會水解 ATP，靠這個能量循環抓放、開關，幫助蛋白質折疊。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼需要能量？</div>
+      <div class="modal-body"><p>蛋白質折疊本身會放能量（變得更穩定），但伴護蛋白要主動「介入」幫忙抓放、開關籠子，這些動作需要 ATP 提供能量。</p></div>
+    </div>
+    <div class="modal-formula">ATP → ADP + Pi + 能量<br>（Hsp70/GroEL 利用）</div>
+  </div>
+</div>
+
+<!-- DECISION -->
+<div id="m-decision" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ffb800;color:#1a1a2e">QC</div>
+    <div class="modal-en">QUALITY CONTROL</div>
+    <div class="modal-zh">品質檢查</div>
+    <span class="modal-tag">細胞品管</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>細胞會檢查每一個剛折好的蛋白質：折對了就放它去工作；折錯了就送去降解。這個機制叫「蛋白質品質控制」(PQC)。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">在哪裡進行？</div>
+      <div class="modal-body">
+        <p>• <strong>細胞質</strong>：伴護蛋白檢查</p>
+        <p>• <strong>內質網</strong>：ERQC 系統檢查分泌蛋白</p>
+        <p>• <strong>粒線體</strong>：粒線體品質控制</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">失敗的後果</div>
+      <div class="modal-body"><p>未折疊蛋白反應（UPR）啟動，如果還是無法挽救，細胞可能凋亡或產生疾病。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- CATALYSIS -->
+<div id="m-catalysis" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">CT</div>
+    <div class="modal-en">CATALYSIS</div>
+    <div class="modal-zh">酵素催化</div>
+    <span class="modal-tag">反應加速</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素加速化學反應的能力。同樣的反應，沒有酵素可能要幾天，有酵素可能毫秒就完成，加速倍數可達 10⁶ 到 10¹⁷。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">如何加速？</div>
+      <div class="modal-body">
+        <p>• 拉近反應物（鄰近效應）</p>
+        <p>• 把反應物擺在正確角度</p>
+        <p>• 穩定過渡狀態</p>
+        <p>• 提供酸鹼環境</p>
+      </div>
+    </div>
+    <div class="modal-analogy">沒有酵素的反應像爬聖母峰，有酵素就像穿越平地。</div>
+  </div>
+</div>
+
+<!-- ENZYME -->
+<div id="m-enzyme" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">E</div>
+    <div class="modal-en">ENZYME</div>
+    <div class="modal-zh">酵素</div>
+    <span class="modal-tag">生物催化劑</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>能加速化學反應的蛋白質（少數酵素是 RNA，叫核酶）。酵素自身不被消耗，可以重複使用。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">三大特性</div>
+      <div class="modal-body">
+        <p>• <strong>高效率</strong>：加速 10⁶–10¹⁷ 倍</p>
+        <p>• <strong>高專一性</strong>：只認得特定基質</p>
+        <p>• <strong>可調控</strong>：可被開關、活化、抑制</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">命名規則</div>
+      <div class="modal-body"><p>通常字尾是 -ase。例：Lipase 脂肪酶（分解脂肪）、Protease 蛋白酶（分解蛋白）、Amylase 澱粉酶。</p></div>
+    </div>
+    <div class="modal-analogy">酵素像鎖匠，幫每把鎖（反應）找到對應的鑰匙，比硬撬快得多。</div>
+  </div>
+</div>
+
+<!-- SUBSTRATE -->
+<div id="m-substrate" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ffb800;color:#1a1a2e">S</div>
+    <div class="modal-en">SUBSTRATE</div>
+    <div class="modal-zh">基質</div>
+    <span class="modal-tag">被加工的對象</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素要加工的目標分子。每個酵素只認得自己的基質（高專一性）。基質結合到活性位後被催化，變成產物。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">化學式</div>
+      <div class="modal-formula">E + S ⇌ ES → E + P<br>（E 酵素、S 基質、P 產物）</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">例子</div>
+      <div class="modal-body">
+        <p>• 乳糖酶 → 基質：乳糖</p>
+        <p>• 胃蛋白酶 → 基質：蛋白質</p>
+        <p>• ATP 合成酶 → 基質：ADP + Pi</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIVE SITE -->
+<div id="m-active" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">AS</div>
+    <div class="modal-en">ACTIVE SITE</div>
+    <div class="modal-zh">活性位</div>
+    <span class="modal-tag">催化發生的地方</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素上負責進行催化的特定區域，通常是一個凹陷的口袋。形狀和基質互補，能精準辨認並抓住基質。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">關鍵胺基酸</div>
+      <div class="modal-body">
+        <p>常見的催化胺基酸：</p>
+        <p>• <strong>His</strong>（組胺酸）：酸鹼催化</p>
+        <p>• <strong>Ser</strong>（絲胺酸）：親核攻擊</p>
+        <p>• <strong>Asp/Glu</strong>：酸鹼平衡</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">兩種模型</div>
+      <div class="modal-body">
+        <p>• <strong>鎖鑰模型</strong>：形狀完全互補</p>
+        <p>• <strong>誘導契合</strong>：基質結合後酵素稍微調整形狀（較準確）</p>
+      </div>
+    </div>
+    <div class="modal-analogy">活性位像專用工具的卡槽，只有對的工具（基質）才能放進去。</div>
+  </div>
+</div>
+
+<!-- ES COMPLEX -->
+<div id="m-es" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">ES</div>
+    <div class="modal-en">ENZYME-SUBSTRATE COMPLEX</div>
+    <div class="modal-zh">酵素-基質複合物</div>
+    <span class="modal-tag">中間狀態</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素和基質結合在一起的中間狀態，是催化反應的關鍵階段。在這個狀態下，酵素稍微改變形狀以適應基質（誘導契合）。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">化學式</div>
+      <div class="modal-formula">E + S ⇌ [ES] → [ES‡] → E + P<br>(ES‡ = 過渡狀態)</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼重要？</div>
+      <div class="modal-body"><p>ES 複合物的形成是降低活化能的關鍵。酵素穩定過渡狀態 (ES‡)，讓反應更容易發生。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT -->
+<div id="m-product" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ec4899">P</div>
+    <div class="modal-en">PRODUCT</div>
+    <div class="modal-zh">產物</div>
+    <span class="modal-tag">反應後的新分子</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素催化後，基質被改造成新的分子，就叫產物。產物離開酵素後，酵素恢復原狀，可以接待下一個基質。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">例子</div>
+      <div class="modal-body">
+        <p>• 乳糖酶 + 乳糖 → 葡萄糖 + 半乳糖</p>
+        <p>• 蛋白酶 + 蛋白質 → 多個小肽</p>
+        <p>• ATP 合成酶 + ADP + Pi → ATP</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VMAX -->
+<div id="m-vmax" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">Vm</div>
+    <div class="modal-en">Vmax · Maximum Velocity</div>
+    <div class="modal-zh">最大反應速率</div>
+    <span class="modal-tag">酵素速度上限</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素能達到的最快反應速率。當所有酵素分子都被基質佔滿時，速率就達到 Vmax，再加更多基質也沒用。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">化學式</div>
+      <div class="modal-formula">Vmax = kcat × [E]total<br>(kcat: 翻轉數)</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">kcat 是什麼？</div>
+      <div class="modal-body"><p>翻轉數（Turnover Number），一個酵素分子每秒能催化多少個基質。例：碳酸酐酶 kcat = 600,000 / 秒（生物界最快酵素之一）。</p></div>
+    </div>
+    <div class="modal-analogy">Vmax 像高速公路的車流量上限，再多車也擠不過去。</div>
+  </div>
+</div>
+
+<!-- KM -->
+<div id="m-km" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">Km</div>
+    <div class="modal-en">Km · Michaelis Constant</div>
+    <div class="modal-zh">米氏常數</div>
+    <span class="modal-tag">親和力指標</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>達到 ½ Vmax 時所需的基質濃度。<strong>Km 越小，酵素對基質的親和力越高</strong>（少量基質就能讓酵素跑到一半速率）。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">米氏方程式</div>
+      <div class="modal-formula">v = Vmax · [S] / (Km + [S])</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">和 Kd 的關係</div>
+      <div class="modal-body"><p>Km 概念上類似 Kd，但 Km 還包含催化速率的影響。當 kcat 很小時，Km ≈ Kd。</p></div>
+    </div>
+    <div class="modal-analogy">Km 像「半飽和水位」，水只要達到這個高度，水車就轉一半的速度。</div>
+  </div>
+</div>
+
+<!-- NO ENZYME -->
+<div id="m-noenzyme" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">!</div>
+    <div class="modal-en">WITHOUT ENZYME</div>
+    <div class="modal-zh">沒有酵素</div>
+    <span class="modal-tag">高活化能</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>沒有酵素的反應需要跨越很高的能量障礙（活化能 Ea），所以反應極慢，可能要幾天、幾年甚至幾百萬年。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">驚人的例子</div>
+      <div class="modal-body">
+        <p>沒有酵素時：</p>
+        <p>• 二氧化碳水合需要 30 秒</p>
+        <p>• 但有碳酸酐酶後 → 只要 0.0001 秒</p>
+        <p>• 加速 30 萬倍！</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WITH ENZYME -->
+<div id="m-withenzyme" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">✓</div>
+    <div class="modal-en">WITH ENZYME</div>
+    <div class="modal-zh">有酵素催化</div>
+    <span class="modal-tag">低活化能</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素「降低」反應需要的活化能，讓反應變得容易發生。注意：酵素不改變反應的最終結果，只改變速率。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">如何降低活化能？</div>
+      <div class="modal-body">
+        <p>① 拉近基質（鄰近效應）</p>
+        <p>② 擺對角度（方向效應）</p>
+        <p>③ 穩定過渡狀態</p>
+        <p>④ 提供酸鹼環境</p>
+        <p>⑤ 拉伸或扭曲基質</p>
+      </div>
+    </div>
+    <div class="modal-analogy">酵素像挖了一條隧道，原本要翻山越嶺的反應變成穿越隧道，省時又省力。</div>
+  </div>
+</div>
+
+<!-- SATURATION -->
+<div id="m-saturation" class="modal">
+  <a href="#catalysis" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#catalysis" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">SA</div>
+    <div class="modal-en">SATURATION</div>
+    <div class="modal-zh">飽和現象</div>
+    <span class="modal-tag">速率上限</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>當基質濃度很高時，所有酵素分子都被基質佔滿，再加更多基質也沒用，反應速率達到上限 Vmax。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼重要？</div>
+      <div class="modal-body"><p>飽和現象是生物催化和化學催化的重要差別。化學催化通常沒有飽和上限。</p></div>
+    </div>
+    <div class="modal-analogy">飽和像收銀台太多客人——收銀員（酵素）都在工作，再多客人（基質）也只能等。</div>
+  </div>
+</div>
+
+<!-- DEGRADATION -->
+<div id="m-degradation" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">DG</div>
+    <div class="modal-en">PROTEIN DEGRADATION</div>
+    <div class="modal-zh">蛋白質降解</div>
+    <span class="modal-tag">回收與清除</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>把不需要、壞掉、或錯誤折疊的蛋白質分解成胺基酸，回收再利用。是細胞「品質控制」的關鍵環節。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">兩套系統</div>
+      <div class="modal-body">
+        <p>• <strong>蛋白酶體</strong>：處理單個蛋白（小型）</p>
+        <p>• <strong>自噬-溶酶體</strong>：處理胞器和聚集體（大型）</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼必須降解？</div>
+      <div class="modal-body">
+        <p>① 清除壞掉、無用的蛋白</p>
+        <p>② 控制蛋白質的「半衰期」（調節）</p>
+        <p>③ 提供胺基酸給合成新蛋白用</p>
+        <p>④ 抗壓、抗感染、抗老化</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TARGET -->
+<div id="m-target" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ffb800;color:#1a1a2e">T</div>
+    <div class="modal-en">TARGET PROTEIN</div>
+    <div class="modal-zh">待降解蛋白</div>
+    <span class="modal-tag">被選中的蛋白</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>被細胞挑出來要降解的蛋白質。可能是壞掉的、過期的、不再需要的，或是時候到了該換班的。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">如何被挑中？</div>
+      <div class="modal-body">
+        <p>• 折疊錯誤被伴護蛋白標記</p>
+        <p>• 含有「降解信號」（如 N 端某些胺基酸）</p>
+        <p>• 細胞週期依賴（如 cyclin 蛋白）</p>
+        <p>• 損傷修飾（氧化、糖基化異常）</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- E1 E2 E3 -->
+<div id="m-e1e2e3" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#9333ea">E3</div>
+    <div class="modal-en">E1 / E2 / E3 Ubiquitin Ligases</div>
+    <div class="modal-zh">泛素連接酵素</div>
+    <span class="modal-tag">泛素接力賽</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>三種酵素接力把泛素接到目標蛋白上，就像三個人合力給目標貼上「死亡標籤」。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">三步驟</div>
+      <div class="modal-body">
+        <p>① <strong>E1（活化酵素）</strong>：用 ATP 活化泛素</p>
+        <p>② <strong>E2（接合酵素）</strong>：接收活化的泛素</p>
+        <p>③ <strong>E3（連接酵素）</strong>：認出目標蛋白，把泛素轉給它</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">數量比例</div>
+      <div class="modal-body">
+        <p>• E1：1-2 種（人類）</p>
+        <p>• E2：~40 種</p>
+        <p>• E3：~600+ 種（決定特異性的關鍵）</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">諾貝爾獎</div>
+      <div class="modal-body"><p>2004 年化學獎（Hershko, Ciechanover, Rose）。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- POLYUBIQUITIN -->
+<div id="m-polyub" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">UbN</div>
+    <div class="modal-en">POLYUBIQUITINATION</div>
+    <div class="modal-zh">多泛素化</div>
+    <span class="modal-tag">死亡信號</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>不只一個泛素，而是接了一串（至少 4 個）泛素的鏈。這個鏈是進入蛋白酶體的「通行證」。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">不同的鏈代表不同訊息</div>
+      <div class="modal-body">
+        <p>• <strong>K48 鏈</strong>：送去蛋白酶體降解</p>
+        <p>• <strong>K63 鏈</strong>：DNA 修復、信號傳遞</p>
+        <p>• <strong>單泛素</strong>：受體內吞、組蛋白修飾</p>
+      </div>
+    </div>
+    <div class="modal-analogy">多泛素鏈像不同顏色的標籤——紅色是「請銷毀」，藍色可能是「請修理」。</div>
+  </div>
+</div>
+
+<!-- UBIQUITIN -->
+<div id="m-ubiquitin" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">Ub</div>
+    <div class="modal-en">UBIQUITIN</div>
+    <div class="modal-zh">泛素</div>
+    <span class="modal-tag">死亡標籤</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>76 個胺基酸的小蛋白，貼在目標蛋白上當作標記。多個泛素接成鏈時，就是「死亡標籤」，告訴蛋白酶體「這個要銷毀」。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">名字由來</div>
+      <div class="modal-body"><p>Ubiquitous = 無所不在的。1975 年發現，存在於所有真核細胞的所有組織。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">化學連接</div>
+      <div class="modal-formula">泛素 C 端 Gly + 目標 Lys-NH₂<br>→ 異肽鍵 (Isopeptide bond)</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">不只是降解標籤</div>
+      <div class="modal-body"><p>泛素也參與 DNA 修復、信號傳遞、受體內吞等多種功能，是細胞中萬用的調控信號。</p></div>
+    </div>
+    <div class="modal-analogy">泛素像郵局的條碼貼紙，貼上去就決定包裹要送去哪裡（銷毀、修理、轉運）。</div>
+  </div>
+</div>
+
+<!-- PROTEASOME -->
+<div id="m-proteasome" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#9333ea">26S</div>
+    <div class="modal-en">26S PROTEASOME</div>
+    <div class="modal-zh">蛋白酶體</div>
+    <span class="modal-tag">細胞碎紙機</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>桶狀的巨大蛋白質複合體，是細胞的「碎紙機」。把貼上多泛素標籤的蛋白拉進去，切成短肽片段。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">結構</div>
+      <div class="modal-body">
+        <p>• <strong>20S 核心</strong>（桶身）：含蛋白酶活性</p>
+        <p>• <strong>19S 帽子</strong>（兩端）：辨認泛素、解開蛋白</p>
+        <p>• 共 33 個次單元，2.5 MDa</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼是桶狀？</div>
+      <div class="modal-body"><p>把蛋白酶活性藏在內部，避免亂咬細胞裡其他正常蛋白。只有貼了標籤、被拉進桶內的才會被切。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">藥物應用</div>
+      <div class="modal-body"><p>蛋白酶體抑制劑 Bortezomib（萬科）治療多發性骨髓瘤——癌細胞依賴蛋白酶體清除廢蛋白，抑制它就能讓癌細胞死於蛋白堆積。</p></div>
+    </div>
+    <div class="modal-analogy">蛋白酶體像牆角的碎紙機，要先把紙貼上「銷毀」標籤（泛素），才能塞進去切碎。</div>
+  </div>
+</div>
+
+<!-- PEPTIDE -->
+<div id="m-peptide" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#06b6d4">P</div>
+    <div class="modal-en">PEPTIDE FRAGMENTS</div>
+    <div class="modal-zh">短肽片段</div>
+    <span class="modal-tag">中間產物</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>蛋白酶體把蛋白切成 3-25 個胺基酸的短肽片段。這些片段再被進一步分解成單一胺基酸，回收使用。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">特殊用途</div>
+      <div class="modal-body"><p>有些短肽會被 MHC I 分子捕獲，呈現在細胞表面，讓免疫系統檢查細胞內部狀況（免疫監視）。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- AMINO ACIDS -->
+<div id="m-aa" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#06b6d4">AA</div>
+    <div class="modal-en">AMINO ACIDS</div>
+    <div class="modal-zh">胺基酸</div>
+    <span class="modal-tag">蛋白質磚塊</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>蛋白質的基本組成單元，共 20 種。降解後產生的胺基酸進入細胞質胺基酸池，可以被核糖體用來合成新蛋白質，完成完整循環。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">通用結構</div>
+      <div class="modal-formula">H₂N–CHR–COOH<br>(R = 側鏈，20 種不同)</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">必需 vs 非必需</div>
+      <div class="modal-body">
+        <p>• <strong>9 種必需</strong>：身體無法合成，必須從食物來</p>
+        <p>• <strong>11 種非必需</strong>：身體能自己製造</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTOPHAGY -->
+<div id="m-autophagy" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#9333ea">AU</div>
+    <div class="modal-en">AUTOPHAGY</div>
+    <div class="modal-zh">自噬作用</div>
+    <span class="modal-tag">大型清除系統</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>細胞「吃自己」的過程。形成雙膜囊泡（自噬體），把要清除的胞器或聚集體包起來，送到溶酶體消化。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">字源</div>
+      <div class="modal-body"><p>Auto = 自己｜Phagy = 吃。希臘文「自食」。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">何時啟動？</div>
+      <div class="modal-body">
+        <p>• <strong>飢餓</strong>：缺營養時拆舊回收</p>
+        <p>• <strong>感染</strong>：清除細胞內病原體</p>
+        <p>• <strong>老化</strong>：清除損傷胞器</p>
+        <p>• <strong>運動</strong>：促進代謝健康</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">諾貝爾獎</div>
+      <div class="modal-body"><p>2016 年醫學獎（Yoshinori Ohsumi 大隅良典）。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">健康應用</div>
+      <div class="modal-body"><p>間歇性斷食、運動、雷帕黴素（Rapamycin）都能促進自噬，可能延緩老化和神經退化。</p></div>
+    </div>
+    <div class="modal-analogy">自噬像家裡大掃除——把舊家具（壞胞器）打包送資源回收場（溶酶體）。</div>
+  </div>
+</div>
+
+<!-- LYSOSOME -->
+<div id="m-lysosome" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ec4899">LY</div>
+    <div class="modal-en">LYSOSOME</div>
+    <div class="modal-zh">溶酶體</div>
+    <span class="modal-tag">細胞的胃</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>細胞內的「消化袋」，含有 60+ 種水解酵素，pH 約 4.5（酸性環境）。能消化送進來的任何物質。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼是酸性？</div>
+      <div class="modal-body"><p>溶酶體內的水解酵素只在酸性下工作。萬一溶酶體破裂酵素跑到細胞質（中性 pH 7），酵素就失去活性，避免細胞被自己消化。安全設計。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">化學環境</div>
+      <div class="modal-formula">pH ≈ 4.5<br>由 V-type ATPase 維持</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">疾病連結</div>
+      <div class="modal-body"><p>溶酶體儲積症：水解酵素缺失，特定物質在溶酶體內堆積。例：Tay-Sachs 病、Gaucher 病。</p></div>
+    </div>
+    <div class="modal-analogy">溶酶體像家裡的廚餘桶，酸酸的環境讓細菌不敢來，裡面有強力消化酵素分解所有有機物。</div>
+  </div>
+</div>
+
+<!-- DAMAGED ORGANELLE -->
+<div id="m-damaged" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff6b35">!</div>
+    <div class="modal-en">DAMAGED ORGANELLE</div>
+    <div class="modal-zh">受損胞器</div>
+    <span class="modal-tag">自噬目標</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>受損或老化的胞器（如粒線體），如果累積太多會傷害細胞。自噬系統會專門挑出來清除。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">針對性自噬</div>
+      <div class="modal-body">
+        <p>• <strong>Mitophagy</strong>：清除壞掉的粒線體</p>
+        <p>• <strong>Pexophagy</strong>：清除過氧化物酶體</p>
+        <p>• <strong>Reticulophagy</strong>：清除內質網</p>
+        <p>• <strong>Xenophagy</strong>：清除入侵的細菌、病毒</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PHAGOPHORE -->
+<div id="m-phagophore" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#9333ea">PH</div>
+    <div class="modal-en">PHAGOPHORE</div>
+    <div class="modal-zh">吞噬泡（前體）</div>
+    <span class="modal-tag">自噬第一步</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>自噬的初始膜結構，呈半月形。逐漸延展、彎曲，把要清除的物質包起來。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">起源</div>
+      <div class="modal-body"><p>來自內質網、高基氏體、細胞膜等多種膜源。由 ATG 蛋白系統招募脂質形成新膜。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- AUTOPHAGOSOME -->
+<div id="m-autophagosome" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#9333ea">AS</div>
+    <div class="modal-en">AUTOPHAGOSOME</div>
+    <div class="modal-zh">自噬體</div>
+    <span class="modal-tag">雙膜囊泡</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>由 phagophore 完全包起來形成的雙膜囊泡，裡面裝著要清除的物質。接下來會和溶酶體融合，進行消化。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼是雙膜？</div>
+      <div class="modal-body"><p>內膜接觸要清除的物質，外膜和溶酶體融合。融合後內膜也被分解，內容物暴露給水解酵素。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">大小</div>
+      <div class="modal-body"><p>直徑約 0.5-1 微米，比泛素-蛋白酶體系統處理的對象大很多。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ATP DEGRADATION -->
+<div id="m-atp-degrad" class="modal">
+  <a href="#degradation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#degradation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#1a1a2e;color:#ffb800">ATP</div>
+    <div class="modal-en">ATP IN DEGRADATION</div>
+    <div class="modal-zh">降解所需能量</div>
+    <span class="modal-tag">能量驅動</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>泛素-蛋白酶體系統需要 ATP 在三個地方：① E1 活化泛素 ② 19S 帽子解開蛋白質結構 ③ 把蛋白質拉進蛋白酶體桶內。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼降解需要能量？</div>
+      <div class="modal-body"><p>蛋白質降解必須精確控制，否則會誤殺重要蛋白。靠 ATP 確保只有正確標記的蛋白才會被分解。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- AMYLOID -->
+<div id="m-amyloid" class="modal">
+  <a href="#disease" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#disease" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">AM</div>
+    <div class="modal-en">AMYLOID</div>
+    <div class="modal-zh">類澱粉聚集體</div>
+    <span class="modal-tag">疾病相關聚集</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>錯誤折疊的蛋白質形成的特殊纖維結構。富含 β-摺疊堆疊，極為穩定，幾乎無法被細胞分解。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">名字由來</div>
+      <div class="modal-body"><p>Amyloid = amylum（澱粉）+ -oid（樣的）。19 世紀發現時誤以為是澱粉而得名，實際上是蛋白質。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">疾病關聯</div>
+      <div class="modal-body">
+        <p>• 阿茲海默症：β-類澱粉蛋白 (Aβ)</p>
+        <p>• 帕金森氏症：α-突觸核蛋白</p>
+        <p>• 第二型糖尿病：胰島素類澱粉</p>
+        <p>• 普利昂病：PrP^Sc</p>
+      </div>
+    </div>
+    <div class="modal-analogy">類澱粉像超強力膠黏成的紙團，幾乎無法散開，只能堆積。</div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <p>蛋白質三百天 · Phase Review · 折疊 · 降解 · 催化</p>
+  <p>Folding · Catalysis · Degradation — 蛋白質生命循環的完整圖景</p>
+  <p style="margin-top:12px;color:#888;font-size:12px">所有圖中元素 / 角色卡片可點擊查看詳細說明｜底部詞典 details/summary 摺疊</p>
+</footer>
+
+</body>
+</html>
