@@ -1,103 +1,740 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
-        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
-        .options-list { list-style: none; padding: 0; }
-        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
-        .option-item:hover { background-color: #f9f9f9; }
-        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
-        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
-        .special-btn:hover { background-color: #f0f0f0; }
-        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
-        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
-        .tool-link:hover { color: #333; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
-        .overlay-content { max-width: 500px; margin: 0 auto; }
-        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
-        .close-btn:hover { color: #666; }
-        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
-        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
-        .eg-item { margin-bottom: 10px; }
-        .kk-text { color: #666; font-style: italic; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中國電動車發展 × 原子習慣 — 完整20回合課程表</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&family=Oswald:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:    #fdf6ec;
+  --parchment:#f5ead6;
+  --sand:     #e8d5b0;
+  --orange1:  #f97316;
+  --orange2:  #ea580c;
+  --amber1:   #f59e0b;
+  --amber2:   #d97706;
+  --red1:     #ef4444;
+  --red2:     #dc2626;
+  --rust:     #c2410c;
+  --terracotta:#b45309;
+  --warm-brown:#78350f;
+  --ink:      #1c0a00;
+  --ink2:     #2d1200;
+  --muted:    #92400e;
+  --line-green:#06c755;
+
+  --phase1: #f97316;
+  --phase2: #f59e0b;
+  --phase3: #ef4444;
+  --phase4: #a16207;
+  --phase5: #dc2626;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:'Noto Sans TC',sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height:1.7;
+  background-image:
+    radial-gradient(ellipse at 10% 0%, rgba(249,115,22,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 100%, rgba(245,158,11,0.10) 0%, transparent 50%);
+}
+
+/* ─── NAV BAR ─── */
+.nav-banner {
+  background: linear-gradient(135deg, #7c2d12 0%, #9a3412 40%, #b45309 100%);
+  color:#fff;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+.nav-banner::before {
+  content:'';
+  position:absolute;inset:0;
+  background: repeating-linear-gradient(
+    -45deg, transparent, transparent 12px,
+    rgba(255,255,255,0.03) 12px, rgba(255,255,255,0.03) 24px
+  );
+}
+.nav-inner {
+  max-width:900px;
+  margin:0 auto;
+  padding:18px 20px;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  position:relative;
+}
+.nav-label {
+  font-size:10px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+  font-weight:500;
+  margin-bottom:4px;
+}
+.nav-links {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.nav-link {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  border-radius:10px;
+  padding:10px 16px;
+  flex:1;
+  min-width:200px;
+  transition:transform 0.2s, box-shadow 0.2s;
+}
+.nav-link:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,0.25); }
+.nav-link.echo {
+  background: linear-gradient(135deg, rgba(249,115,22,0.35), rgba(234,88,12,0.45));
+  border:1px solid rgba(249,115,22,0.5);
+}
+.nav-link.popup {
+  background: linear-gradient(135deg, rgba(245,158,11,0.35), rgba(217,119,6,0.45));
+  border:1px solid rgba(245,158,11,0.5);
+}
+.nav-link.line-btn {
+  background: linear-gradient(135deg, rgba(6,199,85,0.25), rgba(5,150,60,0.35));
+  border:1px solid rgba(6,199,85,0.4);
+  flex:0 0 auto;
+  min-width:0;
+}
+.nav-link .link-icon {
+  font-size:22px;
+  min-width:28px;
+  text-align:center;
+}
+.nav-link .link-text .lt { font-size:13px;font-weight:700;color:#fff;display:block;line-height:1.3; }
+.nav-link .link-text .ls { font-size:11px;color:rgba(255,255,255,0.7);display:block;margin-top:2px; }
+
+/* ─── HERO ─── */
+.hero {
+  background: linear-gradient(160deg, #431407 0%, #7c2d12 35%, #9a3412 65%, #b45309 100%);
+  color:#fff;
+  padding:52px 20px 44px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::after {
+  content:'⚡';
+  position:absolute;
+  font-size:260px;
+  opacity:0.04;
+  right:-30px; bottom:-40px;
+  line-height:1;
+  pointer-events:none;
+}
+.hero-badge {
+  display:inline-block;
+  background:rgba(249,115,22,0.3);
+  border:1px solid rgba(249,115,22,0.6);
+  color: #fed7aa;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  padding:5px 16px;
+  border-radius:30px;
+  margin-bottom:20px;
+}
+.hero h1 {
+  font-family:'Oswald',sans-serif;
+  font-size:clamp(30px,6.5vw,62px);
+  font-weight:700;
+  letter-spacing:2px;
+  line-height:1.1;
+  margin-bottom:14px;
+}
+.hero h1 em { color:#fbbf24; font-style:normal; }
+.hero-sub {
+  font-family:'Noto Serif TC',serif;
+  font-size:15px;
+  color:rgba(255,255,255,0.75);
+  margin-bottom:20px;
+  font-style:italic;
+}
+.hero-stats {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:10px;
+  margin-top:24px;
+}
+.hstat {
+  background:rgba(255,255,255,0.1);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:10px;
+  padding:10px 20px;
+  text-align:center;
+  min-width:110px;
+}
+.hstat .hn { font-family:'Oswald',sans-serif;font-size:26px;font-weight:700;color:#fbbf24;line-height:1; }
+.hstat .hl { font-size:11px;color:rgba(255,255,255,0.65);margin-top:3px; }
+
+/* ─── LAYOUT ─── */
+.container { max-width:900px;margin:0 auto;padding:0 16px; }
+
+/* ─── PHASE HEADERS ─── */
+.phase-block { margin:36px 0 0; }
+.phase-header {
+  display:flex;
+  align-items:center;
+  gap:14px;
+  padding:14px 20px;
+  border-radius:12px 12px 0 0;
+  margin-bottom:0;
+}
+.phase-header .ph-num {
+  font-family:'Oswald',sans-serif;
+  font-size:36px;
+  font-weight:700;
+  opacity:0.4;
+  line-height:1;
+  min-width:36px;
+}
+.phase-header .ph-txt h2 {
+  font-family:'Noto Serif TC',serif;
+  font-size:17px;
+  font-weight:900;
+  color:#fff;
+}
+.phase-header .ph-txt p { font-size:12px;color:rgba(255,255,255,0.7);margin-top:2px; }
+.ph-badge {
+  margin-left:auto;
+  background:rgba(255,255,255,0.2);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  padding:4px 12px;
+  border-radius:20px;
+  white-space:nowrap;
+}
+
+.ph1 { background: linear-gradient(135deg, #c2410c, #ea580c); }
+.ph2 { background: linear-gradient(135deg, #b45309, #d97706); }
+.ph3 { background: linear-gradient(135deg, #b91c1c, #dc2626); }
+.ph4 { background: linear-gradient(135deg, #78350f, #92400e); }
+.ph5 { background: linear-gradient(135deg, #9a3412, #c2410c); }
+
+/* ─── ROUND GRID ─── */
+.rounds-wrap {
+  background:var(--parchment);
+  border:1px solid var(--sand);
+  border-top:none;
+  border-radius:0 0 12px 12px;
+  padding:16px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:12px;
+}
+
+/* ─── ROUND CARD ─── */
+.rcard {
+  background:#fff;
+  border:1px solid var(--sand);
+  border-radius:10px;
+  padding:16px 16px 14px 20px;
+  position:relative;
+  overflow:hidden;
+  transition:transform 0.18s, box-shadow 0.18s;
+}
+.rcard:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(120,53,15,0.13); }
+.rcard-bar {
+  position:absolute;
+  top:0;left:0;
+  width:4px;height:100%;
+  border-radius:10px 0 0 10px;
+}
+.rcard .rnum {
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  margin-bottom:5px;
+}
+.rcard .rtitle {
+  font-family:'Noto Serif TC',serif;
+  font-size:14px;
+  font-weight:900;
+  color:var(--ink);
+  line-height:1.4;
+  margin-bottom:7px;
+}
+.rcard .rfocus {
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.65;
+}
+.rcard .rtag {
+  display:inline-block;
+  font-size:10.5px;
+  font-weight:700;
+  padding:3px 9px;
+  border-radius:20px;
+  margin-top:9px;
+}
+
+/* card color variants */
+.c-orange .rcard-bar  { background:linear-gradient(to bottom,#f97316,#ea580c); }
+.c-orange .rnum       { color:#c2410c; }
+.c-orange .rtag       { background:#fff7ed;color:#c2410c;border:1px solid #fed7aa; }
+
+.c-amber .rcard-bar   { background:linear-gradient(to bottom,#f59e0b,#d97706); }
+.c-amber .rnum        { color:#b45309; }
+.c-amber .rtag        { background:#fffbeb;color:#b45309;border:1px solid #fde68a; }
+
+.c-red .rcard-bar     { background:linear-gradient(to bottom,#ef4444,#dc2626); }
+.c-red .rnum          { color:#b91c1c; }
+.c-red .rtag          { background:#fff1f2;color:#b91c1c;border:1px solid #fecdd3; }
+
+.c-brown .rcard-bar   { background:linear-gradient(to bottom,#92400e,#78350f); }
+.c-brown .rnum        { color:#78350f; }
+.c-brown .rtag        { background:#fef3c7;color:#78350f;border:1px solid #fde68a; }
+
+.c-rust .rcard-bar    { background:linear-gradient(to bottom,#c2410c,#9a3412); }
+.c-rust .rnum         { color:#9a3412; }
+.c-rust .rtag         { background:#fff7ed;color:#9a3412;border:1px solid #fdba74; }
+
+/* new badge */
+.new-badge {
+  position:absolute;
+  top:9px;right:9px;
+  background:linear-gradient(135deg,#f97316,#dc2626);
+  color:#fff;
+  font-size:9.5px;
+  font-weight:700;
+  padding:2px 7px;
+  border-radius:10px;
+  letter-spacing:0.5px;
+}
+
+/* ─── FOOTER NAV ─── */
+.footer-section {
+  background: linear-gradient(135deg, #431407 0%, #7c2d12 50%, #b45309 100%);
+  margin-top:48px;
+  padding:32px 20px;
+  position:relative;
+  overflow:hidden;
+}
+.footer-section::before {
+  content:'🚗';
+  position:absolute;
+  font-size:180px;
+  opacity:0.05;
+  left:-20px;top:-20px;
+  pointer-events:none;
+}
+.footer-inner { max-width:900px;margin:0 auto; }
+.footer-title {
+  font-family:'Noto Serif TC',serif;
+  font-size:14px;
+  font-weight:900;
+  color:rgba(255,255,255,0.5);
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+  text-align:center;
+}
+.footer-links { display:flex;flex-wrap:wrap;gap:12px;justify-content:center; }
+
+.footer-copy {
+  text-align:center;
+  font-size:12px;
+  color:rgba(255,255,255,0.4);
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+
+/* ─── SUMMARY BAR ─── */
+.summary-strip {
+  background:linear-gradient(135deg, #fff7ed, #fef3c7);
+  border:1px solid var(--sand);
+  border-radius:14px;
+  padding:20px;
+  margin:28px 0 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center;
+}
+.ss-item { text-align:center; padding:8px 18px; }
+.ss-num { font-family:'Oswald',sans-serif;font-size:30px;font-weight:700;color:var(--orange2);line-height:1; }
+.ss-label { font-size:11.5px;color:var(--muted);margin-top:3px; }
+
+/* ─── MOBILE ─── */
+@media(max-width:600px){
+  .rounds-wrap { grid-template-columns:1fr; }
+  .nav-links { flex-direction:column; }
+  .nav-link { min-width:0; }
+  .hero h1 { font-size:28px; }
+  .hstat { min-width:80px; padding:8px 12px; }
+}
+</style>
 </head>
 <body>
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
-    <div class="question">The detective visited the wife of the victim to offer his sympathy, but his _______ motive was to examine her response to his questions.</div>
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) brief <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) underlying <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) durable <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) lengthy <span class="info-icon">ⓘ</span></div>
+
+<!-- ════════════════════════════════════════
+     TOP NAV BANNER
+════════════════════════════════════════ -->
+<div class="nav-banner">
+  <div class="nav-inner">
+    <div class="nav-label">📅 2025 七月開課 × 個人聯絡</div>
+    <div class="nav-links">
+
+      <a class="nav-link echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+        <span class="link-icon">🔁</span>
+        <span class="link-text">
+          <span class="lt">錯中學 ECHO 計劃</span>
+          <span class="ls">七月開課 · 從錯誤中建立真正的學習迴路</span>
+        </span>
+      </a>
+
+      <a class="nav-link popup" href="https://linwayet.github.io/popup/index" target="_blank">
+        <span class="link-icon">📊</span>
+        <span class="link-text">
+          <span class="lt">學生分析工具</span>
+          <span class="ls">七月開課 · 深度了解每位學生的學習現況</span>
+        </span>
+      </a>
+
+      <a class="nav-link line-btn" href="https://line.me/ti/p/~linwayet" target="_blank">
+        <span class="link-icon">💬</span>
+        <span class="link-text">
+          <span class="lt">LINE 聯絡</span>
+          <span class="ls">@linwayet</span>
+        </span>
+      </a>
+
     </div>
-    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
-    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+  </div>
 </div>
-<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
-<script>
-    const data = {
-        'A': { 
-            title: '(A) brief', 
-            desc: '解釋：簡短的；簡潔的；短暫的；扼要的', 
-            detail: '<div class="example-box"><div class="eg-item">1. Please give me a <b>brief</b> summary of the report.<br>(請給我一份簡潔的報告摘要。)</div><div class="eg-item">2. The meeting was <b>brief</b> and productive.<br>(會議簡短但富有成效。)</div><div class="eg-item">3. I only have a <b>brief</b> moment to talk.<br>(我只有片刻的時間談話。)</div></div>' 
-        },
-        'B': { 
-            title: '(B) underlying', 
-            desc: '解釋：潛在的；隱藏的；根本的；下層的；基礎的', 
-            detail: '<div class="example-box"><div class="eg-item">1. There is an <b>underlying</b> issue that needs to be addressed.<br>(有一個潛在的問題需要解決。)</div><div class="eg-item">2. The <b>underlying</b> cause of the problem is still unknown.<br>(問題的根本原因仍然未知。)</div><div class="eg-item">3. His <b>underlying</b> fear is that he won\'t be accepted.<br>(他潛在的恐懼是他不會被接受。)</div></div>' 
-        },
-        'C': { 
-            title: '(C) durable', 
-            desc: '解釋：耐久的；耐用的；持久的；牢固的', 
-            detail: '<div class="example-box"><div class="eg-item">1. This <b>durable</b> material can last for years.<br>(這種耐用的材料可以使用多年。)</div><div class="eg-item">2. We need a <b>durable</b> solution to this problem.<br>(我們需要一個持久的解決方案。)</div><div class="eg-item">3. This <b>durable</b> fabric is perfect for outdoor use.<br>(這種耐久的布料非常適合戶外使用。)</div></div>' 
-        },
-        'D': { 
-            title: '(D) lengthy', 
-            desc: '解釋：冗長的；漫長的；長時間的；冗詞贅句的', 
-            detail: '<div class="example-box"><div class="eg-item">1. The <b>lengthy</b> speech put many people to sleep.<br>(冗長的演講使許多人睡著了。)</div><div class="eg-item">2. After a <b>lengthy</b> investigation, they found the truth.<br>(經過漫長的調查，他們發現了真相。)</div><div class="eg-item">3. The contract contains <b>lengthy</b> terms and conditions.<br>(合同包含冗長的條款和條件。)</div></div>' 
-        },
-        'E': { 
-            title: '✓ 正確答案：(B) underlying', 
-            desc: '詳細解析：題目說偵探訪問受害者的妻子表面上是為了表示同情，但「隱藏的」或「潛在的」動機是檢查她對問題的反應。(B) underlying 正是表示「潛在的；隱藏在表面下的」，完美描述了偵探真實但隱藏的目的。', 
-            example: '<b>為什麼不選其他選項？</b><br>• (A) brief：簡短，無法用於描述隱藏的動機<br>• (C) durable：耐久，完全無關，無法修飾動機<br>• (D) lengthy：冗長，不符合句意，與隱藏無關' 
-        },
-        'F': { 
-            title: '林威老師的話 - 衍生詞與音標', 
-            detail: '<h4>1. underlie (動詞)</h4><p class="kk-text">KK: [ˌʌndɚˈlaɪ]</p><p>中文：位於...下面；是...的基礎；潛在；隱藏在...</p><h4>2. underline (動詞)</h4><p class="kk-text">KK: [ˌʌndɚˈlaɪn]</p><p>中文：強調；著重指出；在...下劃線</p>' 
-        },
-        'G': { 
-            title: '衍生詞更多例句', 
-            detail: '<div class="example-box"><div class="eg-item">1. What <b>underlies</b> this strange behavior?<br>(是什麼導致了這種奇怪的行為？)</div></div><div class="example-box"><div class="eg-item">2. The principle that <b>underlies</b> our company is integrity.<br>(支撐我們公司的原則是誠實。)</div></div><div class="example-box"><div class="eg-item">3. Please <b>underline</b> the important words in the text.<br>(請在文本中的重要詞彙下方劃線。)</div></div><div class="example-box"><div class="eg-item">4. The report <b>underlines</b> the importance of education.<br>(這份報告強調了教育的重要性。)</div></div>' 
-        },
-        'H': { 
-            title: '高三學測必備片語', 
-            detail: '<h4>1. offer sympathy (表示同情；表達哀悼)</h4><p>例句: I came to <b>offer my sympathy</b> for your loss.<br>(我來為你的損失表達同情。)</p><h4>2. examine response (檢查回應；觀察反應)</h4><p>例句: The teacher will <b>examine your response</b> to the question.<br>(老師將檢查你對問題的回應。)</p><h4>3. true/real/underlying motive (真實的動機；潛在的目的)</h4><p>例句: His <b>underlying motive</b> was to gain power and influence.<br>(他潛在的動機是獲得權力和影響力。)</p>' 
-        }
-    };
-    function showOverlay(key) { 
-        const item = data[key]; 
-        let html = `<div class="overlay-title">${item.title}</div>`; 
-        if(item.desc) html += `<p>${item.desc}</p>`; 
-        if(item.detail) html += `<div>${item.detail}</div>`; 
-        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
-        document.getElementById('contentArea').innerHTML = html; 
-        document.getElementById('infoOverlay').style.display = 'block'; 
-    }
-    function closeOverlay() { 
-        document.getElementById('infoOverlay').style.display = 'none'; 
-    }
-</script>
+
+<!-- ════════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-badge">原子習慣 × 時事英文 × 科技產業</div>
+  <h1>中國電動車發展<br><em>完整20回合課程表</em></h1>
+  <p class="hero-sub">從石油危機到21世紀科技霸主——以《原子習慣》為學習框架</p>
+  <div class="hero-stats">
+    <div class="hstat"><div class="hn">20</div><div class="hl">完整回合</div></div>
+    <div class="hstat"><div class="hn">5</div><div class="hl">學習階段</div></div>
+    <div class="hstat"><div class="hn">15–20<span style="font-size:14px">分</span></div><div class="hl">每回合</div></div>
+    <div class="hstat"><div class="hn">+8</div><div class="hl">新增零件模塊</div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════════ -->
+<div class="container">
+
+  <div class="summary-strip">
+    <div class="ss-item"><div class="ss-num">Phase 1–4</div><div class="ss-label">原版12回合：宏觀產業視角</div></div>
+    <div class="ss-item" style="padding:8px 0;font-size:22px;color:#d97706;">＋</div>
+    <div class="ss-item"><div class="ss-num">Phase 5</div><div class="ss-label">新增8回合：EV零件深度解構</div></div>
+  </div>
+
+  <!-- ─── PHASE 1 ─── -->
+  <div class="phase-block">
+    <div class="phase-header ph1">
+      <div class="ph-num">01</div>
+      <div class="ph-txt">
+        <h2>基礎建構 Foundation</h2>
+        <p>大局觀 × 原子習慣導入 × 複利效應起點</p>
+      </div>
+      <span class="ph-badge">回合 01–03</span>
+    </div>
+    <div class="rounds-wrap">
+
+      <div class="rcard c-orange">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 01</div>
+        <div class="rtitle">石油危機 × EV崛起：大局觀</div>
+        <div class="rfocus">全球能源格局、伊朗戰爭衝擊、中國為何能免疫？導入「系統 vs 目標」概念</div>
+        <span class="rtag">原子習慣導入</span>
+      </div>
+
+      <div class="rcard c-orange">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 02</div>
+        <div class="rtitle">中國EV發展史：複利的起點</div>
+        <div class="rfocus">2000年代政府投資 → 2010年代基礎設施 → 2020年代爆發；對應《原子習慣》複利效應時間線</div>
+        <span class="rtag">習慣複利</span>
+      </div>
+
+      <div class="rcard c-orange">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 03</div>
+        <div class="rtitle">BYD比亞迪：習慣身份認同</div>
+        <div class="rfocus">從電池製造商到全球最大EV廠的轉型；「基於身份認同的習慣改變」</div>
+        <span class="rtag">身份認同</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── PHASE 2 ─── -->
+  <div class="phase-block">
+    <div class="phase-header ph2">
+      <div class="ph-num">02</div>
+      <div class="ph-txt">
+        <h2>產業深挖 Industry Deep Dive</h2>
+        <p>四大法則實際應用 × 電池・製造・智能・充電</p>
+      </div>
+      <span class="ph-badge">回合 04–07</span>
+    </div>
+    <div class="rounds-wrap">
+
+      <div class="rcard c-amber">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 04</div>
+        <div class="rtitle">電池技術 × 供應鏈掌控</div>
+        <div class="rfocus">鋰電池、磷酸鐵鋰、固態電池；CATL全球主導；稀土資源布局；Make It Easy法則</div>
+        <span class="rtag">技術經濟</span>
+      </div>
+
+      <div class="rcard c-amber">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 05</div>
+        <div class="rtitle">自動化生產 × 規模經濟</div>
+        <div class="rfocus">高度自動化工廠、燈塔工廠概念、邊際成本下降；「讓它容易執行」降低摩擦力</div>
+        <span class="rtag">製造業</span>
+      </div>
+
+      <div class="rcard c-amber">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 06</div>
+        <div class="rtitle">智能化 × 軟體定義汽車</div>
+        <div class="rfocus">OTA更新、智能駕駛、車載AI；華為、小米入局；科技公司 vs 傳統車廠的習慣系統差異</div>
+        <span class="rtag">科技融合</span>
+      </div>
+
+      <div class="rcard c-amber">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 07</div>
+        <div class="rtitle">充電生態系統 × 環境設計</div>
+        <div class="rfocus">全國充電網絡、換電模式、家充 vs 公共充電；「設計環境讓好習慣顯而易見」</div>
+        <span class="rtag">環境設計</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── PHASE 3 ─── -->
+  <div class="phase-block">
+    <div class="phase-header ph3">
+      <div class="ph-num">03</div>
+      <div class="ph-txt">
+        <h2>地緣政治 Geopolitics</h2>
+        <p>出海策略 × 貿易戰 × 歐洲角力</p>
+      </div>
+      <span class="ph-badge">回合 08–10</span>
+    </div>
+    <div class="rounds-wrap">
+
+      <div class="rcard c-red">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 08</div>
+        <div class="rtitle">出海策略 × 軟實力輸出</div>
+        <div class="rfocus">東南亞、歐洲、非洲市場；Q1出口年增78%；EV作為地緣政治工具；習慣系統的對外輸出</div>
+        <span class="rtag">全球布局</span>
+      </div>
+
+      <div class="rcard c-red">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 09</div>
+        <div class="rtitle">美中貿易戰 × 關稅壁壘</div>
+        <div class="rfocus">美國高關稅、de facto embargo、70位議員聯署；「增加摩擦力」如何阻止好習慣形成</div>
+        <span class="rtag">貿易政策</span>
+      </div>
+
+      <div class="rcard c-red">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 10</div>
+        <div class="rtitle">歐洲戰場 × 中美角力</div>
+        <div class="rfocus">EU反補貼調查、德國車廠危機、Volkswagen困境；老習慣（燃油車）vs 新習慣（EV）的競爭</div>
+        <span class="rtag">歐洲市場</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── PHASE 4 ─── -->
+  <div class="phase-block">
+    <div class="phase-header ph4">
+      <div class="ph-num">04</div>
+      <div class="ph-txt">
+        <h2>未來展望 Future Outlook</h2>
+        <p>能源轉型 × 21世紀格局總回顧</p>
+      </div>
+      <span class="ph-badge">回合 11–12</span>
+    </div>
+    <div class="rounds-wrap">
+
+      <div class="rcard c-brown">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 11</div>
+        <div class="rtitle">能源轉型 × 氣候賭注</div>
+        <div class="rfocus">EV每日減少100萬桶石油需求；再生能源配套；碳中和目標；社會級習慣複利效應</div>
+        <span class="rtag">能源政策</span>
+      </div>
+
+      <div class="rcard c-brown">
+        <div class="rcard-bar"></div>
+        <div class="rnum">Round 12</div>
+        <div class="rtitle">21世紀霸主格局：Phase 1–4 總回顧</div>
+        <div class="rfocus">誰將主導21世紀？中美EV大戰最終盤點；「你不是在追求目標，你是在設計系統」終極應用</div>
+        <span class="rtag">總整理</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── PHASE 5 ─── -->
+  <div class="phase-block">
+    <div class="phase-header ph5">
+      <div class="ph-num">05</div>
+      <div class="ph-txt">
+        <h2>EV零件解構 Component Deep Dive</h2>
+        <p>電池・馬達・電控・底盤・再生煞車・感測器・充電系統</p>
+      </div>
+      <span class="ph-badge">回合 13–20 ✦ 新增</span>
+    </div>
+    <div class="rounds-wrap">
+
+      <div class="rcard c-rust">
+        <div class="rcard-bar"></div>
+        <div class="new-badge">NEW</div>
+        <div class="rnum">Round 13</div>
+        <div class="rtitle">電池組（Battery Pack）</div>
+        <div class="rfocus">電芯→模組→電池包三層結構；LFP vs NMC化學；BMS電池管理；熱管理系統</div>
+        <span class="rtag">核心動力</span>
+      </div>
+
+      <div class="rcard c-rust">
+        <div class="rcard-bar"></div>
+        <div class="new-badge">NEW</div>
+        <div class="rnum">Round 14</div>
+        <div class="rtitle">電動馬達（Electric Motor）</div>
+        <div class="rfocus">永磁同步 vs 感應馬達；扭矩瞬間爆發原理；單 / 雙 / 四馬達配置差異</div>
+        <span class="rtag">核心動力</span>
+      </div>
+
+      <div class="rcard c-rust">
+        <div class="rcard-bar"></div>
+        <div class="new-badge">NEW</div>
+        <div class="rnum">Round 15</div>
+        <div class="rtitle">電控系統（PCU／逆變器）</div>
+        <div class="rfocus">逆變器 Inverter、DC-DC轉換器；IGBT vs SiC碳化矽功率晶片；台灣半導體的機會</div>
+        <span class="rtag">核心動力</span>
+      </div>
+
+      <div class="rcard c-rust">
+        <div class="rcard-bar"></div>
+        <div class="new-badge">NEW</div>
+        <div class="rnum">Round 16</div>
+        <div class="rtitle">底盤平台（Skateboard Platform）</div>
+        <div class="rfocus">滑板式底盤革命；低重心物理優勢；車身一體壓鑄 Giga Press；習慣堆疊 habit stacking</div>
+        <span class="rtag">底盤結構</span>
+      </div>
+
+      <div class="rcard c-rust">
+        <div class="rcard-bar"></div>
+        <div class="new-badge">NEW</div>
+        <div class="rnum">Round 17</div>
+        <div class="rtitle">再生煞車（Regenerative Braking）</div>
+        <div class="rfocus">動能回收原理；B檔單踏板駕駛；能量回收率；對應「讓它令人滿足」立即獎勵機制</div>
+        <span class="rtag">能量回收</span>
+      </div>
+
+      <div class="rcard c-rust">
+        <div class="rcard-bar"></div>
+        <div class="new-badge">NEW</div>
+        <div class="rnum">Round 18</div>
+        <div class="rtitle">感測器陣列（LiDAR/雷達/攝影）</div>
+        <div class="rfocus">LiDAR vs 純視覺路線之爭；Tesla vs Waymo哲學差異；感測器 = 習慣迴路的「提示偵測器」</div>
+        <span class="rtag">智能系統</span>
+      </div>
+
+      <div class="rcard c-rust">
+        <div class="rcard-bar"></div>
+        <div class="new-badge">NEW</div>
+        <div class="rnum">Round 19</div>
+        <div class="rtitle">充電系統（OBC + 直流快充）</div>
+        <div class="rfocus">車載充電器 OBC；AC慢充 vs DC快充；CCS / CHAdeMO / GB/T規格戰；800V高壓平台</div>
+        <span class="rtag">充電系統</span>
+      </div>
+
+      <div class="rcard c-rust">
+        <div class="rcard-bar"></div>
+        <div class="new-badge">NEW</div>
+        <div class="rnum">Round 20</div>
+        <div class="rtitle">零件系統總整合 × 原子習慣終章</div>
+        <div class="rfocus">所有零件協同運作；EV整車 = 完美的習慣系統設計；全課程總回顧與個人行動計劃</div>
+        <span class="rtag">課程總結</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- bottom padding -->
+  <div style="height:20px;"></div>
+
+</div><!-- /container -->
+
+<!-- ════════════════════════════════════════
+     FOOTER NAV BANNER (重複)
+════════════════════════════════════════ -->
+<div class="footer-section">
+  <div class="footer-inner">
+
+    <div class="footer-title">📅 2025 七月開課 × 個人聯絡</div>
+
+    <div class="footer-links">
+
+      <a class="nav-link echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" style="max-width:320px;">
+        <span class="link-icon">🔁</span>
+        <span class="link-text">
+          <span class="lt">錯中學 ECHO 計劃</span>
+          <span class="ls">七月開課 · 從錯誤中建立真正的學習迴路</span>
+        </span>
+      </a>
+
+      <a class="nav-link popup" href="https://linwayet.github.io/popup/index" target="_blank" style="max-width:320px;">
+        <span class="link-icon">📊</span>
+        <span class="link-text">
+          <span class="lt">學生分析工具</span>
+          <span class="ls">七月開課 · 深度了解每位學生的學習現況</span>
+        </span>
+      </a>
+
+      <a class="nav-link line-btn" href="https://line.me/ti/p/~linwayet" target="_blank" style="max-width:180px;">
+        <span class="link-icon">💬</span>
+        <span class="link-text">
+          <span class="lt">LINE 聯絡</span>
+          <span class="ls">@linwayet</span>
+        </span>
+      </a>
+
+    </div>
+
+    <div class="footer-copy">
+      中國電動車發展 × 原子習慣 完整20回合課程 · Taiwan English Cram School<br>
+      素材來源：CNN Business 2026 May · James Clear《Atomic Habits》
+    </div>
+
+  </div>
+</div>
+
 </body>
 </html>
