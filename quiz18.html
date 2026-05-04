@@ -546,9 +546,110 @@ body {
     margin-left: 0;
   }
 }
+/* ===== PROTEIN SIDE NAV ===== */
+.protein-side-nav {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  padding: 8px 5px 8px 8px;
+  background: rgba(255,255,255,0.86);
+  border: 1px solid rgba(37,99,235,0.18);
+  border-right: none;
+  border-radius: 14px 0 0 14px;
+  box-shadow: -10px 18px 34px rgba(30,41,59,0.12);
+  backdrop-filter: blur(12px);
+}
+.protein-side-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 76px;
+  min-height: 26px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  color: var(--p4);
+  font-family: 'Montserrat', 'BIZ UDPGothic', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.protein-side-nav a:hover,
+.protein-side-nav a:focus-visible {
+  background: var(--p4);
+  color: #fff;
+  transform: translateX(-3px);
+  outline: none;
+}
+@media (max-width: 760px) {
+  .protein-side-nav {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: none;
+    flex-direction: row;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px 10px;
+    border: none;
+    border-top: 1px solid rgba(37,99,235,0.18);
+    border-radius: 0;
+  }
+  .protein-side-nav a {
+    min-width: 70px;
+    flex: 0 0 auto;
+  }
+  body { padding-bottom: 52px; }
+}
+
 </style>
 </head>
 <body>
+
+<!-- ====== PROTEIN SIDE NAV ====== -->
+<nav class="protein-side-nav" aria-label="Protein pages">
+  <a href="protein1.html">protein 1</a>
+  <a href="protein2.html">protein 2</a>
+  <a href="protein3.html">protein 3</a>
+  <a href="protein4.html">protein 4</a>
+  <a href="protein5.html">protein 5</a>
+  <a href="protein6.html">protein 6</a>
+  <a href="protein7.html">protein 7</a>
+  <a href="protein8.html">protein 8</a>
+  <a href="protein9.html">protein 9</a>
+  <a href="protein10.html">protein 10</a>
+  <a href="protein11.html">protein 11</a>
+  <a href="protein12.html">protein 12</a>
+  <a href="protein13.html">protein 13</a>
+  <a href="protein14.html">protein 14</a>
+  <a href="protein15.html">protein 15</a>
+  <a href="protein16.html">protein 16</a>
+  <a href="protein17.html">protein 17</a>
+  <a href="protein18.html">protein 18</a>
+  <a href="protein19.html">protein 19</a>
+  <a href="protein20.html">protein 20</a>
+  <a href="protein21.html">protein 21</a>
+  <a href="protein22.html">protein 22</a>
+  <a href="protein23.html">protein 23</a>
+  <a href="protein24.html">protein 24</a>
+  <a href="protein25.html">protein 25</a>
+  <a href="protein26.html">protein 26</a>
+  <a href="protein27.html">protein 27</a>
+  <a href="protein28.html">protein 28</a>
+  <a href="protein29.html">protein 29</a>
+  <a href="protein30.html">protein 30</a>
+</nav>
 
 <!-- ====== TOP PROMO BANNER ====== -->
 <div class="promo-banner">
