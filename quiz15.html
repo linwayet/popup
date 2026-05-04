@@ -1,103 +1,753 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #ffffff; color: #000; line-height: 1.6; margin: 0; padding: 20px; display: flex; justify-content: center; }
-        .container { max-width: 500px; width: 100%; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; position: relative; }
-        .header { font-size: 0.9rem; color: #666; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .question { font-size: 1.1rem; font-weight: 500; margin-bottom: 20px; }
-        .options-list { list-style: none; padding: 0; }
-        .option-item { margin-bottom: 15px; padding: 10px; border: 1px solid #f0f0f0; border-radius: 8px; cursor: pointer; position: relative; }
-        .option-item:hover { background-color: #f9f9f9; }
-        .info-icon { display: inline-block; width: 20px; height: 20px; background: #eee; border-radius: 50%; text-align: center; line-height: 20px; font-size: 0.8rem; margin-left: 8px; font-weight: bold; }
-        .special-btn { display: block; margin: 10px 0; padding: 10px; background: #f9f9f9; border: 1px dashed #ccc; border-radius: 8px; text-align: center; cursor: pointer; font-weight: 500; }
-        .special-btn:hover { background-color: #f0f0f0; }
-        .footer-tools { display: flex; justify-content: space-between; margin-top: 30px; }
-        .tool-link { font-size: 0.9rem; text-decoration: underline; cursor: pointer; font-weight: 500; }
-        .tool-link:hover { color: #333; }
-        .overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; padding: 40px 20px; box-sizing: border-box; overflow-y: auto; }
-        .overlay-content { max-width: 500px; margin: 0 auto; }
-        .close-btn { position: fixed; top: 20px; right: 20px; font-size: 24px; cursor: pointer; font-weight: bold; }
-        .close-btn:hover { color: #666; }
-        .overlay-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 15px; border-left: 4px solid #000; padding-left: 10px; }
-        .example-box { background: #f4f4f4; padding: 12px; margin-top: 10px; border-radius: 8px; font-size: 0.95rem; border-left: 3px solid #ccc; }
-        .eg-item { margin-bottom: 10px; }
-        .kk-text { color: #666; font-style: italic; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 伺服器全球供應鏈完全攻略 · 120天課程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & TOKENS ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+:root {
+  --cream:   #FDF6EC;
+  --peach:   #FDEBD0;
+  --amber:   #F5A623;
+  --coral:   #E8724A;
+  --rust:    #C44B2B;
+  --gold:    #D4881C;
+  --warm-br: #7B3F1A;
+  --soft-or: #F28B4B;
+  --text-dk: #3D1F0A;
+  --text-md: #7A4520;
+  --text-lt: #B07040;
+  --line-gr: #06C755;
+  --mono:    'Space Mono', monospace;
+  --serif:   'Noto Serif TC', serif;
+  --sans:    'Noto Sans TC', sans-serif;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--text-dk);
+  overflow-x: hidden;
+}
+
+/* ─── AD BAR (top & bottom) ─── */
+.ad-bar {
+  background: linear-gradient(135deg, #C44B2B 0%, #E8724A 45%, #F5A623 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.ad-bar::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255,255,255,0.03) 0px,
+    rgba(255,255,255,0.03) 1px,
+    transparent 1px,
+    transparent 18px
+  );
+  pointer-events: none;
+}
+
+.ad-bar-inner {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 10px 14px 14px;
+}
+
+.ad-bar-eyebrow {
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.70);
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-family: var(--mono);
+}
+
+.ad-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+@media (max-width: 560px) {
+  .ad-cards { grid-template-columns: 1fr; gap: 7px; }
+}
+
+.ad-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.30);
+  border-radius: 12px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: white;
+  transition: background 0.18s, transform 0.15s;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.ad-card:hover { background: rgba(255,255,255,0.27); transform: translateY(-2px); }
+
+.ad-card.ad-line {
+  background: rgba(6,199,85,0.22);
+  border-color: rgba(6,199,85,0.50);
+}
+
+.ad-card.ad-line:hover { background: rgba(6,199,85,0.38); }
+
+.ad-icon { font-size: 26px; flex-shrink: 0; line-height: 1; }
+
+.ad-info { min-width: 0; }
+.ad-tag  { font-size: 9px; font-family: var(--mono); opacity: 0.75; letter-spacing: 0.10em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+.ad-name { font-size: 13px; font-weight: 700; display: block; line-height: 1.2; }
+.ad-desc { font-size: 11px; opacity: 0.82; display: block; margin-top: 2px; line-height: 1.35; }
+
+/* ─── PAGE BODY WRAPPER ─── */
+.page-body {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 14px 32px;
+}
+
+/* ─── HERO ─── */
+.hero {
+  text-align: center;
+  padding: 44px 8px 32px;
+  position: relative;
+}
+
+.hero-chip {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--rust), var(--amber));
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(196,75,43,0.30);
+  font-family: var(--mono);
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(22px, 6vw, 38px);
+  font-weight: 900;
+  line-height: 1.30;
+  color: var(--warm-br);
+  margin-bottom: 10px;
+}
+
+.hero h1 .hl {
+  background: linear-gradient(135deg, var(--coral), var(--amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: var(--text-md);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ─── SECTION LABEL ─── */
+.sec-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-lt);
+  padding: 6px 0 8px;
+  border-bottom: 1px solid rgba(196,75,43,0.18);
+  margin-bottom: 14px;
+}
+
+/* ─── MARKET SHARE GRID ─── */
+.mkt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 420px) { .mkt-grid { grid-template-columns: 1fr; } }
+
+.mkt-card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px 14px 12px;
+  border: 1px solid rgba(245,166,35,0.22);
+  box-shadow: 0 3px 14px rgba(196,75,43,0.07);
+}
+
+.mkt-flag { font-size: 11px; color: var(--text-lt); font-family: var(--mono); margin-bottom: 5px; }
+.mkt-pct  { font-family: var(--serif); font-size: 32px; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+.mkt-desc { font-size: 11.5px; color: var(--text-md); line-height: 1.55; }
+
+.mkt-tw .mkt-pct  { color: var(--coral); }
+.mkt-us .mkt-pct  { color: #185FA5; }
+.mkt-cn .mkt-pct  { color: #3B6D11; }
+.mkt-ot .mkt-pct  { color: var(--text-lt); }
+.mkt-tw { border-color: rgba(232,114,74,0.35); }
+.mkt-us { border-color: rgba(24,95,165,0.20); }
+
+/* ─── BAR CHART ─── */
+.bar-section { margin-bottom: 20px; }
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+
+.bar-lbl { font-size: 11px; font-family: var(--mono); width: 108px; flex-shrink: 0; text-align: right; color: var(--text-md); }
+.bar-track { flex: 1; height: 22px; background: #F5ECD8; border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; transition: width 0.8s ease; }
+.bar-val { font-size: 10px; font-family: var(--mono); color: white; font-weight: 700; white-space: nowrap; }
+.bar-nat { font-size: 10px; font-family: var(--mono); color: var(--text-lt); width: 36px; flex-shrink: 0; }
+
+/* ─── KEY FACTS ─── */
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 380px) { .facts-grid { grid-template-columns: 1fr; } }
+
+.fact-card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  border-left: 4px solid;
+  box-shadow: 0 2px 12px rgba(196,75,43,0.07);
+}
+
+.fact-card:nth-child(1) { border-color: var(--coral); }
+.fact-card:nth-child(2) { border-color: var(--amber); }
+.fact-card:nth-child(3) { border-color: var(--rust); }
+.fact-card:nth-child(4) { border-color: var(--gold); }
+
+.fact-num {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--coral), var(--amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.fact-title { font-size: 13px; font-weight: 700; color: var(--warm-br); margin-bottom: 4px; }
+.fact-body  { font-size: 11.5px; color: var(--text-md); line-height: 1.6; }
+
+/* ─── TAIWAN SUPPLIERS ─── */
+.tw-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 420px) { .tw-grid { grid-template-columns: 1fr; } }
+
+.tw-card {
+  background: white;
+  border-radius: 12px;
+  padding: 11px 12px;
+  border: 1px solid rgba(245,166,35,0.20);
+  box-shadow: 0 2px 10px rgba(196,75,43,0.06);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.tw-card:hover { transform: translateY(-2px); box-shadow: 0 5px 18px rgba(196,75,43,0.12); }
+
+.tw-tier {
+  font-size: 9px;
+  font-family: var(--mono);
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.tw-name { font-size: 13px; font-weight: 700; color: var(--warm-br); margin-bottom: 1px; }
+.tw-code { font-size: 10px; font-family: var(--mono); color: var(--text-lt); margin-bottom: 5px; }
+.tw-role { font-size: 11px; color: var(--text-md); line-height: 1.5; }
+.tw-client {
+  font-size: 10px; font-family: var(--mono); color: var(--text-lt);
+  margin-top: 6px; padding-top: 5px; border-top: 1px solid rgba(196,75,43,0.10);
+}
+
+.t-odm   { background: #FFECD8; color: #C44B2B; }
+.t-psu   { background: #FFF4DC; color: #854F0B; }
+.t-cool  { background: #E2F5EC; color: #0F6E56; }
+.t-board { background: #EEF0FF; color: #3C3489; }
+.t-chip  { background: #EBF5DC; color: #2D5C0A; }
+.t-net   { background: #FFF0E8; color: #993C1D; }
+
+/* ─── MODULE ACCORDION ─── */
+.modules { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+
+.mod {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(245,166,35,0.20);
+  box-shadow: 0 2px 10px rgba(196,75,43,0.06);
+}
+
+.mod-hdr {
+  display: grid;
+  grid-template-columns: 46px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.mod-hdr:hover { background: #FFF8F0; }
+
+.mod-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  padding: 5px 2px;
+  border-radius: 8px;
+  line-height: 1.4;
+}
+
+.mod-title { font-size: 13.5px; font-weight: 700; color: var(--warm-br); line-height: 1.3; }
+.mod-sub   { font-size: 10px; font-family: var(--mono); color: var(--text-lt); margin-top: 1px; }
+.mod-days  { font-size: 10px; font-family: var(--mono); color: var(--text-lt); white-space: nowrap; padding: 2px 8px; border: 1px solid rgba(196,75,43,0.20); border-radius: 10px; }
+
+.mod-body {
+  display: none;
+  padding: 0 14px 14px;
+  border-top: 1px solid rgba(245,166,35,0.18);
+}
+
+.mod.open .mod-body { display: block; }
+
+.mod-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+@media (max-width: 480px) { .mod-cols { grid-template-columns: 1fr; } }
+
+.mod-col-hdr {
+  font-size: 9px;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: var(--text-lt);
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(196,75,43,0.12);
+}
+
+.lesson-item {
+  font-size: 12px;
+  color: var(--text-md);
+  line-height: 1.6;
+  display: flex;
+  gap: 6px;
+  margin-bottom: 3px;
+}
+
+.lesson-item::before { content: '–'; color: var(--coral); flex-shrink: 0; }
+
+.tw-focus-box {
+  font-size: 11.5px;
+  line-height: 1.55;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+}
+
+.mod-num-1 { background: #FFECD8; color: #C44B2B; }
+.mod-num-2 { background: #FFF4DC; color: #854F0B; }
+.mod-num-3 { background: #FAEEDA; color: #633806; }
+.mod-num-4 { background: #EEF0FF; color: #3C3489; }
+.mod-num-5 { background: #FFEDE6; color: #993C1D; }
+.mod-num-6 { background: #E2F5EC; color: #085041; }
+.mod-num-7 { background: #FFF0F5; color: #72243E; }
+
+/* ─── HABIT BAND ─── */
+.habit-band {
+  background: linear-gradient(135deg, #FFF4E0, #FEE8D2);
+  border: 1px solid rgba(245,166,35,0.30);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.habit-band h3 {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--warm-br);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.habit-pills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+@media (max-width: 420px) { .habit-pills { grid-template-columns: repeat(2, 1fr); } }
+
+.h-pill {
+  text-align: center;
+  padding: 10px 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.h-pill .h-icon { font-size: 18px; display: block; margin-bottom: 3px; }
+.h-pill .h-en   { font-size: 9px; font-family: var(--mono); opacity: 0.70; display: block; }
+
+.hp1 { background: #FFECE0; color: #C44B2B; }
+.hp2 { background: #FFF3DC; color: #854F0B; }
+.hp3 { background: #FFF8DC; color: #856A0B; }
+.hp4 { background: #F0F3FF; color: #3C3489; }
+
+/* ─── FOOTER INFO ─── */
+.footer-note {
+  text-align: center;
+  padding: 16px 14px;
+  font-size: 11px;
+  font-family: var(--mono);
+  color: var(--text-lt);
+  border-top: 1px solid rgba(196,75,43,0.12);
+  margin-top: 8px;
+}
+
+/* ─── FADE IN ─── */
+.hero          { animation: fup 0.55s ease both; }
+.page-body     { animation: fup 0.55s 0.10s ease both; }
+
+@keyframes fup {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 <body>
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月10日 | 115學測英文科</div>
-    <div class="question">The factory was shut down not because of poor sales, but because of repeated _______ of safety regulations.</div>
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) proofs <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) violations <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) functions <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) operations <span class="info-icon">ⓘ</span></div>
+
+<!-- ══════════════════════════════════
+     TOP AD BAR
+══════════════════════════════════ -->
+<nav class="ad-bar" aria-label="七月課程推薦">
+  <div class="ad-bar-inner">
+    <div class="ad-bar-eyebrow">📣 2025 七月開課 · 立即了解</div>
+    <div class="ad-cards">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" class="ad-card" target="_blank" rel="noopener">
+        <span class="ad-icon">🔁</span>
+        <span class="ad-info">
+          <span class="ad-tag">七月新課 01</span>
+          <span class="ad-name">錯中學 ECHO 計劃</span>
+          <span class="ad-desc">透過錯誤學習英文，創新課程方案</span>
+        </span>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" class="ad-card" target="_blank" rel="noopener">
+        <span class="ad-icon">📊</span>
+        <span class="ad-info">
+          <span class="ad-tag">七月新課 02</span>
+          <span class="ad-name">學生分析系統</span>
+          <span class="ad-desc">個人化學習分析，精準掌握盲點</span>
+        </span>
+      </a>
+
+      <a href="https://line.me/ti/p/~linwayet" class="ad-card ad-line" target="_blank" rel="noopener">
+        <span class="ad-icon">💬</span>
+        <span class="ad-info">
+          <span class="ad-tag">LINE 聯絡老師</span>
+          <span class="ad-name">加 LINE 諮詢</span>
+          <span class="ad-desc">ID: linwayet · 立即報名</span>
+        </span>
+      </a>
+
     </div>
-    <div class="special-btn" onclick="showOverlay('E')">(E) 查看答案與詳細解釋</div>
-    <div class="special-btn" onclick="showOverlay('F')">(F) 林威老師的話 (衍生詞與音標)</div>
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════
+     HERO
+══════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-chip">🇹🇼 120天課程 · 原子習慣設計 · 全球視角</div>
+  <h1>AI 伺服器<span class="hl">全球供應鏈</span>完全攻略<br>台灣如何稱霸全球九成代工？</h1>
+  <p class="hero-sub">整合最新市占數據 · 台灣 16 大廠商深度解析 · 7 大模組 · 每集帶你感受「這跟我的土地有關係」</p>
+</header>
+
+<!-- ══════════════════════════════════
+     MAIN CONTENT
+══════════════════════════════════ -->
+<div class="page-body">
+
+<!-- KEY INSIGHT INTRO -->
+<p class="sec-label">📌 課程核心洞察</p>
+<p style="font-size:14px;color:var(--text-md);line-height:1.85;margin-bottom:18px;">
+  這份課程把台灣廠商放在每個模組的核心——學習者每一集都能感受到「這跟我的土地有關係」，這是最強的 <strong style="color:var(--coral)">Craving 設計</strong>。從全球市占數字到台灣供應鏈的關鍵地位，120天帶你看懂 AI 時代最重要的硬體產業。
+</p>
+
+<!-- MARKET SHARE -->
+<p class="sec-label">🌐 全球 AI 伺服器生產代工市占率（2024）</p>
+<div class="mkt-grid">
+  <div class="mkt-card mkt-tw">
+    <div class="mkt-flag">🇹🇼 台灣廠商（ODM代工）</div>
+    <div class="mkt-pct">~90%</div>
+    <div class="mkt-desc">全球 AI 伺服器生產組裝代工，台灣包辦九成。鴻海登全球第一，廣達、緯創、英業達、緯穎緊追。</div>
+  </div>
+  <div class="mkt-card mkt-us">
+    <div class="mkt-flag">🇺🇸 美國（OEM品牌需求端）</div>
+    <div class="mkt-pct">~52%</div>
+    <div class="mkt-desc">北美佔全球 AI 伺服器<strong>需求</strong>市場 52%。Dell（20%）、HPE（15%）、Supermicro（9%）主導品牌端。</div>
+  </div>
+  <div class="mkt-card mkt-cn">
+    <div class="mkt-flag">🇨🇳 中國（品牌+代工）</div>
+    <div class="mkt-pct">~15%</div>
+    <div class="mkt-desc">需求市占 15%，但高階 GPU 受出口管制。浪潮 Inspur、華為、聯想主供中國內需市場。</div>
+  </div>
+  <div class="mkt-card mkt-ot">
+    <div class="mkt-flag">🌍 歐洲與其他地區</div>
+    <div class="mkt-pct">~33%</div>
+    <div class="mkt-desc">歐洲約 30% 需求份額。日本富士通、IBM（美）、Cisco（美）各守利基市場。</div>
+  </div>
 </div>
-<div id="infoOverlay" class="overlay"><span class="close-btn" onclick="closeOverlay()">×</span><div id="contentArea" class="overlay-content"></div></div>
+
+<!-- BAR CHART -->
+<p class="sec-label">📊 全球 AI 伺服器品牌端市占（OEM，2024）</p>
+<div class="bar-section">
+  <div class="bar-row"><div class="bar-lbl">Dell 🇺🇸</div><div class="bar-track"><div class="bar-fill" style="width:20%;background:#185FA5"><span class="bar-val">20%</span></div></div><div class="bar-nat">美國</div></div>
+  <div class="bar-row"><div class="bar-lbl">HPE 🇺🇸</div><div class="bar-track"><div class="bar-fill" style="width:15%;background:#3B8BD4"><span class="bar-val">15%</span></div></div><div class="bar-nat">美國</div></div>
+  <div class="bar-row"><div class="bar-lbl">浪潮 Inspur 🇨🇳</div><div class="bar-track"><div class="bar-fill" style="width:12%;background:#639922"><span class="bar-val">12%</span></div></div><div class="bar-nat">中國</div></div>
+  <div class="bar-row"><div class="bar-lbl">聯想 Lenovo 🇨🇳</div><div class="bar-track"><div class="bar-fill" style="width:11%;background:#97C459"><span class="bar-val">11%</span></div></div><div class="bar-nat">中/港</div></div>
+  <div class="bar-row"><div class="bar-lbl">Supermicro 🇺🇸</div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#85B7EB"><span class="bar-val">9%</span></div></div><div class="bar-nat">美國</div></div>
+  <div class="bar-row"><div class="bar-lbl">ODM直供雲端 🇹🇼</div><div class="bar-track"><div class="bar-fill" style="width:33%;background:linear-gradient(90deg,#E8724A,#F5A623)"><span class="bar-val">~33%（廣達/緯穎/鴻海直供 AWS·MS·Google）</span></div></div><div class="bar-nat">台灣</div></div>
+</div>
+
+<!-- KEY FACTS -->
+<p class="sec-label">⭐ 四大關鍵數字</p>
+<div class="facts-grid">
+  <div class="fact-card">
+    <span class="fact-num">九成</span>
+    <div class="fact-title">台灣代工壟斷地位</div>
+    <div class="fact-body">台灣 AI 伺服器生產組裝代工佔全球九成，是全球任何其他國家都無法複製的壟斷地位。</div>
+  </div>
+  <div class="fact-card">
+    <span class="fact-num">4 家</span>
+    <div class="fact-title">台廠進全球前十大</div>
+    <div class="fact-body">2024 年全球前十大伺服器供應商中有四間台灣企業，鴻海超越戴爾，成為首家排名榜首的非美國公司。</div>
+  </div>
+  <div class="fact-card">
+    <span class="fact-num">3.55兆</span>
+    <div class="fact-title">台廠伺服器營收（2024）</div>
+    <div class="fact-body">DIGITIMES 估計 2024 年台廠伺服器相關事業營收成長 63%，達新台幣 3.55 兆元。</div>
+  </div>
+  <div class="fact-card">
+    <span class="fact-num">5兆+</span>
+    <div class="fact-title">2025年預估突破</div>
+    <div class="fact-body">2025 年台廠伺服器相關事業營收預計突破新台幣 5 兆元，連續兩年成長超過 50%。</div>
+  </div>
+</div>
+
+<!-- HABIT BAND -->
+<div class="habit-band">
+  <h3>🧠 原子習慣四法則設計</h3>
+  <div class="habit-pills">
+    <div class="h-pill hp1"><span class="h-icon">👁️</span>顯而易見<span class="h-en">Cue</span></div>
+    <div class="h-pill hp2"><span class="h-icon">🔥</span>有吸引力<span class="h-en">Craving</span></div>
+    <div class="h-pill hp3"><span class="h-icon">⚡</span>容易執行<span class="h-en">Response</span></div>
+    <div class="h-pill hp4"><span class="h-icon">🏆</span>令人滿足<span class="h-en">Reward</span></div>
+  </div>
+</div>
+
+<!-- TAIWAN SUPPLIERS -->
+<p class="sec-label">🇹🇼 台灣關鍵廠商地圖（供應鏈角色分層）</p>
+<div class="tw-grid" id="tw-grid"></div>
+
+<!-- MODULES -->
+<p class="sec-label">📚 120天課程規劃（7大模組）</p>
+<div class="modules" id="modules"></div>
+
+<div class="footer-note">
+  資料來源：資策會MIC · DIGITIMES · TrendForce · Omdia · ABI Research · 經濟日報 · 天下雜誌<br>
+  課程核心設計：原子習慣（Atomic Habits）四法則框架 · 2025年製
+</div>
+
+</div><!-- /page-body -->
+
+<!-- ══════════════════════════════════
+     BOTTOM AD BAR
+══════════════════════════════════ -->
+<nav class="ad-bar" aria-label="七月課程推薦（頁底）">
+  <div class="ad-bar-inner">
+    <div class="ad-bar-eyebrow">🎓 七月課程報名中 · 名額有限</div>
+    <div class="ad-cards">
+
+      <a href="https://linwayet.github.io/4ulive/index.html" class="ad-card" target="_blank" rel="noopener">
+        <span class="ad-icon">🔁</span>
+        <span class="ad-info">
+          <span class="ad-tag">七月新課 01</span>
+          <span class="ad-name">錯中學 ECHO 計劃</span>
+          <span class="ad-desc">透過錯誤學習英文，創新課程方案</span>
+        </span>
+      </a>
+
+      <a href="https://linwayet.github.io/popup/index" class="ad-card" target="_blank" rel="noopener">
+        <span class="ad-icon">📊</span>
+        <span class="ad-info">
+          <span class="ad-tag">七月新課 02</span>
+          <span class="ad-name">學生分析系統</span>
+          <span class="ad-desc">個人化學習分析，精準掌握盲點</span>
+        </span>
+      </a>
+
+      <a href="https://line.me/ti/p/~linwayet" class="ad-card ad-line" target="_blank" rel="noopener">
+        <span class="ad-icon">💬</span>
+        <span class="ad-info">
+          <span class="ad-tag">LINE 聯絡老師</span>
+          <span class="ad-name">加 LINE 諮詢</span>
+          <span class="ad-desc">ID: linwayet · 立即報名</span>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</nav>
+
 <script>
-    const data = {
-        'A': { 
-            title: '(A) proofs', 
-            desc: '解釋：證據；證明；證據物；校樣', 
-            detail: '<div class="example-box"><div class="eg-item">1. Do you have any <b>proof</b> of your claim?<br>(你有你聲稱的證據嗎？)</div><div class="eg-item">2. The fingerprints are <b>proof</b> that he was at the scene.<br>(指紋是他在現場的證據。)</div><div class="eg-item">3. The lawyer presented <b>proofs</b> in court.<br>(律師在法庭上出示了證據。)</div></div>' 
-        },
-        'B': { 
-            title: '(B) violations', 
-            desc: '解釋：違反；違規；侵犯；破壞；違背', 
-            detail: '<div class="example-box"><div class="eg-item">1. The company had multiple <b>violations</b> of environmental laws.<br>(該公司有多起違反環境法律的情況。)</div><div class="eg-item">2. This is a <b>violation</b> of human rights.<br>(這是對人權的侵犯。)</div><div class="eg-item">3. Parking here is a <b>violation</b> of the regulations.<br>(在這裡停車違反了規定。)</div></div>' 
-        },
-        'C': { 
-            title: '(C) functions', 
-            desc: '解釋：功能；作用；函數；正式活動；儀式', 
-            detail: '<div class="example-box"><div class="eg-item">1. The main <b>function</b> of this tool is to cut wood.<br>(這個工具的主要功能是切割木材。)</div><div class="eg-item">2. The kidney <b>functions</b> are essential for health.<br>(腎臟的功能對健康至關重要。)</div><div class="eg-item">3. We attended a formal <b>function</b> last night.<br>(我們昨晚參加了一個正式活動。)</div></div>' 
-        },
-        'D': { 
-            title: '(D) operations', 
-            desc: '解釋：操作；運營；經營；手術；軍事行動', 
-            detail: '<div class="example-box"><div class="eg-item">1. The factory <b>operations</b> run 24 hours a day.<br>(工廠的營運每天24小時進行。)</div><div class="eg-item">2. She underwent a surgical <b>operation</b> last week.<br>(她上週做了一次手術。)</div><div class="eg-item">3. Military <b>operations</b> have begun in the region.<br>(軍事行動已在該地區開始。)</div></div>' 
-        },
-        'E': { 
-            title: '✓ 正確答案：(B) violations', 
-            desc: '詳細解析：題目說明工廠被關閉不是因為銷售不佳，而是因為「多次違反」安全規定。(B) violations（違規；侵犯）是最適合的詞選，表示工廠多次違反了安全法規。', 
-            example: '<b>為什麼不選其他選項？</b><br>• (A) proofs：證據，文法上不搭，應為「repeated proofs」無法成立<br>• (C) functions：功能，無法表達「違反」的意思<br>• (D) operations：運營，無法表達「違反」的含義' 
-        },
-        'F': { 
-            title: '林威老師的話 - 衍生詞與音標', 
-            detail: '<h4>1. violate (動詞)</h4><p class="kk-text">KK: [ˈvaɪəleɪt]</p><p>中文：違反；侵犯；破壞；輕視</p><h4>2. violator (名詞)</h4><p class="kk-text">KK: [ˈvaɪəleɪtɚ]</p><p>中文：違反者；侵犯者；觸犯法律的人</p>' 
-        },
-        'G': { 
-            title: '衍生詞更多例句', 
-            detail: '<div class="example-box"><div class="eg-item">1. It is illegal to <b>violate</b> traffic rules.<br>(違反交通規則是違法的。)</div></div><div class="example-box"><div class="eg-item">2. The company was a habitual <b>violator</b> of environmental standards.<br>(該公司是環保標準的慣犯。)</div></div><div class="example-box"><div class="eg-item">3. We must not <b>violate</b> the terms of the contract.<br>(我們不能違反合同條款。)</div></div><div class="example-box"><div class="eg-item">4. Traffic <b>violators</b> will be fined.<br>(交通違規者將被罰款。)</div></div>' 
-        },
-        'H': { 
-            title: '高三學測必備片語', 
-            detail: '<h4>1. shut down (關閉；停業；停止運營)</h4><p>例句：The factory <b>was shut down</b> for safety reasons.<br>(工廠因安全原因而關閉。)</p><h4>2. not because of... but because of... (不是因為...而是因為...)</h4><p>例句：She failed not <b>because of</b> lack of effort <b>but because of</b> illness.<br>(她失敗不是因為缺乏努力，而是因為生病。)</p><h4>3. in violation of (違反；侵犯...)</h4><p>例句: This action is <b>in violation of</b> company policy.<br>(這一行動違反了公司政策。)</p>' 
-        }
-    };
-    function showOverlay(key) { 
-        const item = data[key]; 
-        let html = `<div class="overlay-title">${item.title}</div>`; 
-        if(item.desc) html += `<p>${item.desc}</p>`; 
-        if(item.detail) html += `<div>${item.detail}</div>`; 
-        if(item.example) html += `<div class="example-box"><b>補充說明：</b><br>${item.example}</div>`; 
-        document.getElementById('contentArea').innerHTML = html; 
-        document.getElementById('infoOverlay').style.display = 'block'; 
-    }
-    function closeOverlay() { 
-        document.getElementById('infoOverlay').style.display = 'none'; 
-    }
+/* ── TAIWAN SUPPLIERS DATA ── */
+const suppliers = [
+  {tier:'ODM整機',cls:'t-odm',name:'鴻海科技',code:'2317',role:'全球伺服器出貨NO.1，2024超越Dell。工業富聯供應NVIDIA GB200機架',client:'客戶：NVIDIA · Microsoft · Meta'},
+  {tier:'ODM整機',cls:'t-odm',name:'廣達電腦',code:'2382',role:'全球前五大伺服器廠，Microsoft / Amazon最大ODM夥伴',client:'客戶：Microsoft · Amazon · Google'},
+  {tier:'ODM整機',cls:'t-odm',name:'緯創資通',code:'3231',role:'AMD MI300 AI伺服器獨家供應商，伺服器佔集團營收近六成',client:'客戶：AMD · 多家CSP'},
+  {tier:'ODM整機',cls:'t-odm',name:'英業達',code:'2356',role:'全球前十大伺服器供應商，戴爾/HPE主要代工夥伴',client:'客戶：Dell · HPE · Baidu'},
+  {tier:'ODM整機',cls:'t-odm',name:'緯穎科技',code:'6669',role:'Meta / Microsoft指定雲端伺服器廠，全球前十',client:'客戶：Meta · Microsoft'},
+  {tier:'ODM整機',cls:'t-odm',name:'神達電腦',code:'3706',role:'Amazon出貨比重大增，伺服器佔集團84%營收',client:'客戶：Amazon AWS'},
+  {tier:'電源供應',cls:'t-psu',name:'台達電',code:'2308',role:'通吃NVIDIA Blackwell B100/B200/GB200電源訂單',client:'客戶：NVIDIA全系列'},
+  {tier:'電源供應',cls:'t-psu',name:'光寶科',code:'2301',role:'AI伺服器高瓦數電源供應器，台灣前三大電源廠',client:'客戶：多家ODM'},
+  {tier:'散熱模組',cls:'t-cool',name:'奇鋐科技',code:'3017',role:'AI伺服器高效能水冷散熱，GB200液冷需求爆發',client:'客戶：NVIDIA · ODM廠'},
+  {tier:'散熱模組',cls:'t-cool',name:'健策精密',code:'3653',role:'均熱板(Vapor Chamber)領導廠，高功耗AI晶片必需品',client:'客戶：GPU廠 · ODM廠'},
+  {tier:'晶圓封裝',cls:'t-board',name:'台積電 TSMC',code:'2330',role:'製造所有AI GPU晶片（H100/H200/Blackwell/MI300X），護國神山核心',client:'客戶：NVIDIA · AMD · Google'},
+  {tier:'晶圓封裝',cls:'t-board',name:'日月光 ASE',code:'3711',role:'CoWoS先進封裝，AI GPU必須經此工序',client:'客戶：NVIDIA · AMD'},
+  {tier:'IC/晶片',cls:'t-chip',name:'聯發科',code:'2454',role:'BMC管理晶片、網路SoC，自研AI推理晶片佈局',client:'客戶：伺服器廠商'},
+  {tier:'IC/晶片',cls:'t-chip',name:'瑞昱半導體',code:'2379',role:'伺服器網路晶片，AI伺服器BMC遠端控制晶片',client:'客戶：ODM廠'},
+  {tier:'網路設備',cls:'t-net',name:'智邦科技',code:'2345',role:'100G/400G高速乙太網路交換機，AI叢集骨幹網路',client:'客戶：Meta · 雲端廠'},
+  {tier:'整機品牌',cls:'t-board',name:'華碩電腦',code:'2357',role:'2026成立獨立AI伺服器事業部，企業級GPU伺服器業績爆發',client:'客戶：企業直銷'},
+];
+
+const twGrid = document.getElementById('tw-grid');
+suppliers.forEach(s => {
+  const d = document.createElement('div');
+  d.className = 'tw-card';
+  d.innerHTML = `<span class="tw-tier ${s.cls}">${s.tier}</span><div class="tw-name">${s.name}</div><div class="tw-code">${s.code}</div><div class="tw-role">${s.role}</div><div class="tw-client">${s.client}</div>`;
+  twGrid.appendChild(d);
+});
+
+/* ── MODULES DATA ── */
+const modules = [
+  {cls:'mod-num-1',code:'M01',days:'15天',title:'序章：AI伺服器是什麼？台灣為何稱霸？',sub:'Overview · Taiwan dominance · ODM vs OEM',
+   lessons:['AI伺服器 vs 一般伺服器的核心差別','台灣為何代工佔全球九成？地理+政治+技術三重優勢','L6 / L10 / L11 等級制度是什麼意思？','ODM vs OEM：台廠代工 vs 美廠品牌的商業模式','鴻海登全球第一的故事：2024年超越Dell'],
+   twFocus:{bg:'#FFECD8',color:'#C44B2B',tag:'台廠主角',text:'鴻海/廣達/緯創/英業達/緯穎：電子五哥+新五虎首度登場'},
+   global:['Dell · HPE · NVIDIA：客戶與品牌端如何運作','AWS · Google · Meta：誰在買這些伺服器？']},
+  {cls:'mod-num-2',code:'M02',days:'20天',title:'台灣ODM五哥深度解析',sub:'Hon Hai · Quanta · Wistron · Inventec · Wiwynn',
+   lessons:['鴻海：從iPhone代工到AI伺服器帝國','廣達：微軟/Amazon最愛的ODM合作夥伴','緯創：AMD AI伺服器獨家，緯穎如何分拆上市','英業達：Dell與HPE背後的隱形推手','神達：Amazon佔24%出貨量的AI新星'],
+   twFocus:{bg:'#FFF4DC',color:'#854F0B',tag:'財報數字',text:'各廠伺服器事業佔集團營收比重——投資者視角深度解讀'},
+   global:['NVIDIA GB200 Rack：台廠如何爭奪組裝訂單','ODM直供模式：為何Amazon/Meta不買Dell而找廣達？']},
+  {cls:'mod-num-3',code:'M03',days:'15天',title:'全球競爭版圖：美國、中國、其他國家',sub:'Dell · HPE · Inspur · Lenovo · Supermicro',
+   lessons:['Dell（美）：PowerEdge AI伺服器，20%市占霸主','HPE（美）：Cray超算底蘊，AI Factory策略','Supermicro（美）：GPU伺服器跳升全球前三的秘密','浪潮Inspur（中）：中國AI伺服器第一，12%全球市占','聯想Lenovo（港/中）：11%市占，亞太最快成長','華為（中）：自研Ascend晶片，繞過美國管制路線'],
+   twFocus:{bg:'#FAEEDA',color:'#633806',tag:'台灣視角',text:'台廠代工給所有人，包含競爭對手——供應鏈中立策略的商業智慧'},
+   global:['地緣政治：美國管制vs中國替代方案','Supermicro崛起：矽谷台灣移民創辦的伺服器帝國']},
+  {cls:'mod-num-4',code:'M04',days:'20天',title:'台灣零組件供應鏈：護國群山全景',sub:'TSMC · ASE · Delta · Accton · AVC · Realtek',
+   lessons:['台積電：所有AI GPU都在這裡誕生，CoWoS先進封裝','日月光：AI晶片封裝不可缺的「包裝廠」','台達電：吃下NVIDIA Blackwell全系列電源訂單','奇鋐：GB200液冷散熱爆單，水冷革命在台灣','智邦Accton：400G乙太網路，Meta/雲端廠愛用','聯發科/瑞昱：BMC管理晶片與網路晶片台灣IC廠'],
+   twFocus:{bg:'#EEF0FF',color:'#3C3489',tag:'供應鏈圖',text:'從晶圓到整機：一台H100伺服器裡，有多少台灣製造的零件？'},
+   global:['SK Hynix / Samsung（韓）：HBM記憶體唯一關鍵供應商','Micron（美）：DDR5伺服器記憶體市場']},
+  {cls:'mod-num-5',code:'M05',days:'15天',title:'AI伺服器核心硬體：GPU、記憶體、互聯',sub:'H100 · HBM3 · NVLink · InfiniBand',
+   lessons:['GPU解剖：Tensor Core、HBM、NVLink全部打開看','H100 vs H200 vs Blackwell GB200：每代升級在哪裡','HBM3e記憶體：為何台積電+SK Hynix缺一不可','NVLink / NVSwitch：GPU叢集的神經系統','InfiniBand vs 400GbE：AI叢集用哪種網路？','一台GB200 NVL72機架：造價多少？誰能組裝？'],
+   twFocus:{bg:'#FFEDE6',color:'#993C1D',tag:'台廠連結',text:'台積電製造GPU → 日月光封裝 → 廣達/鴻海組裝 → 運往全球'},
+   global:['NVIDIA vs AMD：AI GPU雙雄誰更強','Google TPU / AWS Trainium：自研晶片挑戰NVIDIA']},
+  {cls:'mod-num-6',code:'M06',days:'10天',title:'地緣政治、貿易戰與台灣的風險和機會',sub:'US-China · Export Controls · Supply Shift',
+   lessons:['美國晶片出口管制：H100/H800/A800禁止賣中國意味什麼','中國替代方案：華為昇騰、寒武紀、壁仞——能追上嗎？','台廠赴美/墨西哥/越南設廠：地緣政治重塑生產地圖','台灣的脆弱性：921大地震/水電/人才的潛在風險','台灣的不可替代性：為何短期內無人能取代台廠'],
+   twFocus:{bg:'#E2F5EC',color:'#085041',tag:'切身議題',text:'台灣在中美AI競賽中：被爭搶的代工夥伴，還是被爭奪的籌碼？'},
+   global:['印度、越南能接過台灣的代工嗎？','日本復興半導體計畫：Rapidus 2奈米的野心']},
+  {cls:'mod-num-7',code:'M07',days:'10天',title:'未來展望：下一代AI伺服器與台灣佈局',sub:'Blackwell Ultra · Rubin · Photonics · Quantum',
+   lessons:['NVIDIA Rubin 2026：Blackwell之後的下一波','光子晶片Photonics：光速互聯，台廠能切入嗎？','液浸冷卻Immersion Cooling：下一代機房革命','AI推論伺服器崛起：邊緣運算vs雲端的市場分裂','台廠2025年伺服器相關事業營收突破5兆台幣','100天學習大統整與全球AI伺服器版圖總結'],
+   twFocus:{bg:'#FFF0F5',color:'#72243E',tag:'投資視角',text:'台廠2025年AI成長展望——哪些廠商最受益於下一波浪潮？'},
+   global:['Groq LPU：非NVIDIA的AI推論晶片挑戰者','Open Compute Project：超大型雲端廠直接設計伺服器']},
+];
+
+const modList = document.getElementById('modules');
+modules.forEach(m => {
+  const el = document.createElement('div');
+  el.className = 'mod';
+  const lessonsHTML = m.lessons.map(l => `<div class="lesson-item">${l}</div>`).join('');
+  const globalHTML  = m.global.map(g => `<div class="lesson-item">${g}</div>`).join('');
+  el.innerHTML = `
+    <div class="mod-hdr">
+      <div class="mod-num ${m.cls}">${m.code}<br><span style="font-size:8px;opacity:0.65">${m.days}</span></div>
+      <div><div class="mod-title">${m.title}</div><div class="mod-sub">${m.sub}</div></div>
+      <div class="mod-days">${m.days}</div>
+    </div>
+    <div class="mod-body">
+      <div class="mod-cols">
+        <div>
+          <div class="mod-col-hdr">課程單元</div>
+          ${lessonsHTML}
+        </div>
+        <div>
+          <div class="mod-col-hdr">台灣廠商焦點</div>
+          <div class="tw-focus-box" style="background:${m.twFocus.bg};color:${m.twFocus.color}">
+            <strong>🇹🇼 ${m.twFocus.tag}：</strong>${m.twFocus.text}
+          </div>
+          <div class="mod-col-hdr" style="margin-top:8px">全球競爭者</div>
+          ${globalHTML}
+        </div>
+      </div>
+    </div>`;
+  el.querySelector('.mod-hdr').addEventListener('click', () => el.classList.toggle('open'));
+  modList.appendChild(el);
+});
 </script>
+
 </body>
 </html>
