@@ -1,0 +1,2160 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>米氏方程式｜Km 與 Vmax</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Noto+Sans+TC:wght@400;500;700;900&family=JetBrains+Mono:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f0fdfa;
+  --ink:#1a1a2e;
+  --vmax:#ff3d7f;
+  --km:#3d5cff;
+  --curve:#00c896;
+  --substrate:#ffb800;
+  --enzyme:#9333ea;
+  --warn:#ff6b35;
+  --gold:#ffb800;
+  --teal:#06b6d4;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+html,body{background:var(--bg);color:var(--ink);font-family:'Noto Sans TC',sans-serif;line-height:1.7;overflow-x:hidden}
+
+/* ===== HEADER ===== */
+.hero{
+  background:
+    radial-gradient(circle at 15% 30%, rgba(0,200,150,.5), transparent 50%),
+    radial-gradient(circle at 85% 70%, rgba(61,92,255,.5), transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(255,61,127,.4), transparent 55%),
+    linear-gradient(135deg,#0f4c4a 0%,#1a1a2e 100%);
+  padding:56px 20px 72px;
+  position:relative;overflow:hidden;
+  border-bottom:6px solid var(--ink);
+}
+.hero-eyebrow{
+  display:inline-block;background:var(--gold);color:var(--ink);
+  padding:6px 14px;font-family:'JetBrains Mono',monospace;font-size:12px;
+  border-radius:50px;letter-spacing:1px;margin-bottom:14px;
+  position:relative;z-index:2;font-weight:700;
+}
+.hero h1{
+  font-family:'Fraunces',serif;font-weight:800;
+  font-size:clamp(28px,7vw,52px);line-height:1.05;
+  color:#fff;text-shadow:3px 3px 0 var(--ink);
+  position:relative;z-index:2;
+}
+.hero-sub{
+  margin-top:14px;color:#fff;font-size:clamp(15px,3.5vw,18px);
+  font-weight:500;text-shadow:1px 1px 0 rgba(0,0,0,.3);
+  position:relative;z-index:2;max-width:680px;
+}
+.hero-equation{
+  margin-top:24px;
+  background:rgba(255,255,255,.95);
+  display:inline-block;
+  padding:14px 24px;border-radius:12px;
+  border:3px solid var(--ink);
+  box-shadow:6px 6px 0 var(--ink);
+  position:relative;z-index:2;
+}
+.hero-equation-formula{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(18px,4.5vw,22px);font-weight:700;color:var(--ink);
+}
+.hero-equation-label{
+  font-size:11px;color:var(--vmax);font-weight:700;
+  font-family:'JetBrains Mono',monospace;margin-top:4px;
+  letter-spacing:1px;
+}
+.hero-pills{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;
+  position:relative;z-index:2;
+}
+.pill{
+  background:rgba(255,255,255,.95);color:var(--ink);
+  padding:8px 16px;border-radius:50px;
+  font-weight:700;font-size:14px;
+  border:2.5px solid var(--ink);
+  display:flex;align-items:center;gap:6px;
+}
+.pill .dot{width:10px;height:10px;border-radius:50%}
+.hero-tip{
+  margin-top:18px;background:rgba(26,26,46,.8);color:#fff;
+  padding:10px 16px;border-radius:10px;font-size:14px;
+  position:relative;z-index:2;display:inline-block;
+  border:2px solid var(--gold);
+}
+
+/* ===== NAV ===== */
+.nav{
+  background:var(--ink);padding:14px 20px;
+  display:flex;gap:8px;flex-wrap:wrap;
+  position:sticky;top:0;z-index:50;
+  border-bottom:3px solid var(--gold);
+}
+.nav a{
+  color:#fff;background:transparent;border:1.5px solid #fff;
+  padding:6px 12px;font-size:13px;border-radius:50px;
+  text-decoration:none;font-weight:500;transition:.2s;
+}
+.nav a:hover,.nav a:active{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* ===== CONTAINER ===== */
+.wrap{max-width:880px;margin:0 auto;padding:32px 18px}
+section{margin-bottom:64px;scroll-margin-top:80px}
+.section-num{
+  display:inline-block;font-family:'JetBrains Mono',monospace;
+  background:var(--ink);color:var(--gold);
+  padding:4px 10px;font-size:13px;border-radius:6px;margin-bottom:10px;
+}
+.section-title{
+  font-family:'Fraunces',serif;font-weight:800;
+  font-size:clamp(24px,5.5vw,38px);line-height:1.15;margin-bottom:8px;
+}
+.section-sub{color:#666;margin-bottom:24px;font-size:15px}
+
+/* ===== INTRO CARDS ===== */
+.intro-card{
+  background:#fff;border:3px solid var(--ink);border-radius:18px;
+  padding:20px;margin-bottom:18px;box-shadow:6px 6px 0 var(--ink);
+}
+.intro-card h3{font-family:'Fraunces',serif;font-size:20px;margin-bottom:10px}
+.intro-card.pink{background:linear-gradient(135deg,#ffe4ec,#fff)}
+.intro-card.green{background:linear-gradient(135deg,#d1fae5,#fff)}
+.intro-card.blue{background:linear-gradient(135deg,#dbeafe,#fff)}
+.intro-card.gold{background:linear-gradient(135deg,#fef3c7,#fff)}
+
+/* ===== CAST CARDS ===== */
+.cast-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:14px;margin:24px 0;
+}
+.cast-card{
+  background:#fff;border:2.5px solid var(--ink);border-radius:16px;
+  padding:14px 12px;text-align:center;
+  box-shadow:4px 4px 0 var(--ink);
+  text-decoration:none;color:var(--ink);
+  transition:transform .15s;display:block;cursor:pointer;
+}
+.cast-card:hover,.cast-card:active{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.cast-icon{
+  width:56px;height:56px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 8px;font-weight:900;font-size:18px;color:#fff;
+  font-family:'JetBrains Mono',monospace;border:3px solid var(--ink);
+}
+.cast-name{font-weight:700;font-size:14px;margin-bottom:2px}
+.cast-role{font-size:12px;color:#555;line-height:1.4}
+.tap-hint{
+  display:block;margin-top:6px;font-size:10px;color:var(--vmax);
+  font-family:'JetBrains Mono',monospace;font-weight:700;
+}
+
+/* ===== DIAGRAM ===== */
+.diagram-wrap{
+  background:#fff;border:3px solid var(--ink);border-radius:20px;
+  padding:16px;margin:18px 0;box-shadow:8px 8px 0 var(--ink);
+  overflow-x:auto;
+}
+.diagram-title{
+  font-family:'Fraunces',serif;font-size:17px;font-weight:700;
+  margin-bottom:8px;text-align:center;
+}
+.diagram-hint{
+  font-size:12px;color:#777;text-align:center;margin-bottom:12px;
+  font-family:'JetBrains Mono',monospace;
+}
+.diagram-hint b{color:var(--vmax)}
+svg{display:block;max-width:100%;height:auto;margin:0 auto}
+
+.click-target{cursor:pointer}
+.click-target:hover rect,
+.click-target:hover circle,
+.click-target:hover ellipse,
+.click-target:hover path,
+.click-target:hover polygon,
+.click-target:hover text{
+  filter:brightness(1.15) drop-shadow(0 0 8px rgba(255,184,0,.6));
+}
+
+/* ===== STEP LIST ===== */
+.steps{margin:18px 0;display:grid;gap:12px}
+.step{
+  background:#fff;border:2.5px solid var(--ink);border-radius:14px;
+  padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:14px;
+  align-items:start;box-shadow:4px 4px 0 var(--ink);
+}
+.step-num{
+  background:var(--km);color:#fff;width:36px;height:36px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-family:'JetBrains Mono',monospace;
+  border:2.5px solid var(--ink);flex-shrink:0;
+}
+.step:nth-child(2) .step-num{background:var(--curve)}
+.step:nth-child(3) .step-num{background:var(--vmax)}
+.step:nth-child(4) .step-num{background:var(--enzyme)}
+.step:nth-child(5) .step-num{background:var(--warn)}
+.step h4{font-size:15px;margin-bottom:4px;font-weight:700}
+.step p{font-size:14px;color:#444}
+
+/* ===== ANALOGY ===== */
+.analogy{
+  background:linear-gradient(135deg,#fef3c7,#fff8e7);
+  border:3px dashed var(--warn);border-radius:16px;
+  padding:16px 18px;margin:18px 0;
+}
+.analogy-label{
+  display:inline-block;background:var(--warn);color:#fff;
+  padding:3px 10px;border-radius:50px;font-size:12px;font-weight:700;
+  margin-bottom:8px;font-family:'JetBrains Mono',monospace;
+}
+
+/* ===== EQUATION BOX ===== */
+.eq-box{
+  background:#1a1a2e;color:var(--gold);
+  padding:20px 24px;border-radius:14px;
+  font-family:'JetBrains Mono',monospace;font-size:18px;
+  font-weight:700;margin:18px 0;text-align:center;
+  border:3px solid var(--gold);
+  box-shadow:6px 6px 0 var(--ink);
+  overflow-x:auto;
+}
+.eq-box .eq-label{
+  display:block;font-size:11px;color:#999;
+  letter-spacing:2px;margin-bottom:8px;
+}
+.eq-box .eq-main{
+  font-size:clamp(18px,5vw,26px);
+  letter-spacing:1px;
+}
+
+/* ===== EXAMPLE TABLE ===== */
+.km-table{
+  background:#fff;border:3px solid var(--ink);border-radius:16px;
+  padding:0;margin:18px 0;box-shadow:6px 6px 0 var(--ink);
+  overflow:hidden;
+}
+.km-row{
+  display:grid;grid-template-columns:2fr 1fr 1.5fr 2fr;
+  border-bottom:2px solid #f0f0f0;
+}
+.km-row:last-child{border-bottom:none}
+.km-row.head{background:var(--ink);color:#fff}
+.km-cell{
+  padding:12px 14px;font-size:13px;
+  border-right:2px solid #f0f0f0;
+}
+.km-cell:last-child{border-right:none}
+.km-row.head .km-cell{
+  font-weight:700;font-family:'JetBrains Mono',monospace;
+  font-size:12px;border-right:2px solid #444;
+}
+.km-row.head .km-cell:last-child{border-right:none}
+.km-cell.mono{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--km)}
+.km-cell.fast{color:var(--curve);font-weight:700;font-family:'JetBrains Mono',monospace}
+
+/* ============ MODAL ============ */
+.modal{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(26,26,46,0);
+  visibility:hidden;opacity:0;
+  transition:opacity .25s,visibility .25s,background .25s;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.modal:target{
+  visibility:visible;opacity:1;
+  background:rgba(26,26,46,.65);
+}
+.modal-overlay{position:absolute;inset:0;cursor:pointer}
+.modal-card{
+  position:relative;background:#fff;
+  width:100%;max-width:520px;max-height:88vh;
+  border-radius:24px 24px 0 0;
+  border:3px solid var(--ink);border-bottom:none;
+  box-shadow:0 -8px 24px rgba(0,0,0,.25);
+  transform:translateY(100%);
+  transition:transform .35s cubic-bezier(.2,.9,.3,1.2);
+  overflow-y:auto;padding:24px 22px 32px;
+}
+.modal:target .modal-card{transform:translateY(0)}
+@media (min-width:600px){
+  .modal{align-items:center;padding:20px}
+  .modal-card{
+    border-radius:24px;border:3px solid var(--ink);max-height:85vh;
+    transform:translateY(40px) scale(.96);
+  }
+  .modal:target .modal-card{transform:translateY(0) scale(1)}
+}
+.modal-close{
+  position:absolute;top:14px;right:14px;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:20px;font-weight:900;
+  z-index:2;border:2px solid var(--ink);
+}
+.modal-close:hover{background:var(--vmax)}
+.modal-icon{
+  width:64px;height:64px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 0 12px;font-weight:900;font-size:20px;color:#fff;
+  font-family:'JetBrains Mono',monospace;border:3px solid var(--ink);
+}
+.modal-en{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  color:var(--vmax);font-weight:700;letter-spacing:.5px;margin-bottom:4px;
+}
+.modal-zh{
+  font-family:'Fraunces',serif;font-size:26px;font-weight:800;
+  margin-bottom:4px;line-height:1.2;
+}
+.modal-tag{
+  display:inline-block;background:var(--curve);color:#fff;
+  padding:3px 10px;border-radius:50px;font-size:11px;font-weight:700;
+  margin-top:6px;margin-bottom:14px;font-family:'JetBrains Mono',monospace;
+}
+.modal-section{margin-bottom:14px}
+.modal-label{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--km);font-weight:700;letter-spacing:.5px;
+  margin-bottom:4px;text-transform:uppercase;
+}
+.modal-body{font-size:15px;color:#222;line-height:1.65}
+.modal-body p{margin-bottom:6px}
+.modal-formula{
+  background:#1a1a2e;color:var(--gold);
+  padding:10px 14px;border-radius:8px;
+  font-family:'JetBrains Mono',monospace;font-size:14px;
+  font-weight:700;margin:8px 0;display:inline-block;
+  border:2px solid var(--gold);
+}
+.modal-analogy{
+  background:linear-gradient(135deg,#fef3c7,#fff);
+  border-left:4px solid var(--warn);
+  padding:10px 14px;border-radius:8px;font-size:14px;
+  margin-top:6px;
+}
+.modal-analogy::before{content:"💡 ";font-size:16px}
+
+/* ===== GLOSSARY ===== */
+.glossary-section details{
+  background:#fff;border:2.5px solid var(--ink);
+  border-radius:12px;margin-bottom:10px;
+  box-shadow:4px 4px 0 var(--ink);overflow:hidden;
+}
+.glossary-section details[open]{background:linear-gradient(135deg,#f0fdfa,#fff)}
+.glossary-section summary{
+  padding:14px 16px;cursor:pointer;font-weight:700;font-size:15px;
+  display:flex;align-items:center;justify-content:space-between;
+  list-style:none;user-select:none;
+}
+.glossary-section summary::-webkit-details-marker{display:none}
+.glossary-section summary::marker{display:none}
+.summary-en{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  color:var(--vmax);margin-left:8px;flex-shrink:0;
+}
+.arrow{
+  display:inline-block;width:14px;height:14px;
+  border-right:3px solid var(--ink);border-bottom:3px solid var(--ink);
+  transform:rotate(45deg);transition:transform .25s;
+  margin-left:10px;flex-shrink:0;margin-top:-4px;
+}
+.glossary-section details[open] .arrow{transform:rotate(225deg);margin-top:4px}
+.glossary-body{padding:0 16px 16px;border-top:2px dashed var(--ink);padding-top:12px}
+.glossary-body p{margin-bottom:6px;font-size:14px}
+.glossary-body .role{
+  display:inline-block;color:#fff;
+  padding:2px 8px;border-radius:50px;font-size:11px;font-weight:700;
+  margin-bottom:8px;font-family:'JetBrains Mono',monospace;
+}
+.glossary-body .role.const{background:var(--km)}
+.glossary-body .role.rate{background:var(--vmax)}
+.glossary-body .role.eq{background:var(--enzyme)}
+
+.footer{background:var(--ink);color:#fff;padding:32px 20px;text-align:center;font-size:13px}
+.footer p{margin-bottom:6px}
+
+@media (max-width:600px){
+  .cast-grid{grid-template-columns:repeat(2,1fr)}
+  .km-row{grid-template-columns:1fr}
+  .km-cell{border-right:none;border-bottom:1px solid #f0f0f0}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hero">
+  <span class="hero-eyebrow">PROTEIN 300 DAYS · ENZYME KINETICS</span>
+  <h1>米氏方程式<br>Km 與 Vmax</h1>
+  <p class="hero-sub">Michaelis-Menten Kinetics · 1913<br>用一條方程式描述所有酵素的速度規律</p>
+  
+  <div class="hero-equation">
+    <span class="hero-equation-label">THE EQUATION</span>
+    <div class="hero-equation-formula">v = V<sub>max</sub> · [S] / (K<sub>m</sub> + [S])</div>
+  </div>
+  
+  <div class="hero-pills">
+    <div class="pill"><span class="dot" style="background:var(--vmax)"></span>Vmax 最大速率</div>
+    <div class="pill"><span class="dot" style="background:var(--km)"></span>Km 米氏常數</div>
+    <div class="pill"><span class="dot" style="background:var(--curve)"></span>v 反應速率</div>
+    <div class="pill"><span class="dot" style="background:var(--substrate)"></span>[S] 基質濃度</div>
+  </div>
+  <div class="hero-tip">👆 圖中所有元素 / 卡片可點擊查看英文、白話解釋與化學式</div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav class="nav">
+  <a href="#overview">總覽</a>
+  <a href="#derivation">方程式由來</a>
+  <a href="#vmax">Vmax 詳解</a>
+  <a href="#km">Km 詳解</a>
+  <a href="#lineweaver">雙倒數圖</a>
+  <a href="#examples">真實酵素</a>
+  <a href="#glossary">術語字典</a>
+</nav>
+
+<div class="wrap">
+
+<!-- ============ SECTION 1: OVERVIEW ============ -->
+<section id="overview">
+  <span class="section-num">PART 01</span>
+  <h2 class="section-title">為什麼要學米氏方程式？</h2>
+  <p class="section-sub">這條方程式是酵素學的「F=ma」——所有酵素行為的數學起點。<b style="color:var(--vmax)">點擊任何角色</b>看詳細說明。</p>
+
+  <!-- THE FAMOUS CURVE -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖一：米氏曲線全景圖</div>
+    <div class="diagram-hint">👆 點擊曲線各區域查看 <b>意義</b></div>
+    <svg viewBox="0 0 600 420" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="25" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">THE MICHAELIS-MENTEN CURVE</text>
+      <text x="300" y="42" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#666">基質濃度 vs 反應速率的雙曲線</text>
+
+      <!-- Axes -->
+      <line x1="80" y1="60" x2="80" y2="340" stroke="#1a1a2e" stroke-width="2.5"/>
+      <line x1="80" y1="340" x2="540" y2="340" stroke="#1a1a2e" stroke-width="2.5"/>
+      
+      <!-- Y-axis label -->
+      <a href="#m-velocity" class="click-target">
+        <text x="35" y="100" font-family="Noto Sans TC" font-size="13" font-weight="700" fill="#1a1a2e">速率</text>
+        <text x="35" y="118" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="var(--curve)">v</text>
+      </a>
+      
+      <!-- X-axis label -->
+      <a href="#m-substrate" class="click-target">
+        <text x="555" y="358" text-anchor="end" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="var(--substrate)">[S]</text>
+        <text x="555" y="375" text-anchor="end" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e">基質濃度</text>
+      </a>
+
+      <!-- Vmax line -->
+      <a href="#m-vmax" class="click-target">
+        <line x1="80" y1="80" x2="540" y2="80" stroke="var(--vmax)" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <text x="490" y="72" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="var(--vmax)">Vmax</text>
+        <text x="490" y="60" font-family="Noto Sans TC" font-size="10" fill="var(--vmax)">最大速率</text>
+      </a>
+
+      <!-- ½Vmax line -->
+      <a href="#m-halfvmax" class="click-target">
+        <line x1="80" y1="210" x2="200" y2="210" stroke="var(--km)" stroke-width="2" stroke-dasharray="3 3"/>
+        <text x="40" y="207" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--km)">½Vmax</text>
+      </a>
+
+      <!-- Km line (vertical) -->
+      <a href="#m-km" class="click-target">
+        <line x1="200" y1="210" x2="200" y2="340" stroke="var(--km)" stroke-width="2" stroke-dasharray="3 3"/>
+        <text x="200" y="358" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="var(--km)">Km</text>
+        <text x="200" y="374" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="var(--km)">米氏常數</text>
+      </a>
+
+      <!-- The curve -->
+      <a href="#m-curve" class="click-target">
+        <path d="M 80 340 Q 110 320 140 290 Q 175 245 200 210 Q 250 160 320 120 Q 400 95 480 85 Q 510 82 540 81" 
+              fill="none" stroke="var(--curve)" stroke-width="4"/>
+      </a>
+
+      <!-- Region 1: Linear (low [S]) -->
+      <a href="#m-linear" class="click-target">
+        <rect x="92" y="295" width="90" height="40" fill="#dbeafe" stroke="var(--km)" stroke-width="2" rx="6" opacity="0.7"/>
+        <text x="137" y="313" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--km)">線性區</text>
+        <text x="137" y="328" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--km)">v ∝ [S]</text>
+      </a>
+
+      <!-- Region 2: Half-saturation -->
+      <a href="#m-halfvmax" class="click-target">
+        <circle cx="200" cy="210" r="8" fill="var(--km)" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="220" y="195" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--km)">半飽和點</text>
+        <text x="220" y="208" font-family="JetBrains Mono" font-size="9" fill="var(--km)">[S] = Km</text>
+        <text x="220" y="221" font-family="JetBrains Mono" font-size="9" fill="var(--km)">v = ½Vmax</text>
+      </a>
+
+      <!-- Region 3: Saturation -->
+      <a href="#m-saturation" class="click-target">
+        <rect x="380" y="100" width="120" height="40" fill="#ffe4ec" stroke="var(--vmax)" stroke-width="2" rx="6" opacity="0.7"/>
+        <text x="440" y="118" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--vmax)">飽和區</text>
+        <text x="440" y="133" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="var(--vmax)">v ≈ Vmax</text>
+      </a>
+
+      <!-- Equation at top -->
+      <rect x="60" y="380" width="480" height="35" fill="#1a1a2e" rx="8"/>
+      <text x="300" y="402" text-anchor="middle" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="var(--gold)">v = Vmax × [S] / (Km + [S])</text>
+    </svg>
+  </div>
+
+  <h3 style="margin:24px 0 14px;font-family:'Fraunces',serif">本章主要角色</h3>
+  <div class="cast-grid">
+    <a href="#m-velocity" class="cast-card">
+      <div class="cast-icon" style="background:#00c896">v</div>
+      <div class="cast-name">Velocity</div>
+      <div class="cast-role">反應速率</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-vmax" class="cast-card">
+      <div class="cast-icon" style="background:#ff3d7f">V</div>
+      <div class="cast-name">Vmax</div>
+      <div class="cast-role">最大速率</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-km" class="cast-card">
+      <div class="cast-icon" style="background:#3d5cff">Km</div>
+      <div class="cast-name">Km</div>
+      <div class="cast-role">米氏常數</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-substrate" class="cast-card">
+      <div class="cast-icon" style="background:#ffb800;color:#1a1a2e">[S]</div>
+      <div class="cast-name">Substrate</div>
+      <div class="cast-role">基質濃度</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-enzyme" class="cast-card">
+      <div class="cast-icon" style="background:#9333ea">[E]</div>
+      <div class="cast-name">Enzyme</div>
+      <div class="cast-role">酵素濃度</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-es" class="cast-card">
+      <div class="cast-icon" style="background:#9333ea">ES</div>
+      <div class="cast-name">ES Complex</div>
+      <div class="cast-role">酵素-基質複合物</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-kcat" class="cast-card">
+      <div class="cast-icon" style="background:#ff6b35">kcat</div>
+      <div class="cast-name">Turnover</div>
+      <div class="cast-role">翻轉數</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+    <a href="#m-efficiency" class="cast-card">
+      <div class="cast-icon" style="background:#06b6d4">k/K</div>
+      <div class="cast-name">Efficiency</div>
+      <div class="cast-role">催化效率</div>
+      <span class="tap-hint">TAP →</span>
+    </a>
+  </div>
+
+  <div class="intro-card pink">
+    <h3>🎯 米氏方程式說了什麼？</h3>
+    <p>1913 年 Michaelis 和 Menten 提出這條方程式，描述酵素反應速率（v）和基質濃度（[S]）的數學關係。</p>
+    <p style="margin-top:8px">兩個關鍵參數定義一個酵素的「個性」：</p>
+    <p>• <strong>Vmax</strong>：這個酵素跑全速時的速度</p>
+    <p>• <strong>Km</strong>：要多少基質才能讓這個酵素跑到半速</p>
+    <p style="margin-top:8px">把這兩個數字告訴你，你就完全掌握了這個酵素的脾氣。</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 2: DERIVATION ============ -->
+<section id="derivation">
+  <span class="section-num">PART 02</span>
+  <h2 class="section-title">方程式從哪裡來？</h2>
+  <p class="section-sub">理解三個基本反應，米氏方程式就自然浮現</p>
+
+  <!-- DERIVATION DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖二：方程式背後的化學反應</div>
+    <div class="diagram-hint">👆 點擊各反應箭頭查看 <b>速率常數</b></div>
+    <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="25" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">THREE REACTIONS, ONE EQUATION</text>
+
+      <!-- Reaction 1: E + S → ES -->
+      <text x="100" y="60" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#666">① 結合</text>
+
+      <a href="#m-enzyme" class="click-target">
+        <path d="M 50 80 L 95 80 L 110 95 L 110 125 L 95 140 L 50 140 L 50 125 L 65 115 L 65 100 L 50 90 Z" 
+              fill="#9333ea" stroke="#1a1a2e" stroke-width="2.5"/>
+        <text x="75" y="115" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#fff">E</text>
+      </a>
+
+      <text x="125" y="115" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#1a1a2e">+</text>
+
+      <a href="#m-substrate" class="click-target">
+        <rect x="142" y="100" width="32" height="20" fill="#ffb800" stroke="#1a1a2e" stroke-width="2.5" rx="3"/>
+        <text x="158" y="114" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="#1a1a2e">S</text>
+      </a>
+
+      <a href="#m-k1" class="click-target">
+        <text x="195" y="105" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--curve)">k₁</text>
+        <text x="195" y="118" font-family="JetBrains Mono" font-size="14" fill="#1a1a2e">⇌</text>
+        <text x="195" y="135" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--vmax)">k₋₁</text>
+      </a>
+
+      <a href="#m-es" class="click-target">
+        <path d="M 240 80 L 285 80 L 300 95 L 300 125 L 285 140 L 240 140 L 240 125 L 255 115 L 255 100 L 240 90 Z" 
+              fill="#9333ea" stroke="#1a1a2e" stroke-width="2.5"/>
+        <rect x="262" y="105" width="20" height="14" fill="#ffb800" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="270" y="160" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">ES</text>
+      </a>
+
+      <!-- Reaction 2: ES → E + P -->
+      <a href="#m-kcat" class="click-target">
+        <text x="335" y="105" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--warn)">k₂ (kcat)</text>
+        <text x="335" y="118" font-family="JetBrains Mono" font-size="14" fill="#1a1a2e">→</text>
+      </a>
+
+      <a href="#m-enzyme" class="click-target">
+        <path d="M 400 80 L 445 80 L 460 95 L 460 125 L 445 140 L 400 140 L 400 125 L 415 115 L 415 100 L 400 90 Z" 
+              fill="#9333ea" stroke="#1a1a2e" stroke-width="2.5"/>
+        <text x="425" y="115" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#fff">E</text>
+      </a>
+
+      <text x="475" y="115" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#1a1a2e">+</text>
+
+      <a href="#m-product" class="click-target">
+        <circle cx="510" cy="105" r="9" fill="#ec4899" stroke="#1a1a2e" stroke-width="2"/>
+        <circle cx="510" cy="125" r="9" fill="#ff3d7f" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="510" y="160" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">P</text>
+      </a>
+
+      <!-- Steady state assumption -->
+      <line x1="40" y1="190" x2="560" y2="190" stroke="#1a1a2e" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+      <text x="300" y="215" text-anchor="middle" font-family="Noto Sans TC" font-size="12" font-weight="700" fill="#1a1a2e">穩態假設 (Steady State)</text>
+      <text x="300" y="232" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">ES 的形成速率 = ES 的消耗速率</text>
+
+      <!-- Steady state equation -->
+      <a href="#m-steady" class="click-target">
+        <rect x="80" y="248" width="440" height="40" fill="#1a1a2e" rx="8"/>
+        <text x="300" y="272" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="var(--gold)">k₁[E][S] = (k₋₁ + k₂)[ES]</text>
+      </a>
+
+      <!-- Final equation -->
+      <text x="300" y="312" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#666">經過數學推導 →</text>
+
+      <a href="#m-mm" class="click-target">
+        <rect x="80" y="318" width="440" height="35" fill="var(--curve)" stroke="#1a1a2e" stroke-width="2.5" rx="8"/>
+        <text x="300" y="340" text-anchor="middle" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#fff">v = Vmax · [S] / (Km + [S])</text>
+      </a>
+    </svg>
+  </div>
+
+  <!-- THREE LIMITS DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖三：方程式的三種極限情況</div>
+    <div class="diagram-hint">👆 點擊各情境查看 <b>數學意義</b></div>
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="22" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">THREE LIMITS OF THE EQUATION</text>
+
+      <!-- Case 1: [S] << Km -->
+      <a href="#m-low-s" class="click-target">
+        <rect x="40" y="50" width="170" height="280" fill="#dbeafe" stroke="var(--km)" stroke-width="3" rx="12"/>
+        <text x="125" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="700" fill="var(--km)">CASE 1</text>
+        <text x="125" y="92" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">基質很少</text>
+        <text x="125" y="108" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="var(--km)">[S] &lt;&lt; Km</text>
+
+        <!-- Mini graph -->
+        <line x1="60" y1="200" x2="60" y2="140" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="60" y1="200" x2="190" y2="200" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="60" y1="200" x2="120" y2="160" stroke="var(--km)" stroke-width="2.5"/>
+        <text x="125" y="155" font-family="JetBrains Mono" font-size="9" fill="var(--km)" font-weight="700">線性</text>
+
+        <text x="125" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">v ≈ (Vmax/Km) · [S]</text>
+        <text x="125" y="245" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">速率與 [S] 成正比</text>
+        <text x="125" y="262" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">如同一級反應</text>
+
+        <text x="125" y="290" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--km)">大部分酵素位</text>
+        <text x="125" y="305" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--km)">是空的</text>
+      </a>
+
+      <!-- Case 2: [S] = Km -->
+      <a href="#m-mid-s" class="click-target">
+        <rect x="220" y="50" width="160" height="280" fill="#fef3c7" stroke="var(--gold)" stroke-width="3" rx="12"/>
+        <text x="300" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="700" fill="var(--warn)">CASE 2</text>
+        <text x="300" y="92" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">[S] = Km</text>
+
+        <!-- Mini graph -->
+        <line x1="240" y1="200" x2="240" y2="140" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="240" y1="200" x2="370" y2="200" stroke="#1a1a2e" stroke-width="1.5"/>
+        <path d="M 240 200 Q 270 175 305 165" fill="none" stroke="var(--warn)" stroke-width="2.5"/>
+        <line x1="305" y1="165" x2="305" y2="200" stroke="var(--warn)" stroke-width="1" stroke-dasharray="2 2"/>
+        <text x="290" y="155" font-family="JetBrains Mono" font-size="9" fill="var(--warn)" font-weight="700">轉折點</text>
+
+        <text x="300" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">v = Vmax / 2</text>
+        <text x="300" y="245" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">恰好半飽和</text>
+        <text x="300" y="262" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">這就是 Km 的定義</text>
+
+        <text x="300" y="290" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--warn)">一半的酵素位</text>
+        <text x="300" y="305" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--warn)">被佔據</text>
+      </a>
+
+      <!-- Case 3: [S] >> Km -->
+      <a href="#m-high-s" class="click-target">
+        <rect x="390" y="50" width="170" height="280" fill="#ffe4ec" stroke="var(--vmax)" stroke-width="3" rx="12"/>
+        <text x="475" y="75" text-anchor="middle" font-family="JetBrains Mono" font-size="12" font-weight="700" fill="var(--vmax)">CASE 3</text>
+        <text x="475" y="92" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">基質爆量</text>
+        <text x="475" y="108" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="var(--vmax)">[S] &gt;&gt; Km</text>
+
+        <!-- Mini graph -->
+        <line x1="410" y1="200" x2="410" y2="140" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="410" y1="200" x2="540" y2="200" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="410" y1="148" x2="540" y2="148" stroke="var(--vmax)" stroke-width="2.5" stroke-dasharray="3 3"/>
+        <path d="M 410 200 Q 440 165 480 152 Q 510 149 540 148" fill="none" stroke="var(--vmax)" stroke-width="2.5"/>
+        <text x="500" y="143" font-family="JetBrains Mono" font-size="9" fill="var(--vmax)" font-weight="700">飽和</text>
+
+        <text x="475" y="225" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">v ≈ Vmax</text>
+        <text x="475" y="245" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">速率達到上限</text>
+        <text x="475" y="262" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">如同零級反應</text>
+
+        <text x="475" y="290" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--vmax)">所有酵素位</text>
+        <text x="475" y="305" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--vmax)">都被佔滿</text>
+      </a>
+
+      <!-- Bottom -->
+      <rect x="40" y="345" width="520" height="30" fill="#1a1a2e" rx="8"/>
+      <text x="300" y="365" text-anchor="middle" font-family="Noto Sans TC" font-size="12" font-weight="700" fill="var(--gold)">⚡ 同一條方程式，自動產生這三種行為</text>
+    </svg>
+  </div>
+
+  <h3 style="margin:24px 0 12px;font-family:'Fraunces',serif">推導五步驟</h3>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div><h4>寫出反應方程式</h4><p>E + S ⇌ ES → E + P，三個速率常數 k₁、k₋₁、k₂。</p></div></div>
+    <div class="step"><div class="step-num">2</div><div><h4>穩態假設</h4><p>ES 的形成速率 = ES 的消耗速率（[ES] 不變）。</p></div></div>
+    <div class="step"><div class="step-num">3</div><div><h4>解出 [ES]</h4><p>[ES] = k₁[E][S] / (k₋₁ + k₂)。</p></div></div>
+    <div class="step"><div class="step-num">4</div><div><h4>定義 Km</h4><p>Km = (k₋₁ + k₂) / k₁，把三個速率常數合併成一個常數。</p></div></div>
+    <div class="step"><div class="step-num">5</div><div><h4>得到米氏方程式</h4><p>v = Vmax · [S] / (Km + [S])。簡單、優雅、強大。</p></div></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3: VMAX ============ -->
+<section id="vmax">
+  <span class="section-num">PART 03</span>
+  <h2 class="section-title">Vmax 詳解</h2>
+  <p class="section-sub">「酵素的最大速度」——當所有酵素都在工作時的速率上限</p>
+
+  <div class="eq-box">
+    <span class="eq-label">VMAX FORMULA</span>
+    <div class="eq-main">Vmax = kcat × [E]<sub>total</sub></div>
+  </div>
+
+  <!-- VMAX BOTTLENECK DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖四：Vmax 的物理意義（瓶頸效應）</div>
+    <div class="diagram-hint">👆 點擊各狀態查看 <b>說明</b></div>
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="22" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">WHY DOES VELOCITY HAVE A CEILING?</text>
+
+      <!-- Stage 1: Few substrates, many free enzymes -->
+      <text x="150" y="55" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="var(--km)">少量基質</text>
+      
+      <!-- Free enzymes -->
+      <a href="#m-enzyme" class="click-target">
+        <g>
+          <ellipse cx="60" cy="100" rx="20" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="60" y="104" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">E</text>
+          <ellipse cx="100" cy="115" rx="20" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="100" y="119" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">E</text>
+          <ellipse cx="140" cy="100" rx="20" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="140" y="104" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">E</text>
+          <ellipse cx="180" cy="115" rx="20" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="180" y="119" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">E</text>
+          <ellipse cx="220" cy="100" rx="20" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <text x="220" y="104" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#fff">E</text>
+        </g>
+      </a>
+      
+      <!-- 1 substrate -->
+      <a href="#m-substrate" class="click-target">
+        <rect x="125" y="155" width="22" height="14" fill="#ffb800" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="136" y="166" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#1a1a2e">S</text>
+      </a>
+
+      <text x="150" y="195" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="var(--km)">速率 = 慢</text>
+      <text x="150" y="210" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#666">v ≈ k(Vmax/Km)[S]</text>
+
+      <!-- Arrow -->
+      <text x="295" y="115" font-family="JetBrains Mono" font-size="20" font-weight="700" fill="#1a1a2e">→</text>
+
+      <!-- Stage 2: Many substrates, all enzymes occupied -->
+      <text x="465" y="55" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="var(--vmax)">基質爆量（飽和）</text>
+      
+      <!-- All ES complexes -->
+      <a href="#m-saturation" class="click-target">
+        <g>
+          <ellipse cx="370" cy="100" rx="22" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="362" y="93" width="14" height="10" fill="#ffb800" stroke="#1a1a2e" stroke-width="1"/>
+          <text x="378" y="104" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">ES</text>
+          
+          <ellipse cx="415" cy="115" rx="22" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="407" y="108" width="14" height="10" fill="#ffb800" stroke="#1a1a2e" stroke-width="1"/>
+          <text x="423" y="119" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">ES</text>
+          
+          <ellipse cx="460" cy="100" rx="22" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="452" y="93" width="14" height="10" fill="#ffb800" stroke="#1a1a2e" stroke-width="1"/>
+          <text x="468" y="104" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">ES</text>
+          
+          <ellipse cx="505" cy="115" rx="22" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="497" y="108" width="14" height="10" fill="#ffb800" stroke="#1a1a2e" stroke-width="1"/>
+          <text x="513" y="119" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">ES</text>
+          
+          <ellipse cx="550" cy="100" rx="22" ry="14" fill="#9333ea" stroke="#1a1a2e" stroke-width="2"/>
+          <rect x="542" y="93" width="14" height="10" fill="#ffb800" stroke="#1a1a2e" stroke-width="1"/>
+          <text x="558" y="104" text-anchor="middle" font-family="JetBrains Mono" font-size="8" font-weight="700" fill="#fff">ES</text>
+        </g>
+      </a>
+      
+      <!-- Excess substrates waiting -->
+      <a href="#m-substrate" class="click-target">
+        <g>
+          <rect x="380" y="155" width="20" height="12" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="408" y="155" width="20" height="12" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="436" y="155" width="20" height="12" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="464" y="155" width="20" height="12" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="492" y="155" width="20" height="12" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="520" y="155" width="20" height="12" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="380" y="172" width="20" height="12" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="408" y="172" width="20" height="12" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+          <rect x="436" y="172" width="20" height="12" fill="#ffb800" stroke="#1a1a2e" stroke-width="1.5"/>
+          <text x="460" y="200" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#666">⚠️ 排隊等候</text>
+        </g>
+      </a>
+
+      <text x="465" y="220" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--vmax)">速率 = 最大 (Vmax)</text>
+      <text x="465" y="234" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#666">v = Vmax</text>
+
+      <!-- Bottom: Vmax explanation -->
+      <line x1="40" y1="252" x2="560" y2="252" stroke="#1a1a2e" stroke-width="1.5" stroke-dasharray="4 4"/>
+
+      <text x="300" y="275" text-anchor="middle" font-family="Noto Sans TC" font-size="12" font-weight="700" fill="#1a1a2e">為什麼有上限？</text>
+
+      <rect x="60" y="290" width="480" height="80" fill="#fef3c7" stroke="var(--vmax)" stroke-width="2" rx="8"/>
+      <text x="80" y="312" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e">• <strong>酵素數量有限</strong>：[E] 是固定的，所有酵素都忙著工作後就到極限</text>
+      <text x="80" y="332" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e">• <strong>每個酵素有處理速度</strong>：kcat 是每個酵素每秒能處理的基質數</text>
+      <text x="80" y="352" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="var(--vmax)">→ Vmax = kcat × [E]total （酵素的速度 × 數量 = 總速度上限）</text>
+    </svg>
+  </div>
+
+  <div class="intro-card pink">
+    <h3>📊 Vmax 受什麼影響？</h3>
+    <p>• <strong>酵素濃度 [E]</strong>：加倍 [E]，Vmax 加倍（直接成正比）</p>
+    <p>• <strong>kcat（翻轉數）</strong>：每個酵素的「處理速度」，由酵素本身結構決定</p>
+    <p>• <strong>不受 [S] 影響</strong>：Vmax 是極限值，加再多基質也不會超過</p>
+    <p style="margin-top:8px">改變 Vmax 的方法：增加酵素數量、改變酵素結構（基因突變、磷酸化）。</p>
+  </div>
+
+  <div class="analogy">
+    <span class="analogy-label">🍔 速食店比喻</span>
+    <p>把酵素想成速食店的店員。Vmax 就是「整家店在尖峰時段的最大出餐速度」——取決於店員人數（[E]）和每個店員出餐速度（kcat）。即使外面排隊到天荒地老（高 [S]），出餐速度也不會超過這個上限。</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: KM ============ -->
+<section id="km">
+  <span class="section-num">PART 04</span>
+  <h2 class="section-title">Km 詳解</h2>
+  <p class="section-sub">「半飽和濃度」——讓酵素跑到一半速度所需的基質量</p>
+
+  <div class="eq-box">
+    <span class="eq-label">KM DEFINITION</span>
+    <div class="eq-main">Km = [S] when v = ½Vmax</div>
+  </div>
+
+  <!-- KM COMPARISON DIAGRAM -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖五：Km 大小代表什麼？</div>
+    <div class="diagram-hint">👆 點擊各曲線查看 <b>意義</b></div>
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="22" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">SMALL Km vs LARGE Km</text>
+
+      <!-- Axes -->
+      <line x1="80" y1="60" x2="80" y2="290" stroke="#1a1a2e" stroke-width="2"/>
+      <line x1="80" y1="290" x2="540" y2="290" stroke="#1a1a2e" stroke-width="2"/>
+      <text x="40" y="70" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">v</text>
+      <text x="540" y="307" text-anchor="end" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">[S]</text>
+
+      <!-- Same Vmax for both -->
+      <line x1="80" y1="80" x2="540" y2="80" stroke="#666" stroke-width="1.5" stroke-dasharray="4 4"/>
+      <text x="495" y="72" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">Vmax (相同)</text>
+      
+      <!-- ½Vmax line -->
+      <line x1="80" y1="185" x2="540" y2="185" stroke="#999" stroke-width="1" stroke-dasharray="2 3"/>
+      <text x="40" y="188" font-family="JetBrains Mono" font-size="9" font-weight="700" fill="#666">½Vmax</text>
+
+      <!-- Curve 1: SMALL Km (blue, fast saturation) -->
+      <a href="#m-low-km" class="click-target">
+        <path d="M 80 290 Q 110 240 145 200 Q 175 165 220 130 Q 290 100 380 88 Q 460 82 540 80" 
+              fill="none" stroke="var(--km)" stroke-width="3.5"/>
+        <line x1="145" y1="185" x2="145" y2="290" stroke="var(--km)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <circle cx="145" cy="185" r="6" fill="var(--km)" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="145" y="307" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--km)">Km₁ (小)</text>
+      </a>
+
+      <!-- Curve 2: LARGE Km (orange, slow saturation) -->
+      <a href="#m-high-km" class="click-target">
+        <path d="M 80 290 Q 130 270 200 250 Q 280 215 360 175 Q 440 130 540 95" 
+              fill="none" stroke="var(--warn)" stroke-width="3.5" stroke-dasharray="6 3"/>
+        <line x1="350" y1="185" x2="350" y2="290" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <circle cx="350" cy="185" r="6" fill="var(--warn)" stroke="#1a1a2e" stroke-width="2"/>
+        <text x="350" y="307" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--warn)">Km₂ (大)</text>
+      </a>
+
+      <!-- Labels -->
+      <a href="#m-low-km" class="click-target">
+        <text x="200" y="125" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--km)">小 Km</text>
+        <text x="200" y="140" font-family="Noto Sans TC" font-size="10" fill="var(--km)">高親和力 (酵素 1)</text>
+      </a>
+
+      <a href="#m-high-km" class="click-target">
+        <text x="425" y="200" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--warn)">大 Km</text>
+        <text x="425" y="215" font-family="Noto Sans TC" font-size="10" fill="var(--warn)">低親和力 (酵素 2)</text>
+      </a>
+
+      <!-- Bottom message -->
+      <rect x="40" y="325" width="520" height="40" fill="#dbeafe" stroke="var(--km)" stroke-width="2" rx="8"/>
+      <text x="60" y="345" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e"><tspan font-weight="700" fill="var(--km)">Km 越小</tspan> = 少量基質就能讓酵素跑半速 = <tspan font-weight="700" fill="var(--km)">親和力越高</tspan></text>
+      <text x="60" y="360" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e"><tspan font-weight="700" fill="var(--warn)">Km 越大</tspan> = 需要大量基質才能跑半速 = <tspan font-weight="700" fill="var(--warn)">親和力越低</tspan></text>
+    </svg>
+  </div>
+
+  <!-- KM PHYSIOLOGICAL MEANING -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖六：Km 的生理意義</div>
+    <div class="diagram-hint">👆 點擊查看 <b>生理應用</b></div>
+    <svg viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="22" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">Km 配對體內的基質濃度</text>
+
+      <!-- Title -->
+      <text x="300" y="50" text-anchor="middle" font-family="Noto Sans TC" font-size="12" font-weight="700" fill="#1a1a2e">通常：酵素的 Km ≈ 細胞內基質的正常濃度</text>
+
+      <!-- Glucokinase vs Hexokinase example -->
+      <text x="150" y="85" text-anchor="middle" font-family="Fraunces" font-size="13" font-weight="700" fill="var(--km)">Hexokinase</text>
+      <text x="150" y="100" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">己糖激酶（一般組織）</text>
+
+      <text x="450" y="85" text-anchor="middle" font-family="Fraunces" font-size="13" font-weight="700" fill="var(--warn)">Glucokinase</text>
+      <text x="450" y="100" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#666">葡萄糖激酶（肝臟）</text>
+
+      <!-- Mini graphs -->
+      <a href="#m-low-km" class="click-target">
+        <line x1="60" y1="220" x2="60" y2="120" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="60" y1="220" x2="240" y2="220" stroke="#1a1a2e" stroke-width="1.5"/>
+        <path d="M 60 220 Q 90 170 130 145 Q 180 130 240 125" fill="none" stroke="var(--km)" stroke-width="3"/>
+        <line x1="60" y1="172" x2="240" y2="172" stroke="#999" stroke-width="1" stroke-dasharray="2 2"/>
+        <line x1="85" y1="172" x2="85" y2="220" stroke="var(--km)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="85" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="var(--km)">Km ≈ 0.1 mM</text>
+        <text x="85" y="252" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#666">很小</text>
+      </a>
+
+      <a href="#m-high-km" class="click-target">
+        <line x1="360" y1="220" x2="360" y2="120" stroke="#1a1a2e" stroke-width="1.5"/>
+        <line x1="360" y1="220" x2="540" y2="220" stroke="#1a1a2e" stroke-width="1.5"/>
+        <path d="M 360 220 Q 410 200 460 165 Q 500 145 540 130" fill="none" stroke="var(--warn)" stroke-width="3" stroke-dasharray="5 3"/>
+        <line x1="360" y1="172" x2="540" y2="172" stroke="#999" stroke-width="1" stroke-dasharray="2 2"/>
+        <line x1="450" y1="172" x2="450" y2="220" stroke="var(--warn)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="450" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="700" fill="var(--warn)">Km ≈ 10 mM</text>
+        <text x="450" y="252" text-anchor="middle" font-family="Noto Sans TC" font-size="9" fill="#666">很大</text>
+      </a>
+
+      <!-- Explanation -->
+      <rect x="40" y="280" width="520" height="70" fill="#fef6e4" stroke="#1a1a2e" stroke-width="2" rx="8"/>
+      <text x="60" y="300" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e"><tspan font-weight="700" fill="var(--km)">Hexokinase</tspan>：在低血糖時也能工作（一般組織需要穩定供能）</text>
+      <text x="60" y="318" font-family="Noto Sans TC" font-size="11" fill="#1a1a2e"><tspan font-weight="700" fill="var(--warn)">Glucokinase</tspan>：只在高血糖時才大量工作（肝臟儲存多餘葡萄糖）</text>
+      <text x="60" y="340" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#1a1a2e">→ 不同 Km 讓不同組織根據血糖狀態做不同的事</text>
+    </svg>
+  </div>
+
+  <h3 style="margin:24px 0 12px;font-family:'Fraunces',serif">真實酵素的 Km 值</h3>
+  <div class="km-table">
+    <div class="km-row head">
+      <div class="km-cell">酵素</div>
+      <div class="km-cell">基質</div>
+      <div class="km-cell">Km 值</div>
+      <div class="km-cell">意義</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Catalase</div>
+      <div class="km-cell">H₂O₂</div>
+      <div class="km-cell mono">25 mM</div>
+      <div class="km-cell">過氧化氫處理快但親和力不高</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Hexokinase</div>
+      <div class="km-cell">葡萄糖</div>
+      <div class="km-cell mono">0.15 mM</div>
+      <div class="km-cell">即使低血糖也能工作</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Glucokinase</div>
+      <div class="km-cell">葡萄糖</div>
+      <div class="km-cell mono">10 mM</div>
+      <div class="km-cell">只在飯後高血糖時工作</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Carbonic anhydrase</div>
+      <div class="km-cell">CO₂</div>
+      <div class="km-cell mono">12 mM</div>
+      <div class="km-cell">血液 CO₂ 處理</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Chymotrypsin</div>
+      <div class="km-cell">乙醯酪胺酸醯胺</div>
+      <div class="km-cell mono">5 mM</div>
+      <div class="km-cell">蛋白質消化</div>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <span class="analogy-label">🎯 標靶比喻</span>
+    <p>Km 像射手對目標的「敏感度」。Km 小的酵素像狙擊手，目標一出現就能擊中（少量基質就能高效工作）。Km 大的酵素像散彈槍，需要大量目標才能命中夠多（需要高基質濃度）。兩種酵素都有用，看細胞需要哪一種。</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 5: LINEWEAVER-BURK ============ -->
+<section id="lineweaver">
+  <span class="section-num">PART 05</span>
+  <h2 class="section-title">雙倒數圖</h2>
+  <p class="section-sub">把曲線變直線——更容易讀出 Km 和 Vmax</p>
+
+  <div class="eq-box">
+    <span class="eq-label">LINEWEAVER-BURK EQUATION</span>
+    <div class="eq-main">1/v = (Km/Vmax) × 1/[S] + 1/Vmax</div>
+  </div>
+
+  <!-- LINEWEAVER-BURK PLOT -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖七：雙倒數圖（Lineweaver-Burk Plot）</div>
+    <div class="diagram-hint">👆 點擊各部位查看 <b>意義</b></div>
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="22" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">DOUBLE-RECIPROCAL PLOT</text>
+
+      <!-- Axes (with negative x extending) -->
+      <line x1="200" y1="50" x2="200" y2="320" stroke="#1a1a2e" stroke-width="2.5"/>
+      <line x1="60" y1="280" x2="540" y2="280" stroke="#1a1a2e" stroke-width="2.5"/>
+
+      <!-- Y-axis label -->
+      <a href="#m-velocity" class="click-target">
+        <text x="170" y="60" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="var(--curve)">1/v</text>
+      </a>
+
+      <!-- X-axis label -->
+      <a href="#m-substrate" class="click-target">
+        <text x="555" y="298" text-anchor="end" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="var(--substrate)">1/[S]</text>
+      </a>
+
+      <!-- The straight line -->
+      <a href="#m-line" class="click-target">
+        <line x1="60" y1="320" x2="500" y2="100" stroke="var(--curve)" stroke-width="3.5"/>
+      </a>
+
+      <!-- Y-intercept (1/Vmax) -->
+      <a href="#m-yintercept" class="click-target">
+        <circle cx="200" cy="220" r="7" fill="var(--vmax)" stroke="#1a1a2e" stroke-width="2.5"/>
+        <line x1="200" y1="220" x2="115" y2="220" stroke="var(--vmax)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="105" y="225" text-anchor="end" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--vmax)">1/Vmax</text>
+        <text x="220" y="215" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--vmax)">Y 軸截距</text>
+      </a>
+
+      <!-- X-intercept (-1/Km) -->
+      <a href="#m-xintercept" class="click-target">
+        <circle cx="100" cy="280" r="7" fill="var(--km)" stroke="#1a1a2e" stroke-width="2.5"/>
+        <line x1="100" y1="280" x2="100" y2="335" stroke="var(--km)" stroke-width="1.5" stroke-dasharray="3 3"/>
+        <text x="100" y="350" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--km)">-1/Km</text>
+        <text x="80" y="265" text-anchor="middle" font-family="Noto Sans TC" font-size="10" font-weight="700" fill="var(--km)">X 軸截距</text>
+      </a>
+
+      <!-- Slope -->
+      <a href="#m-slope" class="click-target">
+        <text x="380" y="180" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">斜率 = Km/Vmax</text>
+        <line x1="360" y1="195" x2="430" y2="160" stroke="#1a1a2e" stroke-width="1.5" marker-end="url(#aS)"/>
+      </a>
+
+      <!-- Origin label -->
+      <text x="207" y="295" font-family="JetBrains Mono" font-size="9" fill="#999">0</text>
+
+      <!-- Bottom message -->
+      <rect x="40" y="340" width="520" height="30" fill="#1a1a2e" rx="8"/>
+      <text x="300" y="360" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="var(--gold)">⚡ 三個關鍵點：Y 軸截距 = 1/Vmax，X 軸截距 = -1/Km，斜率 = Km/Vmax</text>
+
+      <defs>
+        <marker id="aS" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1a1a2e"/></marker>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- INHIBITION ON LB PLOT -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖八：抑制劑在雙倒數圖上的特徵</div>
+    <div class="diagram-hint">👆 點擊各曲線查看 <b>抑制類型</b></div>
+    <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="22" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">INHIBITION SIGNATURES on LB Plot</text>
+
+      <!-- Axes -->
+      <line x1="200" y1="50" x2="200" y2="320" stroke="#1a1a2e" stroke-width="2"/>
+      <line x1="60" y1="280" x2="540" y2="280" stroke="#1a1a2e" stroke-width="2"/>
+      <text x="170" y="60" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">1/v</text>
+      <text x="555" y="298" text-anchor="end" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="#1a1a2e">1/[S]</text>
+
+      <!-- No inhibitor -->
+      <line x1="80" y1="320" x2="490" y2="100" stroke="var(--curve)" stroke-width="3"/>
+      <text x="500" y="100" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--curve)">無抑制</text>
+      <circle cx="200" cy="220" r="5" fill="var(--curve)" stroke="#1a1a2e" stroke-width="1.5"/>
+      <circle cx="100" cy="280" r="5" fill="var(--curve)" stroke="#1a1a2e" stroke-width="1.5"/>
+
+      <!-- Competitive: same Y-intercept, different X-intercept -->
+      <a href="#m-comp-lb" class="click-target">
+        <line x1="60" y1="320" x2="450" y2="60" stroke="var(--km)" stroke-width="2.5" stroke-dasharray="6 3"/>
+        <text x="380" y="65" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--km)">競爭性</text>
+        <text x="380" y="78" font-family="Noto Sans TC" font-size="9" fill="var(--km)">同 Y 截距</text>
+        <circle cx="200" cy="220" r="5" fill="var(--km)" stroke="#1a1a2e" stroke-width="1.5"/>
+        <circle cx="80" cy="280" r="5" fill="var(--km)" stroke="#1a1a2e" stroke-width="1.5"/>
+      </a>
+
+      <!-- Non-competitive: different Y-intercept, same X-intercept -->
+      <a href="#m-noncomp-lb" class="click-target">
+        <line x1="100" y1="320" x2="490" y2="50" stroke="var(--vmax)" stroke-width="2.5" stroke-dasharray="3 3"/>
+        <text x="445" y="55" font-family="JetBrains Mono" font-size="11" font-weight="700" fill="var(--vmax)">非競爭性</text>
+        <text x="445" y="68" font-family="Noto Sans TC" font-size="9" fill="var(--vmax)">同 X 截距</text>
+        <circle cx="200" cy="180" r="5" fill="var(--vmax)" stroke="#1a1a2e" stroke-width="1.5"/>
+        <circle cx="100" cy="280" r="5" fill="var(--vmax)" stroke="#1a1a2e" stroke-width="1.5"/>
+      </a>
+
+      <!-- Bottom: comparison -->
+      <rect x="40" y="335" width="520" height="35" fill="#fef3c7" stroke="#1a1a2e" stroke-width="2" rx="8"/>
+      <text x="60" y="354" font-family="Noto Sans TC" font-size="10" fill="#1a1a2e"><tspan fill="var(--km)" font-weight="700">競爭性</tspan>：Y 截距相同（Vmax 不變），X 截距改變（Km 增加）</text>
+      <text x="60" y="367" font-family="Noto Sans TC" font-size="10" fill="#1a1a2e"><tspan fill="var(--vmax)" font-weight="700">非競爭性</tspan>：X 截距相同（Km 不變），Y 截距改變（Vmax 下降）</text>
+    </svg>
+  </div>
+
+  <div class="intro-card blue">
+    <h3>🔬 為什麼用雙倒數圖？</h3>
+    <p>米氏曲線是雙曲線，要從中精確讀出 Vmax 很困難（因為它是「漸近值」，永遠到不了）。雙倒數圖把它變成直線後：</p>
+    <p style="margin-top:8px">• <strong>容易畫</strong>：兩個點就能定一條直線</p>
+    <p>• <strong>容易讀數</strong>：截距和斜率都精確</p>
+    <p>• <strong>容易比較</strong>：抑制劑的影響一目了然</p>
+    <p style="margin-top:8px"><strong>注意：</strong>現代生物實驗多用非線性曲線擬合（軟體直接套米氏方程式），但雙倒數圖在教學和判讀抑制類型上仍然非常經典。</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 6: REAL EXAMPLES ============ -->
+<section id="examples">
+  <span class="section-num">PART 06</span>
+  <h2 class="section-title">真實酵素的速度紀錄</h2>
+  <p class="section-sub">kcat 和催化效率（kcat/Km）讓我們比較不同酵素的「身手」</p>
+
+  <div class="km-table">
+    <div class="km-row head">
+      <div class="km-cell">酵素</div>
+      <div class="km-cell">kcat (s⁻¹)</div>
+      <div class="km-cell">Km (M)</div>
+      <div class="km-cell">kcat/Km (M⁻¹s⁻¹)</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Catalase（過氧化氫酶）</div>
+      <div class="km-cell mono">40,000,000</div>
+      <div class="km-cell mono">25 × 10⁻³</div>
+      <div class="km-cell fast">1.6 × 10⁹</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Carbonic anhydrase</div>
+      <div class="km-cell mono">600,000</div>
+      <div class="km-cell mono">12 × 10⁻³</div>
+      <div class="km-cell fast">5 × 10⁷</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Acetylcholinesterase</div>
+      <div class="km-cell mono">14,000</div>
+      <div class="km-cell mono">9 × 10⁻⁵</div>
+      <div class="km-cell fast">1.6 × 10⁸</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Chymotrypsin</div>
+      <div class="km-cell mono">100</div>
+      <div class="km-cell mono">15 × 10⁻³</div>
+      <div class="km-cell">7 × 10³</div>
+    </div>
+    <div class="km-row">
+      <div class="km-cell">Lysozyme</div>
+      <div class="km-cell mono">0.5</div>
+      <div class="km-cell mono">6 × 10⁻⁶</div>
+      <div class="km-cell">8 × 10⁴</div>
+    </div>
+  </div>
+
+  <div class="intro-card gold">
+    <h3>🏆 酵素速度紀錄保持人</h3>
+    <p><strong>Catalase（過氧化氫酶）</strong>是已知最快的酵素之一，每秒能處理 4,000 萬個 H₂O₂ 分子。為什麼這麼快？</p>
+    <p style="margin-top:8px">因為 H₂O₂ 是劇毒，細胞代謝會產生它。如果不立刻處理掉就會傷害 DNA、蛋白質。</p>
+    <p style="margin-top:8px"><strong>催化完美 (Catalytic Perfection)</strong>：當 kcat/Km ≈ 10⁸-10⁹，代表反應的限速步驟只剩「分子相遇」的擴散速度。酵素已經跑到物理極限，無法再快。</p>
+  </div>
+
+  <!-- KCAT/KM EXPLANATION -->
+  <div class="diagram-wrap">
+    <div class="diagram-title">圖九：催化效率 (kcat/Km) 的意義</div>
+    <div class="diagram-hint">👆 點擊各部分查看 <b>說明</b></div>
+    <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+      <text x="300" y="22" text-anchor="middle" font-family="Fraunces" font-size="14" font-weight="700" fill="#1a1a2e">CATALYTIC EFFICIENCY (kcat/Km)</text>
+
+      <!-- Two metrics -->
+      <a href="#m-kcat" class="click-target">
+        <rect x="60" y="60" width="220" height="100" fill="var(--vmax)" stroke="#1a1a2e" stroke-width="3" rx="12"/>
+        <text x="170" y="85" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="#fff">kcat</text>
+        <text x="170" y="105" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#fff">速度</text>
+        <text x="170" y="125" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#fff">每個酵素每秒</text>
+        <text x="170" y="142" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#fff">能處理多少基質</text>
+      </a>
+
+      <a href="#m-km" class="click-target">
+        <rect x="320" y="60" width="220" height="100" fill="var(--km)" stroke="#1a1a2e" stroke-width="3" rx="12"/>
+        <text x="430" y="85" text-anchor="middle" font-family="JetBrains Mono" font-size="13" font-weight="700" fill="#fff">1/Km</text>
+        <text x="430" y="105" text-anchor="middle" font-family="Noto Sans TC" font-size="11" font-weight="700" fill="#fff">親和力</text>
+        <text x="430" y="125" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#fff">能多有效率地</text>
+        <text x="430" y="142" text-anchor="middle" font-family="Noto Sans TC" font-size="10" fill="#fff">抓住基質</text>
+      </a>
+
+      <!-- Multiplication -->
+      <text x="300" y="195" text-anchor="middle" font-family="JetBrains Mono" font-size="20" font-weight="700" fill="#1a1a2e">× = ?</text>
+
+      <!-- Result -->
+      <a href="#m-efficiency" class="click-target">
+        <rect x="100" y="215" width="400" height="80" fill="var(--curve)" stroke="#1a1a2e" stroke-width="3" rx="12"/>
+        <text x="300" y="240" text-anchor="middle" font-family="JetBrains Mono" font-size="14" font-weight="700" fill="#fff">kcat / Km = 催化效率</text>
+        <text x="300" y="260" text-anchor="middle" font-family="Noto Sans TC" font-size="11" fill="#fff">綜合「速度」+「親和力」的整體性能指標</text>
+        <text x="300" y="280" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#fff">擴散極限 ≈ 10⁸–10⁹ M⁻¹s⁻¹（催化完美）</text>
+      </a>
+    </svg>
+  </div>
+
+  <div class="analogy">
+    <span class="analogy-label">🏎️ 賽車比喻</span>
+    <p>把 kcat 和 Km 想成賽車的兩個指標：</p>
+    <p style="margin-top:6px">• <strong>kcat = 最高時速</strong>：車子全速時跑多快</p>
+    <p>• <strong>1/Km = 加速度</strong>：多快能達到全速</p>
+    <p style="margin-top:6px">真正厲害的賽車（酵素）兩者都好——既能跑得快，又能快速達到全速。kcat/Km 就是綜合評分。</p>
+  </div>
+</section>
+
+<!-- ============ SECTION 7: GLOSSARY ============ -->
+<section id="glossary" class="glossary-section">
+  <span class="section-num">PART 07</span>
+  <h2 class="section-title">完整術語字典</h2>
+  <p class="section-sub">所有專有名詞｜中英對照｜詳細解釋｜點擊摺疊區塊展開</p>
+
+  <details>
+    <summary>米氏方程式 <span class="summary-en">Michaelis-Menten Equation</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role eq">方程式</span>
+      <p>1913 年由 Michaelis 和 Menten 提出，描述酵素反應速率和基質濃度的關係：v = Vmax × [S] / (Km + [S])。是酵素學的基本方程式。</p>
+    </div>
+  </details>
+  <details>
+    <summary>反應速率 <span class="summary-en">Velocity (v)</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role rate">速率</span>
+      <p>單位時間內產生的產物量，或消耗的基質量。單位通常是 mol/s 或 μmol/min。</p>
+    </div>
+  </details>
+  <details>
+    <summary>最大反應速率 <span class="summary-en">Vmax · Maximum Velocity</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role rate">速率</span>
+      <p>酵素能達到的最快速率。當 [S] 趨近無限大時 v 接近的極限值。Vmax = kcat × [E]total。</p>
+    </div>
+  </details>
+  <details>
+    <summary>米氏常數 <span class="summary-en">Km · Michaelis Constant</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role const">常數</span>
+      <p>達到 ½Vmax 所需的基質濃度。Km 越小代表親和力越高（少量基質就能讓酵素跑半速）。Km = (k₋₁ + k₂) / k₁。</p>
+    </div>
+  </details>
+  <details>
+    <summary>翻轉數 <span class="summary-en">kcat · Turnover Number</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role const">常數</span>
+      <p>每個酵素分子每秒能催化多少個基質。Catalase 的 kcat 高達 4,000 萬 / 秒，是已知最快的酵素之一。</p>
+    </div>
+  </details>
+  <details>
+    <summary>催化效率 <span class="summary-en">kcat/Km · Catalytic Efficiency</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role const">常數</span>
+      <p>綜合速度（kcat）和親和力（1/Km）的指標。當 kcat/Km 接近 10⁸-10⁹ M⁻¹s⁻¹ 時，酵素已達擴散極限，稱為「催化完美」。</p>
+    </div>
+  </details>
+  <details>
+    <summary>酵素-基質複合物 <span class="summary-en">ES Complex</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role eq">中間物</span>
+      <p>酵素和基質結合的中間狀態。在米氏方程式推導中，[ES] 在穩態下保持不變是關鍵假設。</p>
+    </div>
+  </details>
+  <details>
+    <summary>穩態 <span class="summary-en">Steady State</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role eq">假設</span>
+      <p>反應達到一個動態平衡：ES 形成的速率等於 ES 分解的速率，所以 [ES] 不變。這是米氏方程式推導的基礎。</p>
+    </div>
+  </details>
+  <details>
+    <summary>飽和現象 <span class="summary-en">Saturation</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role rate">特徵</span>
+      <p>當 [S] 很高時所有酵素都被佔滿，速率達到上限 Vmax。這是酵素和化學催化最大的差別。</p>
+    </div>
+  </details>
+  <details>
+    <summary>雙倒數圖 <span class="summary-en">Lineweaver-Burk Plot</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role eq">分析法</span>
+      <p>把米氏方程式取倒數變成直線：1/v = (Km/Vmax)(1/[S]) + 1/Vmax。Y 軸截距 = 1/Vmax，X 軸截距 = -1/Km，斜率 = Km/Vmax。</p>
+    </div>
+  </details>
+  <details>
+    <summary>速率常數 <span class="summary-en">Rate Constants (k₁, k₋₁, k₂)</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role const">常數</span>
+      <p>k₁：E + S → ES 的速率常數。k₋₁：ES → E + S 的速率常數（解離）。k₂：ES → E + P 的速率常數（即 kcat）。</p>
+    </div>
+  </details>
+  <details>
+    <summary>一級反應 <span class="summary-en">First-order Reaction</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role rate">特徵</span>
+      <p>反應速率與基質濃度成正比的反應。米氏曲線的線性區（低 [S]）就是一級反應，v ≈ (Vmax/Km) × [S]。</p>
+    </div>
+  </details>
+  <details>
+    <summary>零級反應 <span class="summary-en">Zero-order Reaction</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role rate">特徵</span>
+      <p>反應速率不受基質濃度影響的反應。米氏曲線的飽和區（高 [S]）就是零級反應，v ≈ Vmax。</p>
+    </div>
+  </details>
+  <details>
+    <summary>催化完美 <span class="summary-en">Catalytic Perfection</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role const">概念</span>
+      <p>當酵素的 kcat/Km 達到 10⁸-10⁹ M⁻¹s⁻¹ 時，反應的限速步驟是分子擴散相遇的速度。酵素已達物理極限。例：Catalase、Carbonic anhydrase。</p>
+    </div>
+  </details>
+  <details>
+    <summary>Hexokinase <span class="summary-en">己糖激酶</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role const">範例</span>
+      <p>低 Km（≈0.15 mM）的葡萄糖磷酸化酵素，存在於大多數組織。即使血糖低也能正常工作。</p>
+    </div>
+  </details>
+  <details>
+    <summary>Glucokinase <span class="summary-en">葡萄糖激酶</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role const">範例</span>
+      <p>高 Km（≈10 mM）的葡萄糖激酶，主要存在於肝臟。只在飯後高血糖時才大量工作，幫忙儲存多餘葡萄糖。</p>
+    </div>
+  </details>
+  <details>
+    <summary>Catalase <span class="summary-en">過氧化氫酶</span><span class="arrow"></span></summary>
+    <div class="glossary-body">
+      <span class="role const">範例</span>
+      <p>速度最快的酵素之一，kcat 達 4,000 萬 / 秒。能瞬間把劇毒的 H₂O₂ 轉成水和氧氣，保護細胞。</p>
+    </div>
+  </details>
+</section>
+
+</div>
+
+<!-- ============================================
+   ALL MODAL DEFINITIONS
+   ============================================ -->
+
+<!-- VELOCITY -->
+<div id="m-velocity" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">v</div>
+    <div class="modal-en">VELOCITY · Reaction Rate</div>
+    <div class="modal-zh">反應速率</div>
+    <span class="modal-tag">隨 [S] 變化</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>單位時間內反應產生的產物量（或消耗的基質量）。是米氏方程式的「Y 軸」變數，會隨基質濃度變化。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">單位</div>
+      <div class="modal-formula">μmol / min<br>或 mol / s</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">v vs Vmax</div>
+      <div class="modal-body">
+        <p>• <strong>v</strong>：當下的瞬時速率（變動的）</p>
+        <p>• <strong>Vmax</strong>：可能達到的最大速率（固定的）</p>
+        <p>v 永遠 ≤ Vmax</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VMAX -->
+<div id="m-vmax" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">V</div>
+    <div class="modal-en">Vmax · Maximum Velocity</div>
+    <div class="modal-zh">最大反應速率</div>
+    <span class="modal-tag">速度上限</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素能達到的最快反應速率。當基質濃度極高、所有酵素都在工作時的速率。再加更多基質也不會超過這個值。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">公式</div>
+      <div class="modal-formula">Vmax = kcat × [E]total</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">什麼會改變 Vmax？</div>
+      <div class="modal-body">
+        <p>• <strong>酵素濃度 [E] 變化</strong>：成正比</p>
+        <p>• <strong>非競爭性抑制劑</strong>：Vmax ↓</p>
+        <p>• <strong>突變</strong>：可能改變 kcat</p>
+        <p>• <strong>溫度、pH 異常</strong>：可能讓 Vmax ↓</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">什麼不會改變 Vmax？</div>
+      <div class="modal-body">
+        <p>• 加大量基質（已經到上限）</p>
+        <p>• 競爭性抑制劑（可被基質克服）</p>
+      </div>
+    </div>
+    <div class="modal-analogy">Vmax 像速食店的最大出餐量——店員人數和速度決定上限，外面排再長的隊伍也加快不了。</div>
+  </div>
+</div>
+
+<!-- KM -->
+<div id="m-km" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">Km</div>
+    <div class="modal-en">Km · Michaelis Constant</div>
+    <div class="modal-zh">米氏常數</div>
+    <span class="modal-tag">親和力指標</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>讓酵素跑到一半最大速度時所需的基質濃度。<strong>Km 越小，酵素對基質的親和力越高</strong>（少量基質就能高效工作）。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">公式</div>
+      <div class="modal-formula">Km = (k₋₁ + k₂) / k₁<br><br>當 v = ½Vmax 時：[S] = Km</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">Km 和 Kd 的關係</div>
+      <div class="modal-body"><p>當 k₂ 很小時（催化慢），Km ≈ Kd（解離常數）。但 Km 是酵素學概念，包含了催化的影響，比 Kd 更全面。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">生理意義</div>
+      <div class="modal-body">
+        <p>酵素的 Km 通常接近細胞內基質的正常濃度，這樣能對基質變化最敏感。</p>
+        <p>例：Hexokinase Km ≈ 0.1 mM（一般組織需穩定供能）</p>
+        <p>　　Glucokinase Km ≈ 10 mM（肝臟只在高血糖時工作）</p>
+      </div>
+    </div>
+    <div class="modal-analogy">Km 像水庫的「半滿水位」——水達到這個高度，水車就轉到一半速度。</div>
+  </div>
+</div>
+
+<!-- SUBSTRATE -->
+<div id="m-substrate" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ffb800;color:#1a1a2e">[S]</div>
+    <div class="modal-en">SUBSTRATE CONCENTRATION</div>
+    <div class="modal-zh">基質濃度</div>
+    <span class="modal-tag">米氏方程式 X 軸</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>反應系統中的基質濃度，是米氏方程式的「X 軸」變數。改變 [S] 會改變反應速率 v。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">三種濃度區間</div>
+      <div class="modal-body">
+        <p>• <strong>[S] &lt;&lt; Km</strong>：線性區，v 與 [S] 成正比</p>
+        <p>• <strong>[S] = Km</strong>：v = ½Vmax（半飽和點）</p>
+        <p>• <strong>[S] &gt;&gt; Km</strong>：飽和區，v ≈ Vmax</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">單位</div>
+      <div class="modal-formula">通常用 mM 或 μM<br>(mol/L 或更小單位)</div>
+    </div>
+  </div>
+</div>
+
+<!-- ENZYME -->
+<div id="m-enzyme" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#9333ea">[E]</div>
+    <div class="modal-en">ENZYME CONCENTRATION</div>
+    <div class="modal-zh">酵素濃度</div>
+    <span class="modal-tag">影響 Vmax</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>反應系統中的酵素總量。<strong>[E] 越高，Vmax 越大</strong>，但 Km 不變（Km 是酵素本身的特性，不受數量影響）。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">關鍵關係</div>
+      <div class="modal-formula">Vmax = kcat × [E]total<br>(倍數關係)</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">細胞如何控制 [E]？</div>
+      <div class="modal-body">
+        <p>• <strong>合成</strong>：基因轉錄、轉譯</p>
+        <p>• <strong>降解</strong>：泛素-蛋白酶體系統</p>
+        <p>• <strong>分泌或內吞</strong>：膜蛋白受體</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ES COMPLEX -->
+<div id="m-es" class="modal">
+  <a href="#derivation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#derivation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#9333ea">ES</div>
+    <div class="modal-en">ENZYME-SUBSTRATE COMPLEX</div>
+    <div class="modal-zh">酵素-基質複合物</div>
+    <span class="modal-tag">關鍵中間態</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素和基質結合形成的中間狀態。所有酵素催化都必須經過 ES，這是反應的「轉運站」。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">米氏推導的關鍵</div>
+      <div class="modal-body"><p>在穩態下，[ES] 保持不變（形成速率 = 消耗速率）。這個假設讓我們能解出米氏方程式。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">化學反應</div>
+      <div class="modal-formula">E + S ⇌ ES → E + P<br>k₁    k₋₁    k₂</div>
+    </div>
+  </div>
+</div>
+
+<!-- KCAT -->
+<div id="m-kcat" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff6b35">kcat</div>
+    <div class="modal-en">kcat · Turnover Number</div>
+    <div class="modal-zh">翻轉數</div>
+    <span class="modal-tag">每秒處理量</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>每個酵素分子每秒能催化多少個基質。是「個別酵素的處理速度」，不受酵素數量影響。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">公式</div>
+      <div class="modal-formula">kcat = Vmax / [E]total<br>單位：s⁻¹（每秒）</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">驚人的數字</div>
+      <div class="modal-body">
+        <p>• <strong>Catalase</strong>：4 × 10⁷ /s（4,000 萬）</p>
+        <p>• <strong>Carbonic anhydrase</strong>：6 × 10⁵ /s</p>
+        <p>• <strong>Acetylcholinesterase</strong>：1.4 × 10⁴ /s</p>
+        <p>• <strong>Chymotrypsin</strong>：100 /s</p>
+        <p>• <strong>Lysozyme</strong>：0.5 /s（每 2 秒一次）</p>
+      </div>
+    </div>
+    <div class="modal-analogy">kcat 像店員的「個人出餐速度」。Catalase 是漢堡王界的閃電手，每秒做 4,000 萬個漢堡。</div>
+  </div>
+</div>
+
+<!-- EFFICIENCY -->
+<div id="m-efficiency" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#06b6d4">k/K</div>
+    <div class="modal-en">kcat/Km · Catalytic Efficiency</div>
+    <div class="modal-zh">催化效率</div>
+    <span class="modal-tag">綜合性能指標</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>綜合「速度（kcat）」和「親和力（1/Km）」的指標。一個酵素整體有多優秀，看這個數字。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">公式</div>
+      <div class="modal-formula">kcat / Km<br>單位：M⁻¹ s⁻¹</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">催化完美 (Catalytic Perfection)</div>
+      <div class="modal-body">
+        <p>當 kcat/Km 達到 10⁸-10⁹ M⁻¹s⁻¹，已達分子擴散極限。</p>
+        <p>限速步驟不再是化學反應，而是分子在水中相遇的速度。</p>
+        <p>例：Catalase、Carbonic anhydrase、Acetylcholinesterase。</p>
+      </div>
+    </div>
+    <div class="modal-analogy">kcat/Km 像賽車的綜合評分：最高速 × 加速度。兩者都好的車才是真正的冠軍。</div>
+  </div>
+</div>
+
+<!-- CURVE -->
+<div id="m-curve" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">~</div>
+    <div class="modal-en">HYPERBOLIC CURVE</div>
+    <div class="modal-zh">雙曲線</div>
+    <span class="modal-tag">米氏曲線形狀</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>米氏曲線的形狀。低 [S] 時近線性，高 [S] 時趨於水平（接近 Vmax 但永遠到不了）。是雙曲線的一支。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">三個特徵區</div>
+      <div class="modal-body">
+        <p>• <strong>左邊（線性）</strong>：v 和 [S] 成正比</p>
+        <p>• <strong>中間（轉折）</strong>：[S] = Km，v = ½Vmax</p>
+        <p>• <strong>右邊（飽和）</strong>：v 接近 Vmax</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">vs S 形曲線</div>
+      <div class="modal-body"><p>單體酵素（無協同）→ 雙曲線。多體酵素（有協同）→ S 形曲線。雙曲線是米氏行為的特徵。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- HALF VMAX -->
+<div id="m-halfvmax" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">½V</div>
+    <div class="modal-en">HALF-MAX VELOCITY</div>
+    <div class="modal-zh">半飽和點</div>
+    <span class="modal-tag">Km 的定義</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>當反應速率達到 Vmax 一半的點，這時的基質濃度就是 Km。這也是 Km 最簡單的物理意義。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">數學證明</div>
+      <div class="modal-formula">v = Vmax × [S] / (Km + [S])<br><br>當 [S] = Km：<br>v = Vmax × Km / (Km + Km)<br>v = Vmax / 2 ✓</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼選半飽和？</div>
+      <div class="modal-body"><p>因為這個點容易測量，而且代表「一半的酵素分子被基質佔據」的狀態，物理意義清楚。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SATURATION -->
+<div id="m-saturation" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">SAT</div>
+    <div class="modal-en">SATURATION ZONE</div>
+    <div class="modal-zh">飽和區</div>
+    <span class="modal-tag">高基質濃度</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>當 [S] 遠大於 Km 時，所有酵素分子幾乎都在工作，速率達到上限 Vmax。這時加再多基質也沒用。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">數學行為</div>
+      <div class="modal-body">
+        <p>當 [S] &gt;&gt; Km：</p>
+        <p>v = Vmax × [S] / (Km + [S])</p>
+        <p>≈ Vmax × [S] / [S]</p>
+        <p>≈ Vmax</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">化學意義</div>
+      <div class="modal-body"><p>所有酵素位都被佔滿，限速步驟變成催化本身（kcat），不再是基質的可得性。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- LINEAR -->
+<div id="m-linear" class="modal">
+  <a href="#overview" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#overview" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">LIN</div>
+    <div class="modal-en">LINEAR ZONE</div>
+    <div class="modal-zh">線性區</div>
+    <span class="modal-tag">低基質濃度</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>當 [S] 遠小於 Km 時，速率和基質濃度成正比，看起來像直線。大部分酵素位都是空的，加多少基質就多多少速度。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">數學行為</div>
+      <div class="modal-body">
+        <p>當 [S] &lt;&lt; Km：</p>
+        <p>v = Vmax × [S] / (Km + [S])</p>
+        <p>≈ Vmax × [S] / Km</p>
+        <p>≈ (Vmax/Km) × [S]</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼是線性？</div>
+      <div class="modal-body"><p>因為大部分酵素都是空的，每個新進來的基質都能找到酵素結合，速率正比於 [S]。屬於「一級反應」動力學。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- LOW S CASE -->
+<div id="m-low-s" class="modal">
+  <a href="#derivation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#derivation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">L</div>
+    <div class="modal-en">LOW [S] CASE</div>
+    <div class="modal-zh">基質很少的情況</div>
+    <span class="modal-tag">[S] &lt;&lt; Km</span>
+    <div class="modal-section">
+      <div class="modal-label">數學簡化</div>
+      <div class="modal-formula">當 [S] &lt;&lt; Km：<br>Km + [S] ≈ Km<br>v ≈ (Vmax/Km) × [S]<br>(線性)</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">物理意義</div>
+      <div class="modal-body">
+        <p>• 大部分酵素是空的</p>
+        <p>• 加 1 個基質 → 1 個酵素被佔據</p>
+        <p>• 速率正比於基質濃度</p>
+        <p>• 屬於一級反應</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">何時相關？</div>
+      <div class="modal-body"><p>大部分代謝反應在細胞內就是這個情況——基質濃度通常接近或低於 Km。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MID S CASE -->
+<div id="m-mid-s" class="modal">
+  <a href="#derivation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#derivation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ffb800;color:#1a1a2e">M</div>
+    <div class="modal-en">[S] = Km CASE</div>
+    <div class="modal-zh">恰好半飽和</div>
+    <span class="modal-tag">[S] = Km</span>
+    <div class="modal-section">
+      <div class="modal-label">數學簡化</div>
+      <div class="modal-formula">當 [S] = Km：<br>v = Vmax × Km / (Km + Km)<br>v = Vmax / 2</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">物理意義</div>
+      <div class="modal-body">
+        <p>• 一半的酵素位被佔據</p>
+        <p>• 一半的酵素位是空的</p>
+        <p>• 速率正好是最大值的一半</p>
+        <p>• 這就是 Km 的定義來源</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為何是轉折點？</div>
+      <div class="modal-body"><p>從這裡開始，曲線從接近線性轉向接近飽和。是兩種行為的分界點。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- HIGH S CASE -->
+<div id="m-high-s" class="modal">
+  <a href="#derivation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#derivation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">H</div>
+    <div class="modal-en">HIGH [S] CASE</div>
+    <div class="modal-zh">基質爆量的情況</div>
+    <span class="modal-tag">[S] &gt;&gt; Km</span>
+    <div class="modal-section">
+      <div class="modal-label">數學簡化</div>
+      <div class="modal-formula">當 [S] &gt;&gt; Km：<br>Km + [S] ≈ [S]<br>v ≈ Vmax × [S] / [S] = Vmax</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">物理意義</div>
+      <div class="modal-body">
+        <p>• 所有酵素位都被佔滿</p>
+        <p>• 加再多基質也沒用</p>
+        <p>• 速率達到最大值 Vmax</p>
+        <p>• 屬於零級反應</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">實驗應用</div>
+      <div class="modal-body"><p>實驗測 Vmax 時，會故意把 [S] 加到很高，確保進入飽和區。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- LOW KM -->
+<div id="m-low-km" class="modal">
+  <a href="#km" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#km" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">↓K</div>
+    <div class="modal-en">LOW Km</div>
+    <div class="modal-zh">小 Km（高親和力）</div>
+    <span class="modal-tag">少量基質就能工作</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>Km 越小，代表少量的基質就能讓酵素跑到半速，也就是酵素對基質的「親和力」很高。基質一出現就能緊緊抓住。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">經典例子：Hexokinase</div>
+      <div class="modal-body">
+        <p>• Km ≈ 0.15 mM</p>
+        <p>• 存在於大多數組織（肌肉、腦）</p>
+        <p>• 即使血糖低也能磷酸化葡萄糖</p>
+        <p>• 確保身體一直能用葡萄糖供能</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">什麼時候細胞需要小 Km？</div>
+      <div class="modal-body"><p>當基質濃度低、但細胞需要穩定使用基質時。例：腦細胞需要不間斷供能。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- HIGH KM -->
+<div id="m-high-km" class="modal">
+  <a href="#km" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#km" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff6b35">↑K</div>
+    <div class="modal-en">HIGH Km</div>
+    <div class="modal-zh">大 Km（低親和力）</div>
+    <span class="modal-tag">需要大量基質</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>Km 越大，代表需要很高的基質濃度才能讓酵素跑到半速，酵素對基質的親和力較低。只有「基質爆量」時才會大量工作。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">經典例子：Glucokinase</div>
+      <div class="modal-body">
+        <p>• Km ≈ 10 mM</p>
+        <p>• 主要存在於肝臟</p>
+        <p>• 只在飯後高血糖時才大量工作</p>
+        <p>• 把多餘的葡萄糖儲存成肝糖</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">什麼時候細胞需要大 Km？</div>
+      <div class="modal-body"><p>當細胞要「過量基質」才出手時。例：肝臟只在飯後高血糖時才把葡萄糖儲存起來。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- MM EQUATION -->
+<div id="m-mm" class="modal">
+  <a href="#derivation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#derivation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">MM</div>
+    <div class="modal-en">MICHAELIS-MENTEN EQUATION</div>
+    <div class="modal-zh">米氏方程式</div>
+    <span class="modal-tag">酵素學基礎</span>
+    <div class="modal-section">
+      <div class="modal-label">完整方程式</div>
+      <div class="modal-formula">v = Vmax × [S] / (Km + [S])</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">歷史</div>
+      <div class="modal-body">
+        <p>• 1913 年 Leonor Michaelis 和 Maud Menten 共同發表</p>
+        <p>• Maud Menten 是當時罕見的女性科學家</p>
+        <p>• 後由 Briggs 和 Haldane 用「穩態假設」改進推導</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼這麼經典？</div>
+      <div class="modal-body">
+        <p>• <strong>簡單</strong>：只有兩個參數（Vmax、Km）</p>
+        <p>• <strong>準確</strong>：適用於大部分酵素</p>
+        <p>• <strong>強大</strong>：解釋飽和、抑制、調控</p>
+        <p>• <strong>普遍</strong>：是所有酵素學的起點</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">適用範圍</div>
+      <div class="modal-body"><p>適用於單一基質、單一酵素的簡單反應。對於多體變構酵素（如血紅素），需要 Hill 方程式描述 S 形曲線。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- K1 -->
+<div id="m-k1" class="modal">
+  <a href="#derivation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#derivation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">k₁</div>
+    <div class="modal-en">k₁ / k₋₁ · Binding Rate Constants</div>
+    <div class="modal-zh">結合速率常數</div>
+    <span class="modal-tag">可逆結合</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body">
+        <p>• <strong>k₁</strong>：E + S → ES 的速率常數（結合）</p>
+        <p>• <strong>k₋₁</strong>：ES → E + S 的速率常數（解離）</p>
+        <p>這個結合是可逆的，能來能回。</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">物理意義</div>
+      <div class="modal-body">
+        <p>k₁ 通常很大（10⁸-10⁹ M⁻¹s⁻¹），接近擴散極限。</p>
+        <p>因為基質和酵素只要在水中相遇，多半就能結合。</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">和 Km 的關係</div>
+      <div class="modal-formula">Km = (k₋₁ + k₂) / k₁<br><br>當 k₂ &lt;&lt; k₋₁ 時：<br>Km ≈ k₋₁ / k₁ = Kd</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT -->
+<div id="m-product" class="modal">
+  <a href="#derivation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#derivation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ec4899">P</div>
+    <div class="modal-en">PRODUCT</div>
+    <div class="modal-zh">產物</div>
+    <span class="modal-tag">反應終點</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>酵素催化後產生的新分子。產物離開酵素後，酵素恢復原狀，可以接待下一個基質。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">米氏假設</div>
+      <div class="modal-body">
+        <p>米氏方程式假設「初速」(initial velocity)，即：</p>
+        <p>• 反應剛開始</p>
+        <p>• [P] 還很少</p>
+        <p>• 逆反應 (P → S) 可忽略</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STEADY STATE -->
+<div id="m-steady" class="modal">
+  <a href="#derivation" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#derivation" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff6b35">SS</div>
+    <div class="modal-en">STEADY STATE</div>
+    <div class="modal-zh">穩態</div>
+    <span class="modal-tag">米氏推導關鍵</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>反應系統達到一個動態平衡：[ES] 的形成速率 = [ES] 的消耗速率，所以 [ES] 維持不變（雖然 ES 一直在形成和消耗）。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">穩態方程式</div>
+      <div class="modal-formula">d[ES]/dt = 0<br><br>k₁[E][S] = k₋₁[ES] + k₂[ES]<br>k₁[E][S] = (k₋₁ + k₂)[ES]</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼能假設？</div>
+      <div class="modal-body">
+        <p>因為 ES 形成快、消耗也快，[ES] 很快就達到一個動態平衡。</p>
+        <p>1925 年 Briggs 和 Haldane 用這個假設改進了原本的米氏推導。</p>
+      </div>
+    </div>
+    <div class="modal-analogy">穩態像水龍頭打開的水槽：水進的速度 = 水流出的速度，水位就保持不變。</div>
+  </div>
+</div>
+
+<!-- LINE -->
+<div id="m-line" class="modal">
+  <a href="#lineweaver" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#lineweaver" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#00c896">/</div>
+    <div class="modal-en">STRAIGHT LINE</div>
+    <div class="modal-zh">直線（雙倒數圖）</div>
+    <span class="modal-tag">線性轉換</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>米氏方程式取倒數後變成直線方程式。三個關鍵點：Y 截距、X 截距、斜率，都帶有酵素參數。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">直線方程式</div>
+      <div class="modal-formula">1/v = (Km/Vmax)·(1/[S]) + 1/Vmax<br><br>對應 y = mx + b</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">三個關鍵點</div>
+      <div class="modal-body">
+        <p>• <strong>Y 軸截距</strong>：1/Vmax（基質→無限大時的截距）</p>
+        <p>• <strong>X 軸截距</strong>：-1/Km</p>
+        <p>• <strong>斜率</strong>：Km/Vmax</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Y INTERCEPT -->
+<div id="m-yintercept" class="modal">
+  <a href="#lineweaver" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#lineweaver" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">Y</div>
+    <div class="modal-en">Y-INTERCEPT</div>
+    <div class="modal-zh">Y 軸截距</div>
+    <span class="modal-tag">= 1/Vmax</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>當 1/[S] = 0（即 [S] 趨近無限大）時，1/v 的值。等於 1/Vmax。從這個截距能直接讀出 Vmax。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">如何使用</div>
+      <div class="modal-formula">Y 截距 = 1/Vmax<br>→ Vmax = 1 / (Y 截距)</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">實驗應用</div>
+      <div class="modal-body"><p>競爭性抑制劑會改變 X 截距但不改變 Y 截距 → Vmax 不變。這是判斷競爭性抑制的關鍵特徵。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- X INTERCEPT -->
+<div id="m-xintercept" class="modal">
+  <a href="#lineweaver" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#lineweaver" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">X</div>
+    <div class="modal-en">X-INTERCEPT</div>
+    <div class="modal-zh">X 軸截距</div>
+    <span class="modal-tag">= -1/Km</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>當 1/v = 0 時，1/[S] 的值。等於 -1/Km。從這個截距能直接讀出 Km。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">如何使用</div>
+      <div class="modal-formula">X 截距 = -1/Km<br>→ Km = -1 / (X 截距)</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">實驗應用</div>
+      <div class="modal-body"><p>非競爭性抑制劑會改變 Y 截距但不改變 X 截距 → Km 不變。這是判斷非競爭性抑制的關鍵特徵。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- SLOPE -->
+<div id="m-slope" class="modal">
+  <a href="#lineweaver" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#lineweaver" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#1a1a2e;color:#ffb800">/</div>
+    <div class="modal-en">SLOPE</div>
+    <div class="modal-zh">斜率</div>
+    <span class="modal-tag">= Km/Vmax</span>
+    <div class="modal-section">
+      <div class="modal-label">白話解釋</div>
+      <div class="modal-body"><p>雙倒數圖直線的斜率，等於 Km/Vmax。同時包含 Km 和 Vmax 的資訊。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">數學關係</div>
+      <div class="modal-formula">斜率 = Km / Vmax<br><br>= 1 / (kcat/Km × [E])</div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">和催化效率的關係</div>
+      <div class="modal-body"><p>斜率越小，代表 Km/Vmax 越小，催化效率（kcat/Km）越高。所以可以用斜率比較兩個酵素的整體性能。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- COMP LB -->
+<div id="m-comp-lb" class="modal">
+  <a href="#lineweaver" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#lineweaver" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#3d5cff">C</div>
+    <div class="modal-en">COMPETITIVE on LB Plot</div>
+    <div class="modal-zh">雙倒數圖上的競爭性抑制</div>
+    <span class="modal-tag">同 Y 截距</span>
+    <div class="modal-section">
+      <div class="modal-label">特徵</div>
+      <div class="modal-body">
+        <p>• <strong>Y 截距相同</strong>：Vmax 不變</p>
+        <p>• <strong>X 截距變化</strong>：Km 增加（X 截距向 0 移動）</p>
+        <p>• <strong>斜率增加</strong>：Km/Vmax 增加</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼這樣？</div>
+      <div class="modal-body"><p>競爭性抑制可以被高基質濃度克服，所以 Vmax（[S]→無限大）不變。但達到半速需要更多基質，所以 Km 看起來變大。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">藥物例子</div>
+      <div class="modal-body">
+        <p>• Methotrexate（化療）</p>
+        <p>• Statin（降膽固醇）</p>
+        <p>• Sulfonamide（抗生素）</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NONCOMP LB -->
+<div id="m-noncomp-lb" class="modal">
+  <a href="#lineweaver" class="modal-overlay"></a>
+  <div class="modal-card">
+    <a href="#lineweaver" class="modal-close">×</a>
+    <div class="modal-icon" style="background:#ff3d7f">NC</div>
+    <div class="modal-en">NON-COMPETITIVE on LB Plot</div>
+    <div class="modal-zh">雙倒數圖上的非競爭性抑制</div>
+    <span class="modal-tag">同 X 截距</span>
+    <div class="modal-section">
+      <div class="modal-label">特徵</div>
+      <div class="modal-body">
+        <p>• <strong>X 截距相同</strong>：Km 不變</p>
+        <p>• <strong>Y 截距變化</strong>：Vmax 下降（Y 截距上升）</p>
+        <p>• <strong>斜率增加</strong>：Km/Vmax 增加</p>
+      </div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">為什麼這樣？</div>
+      <div class="modal-body"><p>非競爭性抑制不影響基質結合（Km 不變），但讓部分酵素失能（Vmax 下降）。如同酵素總量減少。</p></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-label">如何判斷？</div>
+      <div class="modal-body"><p>畫不同抑制劑濃度下的雙倒數圖。如果所有直線交於 X 軸的同一點 → 非競爭性。</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <p>蛋白質三百天 · Phase Review · 米氏方程式</p>
+  <p>Michaelis-Menten Kinetics — 用一條方程式描述所有酵素的速度規律</p>
+  <p style="margin-top:12px;color:#888;font-size:12px">所有圖中元素 / 角色卡片可點擊查看詳細說明｜底部詞典 details/summary 摺疊</p>
+</footer>
+
+</body>
+</html>
