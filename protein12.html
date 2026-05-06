@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>蛋白質300天｜膜蛋白與離子通道</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=Inconsolata:wght@400;700&family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FDF6EC;
+  --cream2:#F8EDD8;
+  --warm-dark:#2C1A0E;
+  --warm-mid:#7A5230;
+  --warm-light:#C8956A;
+  --rust:#B84A1A;
+  --amber:#D4820C;
+  --gold:#E6A800;
+  --teal:#1A6B6A;
+  --olive:#5A6B1A;
+  --rose:#A83050;
+  --sand:#E8D5B0;
+  --card:#FFFAF2;
+  --shadow:rgba(44,26,14,.14);
+  --r:12px;
+  --mono:'Inconsolata',monospace;
+  --cjk:'BIZ UDPGothic','Noto Serif TC',sans-serif;
+  --serif:'Noto Serif TC',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--cream);color:var(--warm-dark);font-family:var(--cjk);font-size:18px;line-height:1.78;overflow-x:hidden}
+
+/* ── HEADER ── */
+.hdr{
+  background:var(--warm-dark);
+  color:var(--cream);
+  padding:13px 26px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:300;
+  border-bottom:3px solid var(--rust);
+}
+.hdr-left .eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:3px;opacity:.55;text-transform:uppercase}
+.hdr-left .htitle{font-size:14px;font-weight:700}
+.hdr-nav{display:flex;gap:5px;flex-wrap:wrap}
+.hdr-nav a{
+  color:rgba(253,246,236,.65);text-decoration:none;
+  font-size:12px;font-family:var(--mono);
+  padding:4px 10px;border-radius:4px;
+  transition:background .18s,color .18s;white-space:nowrap
+}
+.hdr-nav a:hover{background:var(--rust);color:#fff}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(155deg,#2C1A0E 0%,#4A2010 35%,#3A2A08 70%,#1A3030 100%);
+  color:#fff;
+  padding:70px 28px 56px;
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 25% 60%,rgba(212,130,12,.18) 0%,transparent 55%),
+             radial-gradient(ellipse 50% 70% at 75% 35%,rgba(26,107,106,.16) 0%,transparent 55%);
+  pointer-events:none
+}
+.membrane-bg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;opacity:.10}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(253,246,236,.5);margin-bottom:18px}
+.hero h1{font-family:var(--serif);font-size:clamp(26px,5vw,52px);font-weight:700;line-height:1.2;margin-bottom:14px;position:relative}
+.hero h1 em{font-style:normal;color:#FFCB7A}
+.hero-en{font-family:var(--mono);font-size:13px;color:rgba(255,255,255,.5);letter-spacing:2px;margin-bottom:24px}
+.hero-desc{max-width:640px;margin:0 auto 30px;font-size:15px;color:rgba(255,255,255,.78);line-height:1.88}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.htag{
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
+  border-radius:30px;padding:6px 16px;font-size:12px;
+  color:rgba(255,255,255,.82);font-family:var(--mono);
+  cursor:pointer;transition:background .2s,border-color .2s
+}
+.htag:hover{background:rgba(184,74,26,.45);border-color:var(--rust)}
+
+/* ── SECTIONS ── */
+.sec{max-width:980px;margin:0 auto;padding:54px 24px 18px}
+.sec-label{font-family:var(--mono);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--rust);margin-bottom:8px}
+.sec-title{font-family:var(--serif);font-size:clamp(22px,3.5vw,34px);font-weight:700;margin-bottom:12px}
+.sec-sub{font-size:15px;color:var(--warm-mid);margin-bottom:38px;max-width:680px;line-height:1.88}
+.tap-hint{font-size:12px;color:#9A7050;font-family:var(--mono);margin-bottom:24px;padding:7px 14px;background:var(--sand);border-radius:6px;display:inline-block}
+
+/* ── DIAGRAM BOX ── */
+.dbox{
+  background:var(--card);
+  border-radius:var(--r);
+  border:1.5px solid var(--sand);
+  box-shadow:0 4px 24px var(--shadow);
+  overflow:hidden;margin-bottom:34px
+}
+.dbox svg{display:block;width:100%;min-width:560px}
+.dbox-inner{overflow-x:auto}
+
+/* ── CARD GRID ── */
+.cgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(192px,1fr));gap:13px;margin-bottom:34px}
+.rcard{
+  background:var(--card);border:1.5px solid var(--sand);
+  border-radius:var(--r);padding:17px 15px;
+  cursor:pointer;position:relative;overflow:hidden;
+  transition:transform .2s,box-shadow .2s,border-color .2s
+}
+.rcard::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:var(--cc,var(--rust));border-radius:4px 0 0 4px;
+  transition:width .2s
+}
+.rcard:hover{transform:translateY(-3px);box-shadow:0 8px 26px var(--shadow);border-color:var(--cc,var(--rust))}
+.rcard:hover::before{width:6px}
+.c-ab{font-family:var(--mono);font-size:20px;font-weight:700;margin-bottom:5px;line-height:1}
+.c-zh{font-size:15px;font-weight:700;margin-bottom:3px}
+.c-en{font-size:11px;color:#9A7050;font-family:var(--mono)}
+.c-tap{margin-top:9px;font-size:11px;font-family:var(--mono);opacity:.65}
+
+/* ── STEPS ── */
+.steps{display:flex;flex-direction:column;gap:18px;margin-bottom:38px}
+.step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
+.snum{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--warm-dark);color:var(--cream);
+  font-family:var(--mono);font-size:18px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0
+}
+.sbody h4{font-size:16px;font-weight:700;margin-bottom:5px}
+.sbody p{font-size:14px;color:var(--warm-mid);line-height:1.78}
+
+/* ── ANALOGY ── */
+.analogy{
+  background:linear-gradient(135deg,#FFF3E0,#FDE8D0);
+  border:1.5px solid #E8C090;border-radius:var(--r);
+  padding:20px 22px;margin-bottom:34px;
+  display:flex;gap:14px;align-items:flex-start
+}
+.a-icon{font-size:28px;flex-shrink:0;margin-top:2px}
+.a-body h4{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--rust)}
+.a-body p{font-size:14px;color:#5A3A20;line-height:1.82}
+
+/* ── COMPARE TABLE ── */
+.ctable{width:100%;border-collapse:collapse;margin-bottom:34px;font-size:14px;border-radius:var(--r);overflow:hidden;box-shadow:0 2px 12px var(--shadow)}
+.ctable th{background:var(--warm-dark);color:var(--cream);padding:13px 15px;text-align:left;font-family:var(--mono);font-size:11px;letter-spacing:1px}
+.ctable td{padding:12px 15px;border-bottom:1px solid var(--sand);vertical-align:top;line-height:1.72}
+.ctable tr:nth-child(even) td{background:#FDFAF3}
+.ctable tr:last-child td{border-bottom:none}
+.ctable tr:hover td{background:#F8F0E0}
+.tag-r{color:var(--rust);font-weight:700}
+.tag-a{color:var(--amber);font-weight:700}
+.tag-t{color:var(--teal);font-weight:700}
+.tag-o{color:var(--olive);font-weight:700}
+
+/* ── DISEASE CARDS ── */
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(238px,1fr));gap:15px;margin-bottom:34px}
+.dcard{background:var(--card);border:1.5px solid var(--sand);border-radius:var(--r);padding:19px;position:relative;overflow:hidden}
+.dcard::after{content:'';position:absolute;right:-18px;bottom:-18px;width:65px;height:65px;border-radius:50%;background:var(--dc,var(--rust));opacity:.07}
+.d-tag{display:inline-block;color:#fff;font-size:11px;font-family:var(--mono);padding:3px 10px;border-radius:20px;margin-bottom:9px}
+.d-name{font-size:16px;font-weight:700;margin-bottom:5px}
+.d-prot{font-size:12px;font-family:var(--mono);color:#9A7050;margin-bottom:7px}
+.d-desc{font-size:13px;color:var(--warm-mid);line-height:1.75}
+
+/* ── GLOSSARY ── */
+.glo-sec{padding:40px 24px 58px;max-width:980px;margin:0 auto}
+.glo-sec h2{font-family:var(--serif);font-size:26px;font-weight:700;margin-bottom:6px}
+.glo-sec .gsub{font-size:13px;color:#9A7050;margin-bottom:30px;font-family:var(--mono)}
+.glo-group{margin-bottom:28px}
+.glo-gt{
+  font-size:12px;font-family:var(--mono);letter-spacing:2px;text-transform:uppercase;
+  color:#fff;padding:7px 15px;border-radius:6px;margin-bottom:1px;display:inline-block
+}
+.glo-items{display:flex;flex-direction:column}
+details.gi{border:1px solid var(--sand);overflow:hidden}
+details.gi:first-child{border-radius:8px 8px 0 0}
+details.gi:last-child{border-radius:0 0 8px 8px}
+details.gi+details.gi{border-top:none}
+details.gi[open]{box-shadow:0 4px 16px var(--shadow);border-color:var(--gc,var(--rust))}
+details.gi>summary{
+  padding:14px 17px;cursor:pointer;list-style:none;
+  display:flex;align-items:center;gap:13px;
+  background:var(--card);transition:background .15s;user-select:none
+}
+details.gi>summary::-webkit-details-marker{display:none}
+details.gi>summary:hover{background:var(--sand)}
+details.gi[open]>summary{background:var(--sand);border-bottom:1px solid var(--sand)}
+.g-ab{font-family:var(--mono);font-size:14px;font-weight:700;min-width:44px}
+.g-ns{flex:1}
+.g-nz{font-size:15px;font-weight:700;display:block}
+.g-ne{font-size:11px;color:#9A7050;font-family:var(--mono)}
+.g-cat{font-size:11px;font-family:var(--mono);color:#fff;padding:2px 8px;border-radius:20px;flex-shrink:0}
+.g-chev{font-size:11px;color:#bbb;transition:transform .2s;flex-shrink:0}
+details.gi[open] .g-chev{transform:rotate(90deg)}
+.g-bd{padding:17px 19px 17px 74px;background:#fff;border-top:1px solid var(--sand)}
+.g-bd .explain{font-size:14px;color:#3A2A1A;line-height:1.85;margin-bottom:11px}
+.g-bd .formula{
+  font-family:var(--mono);font-size:12px;background:#F5EDD8;
+  padding:8px 13px;border-radius:6px;color:var(--warm-dark);
+  margin-bottom:9px;border-left:3px solid var(--gc,var(--rust))
+}
+.g-bd .ai{font-size:13px;color:#6A4020;font-style:italic;border-left:3px solid #DDD;padding-left:11px;margin-top:9px}
+
+/* ── DIVIDER ── */
+.div{height:1.5px;background:linear-gradient(to right,transparent,var(--sand),transparent);margin:0 24px}
+
+/* ── MODAL ── */
+.mo-ov{
+  display:none;position:fixed;inset:0;
+  background:rgba(30,15,5,.62);z-index:600;
+  align-items:center;justify-content:center;
+  padding:20px;backdrop-filter:blur(4px)
+}
+.mo-ov.on{display:flex}
+.mo{
+  background:var(--card);border-radius:16px;
+  max-width:540px;width:100%;max-height:88vh;
+  overflow-y:auto;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+  animation:mIn .24s ease-out;position:relative
+}
+@keyframes mIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:none}}
+.mo-hd{
+  padding:26px 26px 16px;border-bottom:1.5px solid var(--sand);
+  position:sticky;top:0;background:var(--card);border-radius:16px 16px 0 0;z-index:2
+}
+.mo-cls{
+  position:absolute;top:16px;right:16px;
+  width:31px;height:31px;background:var(--sand);
+  border:none;border-radius:50%;cursor:pointer;
+  font-size:15px;color:var(--warm-dark);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .18s
+}
+.mo-cls:hover{background:var(--rust);color:#fff}
+.mo-ab{font-family:var(--mono);font-size:24px;font-weight:700;margin-bottom:5px}
+.mo-zh{font-size:19px;font-weight:700;margin-bottom:3px}
+.mo-en{font-size:12px;font-family:var(--mono);color:#9A7050}
+.mo-bd{padding:20px 26px 26px}
+.mo-sec{margin-bottom:16px}
+.mo-sec h4{font-size:11px;font-family:var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--rust);margin-bottom:7px}
+.mo-sec p{font-size:14px;color:#3A2A1A;line-height:1.85}
+.mo-formula{font-family:var(--mono);font-size:12px;background:#F5EDD8;padding:9px 13px;border-radius:6px;color:var(--warm-dark);border-left:3px solid var(--rust);margin-top:7px}
+.mo-an{background:linear-gradient(135deg,#FFF3E0,#FDE8D0);border:1px solid #E8C090;border-radius:10px;padding:13px 15px;font-size:13px;color:#5A3010;line-height:1.82;font-style:italic}
+
+/* ── FOOTER ── */
+footer{background:var(--warm-dark);color:rgba(253,246,236,.5);text-align:center;padding:26px 20px;font-family:var(--mono);font-size:11px;letter-spacing:1px;margin-top:58px}
+
+@media(max-width:600px){
+  .hdr-nav{display:none}
+  .cgrid{grid-template-columns:repeat(2,1fr)}
+  .step{grid-template-columns:40px 1fr}
+  .g-bd{padding-left:19px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-left">
+    <div class="eyebrow">PROTEIN 300 DAYS</div>
+    <div class="htitle">膜蛋白與離子通道</div>
+  </div>
+  <nav class="hdr-nav">
+    <a href="#overview">總覽</a>
+    <a href="#tm">整合膜蛋白</a>
+    <a href="#gpcr">GPCR</a>
+    <a href="#pump">Na⁺/K⁺ 幫浦</a>
+    <a href="#channel">離子通道</a>
+    <a href="#disease">疾病</a>
+    <a href="#glossary">術語字典</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <!-- animated membrane lipid bilayer background -->
+  <svg class="membrane-bg" viewBox="0 0 900 280" preserveAspectRatio="xMidYMid slice">
+    <g fill="none" stroke="rgba(255,200,120,1)" stroke-width="1.2">
+      <!-- top leaflet heads -->
+      <g fill="rgba(255,200,80,.6)" stroke="none">
+        <circle cx="40" cy="60" r="7"/><circle cx="90" cy="55" r="7"/><circle cx="140" cy="62" r="7"/>
+        <circle cx="190" cy="57" r="7"/><circle cx="240" cy="60" r="7"/><circle cx="290" cy="56" r="7"/>
+        <circle cx="340" cy="62" r="7"/><circle cx="390" cy="58" r="7"/><circle cx="440" cy="61" r="7"/>
+        <circle cx="490" cy="56" r="7"/><circle cx="540" cy="60" r="7"/><circle cx="590" cy="58" r="7"/>
+        <circle cx="640" cy="63" r="7"/><circle cx="690" cy="57" r="7"/><circle cx="740" cy="61" r="7"/>
+        <circle cx="790" cy="56" r="7"/><circle cx="840" cy="60" r="7"/><circle cx="890" cy="58" r="7"/>
+      </g>
+      <!-- top tails -->
+      <line x1="40" y1="67" x2="38" y2="90"/><line x1="40" y1="67" x2="42" y2="90"/>
+      <line x1="90" y1="62" x2="88" y2="90"/><line x1="90" y1="62" x2="92" y2="90"/>
+      <line x1="140" y1="69" x2="138" y2="90"/><line x1="140" y1="69" x2="142" y2="90"/>
+      <line x1="190" y1="64" x2="188" y2="90"/><line x1="190" y1="64" x2="192" y2="90"/>
+      <line x1="240" y1="67" x2="238" y2="90"/><line x1="240" y1="67" x2="242" y2="90"/>
+      <line x1="290" y1="63" x2="288" y2="90"/><line x1="290" y1="63" x2="292" y2="90"/>
+      <line x1="340" y1="69" x2="338" y2="90"/><line x1="340" y1="69" x2="342" y2="90"/>
+      <line x1="390" y1="65" x2="388" y2="90"/><line x1="390" y1="65" x2="392" y2="90"/>
+      <line x1="440" y1="68" x2="438" y2="90"/><line x1="440" y1="68" x2="442" y2="90"/>
+      <line x1="490" y1="63" x2="488" y2="90"/><line x1="490" y1="63" x2="492" y2="90"/>
+      <line x1="540" y1="67" x2="538" y2="90"/><line x1="540" y1="67" x2="542" y2="90"/>
+      <line x1="590" y1="65" x2="588" y2="90"/><line x1="590" y1="65" x2="592" y2="90"/>
+      <line x1="640" y1="70" x2="638" y2="90"/><line x1="640" y1="70" x2="642" y2="90"/>
+      <line x1="690" y1="64" x2="688" y2="90"/><line x1="690" y1="64" x2="692" y2="90"/>
+      <line x1="740" y1="68" x2="738" y2="90"/><line x1="740" y1="68" x2="742" y2="90"/>
+      <line x1="790" y1="63" x2="788" y2="90"/><line x1="790" y1="63" x2="792" y2="90"/>
+      <line x1="840" y1="67" x2="838" y2="90"/><line x1="840" y1="67" x2="842" y2="90"/>
+      <line x1="890" y1="65" x2="888" y2="90"/><line x1="890" y1="65" x2="892" y2="90"/>
+      <!-- bottom leaflet (inverted) -->
+      <g fill="rgba(255,160,80,.5)" stroke="none">
+        <circle cx="40" cy="220" r="7"/><circle cx="90" cy="225" r="7"/><circle cx="140" cy="218" r="7"/>
+        <circle cx="190" cy="223" r="7"/><circle cx="240" cy="220" r="7"/><circle cx="290" cy="224" r="7"/>
+        <circle cx="340" cy="218" r="7"/><circle cx="390" cy="222" r="7"/><circle cx="440" cy="219" r="7"/>
+        <circle cx="490" cy="224" r="7"/><circle cx="540" cy="220" r="7"/><circle cx="590" cy="222" r="7"/>
+        <circle cx="640" cy="217" r="7"/><circle cx="690" cy="223" r="7"/><circle cx="740" cy="219" r="7"/>
+        <circle cx="790" cy="224" r="7"/><circle cx="840" cy="220" r="7"/><circle cx="890" cy="222" r="7"/>
+      </g>
+      <line x1="40" y1="213" x2="38" y2="190"/><line x1="40" y1="213" x2="42" y2="190"/>
+      <line x1="90" y1="218" x2="88" y2="190"/><line x1="90" y1="218" x2="92" y2="190"/>
+      <line x1="140" y1="211" x2="138" y2="190"/><line x1="140" y1="211" x2="142" y2="190"/>
+      <line x1="190" y1="216" x2="188" y2="190"/><line x1="190" y1="216" x2="192" y2="190"/>
+      <line x1="240" y1="213" x2="238" y2="190"/><line x1="240" y1="213" x2="242" y2="190"/>
+      <line x1="290" y1="217" x2="288" y2="190"/><line x1="290" y1="217" x2="292" y2="190"/>
+      <line x1="340" y1="211" x2="338" y2="190"/><line x1="340" y1="211" x2="342" y2="190"/>
+      <line x1="390" y1="215" x2="388" y2="190"/><line x1="390" y1="215" x2="392" y2="190"/>
+      <line x1="440" y1="212" x2="438" y2="190"/><line x1="440" y1="212" x2="442" y2="190"/>
+      <line x1="490" y1="217" x2="488" y2="190"/><line x1="490" y1="217" x2="492" y2="190"/>
+      <line x1="540" y1="213" x2="538" y2="190"/><line x1="540" y1="213" x2="542" y2="190"/>
+      <line x1="590" y1="215" x2="588" y2="190"/><line x1="590" y1="215" x2="592" y2="190"/>
+      <line x1="640" y1="210" x2="638" y2="190"/><line x1="640" y1="210" x2="642" y2="190"/>
+      <line x1="690" y1="216" x2="688" y2="190"/><line x1="690" y1="216" x2="692" y2="190"/>
+      <line x1="740" y1="212" x2="738" y2="190"/><line x1="740" y1="212" x2="742" y2="190"/>
+      <line x1="790" y1="217" x2="788" y2="190"/><line x1="790" y1="217" x2="792" y2="190"/>
+      <line x1="840" y1="213" x2="838" y2="190"/><line x1="840" y1="213" x2="842" y2="190"/>
+      <line x1="890" y1="215" x2="888" y2="190"/><line x1="890" y1="215" x2="892" y2="190"/>
+    </g>
+  </svg>
+
+  <p class="hero-eyebrow">PROTEIN 300 DAYS · 膜蛋白</p>
+  <h1>膜蛋白與<br><em>離子通道</em></h1>
+  <p class="hero-en">Membrane Proteins &amp; Ion Channels</p>
+  <p class="hero-desc">細胞膜不只是邊界，更是資訊與物質流通的精密關卡。
+  整合膜蛋白橫跨脂雙層，GPCR 接收訊號，Na⁺/K⁺ 幫浦維持膜電位，
+  離子通道控制電訊號——這四類蛋白掌管神經、心跳、腎臟的每一個瞬間。</p>
+  <div class="hero-tags">
+    <span class="htag">整合膜蛋白 TM</span>
+    <span class="htag">GPCR 七螺旋</span>
+    <span class="htag">Na⁺/K⁺-ATPase</span>
+    <span class="htag">水通道 Aquaporin</span>
+    <span class="htag">電壓門控通道</span>
+    <span class="htag">膜電位</span>
+  </div>
+</section>
+
+<!-- ════════════ PART 01 OVERVIEW ════════════ -->
+<div id="overview"></div>
+<div class="sec">
+  <p class="sec-label">PART 01</p>
+  <h2 class="sec-title">膜蛋白全景</h2>
+  <p class="sec-sub">膜蛋白佔人類所有蛋白的約 30%，是最重要的藥物靶點（~60% 藥物作用於膜蛋白）。
+  依照嵌入方式分為整合膜蛋白（TM 跨膜螺旋）、外周膜蛋白、脂錨定蛋白三大類。</p>
+  <div class="tap-hint">👆 點擊下方所有圖示 / 角色卡查看英文、白話解釋與功能說明</div>
+
+  <!-- OVERVIEW DIAGRAM: lipid bilayer cross-section -->
+  <div class="dbox">
+    <div class="dbox-inner">
+      <svg viewBox="0 0 760 320" xmlns="http://www.w3.org/2000/svg" style="min-width:560px">
+        <defs>
+          <linearGradient id="lipG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#FDF6EC"/>
+            <stop offset="100%" style="stop-color:#F8EDD8"/>
+          </linearGradient>
+          <linearGradient id="memG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#D4A060"/>
+            <stop offset="100%" style="stop-color:#B87830"/>
+          </linearGradient>
+          <linearGradient id="gpcrG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#D4820C"/>
+            <stop offset="100%" style="stop-color:#A85808"/>
+          </linearGradient>
+          <linearGradient id="pumpG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#1A6B6A"/>
+            <stop offset="100%" style="stop-color:#0E4040"/>
+          </linearGradient>
+          <linearGradient id="chanG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#B84A1A"/>
+            <stop offset="100%" style="stop-color:#7A2A08"/>
+          </linearGradient>
+          <linearGradient id="aqpG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#5A6B1A"/>
+            <stop offset="100%" style="stop-color:#303A08"/>
+          </linearGradient>
+        </defs>
+
+        <!-- extracellular label -->
+        <text x="30" y="40" font-size="11" fill="#9A7050" font-family="monospace">細胞外</text>
+        <text x="30" y="52" font-size="10" fill="#BBB" font-family="monospace">Extracellular</text>
+        <!-- intracellular label -->
+        <text x="30" y="286" font-size="11" fill="#9A7050" font-family="monospace">細胞內</text>
+        <text x="30" y="298" font-size="10" fill="#BBB" font-family="monospace">Intracellular</text>
+
+        <!-- outer leaflet -->
+        <rect x="110" y="95" width="620" height="28" rx="8" fill="url(#memG)" opacity=".88"/>
+        <!-- inner leaflet -->
+        <rect x="110" y="193" width="620" height="28" rx="8" fill="url(#memG)" opacity=".68"/>
+        <!-- hydrophobic core label -->
+        <text x="722" y="166" font-size="10" fill="#C8956A" font-family="monospace" text-anchor="end">疏水核心</text>
+        <!-- phospholipid head dots outer -->
+        <g fill="#E6A800" opacity=".8">
+          <circle cx="140" cy="109" r="6"/><circle cx="175" cy="107" r="6"/><circle cx="210" cy="109" r="6"/>
+          <circle cx="245" cy="107" r="6"/><circle cx="310" cy="109" r="6"/><circle cx="345" cy="107" r="6"/>
+          <circle cx="480" cy="109" r="6"/><circle cx="515" cy="107" r="6"/>
+          <circle cx="620" cy="109" r="6"/><circle cx="655" cy="107" r="6"/><circle cx="690" cy="109" r="6"/>
+        </g>
+        <!-- phospholipid head dots inner -->
+        <g fill="#D4820C" opacity=".7">
+          <circle cx="140" cy="207" r="6"/><circle cx="175" cy="209" r="6"/><circle cx="210" cy="207" r="6"/>
+          <circle cx="245" cy="209" r="6"/><circle cx="310" cy="207" r="6"/><circle cx="345" cy="209" r="6"/>
+          <circle cx="480" cy="207" r="6"/><circle cx="515" cy="209" r="6"/>
+          <circle cx="620" cy="207" r="6"/><circle cx="655" cy="209" r="6"/><circle cx="690" cy="207" r="6"/>
+        </g>
+
+        <!-- ① GPCR (7-TM) -->
+        <g onclick="openModal('gpcr')" style="cursor:pointer">
+          <!-- 7 helices as rectangles -->
+          <g fill="url(#gpcrG)" opacity=".92">
+            <rect x="125" y="98" width="13" height="120" rx="6"/>
+            <rect x="143" y="96" width="13" height="124" rx="6"/>
+            <rect x="161" y="99" width="13" height="118" rx="6"/>
+            <rect x="179" y="96" width="13" height="124" rx="6"/>
+            <rect x="197" y="98" width="13" height="120" rx="6"/>
+            <rect x="215" y="95" width="13" height="126" rx="6"/>
+            <rect x="233" y="98" width="13" height="120" rx="6"/>
+          </g>
+          <!-- ligand on top -->
+          <ellipse cx="179" cy="78" rx="32" ry="14" fill="#FFD070" opacity=".9"/>
+          <text x="179" y="82" text-anchor="middle" font-size="10" fill="#5A3000" font-weight="bold" font-family="monospace">配體 Ligand</text>
+          <line x1="179" y1="92" x2="179" y2="98" stroke="#D4820C" stroke-width="1.5"/>
+          <!-- G protein inside -->
+          <ellipse cx="179" cy="240" rx="34" ry="18" fill="#FFAA30" opacity=".85"/>
+          <text x="179" y="244" text-anchor="middle" font-size="10" fill="#3A1800" font-weight="bold" font-family="monospace">G蛋白</text>
+          <line x1="179" y1="222" x2="179" y2="222" stroke="#D4820C" stroke-width="1.5"/>
+          <!-- label -->
+          <text x="179" y="282" text-anchor="middle" font-size="12" fill="#D4820C" font-weight="bold" font-family="monospace">GPCR</text>
+          <text x="179" y="294" text-anchor="middle" font-size="10" fill="#9A7050" font-family="monospace">7 螺旋</text>
+        </g>
+
+        <!-- ② Na/K ATPase -->
+        <g onclick="openModal('nakpump')" style="cursor:pointer">
+          <!-- pump body -->
+          <rect x="298" y="90" width="72" height="136" rx="10" fill="url(#pumpG)" opacity=".88"/>
+          <!-- ion passage -->
+          <rect x="328" y="102" width="12" height="112" rx="5" fill="rgba(100,220,220,.35)"/>
+          <!-- Na labels outside -->
+          <text x="275" y="78" font-size="12" fill="#1A6B6A" font-weight="bold" font-family="monospace">Na⁺ Na⁺ Na⁺</text>
+          <text x="278" y="90" font-size="10" fill="#888" font-family="monospace">細胞外 →</text>
+          <!-- K labels inside -->
+          <text x="278" y="248" font-size="12" fill="#2A9B9A" font-weight="bold" font-family="monospace">K⁺  K⁺</text>
+          <text x="278" y="260" font-size="10" fill="#888" font-family="monospace">← 細胞內</text>
+          <!-- ATP label -->
+          <rect x="384" y="188" width="42" height="22" rx="5" fill="#E6A800" opacity=".9"/>
+          <text x="405" y="203" text-anchor="middle" font-size="11" fill="#3A2000" font-weight="bold" font-family="monospace">ATP</text>
+          <line x1="370" y1="190" x2="384" y2="197" stroke="#E6A800" stroke-width="1.5"/>
+          <!-- label -->
+          <text x="334" y="282" text-anchor="middle" font-size="11" fill="#1A6B6A" font-weight="bold" font-family="monospace">Na⁺/K⁺-ATPase</text>
+          <text x="334" y="294" text-anchor="middle" font-size="10" fill="#9A7050" font-family="monospace">主動運輸</text>
+        </g>
+
+        <!-- ③ Voltage-gated Ion Channel -->
+        <g onclick="openModal('vgchan')" style="cursor:pointer">
+          <!-- channel ring top view approximated as wide open pore -->
+          <rect x="455" y="90" width="52" height="136" rx="8" fill="url(#chanG)" opacity=".85"/>
+          <!-- pore channel -->
+          <rect x="474" y="100" width="14" height="115" rx="6" fill="rgba(255,200,120,.5)"/>
+          <!-- gate indicator -->
+          <rect x="470" y="148" width="22" height="8" rx="3" fill="#FF8060" opacity=".9"/>
+          <text x="504" y="155" font-size="10" fill="#B84A1A" font-family="monospace">gate</text>
+          <!-- ions flowing -->
+          <text x="440" y="75" font-size="13" fill="#B84A1A" font-weight="bold" font-family="monospace">Na⁺↓</text>
+          <text x="510" y="75" font-size="13" fill="#5A6B1A" font-weight="bold" font-family="monospace">K⁺↑</text>
+          <!-- sensor -->
+          <text x="481" y="283" text-anchor="middle" font-size="11" fill="#B84A1A" font-weight="bold" font-family="monospace">電壓門控</text>
+          <text x="481" y="295" text-anchor="middle" font-size="10" fill="#9A7050" font-family="monospace">Kv / Nav</text>
+        </g>
+
+        <!-- ④ Aquaporin -->
+        <g onclick="openModal('aqp')" style="cursor:pointer">
+          <!-- barrel shape -->
+          <ellipse cx="610" cy="156" rx="55" ry="68" fill="url(#aqpG)" opacity=".82"/>
+          <!-- water channel pore -->
+          <ellipse cx="610" cy="156" rx="14" ry="55" fill="rgba(100,200,255,.45)"/>
+          <!-- water molecules -->
+          <text x="606" y="92" font-size="15" fill="#7ABEDF">💧</text>
+          <text x="606" y="115" font-size="13" fill="#7ABEDF" opacity=".7">💧</text>
+          <text x="606" y="232" font-size="15" fill="#7ABEDF">💧</text>
+          <!-- label -->
+          <text x="610" y="282" text-anchor="middle" font-size="12" fill="#5A6B1A" font-weight="bold" font-family="monospace">Aquaporin</text>
+          <text x="610" y="294" text-anchor="middle" font-size="10" fill="#9A7050" font-family="monospace">水通道</text>
+        </g>
+
+        <!-- legend boxes -->
+        <rect x="680" y="90" width="68" height="28" rx="6" fill="#FFF3E0" stroke="#E8C090" stroke-width="1"/>
+        <text x="714" y="108" text-anchor="middle" font-size="10" fill="#7A5230" font-family="monospace">外周膜蛋白</text>
+        <rect x="680" y="124" width="68" height="28" rx="6" fill="#E8F4EC" stroke="#B0D8B8" stroke-width="1"/>
+        <text x="714" y="142" text-anchor="middle" font-size="10" fill="#2E5A38" font-family="monospace">脂質錨定</text>
+
+        <!-- title -->
+        <text x="380" y="30" text-anchor="middle" font-size="13" font-family="monospace" fill="#5A3A20" font-weight="bold">磷脂雙層膜與四大膜蛋白｜點擊查看詳情</text>
+        <text x="380" y="48" text-anchor="middle" font-size="11" font-family="monospace" fill="#9A7050">Phospholipid Bilayer · GPCR · Na⁺/K⁺-ATPase · Ion Channel · Aquaporin</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Role cards -->
+  <div class="cgrid">
+    <div class="rcard" style="--cc:#D4820C" onclick="openModal('gpcr')">
+      <div class="c-ab" style="color:#D4820C">GPCR</div>
+      <div class="c-zh">G 蛋白偶聯受體</div>
+      <div class="c-en">G Protein-Coupled Receptor</div>
+      <div class="c-tap" style="color:#D4820C">TAP →</div>
+    </div>
+    <div class="rcard" style="--cc:#1A6B6A" onclick="openModal('nakpump')">
+      <div class="c-ab" style="color:#1A6B6A">NKA</div>
+      <div class="c-zh">Na⁺/K⁺-ATPase 幫浦</div>
+      <div class="c-en">Sodium-Potassium Pump</div>
+      <div class="c-tap" style="color:#1A6B6A">TAP →</div>
+    </div>
+    <div class="rcard" style="--cc:#B84A1A" onclick="openModal('vgchan')">
+      <div class="c-ab" style="color:#B84A1A">VGC</div>
+      <div class="c-zh">電壓門控離子通道</div>
+      <div class="c-en">Voltage-Gated Channel</div>
+      <div class="c-tap" style="color:#B84A1A">TAP →</div>
+    </div>
+    <div class="rcard" style="--cc:#5A6B1A" onclick="openModal('aqp')">
+      <div class="c-ab" style="color:#5A6B1A">AQP</div>
+      <div class="c-zh">水通道蛋白</div>
+      <div class="c-en">Aquaporin</div>
+      <div class="c-tap" style="color:#5A6B1A">TAP →</div>
+    </div>
+    <div class="rcard" style="--cc:#A83050" onclick="openModal('tm')">
+      <div class="c-ab" style="color:#A83050">TM</div>
+      <div class="c-zh">整合膜蛋白 / 跨膜螺旋</div>
+      <div class="c-en">Transmembrane Protein</div>
+      <div class="c-tap" style="color:#A83050">TAP →</div>
+    </div>
+    <div class="rcard" style="--cc:#7A5230" onclick="openModal('mp')">
+      <div class="c-ab" style="color:#7A5230">MΨ</div>
+      <div class="c-zh">膜電位</div>
+      <div class="c-en">Membrane Potential</div>
+      <div class="c-tap" style="color:#7A5230">TAP →</div>
+    </div>
+    <div class="rcard" style="--cc:#D4820C" onclick="openModal('lg')">
+      <div class="c-ab" style="color:#D4820C">LGC</div>
+      <div class="c-zh">配體門控通道</div>
+      <div class="c-en">Ligand-Gated Channel</div>
+      <div class="c-tap" style="color:#D4820C">TAP →</div>
+    </div>
+    <div class="rcard" style="--cc:#1A6B6A" onclick="openModal('bilayer')">
+      <div class="c-ab" style="color:#1A6B6A">PL</div>
+      <div class="c-zh">磷脂雙層</div>
+      <div class="c-en">Phospholipid Bilayer</div>
+      <div class="c-tap" style="color:#1A6B6A">TAP →</div>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <div class="a-icon">🏰</div>
+    <div class="a-body">
+      <h4>城堡城牆比喻</h4>
+      <p>細胞膜是城牆，只擋水不擋脂肪。膜蛋白是城牆上的各種設施：
+      GPCR 是訊號旗（有敵情就揮旗傳訊）；Na⁺/K⁺ 幫浦是水車（主動搬水）；
+      離子通道是吊閘（電壓一到就開閘）；Aquaporin 是管線（讓水安全快速通過）。
+      四者合作，讓細胞對外有感知、對內有秩序。</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════════════ PART 02 TM & GPCR ════════════ -->
+<div id="tm"></div>
+<div class="sec">
+  <p class="sec-label">PART 02</p>
+  <h2 class="sec-title">整合膜蛋白與 GPCR</h2>
+  <p class="sec-sub">整合膜蛋白以疏水性跨膜螺旋（TM helix, ~20 個疏水胺基酸）錨定在脂雙層。
+  GPCR 是其中最大的家族（~800 種），七個 TM 螺旋排列成「桶」，
+  是人類最重要的藥物靶點（約 34% 的核准藥物作用於 GPCR）。</p>
+
+  <div class="dbox">
+    <div class="dbox-inner">
+      <svg viewBox="0 0 720 310" xmlns="http://www.w3.org/2000/svg" style="min-width:540px">
+        <defs>
+          <linearGradient id="hx1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#F0A840"/>
+            <stop offset="100%" style="stop-color:#C07020"/>
+          </linearGradient>
+        </defs>
+        <!-- membrane bands -->
+        <rect x="60" y="100" width="600" height="24" rx="8" fill="#C8956A" opacity=".7"/>
+        <rect x="60" y="188" width="600" height="24" rx="8" fill="#C8956A" opacity=".5"/>
+        <text x="650" y="115" font-size="10" fill="#9A7050" font-family="monospace">外側</text>
+        <text x="650" y="207" font-size="10" fill="#9A7050" font-family="monospace">內側</text>
+
+        <!-- 7 TM helices of GPCR side view -->
+        <g onclick="openModal('gpcr')" style="cursor:pointer">
+          <!-- helices as slightly tilted rects -->
+          <g fill="url(#hx1)" opacity=".9">
+            <rect x="90" y="96" width="16" height="120" rx="7"/>
+            <rect x="114" y="94" width="16" height="124" rx="7"/>
+            <rect x="138" y="97" width="16" height="118" rx="7"/>
+            <rect x="162" y="93" width="16" height="126" rx="7"/>
+            <rect x="186" y="96" width="16" height="120" rx="7"/>
+            <rect x="210" y="93" width="16" height="126" rx="7"/>
+            <rect x="234" y="96" width="16" height="120" rx="7"/>
+          </g>
+          <!-- extracellular loops -->
+          <path d="M98,96 Q122,60 130,94" stroke="#C07020" stroke-width="3" fill="none"/>
+          <path d="M146,97 Q170,55 178,93" stroke="#C07020" stroke-width="3" fill="none"/>
+          <path d="M194,96 Q218,58 226,93" stroke="#C07020" stroke-width="3" fill="none"/>
+          <!-- intracellular loops -->
+          <path d="M106,216 Q130,252 138,216" stroke="#E0A050" stroke-width="3" fill="none"/>
+          <path d="M154,215 Q178,254 186,215" stroke="#E0A050" stroke-width="3" fill="none"/>
+          <path d="M202,216 Q226,250 234,216" stroke="#E0A050" stroke-width="3" fill="none"/>
+          <!-- ligand -->
+          <ellipse cx="165" cy="70" rx="38" ry="16" fill="#FFD070" opacity=".92"/>
+          <text x="165" y="74" text-anchor="middle" font-size="11" fill="#4A2800" font-weight="bold" font-family="monospace">配體 / 藥物</text>
+          <line x1="165" y1="86" x2="165" y2="96" stroke="#D4820C" stroke-width="2"/>
+          <!-- G protein α subunit -->
+          <ellipse cx="165" cy="256" rx="30" ry="18" fill="#FFAA30" opacity=".88"/>
+          <text x="165" y="260" text-anchor="middle" font-size="10" fill="#3A1800" font-weight="bold" font-family="monospace">Gα</text>
+          <ellipse cx="215" cy="265" rx="22" ry="12" fill="#FFC060" opacity=".78"/>
+          <text x="215" y="269" text-anchor="middle" font-size="10" fill="#3A1800" font-family="monospace">Gβγ</text>
+          <!-- cAMP arrow -->
+          <path d="M195,256 Q240,230 270,240" stroke="#D4820C" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+          <text x="278" y="243" font-size="11" fill="#D4820C" font-family="monospace">→ cAMP</text>
+          <text x="278" y="257" font-size="10" fill="#9A7050" font-family="monospace">第二信使</text>
+          <!-- TM numbering -->
+          <g font-family="monospace" font-size="10" fill="white" text-anchor="middle">
+            <text x="98" y="160">1</text><text x="122" y="160">2</text><text x="146" y="160">3</text>
+            <text x="170" y="160">4</text><text x="194" y="160">5</text><text x="218" y="160">6</text>
+            <text x="242" y="160">7</text>
+          </g>
+          <!-- label -->
+          <text x="165" y="295" text-anchor="middle" font-size="12" fill="#D4820C" font-weight="bold" font-family="monospace">GPCR 七跨膜螺旋模型</text>
+        </g>
+
+        <!-- right: signaling cascade -->
+        <g>
+          <rect x="360" y="55" width="310" height="222" rx="10" fill="#FFFAF0" stroke="#E8C090" stroke-width="1.5"/>
+          <text x="515" y="78" text-anchor="middle" font-size="12" fill="#7A5230" font-weight="bold" font-family="monospace">GPCR 信號級聯</text>
+          <!-- steps -->
+          <rect x="385" y="92" width="120" height="30" rx="7" fill="#FFD070" opacity=".9"/>
+          <text x="445" y="111" text-anchor="middle" font-size="11" fill="#3A1800" font-family="monospace">① 配體結合</text>
+
+          <rect x="385" y="138" width="120" height="30" rx="7" fill="#FFAA30" opacity=".9"/>
+          <text x="445" y="157" text-anchor="middle" font-size="11" fill="#3A1800" font-family="monospace">② G蛋白活化</text>
+
+          <rect x="385" y="184" width="120" height="30" rx="7" fill="#D4820C" opacity=".85"/>
+          <text x="445" y="203" text-anchor="middle" font-size="11" fill="white" font-family="monospace">③ cAMP↑ / IP₃↑</text>
+
+          <rect x="385" y="230" width="120" height="30" rx="7" fill="#B84A1A" opacity=".85"/>
+          <text x="445" y="249" text-anchor="middle" font-size="11" fill="white" font-family="monospace">④ PKA / PKC</text>
+
+          <g stroke="#D4820C" stroke-width="2" fill="none">
+            <line x1="445" y1="122" x2="445" y2="138"/>
+            <line x1="445" y1="168" x2="445" y2="184"/>
+            <line x1="445" y1="214" x2="445" y2="230"/>
+          </g>
+          <g fill="#D4820C">
+            <polygon points="440,138 450,138 445,146"/>
+            <polygon points="440,184 450,184 445,192"/>
+            <polygon points="440,230 450,230 445,238"/>
+          </g>
+
+          <!-- Gs / Gi / Gq -->
+          <text x="535" y="105" font-size="10" fill="#B84A1A" font-family="monospace">Gs → cAMP↑</text>
+          <text x="535" y="120" font-size="10" fill="#1A6B6A" font-family="monospace">Gi → cAMP↓</text>
+          <text x="535" y="135" font-size="10" fill="#D4820C" font-family="monospace">Gq → IP₃/DAG</text>
+          <text x="535" y="155" font-size="10" fill="#888" font-family="monospace">三種 Gα 亞型</text>
+          <text x="535" y="175" font-size="10" fill="#888" font-family="monospace">→ 不同下游</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div class="sbody">
+      <h4>跨膜螺旋的疏水規則｜Hydrophobic TM Helix</h4>
+      <p>約 20 個疏水胺基酸（Leu, Ile, Val, Phe）組成 α-螺旋，螺旋外側為疏水面，完美嵌入脂質雙層的疏水核心。親水的胺基酸側鏈朝向通道內或蛋白質-蛋白質界面。</p>
+    </div></div>
+    <div class="step"><div class="snum">2</div><div class="sbody">
+      <h4>配體結合啟動 G 蛋白｜Ligand-Receptor Activation</h4>
+      <p>配體（荷爾蒙、神經傳遞物、光子）結合 GPCR 胞外端，引發構象變化，傳遞至胞內端，活化與之結合的異源三聚體 G 蛋白（α、β、γ 三個次單元）。</p>
+    </div></div>
+    <div class="step"><div class="snum">3</div><div class="sbody">
+      <h4>第二信使放大訊號｜Second Messenger Amplification</h4>
+      <p>Gα-GTP 擴散，活化下游酵素：Gs 激活 adenylyl cyclase → cAMP↑ → PKA；Gq 激活 PLC → IP₃ + DAG → Ca²⁺釋放 + PKC。一個受體可激活數百個下游分子，訊號放大千倍。</p>
+    </div></div>
+    <div class="step"><div class="snum">4</div><div class="sbody">
+      <h4>β-arrestin 脫敏與回收｜Desensitization</h4>
+      <p>持續刺激後，GRK（G蛋白偶聯受體激酶）磷酸化 GPCR，β-arrestin 結合、阻斷 G 蛋白訊號，並將受體送往核內體回收或降解——這是「受體脫敏」的分子機制。</p>
+    </div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════════════ PART 03 Na/K PUMP ════════════ -->
+<div id="pump"></div>
+<div class="sec">
+  <p class="sec-label">PART 03</p>
+  <h2 class="sec-title">Na⁺/K⁺-ATPase 幫浦與膜電位</h2>
+  <p class="sec-sub">Na⁺/K⁺-ATPase 是「主動運輸」的代表。每水解一個 ATP，把 3 個 Na⁺ 打出、2 個 K⁺ 打入，
+  維持細胞內低 Na⁺、高 K⁺ 的環境，建立膜電位（約 -70 mV）——這是神經和肌肉興奮的能量基礎。</p>
+
+  <div class="dbox">
+    <div class="dbox-inner">
+      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" style="min-width:540px">
+        <defs>
+          <linearGradient id="pmpG" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#1A6B6A"/>
+            <stop offset="100%" style="stop-color:#0A4848"/>
+          </linearGradient>
+        </defs>
+
+        <!-- membrane -->
+        <rect x="50" y="108" width="420" height="22" rx="7" fill="#C8956A" opacity=".7"/>
+        <rect x="50" y="172" width="420" height="22" rx="7" fill="#C8956A" opacity=".5"/>
+        <text x="480" y="122" font-size="10" fill="#9A7050" font-family="monospace">細胞外</text>
+        <text x="480" y="192" font-size="10" fill="#9A7050" font-family="monospace">細胞內</text>
+
+        <!-- pump protein body -->
+        <rect x="155" y="85" width="110" height="132" rx="12" fill="url(#pmpG)" opacity=".9"/>
+        <!-- α subunit binding sites -->
+        <rect x="178" y="100" width="20" height="20" rx="4" fill="rgba(255,220,120,.7)"/>
+        <text x="188" y="113" text-anchor="middle" font-size="9" fill="#3A1800" font-weight="bold" font-family="monospace">Na</text>
+        <rect x="220" y="100" width="20" height="20" rx="4" fill="rgba(120,220,200,.7)"/>
+        <text x="230" y="113" text-anchor="middle" font-size="9" fill="#0A3030" font-weight="bold" font-family="monospace">K</text>
+        <!-- ATP binding domain -->
+        <rect x="185" y="180" width="50" height="22" rx="6" fill="#E6A800" opacity=".85"/>
+        <text x="210" y="195" text-anchor="middle" font-size="10" fill="#3A1800" font-weight="bold" font-family="monospace">ATP</text>
+
+        <!-- Na+ moving out (3) -->
+        <g fill="#D4820C">
+          <circle cx="95" cy="90" r="10"/><text x="95" y="94" text-anchor="middle" font-size="9" fill="white" font-weight="bold">Na⁺</text>
+          <circle cx="125" cy="82" r="10"/><text x="125" y="86" text-anchor="middle" font-size="9" fill="white" font-weight="bold">Na⁺</text>
+          <circle cx="75" cy="76" r="10"/><text x="75" y="80" text-anchor="middle" font-size="9" fill="white" font-weight="bold">Na⁺</text>
+        </g>
+        <path d="M148,100 Q125,92 112,86" stroke="#D4820C" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+        <text x="75" y="62" font-size="11" fill="#D4820C" font-family="monospace" font-weight="bold">3 Na⁺ 送出</text>
+
+        <!-- K+ moving in (2) -->
+        <g fill="#1A6B6A">
+          <circle cx="95" cy="215" r="10"/><text x="95" y="219" text-anchor="middle" font-size="9" fill="white" font-weight="bold">K⁺</text>
+          <circle cx="125" cy="224" r="10"/><text x="125" y="228" text-anchor="middle" font-size="9" fill="white" font-weight="bold">K⁺</text>
+        </g>
+        <path d="M148,200 Q128,210 112,218" stroke="#1A6B6A" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+        <text x="68" y="248" font-size="11" fill="#1A6B6A" font-family="monospace" font-weight="bold">2 K⁺ 送入</text>
+
+        <!-- arrows -->
+        <polygon points="150,102 160,108 150,114" fill="#D4820C" opacity=".8"/>
+        <polygon points="150,198 160,192 150,186" fill="#1A6B6A" opacity=".8"/>
+
+        <!-- ADP + Pi -->
+        <text x="290" y="200" font-size="11" fill="#9A7050" font-family="monospace">ATP → ADP + Pᵢ</text>
+        <text x="290" y="214" font-size="10" fill="#BBB" font-family="monospace">每循環</text>
+
+        <!-- membrane potential panel -->
+        <rect x="500" y="60" width="200" height="200" rx="10" fill="#FFF8EE" stroke="#E8C090" stroke-width="1.5"/>
+        <text x="600" y="82" text-anchor="middle" font-size="12" fill="#7A5230" font-weight="bold" font-family="monospace">靜息膜電位</text>
+        <text x="600" y="96" text-anchor="middle" font-size="10" fill="#9A7050" font-family="monospace">Resting Membrane Potential</text>
+
+        <!-- voltage bar -->
+        <rect x="535" y="110" width="130" height="18" rx="5" fill="#F0D8B0"/>
+        <rect x="535" y="110" width="91" height="18" rx="5" fill="#B84A1A" opacity=".8"/>
+        <text x="600" y="123" text-anchor="middle" font-size="10" fill="white" font-family="monospace">−70 mV</text>
+
+        <text x="540" y="150" font-size="11" fill="#5A3A20" font-family="monospace">細胞內：</text>
+        <text x="540" y="164" font-size="11" fill="#1A6B6A" font-family="monospace" font-weight="bold">高 K⁺  低 Na⁺</text>
+        <text x="540" y="183" font-size="11" fill="#5A3A20" font-family="monospace">細胞外：</text>
+        <text x="540" y="197" font-size="11" fill="#D4820C" font-family="monospace" font-weight="bold">高 Na⁺  低 K⁺</text>
+
+        <text x="535" y="222" font-size="10" fill="#9A7050" font-family="monospace">由 Na⁺/K⁺ 幫浦維持</text>
+        <text x="535" y="235" font-size="10" fill="#9A7050" font-family="monospace">消耗 ~20% 細胞 ATP</text>
+
+        <!-- title -->
+        <text x="230" y="280" text-anchor="middle" font-size="12" fill="#1A6B6A" font-weight="bold" font-family="monospace">Na⁺/K⁺-ATPase 每循環：3Na⁺出 / 2K⁺入 / 1ATP</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <div class="a-icon">⚡</div>
+    <div class="a-body">
+      <h4>充電電池比喻</h4>
+      <p>Na⁺/K⁺ 幫浦就像在為電池充電。它持續把 Na⁺（正電）打出、K⁺（正電）打入，
+      製造一個跨膜電位差（約 -70 mV，內負外正）。這個「電量」讓神經可以發送電訊號——
+      神經動作電位就是短暫「放電」再「重新充電」的過程，Na⁺/K⁺ 幫浦是那個充電器。</p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step"><div class="snum">E1</div><div class="sbody">
+      <h4>E1 構象：高親和 Na⁺｜Na⁺ Binding Inside</h4>
+      <p>幫浦蛋白（α 次單元）在細胞內側以高親和力結合 3 個 Na⁺；ATP 結合於磷酸化結構域，準備水解。</p>
+    </div></div>
+    <div class="step"><div class="snum">E2</div><div class="sbody">
+      <h4>ATP 水解與磷酸化：Na⁺ 釋放細胞外｜Phosphorylation</h4>
+      <p>ATP 水解，磷酸基轉移到 Asp369（E1P → E2P），構象變化，Na⁺ 親和力下降，3 個 Na⁺ 釋放到細胞外。</p>
+    </div></div>
+    <div class="step"><div class="snum">E3</div><div class="sbody">
+      <h4>E2 構象：高親和 K⁺｜K⁺ Binding Outside</h4>
+      <p>E2P 在細胞外側以高親和力結合 2 個 K⁺，觸發去磷酸化（Pi 釋放），構象轉回 E1，K⁺ 釋放到細胞內。</p>
+    </div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════════════ PART 04 ION CHANNELS ════════════ -->
+<div id="channel"></div>
+<div class="sec">
+  <p class="sec-label">PART 04</p>
+  <h2 class="sec-title">離子通道與電壓門控</h2>
+  <p class="sec-sub">離子通道是「被動運輸」：順著電化學梯度讓離子通過，不需要 ATP。
+  電壓門控通道（Voltage-Gated Channel）依膜電位開關，是神經動作電位的核心分子機器。
+  每秒可通過 10⁷ 個離子，速度比載體蛋白快 1,000 倍以上。</p>
+
+  <div class="dbox">
+    <div class="dbox-inner">
+      <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" style="min-width:540px">
+        <!-- membrane -->
+        <rect x="40" y="105" width="650" height="22" rx="7" fill="#C8956A" opacity=".7"/>
+        <rect x="40" y="173" width="650" height="22" rx="7" fill="#C8956A" opacity=".5"/>
+
+        <!-- Voltage-gated Na channel (left) CLOSED -->
+        <g onclick="openModal('navclose')" style="cursor:pointer">
+          <!-- 4 domains -->
+          <g fill="#B84A1A" opacity=".88">
+            <rect x="65" y="100" width="22" height="100" rx="7"/>
+            <rect x="92" y="100" width="22" height="100" rx="7"/>
+            <rect x="119" y="100" width="22" height="100" rx="7"/>
+            <rect x="146" y="100" width="22" height="100" rx="7"/>
+          </g>
+          <!-- closed gate -->
+          <rect x="73" y="142" width="110" height="16" rx="5" fill="#FF6040" opacity=".85"/>
+          <text x="128" y="153" text-anchor="middle" font-size="10" fill="white" font-family="monospace" font-weight="bold">閉合 CLOSED</text>
+          <!-- inactivation ball -->
+          <circle cx="128" cy="212" r="14" fill="#D4820C" opacity=".8"/>
+          <text x="128" y="216" text-anchor="middle" font-size="9" fill="white" font-family="monospace">失活球</text>
+          <!-- voltage sensor -->
+          <rect x="76" y="108" width="16" height="10" rx="3" fill="#FFD070" opacity=".8"/>
+          <text x="84" y="116" text-anchor="middle" font-size="8" fill="#3A1800" font-family="monospace">S4+</text>
+          <!-- label -->
+          <text x="128" y="92" text-anchor="middle" font-size="11" fill="#B84A1A" font-weight="bold" font-family="monospace">Nav — 靜息</text>
+          <text x="128" y="280" text-anchor="middle" font-size="10" fill="#9A7050" font-family="monospace">−70mV</text>
+        </g>
+
+        <!-- Voltage-gated Na channel OPEN -->
+        <g onclick="openModal('navopen')" style="cursor:pointer">
+          <g fill="#B84A1A" opacity=".7">
+            <rect x="220" y="100" width="22" height="100" rx="7"/>
+            <rect x="247" y="100" width="22" height="100" rx="7"/>
+            <rect x="274" y="100" width="22" height="100" rx="7"/>
+            <rect x="301" y="100" width="22" height="100" rx="7"/>
+          </g>
+          <!-- OPEN pore -->
+          <rect x="244" y="100" width="42" height="100" rx="4" fill="rgba(255,200,120,.4)"/>
+          <!-- Na ions flowing in -->
+          <g fill="#D4820C">
+            <circle cx="265" cy="75" r="9"/><text x="265" y="79" text-anchor="middle" font-size="8" fill="white" font-weight="bold">Na⁺</text>
+            <circle cx="265" cy="95" r="9" opacity=".7"/><text x="265" y="99" text-anchor="middle" font-size="8" fill="white" font-weight="bold">Na⁺</text>
+          </g>
+          <path d="M265,84 L265,100" stroke="#D4820C" stroke-width="2.5"/>
+          <polygon points="260,100 270,100 265,110" fill="#D4820C"/>
+          <!-- voltage sensor activated -->
+          <rect x="230" y="108" width="16" height="10" rx="3" fill="#FF8800" opacity=".85"/>
+          <text x="238" y="116" text-anchor="middle" font-size="8" fill="#fff" font-family="monospace">S4!</text>
+          <!-- label -->
+          <text x="265" y="92" text-anchor="middle" font-size="11" fill="#B84A1A" font-weight="bold" font-family="monospace">Nav — 開放</text>
+          <text x="265" y="280" text-anchor="middle" font-size="10" fill="#9A7050" font-family="monospace">−55mV↑</text>
+        </g>
+
+        <!-- K channel (delayed rectifier) -->
+        <g onclick="openModal('kvchan')" style="cursor:pointer">
+          <g fill="#5A6B1A" opacity=".82">
+            <rect x="370" y="100" width="22" height="100" rx="7"/>
+            <rect x="397" y="100" width="22" height="100" rx="7"/>
+            <rect x="424" y="100" width="22" height="100" rx="7"/>
+            <rect x="451" y="100" width="22" height="100" rx="7"/>
+          </g>
+          <rect x="396" y="100" width="44" height="100" rx="4" fill="rgba(120,200,120,.35)"/>
+          <!-- K flowing out -->
+          <g fill="#5A6B1A">
+            <circle cx="418" cy="230" r="9"/><text x="418" y="234" text-anchor="middle" font-size="8" fill="white" font-weight="bold">K⁺</text>
+            <circle cx="418" cy="250" r="9" opacity=".7"/><text x="418" y="254" text-anchor="middle" font-size="8" fill="white" font-weight="bold">K⁺</text>
+          </g>
+          <path d="M418,216 L418,221" stroke="#5A6B1A" stroke-width="2.5"/>
+          <polygon points="413,221 423,221 418,230" fill="#5A6B1A"/>
+          <!-- label -->
+          <text x="418" y="92" text-anchor="middle" font-size="11" fill="#5A6B1A" font-weight="bold" font-family="monospace">Kv — 開放</text>
+          <text x="418" y="280" text-anchor="middle" font-size="10" fill="#9A7050" font-family="monospace">延遲整流</text>
+        </g>
+
+        <!-- Action potential chart -->
+        <g>
+          <rect x="520" y="55" width="180" height="210" rx="10" fill="#FFF8EE" stroke="#E8C090" stroke-width="1.5"/>
+          <text x="610" y="75" text-anchor="middle" font-size="11" fill="#7A5230" font-weight="bold" font-family="monospace">動作電位</text>
+
+          <!-- axes -->
+          <line x1="540" y1="165" x2="700" y2="165" stroke="#DDD" stroke-width="1.5"/>
+          <line x1="555" y1="80" x2="555" y2="240" stroke="#DDD" stroke-width="1.5"/>
+
+          <!-- AP curve -->
+          <polyline points="555,165 565,163 572,150 580,90 588,75 596,80 604,140 612,165 625,175 640,168 660,166 680,165"
+                    stroke="#B84A1A" stroke-width="2.5" fill="none"/>
+
+          <!-- labels on chart -->
+          <text x="580" y="72" font-size="9" fill="#B84A1A" font-family="monospace">+40mV</text>
+          <text x="540" y="168" font-size="9" fill="#9A7050" font-family="monospace">0</text>
+          <text x="540" y="195" font-size="9" fill="#1A6B6A" font-family="monospace">−70</text>
+          <line x1="545" y1="192" x2="700" y2="192" stroke="#1A6B6A" stroke-width="1" stroke-dasharray="3,2"/>
+
+          <!-- phase labels -->
+          <text x="578" y="115" font-size="8" fill="#D4820C" font-family="monospace">Na⁺↓</text>
+          <text x="608" y="155" font-size="8" fill="#5A6B1A" font-family="monospace">K⁺↑</text>
+          <text x="630" y="180" font-size="8" fill="#1A6B6A" font-family="monospace">過極化</text>
+        </g>
+
+        <!-- title -->
+        <text x="290" y="30" text-anchor="middle" font-size="12" fill="#5A3A20" font-weight="bold" font-family="monospace">電壓門控通道與動作電位｜Nav 去極化 → Kv 復極化</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Aquaporin + ligand-gated comparison -->
+  <h3 style="font-size:20px;font-weight:700;margin:34px 0 14px;font-family:var(--serif)">通道類型比較</h3>
+  <table class="ctable">
+    <thead>
+      <tr>
+        <th>通道類型</th><th>門控機制</th><th>主要離子/分子</th><th>代表蛋白</th><th>生理角色</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag-r">電壓門控 VGC</span></td>
+        <td>膜電位改變觸發 S4 電壓感測器</td>
+        <td>Na⁺, K⁺, Ca²⁺</td>
+        <td>Nav1.4, Kv1.2, Cav1.2</td>
+        <td>神經動作電位、心臟收縮、肌肉收縮</td>
+      </tr>
+      <tr>
+        <td><span class="tag-a">配體門控 LGC</span></td>
+        <td>配體（神經傳遞物）結合胞外域</td>
+        <td>Na⁺, K⁺, Cl⁻, Ca²⁺</td>
+        <td>nAChR, AMPA, NMDA, GABA-A</td>
+        <td>突觸傳遞、學習記憶</td>
+      </tr>
+      <tr>
+        <td><span class="tag-t">水通道 AQP</span></td>
+        <td>滲透壓梯度驅動（不需門控）</td>
+        <td>H₂O（嚴格選擇性）</td>
+        <td>AQP1, AQP2, AQP4</td>
+        <td>腎臟濃縮尿液、腦水腫、紅血球</td>
+      </tr>
+      <tr>
+        <td><span class="tag-o">機械性門控 MGC</span></td>
+        <td>膜張力 / 細胞壓力觸發</td>
+        <td>Na⁺, K⁺, Ca²⁺</td>
+        <td>Piezo1/2, MscL</td>
+        <td>觸覺、聽覺（毛細胞）、血壓感測</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="steps">
+    <div class="step"><div class="snum">①</div><div class="sbody">
+      <h4>S4 電壓感測器｜Voltage Sensor</h4>
+      <p>每個 TM domain 的第四段（S4）富含帶正電的 Arg/Lys，膜電位去極化時，靜電力驅動 S4 向胞外移動，引發構象變化，pore gate 開啟。去極化速度決定 Nav（快）vs Kv（慢）的時間差異。</p>
+    </div></div>
+    <div class="step"><div class="snum">②</div><div class="sbody">
+      <h4>選擇性過濾器｜Selectivity Filter</h4>
+      <p>通道最窄處（selectivity filter）以精確尺寸和靜電環境篩選離子。K⁺ 通道的 GYG 序列（鉀通道標誌）只讓 K⁺ 通過（完全去水化後直徑 2.66 Å），而 Na⁺（2.32 Å）因去水化能量太高而被排除。</p>
+    </div></div>
+    <div class="step"><div class="snum">③</div><div class="sbody">
+      <h4>水通道 AQP 的嚴格水選擇性｜Aquaporin Selectivity</h4>
+      <p>AQP 的 NPA 基序（Asn-Pro-Ala，對稱出現兩次）形成「砂漏」結構，中央正電荷阻擋 H⁺（防止酸鹼干擾），ar/R 過濾器排除所有非水分子，每秒可通過 3×10⁹ 個水分子，卻完全不透其他離子。</p>
+    </div></div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════════════ PART 05 DISEASE ════════════ -->
+<div id="disease"></div>
+<div class="sec">
+  <p class="sec-label">PART 05</p>
+  <h2 class="sec-title">膜蛋白失調與疾病</h2>
+  <p class="sec-sub">膜蛋白功能異常影響範圍極廣：從心律不整、高血壓到神經疾病和癌症，
+  幾乎所有重大疾病都有膜蛋白參與。</p>
+
+  <div class="dgrid">
+    <div class="dcard" style="--dc:#B84A1A">
+      <span class="d-tag" style="background:#B84A1A">神經</span>
+      <div class="d-name">長 QT 症候群</div>
+      <div class="d-prot">hERG Kv 通道（KCNH2）</div>
+      <div class="d-desc">心室復極化依賴 hERG K⁺ 通道。突變或某些藥物（如紅黴素）阻斷 hERG，導致 QT 延長，觸發致命性心律不整（尖端扭轉型室性心動過速）。</div>
+    </div>
+    <div class="dcard" style="--dc:#D4820C">
+      <span class="d-tag" style="background:#D4820C">代謝</span>
+      <div class="d-name">先天性高胰島素血症</div>
+      <div class="d-prot">KATP 通道（Kir6.2/SUR1）</div>
+      <div class="d-desc">胰島 β 細胞的 KATP 通道連接代謝狀態與胰島素分泌。突變使通道無法關閉，膜持續去極化，Ca²⁺ 持續流入，胰島素過度分泌，引發嚴重低血糖。</div>
+    </div>
+    <div class="dcard" style="--dc:#1A6B6A">
+      <span class="d-tag" style="background:#1A6B6A">腎臟</span>
+      <div class="d-name">腎原性尿崩症</div>
+      <div class="d-prot">AQP2 水通道</div>
+      <div class="d-desc">AQP2 表現在腎集尿管管腔側，ADH（抗利尿激素）刺激 AQP2 移向管腔膜、增加水重吸收。AQP2 突變或 ADH 受體突變導致腎臟無法濃縮尿液，每天多尿 3–20 L。</div>
+    </div>
+    <div class="dcard" style="--dc:#5A6B1A">
+      <span class="d-tag" style="background:#5A6B1A">神經</span>
+      <div class="d-name">癲癇</div>
+      <div class="d-prot">Nav1.1（SCN1A）</div>
+      <div class="d-desc">SCN1A 突變（Dravet 症候群）導致抑制性 GABA 神經元 Nav1.1 功能喪失，抑制不足、興奮過度，引發嚴重的兒童癲癇。Nav1.1 是熱性驚厥和抗癲癇藥（拉莫三嗪）的重要靶點。</div>
+    </div>
+    <div class="dcard" style="--dc:#A83050">
+      <span class="d-tag" style="background:#A83050">癌症</span>
+      <div class="d-name">多種腫瘤</div>
+      <div class="d-prot">GPCR（突變 / 過度表現）</div>
+      <div class="d-desc">多種 GPCR 在癌症中持續活化（如 TSHR 突變在甲狀腺癌、ADRB2 在肺癌）。Gα 的 GNAS 突變（持續產生 cAMP）是垂體腺瘤的重要驅動基因。</div>
+    </div>
+    <div class="dcard" style="--dc:#7A5230">
+      <span class="d-tag" style="background:#7A5230">中毒</span>
+      <div class="d-name">河豚毒素中毒</div>
+      <div class="d-prot">Nav — TTX 阻斷</div>
+      <div class="d-desc">河豚毒素（Tetrodotoxin, TTX）以奈莫爾濃度精確阻斷 Nav 通道的 pore 口，使神經無法產生動作電位，導致全身麻痺和呼吸停止。TTX 也是研究 Nav 的標準工具藥。</div>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <div class="a-icon">💊</div>
+    <div class="a-body">
+      <h4>治療策略</h4>
+      <p><strong>通道阻斷劑：</strong>局部麻醉藥（利多卡因）阻斷 Nav；鈣離子阻斷劑（維拉帕米）阻斷 Cav，用於心律不整。<br>
+      <strong>GPCR 靶向藥物：</strong>β 受體阻斷劑（心臟病）、抗組胺藥（H1-GPCR）、奧氮平（D2-GPCR 抗精神病）——34% 的上市藥物都靶向 GPCR。<br>
+      <strong>基因治療：</strong>KATP 通道突變（先天性高胰島素血症）可用磺醯脲類藥物（SUR1 結合）部分補救。</p>
+    </div>
+  </div>
+</div>
+
+<div class="div"></div>
+
+<!-- ════════════ GLOSSARY ════════════ -->
+<div id="glossary"></div>
+<div class="glo-sec">
+  <h2>完整術語字典</h2>
+  <p class="gsub">膜蛋白與離子通道｜中英對照｜點擊摺疊展開</p>
+
+  <!-- Group 1 -->
+  <div class="glo-group">
+    <div class="glo-gt" style="background:#B84A1A">🧱 膜結構 Membrane Structure</div>
+    <div class="glo-items">
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#B84A1A">PL</span>
+          <span class="g-ns"><span class="g-nz">磷脂雙層</span><span class="g-ne">Phospholipid Bilayer</span></span>
+          <span class="g-cat" style="background:#B84A1A">膜結構</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">細胞膜的基本骨架。磷脂分子有「頭」（磷酸基，親水）和「尾」（脂肪酸鏈，疏水）。兩層磷脂尾對尾排列，形成中間疏水、兩側親水的薄膜（~7nm），只允許小的非極性分子自由穿越。</p>
+          <div class="formula">膜組成：磷脂（50%）+ 蛋白質（40%）+ 膽固醇（10%）</div>
+          <p class="ai">磷脂雙層像三明治：外面兩片麵包（親水頭）夾住中間的奶油（疏水尾），油水分離。</p>
+        </div>
+      </details>
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#B84A1A">TM</span>
+          <span class="g-ns"><span class="g-nz">跨膜螺旋</span><span class="g-ne">Transmembrane Helix</span></span>
+          <span class="g-cat" style="background:#B84A1A">膜結構</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">~20 個連續疏水胺基酸（Leu, Ile, Val, Ala, Phe）組成 α-螺旋，外側面皆為疏水胺基酸，正好匹配脂雙層 3 nm 的疏水厚度，將蛋白質錨定在膜上。單次跨膜（Type I/II）或多次跨膜（GPCR 7次，AQP 6次）。</p>
+          <div class="formula">疏水長度判斷：連續 17–25 個疏水胺基酸 → 預測跨膜螺旋（Kyte-Doolittle 疏水性分析）</div>
+          <p class="ai">跨膜螺旋就像插入黃油的牙籤——只有完全疏水的牙籤才能在黃油（脂雙層）裡穩定存在。</p>
+        </div>
+      </details>
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#B84A1A">MΨ</span>
+          <span class="g-ns"><span class="g-nz">膜電位</span><span class="g-ne">Membrane Potential</span></span>
+          <span class="g-cat" style="background:#B84A1A">電生理</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">膜兩側的電位差，靜息時約 -70 mV（內負外正），由 Na⁺/K⁺ 幫浦維持的離子不均衡所建立。膜電位是神經訊號（動作電位）、肌肉收縮、胰島素分泌等生理功能的能量儲存形式。</p>
+          <div class="formula">Nernst 方程式：E = (RT/zF) × ln([離子]外/[離子]內)</div>
+          <p class="ai">膜電位就像繃緊的彈弓，平時蓄力（-70 mV），一旦觸發就彈出訊號（動作電位），再慢慢重新拉緊（復極化）。</p>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Group 2 -->
+  <div class="glo-group">
+    <div class="glo-gt" style="background:#D4820C">📡 信號受體 Signal Receptors</div>
+    <div class="glo-items">
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#D4820C">GPCR</span>
+          <span class="g-ns"><span class="g-nz">G 蛋白偶聯受體</span><span class="g-ne">G Protein-Coupled Receptor</span></span>
+          <span class="g-cat" style="background:#D4820C">受體</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">七次跨膜 α-螺旋受體家族，人類約 800 種。配體結合後活化胞內 G 蛋白（Gs/Gi/Gq），啟動 cAMP / IP₃ / DAG 等第二信使。調控視覺、嗅覺、心率、免疫、代謝等幾乎所有生理功能。</p>
+          <div class="formula">配體 → GPCR → Gα-GTP → Adenylyl cyclase → cAMP → PKA → 磷酸化目標</div>
+          <p class="ai">GPCR 是細胞的「智慧門鈴」——鈴聲（配體）響了，裡面的機器（G蛋白/cAMP）就啟動，不需要直接進門。</p>
+        </div>
+      </details>
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#D4820C">β-ar</span>
+          <span class="g-ns"><span class="g-nz">β-arrestin 脫敏機制</span><span class="g-ne">Beta-Arrestin Desensitization</span></span>
+          <span class="g-cat" style="background:#D4820C">調控</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">持續刺激 GPCR 後，GRK（G蛋白偶聯受體激酶）磷酸化 GPCR 胞內端，β-arrestin 結合、遮蔽 G 蛋白結合位、終止訊號，並引導受體進入內吞囊泡。β-arrestin 也能獨立傳遞「偏向信號」（biased agonism），是新藥設計方向。</p>
+          <div class="formula">GPCR 刺激 → GRK 磷酸化 → β-arrestin 結合 → G蛋白訊號終止 → 受體內吞</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Group 3 -->
+  <div class="glo-group">
+    <div class="glo-gt" style="background:#1A6B6A">⚙️ 主動運輸 Active Transport</div>
+    <div class="glo-items">
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#1A6B6A">NKA</span>
+          <span class="g-ns"><span class="g-nz">Na⁺/K⁺-ATPase</span><span class="g-ne">Sodium-Potassium Pump</span></span>
+          <span class="g-cat" style="background:#1A6B6A">幫浦</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">P 型 ATPase，每水解一個 ATP，逆濃度梯度將 3 個 Na⁺ 泵出細胞、2 個 K⁺ 泵入細胞，建立並維持靜息膜電位和細胞體積。消耗細胞約 20–30% 的 ATP（神經細胞更高）。α 次單元是強心苷（毛地黃）的作用靶點。</p>
+          <div class="formula">3 Na⁺(細胞內) + 2 K⁺(細胞外) + ATP → ADP + Pi + 3 Na⁺(外) + 2 K⁺(內)</div>
+          <p class="ai">Na⁺/K⁺ 幫浦是細胞的「背景音樂」——你感覺不到它，但它一刻不停，讓每個細胞保持準備好發訊號的狀態。一旦停止（缺氧、地高辛中毒），細胞會腫脹、神經失常。</p>
+        </div>
+      </details>
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#1A6B6A">SERCA</span>
+          <span class="g-ns"><span class="g-nz">肌質網 Ca²⁺-ATPase</span><span class="g-ne">Sarco/Endoplasmic Reticulum Ca²⁺-ATPase</span></span>
+          <span class="g-cat" style="background:#1A6B6A">幫浦</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">P 型 ATPase，每水解一個 ATP 將 2 個 Ca²⁺ 泵回肌質網（SR）或內質網（ER），使細胞質 Ca²⁺ 回到靜息水平（~100 nM），終止肌肉收縮或信號。SERCA 抑制劑 Thapsigargin 是研究 Ca²⁺ 信號的常用工具。</p>
+          <div class="formula">2 Ca²⁺(細胞質) + ATP → 2 Ca²⁺(SR/ER) + ADP + Pi</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Group 4 -->
+  <div class="glo-group">
+    <div class="glo-gt" style="background:#5A6B1A">💧 被動通道 Passive Channels</div>
+    <div class="glo-items">
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#5A6B1A">VGC</span>
+          <span class="g-ns"><span class="g-nz">電壓門控通道</span><span class="g-ne">Voltage-Gated Ion Channel</span></span>
+          <span class="g-cat" style="background:#5A6B1A">通道</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">由膜電位變化控制開關的離子通道。Nav（鈉通道）負責動作電位上升相（去極化），Kv（鉀通道）負責下降相（復極化），Cav（鈣通道）負責肌肉收縮信號和突觸囊泡釋放。</p>
+          <div class="formula">動作電位：靜息(−70mV) → 去極化(Nav開，+40mV) → 復極化(Kv開) → 過極化(−90mV) → 靜息</div>
+          <p class="ai">Nav 和 Kv 就像接力賽的兩個選手——Nav 先衝（Na⁺ 衝入），Kv 接棒（K⁺ 衝出），共同完成一次動作電位，然後幫浦重設場地。</p>
+        </div>
+      </details>
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#5A6B1A">LGC</span>
+          <span class="g-ns"><span class="g-nz">配體門控通道</span><span class="g-ne">Ligand-Gated Ion Channel</span></span>
+          <span class="g-cat" style="background:#5A6B1A">通道</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">神經傳遞物結合胞外端後直接開啟離子通道（「直接偶聯」，比 GPCR 快 1000 倍）。nAChR（菸鹼型乙醯膽鹼受體）是代表：5 個次單元圍成通道，乙醯膽鹼結合後 Na⁺ 快速內流，突觸後膜去極化。</p>
+          <div class="formula">nAChR: (α₂βγδ) 五聚體 → ACh 結合 2α → 開孔 → Na⁺/K⁺ 流動 → 去極化</div>
+          <p class="ai">LGC 是「鑰匙插入立即開門」（配體 = 鑰匙，通道 = 門），GPCR 是「按門鈴後門裡的人去開門」——前者快，後者可放大。</p>
+        </div>
+      </details>
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#5A6B1A">AQP</span>
+          <span class="g-ns"><span class="g-nz">水通道蛋白</span><span class="g-ne">Aquaporin</span></span>
+          <span class="g-cat" style="background:#5A6B1A">通道</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">高度選擇性的水通道，每秒允許 3×10⁹ 個水分子通過，而完全阻擋離子（包括 H⁺）。砂漏結構中央的兩個 NPA 基序形成正電位，阻止帶正電的質子（H⁺）通過——這保護細胞的酸鹼平衡。人類有 13 種（AQP0–AQP12）。</p>
+          <div class="formula">AQP 核心：NPA-box × 2（正電排斥 H⁺）+ ar/R 過濾器（尺寸篩選）</div>
+          <p class="ai">AQP 是細胞膜上的「純水管道」——只讓水（不帶電、極小）通過，就連電荷最小的離子（H⁺）也被靜電場擋在外面。2003 年諾貝爾化學獎（Peter Agre）。</p>
+        </div>
+      </details>
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#5A6B1A">Kir</span>
+          <span class="g-ns"><span class="g-nz">內向整流鉀通道</span><span class="g-ne">Inwardly Rectifying K⁺ Channel</span></span>
+          <span class="g-cat" style="background:#5A6B1A">通道</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">在靜息電位時允許 K⁺ 流入（內向整流），維持靜息膜電位接近 K⁺ 平衡電位。KATP（ATP 感測型 Kir）連接細胞代謝與膜電位：ATP 高（飽食）→ 通道關閉 → 去極化 → 胰島素分泌。磺醯脲類藥物（第一代糖尿病藥）阻斷 KATP 促進胰島素分泌。</p>
+          <div class="formula">KATP 型：[ATP]內高 → 關閉通道 → 膜去極化 → Cav 開啟 → Ca²⁺ 流入 → 胰島素囊泡釋放</div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- Group 5 -->
+  <div class="glo-group">
+    <div class="glo-gt" style="background:#7A5230">🔬 功能補充 Key Concepts</div>
+    <div class="glo-items">
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#7A5230">AP</span>
+          <span class="g-ns"><span class="g-nz">動作電位</span><span class="g-ne">Action Potential</span></span>
+          <span class="g-cat" style="background:#7A5230">電生理</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">神經元或肌肉細胞的「電訊號」。去極化達閾值（約 -55 mV）時，Nav 快速開啟，Na⁺ 大量內流使膜電位升至 +40 mV；Kv 延遲開啟，K⁺ 外流使膜電位復極化回到 -70 mV（甚至短暫過極化 -90 mV）。動作電位「全有全無」。</p>
+          <div class="formula">閾值(−55mV) → Nav 開 → Na⁺ 內流(+40mV) → Kv 開 → K⁺ 外流 → 復極化(−90mV) → 靜息(−70mV)</div>
+          <p class="ai">動作電位就像倒塌的骨牌——一旦開始（超過閾值），後面的骨牌（Nav → Kv）必然依序倒下，無法「半途而廢」。</p>
+        </div>
+      </details>
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#7A5230">2MS</span>
+          <span class="g-ns"><span class="g-nz">第二信使系統</span><span class="g-ne">Second Messenger System</span></span>
+          <span class="g-cat" style="background:#7A5230">信號</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">GPCR 活化後在細胞內產生的小分子信號物質，負責放大和傳遞第一信使（配體）的訊號。主要有三類：cAMP（由 adenylyl cyclase 合成，激活 PKA）、IP₃/DAG（由 PLC 分解 PIP₂，IP₃ 釋放 ER Ca²⁺，DAG 激活 PKC）、Ca²⁺（調控多種下游效應器）。</p>
+          <div class="formula">Gs → AC → cAMP → PKA | Gq → PLC → IP₃ + DAG → Ca²⁺ + PKC</div>
+          <p class="ai">第二信使就像廣播中繼站——配體（一個分子）活化一個 GPCR，GPCR 活化 10 個 G 蛋白，每個 G 蛋白產生 100 個 cAMP，每個 cAMP 激活 PKA...訊號放大千萬倍。</p>
+        </div>
+      </details>
+      <details class="gi">
+        <summary>
+          <span class="g-ab" style="color:#7A5230">Nst</span>
+          <span class="g-ns"><span class="g-nz">Nernst 方程式</span><span class="g-ne">Nernst Equation</span></span>
+          <span class="g-cat" style="background:#7A5230">電化學</span><span class="g-chev">▶</span>
+        </summary>
+        <div class="g-bd">
+          <p class="explain">計算單一離子「平衡電位」（equilibrium potential）的方程式——當電化學梯度使離子恰好停止淨流動時的膜電位。K⁺ 平衡電位約 -90 mV（靜息電位接近此值）；Na⁺ 平衡電位約 +60 mV（動作電位峰值接近此值）。</p>
+          <div class="formula">E = (RT/zF) × ln([離子]外/[離子]內)<br>室溫：E(K⁺) ≈ -90 mV | E(Na⁺) ≈ +60 mV | E(Ca²⁺) ≈ +135 mV</div>
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<footer>
+  蛋白質三百天 · 膜蛋白與離子通道<br>
+  整合膜蛋白 · GPCR · Na⁺/K⁺-ATPase · 電壓門控通道 · Aquaporin · 膜電位<br><br>
+  所有圖中元素可點擊查看詳細說明｜術語字典 details/summary 可展開
+</footer>
+
+<!-- ════════════ MODALS ════════════ -->
+<div class="mo-ov" id="moOv" onclick="handleOvClick(event)">
+  <div class="mo" id="moBox">
+    <div class="mo-hd">
+      <button class="mo-cls" onclick="closeMo()">×</button>
+      <div class="mo-ab" id="mAb"></div>
+      <div class="mo-zh" id="mZh"></div>
+      <div class="mo-en" id="mEn"></div>
+    </div>
+    <div class="mo-bd" id="mBd"></div>
+  </div>
+</div>
+
+<script>
+const MD = {
+  gpcr:{abbr:'GPCR',zh:'G 蛋白偶聯受體',en:'G Protein-Coupled Receptor',c:'#D4820C',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>七個跨膜螺旋圍成「桶形」，外側感知配體（荷爾蒙、神經傳遞物、光、氣味），內側連接 G 蛋白三聚體。配體結合 → 構象變化 → G 蛋白活化 → 第二信使產生。是人類最大的受體家族（~800 種），也是最重要的藥物靶點。</p></div>
+    <div class="mo-sec"><h4>三種 Gα 亞型</h4><p><strong>Gs</strong>：激活 adenylyl cyclase → cAMP↑（腎上腺素 β 受體）<br><strong>Gi</strong>：抑制 adenylyl cyclase → cAMP↓（μ 鴉片受體）<br><strong>Gq</strong>：激活 PLC → IP₃ + DAG → Ca²⁺↑（α₁ 受體）</p></div>
+    <div class="mo-sec"><h4>代表藥物</h4><p>β-blocker（心臟病）· 抗組胺藥 · 嗎啡 · 阿托品 · PDE5 抑制劑（西地那非）· 抗精神病藥（D2 拮抗劑）——全球銷售前 10 大藥物中有 4 個靶向 GPCR。</p></div>
+    <div class="mo-an">📡 GPCR 是細胞的「智慧天線」——把胞外微弱的化學信號（奈莫爾濃度的荷爾蒙）轉換成胞內強大的生化級聯，放大倍數可達 10⁶ 倍。</div>`},
+  nakpump:{abbr:'NKA',zh:'Na⁺/K⁺-ATPase 幫浦',en:'Sodium-Potassium Pump',c:'#1A6B6A',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>由 α（催化次單元，~110 kDa）和 β（糖蛋白）次單元組成的 P 型 ATPase。每水解 1 ATP 完成：3 Na⁺ 出 → 2 K⁺ 入，建立細胞膜兩側的離子不均衡（→ 膜電位 -70 mV）。</p></div>
+    <div class="mo-sec"><h4>P 型 ATPase 循環</h4><p>E1（高 Na⁺ 親和） → E1P（磷酸化）→ E2P（低 Na⁺ 親和，Na⁺ 釋出）→ E2（高 K⁺ 親和）→ 去磷酸化 → E1</p><div class="mo-formula">E1-ATP + 3Na⁺(內) → E2P + 3Na⁺(外) + ADP → E2 + 2K⁺(外) → E1 + 2K⁺(內) + Pi</div></div>
+    <div class="mo-sec"><h4>強心苷靶點</h4><p>地高辛（Digoxin）和洋地黃毒苷阻斷 Na⁺/K⁺ 幫浦 → Na⁺ 在細胞內積累 → Na⁺/Ca²⁺ 交換體反向運作 → 細胞內 Ca²⁺↑ → 心肌收縮力↑。這是治療心衰竭的古老機制。</p></div>
+    <div class="mo-an">⚡ Na⁺/K⁺ 幫浦是「永動的發電站」，24 小時不停消耗 ATP，讓細胞保持「充電」狀態，準備好下一次神經衝動。</div>`},
+  vgchan:{abbr:'VGC',zh:'電壓門控離子通道',en:'Voltage-Gated Ion Channel',c:'#B84A1A',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>膜電位改變觸發構象變化、開啟通道的離子通道。S4 片段（富含 Arg/Lys）是電壓感測器，去極化時 S4 外移，帶動 gate 開啟。Nav 快速開閉（毫秒級）；Kv 延遲開啟，負責復極化。</p></div>
+    <div class="mo-sec"><h4>失活球機制</h4><p>Nav 在開啟幾毫秒後，胞內的「失活球」（N 端肽鏈）迅速插入 pore 口，機械性封閉通道（fast inactivation），確保動作電位只有一次短暫的 Na⁺ 流入，不會持續。</p></div>
+    <div class="mo-sec"><h4>亞型與藥物</h4><p><strong>Nav1.4</strong>：骨骼肌，突變 → 週期性癱瘓；<strong>Nav1.5</strong>：心臟，靶點：利多卡因；<strong>Nav1.7</strong>：痛覺神經，靶點：止痛藥；<strong>Kv11.1 (hERG)</strong>：心臟復極化，突變 → 長QT。</p></div>
+    <div class="mo-an">🎵 Nav 和 Kv 就像音樂的「起拍」和「收拍」——Nav 起，Na⁺ 湧入創造上升；Kv 收，K⁺ 外流回到基線，一個動作電位就完成了。</div>`},
+  aqp:{abbr:'AQP',zh:'水通道蛋白',en:'Aquaporin',c:'#5A6B1A',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>細胞膜上的「純水管道」，每秒通過 3×10⁹ 個水分子，而完全阻擋所有離子（包括 H⁺）。人類 13 種 AQP，分布在腎臟（AQP1/2）、腦（AQP4）、眼睛（AQP0）等多種器官。2003 年諾貝爾化學獎。</p></div>
+    <div class="mo-sec"><h4>NPA 雙重過濾</h4><p>砂漏結構中央，兩個 NPA 基序（Asn-Pro-Ala）的天冬醯胺排列形成靜電正電場，阻擋 H⁺（Grotthuss 機制被破壞）；ar/R 過濾器（芳香族 + Arg）以尺寸篩除非水分子。</p></div>
+    <div class="mo-sec"><h4>ADH 調控 AQP2</h4><p>抗利尿激素（ADH/Vasopressin）結合 V2R（GPCR）→ cAMP↑ → PKA → AQP2 磷酸化 → AQP2 從胞內囊泡轉移到管腔膜 → 水重吸收↑。ADH 過少或 AQP2 突變 → 尿崩症。</p></div>
+    <div class="mo-an">💧 AQP 是細胞版的「RO 逆滲透膜」——只讓水分子通過，鹽類離子全被阻擋，讓腎臟能精確控制體內水平衡。</div>`},
+  tm:{abbr:'TM',zh:'整合膜蛋白',en:'Integral Membrane Protein',c:'#A83050',body:`
+    <div class="mo-sec"><h4>三種膜蛋白</h4><p><strong>整合膜蛋白</strong>：TM 螺旋深埋脂雙層，只能用去垢劑溶解。<br><strong>外周膜蛋白</strong>：附著在膜表面，鹽/pH 就能洗下。<br><strong>脂質錨定蛋白</strong>：透過共價連接的脂肪酸（棕櫚酸、豆蔻酸）或 GPI 錨定。</p></div>
+    <div class="mo-sec"><h4>疏水匹配規則</h4><p>TM 螺旋長度需與脂雙層疏水核心厚度「匹配」（約 3 nm）。螺旋太短 → 傾斜補償；螺旋太長 → 脂質重排。膽固醇增加脂質排列有序度（liquid ordered domain），影響 TM 蛋白的聚集和功能。</p></div>
+    <div class="mo-an">🧱 整合膜蛋白就像嵌在牆壁裡的磚塊——拆不下來，只能連牆拆（去垢劑），但功能（受體、通道、載體）正是在這「牆」的位置才能發揮。</div>`},
+  mp:{abbr:'MΨ',zh:'膜電位',en:'Membrane Potential',c:'#7A5230',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>膜兩側電位差。靜息約 -70 mV（內負外正）。由離子不均衡（高 K⁺/低 Na⁺ 在細胞內）和選擇性滲透（靜息時膜對 K⁺ 滲透性高）決定。計算用 Goldman 方程式（多離子）或 Nernst 方程式（單離子）。</p></div>
+    <div class="mo-sec"><h4>Goldman 方程式</h4><p>整合 K⁺、Na⁺、Cl⁻ 三種離子的滲透係數（P）和濃度，計算靜息膜電位。靜息時 P_K >> P_Na，所以膜電位接近 K⁺ 平衡電位 (-90 mV)，但因少量 Na⁺ 滲透而被拉向正值（-70 mV）。</p></div>
+    <div class="mo-an">🔋 膜電位就是細胞的電池電量：-70 mV 是「滿電」，動作電位是「短暫放電到 +40 mV」，Na⁺/K⁺ 幫浦是不停充電的充電器。</div>`},
+  lg:{abbr:'LGC',zh:'配體門控通道',en:'Ligand-Gated Ion Channel',c:'#D4820C',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>神經傳遞物結合後直接開啟的離子通道（無需 G 蛋白，速度比 GPCR 快 1000 倍）。nAChR（乙醯膽鹼）、AMPA/NMDA（麩胺酸）、GABA-A（GABA）都是代表。負責快速突觸傳遞。</p></div>
+    <div class="mo-sec"><h4>興奮 vs 抑制</h4><p><strong>興奮性</strong>（nAChR, AMPA, NMDA）：Na⁺/Ca²⁺ 內流 → 去極化。<br><strong>抑制性</strong>（GABA-A, Glycine R）：Cl⁻ 內流 → 過極化/鉗制電位。<br>興奮/抑制平衡失調 → 癲癇（過度興奮）或昏迷（過度抑制）。</p></div>
+    <div class="mo-sec"><h4>麻醉藥機制</h4><p>苯二氮平類（Benzodiazepine）正向調控 GABA-A，增加 Cl⁻ 通道開放頻率 → 增強抑制 → 抗焦慮 / 鎮靜 / 抗癲癇。</p></div>
+    <div class="mo-an">🔑 LGC 是「鑰匙直接開門」，GPCR 是「按門鈴等人來開門」。前者速度快（毫秒），後者放大效果強（訊號 10⁶ 倍），各有專司。</div>`},
+  bilayer:{abbr:'PL',zh:'磷脂雙層',en:'Phospholipid Bilayer',c:'#1A6B6A',body:`
+    <div class="mo-sec"><h4>白話解釋</h4><p>由磷脂分子自組裝形成。每個磷脂有甘油骨架、磷酸頭（親水）、兩條脂肪酸尾（疏水）。尾對尾排列形成疏水核心（~3 nm），兩面各有一層親水頭（各 1 nm），總厚度約 7-8 nm。</p></div>
+    <div class="mo-sec"><h4>流動鑲嵌模型</h4><p>1972 年 Singer-Nicolson 提出：磷脂是二維液體，蛋白質在其中側向擴散（如浮在水面的蛋白質冰山）。膽固醇插入磷脂尾部增加流動有序性（liquid-ordered 相），形成脂筏（lipid raft），聚集特定信號蛋白。</p></div>
+    <div class="mo-an">🌊 磷脂雙層像海面上浮著的油膜——蛋白質（冰山）可以在油膜上漂移，而油膜本身阻擋水溶性分子直接穿越。</div>`},
+  navclose:{abbr:'Nav',zh:'Nav 通道 — 靜息/閉合',en:'Voltage-Gated Na⁺ Channel — Closed',c:'#B84A1A',body:`
+    <div class="mo-sec"><h4>靜息態特徵</h4><p>膜電位 -70 mV 時，S4 電壓感測器受負電場壓制、處於胞內位置，activation gate 關閉，失活球遠離 pore 口，通道處於「靜息關閉」（resting closed）狀態，準備好下次去極化。</p></div>
+    <div class="mo-sec"><h4>三種狀態</h4><p>① <strong>靜息（Resting）</strong>：gate 關，失活球離開，可以被激活<br>② <strong>開放（Open）</strong>：gate 開，Na⁺ 快速內流（僅約 1 ms）<br>③ <strong>快速失活（Inactivated）</strong>：失活球堵住 pore，Na⁺ 停止流入（絕對不應期）</p></div>
+    <div class="mo-an">🚪 Nav 的三種狀態就像一扇彈簧門：靜息時門關著可以推（可激活）；推開（開放，Na⁺ 流入）後彈簧自動把門鎖上（失活）；要再用才能重置（復極化後恢復靜息）。</div>`},
+  navopen:{abbr:'Nav',zh:'Nav 通道 — 開放',en:'Voltage-Gated Na⁺ Channel — Open',c:'#B84A1A',body:`
+    <div class="mo-sec"><h4>開放態特徵</h4><p>膜電位去極化達閾值（~-55 mV）時，S4 電壓感測器外移，activation gate 開啟，Na⁺ 順電化學梯度（濃度差 × 電位差）快速湧入細胞，使膜電位在 ~1 ms 內上升到 +40 mV。</p></div>
+    <div class="mo-sec"><h4>Na⁺ 流入的驅動力</h4><p>靜息時細胞外 Na⁺（~145 mM）>> 細胞內（~12 mM），且外側電位為正（+）、內側為負（-），兩種力量都驅動 Na⁺ 向內流，驅動力 = Vm - E_Na = -70 - (+60) = -130 mV。</p></div>
+    <div class="mo-an">💥 Nav 開放就像打開水庫閘門——Na⁺ 在巨大的化學梯度和電場雙重推力下如洪水般衝入，在 1 ms 內翻轉膜電位極性。</div>`},
+  kvchan:{abbr:'Kv',zh:'Kv 通道 — 延遲復極化',en:'Voltage-Gated K⁺ Channel',c:'#5A6B1A',body:`
+    <div class="mo-sec"><h4>延遲整流特性</h4><p>去極化後 ~1-5 ms 才開啟（延遲整流 delayed rectifier），此時 Nav 已失活，K⁺ 順梯度外流使膜電位復極化回到 -70 mV（甚至短暫過極化到 -90 mV）。</p></div>
+    <div class="mo-sec"><h4>GYG 選擇性過濾器</h4><p>Kv 通道 selectivity filter 的 GYG（Gly-Tyr-Gly）序列提供 8 個羰基氧原子精確模仿 K⁺ 的水合殼，使去水化的 K⁺（2.66 Å）完美通過，而 Na⁺（2.32 Å）去水化能量太高被排除。諾貝爾化學獎 2003（Rod MacKinnon）。</p></div>
+    <div class="mo-an">🎯 GYG 過濾器是分子工程奇蹟——用 8 個氧原子精確「抄襲」水分子環境，讓 K⁺ 以幾乎零能量障礙通過，而比它稍小的 Na⁺ 反而被排除。</div>`}
+};
+
+function openModal(id){
+  const d=MD[id];if(!d)return;
+  document.getElementById('mAb').textContent=d.abbr;
+  document.getElementById('mAb').style.color=d.c;
+  document.getElementById('mZh').textContent=d.zh;
+  document.getElementById('mEn').textContent=d.en;
+  document.getElementById('mBd').innerHTML=d.body;
+  document.getElementById('moOv').classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeMo(){
+  document.getElementById('moOv').classList.remove('on');
+  document.body.style.overflow='';
+}
+function handleOvClick(e){if(e.target===document.getElementById('moOv'))closeMo();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMo();});
+</script>
+</body>
+</html>
