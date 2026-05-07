@@ -1,264 +1,883 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-        }
-        .header {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .question {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-        }
-        .option-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-            position: relative;
-            transition: background 0.2s;
-        }
-        .option-item:hover {
-            background-color: #fafafa;
-        }
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #eee;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
-        .special-btn {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .footer-tools {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        .tool-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>新店高中高二英文期中考 — 學生錯誤分析與學習課程</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f1eb;
+  --card: #fffef9;
+  --ink: #1a1714;
+  --ink2: #4a4540;
+  --ink3: #7a7268;
+  --red: #c0392b;
+  --green: #1e7e4a;
+  --amber: #b8680a;
+  --blue: #1a5fa8;
+  --purple: #5b3d91;
+  --red-bg: #fdf0ee;
+  --green-bg: #eef7f2;
+  --amber-bg: #fdf4e3;
+  --blue-bg: #eaf2fb;
+  --purple-bg: #f3eefa;
+  --border: #ddd8ce;
+  --shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans TC', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; }
 
-        /* 彈出視窗樣式 */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.95);
-            z-index: 1000;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .overlay-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            font-weight: bold;
-            padding: 10px;
-        }
-        .overlay-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-left: 4px solid #000;
-            padding-left: 10px;
-        }
-        .example-box {
-            background: #f4f4f4;
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border-left: 3px solid #ccc;
-        }
-        h4 { margin: 15px 0 5px 0; color: #333; }
-        .eg-item { margin-bottom: 10px; }
-    </style>
+header {
+  background: var(--ink);
+  color: #fff;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+}
+header h1 { font-family: 'Noto Serif TC', serif; font-size: 1.7rem; font-weight: 700; letter-spacing: 0.04em; margin-bottom: 0.4rem; }
+header p { color: #aaa; font-size: 0.9rem; }
+
+.score-banner {
+  display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;
+  padding: 1.8rem 2rem; background: var(--card); border-bottom: 2px solid var(--border);
+}
+.score-card { text-align: center; padding: 1rem 1.4rem; border-radius: 12px; min-width: 110px; }
+.score-card .num { font-size: 1.9rem; font-weight: 700; line-height: 1; }
+.score-card .lbl { font-size: 0.75rem; color: var(--ink3); margin-top: 4px; }
+.sc-total { background: var(--ink); color: #fff; }
+.sc-green { background: var(--green-bg); } .sc-green .num { color: var(--green); }
+.sc-red { background: var(--red-bg); } .sc-red .num { color: var(--red); }
+.sc-amber { background: var(--amber-bg); } .sc-amber .num { color: var(--amber); }
+.sc-blue { background: var(--blue-bg); } .sc-blue .num { color: var(--blue); }
+
+.tab-nav {
+  display: flex; background: var(--card); border-bottom: 2px solid var(--border);
+  position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow);
+}
+.tab-btn {
+  flex: 1; padding: 1rem 0.5rem; border: none; background: none; cursor: pointer;
+  font-family: 'Noto Sans TC', sans-serif; font-size: 0.88rem; font-weight: 500;
+  color: var(--ink3); border-bottom: 3px solid transparent; transition: all 0.2s;
+  position: relative; bottom: -2px;
+}
+.tab-btn:hover { color: var(--ink); background: var(--bg); }
+.tab-btn.active { color: var(--ink); border-bottom-color: var(--ink); font-weight: 700; }
+
+.section { display: none; padding: 2rem; max-width: 900px; margin: 0 auto; }
+.section.active { display: block; }
+
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--shadow);
+}
+.card h2 {
+  font-family: 'Noto Serif TC', serif; font-size: 1.1rem; font-weight: 700;
+  margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.card h3 { font-size: 0.95rem; font-weight: 700; margin: 1.2rem 0 0.6rem; color: var(--ink2); }
+
+.answer-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px,1fr)); gap: 0.6rem; margin-top: 0.8rem; }
+.answer-row {
+  display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.7rem;
+  border-radius: 8px; border: 1px solid var(--border); font-size: 0.83rem;
+}
+.answer-row.wrong { background: var(--red-bg); border-color: #f5c6c2; }
+.answer-row.correct { background: var(--green-bg); border-color: #b8dfc9; }
+.q-num { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--ink3); min-width: 26px; }
+.ans-box {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 24px; height: 22px; padding: 0 4px;
+  border-radius: 5px; font-size: 0.78rem; font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+.ans-correct { background: #d0f0de; color: var(--green); }
+.ans-wrong { background: #fad4cf; color: var(--red); }
+.ans-label { font-size: 0.8rem; color: var(--ink2); flex: 1; }
+
+.progress-wrap { margin-bottom: 0.8rem; }
+.progress-info { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--ink3); margin-bottom: 4px; }
+.progress-bar-bg { background: #e0dbd5; border-radius: 20px; height: 10px; overflow: hidden; }
+.progress-bar { height: 100%; border-radius: 20px; transition: width 1s cubic-bezier(.4,0,.2,1); }
+
+.error-block {
+  padding: 1rem 1.2rem; border-left: 4px solid; border-radius: 0 10px 10px 0; margin-bottom: 0.9rem;
+}
+.error-vocab { border-color: var(--purple); background: var(--purple-bg); }
+.error-grammar { border-color: var(--blue); background: var(--blue-bg); }
+.error-reading { border-color: var(--amber); background: var(--amber-bg); }
+.error-block h4 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+.error-block p { font-size: 0.84rem; color: var(--ink2); line-height: 1.7; }
+.word { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--ink); background: rgba(255,255,255,0.7); padding: 0.1em 0.4em; border-radius: 4px; }
+.vs { color: var(--red); font-weight: 700; }
+.ca { color: var(--green); font-weight: 700; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.7rem; }
+.tag { padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.74rem; font-weight: 500; }
+.tag-vocab { background: #e8e1f7; color: var(--purple); }
+.tag-grammar { background: #daeef9; color: var(--blue); }
+.tag-reading { background: #fde8cc; color: var(--amber); }
+.tag-phrase { background: #e8f5ee; color: var(--green); }
+
+.note { font-size: 0.82rem; color: var(--ink3); background: var(--bg); padding: 0.6rem 1rem; border-radius: 8px; margin-top: 0.6rem; border-left: 3px solid var(--border); }
+
+.strength-bar {
+  display: flex; gap: 0.5rem; margin-bottom: 0.6rem; align-items: center;
+  font-size: 0.83rem;
+}
+.strength-label { min-width: 110px; color: var(--ink2); }
+.strength-bg { flex: 1; height: 8px; background: #e0dbd5; border-radius: 10px; overflow: hidden; }
+.strength-fill { height: 100%; border-radius: 10px; }
+
+.passage-box {
+  background: #f8f6f1; border: 1px solid var(--border); border-radius: 10px;
+  padding: 1.2rem; font-size: 0.87rem; line-height: 1.9; margin: 0.8rem 0; color: var(--ink2);
+}
+.hl-q { background: #fff3cd; padding: 0 2px; border-radius: 3px; }
+.hl-key { background: #d4eaff; padding: 0 2px; border-radius: 3px; font-weight: 600; }
+.hl-note { font-size: 0.78rem; color: var(--blue); font-weight: 600; }
+
+.quiz-q { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem; }
+.quiz-q p.stem { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.8rem; }
+.quiz-options { display: grid; gap: 0.5rem; }
+.quiz-opt {
+  padding: 0.55rem 1rem; border: 1.5px solid var(--border); border-radius: 8px;
+  background: var(--bg); cursor: pointer; font-size: 0.84rem; transition: all 0.15s;
+  text-align: left; font-family: 'Noto Sans TC', sans-serif;
+}
+.quiz-opt:hover { border-color: var(--blue); background: var(--blue-bg); }
+.quiz-opt.sel-correct { border-color: var(--green); background: var(--green-bg); color: var(--green); font-weight: 600; }
+.quiz-opt.sel-wrong { border-color: var(--red); background: var(--red-bg); color: var(--red); }
+.quiz-opt.reveal { border-color: var(--green); background: var(--green-bg); }
+.quiz-result { margin-top: 0.6rem; font-size: 0.83rem; padding: 0.55rem 0.9rem; border-radius: 8px; display: none; }
+.quiz-result.show { display: block; }
+.qr-correct { background: var(--green-bg); color: var(--green); }
+.qr-wrong { background: var(--red-bg); color: var(--red); }
+
+.grammar-rule { background: var(--blue-bg); border: 1px solid #b8d4ef; border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem; }
+.grammar-rule h4 { color: var(--blue); font-size: 0.95rem; margin-bottom: 0.6rem; font-weight: 700; }
+.formula {
+  background: var(--card); border: 1px solid var(--border); border-radius: 8px;
+  padding: 0.5rem 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.84rem;
+  margin: 0.5rem 0; color: var(--blue);
+}
+.eg-list { font-size: 0.84rem; color: var(--ink2); margin-top: 0.5rem; padding-left: 1rem; }
+.eg-list li { margin-bottom: 0.3rem; list-style: none; padding-left: 1.2em; position: relative; }
+.eg-list li::before { content: "→"; position: absolute; left: 0; color: var(--blue); }
+
+.flashcard-wrap { perspective: 1000px; height: 155px; cursor: pointer; margin-bottom: 0.8rem; }
+.flashcard { width: 100%; height: 100%; position: relative; transform-style: preserve-3d; transition: transform 0.5s; }
+.flashcard.flipped { transform: rotateY(180deg); }
+.fc-front, .fc-back {
+  position: absolute; inset: 0; backface-visibility: hidden; border-radius: 14px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 1.5rem; text-align: center;
+}
+.fc-front { background: var(--ink); color: #fff; }
+.fc-back { background: var(--green-bg); border: 2px solid var(--green); transform: rotateY(180deg); }
+.fc-word { font-size: 1.35rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+.fc-pos { font-size: 0.75rem; color: #aaa; margin-top: 4px; }
+.fc-meaning { font-size: 1.05rem; font-weight: 700; color: var(--green); }
+.fc-ex { font-size: 0.78rem; color: var(--ink3); margin-top: 6px; font-style: italic; }
+.fc-nav { display: flex; gap: 0.5rem; justify-content: center; align-items: center; }
+.fc-nav button {
+  padding: 0.45rem 1.1rem; border-radius: 8px; border: 1.5px solid var(--border);
+  background: var(--card); cursor: pointer; font-size: 0.83rem;
+  font-family: 'Noto Sans TC', sans-serif; transition: all 0.15s;
+}
+.fc-nav button:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+.fc-count { font-size: 0.82rem; color: var(--ink3); padding: 0 0.5rem; }
+
+.vocab-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(255px,1fr)); gap: 1rem; margin-top: 0.8rem; }
+.vocab-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1rem 1.1rem; position: relative; overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.vocab-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+.vocab-strip { width: 4px; position: absolute; left: 0; top: 0; bottom: 0; }
+.vocab-word { font-size: 1.05rem; font-weight: 700; font-family: 'JetBrains Mono', monospace; }
+.vocab-pos { font-size: 0.7rem; color: var(--ink3); background: var(--bg); padding: 0.1em 0.5em; border-radius: 10px; display: inline-block; margin: 3px 0; }
+.vocab-zh { font-size: 0.84rem; color: var(--ink2); margin-top: 4px; }
+.vocab-ex { font-size: 0.78rem; color: var(--ink3); font-style: italic; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border); }
+.vocab-tip { font-size: 0.76rem; margin-top: 5px; color: var(--purple); }
+
+.divider { border: none; border-top: 1px solid var(--border); margin: 1.3rem 0; }
+.mt1 { margin-top: 1rem; }
+
+@media (max-width: 600px) {
+  .tab-btn { font-size: 0.76rem; padding: 0.75rem 0.3rem; }
+  .score-banner { gap: 0.7rem; padding: 1rem; }
+  .score-card { min-width: 85px; padding: 0.7rem 0.8rem; }
+  .section { padding: 1rem; }
+  .answer-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
-    
-    <div class="question">
-        Deadly shootings on US campuses have raised ______ concerns about how to prevent such tragic incidents from happening again.
-    </div>
+<header>
+  <h1>📊 新店高中 高二英文期中考</h1>
+  <p>學生答題錯誤深度分析 × 個人化三部分學習課程</p>
+</header>
 
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) swift <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) brutal <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) harsh <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) grave <span class="info-icon">ⓘ</span></div>
-    </div>
-
-    <div class="special-btn" onclick="showOverlay('E')">
-        (E) 查看答案與詳細解析
-    </div>
-
-    <div class="special-btn" onclick="showOverlay('F')">
-        (F) 林威老師的話 (衍生詞與音標)
-    </div>
-
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+<!-- 成績總覽 -->
+<div class="score-banner">
+  <div class="score-card sc-green">
+    <div class="num">22</div>
+    <div class="lbl">答對（選擇部分）</div>
+  </div>
+  <div class="score-card sc-red">
+    <div class="num">16</div>
+    <div class="lbl">答錯</div>
+  </div>
+  <div class="score-card sc-blue">
+    <div class="num">100%</div>
+    <div class="lbl">詞彙全對 ⭐</div>
+  </div>
+  <div class="score-card sc-amber">
+    <div class="num">0%</div>
+    <div class="lbl">閱讀測驗 ⚠️</div>
+  </div>
+  <div class="score-card sc-total">
+    <div class="num">58%</div>
+    <div class="lbl">選擇題正確率</div>
+  </div>
 </div>
 
-<div id="infoOverlay" class="overlay">
-    <span class="close-btn" onclick="closeOverlay()">×</span>
-    <div id="contentArea" class="overlay-content"></div>
+<!-- 各題型正確率雷達 -->
+<div style="max-width:900px;margin:0 auto;padding:1.5rem 2rem 0;">
+  <div class="card">
+    <h2>📈 各題型表現一覽</h2>
+    <div class="strength-bar"><span class="strength-label">詞彙 (11–21)</span><div class="strength-bg"><div class="strength-fill" style="width:100%;background:var(--green)"></div></div><span style="font-size:0.8rem;color:var(--green);font-weight:700;min-width:40px;text-align:right">11/11</span></div>
+    <div class="strength-bar"><span class="strength-label">綜合測驗 (22–36)</span><div class="strength-bg"><div class="strength-fill" style="width:67%;background:var(--amber)"></div></div><span style="font-size:0.8rem;color:var(--amber);font-weight:700;min-width:40px;text-align:right">10/15</span></div>
+    <div class="strength-bar"><span class="strength-label">文意選填 (37–46)</span><div class="strength-bg"><div class="strength-fill" style="width:50%;background:var(--amber)"></div></div><span style="font-size:0.8rem;color:var(--amber);font-weight:700;min-width:40px;text-align:right">5/10</span></div>
+    <div class="strength-bar"><span class="strength-label">篇章結構 (47–50)</span><div class="strength-bg"><div class="strength-fill" style="width:50%;background:var(--amber)"></div></div><span style="font-size:0.8rem;color:var(--amber);font-weight:700;min-width:40px;text-align:right">2/4</span></div>
+    <div class="strength-bar"><span class="strength-label">閱讀測驗 (51–54)</span><div class="strength-bg"><div class="strength-fill" style="width:0%;background:var(--red)"></div></div><span style="font-size:0.8rem;color:var(--red);font-weight:700;min-width:40px;text-align:right">0/4</span></div>
+    <div class="note mt1">✅ 詞彙表現優秀！主要弱點集中在：<strong>特定文法結構（假設語氣、關係代名詞）</strong>、<strong>文意選填語境判斷</strong>、<strong>閱讀測驗策略</strong>三個面向。</div>
+  </div>
+</div>
+
+<!-- Tab Nav -->
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('tab1',this)">📋 Part 1 錯誤分析</button>
+  <button class="tab-btn" onclick="showTab('tab2',this)">📖 Part 2 閱讀測驗</button>
+  <button class="tab-btn" onclick="showTab('tab3',this)">🎓 Part 3 文法單字訓練</button>
+</div>
+
+<!-- ===== TAB 1 ===== -->
+<div id="tab1" class="section active">
+
+  <!-- 詞彙 全對 -->
+  <div class="card">
+    <h2>🌟 詞彙選擇 (11–21) — 全部答對！</h2>
+    <div class="progress-wrap">
+      <div class="progress-info"><span>11 / 11 正確</span><span style="color:var(--green);font-weight:700">100%</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar" style="width:100%;background:var(--green)"></div></div>
+    </div>
+    <div class="answer-grid">
+      <div class="answer-row correct"><span class="q-num">Q11</span><span class="ans-box ans-correct">C</span><span class="ans-label">withdrawal ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q12</span><span class="ans-box ans-correct">B</span><span class="ans-label">deemed ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q13</span><span class="ans-box ans-correct">D</span><span class="ans-label">reasonable ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q14</span><span class="ans-box ans-correct">A</span><span class="ans-label">host ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q15</span><span class="ans-box ans-correct">C</span><span class="ans-label">imposed ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q16</span><span class="ans-box ans-correct">B</span><span class="ans-label">budget ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q17</span><span class="ans-box ans-correct">D</span><span class="ans-label">fundamentally ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q18</span><span class="ans-box ans-correct">C</span><span class="ans-label">disguise ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q19</span><span class="ans-box ans-correct">A</span><span class="ans-label">revive ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q20</span><span class="ans-box ans-correct">C</span><span class="ans-label">ambitious ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q21</span><span class="ans-box ans-correct">A</span><span class="ans-label">contrast ✓</span></div>
+    </div>
+    <div class="note mt1">💪 詞彙能力紮實，這是很好的基礎。繼續保持！</div>
+  </div>
+
+  <!-- 綜合測驗 -->
+  <div class="card">
+    <h2>✍️ 綜合測驗 (22–36) — 正確率 67%</h2>
+    <div class="progress-wrap">
+      <div class="progress-info"><span>10 / 15 正確（錯誤：Q23, Q25, Q26, Q31, Q34, Q35）</span><span style="color:var(--amber);font-weight:700">67%</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar" style="width:67%;background:var(--amber)"></div></div>
+    </div>
+    <div class="answer-grid">
+      <div class="answer-row correct"><span class="q-num">Q22</span><span class="ans-box ans-correct">C</span><span class="ans-label">in ✓</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q23</span><span class="ans-box ans-wrong">C</span><span>→</span><span class="ans-box ans-correct">D</span><span class="ans-label">whom（關代受格）</span></div>
+      <div class="answer-row correct"><span class="q-num">Q24</span><span class="ans-box ans-correct">A</span><span class="ans-label">sneaked ✓</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q25</span><span class="ans-box ans-wrong">B</span><span>→</span><span class="ans-box ans-correct">C</span><span class="ans-label">hadn't saved（假設語氣）</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q26</span><span class="ans-box ans-wrong">C</span><span>→</span><span class="ans-box ans-correct">B</span><span class="ans-label">To this day（片語）</span></div>
+      <div class="answer-row correct"><span class="q-num">Q27</span><span class="ans-box ans-correct">A</span><span class="ans-label">contribution ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q28</span><span class="ans-box ans-correct">D</span><span class="ans-label">Similarly ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q29</span><span class="ans-box ans-correct">B</span><span class="ans-label">raising ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q30</span><span class="ans-box ans-correct">A</span><span class="ans-label">another ✓</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q31</span><span class="ans-box ans-wrong">D</span><span>→</span><span class="ans-box ans-correct">B</span><span class="ans-label">maintenance（維護）</span></div>
+      <div class="answer-row correct"><span class="q-num">Q32</span><span class="ans-box ans-correct">D</span><span class="ans-label">home-made ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q33</span><span class="ans-box ans-correct">C</span><span class="ans-label">accuracy ✓</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q34</span><span class="ans-box ans-wrong">B</span><span>→</span><span class="ans-box ans-correct">A</span><span class="ans-label">where（關係副詞）</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q35</span><span class="ans-box ans-wrong">A</span><span>→</span><span class="ans-box ans-correct">B</span><span class="ans-label">finding（have difficulty V-ing）</span></div>
+      <div class="answer-row correct"><span class="q-num">Q36</span><span class="ans-box ans-correct">D</span><span class="ans-label">bring them back ✓</span></div>
+    </div>
+    <hr class="divider">
+    <h3>🔍 錯誤深度解析</h3>
+
+    <div class="error-block error-grammar">
+      <h4>Q23：關係代名詞受格 <span class="word">whom</span>，學生選 <span class="vs">C (who)</span></h4>
+      <p>句型：...400,000 Jews were forced into the area, many of <span class="ca">whom</span> died from disease.<br>
+      介系詞 <span class="word">of</span> 後面必須接受格，先行詞是人（Jews），所以用 <span class="ca">whom</span>（受格）而非 who（主格）。<br>
+      口訣：介系詞 + whom；動詞主語位置 + who。</p>
+    </div>
+
+    <div class="error-block error-grammar">
+      <h4>Q25：與過去相反假設語氣，學生選 <span class="vs">B (hasn't saved)</span>，正確是 <span class="ca">C (hadn't saved)</span></h4>
+      <p>結構：If she <span class="ca">hadn't saved</span> the children, they would have ended up in a concentration camp.<br>
+      與過去事實相反的假設：<span class="ca">If + 主詞 + had(n't) + p.p.</span>，主句 <span class="ca">would/could + have + p.p.</span><br>
+      學生選的 hasn't saved 是現在完成式（直述語氣），用在假設語氣中是常見錯誤。</p>
+    </div>
+
+    <div class="error-block error-grammar">
+      <h4>Q26：片語 <span class="word">To this day</span>，學生選 <span class="vs">C (Now and then)</span></h4>
+      <p><span class="ca">To this day</span> = 直到今天（仍然如此），強調持續至今。<br>
+      Now and then = 偶爾、不時。<br>
+      題意：「她直到今日仍被視為英雄」，需要表達「延續至今」的意思，應選 To this day。</p>
+    </div>
+
+    <div class="error-block error-vocab">
+      <h4>Q31：<span class="word">maintenance</span>（維護），學生選 <span class="vs">D (intention)</span></h4>
+      <p>句意：「缺乏適當的<span class="ca">維護</span>可能降低樹木的長期生態效益」。<br>
+      maintenance = 維護、保養（名詞）。intention = 意圖、目的，語意完全不同。<br>
+      考點：maintenance 搭配 lack of proper maintenance（缺乏適當維護）是常見慣用搭配。</p>
+    </div>
+
+    <div class="error-block error-grammar">
+      <h4>Q34：關係副詞 <span class="word">where</span>，學生選 <span class="vs">B (which)</span></h4>
+      <p>句型：He rides to the train station <span class="ca">where</span> he and other dabbawalas sort the lunch boxes.<br>
+      先行詞是地點（station），後面子句結構完整（有主詞 he、動詞 sort），所以用關係副詞 <span class="ca">where</span>，不能用 which（which 後需接不完整子句）。</p>
+    </div>
+
+    <div class="error-block error-grammar">
+      <h4>Q35：<span class="word">have difficulty + V-ing</span>，學生選 <span class="vs">A (to find)</span>，正確是 <span class="ca">B (finding)</span></h4>
+      <p>固定句型：<span class="ca">have difficulty/trouble (in) + V-ing</span>（做某事有困難）<br>
+      例：dabbawalas have no difficulty <span class="ca">finding</span> their rightful owners.<br>
+      不能說 have difficulty to find ✗。類似句型：have fun V-ing / spend time V-ing。</p>
+    </div>
+
+    <div class="tags">
+      <span class="tag tag-grammar">whom（關代受格）</span>
+      <span class="tag tag-grammar">假設語氣過去完成</span>
+      <span class="tag tag-grammar">where（關係副詞）</span>
+      <span class="tag tag-grammar">have difficulty V-ing</span>
+      <span class="tag tag-phrase">To this day</span>
+      <span class="tag tag-vocab">maintenance</span>
+    </div>
+  </div>
+
+  <!-- 文意選填 -->
+  <div class="card">
+    <h2>🦐 文意選填 (37–46) — 正確率 50%</h2>
+    <div class="progress-wrap">
+      <div class="progress-info"><span>5 / 10 正確（錯誤：Q38, Q39, Q40, Q42, Q45）</span><span style="color:var(--amber);font-weight:700">50%</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar" style="width:50%;background:var(--amber)"></div></div>
+    </div>
+    <div class="answer-grid">
+      <div class="answer-row correct"><span class="q-num">Q37</span><span class="ans-box ans-correct">AC</span><span class="ans-label">strikes ✓</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q38</span><span class="ans-box ans-wrong">C</span><span>→</span><span class="ans-box ans-correct">A</span><span class="ans-label">swiftly（迅速地）</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q39</span><span class="ans-box ans-wrong">BC</span><span>→</span><span class="ans-box ans-correct">C</span><span class="ans-label">burst（衝擊）</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q40</span><span class="ans-box ans-wrong">A</span><span>→</span><span class="ans-box ans-correct">BC</span><span class="ans-label">through（穿過）</span></div>
+      <div class="answer-row correct"><span class="q-num">Q41</span><span class="ans-box ans-correct">BD</span><span class="ans-label">collapses ✓</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q42</span><span class="ans-box ans-wrong">AB</span><span>→</span><span class="ans-box ans-correct">D</span><span class="ans-label">eventually（最終）</span></div>
+      <div class="answer-row correct"><span class="q-num">Q43</span><span class="ans-box ans-correct">B</span><span class="ans-label">despite ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q44</span><span class="ans-box ans-correct">AD</span><span class="ans-label">detect ✓</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q45</span><span class="ans-box ans-wrong">D</span><span>→</span><span class="ans-box ans-correct">AB</span><span class="ans-label">attack（追蹤攻擊）</span></div>
+      <div class="answer-row correct"><span class="q-num">Q46</span><span class="ans-box ans-correct">E</span><span class="ans-label">distinguish ✓</span></div>
+    </div>
+    <div class="note mt1">💡 錯誤主因：對槍蝦（pistol shrimp）運作機制不熟悉，影響動詞語意判斷。Q38 應填副詞 <span class="word">swiftly</span>（迅速地），Q42 應填 <span class="word">eventually</span>（最終），Q40 需注意 <span class="word">through</span> 是介系詞（穿過），Q39 應只選 C。</div>
+    <div class="tags">
+      <span class="tag tag-vocab">swiftly / eventually</span>
+      <span class="tag tag-vocab">burst / through / attack</span>
+      <span class="tag tag-reading">科學文章語境理解</span>
+    </div>
+  </div>
+
+  <!-- 篇章結構 -->
+  <div class="card">
+    <h2>📝 篇章結構 (47–50) — 正確率 50%</h2>
+    <div class="answer-grid">
+      <div class="answer-row wrong"><span class="q-num">Q47</span><span class="ans-box ans-wrong">C</span><span>→</span><span class="ans-box ans-correct">E</span><span class="ans-label">馬克杯圖案細節</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q48</span><span class="ans-box ans-wrong">E</span><span>→</span><span class="ans-box ans-correct">C</span><span class="ans-label">區域限定＝收藏價值</span></div>
+      <div class="answer-row correct"><span class="q-num">Q49</span><span class="ans-box ans-correct">D</span><span class="ans-label">計畫旅行收藏 ✓</span></div>
+      <div class="answer-row correct"><span class="q-num">Q50</span><span class="ans-box ans-correct">A</span><span class="ans-label">社群互動 ✓</span></div>
+    </div>
+    <div class="error-block error-reading mt1">
+      <h4>Q47 &amp; Q48 互換</h4>
+      <p>學生把 (C) 和 (E) 的位置對調了。判斷方式：<br>
+      Q47 後句說「普通咖啡杯因此變成有意義的紀念品」，前面應先描述杯子「有什麼特色」→ <span class="ca">(E) These mugs feature artwork inspired by specific cities or countries.</span><br>
+      Q48 前句說各系列商品，後句提到收藏熱度，中間應說明「為何值得收藏」→ <span class="ca">(C) Since they're only available in the regions they represent, they've become highly collectible.</span></p>
+    </div>
+    <div class="tags">
+      <span class="tag tag-reading">前後句邏輯銜接</span>
+      <span class="tag tag-reading">代名詞指代分析</span>
+    </div>
+  </div>
+
+  <!-- 閱讀測驗 -->
+  <div class="card">
+    <h2>🥤 閱讀測驗 (51–54) Fanta — 正確率 0%</h2>
+    <div class="progress-wrap">
+      <div class="progress-info"><span>0 / 4 正確（全部答錯）</span><span style="color:var(--red);font-weight:700">0%</span></div>
+      <div class="progress-bar-bg"><div class="progress-bar" style="width:0%;background:var(--red)"></div></div>
+    </div>
+    <div class="answer-grid">
+      <div class="answer-row wrong"><span class="q-num">Q51</span><span class="ans-box ans-wrong">D</span><span>→</span><span class="ans-box ans-correct">B</span><span class="ans-label">Fanta 原始原料</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q52</span><span class="ans-box ans-wrong">B</span><span>→</span><span class="ans-box ans-correct">A</span><span class="ans-label">第二段目的</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q53</span><span class="ans-box ans-wrong">B</span><span>→</span><span class="ans-box ans-correct">C</span><span class="ans-label">It stuck 語意</span></div>
+      <div class="answer-row wrong"><span class="q-num">Q54</span><span class="ans-box ans-wrong">D</span><span>→</span><span class="ans-box ans-correct">C</span><span class="ans-label">最後段結構功能</span></div>
+    </div>
+    <hr class="divider">
+    <div class="error-block error-reading">
+      <h4>Q51：細節題，學生選 <span class="vs">D（德國拒絕進口可口可樂）</span></h4>
+      <p>文章明確說原料是 apple pomace（蘋果渣）、whey（乳清）、beet leftovers（甜菜殘渣），均為農業副產品廢料，對應 <span class="ca">(B)</span>。選項 (D) 文章完全沒有提到，是無中生有的干擾選項。</p>
+    </div>
+    <div class="error-block error-reading">
+      <h4>Q52：段落目的題，學生選 <span class="vs">B（解釋德國人負擔不起可口可樂）</span></h4>
+      <p>第二段的核心是描述 Keith 坐在空倉庫前、原料斷絕的<strong>絕境</strong>，主旨是 Keith 面臨的困境，正確答案是 <span class="ca">(A)</span>。學生過度聚焦在某一細節，而非段落整體目的。<br>
+      解題法：段落目的題 = 這段在整篇故事中「扮演什麼角色」？→ 交代背景困境，引出後面的創意解決方案。</p>
+    </div>
+    <div class="error-block error-reading">
+      <h4>Q53：慣用語 <span class="word">It stuck</span>，學生選 <span class="vs">B（全新創作）</span></h4>
+      <p>Stick（黏、留存）在此作慣用語：某個名字「就這樣被留用下來了、沿用下去」。<br>
+      正確答案 <span class="ca">(C) It was so impressive</span>（令人印象深刻，因此被記住沿用）是對 It stuck 語境最接近的詮釋。<br>
+      (B) brand-new creation 是「全新創作」，與語意相反——這個名字不是被設計出來的，是偶然喊出後「留下來的」。</p>
+    </div>
+    <div class="error-block error-reading">
+      <h4>Q54：結尾段功能，學生選 <span class="vs">D（總結主旨）</span></h4>
+      <p>最後段說 Fanta 戰後拓展口味、走向全球，提供的是 Fanta 的<strong>後續發展事實</strong>，而非總結全文主旨，對應 <span class="ca">(C) By providing further facts</span>。<br>
+      (D) Summarizing 指「重新整理之前說過的重點」，最後段並沒有這樣做，而是補充了新資訊。</p>
+    </div>
+    <div class="tags">
+      <span class="tag tag-reading">細節辨別（排除無中生有）</span>
+      <span class="tag tag-reading">段落功能判斷</span>
+      <span class="tag tag-vocab">stick / stuck 慣用語</span>
+      <span class="tag tag-reading">總結 vs 補充事實</span>
+    </div>
+  </div>
+
+  <!-- 總結 -->
+  <div class="card">
+    <h2>📊 弱點總結與學習優先順序</h2>
+    <div class="error-block error-grammar">
+      <h4>🥇 最優先：文法結構（綜合測驗扣分來源）</h4>
+      <p>① 假設語氣（Q25）② 關係代名詞 whom（Q23）③ 關係副詞 where（Q34）④ have difficulty V-ing（Q35）<br>
+      這四個文法點反覆出現在各年度考試，務必徹底掌握。</p>
+    </div>
+    <div class="error-block error-reading">
+      <h4>🥈 次優先：閱讀策略（閱讀測驗 0/4）</h4>
+      <p>需要練習：① 細節題：回文定位，排除「無中生有」選項 ② 段落目的題：判斷段落在全文的「功能角色」③ 慣用語理解：stick, pop out, roll out 等</p>
+    </div>
+    <div class="error-block" style="border-color:var(--amber);background:var(--amber-bg);">
+      <h4>🥉 持續加強：文意選填語境判斷</h4>
+      <p>科學類文章（槍蝦）的動作動詞和副詞搭配需要更多閱讀練習，建議多接觸科普英文。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TAB 2 ===== -->
+<div id="tab2" class="section">
+
+  <div class="card">
+    <h2>🥤 Fanta 文章精讀（重點標注版）</h2>
+    <p style="font-size:0.82rem;color:var(--ink3);margin-bottom:0.8rem;">🟡 黃底 = 考題關鍵句 &nbsp;🔵 藍底粗體 = 重要詞彙</p>
+    <div class="passage-box">
+      <p>When it comes to orange soda, what pops out in your mind? Fanta will probably be the answer. However, this colorful and fruity drink usually associated with energy and youngsters today actually has a humble start.</p><br>
+      <p><span class="hl-q">In the winter of 1940, a whole year after WWII broke out, Max Keith, head of Coca-Cola's German subsidiary, sat in his small office and stared at an empty row of syrup barrels. The war had cut off the familiar shipments of ingredients.</span> The sign outside still read Coca-Cola, but inside the plant the machines hissed and the shelves were bare. <span class="hl-note">← Q52：此段目的是描述 Keith 的絕境（desperate situation）</span></p><br>
+      <p>Keith refused to shut the doors. He gathered his chemist team and gave them a single, strange instruction: use your imagination. With scarce supplies, imagination would have to be the new raw material. <span class="hl-q">They scoured what was left in the region but only found <span class="hl-key">apple pomace</span> from pressing, <span class="hl-key">whey</span> from dairy farms, and <span class="hl-key">beet leftovers</span> — odd components no one would have thought to blend into a soda.</span> <span class="hl-note">← Q51：原料 = 農業廢料副產品 (B)</span><br>
+      Mixed and tested dozens of times, their "invention" tasted rough and curious at first but then turned to be unexpectedly bright. One afternoon, someone in the team screamed aloud: Fantasie — imagination in German. <span class="hl-q"><span class="hl-key">It stuck</span>;</span> shortened for the label, it became Fanta. <span class="hl-note">← Q53：It stuck = 這名字被留用下來，令人印象深刻 (C)</span></p><br>
+      <p>At first Fanta rolled out quietly in wartime Germany where Coca-Cola could no longer be made. It wasn't born of market research but of shortages and stubbornness — a drink invented to keep a factory running and people smiling in hard times. When the war ended, Coca-Cola returned to rebuild its global business. <span class="hl-q">The little soda called Fanta stayed with the company. Since then, it has taken on new life with a range of fruit flavors developed later and expanded its playful imagination internationally as its name suggests.</span> <span class="hl-note">← Q54：最後段補充戰後發展的進一步事實 (C)</span></p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🎯 閱讀理解即時練習</h2>
+
+    <div class="quiz-q" id="rq1">
+      <p class="stem">Q1. Which statement about Fanta's original ingredients is TRUE?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('rq1',this,false)">(A) Keith was an excellent chemist who saved the factory himself.</button>
+        <button class="quiz-opt" onclick="checkQ('rq1',this,true)">(B) The ingredients mainly came from agricultural byproducts like apple pomace and whey.</button>
+        <button class="quiz-opt" onclick="checkQ('rq1',this,false)">(C) Fanta was born in Germany and now focuses only on European markets.</button>
+        <button class="quiz-opt" onclick="checkQ('rq1',this,false)">(D) Germany refused to import Coca-Cola because they had their own soda brand.</button>
+      </div>
+      <div class="quiz-result" id="rq1-r"></div>
+    </div>
+
+    <div class="quiz-q" id="rq2">
+      <p class="stem">Q2. What is the MAIN PURPOSE of the second paragraph?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('rq2',this,true)">(A) To describe the desperate situation Keith faced during WWII.</button>
+        <button class="quiz-opt" onclick="checkQ('rq2',this,false)">(B) To explain why Germans could not afford Coca-Cola during the war.</button>
+        <button class="quiz-opt" onclick="checkQ('rq2',this,false)">(C) To reveal the misery that WWII brought to European countries.</button>
+        <button class="quiz-opt" onclick="checkQ('rq2',this,false)">(D) To compare Coca-Cola's German branch with its headquarters.</button>
+      </div>
+      <div class="quiz-result" id="rq2-r"></div>
+    </div>
+
+    <div class="quiz-q" id="rq3">
+      <p class="stem">Q3. Which is closest in meaning to "It stuck"?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('rq3',this,false)">(A) It frightened people.</button>
+        <button class="quiz-opt" onclick="checkQ('rq3',this,false)">(B) It was a completely brand-new creation.</button>
+        <button class="quiz-opt" onclick="checkQ('rq3',this,true)">(C) It was so impressive that the name was kept and used.</button>
+        <button class="quiz-opt" onclick="checkQ('rq3',this,false)">(D) It would eventually make a fortune.</button>
+      </div>
+      <div class="quiz-result" id="rq3-r"></div>
+    </div>
+
+    <div class="quiz-q" id="rq4">
+      <p class="stem">Q4. How does the author conclude the last paragraph?</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('rq4',this,false)">(A) By raising a new problem about Fanta's future.</button>
+        <button class="quiz-opt" onclick="checkQ('rq4',this,false)">(B) By making a prediction about the global soda market.</button>
+        <button class="quiz-opt" onclick="checkQ('rq4',this,true)">(C) By providing further facts about Fanta's post-war expansion.</button>
+        <button class="quiz-opt" onclick="checkQ('rq4',this,false)">(D) By summarizing the main ideas of the whole passage.</button>
+      </div>
+      <div class="quiz-result" id="rq4-r"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧩 篇章結構解題策略練習</h2>
+    <div class="grammar-rule">
+      <h4>解題三步驟</h4>
+      <ul class="eg-list">
+        <li>看空格<strong>前一句的尾巴</strong>：它談什麼主題？後面的句子應延伸或補充。</li>
+        <li>看空格<strong>後一句的開頭</strong>：it / they / these 指代什麼？可以反推空格內容。</li>
+        <li>排除法：確認選項是否有時間或邏輯上的衝突。</li>
+      </ul>
+    </div>
+    <div class="quiz-q" id="dq1">
+      <p class="stem">Q47 應填哪一句？<br><small style="color:var(--ink3)">前文：「…the City Mug series. __47__. Ordinary coffee cups are then turned into meaningful souvenirs.」</small></p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('dq1',this,false)">(C) Since they're only available in the regions they represent, they've become highly collectible.</button>
+        <button class="quiz-opt" onclick="checkQ('dq1',this,true)">(E) These mugs feature artwork inspired by specific cities or countries.</button>
+        <button class="quiz-opt" onclick="checkQ('dq1',this,false)">(D) Some even plan their trips around Starbucks locations to expand their collections.</button>
+      </div>
+      <div class="quiz-result" id="dq1-r"></div>
+    </div>
+    <div class="note">💡 關鍵：後句說「普通杯子→有意義的紀念品」，空格要說明杯子「有什麼特色讓它特別」→ 藝術圖案 (E)。(C) 說的是「區域限定→收藏價值」，這是 Q48 的答案。</div>
+  </div>
+</div>
+
+<!-- ===== TAB 3 ===== -->
+<div id="tab3" class="section">
+
+  <!-- 文法卡片 -->
+  <div class="card">
+    <h2>📐 四大必修文法點</h2>
+
+    <div class="grammar-rule">
+      <h4>① 假設語氣：與過去事實相反（Q25）</h4>
+      <div class="formula">If + 主詞 + had (not) + p.p. , 主詞 + would/could + have + p.p.</div>
+      <ul class="eg-list">
+        <li>If she <strong>hadn't saved</strong> the children, they <strong>would have ended up</strong> in a camp. ✓</li>
+        <li>If she <strong>didn't save</strong>... ✗（現在假設語氣，時態不對）</li>
+        <li>If she <strong>hasn't saved</strong>... ✗（現在完成式直述語氣，不是假設語氣）</li>
+      </ul>
+    </div>
+
+    <div class="grammar-rule">
+      <h4>② 關係代名詞 who vs. whom（Q23）</h4>
+      <div class="formula">介系詞 + whom（受格）｜ 主格位置 → who</div>
+      <ul class="eg-list">
+        <li>Many of <strong>whom</strong> died... （of 後 = 受格 = whom）✓</li>
+        <li>The woman <strong>who</strong> helped them... （主格）✓</li>
+        <li>The woman <strong>whom</strong> I met... （受格：I met her）✓</li>
+      </ul>
+    </div>
+
+    <div class="grammar-rule">
+      <h4>③ 關係副詞 where（Q34）</h4>
+      <div class="formula">地點先行詞 + where + 完整子句（有主詞＋動詞）</div>
+      <ul class="eg-list">
+        <li>He rides to the station <strong>where</strong> he sorts the boxes. ✓</li>
+        <li>He rides to the station <strong>which</strong> he sorts the boxes. ✗（which 後子句不完整，缺受詞）</li>
+        <li>比較：the station <strong>which</strong> he visited（visited 後缺受詞 → 用 which）✓</li>
+      </ul>
+    </div>
+
+    <div class="grammar-rule">
+      <h4>④ have difficulty / trouble + V-ing（Q35）</h4>
+      <div class="formula">have difficulty / trouble / fun / a good time + (in) + V-ing</div>
+      <ul class="eg-list">
+        <li>They have no difficulty <strong>finding</strong> their rightful owners. ✓</li>
+        <li>I had trouble <strong>sleeping</strong> last night. ✓</li>
+        <li>have difficulty <strong>to find</strong> ✗（不可接不定詞）</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 閃卡 -->
+  <div class="card">
+    <h2>🃏 文法片語閃卡（點擊翻轉）</h2>
+    <div class="flashcard-wrap" onclick="flipCard()">
+      <div class="flashcard" id="flashcard">
+        <div class="fc-front">
+          <div class="fc-word" id="fc-word">To this day</div>
+          <div class="fc-pos" id="fc-pos">片語副詞 | 點擊看說明</div>
+        </div>
+        <div class="fc-back">
+          <div class="fc-meaning" id="fc-meaning">直到今日（仍然如此）</div>
+          <div class="fc-ex" id="fc-ex">To this day, Irena Sendler is remembered as a selfless hero.</div>
+        </div>
+      </div>
+    </div>
+    <div class="fc-nav">
+      <button onclick="prevCard()">← 上一張</button>
+      <span class="fc-count" id="fc-count">1 / 8</span>
+      <button onclick="nextCard()">下一張 →</button>
+    </div>
+  </div>
+
+  <!-- 文法選擇練習 -->
+  <div class="card">
+    <h2>✏️ 文法填空練習（10 題）</h2>
+
+    <div class="quiz-q" id="gq1">
+      <p class="stem">1. If he _____ harder, he could have passed the exam.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq1',this,false)">(A) studied</button>
+        <button class="quiz-opt" onclick="checkQ('gq1',this,false)">(B) has studied</button>
+        <button class="quiz-opt" onclick="checkQ('gq1',this,true)">(C) had studied</button>
+        <button class="quiz-opt" onclick="checkQ('gq1',this,false)">(D) would study</button>
+      </div>
+      <div class="quiz-result" id="gq1-r"></div>
+    </div>
+
+    <div class="quiz-q" id="gq2">
+      <p class="stem">2. The passengers, many of _____ were tourists, missed their flight.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq2',this,false)">(A) them</button>
+        <button class="quiz-opt" onclick="checkQ('gq2',this,false)">(B) who</button>
+        <button class="quiz-opt" onclick="checkQ('gq2',this,true)">(C) whom</button>
+        <button class="quiz-opt" onclick="checkQ('gq2',this,false)">(D) which</button>
+      </div>
+      <div class="quiz-result" id="gq2-r"></div>
+    </div>
+
+    <div class="quiz-q" id="gq3">
+      <p class="stem">3. She took us to the café _____ she had her first date.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq3',this,true)">(A) where</button>
+        <button class="quiz-opt" onclick="checkQ('gq3',this,false)">(B) which</button>
+        <button class="quiz-opt" onclick="checkQ('gq3',this,false)">(C) that</button>
+        <button class="quiz-opt" onclick="checkQ('gq3',this,false)">(D) there</button>
+      </div>
+      <div class="quiz-result" id="gq3-r"></div>
+    </div>
+
+    <div class="quiz-q" id="gq4">
+      <p class="stem">4. Students often have difficulty _____ the right answer under pressure.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq4',this,false)">(A) to choose</button>
+        <button class="quiz-opt" onclick="checkQ('gq4',this,true)">(B) choosing</button>
+        <button class="quiz-opt" onclick="checkQ('gq4',this,false)">(C) to choosing</button>
+        <button class="quiz-opt" onclick="checkQ('gq4',this,false)">(D) chosen</button>
+      </div>
+      <div class="quiz-result" id="gq4-r"></div>
+    </div>
+
+    <div class="quiz-q" id="gq5">
+      <p class="stem">5. If the rescue vehicle _____ earlier, the patient could have been saved.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq5',this,false)">(A) arrived</button>
+        <button class="quiz-opt" onclick="checkQ('gq5',this,false)">(B) has arrived</button>
+        <button class="quiz-opt" onclick="checkQ('gq5',this,true)">(C) had arrived</button>
+        <button class="quiz-opt" onclick="checkQ('gq5',this,false)">(D) would arrive</button>
+      </div>
+      <div class="quiz-result" id="gq5-r"></div>
+    </div>
+
+    <div class="quiz-q" id="gq6">
+      <p class="stem">6. _____, the tradition of holding lanterns on this night has been preserved for centuries.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq6',this,false)">(A) In the end</button>
+        <button class="quiz-opt" onclick="checkQ('gq6',this,false)">(B) Now and then</button>
+        <button class="quiz-opt" onclick="checkQ('gq6',this,true)">(C) To this day</button>
+        <button class="quiz-opt" onclick="checkQ('gq6',this,false)">(D) By no means</button>
+      </div>
+      <div class="quiz-result" id="gq6-r"></div>
+    </div>
+
+    <div class="quiz-q" id="gq7">
+      <p class="stem">7. The children found it hard _____ the instructions written in English.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq7',this,false)">(A) understanding</button>
+        <button class="quiz-opt" onclick="checkQ('gq7',this,true)">(B) to understand</button>
+        <button class="quiz-opt" onclick="checkQ('gq7',this,false)">(C) to understanding</button>
+        <button class="quiz-opt" onclick="checkQ('gq7',this,false)">(D) understood</button>
+      </div>
+      <div class="quiz-result" id="gq7-r"></div>
+    </div>
+
+    <div class="quiz-q" id="gq8">
+      <p class="stem">8. The athlete, _____ trainer everyone admired, won three gold medals.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq8',this,false)">(A) who</button>
+        <button class="quiz-opt" onclick="checkQ('gq8',this,true)">(B) whose</button>
+        <button class="quiz-opt" onclick="checkQ('gq8',this,false)">(C) whom</button>
+        <button class="quiz-opt" onclick="checkQ('gq8',this,false)">(D) which</button>
+      </div>
+      <div class="quiz-result" id="gq8-r"></div>
+    </div>
+
+    <div class="quiz-q" id="gq9">
+      <p class="stem">9. Lack of proper _____ of equipment may lead to serious safety problems.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq9',this,false)">(A) intention</button>
+        <button class="quiz-opt" onclick="checkQ('gq9',this,false)">(B) exposure</button>
+        <button class="quiz-opt" onclick="checkQ('gq9',this,true)">(C) maintenance</button>
+        <button class="quiz-opt" onclick="checkQ('gq9',this,false)">(D) responsibility</button>
+      </div>
+      <div class="quiz-result" id="gq9-r"></div>
+    </div>
+
+    <div class="quiz-q" id="gq10">
+      <p class="stem">10. The new policy came into effect in 2020, _____ many changes in the industry.</p>
+      <div class="quiz-options">
+        <button class="quiz-opt" onclick="checkQ('gq10',this,false)">(A) to bring</button>
+        <button class="quiz-opt" onclick="checkQ('gq10',this,true)">(B) bringing</button>
+        <button class="quiz-opt" onclick="checkQ('gq10',this,false)">(C) brought</button>
+        <button class="quiz-opt" onclick="checkQ('gq10',this,false)">(D) to bringing</button>
+      </div>
+      <div class="quiz-result" id="gq10-r"></div>
+    </div>
+  </div>
+
+  <!-- 重點片語卡 -->
+  <div class="card">
+    <h2>💬 本次考試必背片語</h2>
+    <div class="vocab-grid">
+      <div class="vocab-card"><div class="vocab-strip" style="background:var(--blue)"></div>
+        <div class="vocab-word">To this day</div><div class="vocab-pos">片語副詞</div>
+        <div class="vocab-zh">直到今日（仍然）</div>
+        <div class="vocab-ex">To this day, no one knows the full story.</div>
+        <div class="vocab-tip">≠ In the end（最終/最後結果）</div>
+      </div>
+      <div class="vocab-card"><div class="vocab-strip" style="background:var(--purple)"></div>
+        <div class="vocab-word">It stuck</div><div class="vocab-pos">慣用語</div>
+        <div class="vocab-zh">（名字/習慣）被留用沿用下來</div>
+        <div class="vocab-ex">Someone shouted "Fantasie!" and the name stuck.</div>
+        <div class="vocab-tip">stick → stuck → stuck</div>
+      </div>
+      <div class="vocab-card"><div class="vocab-strip" style="background:var(--green)"></div>
+        <div class="vocab-word">take in</div><div class="vocab-pos">片語動詞</div>
+        <div class="vocab-zh">收留、接納</div>
+        <div class="vocab-ex">Many hotels were willing to take in the disaster victims.</div>
+        <div class="vocab-tip">= shelter / accommodate</div>
+      </div>
+      <div class="vocab-card"><div class="vocab-strip" style="background:var(--amber)"></div>
+        <div class="vocab-word">heave a sigh of relief</div><div class="vocab-pos">片語</div>
+        <div class="vocab-zh">鬆了一口氣</div>
+        <div class="vocab-ex">Mark heaved a sigh of relief when he heard the good news.</div>
+        <div class="vocab-tip">heaved = 過去式；搭配 breathe / heave</div>
+      </div>
+      <div class="vocab-card"><div class="vocab-strip" style="background:var(--red)"></div>
+        <div class="vocab-word">bring back</div><div class="vocab-pos">片語動詞</div>
+        <div class="vocab-zh">帶回、送回</div>
+        <div class="vocab-ex">Virat must bring the empty boxes back to their homes.</div>
+        <div class="vocab-tip">= return / deliver back</div>
+      </div>
+      <div class="vocab-card"><div class="vocab-strip" style="background:var(--ink)"></div>
+        <div class="vocab-word">in large part</div><div class="vocab-pos">片語副詞</div>
+        <div class="vocab-zh">很大程度上、主要因為</div>
+        <div class="vocab-ex">The film's success was in large part due to its screenplay.</div>
+        <div class="vocab-tip">= to a large extent / largely</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
-    const data = {
-        'A': {
-            title: '(A) swift',
-            desc: '解釋：迅速的；敏捷的',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The police took <b>swift</b> action to catch the thief.<br>(警方迅速採取行動抓住了小偷。)</div>
-                    <div class="eg-item">2. He is <b>swift</b> to point out other people's faults.<br>(他總是很快地指出別人的錯誤。)</div>
-                    <div class="eg-item">3. We hope for a <b>swift</b> recovery.<br>(我們祝願能早日康復。)</div>
-                </div>`
-        },
-        'B': {
-            title: '(B) brutal',
-            desc: '解釋：殘忍的；野蠻的',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. It was a <b>brutal</b> and senseless murder.<br>(這是一場殘忍且無意義的謀殺案。)</div>
-                    <div class="eg-item">2. The weather was <b>brutal</b> during the winter.<br>(冬天的天氣非常惡劣。)</div>
-                    <div class="eg-item">3. He was <b>brutal</b> in his honesty.<br>(他的誠實到了傷人的地步。)</div>
-                </div>`
-        },
-        'C': {
-            title: '(C) harsh',
-            desc: '解釋：嚴厲的；刺耳的；粗糙的',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The punishment was <b>harsh</b> for such a minor crime.<br>(對於這麼輕的罪行，處罰太嚴厲了。)</div>
-                    <div class="eg-item">2. We should avoid using <b>harsh</b> chemicals.<br>(我們應該避免使用具刺激性的化學物質。)</div>
-                    <div class="eg-item">3. He faced <b>harsh</b> criticism from the press.<br>(他面臨媒體的嚴厲批評。)</div>
-                </div>`
-        },
-        'D': {
-            title: '(D) grave',
-            desc: '解釋：嚴重的；嚴肅的；墳墓(n)',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The situation is much more <b>grave</b> than we expected.<br>(情況比我們預想的要嚴重得多。)</div>
-                    <div class="eg-item">2. He looked very <b>grave</b> as he spoke.<br>(他說話時表情非常嚴肅。)</div>
-                    <div class="eg-item">3. We are in <b>grave</b> danger of losing our jobs.<br>(我們面臨失業的嚴重危險。)</div>
-                </div>`
-        },
-        'E': {
-            title: '正確答案：(D)',
-            desc: '解析：題幹提到校園槍擊案引起了「嚴重的」關注。雖然 (B) brutal (殘忍的) 可形容槍擊案，但搭配 concern (擔憂/關注) 時，使用 grave 最為道地。',
-            example: 'grave concern 是一個常見的英文慣用語，表示深切的憂慮。'
-        },
-        'F': {
-            title: '林威老師的話',
-            desc: '衍生詞與音標學習：',
-            detail: `
-                <h4>1. swiftly (副詞)</h4>
-                <p>KK: [ˈswɪftlɪ] | 中文：迅速地</p>
-                <h4>2. brutality (名詞)</h4>
-                <p>KK: [bruˈtælətɪ] | 中文：殘暴行為</p>
-                <h4>3. harshly (副詞)</h4>
-                <p>KK: [ˈhɑrʃlɪ] | 中文：嚴酷地</p>
-                <h4>4. gravity (名詞)</h4>
-                <p>KK: [ˈɡrævətɪ] | 中文：嚴重性；地心引力</p>
-            `
-        },
-        'G': {
-            title: '衍生詞更多例句',
-            detail: `
-                <div class="example-box">1. The river was flowing <b>swiftly</b> after the rain.<br>(雨後河水流速很快。)</div>
-                <div class="example-box">2. They were shocked by the <b>brutality</b> of the attack.<br>(他們對這次襲擊的殘暴感到震驚。)</div>
-                <div class="example-box">3. Don't judge her too <b>harshly</b>.<br>(不要對她評判得太嚴苛。)</div>
-                <div class="example-box">4. I don't think you realize the <b>gravity</b> of the situation.<br>(我覺得你沒有意識到情況的嚴重性。)</div>
-            `
-        },
-        'H': {
-            title: '台灣學測必備片語',
-            detail: `
-                <h4>1. bump into (不期而遇)</h4>
-                <p>例句：I <b>bumped into</b> an old friend at the supermarket yesterday.<br>(昨天我在超市偶遇了一位老朋友。)</p>
-                <h4>2. come across (偶然發現；遇見)</h4>
-                <p>例句：I <b>come across</b> these old letters while cleaning the attic.<br>(我在打掃閣樓時偶然發現了這些舊信件。)</p>
-                <h4>3. have an encounter with (與...邂逅/遭遇)</h4>
-                <p>例句：She had a frightening <b>encounter with</b> a stray dog.<br>(她有過一次與流浪狗對峙的可怕經歷。)</p>
-            `
-        }
-    };
+function showTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
 
-    function showOverlay(key) {
-        const item = data[key];
-        let html = `<div class="overlay-title">${item.title}</div>`;
-        if(item.desc) html += `<p>${item.desc}</p>`;
-        if(item.detail) html += `<div>${item.detail}</div>`;
-        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
-        
-        document.getElementById('contentArea').innerHTML = html;
-        document.getElementById('infoOverlay').style.display = 'block';
-    }
+const expl = {
+  rq1: ['✗ 文章說 Keith 讓化學團隊去發揮，並未說他本人是化學家。', '✓ 原料是 apple pomace（蘋果渣）、whey（乳清）、beet leftovers，都是農業副產品。', '✗ 文章最後段說 Fanta 已走向全球市場，並非只在歐洲。', '✗ 無中生有，文章完全沒有提到德國拒絕進口可口可樂。'],
+  rq2: ['✓ 第二段核心是描述 Keith 面臨的困境（空倉庫、原料斷絕）。', '✗ 這是過度解讀細節，段落主旨是交代 Keith 的絕境，而非解釋誰負擔得起可口可樂。', '✗ 這是推論過度，第二段焦點在 Keith 個人的情況，不是整個歐洲的苦難。', '✗ 文章完全沒有比較德國分公司與總部。'],
+  rq3: ['✗ It stuck 無「嚇到人」之意。', '✗ 這個名字不是被設計出來的，而是偶然喊出後「沿用」的，與 brand-new creation 相反。', '✓ stick = 留下來、沿用。這個名字令人印象深刻，因此被保留使用下來。', '✗ 文章沒有提到賺錢。'],
+  rq4: ['✗ 最後段並無提出新問題。', '✗ 文章沒有對未來市場作出預測。', '✓ 最後段提供戰後事實：新口味開發、國際擴張，這是補充 further facts。', '✗ 最後段提供的是新資訊（戰後發展），而非重新整理之前的重點。'],
+  dq1: ['✗ (C) 說的是「區域限定→收藏價值」，這是 Q48 的答案，放在 Q47 這裡後句接不上。', '✓ (E) 描述杯子的圖案特色，後句才說「普通杯子→紀念品」，邏輯通順。', '✗ (D) 是說「計劃旅行」，放在這裡與後句完全不搭。'],
+  gq1: ['✗ 主句有 could have passed（過去完成），if 子句要配合用 had studied。', '✗ has studied 是現在完成式，不是假設語氣。', '✓ 與過去相反的假設語氣：If + had + p.p.', '✗ would study 是主句用法，不在 if 子句中。'],
+  gq2: ['✗ them 不能引導形容詞子句。', '✗ of 後需接受格 whom，而非主格 who。', '✓ 介系詞 of 後面要用受格 whom。', '✗ 先行詞是人，不用 which。'],
+  gq3: ['✓ 先行詞是地點 café，後面子句結構完整（she had her first date），用關係副詞 where。', '✗ which 後子句結構要不完整（缺主詞或受詞）。', '✗ 有逗號前一般不用 that 引導關係子句。', '✗ there 是副詞，不能引導子句。'],
+  gq4: ['✗ have difficulty 後接 V-ing，不接不定詞。', '✓ have difficulty + V-ing 是固定搭配。', '✗ to choosing 不正確。', '✗ chosen 是過去分詞，語法錯誤。'],
+  gq5: ['✗ arrived 是直述語氣，與主句 could have been saved 不搭配。', '✗ 現在完成式，不是假設語氣。', '✓ 與過去相反的假設語氣：If + had + p.p., would/could + have + p.p.', '✗ would arrive 是主句，不在 if 子句中。'],
+  gq6: ['✗ In the end 強調最終結果，不強調「至今持續」。', '✗ Now and then = 偶爾，語意不符。', '✓ To this day = 直到今日仍然，強調持續至今。', '✗ By no means = 絕不，語意完全不同。'],
+  gq7: ['✗ find it hard + 動名詞 不正確，應用不定詞。', '✓ find it + adj. + to V：The children found it hard to understand... （it 為虛受詞）', '✗ to understanding 不正確。', '✗ understood 是過去式，語法錯誤。'],
+  gq8: ['✗ who 是主格，此處需要所有格（_____ trainer）。', '✓ whose = 所有格關係代名詞，whose trainer = 他的教練。', '✗ whom 是受格，此處需要所有格。', '✗ 先行詞是人，不用 which。'],
+  gq9: ['✗ intention = 意圖，與「維護設備」語意不符。', '✗ exposure = 曝光、接觸，語意不符。', '✓ maintenance = 維護、保養，搭配 lack of proper maintenance。', '✗ responsibility = 責任，語意不符。'],
+  gq10: ['✗ to bring 表目的，但此處是描述結果，不是目的。', '✓ 結果分詞構句：主句 + , bringing...（順帶產生的結果）', '✗ brought 是過去式，無法作分詞構句。', '✗ to bringing 不正確。'],
+};
 
-    function closeOverlay() {
-        document.getElementById('infoOverlay').style.display = 'none';
-    }
+function checkQ(id, btn, isCorrect) {
+  const box = document.getElementById(id);
+  if (box.querySelector('.sel-correct, .sel-wrong')) return;
+  const opts = box.querySelectorAll('.quiz-opt');
+  const idx = Array.from(opts).indexOf(btn);
+  const res = document.getElementById(id + '-r');
+  const key = id.replace(/-r$/,'');
+  const allExpl = expl[id] || expl[key] || ['','','',''];
+  const msg = allExpl[idx] || (isCorrect ? '✓ 正確！' : '✗ 錯誤。');
+
+  if (isCorrect) {
+    btn.classList.add('sel-correct');
+    res.textContent = msg;
+    res.className = 'quiz-result show qr-correct';
+  } else {
+    btn.classList.add('sel-wrong');
+    res.textContent = msg;
+    res.className = 'quiz-result show qr-wrong';
+    setTimeout(() => {
+      opts.forEach(o => { if (!o.classList.contains('sel-wrong')) o.classList.add('reveal'); });
+    }, 600);
+  }
+}
+
+// Flashcards
+const cards = [
+  { w:'To this day', p:'片語副詞', m:'直到今日（仍然如此）', ex:'To this day, Irena Sendler is remembered as a selfless hero.' },
+  { w:'It stuck', p:'慣用語', m:'（名字）被留用沿用下來', ex:'Someone shouted "Fantasie!" — the name stuck.' },
+  { w:'whom', p:'關代受格', m:'介系詞後用受格 whom', ex:'Many of whom died from disease.' },
+  { w:"hadn't saved", p:'假設語氣 if 子句', m:'與過去事實相反 → had + p.p.', ex:'If she hadn\'t saved them, they would have ended up in a camp.' },
+  { w:'where', p:'關係副詞', m:'先行詞為地點 + 完整子句', ex:'He rides to the station where he sorts the boxes.' },
+  { w:'have difficulty V-ing', p:'固定句型', m:'做某事有困難', ex:'They have no difficulty finding the right address.' },
+  { w:'maintenance', p:'n. 維護保養', m:'maintain → maintenance', ex:'Lack of proper maintenance may reduce long-term benefit.' },
+  { w:'in large part', p:'片語副詞', m:'很大程度上、主要因為', ex:'The success is in large part due to the screenplay.' },
+];
+let cur = 0, flipped = false;
+function upd() {
+  flipped = false;
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('fc-word').textContent = cards[cur].w;
+  document.getElementById('fc-pos').textContent = cards[cur].p + ' | 點擊翻轉';
+  document.getElementById('fc-meaning').textContent = cards[cur].m;
+  document.getElementById('fc-ex').textContent = cards[cur].ex;
+  document.getElementById('fc-count').textContent = (cur+1) + ' / ' + cards.length;
+}
+function flipCard() { flipped=!flipped; document.getElementById('flashcard').classList.toggle('flipped',flipped); }
+function nextCard() { cur=(cur+1)%cards.length; upd(); }
+function prevCard() { cur=(cur-1+cards.length)%cards.length; upd(); }
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.progress-bar').forEach(b => {
+    const w = b.style.width; b.style.width='0%';
+    setTimeout(()=>{ b.style.width=w; }, 400);
+  });
+  document.querySelectorAll('.strength-fill').forEach(b => {
+    const w = b.style.width; b.style.width='0%';
+    setTimeout(()=>{ b.style.width=w; }, 400);
+  });
+});
 </script>
-
 </body>
 </html>
