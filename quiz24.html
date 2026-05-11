@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alice 三日英文加強課程 | 114 學測客製化</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans TC", "Segoe UI", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #fef6e4 0%, #f3d2c1 50%, #fad0c4 100%);
+    color: #2d3142;
+    line-height: 1.7;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  header {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 50%, #c44569 100%);
+    color: #fff;
+    padding: 32px 28px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(196, 69, 105, 0.35);
+    margin-bottom: 28px;
+    text-align: center;
+  }
+  header h1 { font-size: 2.2em; margin-bottom: 8px; letter-spacing: 1px; }
+  header p { font-size: 1.05em; opacity: 0.95; }
+  header .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-top: 14px;
+    font-size: 0.9em;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+  }
+  .tab {
+    flex: 1;
+    min-width: 200px;
+    padding: 16px 18px;
+    background: #fff;
+    border: 3px solid transparent;
+    border-radius: 14px;
+    font-size: 1.1em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    color: #2d3142;
+  }
+  .tab.day1 { border-left: 6px solid #ff6b6b; }
+  .tab.day2 { border-left: 6px solid #4ecdc4; }
+  .tab.day3 { border-left: 6px solid #6c5ce7; }
+  .tab:hover { transform: translateY(-3px); }
+  .tab.active { background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); border-color: #c44569; }
+
+  .day { display: none; animation: fadeIn 0.4s ease; }
+  .day.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .day-header {
+    padding: 22px;
+    border-radius: 14px;
+    color: #fff;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  }
+  .day1-bg { background: linear-gradient(135deg, #ff9a9e 0%, #ff6b6b 100%); }
+  .day2-bg { background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%); }
+  .day3-bg { background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%); color: #4a3a6b; }
+  .day-header h2 { font-size: 1.7em; margin-bottom: 6px; }
+  .day-header p { opacity: 0.95; font-size: 1em; }
+
+  .section {
+    background: #fff;
+    border-radius: 14px;
+    padding: 26px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  }
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.35em;
+    font-weight: 700;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 3px dashed #e0e6ef;
+    color: #2d3142;
+  }
+  .section-num {
+    background: linear-gradient(135deg, #ffd93d 0%, #ff9a3c 100%);
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1em;
+  }
+  .day2 .section-num { background: linear-gradient(135deg, #4ecdc4 0%, #44a3aa 100%); }
+  .day3 .section-num { background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); }
+
+  .vocab-card {
+    background: linear-gradient(135deg, #fff5f7 0%, #ffe8ec 100%);
+    border-left: 5px solid #ff6b6b;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+  }
+  .day2 .vocab-card { background: linear-gradient(135deg, #e8f8f7 0%, #d4f1ef 100%); border-left-color: #4ecdc4; }
+  .day3 .vocab-card { background: linear-gradient(135deg, #f3eeff 0%, #e8def8 100%); border-left-color: #6c5ce7; }
+  .vocab-word {
+    font-size: 1.4em;
+    font-weight: 800;
+    color: #c44569;
+    margin-bottom: 4px;
+  }
+  .day2 .vocab-word { color: #169a8b; }
+  .day3 .vocab-word { color: #5b4ec5; }
+  .vocab-pos { color: #6c757d; font-style: italic; font-size: 0.95em; }
+  .vocab-meaning { font-size: 1.05em; margin: 6px 0 10px; color: #2d3142; }
+  .vocab-deriv {
+    background: rgba(255,255,255,0.7);
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    border: 1px dashed #ffb8c5;
+  }
+  .day2 .vocab-deriv { border-color: #99e2db; }
+  .day3 .vocab-deriv { border-color: #c8bef0; }
+  .vocab-deriv strong { color: #c44569; }
+  .day2 .vocab-deriv strong { color: #169a8b; }
+  .day3 .vocab-deriv strong { color: #5b4ec5; }
+  .example {
+    margin-top: 8px;
+    padding-left: 14px;
+    border-left: 3px solid #ffd93d;
+  }
+  .example .en { color: #2d3142; font-weight: 500; }
+  .example .zh { color: #6c757d; font-size: 0.95em; margin-top: 3px; }
+
+  .reading {
+    background: #fdfcfa;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #f0e8db;
+    font-size: 1.02em;
+    line-height: 1.9;
+  }
+  .reading h3 {
+    color: #c44569;
+    margin-bottom: 14px;
+    font-size: 1.25em;
+    text-align: center;
+  }
+  .day2 .reading h3 { color: #169a8b; }
+  .day3 .reading h3 { color: #5b4ec5; }
+  .reading p { margin-bottom: 12px; text-indent: 2em; }
+  .reading .meta { text-align: center; color: #999; font-size: 0.85em; margin-bottom: 14px; font-style: italic; }
+
+  .questions { margin-top: 20px; }
+  .question {
+    background: #fff;
+    padding: 16px 18px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    border-left: 4px solid #ffb8c5;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .day2 .question { border-left-color: #99e2db; }
+  .day3 .question { border-left-color: #c8bef0; }
+  .q-stem { font-weight: 600; margin-bottom: 10px; color: #2d3142; }
+  .q-options { list-style: none; padding-left: 12px; }
+  .q-options li { padding: 4px 0; cursor: pointer; transition: color 0.2s; }
+  .q-options li:hover { color: #c44569; }
+  .q-options li.opt::before {
+    content: attr(data-letter) ". ";
+    font-weight: 700;
+    color: #ff9a3c;
+    margin-right: 4px;
+  }
+
+  .answer-btn {
+    background: linear-gradient(135deg, #ff9a3c 0%, #ff6b6b 100%);
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.92em;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(255,107,107,0.3);
+  }
+  .answer-btn:hover { transform: translateY(-1px); }
+  .answer {
+    display: none;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+    border-radius: 8px;
+    color: #155724;
+    font-weight: 600;
+    font-size: 0.95em;
+  }
+  .answer.show { display: block; }
+  .answer .why { font-weight: 400; margin-top: 4px; color: #2d3142; font-size: 0.95em; }
+
+  .legend {
+    display: inline-block;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-left: 6px;
+    font-weight: 700;
+    vertical-align: middle;
+  }
+  .legend.weak { background: #ffe0e6; color: #c44569; }
+  .legend.std { background: #e0f0ff; color: #2557a3; }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: #6c757d;
+    font-size: 0.9em;
+    margin-top: 30px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🌸 Alice 三日英文加強課程 🌸</h1>
+    <p>依據 114 學測作答結果 × 個人單字弱點 客製化編排</p>
+    <span class="tag">📅 2026-05-11 製作</span>
+    <span class="tag">📚 每日 3 大主題</span>
+    <span class="tag">🎯 24 單字 + 3 閱讀 + 30 選擇</span>
+  </header>
+
+  <div class="tabs">
+    <button class="tab day1 active" onclick="switchDay(1)">📕 Day 1 · 詞彙與寫作主題</button>
+    <button class="tab day2" onclick="switchDay(2)">📗 Day 2 · 科學與生活</button>
+    <button class="tab day3" onclick="switchDay(3)">📘 Day 3 · 文化與科技</button>
+  </div>
+
+  <!-- ============== DAY 1 ============== -->
+  <div class="day day1 active">
+    <div class="day-header day1-bg">
+      <h2>📕 Day 1：詞彙與寫作 (Writing & Word Choice)</h2>
+      <p>主題：草稿修改、學業寫作、口語表達 — 鎖定第 1-10 題詞彙弱點</p>
+    </div>
+
+    <!-- Part 1: Vocabulary -->
+    <div class="section">
+      <div class="section-title"><span class="section-num">1</span>Part 1 ｜ 不熟單字 8 個 (含衍生詞與例句)</div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">faucet <span class="vocab-pos">n.</span></div>
+        <div class="vocab-meaning">水龍頭 (= tap)</div>
+        <div class="vocab-deriv"><strong>衍生 / 同義：</strong>tap (n. 水龍頭)；leaking faucet 漏水的水龍頭；faucet handle 水龍頭把手</div>
+        <div class="example">
+          <div class="en">1. The leaking <b>faucet</b> wastes about 20 liters of water every day.</div>
+          <div class="zh">那個漏水的水龍頭每天浪費了大約 20 公升的水。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. Please turn off the <b>faucet</b> tightly after brushing your teeth.</div>
+          <div class="zh">刷完牙之後請把水龍頭關緊。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">blur <span class="vocab-pos">v. / n.</span></div>
+        <div class="vocab-meaning">使模糊；模糊不清的影像</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>blurring (adj. 變模糊的)；blurred (adj. 模糊的)；blurry (adj. 模糊的)</div>
+        <div class="example">
+          <div class="en">1. Tears <b>blurred</b> her vision as she read the farewell letter.</div>
+          <div class="zh">當她讀著告別信時，淚水模糊了她的視線。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. My childhood memories are <b>blurring</b> as the years pass by.</div>
+          <div class="zh">隨著歲月流逝，我童年的記憶正逐漸變模糊。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">draft <span class="vocab-pos">n. / v.</span></div>
+        <div class="vocab-meaning">草稿；起草、徵召入伍</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>drafter (n. 起草人)；first draft 初稿；final draft 定稿；the draft (n. 徵兵)</div>
+        <div class="example">
+          <div class="en">1. Mary revised the first <b>draft</b> of her essay several times before turning it in.</div>
+          <div class="zh">瑪麗在交出文章前修改了初稿好幾次。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. The committee will <b>draft</b> a proposal for the new school policy.</div>
+          <div class="zh">委員會將起草一份新校規的提案。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">stubborn <span class="vocab-pos">adj.</span></div>
+        <div class="vocab-meaning">頑固的；難對付的</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>stubbornly (adv. 頑固地)；stubbornness (n. 頑固)；as stubborn as a mule 像頭騾子一樣固執</div>
+        <div class="example">
+          <div class="en">1. My grandfather is too <b>stubborn</b> to take the doctor's advice.</div>
+          <div class="zh">我爺爺太固執了，不肯聽醫生的建議。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. The <b>stubborn</b> stain on the carpet refused to come out.</div>
+          <div class="zh">地毯上那塊頑固的污漬怎麼都洗不掉。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">halt <span class="vocab-pos">v. / n.</span></div>
+        <div class="vocab-meaning">停止；中斷</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>halted (adj. 被中止的)；come to a halt 停下來；bring sth to a halt 使停止</div>
+        <div class="example">
+          <div class="en">1. The construction project was <b>halted</b> due to a lack of funding.</div>
+          <div class="zh">這項建築工程因為缺乏資金而被迫中止。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. The heavy snow brought all traffic to a complete <b>halt</b>.</div>
+          <div class="zh">大雪讓所有交通完全停擺。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">grace <span class="vocab-pos">v. / n.</span></div>
+        <div class="vocab-meaning">使增光；優雅；恩典</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>graceful (adj. 優雅的)；gracious (adj. 親切的)；disgrace (n. 恥辱)</div>
+        <div class="example">
+          <div class="en">1. The famous singer <b>graced</b> the charity event with her presence.</div>
+          <div class="zh">那位著名的歌手蒞臨慈善活動，使現場蓬蓽生輝。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. She moved across the stage with surprising <b>grace</b>.</div>
+          <div class="zh">她以令人驚艷的優雅姿態走過舞台。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">verbal <span class="vocab-pos">adj.</span></div>
+        <div class="vocab-meaning">口頭的；言語的</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>verbally (adv. 口頭地)；verbal abuse 言語暴力；non-verbal (adj. 非語言的)</div>
+        <div class="example">
+          <div class="en">1. The manager was sued for <b>verbally</b> abusing his colleagues.</div>
+          <div class="zh">那名經理因為用言語辱罵同事而被告。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. We made a <b>verbal</b> agreement, but it wasn't written down.</div>
+          <div class="zh">我們達成了口頭協議，但並沒有寫下來。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">public <span class="vocab-pos">adj. / n.</span></div>
+        <div class="vocab-meaning">公開的；公眾</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>publicly (adv. 公開地)；publicity (n. 宣傳)；publication (n. 出版品)；publish (v. 發行)</div>
+        <div class="example">
+          <div class="en">1. <b>Publicly</b> financed projects are often halted during tough economic times.</div>
+          <div class="zh">公費資助的工程在景氣不好的時候經常被迫停擺。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. The minister apologized <b>publicly</b> for his careless remarks.</div>
+          <div class="zh">部長為自己不當的言論公開道歉。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 2: Reading -->
+    <div class="section">
+      <div class="section-title"><span class="section-num">2</span>Part 2 ｜ 閱讀測驗 (約 200 字, 學測 2/3 長度)</div>
+      <div class="reading">
+        <h3>The Power of a Second Draft</h3>
+        <p class="meta">~ 199 words · 約學測閱讀 2/3 長度 ~</p>
+        <p>Many students believe that good writing happens in a single sitting. They turn in their first draft, hoping for a high grade. However, professional writers tell a very different story. According to a recent survey of award-winning authors, almost all of them revise their work at least three times before publication.</p>
+        <p>The first draft is rarely the best. It often contains <b>blurring</b> ideas, weak word choice, and stubborn habits such as repeating the same phrase. A second draft, written one day later, gives the writer fresh eyes. He or she can spot logical gaps, cut unnecessary sentences, and improve the flow. A third reading—ideally out loud—catches small but important errors that the eye easily misses.</p>
+        <p>Teachers also point out that revision is not a sign of weakness. On the contrary, it shows that the writer takes the topic seriously. Even a simple essay benefits from being put aside for a few hours. When a project is publicly shared, whether in a school newspaper or online, careful revision protects the writer's reputation. So next time you finish a paragraph, do not rush to submit it. Save the file, take a break, and return to it later.</p>
+      </div>
+
+      <div class="questions">
+        <div class="question">
+          <div class="q-stem">1. What is the main idea of the passage?</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">Most students hate writing essays.</li>
+            <li class="opt" data-letter="B">Revising drafts is essential to good writing.</li>
+            <li class="opt" data-letter="C">Award-winning authors never make mistakes.</li>
+            <li class="opt" data-letter="D">Reading aloud is harmful to the writing process.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B<div class="why">第二段、第三段都強調「revise / take a break / careful revision」，整篇重點為修稿的重要性。</div></div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">2. According to the passage, why is the second draft usually better?</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">It is written by another person.</li>
+            <li class="opt" data-letter="B">It uses longer sentences.</li>
+            <li class="opt" data-letter="C">The writer gains fresh eyes after a break.</li>
+            <li class="opt" data-letter="D">It is always shorter than the first one.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C<div class="why">第二段提到「A second draft, written one day later, gives the writer fresh eyes.」</div></div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">3. What does the author suggest students do after finishing a paragraph?</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">Submit it immediately.</li>
+            <li class="opt" data-letter="B">Show it to ten friends.</li>
+            <li class="opt" data-letter="C">Put it aside and return to it later.</li>
+            <li class="opt" data-letter="D">Delete weak parts without re-reading.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C<div class="why">末段：「Save the file, take a break, and return to it later.」</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 3: MCQ -->
+    <div class="section">
+      <div class="section-title"><span class="section-num">3</span>Part 3 ｜ 單字選擇題 (10 題 · 40% 弱點 + 60% 同程度)</div>
+      <p style="margin-bottom:16px;color:#6c757d;font-size:0.95em;">
+        <span class="legend weak">弱點字</span> 來自 Alice 不熟悉的詞；
+        <span class="legend std">學測級</span> 為同程度高頻字。
+      </p>
+
+      <div class="questions">
+        <div class="question">
+          <div class="q-stem">1. <span class="legend weak">弱點字</span> If you keep your <u>______</u> open, you will be amazed at the amount of water wasted.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">marker</li>
+            <li class="opt" data-letter="B">faucet</li>
+            <li class="opt" data-letter="C">timer</li>
+            <li class="opt" data-letter="D">border</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B faucet 水龍頭</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">2. <span class="legend std">學測級</span> Despite his busy schedule, the President <u>______</u> the ceremony with his presence.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">praised</li>
+            <li class="opt" data-letter="B">credited</li>
+            <li class="opt" data-letter="C">graced</li>
+            <li class="opt" data-letter="D">addressed</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C grace ~ with one's presence「光臨」</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">3. <span class="legend std">學測級</span> She wrote three <u>______</u> of the essay before turning it in.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">plots</li>
+            <li class="opt" data-letter="B">drafts</li>
+            <li class="opt" data-letter="C">brushes</li>
+            <li class="opt" data-letter="D">texts</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B draft 草稿</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">4. <span class="legend weak">弱點字</span> The CEO was sued for <u>______</u> insulting a junior employee.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">verbally</li>
+            <li class="opt" data-letter="B">legitimately</li>
+            <li class="opt" data-letter="C">dominantly</li>
+            <li class="opt" data-letter="D">relevantly</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A verbally 口頭地</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">5. <span class="legend std">學測級</span> The deserted house was filled with a thick coating of dust because it had been left <u>______</u> for years.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">casual</li>
+            <li class="opt" data-letter="B">fragile</li>
+            <li class="opt" data-letter="C">vacant</li>
+            <li class="opt" data-letter="D">remote</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C vacant 空著的</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">6. <span class="legend weak">弱點字</span> His vision became <u>______</u> after staring at the screen for hours.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">trimming</li>
+            <li class="opt" data-letter="B">draining</li>
+            <li class="opt" data-letter="C">glaring</li>
+            <li class="opt" data-letter="D">blurry</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：D blurry 模糊的</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">7. <span class="legend std">學測級</span> The high school girl showed <u>______</u> courage when she saved the child from drowning.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">exclusive</li>
+            <li class="opt" data-letter="B">multiple</li>
+            <li class="opt" data-letter="C">enormous</li>
+            <li class="opt" data-letter="D">gigantic</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C enormous = 巨大的；gigantic 也可，但 enormous 在「勇氣」搭配更自然</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">8. <span class="legend weak">弱點字</span> The <u>______</u> child refused to eat any vegetables.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">stubborn</li>
+            <li class="opt" data-letter="B">offensive</li>
+            <li class="opt" data-letter="C">furious</li>
+            <li class="opt" data-letter="D">excessive</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A stubborn 頑固的</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">9. <span class="legend std">學測級</span> The construction was <u>______</u> due to safety concerns.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">hatched</li>
+            <li class="opt" data-letter="B">halted</li>
+            <li class="opt" data-letter="C">reinforced</li>
+            <li class="opt" data-letter="D">possessed</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B halted 停止</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">10. <span class="legend std">學測級</span> The actor apologized <u>______</u> for what he had said online.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">privately</li>
+            <li class="opt" data-letter="B">publicly</li>
+            <li class="opt" data-letter="C">secretly</li>
+            <li class="opt" data-letter="D">silently</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B publicly 公開地</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== DAY 2 ============== -->
+  <div class="day day2">
+    <div class="day-header day2-bg">
+      <h2>📗 Day 2：科學與生活 (Science & Daily Life)</h2>
+      <p>主題：World Café 思考流通、暈車與運動暈眩 — 鎖定第 11-20 題綜合測驗弱點</p>
+    </div>
+
+    <!-- Part 1: Vocabulary -->
+    <div class="section">
+      <div class="section-title"><span class="section-num">1</span>Part 1 ｜ 不熟單字 8 個 (含衍生詞與例句)</div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">circulate <span class="vocab-pos">v.</span></div>
+        <div class="vocab-meaning">流通；循環；散布</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>circulation (n. 流通；發行量)；circuit (n. 電路)；circular (adj. 圓形的；通報)</div>
+        <div class="example">
+          <div class="en">1. Fresh air <b>circulates</b> through the open windows of the classroom.</div>
+          <div class="zh">新鮮空氣透過教室打開的窗戶流通。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. Rumors began to <b>circulate</b> in the office after the boss left.</div>
+          <div class="zh">老闆離開後，謠言開始在辦公室裡散布。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">emphasize <span class="vocab-pos">v.</span></div>
+        <div class="vocab-meaning">強調；著重</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>emphasis (n. 重點)；emphatically (adv. 強調地)；lay/place emphasis on 強調…</div>
+        <div class="example">
+          <div class="en">1. The teacher <b>emphasized</b> the importance of careful driving.</div>
+          <div class="zh">老師強調了小心駕駛的重要性。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. He <b>emphasized</b> that hard work matters more than talent.</div>
+          <div class="zh">他強調努力比天分更重要。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">facilitate <span class="vocab-pos">v.</span></div>
+        <div class="vocab-meaning">使容易；促進 (= make easy)</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>facility (n. 設施；能力)；facilities (n. 設備)；facilitator (n. 引導者)</div>
+        <div class="example">
+          <div class="en">1. The new app <b>facilitates</b> communication between teachers and parents.</div>
+          <div class="zh">這個新的應用程式促進了老師和家長之間的溝通。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. A quiet environment <b>facilitates</b> deep thinking.</div>
+          <div class="zh">安靜的環境有助於深度思考。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">disrupt <span class="vocab-pos">v.</span></div>
+        <div class="vocab-meaning">使中斷；擾亂；打亂</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>disruption (n. 中斷；混亂)；disruptive (adj. 引起騷動的)；body-clock disruption 生物鐘紊亂</div>
+        <div class="example">
+          <div class="en">1. The heavy storm <b>disrupted</b> all flights at the airport.</div>
+          <div class="zh">那場大風暴打亂了機場所有的班機。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. With their plan <b>disrupted</b> by rain, they moved indoors.</div>
+          <div class="zh">由於計畫被雨打亂，他們搬到了室內。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">insight <span class="vocab-pos">n.</span></div>
+        <div class="vocab-meaning">洞察力；深刻見解 +into</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>insightful (adj. 有洞見的)；offer insights 提供見解；gain insight into 深入了解</div>
+        <div class="example">
+          <div class="en">1. The book offers fresh <b>insights</b> into modern family life.</div>
+          <div class="zh">這本書對現代家庭生活提供了新的見解。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. She made very <b>insightful</b> observations during the meeting.</div>
+          <div class="zh">她在會議中提出了很有洞察力的看法。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">flush <span class="vocab-pos">v. / n.</span></div>
+        <div class="vocab-meaning">臉紅 +with；沖水；漲紅</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>flushed (adj. 臉紅的)；blush (v. 因尷尬而臉紅)；flush the toilet 沖馬桶</div>
+        <div class="example">
+          <div class="en">1. Her cheeks <b>flushed</b> with embarrassment when he praised her in public.</div>
+          <div class="zh">當他在公開場合稱讚她時，她的臉因為尷尬而漲紅。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. Always remember to <b>flush</b> the toilet after use.</div>
+          <div class="zh">使用後請記得沖馬桶。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">nausea <span class="vocab-pos">n.</span></div>
+        <div class="vocab-meaning">噁心；想吐</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>nauseous (adj. 想吐的)；nauseate (v. 使作嘔)；motion sickness 動暈症</div>
+        <div class="example">
+          <div class="en">1. The long boat ride caused waves of <b>nausea</b>.</div>
+          <div class="zh">長時間搭船讓我一陣陣噁心。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. The medicine helps reduce <b>nausea</b> and vomiting.</div>
+          <div class="zh">這種藥可以減輕噁心與嘔吐。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">preventive <span class="vocab-pos">adj.</span></div>
+        <div class="vocab-meaning">預防的</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>prevent (v. 預防)；prevention (n. 預防)；precaution (n. 預防措施)；take preventive measures 採取預防措施</div>
+        <div class="example">
+          <div class="en">1. Wearing a mask is a simple <b>preventive</b> measure against viruses.</div>
+          <div class="zh">戴口罩是預防病毒的簡單措施。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. The school takes <b>preventive</b> action to reduce bullying.</div>
+          <div class="zh">學校採取預防性措施來減少霸凌。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 2: Reading -->
+    <div class="section">
+      <div class="section-title"><span class="section-num">2</span>Part 2 ｜ 閱讀測驗 (約 205 字, 學測 2/3 長度)</div>
+      <div class="reading">
+        <h3>Why Small Conversations Spread Big Ideas</h3>
+        <p class="meta">~ 205 words · 約學測閱讀 2/3 長度 ~</p>
+        <p>In 1995, a meeting in a small living room in California gave birth to a powerful idea called "The World Café." When the original plan to gather outdoors was <b>disrupted</b> by heavy rain, the guests squeezed onto sofas, broke into small groups, and began chatting freely. They wrote their <b>insights</b> on paper tablecloths, and from time to time switched seats so that thoughts could <b>circulate</b> across the room.</p>
+        <p>What seemed like a casual conversation actually <b>facilitated</b> a brand-new kind of collective thinking. Researchers have since found that when ideas flow through small groups, each round of talk deepens the previous one. Periodically rotating members allows new perspectives to enter without forcing anyone to <b>emphasize</b> his or her own opinion too strongly.</p>
+        <p>Today, businesses, schools, and even hospitals use World Café methods to solve problems. The technique is especially helpful for shy people: small tables reduce the <b>uneasiness</b> of speaking in front of a crowd. As preventive medicine, the format also lowers stress and supports mental health in workplaces. From rainy Mill Valley to cities around the globe, a simple group chat continues to prove that great ideas often start in the smallest of rooms.</p>
+      </div>
+
+      <div class="questions">
+        <div class="question">
+          <div class="q-stem">1. What is the World Café approach mainly about?</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">A famous coffee shop in California.</li>
+            <li class="opt" data-letter="B">A way to share ideas through small group conversations.</li>
+            <li class="opt" data-letter="C">A new method of medical research.</li>
+            <li class="opt" data-letter="D">A strict business meeting format.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B<div class="why">第二段提到「small groups → collective thinking → spread ideas」。</div></div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">2. Why did the original plan need to be changed?</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">Too many people came.</li>
+            <li class="opt" data-letter="B">The host was sick.</li>
+            <li class="opt" data-letter="C">It started raining heavily.</li>
+            <li class="opt" data-letter="D">They ran out of food.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C<div class="why">第一段：「the original plan to gather outdoors was disrupted by heavy rain.」</div></div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">3. According to the passage, who benefits especially from the World Café format?</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">People who like to dominate discussions.</li>
+            <li class="opt" data-letter="B">Shy people who fear speaking to crowds.</li>
+            <li class="opt" data-letter="C">Children under the age of ten.</li>
+            <li class="opt" data-letter="D">Professional salespeople only.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B<div class="why">第三段：「especially helpful for shy people: small tables reduce the uneasiness…」</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 3: MCQ -->
+    <div class="section">
+      <div class="section-title"><span class="section-num">3</span>Part 3 ｜ 單字選擇題 (10 題 · 40% 弱點 + 60% 同程度)</div>
+      <p style="margin-bottom:16px;color:#6c757d;font-size:0.95em;">
+        <span class="legend weak">弱點字</span> 來自 Alice 不熟悉的詞；
+        <span class="legend std">學測級</span> 為同程度高頻字。
+      </p>
+
+      <div class="questions">
+        <div class="question">
+          <div class="q-stem">1. <span class="legend weak">弱點字</span> Fresh air <u>______</u> through the open windows.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">disrupts</li>
+            <li class="opt" data-letter="B">circulates</li>
+            <li class="opt" data-letter="C">emphasizes</li>
+            <li class="opt" data-letter="D">flushes</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B circulate 流通</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">2. <span class="legend std">學測級</span> Researchers were able to <u>______</u> the experiment by simplifying the steps.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">facilitate</li>
+            <li class="opt" data-letter="B">terminate</li>
+            <li class="opt" data-letter="C">postpone</li>
+            <li class="opt" data-letter="D">decline</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A facilitate 使容易</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">3. <span class="legend weak">弱點字</span> The unexpected storm <u>______</u> our holiday plans.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">facilitated</li>
+            <li class="opt" data-letter="B">disclosed</li>
+            <li class="opt" data-letter="C">disrupted</li>
+            <li class="opt" data-letter="D">circulated</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C disrupt 打亂</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">4. <span class="legend std">學測級</span> The professor <u>______</u> the importance of original thinking in her lecture.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">emphasized</li>
+            <li class="opt" data-letter="B">ignored</li>
+            <li class="opt" data-letter="C">denied</li>
+            <li class="opt" data-letter="D">forgave</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A emphasize 強調</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">5. <span class="legend weak">弱點字</span> Doctors recommend <u>______</u> measures such as exercise to avoid heart disease.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">excessive</li>
+            <li class="opt" data-letter="B">preventive</li>
+            <li class="opt" data-letter="C">offensive</li>
+            <li class="opt" data-letter="D">passive</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B preventive 預防的</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">6. <span class="legend std">學測級</span> She felt sudden <u>______</u> after eating too many sweets.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">nausea</li>
+            <li class="opt" data-letter="B">justice</li>
+            <li class="opt" data-letter="C">leisure</li>
+            <li class="opt" data-letter="D">curiosity</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A nausea 噁心</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">7. <span class="legend std">學測級</span> The book gave the reader new <u>______</u> into Japanese culture.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">insights</li>
+            <li class="opt" data-letter="B">imports</li>
+            <li class="opt" data-letter="C">incomes</li>
+            <li class="opt" data-letter="D">inputs</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A insight into 對…的洞見</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">8. <span class="legend weak">弱點字</span> The boy's face <u>______</u> with embarrassment when he heard the compliment.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">crashed</li>
+            <li class="opt" data-letter="B">flushed</li>
+            <li class="opt" data-letter="C">burst</li>
+            <li class="opt" data-letter="D">struck</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B flush with 因…臉紅</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">9. <span class="legend std">學測級</span> One part of your balance system says you are moving, but the other parts <u>______</u>.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">aren't</li>
+            <li class="opt" data-letter="B">don't</li>
+            <li class="opt" data-letter="C">won't</li>
+            <li class="opt" data-letter="D">haven't</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B don't (代替動詞 detect)</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">10. <span class="legend std">學測級</span> The breakthrough in technology <u>______</u> a new era of communication.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">made up for</li>
+            <li class="opt" data-letter="B">kept track of</li>
+            <li class="opt" data-letter="C">gave rise to</li>
+            <li class="opt" data-letter="D">looked out for</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C give rise to 引起；產生</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== DAY 3 ============== -->
+  <div class="day day3">
+    <div class="day-header day3-bg">
+      <h2>📘 Day 3：文化與科技 (Culture & Technology)</h2>
+      <p>主題：巴黎聖母院鐘聲、交通號誌歷史 — 鎖定第 21-38 題文意選填 & 閱讀弱點</p>
+    </div>
+
+    <!-- Part 1: Vocabulary -->
+    <div class="section">
+      <div class="section-title"><span class="section-num">1</span>Part 1 ｜ 不熟單字 8 個 (含衍生詞與例句)</div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">acoustic <span class="vocab-pos">adj.</span></div>
+        <div class="vocab-meaning">聽覺的；原音的（無電子擴音）</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>acoustics (n. 音響效果)；acoustic guitar 原音吉他；acoustic quality 音質</div>
+        <div class="example">
+          <div class="en">1. The concert hall is famous for its excellent <b>acoustic</b> quality.</div>
+          <div class="zh">這間音樂廳以絕佳的音響效果聞名。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. He prefers playing an <b>acoustic</b> guitar to an electric one.</div>
+          <div class="zh">他偏好彈原音吉他勝過電吉他。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">devastating <span class="vocab-pos">adj.</span></div>
+        <div class="vocab-meaning">毀滅性的；極具破壞力的</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>devastate (v. 毀壞)；devastation (n. 毀壞)；devastatingly (adv.)</div>
+        <div class="example">
+          <div class="en">1. The <b>devastating</b> earthquake destroyed half of the village.</div>
+          <div class="zh">這場毀滅性的地震摧毀了村莊的一半。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. Losing her best friend was a <b>devastating</b> experience for her.</div>
+          <div class="zh">失去最好的朋友對她而言是極度打擊的經驗。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">renowned <span class="vocab-pos">adj.</span></div>
+        <div class="vocab-meaning">有名的；著名的 (= famous)</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>renown (n. 名聲)；be renowned for 以…聞名；world-renowned 享譽世界的</div>
+        <div class="example">
+          <div class="en">1. Paris is <b>renowned</b> for its romantic atmosphere.</div>
+          <div class="zh">巴黎以浪漫的氛圍聞名。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. He is a <b>renowned</b> scientist in the field of climate change.</div>
+          <div class="zh">他是氣候變遷領域的知名科學家。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">retain <span class="vocab-pos">v.</span></div>
+        <div class="vocab-meaning">保留；保有</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>retention (n. 保留；記憶力)；retainer (n. 留任者；訂金)；retain heat 保溫</div>
+        <div class="example">
+          <div class="en">1. The old castle has <b>retained</b> much of its original beauty.</div>
+          <div class="zh">那座古城堡保留了大部分原本的美麗。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. Despite many changes, the team <b>retained</b> its winning spirit.</div>
+          <div class="zh">儘管有許多變動，這個隊伍仍保有獲勝的精神。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">intersection <span class="vocab-pos">n.</span></div>
+        <div class="vocab-meaning">十字路口；交叉處</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>intersect (v. 交叉)；at the intersection of 在…的交叉口；crossroad (n. 路口)</div>
+        <div class="example">
+          <div class="en">1. There has been a serious accident at the busy <b>intersection</b>.</div>
+          <div class="zh">在那個繁忙的十字路口發生了一場嚴重的車禍。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. Please look both ways before crossing the <b>intersection</b>.</div>
+          <div class="zh">穿越十字路口前請左右看清楚。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">hazard <span class="vocab-pos">n.</span></div>
+        <div class="vocab-meaning">危險；危害物 (= danger)</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>hazardous (adj. 危險的)；a fire/health hazard 火災／健康隱憂；occupational hazard 職業風險</div>
+        <div class="example">
+          <div class="en">1. Old electrical wiring is a serious fire <b>hazard</b>.</div>
+          <div class="zh">老舊的電線是嚴重的火災隱憂。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. Working long hours under stress is a common <b>hazard</b> for nurses.</div>
+          <div class="zh">長時間在壓力下工作對護士來說是常見的職業風險。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">caution <span class="vocab-pos">n. / v.</span></div>
+        <div class="vocab-meaning">謹慎；小心；警告</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>cautious (adj. 謹慎的)；cautiously (adv.)；precaution (n. 預防措施)；with caution 小心地</div>
+        <div class="example">
+          <div class="en">1. The yellow light signals drivers to proceed with <b>caution</b>.</div>
+          <div class="zh">黃燈警示駕駛人小心通行。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. She approached the strange dog with great <b>caution</b>.</div>
+          <div class="zh">她非常謹慎地接近那隻陌生的狗。</div>
+        </div>
+      </div>
+
+      <div class="vocab-card">
+        <div class="vocab-word">horizontally <span class="vocab-pos">adv.</span></div>
+        <div class="vocab-meaning">水平地；橫向地</div>
+        <div class="vocab-deriv"><strong>衍生：</strong>horizontal (adj. 水平的)；horizon (n. 地平線)；vertically (adv. 垂直地, 反義)</div>
+        <div class="example">
+          <div class="en">1. The arms of the signal extended <b>horizontally</b> to stop the cars.</div>
+          <div class="zh">號誌的臂桿水平伸出，命令車輛停下。</div>
+        </div>
+        <div class="example">
+          <div class="en">2. Lay the patient <b>horizontally</b> until help arrives.</div>
+          <div class="zh">請讓病患平躺，直到救援抵達。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 2: Reading -->
+    <div class="section">
+      <div class="section-title"><span class="section-num">2</span>Part 2 ｜ 閱讀測驗 (約 210 字, 學測 2/3 長度)</div>
+      <div class="reading">
+        <h3>From Railway Arms to Smart Streets</h3>
+        <p class="meta">~ 210 words · 約學測閱讀 2/3 長度 ~</p>
+        <p>The traffic light we see at every <b>intersection</b> today has a surprisingly long history. The very first system was invented by John Peake Knight, a British railway engineer in the 1860s. Knight noticed that the busy streets of London were a real public <b>hazard</b>, so he adapted the movable-arm signal used on trains. When the arms extended <b>horizontally</b>, drivers had to stop; when they lowered, traffic could move on. At night, red and green gas lamps replaced the arms.</p>
+        <p>Sadly, Knight's first installation near Westminster Bridge ended in disaster. A gas leak caused an explosion and injured the operating policeman. The project was halted, and traffic lights were banned in Britain for almost sixty years.</p>
+        <p>Across the Atlantic, however, the idea quickly <b>retained</b> popularity. American engineers added their own innovations. The most <b>renowned</b> contribution came from William Potts, a Detroit police officer who introduced the yellow light in 1920, telling drivers to proceed with <b>caution</b>. His three-color system is now used worldwide.</p>
+        <p>Today, scientists are exploring whether traffic lights are still needed. With smart vehicles communicating <b>automatically</b>, future intersections may operate without any visible signal at all—a quiet revolution that began with a single railway-style arm over 150 years ago.</p>
+      </div>
+
+      <div class="questions">
+        <div class="question">
+          <div class="q-stem">1. What was the main inspiration for Knight's first traffic light?</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">A traffic director's hand gestures only.</li>
+            <li class="opt" data-letter="B">The movable-arm signal used on trains.</li>
+            <li class="opt" data-letter="C">The flashing of gas lamps in factories.</li>
+            <li class="opt" data-letter="D">A children's toy in Nottingham.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B<div class="why">第一段：「adapted the movable-arm signal used on trains.」</div></div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">2. Why was Knight's traffic light banned in Britain?</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">Drivers could not see the arms.</li>
+            <li class="opt" data-letter="B">It cost too much to operate.</li>
+            <li class="opt" data-letter="C">A gas leak caused an explosion.</li>
+            <li class="opt" data-letter="D">It only worked during the day.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C<div class="why">第二段：「A gas leak caused an explosion and injured the operating policeman.」</div></div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">3. According to the passage, what may happen with self-driving cars in the future?</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">Traffic lights will become more colorful.</li>
+            <li class="opt" data-letter="B">Police will operate every intersection.</li>
+            <li class="opt" data-letter="C">Intersections may not need traffic signals.</li>
+            <li class="opt" data-letter="D">Drivers will use hand signals again.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C<div class="why">末段：「future intersections may operate without any visible signal at all.」</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 3: MCQ -->
+    <div class="section">
+      <div class="section-title"><span class="section-num">3</span>Part 3 ｜ 單字選擇題 (10 題 · 40% 弱點 + 60% 同程度)</div>
+      <p style="margin-bottom:16px;color:#6c757d;font-size:0.95em;">
+        <span class="legend weak">弱點字</span> 來自 Alice 不熟悉的詞；
+        <span class="legend std">學測級</span> 為同程度高頻字。
+      </p>
+
+      <div class="questions">
+        <div class="question">
+          <div class="q-stem">1. <span class="legend weak">弱點字</span> The concert hall is famous for its excellent <u>______</u> quality.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">acoustic</li>
+            <li class="opt" data-letter="B">economic</li>
+            <li class="opt" data-letter="C">domestic</li>
+            <li class="opt" data-letter="D">academic</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A acoustic 音響的</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">2. <span class="legend std">學測級</span> The tower has <u>______</u> its original shape for over 800 years.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">released</li>
+            <li class="opt" data-letter="B">retained</li>
+            <li class="opt" data-letter="C">refused</li>
+            <li class="opt" data-letter="D">removed</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B retain 保留</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">3. <span class="legend weak">弱點字</span> The 2019 fire was <u>______</u>; it damaged centuries of art.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">refreshing</li>
+            <li class="opt" data-letter="B">amusing</li>
+            <li class="opt" data-letter="C">devastating</li>
+            <li class="opt" data-letter="D">welcoming</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C devastating 毀滅性的</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">4. <span class="legend std">學測級</span> Paris is <u>______</u> for its cafés and beautiful streets.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">renowned</li>
+            <li class="opt" data-letter="B">refused</li>
+            <li class="opt" data-letter="C">reformed</li>
+            <li class="opt" data-letter="D">reduced</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A be renowned for 以…聞名</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">5. <span class="legend weak">弱點字</span> Drivers must slow down at every <u>______</u> to avoid accidents.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">decoration</li>
+            <li class="opt" data-letter="B">intersection</li>
+            <li class="opt" data-letter="C">imagination</li>
+            <li class="opt" data-letter="D">cooperation</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B intersection 十字路口</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">6. <span class="legend std">學測級</span> Loose wires near water are a serious <u>______</u>.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">harvest</li>
+            <li class="opt" data-letter="B">heritage</li>
+            <li class="opt" data-letter="C">hazard</li>
+            <li class="opt" data-letter="D">hostage</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：C hazard 危險物</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">7. <span class="legend std">學測級</span> The yellow light tells drivers to proceed with <u>______</u>.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">caution</li>
+            <li class="opt" data-letter="B">campaign</li>
+            <li class="opt" data-letter="C">capacity</li>
+            <li class="opt" data-letter="D">comment</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A caution 謹慎</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">8. <span class="legend weak">弱點字</span> The arms of the signal were extended <u>______</u> to command traffic to stop.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">horizontally</li>
+            <li class="opt" data-letter="B">verbally</li>
+            <li class="opt" data-letter="C">randomly</li>
+            <li class="opt" data-letter="D">previously</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A horizontally 水平地</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">9. <span class="legend std">學測級</span> Smart cars can adjust their speed <u>______</u> without human control.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">automatically</li>
+            <li class="opt" data-letter="B">accidentally</li>
+            <li class="opt" data-letter="C">approximately</li>
+            <li class="opt" data-letter="D">apparently</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：A automatically 自動地</div>
+        </div>
+
+        <div class="question">
+          <div class="q-stem">10. <span class="legend std">學測級</span> The project was <u>______</u> a public hazard and immediately stopped.</div>
+          <ul class="q-options">
+            <li class="opt" data-letter="A">denied</li>
+            <li class="opt" data-letter="B">deemed</li>
+            <li class="opt" data-letter="C">decided</li>
+            <li class="opt" data-letter="D">delayed</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="answer">✔ 正解：B deem (v. 認為) — be deemed a hazard 被視為危險物</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    💖 持續複習 · 反覆練習 · Alice 加油！💖<br>
+    本教材依據 114 學測作答情形與不熟悉單字客製化編排，建議每天完成一個 Day，並回顧前一天錯題。
+  </footer>
+</div>
+
+<script>
+function switchDay(n) {
+  document.querySelectorAll('.day').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector('.day.day' + n).classList.add('active');
+  document.querySelector('.tab.day' + n).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function toggleAnswer(btn) {
+  const ans = btn.nextElementSibling;
+  ans.classList.toggle('show');
+  btn.textContent = ans.classList.contains('show') ? '隱藏答案 ▲' : '查看答案 ▼';
+}
+</script>
+</body>
+</html>
