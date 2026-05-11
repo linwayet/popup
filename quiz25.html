@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alice｜114 學測錯題分析 × 加強講解</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Noto Sans TC", "Segoe UI", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(135deg, #fff5e6 0%, #ffe0c2 40%, #ffcaa3 100%);
+    color: #4a2c1a;
+    line-height: 1.75;
+    padding: 24px 16px;
+    min-height: 100vh;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* ============ HEADER ============ */
+  header {
+    background: linear-gradient(135deg, #ff8c42 0%, #ff5e3a 50%, #c4302b 100%);
+    color: #fff;
+    padding: 36px 28px;
+    border-radius: 22px;
+    box-shadow: 0 12px 32px rgba(196, 48, 43, 0.28);
+    margin-bottom: 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  header h1 { font-size: 2em; margin-bottom: 10px; letter-spacing: 1px; position: relative; }
+  header p { font-size: 1.05em; opacity: 0.95; position: relative; }
+  header .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.25);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin: 12px 4px 0;
+    font-size: 0.88em;
+    position: relative;
+  }
+
+  /* ============ SUMMARY DASHBOARD ============ */
+  .dashboard {
+    background: #fff;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(196, 100, 50, 0.12);
+    margin-bottom: 28px;
+    border-left: 8px solid #ff8c42;
+  }
+  .dashboard h2 {
+    color: #c4302b;
+    font-size: 1.4em;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .stat-card {
+    background: linear-gradient(135deg, #fff8e7 0%, #ffe9c5 100%);
+    padding: 16px;
+    border-radius: 12px;
+    border-left: 5px solid #ff8c42;
+    text-align: center;
+  }
+  .stat-card.warn { border-left-color: #e74c3c; background: linear-gradient(135deg, #fff0eb 0%, #ffd5c5 100%); }
+  .stat-card.good { border-left-color: #f5a623; background: linear-gradient(135deg, #fffaef 0%, #fff0c9 100%); }
+  .stat-card.danger { border-left-color: #b71c1c; background: linear-gradient(135deg, #ffe0db 0%, #ffb3a0 100%); }
+  .stat-label { font-size: 0.92em; color: #7a4925; margin-bottom: 6px; font-weight: 600; }
+  .stat-value { font-size: 1.6em; font-weight: 800; color: #c4302b; }
+  .stat-note { font-size: 0.82em; color: #966042; margin-top: 4px; }
+
+  .priority-list {
+    background: #fff8e7;
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 2px dashed #f5a623;
+  }
+  .priority-list h3 { color: #b85c00; margin-bottom: 10px; font-size: 1.05em; }
+  .priority-list ol { padding-left: 24px; }
+  .priority-list li { margin-bottom: 6px; color: #4a2c1a; }
+  .priority-list .level {
+    display: inline-block;
+    font-size: 0.78em;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 700;
+    margin-right: 6px;
+  }
+  .level.high { background: #ffd5c5; color: #b71c1c; }
+  .level.mid { background: #ffe9c5; color: #b85c00; }
+  .level.low { background: #fff0c9; color: #8a6d00; }
+
+  /* ============ SECTIONS ============ */
+  .module {
+    background: #fff;
+    border-radius: 18px;
+    padding: 26px;
+    margin-bottom: 26px;
+    box-shadow: 0 6px 20px rgba(196, 100, 50, 0.12);
+    border-top: 6px solid #ff8c42;
+  }
+  .module-title {
+    font-size: 1.35em;
+    color: #c4302b;
+    font-weight: 800;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .module-title .icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff8c42 0%, #ff5e3a 100%);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    box-shadow: 0 3px 8px rgba(255, 94, 58, 0.3);
+  }
+  .module-subtitle {
+    color: #966042;
+    font-size: 0.95em;
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px dashed #ffd9b8;
+  }
+
+  /* ============ ERROR CARD ============ */
+  .error-card {
+    background: linear-gradient(135deg, #fffaf0 0%, #fff0e1 100%);
+    padding: 20px 22px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    border-left: 5px solid #ff5e3a;
+  }
+  .qnum {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff5e3a 0%, #c4302b 100%);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-weight: 800;
+    font-size: 0.92em;
+    margin-right: 8px;
+  }
+  .qtopic {
+    display: inline-block;
+    color: #b85c00;
+    font-size: 0.88em;
+    font-weight: 600;
+  }
+  .question-text {
+    background: #fff;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin: 12px 0;
+    border: 1px solid #ffe0c2;
+    font-size: 1em;
+  }
+  .answer-row {
+    display: flex;
+    gap: 14px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+  .answer-box {
+    flex: 1;
+    min-width: 220px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 0.95em;
+  }
+  .ans-wrong {
+    background: linear-gradient(135deg, #ffe0db 0%, #ffc4b8 100%);
+    border-left: 4px solid #c4302b;
+  }
+  .ans-right {
+    background: linear-gradient(135deg, #fff0c9 0%, #ffd97a 100%);
+    border-left: 4px solid #d4a017;
+  }
+  .ans-label { font-weight: 700; font-size: 0.85em; margin-bottom: 4px; }
+  .ans-wrong .ans-label { color: #b71c1c; }
+  .ans-right .ans-label { color: #8a6d00; }
+
+  .explain {
+    background: #fff8e7;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-top: 12px;
+    border: 1px solid #ffe0a0;
+  }
+  .explain h4 {
+    color: #b85c00;
+    margin-bottom: 8px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .explain p { margin-bottom: 6px; font-size: 0.95em; color: #4a2c1a; }
+  .explain .tip {
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    margin-top: 8px;
+    border-left: 3px solid #f5a623;
+    font-size: 0.92em;
+  }
+
+  /* ============ PRACTICE ============ */
+  .practice {
+    background: linear-gradient(135deg, #fff0e1 0%, #ffe0c2 100%);
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-top: 14px;
+    border: 2px dotted #ff8c42;
+  }
+  .practice h4 {
+    color: #c4302b;
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+  .practice .pq {
+    background: #fff;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 3px solid #f5a623;
+  }
+  .practice .pq strong { color: #b85c00; }
+  .practice .pq ul { list-style: none; padding-left: 14px; margin: 6px 0; }
+  .practice .pq ul li { padding: 2px 0; font-size: 0.95em; }
+  .practice .pq ul li::before {
+    content: attr(data-letter) ". ";
+    font-weight: 700;
+    color: #ff8c42;
+  }
+  .answer-btn {
+    background: linear-gradient(135deg, #ff8c42 0%, #ff5e3a 100%);
+    color: #fff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 0.85em;
+    cursor: pointer;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+  .answer-btn:hover { transform: translateY(-1px); }
+  .reveal {
+    display: none;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #fff0c9 0%, #ffd97a 100%);
+    border-radius: 8px;
+    color: #4a2c1a;
+    font-weight: 600;
+    font-size: 0.92em;
+  }
+  .reveal.show { display: block; }
+  .reveal .why { font-weight: 400; color: #4a2c1a; margin-top: 4px; font-size: 0.9em; }
+
+  /* ============ STRATEGY ============ */
+  .strategy-box {
+    background: linear-gradient(135deg, #fff8e7 0%, #ffe9c5 100%);
+    padding: 18px 22px;
+    border-radius: 14px;
+    margin-top: 16px;
+    border: 2px solid #f5a623;
+  }
+  .strategy-box h3 {
+    color: #b85c00;
+    margin-bottom: 12px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .strategy-box ul { padding-left: 24px; }
+  .strategy-box li { margin-bottom: 6px; color: #4a2c1a; font-size: 0.96em; }
+
+  footer {
+    text-align: center;
+    padding: 24px;
+    color: #966042;
+    font-size: 0.9em;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 600px) {
+    .answer-row { flex-direction: column; }
+    header h1 { font-size: 1.5em; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>🍊 Alice｜114 學測錯題分析 & 加強講解 🍊</h1>
+    <p>逐題剖析錯誤原因 × 提供修正策略 × 立即練習</p>
+    <span class="tag">📅 2026-05-11 製作</span>
+    <span class="tag">🎯 鎖定 16 題錯題</span>
+    <span class="tag">📚 4 大題型講解</span>
+  </header>
+
+  <!-- ============== DASHBOARD ============== -->
+  <div class="dashboard">
+    <h2>🧭 整體弱點儀表板</h2>
+    <div class="stats">
+      <div class="stat-card good">
+        <div class="stat-label">詞彙題 (Q1-10)</div>
+        <div class="stat-value">8 / 10</div>
+        <div class="stat-note">錯 Q3、Q5</div>
+      </div>
+      <div class="stat-card warn">
+        <div class="stat-label">綜合測驗 (Q11-20)</div>
+        <div class="stat-value">5 / 10</div>
+        <div class="stat-note">錯 5 題 ⚠️</div>
+      </div>
+      <div class="stat-card danger">
+        <div class="stat-label">文意選填 (Q21-30)</div>
+        <div class="stat-value">2 / 10</div>
+        <div class="stat-note">錯 8 題 ❗ 最大弱點</div>
+      </div>
+      <div class="stat-card good">
+        <div class="stat-label">篇章結構 (Q31-34)</div>
+        <div class="stat-value">4 / 4</div>
+        <div class="stat-note">滿分 🎉</div>
+      </div>
+      <div class="stat-card good">
+        <div class="stat-label">閱讀測驗 (Q35-38)</div>
+        <div class="stat-value">3 / 4</div>
+        <div class="stat-note">錯 Q35 (主旨題)</div>
+      </div>
+    </div>
+
+    <div class="priority-list">
+      <h3>📋 加強優先順序</h3>
+      <ol>
+        <li><span class="level high">第一級</span><b>文意選填</b>：8 題錯，需專練「上下文判斷詞性、搭配、語意」。</li>
+        <li><span class="level mid">第二級</span><b>綜合測驗</b>：時態、片語、生活情境字義混淆需釐清。</li>
+        <li><span class="level mid">第二級</span><b>詞彙題</b>：對「字形/字義相近字」辨識力不足 (blurring/draining)。</li>
+        <li><span class="level low">第三級</span><b>閱讀主旨題</b>：習慣性看細節而忽略全文 big picture。</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ============== MODULE 1: 詞彙題 ============== -->
+  <div class="module">
+    <div class="module-title"><span class="icon">①</span>詞彙題錯題講解 (Q3, Q5)</div>
+    <div class="module-subtitle">弱點：字形相近字混淆 / 抽象與具體用法不分</div>
+
+    <!-- Q3 -->
+    <div class="error-card">
+      <span class="qnum">Q3</span><span class="qtopic">字義 · 形容記憶模糊</span>
+      <div class="question-text">
+        As the years have passed by, many of my childhood memories are already <u>______</u>; I can no longer recall clearly what happened back then.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(D) glaring</div>
+          glaring = 刺眼的；明目張膽的。形容光線太強、或錯誤太明顯，<b>與「記憶模糊」相反</b>。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(A) blurring</div>
+          blurring = 變模糊的；blur 的現在分詞。<b>與後句「can no longer recall clearly」呼應</b>。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 為什麼會錯？</h4>
+        <p>四個選項都是 -ing 形容詞，但意思天差地遠：blurring (模糊)、trimming (修剪)、draining (耗盡)、glaring (刺眼)。Alice 看到 already 後面接 -ing 字就靠感覺選，沒有用「線索字 = no longer recall clearly」回推。</p>
+        <div class="tip">📌 策略：詞彙題遇到不認識的字，<b>務必找句中「同義／反義線索」</b>。本題的線索是「can no longer recall clearly」——「不能清楚回想」就是「模糊」。</div>
+      </div>
+
+      <div class="practice">
+        <h4>🎯 立即練習</h4>
+        <div class="pq">
+          <strong>1.</strong> Through the foggy window, the streetlights looked <u>______</u> and unreal.
+          <ul>
+            <li data-letter="A">trimming</li>
+            <li data-letter="B">blurring</li>
+            <li data-letter="C">glowing</li>
+            <li data-letter="D">draining</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="reveal">✔ (B) blurring <div class="why">"foggy window" 為線索，街燈在霧裡看起來「模糊」。</div></div>
+        </div>
+        <div class="pq">
+          <strong>2.</strong> The strong sunlight was so <u>______</u> that I had to put on sunglasses.
+          <ul>
+            <li data-letter="A">blurring</li>
+            <li data-letter="B">soothing</li>
+            <li data-letter="C">draining</li>
+            <li data-letter="D">glaring</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="reveal">✔ (D) glaring <div class="why">需戴墨鏡 → 陽光「刺眼」。</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="error-card">
+      <span class="qnum">Q5</span><span class="qtopic">字義 · 寫作流程</span>
+      <div class="question-text">
+        Not satisfied with the first <u>______</u> of her essay, Mary revised it several times before turning it in to the teacher.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(D) plot</div>
+          plot = 故事「情節」；陰謀。只用於「小說/戲劇」，<b>不用於文章寫作流程</b>。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(C) draft</div>
+          draft = 草稿。"first draft / second draft / final draft" 是寫作流程的固定說法。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 為什麼會錯？</h4>
+        <p>關鍵詞「revised it several times」(修改了好幾次) 暗示 first __ 是寫作的「初版」。plot 是「情節」屬於小說內容，而非文件版本。</p>
+        <div class="tip">📌 策略：背 draft 時一起記「first draft 初稿 / final draft 定稿 / rough draft 草稿」這組搭配。</div>
+      </div>
+
+      <div class="practice">
+        <h4>🎯 立即練習</h4>
+        <div class="pq">
+          <strong>1.</strong> The novelist worked on the <u>______</u> of her new book for three months before letting anyone read it.
+          <ul>
+            <li data-letter="A">text</li>
+            <li data-letter="B">brush</li>
+            <li data-letter="C">draft</li>
+            <li data-letter="D">plot</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="reveal">✔ (C) draft <div class="why">「讓任何人看」前的版本 → 草稿。</div></div>
+        </div>
+        <div class="pq">
+          <strong>2.</strong> The movie's <u>______</u> was so confusing that many viewers left halfway.
+          <ul>
+            <li data-letter="A">draft</li>
+            <li data-letter="B">plot</li>
+            <li data-letter="C">brush</li>
+            <li data-letter="D">tag</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="reveal">✔ (B) plot <div class="why">「電影故事」用 plot。</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-box">
+      <h3>📚 詞彙題加強策略</h3>
+      <ul>
+        <li>① 不要只記「中文翻譯」，更要記「典型搭配」(collocation)。例如 draft 永遠和 first/final/rough 一起出現。</li>
+        <li>② 看到不認識的選項，<b>不要慌</b>。從題目找 2 個以上的線索字（信號詞），再用排除法。</li>
+        <li>③ 建立「相近字筆記」：blur/blurring vs glare/glaring vs drain/draining vs trim/trimming。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============== MODULE 2: 綜合測驗 ============== -->
+  <div class="module">
+    <div class="module-title"><span class="icon">②</span>綜合測驗錯題講解 (Q9, Q10, Q11, Q14, Q16)</div>
+    <div class="module-subtitle">弱點：時態判斷、片語固定搭配、生活字一字多義</div>
+
+    <!-- Q9 -->
+    <div class="error-card">
+      <span class="qnum">Q9</span><span class="qtopic">動詞搭配 · 蒞臨光臨</span>
+      <div class="question-text">
+        Despite his busy schedule, the President <u>______</u> the school's graduation ceremony with his presence and a heartwarming speech.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(D) credited</div>
+          credit sb with ~ = 把…歸功於某人。<b>跟「ceremony」搭配不通</b>。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(B) graced</div>
+          grace ~ with one's presence = 蒞臨；光臨。固定句型。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 為什麼會錯？</h4>
+        <p>關鍵在「with his presence」這個介系詞片語。<b>grace + 場合 + with one's presence</b> 是固定搭配，意思是「以親臨增光」，常見於正式場合。</p>
+        <div class="tip">📌 必背搭配：grace sth with one's presence；honor sb with~；praise/credit 都不可這樣用。</div>
+      </div>
+    </div>
+
+    <!-- Q10 -->
+    <div class="error-card">
+      <span class="qnum">Q10</span><span class="qtopic">字義 · 口頭辱罵</span>
+      <div class="question-text">
+        The manager of the company was sued for <u>______</u> abusing his colleagues, calling them "hopeless losers."
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(C) legitimately</div>
+          legitimately = 合法地。<b>合法的辱罵不存在</b>，邏輯不通。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(A) verbally</div>
+          verbally = 口頭地。calling them "losers" 是用「話語」傷害人。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 為什麼會錯？</h4>
+        <p>後句「calling them 'hopeless losers'」是線索 — 用言語罵人 → verbally abuse = 言語霸凌。</p>
+        <div class="tip">📌 補充搭配：verbal abuse (言語暴力)、physical abuse (肢體暴力)、emotional abuse (情緒虐待)。</div>
+      </div>
+    </div>
+
+    <!-- Q11 -->
+    <div class="error-card">
+      <span class="qnum">Q11</span><span class="qtopic">時態 · 過去未來事件</span>
+      <div class="question-text">
+        In 1995, ... None of them had any idea they were about to create a social innovation that <u>______</u> rapidly around the world.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(D) would have spread</div>
+          would have V-pp 用於「與過去事實相反的假設」(虛擬語氣)。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(B) would spread</div>
+          would + V 用於「過去式中的未來」(站在 1995 年看未來的事)。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 為什麼會錯？</h4>
+        <p>主句時態是 had + 過去 (1995 年的過去)。從句要表達「在那個過去之後將會發生」的事，用 would + V（過去未來式）。<br>
+        ⚠️ "would have spread" = 過去未來完成 / 虛擬語氣，<b>暗示「並沒有真的擴散」</b>，但事實是它真的擴散了，矛盾！</p>
+        <div class="tip">📌 口訣：「過去看未來，就用 would」；「假設沒做到，才用 would have」。</div>
+      </div>
+
+      <div class="practice">
+        <h4>🎯 立即練習</h4>
+        <div class="pq">
+          <strong>1.</strong> In 1990, no one knew that the Internet <u>______</u> change the world so quickly.
+          <ul>
+            <li data-letter="A">would</li>
+            <li data-letter="B">would have</li>
+            <li data-letter="C">had</li>
+            <li data-letter="D">has</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="reveal">✔ (A) would <div class="why">站在 1990 年看未來事實 → would + V。</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q14 -->
+    <div class="error-card">
+      <span class="qnum">Q14</span><span class="qtopic">片語 · 引發/造成</span>
+      <div class="question-text">
+        ...the innovative discussion process <u>______</u> a new form of collective effort that transformed the depth, scope, and quality of their discussion.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(A) made up for</div>
+          make up for = 彌補 (損失)。<b>後接「不好的事」</b>。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(C) gave rise to</div>
+          give rise to = 引起；產生 (= cause; lead to)。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 為什麼會錯？</h4>
+        <p>後面接的是「a new form of collective effort」(一種新的集體努力形式) — 這是「產生新事物」的概念，不是「彌補」。</p>
+        <div class="tip">📌 四個片語對比：<br>
+        • make up for 彌補 (失敗、損失)<br>
+        • keep track of 追蹤、留意<br>
+        • give rise to 引起、產生 (新事物)<br>
+        • look out for 注意；小心提防</div>
+      </div>
+
+      <div class="practice">
+        <h4>🎯 立即練習</h4>
+        <div class="pq">
+          <strong>1.</strong> The new policy <u>______</u> a wave of protests across the country.
+          <ul>
+            <li data-letter="A">made up for</li>
+            <li data-letter="B">kept track of</li>
+            <li data-letter="C">gave rise to</li>
+            <li data-letter="D">looked out for</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="reveal">✔ (C) gave rise to <div class="why">產生了一波抗議 → give rise to。</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q16 -->
+    <div class="error-card">
+      <span class="qnum">Q16</span><span class="qtopic">字義 · 突然發生</span>
+      <div class="question-text">
+        It can <u>______</u> suddenly, progressing from a feeling of uneasiness to a cold sweat. (motion sickness)
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(C) burst</div>
+          burst 多用於「容器爆裂」或 burst into ~。<b>不能直接接 suddenly 形容「症狀出現」</b>。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(D) strike</div>
+          strike = 突然襲擊 (疾病、災害)。strike suddenly 是常見搭配。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 為什麼會錯？</h4>
+        <p>strike 在這裡是「(疾病/災害) 突如其來地侵襲」。例：A storm struck the city. / Illness can strike at any time.</p>
+        <div class="tip">📌 strike 的多義：<br>1. 打、撞 → strike a tree<br>2. 突襲、降臨 → illness strikes<br>3. 突然想到 → It struck me that…<br>4. 罷工 → workers go on strike</div>
+      </div>
+    </div>
+
+    <div class="strategy-box">
+      <h3>📚 綜合測驗加強策略</h3>
+      <ul>
+        <li>① <b>時態題</b> 先找「時間軸的錨點」(in 1995, by now…)，再決定動詞要用哪一種時態。</li>
+        <li>② <b>片語題</b> 看後面接的「名詞性質」：彌補 = 接缺點；引起 = 接結果。</li>
+        <li>③ <b>多義字</b> (strike、break、burst…) 整理「常見句型」而不是死背中文。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============== MODULE 3: 文意選填 ============== -->
+  <div class="module">
+    <div class="module-title"><span class="icon">③</span>文意選填重點加強 (Q21-Q28)</div>
+    <div class="module-subtitle">⚠️ <b>本部分錯 8 題，為最大弱點</b>。需特別練習「詞性 + 搭配 + 上下文」三步驟解題法</div>
+
+    <div class="strategy-box" style="margin-bottom:18px;">
+      <h3>🔑 文意選填三步驟解題法</h3>
+      <ul>
+        <li>① <b>判詞性</b>：先看空格前後字 (a/an/the → 名詞；副詞 → 形容詞；is/was → adj/n.)。</li>
+        <li>② <b>分動靜</b>：把 10 個選項按詞性分組 → 形容詞、名詞、動詞 (過去式) 各放一邊。</li>
+        <li>③ <b>用語意</b>：把符合詞性的字代入空格，看是否搭配整段文意。</li>
+      </ul>
+    </div>
+
+    <!-- Q21-28 集中講解 -->
+    <div class="error-card">
+      <span class="qnum">Q21</span><span class="qtopic">be ___ for 句型 · 以…聞名</span>
+      <div class="question-text">
+        ...this medieval cathedral is <u>21</u> for its intricate architecture, stunning stained glass windows, and, above all, its bells.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(C) familiar</div>
+          familiar 通常用 be familiar <b>with</b>，不接 for。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(I) noted</div>
+          be noted for = 以…著名 (= be famous for / be renowned for)。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 線索 = be ___ for</h4>
+        <p>看到 be + ___ + for 立刻想到「以…聞名」這組字串：noted、famous、known、renowned、celebrated。</p>
+      </div>
+    </div>
+
+    <div class="error-card">
+      <span class="qnum">Q22</span><span class="qtopic">名詞 · 對…的提及</span>
+      <div class="question-text">
+        ...there is documented <u>22</u> to the ringing of bells even before the cathedral's construction was completed.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(G) celebration</div>
+          celebration 是「慶祝」，<b>不會說「對鐘聲的慶祝」</b>。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(A) reference</div>
+          reference to ~ = 對…的提及／參考資料。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 線索 = documented ___ to</h4>
+        <p>「有紀錄的提及」= documented reference。整句意思：在大教堂建造完成前，就有對於鐘聲鳴響的文字記載。</p>
+        <div class="tip">📌 必記搭配：make reference to / in reference to / a reference to + 名詞</div>
+      </div>
+    </div>
+
+    <div class="error-card">
+      <span class="qnum">Q23</span><span class="qtopic">分詞構句 · 各有…</span>
+      <div class="question-text">
+        The 10 bells vary in size, each <u>23</u> a name.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(I) noted</div>
+          noted 不能直接接「a name」當受詞。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(B) bearing</div>
+          bear a name = 擁有 / 帶著名字。each bearing a name = 每一個都有自己的名字 (分詞片語修飾 each)。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 線索 = each + V-ing</h4>
+        <p>「each + V-ing + 受詞」是分詞構句，意思是「每一個都~~」。bear 在這裡 = 帶有、擁有，不是「忍受」。</p>
+        <div class="tip">📌 bear 的常見義：1. 忍受 (bear pain) 2. 帶有 (bear a name) 3. 生育 (bear a child) 4. 結果實 (bear fruit)</div>
+      </div>
+    </div>
+
+    <div class="error-card">
+      <span class="qnum">Q24</span><span class="qtopic">動詞 · 度過劫難</span>
+      <div class="question-text">
+        It is the only one of the whole group that <u>24</u> the French Revolution, while the rest were melted down for weapons.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(A) reference</div>
+          reference 是名詞，<b>放在動詞位置不合語法</b>。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(F) survived</div>
+          survive ~ = 從…中倖存 (後接災難)。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 線索 = while the rest were melted down</h4>
+        <p>「其他鐘被融掉做武器」是線索 → 這個唯一保留下來的鐘 = 倖存下來 (survived)。先判詞性 (空格在主格代名詞 that 後 → 動詞)，再判語意。</p>
+      </div>
+    </div>
+
+    <div class="error-card">
+      <span class="qnum">Q25</span><span class="qtopic">動詞 · 保留</span>
+      <div class="question-text">
+        ...except for Emmanuel, which <u>25</u> its renowned, excellent sound.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(F) survived</div>
+          survived 後通常接「災難」，不接「音色」。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(D) retained</div>
+          retain = 保留、保有 (retain its sound 保有原本的音色)。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 線索 = its renowned, excellent sound</h4>
+        <p>主句「除了 Emmanuel 之外其他鐘都被換掉」→ Emmanuel <b>保留</b>它原本優美的音色 = retained its sound。</p>
+        <div class="tip">📌 retain vs survive：retain 保留 (主動)；survive 倖存 (經歷困難)。</div>
+      </div>
+    </div>
+
+    <div class="error-card">
+      <span class="qnum">Q26</span><span class="qtopic">形容詞 · 熟悉的</span>
+      <div class="question-text">
+        Over centuries, the bells have become a <u>26</u> part of life in Paris...
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(D) retained</div>
+          retained 是過去分詞當形容詞 = 被保留的。<b>「被保留的 part of life」</b>語意較弱。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(C) familiar</div>
+          a familiar part of life = 生活中熟悉的一部分。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 線索 = Over centuries 數百年來</h4>
+        <p>歷經幾百年 → 變成大家「熟悉」的一部分。a / an + 形容詞 + part of ~ 是常見搭配。</p>
+      </div>
+    </div>
+
+    <div class="error-card">
+      <span class="qnum">Q27</span><span class="qtopic">名詞 · 信眾</span>
+      <div class="question-text">
+        They have been used to mark the hours of the day, to call the <u>27</u> to prayer...
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(B) bearing</div>
+          bearing 是動名詞或名詞「方位、關係」，<b>不符語意</b>。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(E) faithful</div>
+          the faithful = 信眾、信徒 (定冠詞 the + 形容詞表「一群人」)。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 線索 = call the ___ to prayer</h4>
+        <p>「召喚 ___ 來禱告」→ 一定是召喚信眾。the + adj. 表「一類人」是學測常考！</p>
+        <div class="tip">📌 同類用法：the rich (富人)、the poor (窮人)、the young (年輕人)、the elderly (老人)、the faithful (信眾)。</div>
+      </div>
+    </div>
+
+    <div class="error-card">
+      <span class="qnum">Q28</span><span class="qtopic">名詞 · 慶典與哀悼對比</span>
+      <div class="question-text">
+        They have also rung in times of <u>28</u> and of mourning, announcing such events as royal weddings and coronations of kings, as well as funerals of heads of state.
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(E) faithful</div>
+          faithful 是形容詞，<b>不能放在「times of ___ and of mourning」這種名詞並列位置</b>。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(G) celebration</div>
+          times of celebration = 歡慶的時刻。和 mourning (哀悼) 形成對比，對應後句婚禮 vs 葬禮。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 線索 = and of mourning + royal weddings vs funerals</h4>
+        <p>「___ 和 mourning」是反義並列 → 慶典 vs 哀悼。後句的 weddings (婚禮) 對應 celebration，funerals (葬禮) 對應 mourning。</p>
+        <div class="tip">📌 文意選填很愛考「對比結構」：A and B → 找意義相對或互補的字。</div>
+      </div>
+    </div>
+
+    <div class="practice">
+      <h4>🎯 文意選填迷你練習</h4>
+      <p style="font-size:0.92em;color:#7a4925;margin-bottom:10px;">請從 (A)~(F) 選最適合的選項填入：</p>
+      <div style="background:#fff;padding:10px 14px;border-radius:8px;margin-bottom:10px;border:1px dashed #f5a623;font-size:0.95em;">
+        Mount Fuji is __①__ throughout the world. Each climber __②__ a small flag to plant on the top. Only those who __③__ the harsh weather can reach the summit, while others must turn back. Once climbers __④__ their goal, they feel a deep sense of __⑤__. To them, this mountain is a __⑥__ part of Japanese identity.
+        <br><br>
+        (A) survived &nbsp; (B) celebration &nbsp; (C) familiar &nbsp; (D) noted &nbsp; (E) bearing &nbsp; (F) retained
+      </div>
+      <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+      <div class="reveal">
+        ✔ ① D (noted = 著名)<br>
+        ✔ ② E (bearing = 帶著)<br>
+        ✔ ③ A (survived = 度過/熬過)<br>
+        ✔ ④ F (retained = 達成並保有 / 此處用 retained 較弱，建議改為 "achieved"。仍依現有 6 選項，F 為最合適)<br>
+        ✔ ⑤ B (celebration = 慶祝)<br>
+        ✔ ⑥ C (familiar = 熟悉的)
+      </div>
+    </div>
+
+    <div class="strategy-box">
+      <h3>📚 文意選填加強策略 (最重要)</h3>
+      <ul>
+        <li>① <b>解題前花 30 秒給每個選項標詞性</b>：(A) reference n. (B) bearing v.分詞 (C) familiar adj. (D) retained v.過去 (E) faithful adj./n. (F) survived v.過去 (G) celebration n. (H) restoration n. (I) noted adj./v.過去 (J) silent adj.。</li>
+        <li>② <b>遇到 be + ___ + for/with/in/to</b> → 先找搭配的字。例：be noted for / be familiar with / be faithful to。</li>
+        <li>③ <b>看到 and / but / while</b> 旁邊的字一定是「同義」或「反義」線索。</li>
+        <li>④ 把全段先讀過一遍，<b>標出 5-6 個信號字</b> (時間、轉折、地點)。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============== MODULE 4: 閱讀主旨題 ============== -->
+  <div class="module">
+    <div class="module-title"><span class="icon">④</span>閱讀測驗錯題講解 (Q35 主旨題)</div>
+    <div class="module-subtitle">弱點：閱讀傾向看細節，忽略全文 big picture</div>
+
+    <div class="error-card">
+      <span class="qnum">Q35</span><span class="qtopic">主旨題 · 紅綠燈歷史</span>
+      <div class="question-text">
+        What is this passage mainly about?
+      </div>
+      <div class="answer-row">
+        <div class="answer-box ans-wrong">
+          <div class="ans-label">❌ Alice 答：(B) The inventors of traffic lights in history.</div>
+          只看到 Knight、Potts 這些「發明人」，<b>就鎖定 inventors</b>。但文章不只談人，還談制度演進。
+        </div>
+        <div class="answer-box ans-right">
+          <div class="ans-label">✔ 正解：(A) The evolution of traffic control systems.</div>
+          全文：railway-arm signal → gas lamps → three-color → self-driving cars (沒有號誌)，<b>是「演進」過程</b>。
+        </div>
+      </div>
+      <div class="explain">
+        <h4>💡 為什麼會錯？</h4>
+        <p>主旨題 = 統整全文「時間軸」或「整體論點」。Alice 看到第一段提到 Knight，就以為主旨是「發明人」。但末段提到「未來自駕車不需要紅綠燈」— 這超出「發明人」範圍，必須是「整體演進」。</p>
+        <div class="tip">📌 主旨題口訣：「<b>看頭尾段、看是否每段都涵蓋</b>」。選項要能 cover 第 1 段到末段所有內容才是正解。</div>
+      </div>
+
+      <div class="practice">
+        <h4>🎯 主旨題判斷練習</h4>
+        <div class="pq">
+          <strong>1.</strong> 一篇文章從「印刷術發明 → 報紙誕生 → 電視出現 → 網路興起 → 社群媒體」，主旨最可能是？
+          <ul>
+            <li data-letter="A">The inventor of the printing press.</li>
+            <li data-letter="B">The evolution of mass communication.</li>
+            <li data-letter="C">The disadvantages of social media.</li>
+            <li data-letter="D">The role of newspapers in society.</li>
+          </ul>
+          <button class="answer-btn" onclick="toggleAnswer(this)">查看答案 ▼</button>
+          <div class="reveal">✔ (B) <div class="why">涵蓋從印刷到社群媒體的整體「演進」。</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="strategy-box">
+      <h3>📚 閱讀題加強策略</h3>
+      <ul>
+        <li>① <b>主旨題先看「首段 + 末段」</b>，特別是末段往往揭示作者最終立場。</li>
+        <li>② 太「窄」(只談一個人/一件事) 或太「廣」(超出文章範圍) 都不是正解。</li>
+        <li>③ 看到 evolution / development / history of ~ 這類字眼，<b>很可能就是主旨選項</b>。</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============== 總結加強計畫 ============== -->
+  <div class="module">
+    <div class="module-title"><span class="icon">⑤</span>個人化兩週加強計畫</div>
+    <div class="module-subtitle">針對 Alice 弱點設計的循序漸進練習表</div>
+
+    <div class="strategy-box">
+      <h3>📅 Week 1 — 詞性與搭配為主</h3>
+      <ul>
+        <li>Day 1-2：把今天分析的 16 題重做一次，<b>遮住答案默寫解題理由</b>。</li>
+        <li>Day 3-4：練 5 篇文意選填，<b>解題前都先標詞性</b>。</li>
+        <li>Day 5：背 30 個常見搭配 (be noted for / give rise to / call ~ to ~ 等)。</li>
+        <li>Day 6：寫 1 篇短文，刻意使用本週背的字彙。</li>
+        <li>Day 7：休息＋整理錯題本。</li>
+      </ul>
+    </div>
+
+    <div class="strategy-box" style="margin-top:14px;">
+      <h3>📅 Week 2 — 上下文判斷力</h3>
+      <ul>
+        <li>Day 8-9：練綜合測驗 5 篇，<b>每錯一題寫下「線索字」</b>。</li>
+        <li>Day 10-11：練閱讀主旨題 8 題，每篇強迫自己<b>三句話總結全文</b>。</li>
+        <li>Day 12：複習所有「時態」相關題型 (would / would have / had + V-pp)。</li>
+        <li>Day 13：再做一次 114 學測完整卷，目標進步 8-10 分。</li>
+        <li>Day 14：檢討、調整下一階段重點。</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    💪 16 題錯誤 × 4 大題型 × 1 套客製化策略 — Alice 加油！💪<br>
+    本講解以 114 學測為素材，可搭配先前的 <b>Alice_3day_English_Course.html</b> 一同使用。
+  </footer>
+</div>
+
+<script>
+function toggleAnswer(btn) {
+  const ans = btn.nextElementSibling;
+  ans.classList.toggle('show');
+  btn.textContent = ans.classList.contains('show') ? '隱藏答案 ▲' : '查看答案 ▼';
+}
+</script>
+</body>
+</html>
