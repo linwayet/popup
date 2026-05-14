@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Battle of the Balls: Football or Soccer?</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF8F0;--ink:#1A0F00;--h1:#C0392B;--h2:#1565C0;--h3:#2E7D32;--orange:#E65100;--purple:#6A1B9A;--deep:#0D47A1;
+  --s1:#0D47A1;--s1b:#90CAF9;--s1in:#F3F8FF;--s2:#BF360C;--s2b:#FFAB91;--s2in:#FFF3EF;--s3:#1B5E20;--s3b:#81C784;--s3in:#F1F8F2;--s4:#4A148C;--s4b:#CE93D8;--s4in:#F9F0FF;--fold:#4A3728;--foldb:#C4A06A;--foldin:#FAF6F0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#FFF8F0 0%,#FFE9D6 52%,#FFF4E6 100%);color:var(--ink);font-family:"BIZ UDPGothic",sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:28px 16px 72px}
+main{max-width:880px;margin:0 auto}
+.top{text-align:center;margin-bottom:34px}
+h1{display:inline-block;margin:0 auto 14px;padding:18px 28px;border:5px solid var(--h1);border-radius:8px;color:var(--h1);font-size:3rem;line-height:1.2;font-weight:700;background:#fffdf8;box-shadow:8px 8px 0 #F4C7BE}
+.subtitle{margin:0;color:var(--h2);font-size:2.2rem;line-height:1.35;font-weight:700}
+.credit{margin:6px 0 0;color:#1565C0;font-family:"Pacifico","BIZ UDPGothic",sans-serif;font-size:2rem;line-height:1.4}
+.link-panel{margin:24px auto 34px;padding:18px;border:3px solid #F0A35E;border-radius:14px;background:#FFF2DC;box-shadow:0 12px 26px rgba(122,61,12,.12)}
+.link-panel.bottom{margin-top:38px;margin-bottom:0}
+.link-title{margin:0 0 14px;color:#9A3412;font-size:1.45rem;font-weight:700;text-align:center}
+.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.link-card{display:block;min-height:132px;padding:16px 16px 18px;border-radius:12px;color:#1A0F00;text-decoration:none;border:3px solid transparent}
+.link-card strong{display:block;margin-bottom:6px;font-size:1.15rem;line-height:1.35;color:#5A2500}
+.link-card span{display:block;font-size:1rem;line-height:1.55}
+.course-echo{background:#FFE0B2;border-color:#FB8C00}
+.course-analysis{background:#FFCCBC;border-color:#E64A19}
+.line-link{background:#E6F4C8;border-color:#7CB342}
+.link-card:focus,.link-card:hover{outline:4px solid #1565C0;outline-offset:3px;transform:translateY(-2px)}
+section{margin:34px 0}
+.section-title{margin:0;color:#fff;font-size:1.6rem;line-height:1.35;font-weight:700;padding:18px 22px}
+.card{border:3px solid;border-radius:8px;overflow:hidden;background:#fff}
+.body{padding:24px 26px}
+.s1{border-color:var(--s1b)}.s1 .section-title{background:var(--s1)}.s1 .body{background:var(--s1in)}
+.s2{border-color:var(--s2b)}.s2 .section-title{background:var(--s2)}.s2 .body{background:var(--s2in)}
+.s3{border-color:var(--s3b)}.s3 .section-title{background:var(--s3)}.s3 .body{background:var(--s3in)}
+.s4{border-color:var(--s4b)}.s4 .section-title{background:var(--s4)}.s4 .body{background:var(--s4in)}
+p{margin:0 0 16px}
+strong.keyword{color:var(--deep);font-weight:700;text-decoration:none}
+.analysis,.vocab,.grammar-point{border-top:2px solid rgba(26,15,0,.16);padding-top:22px;margin-top:22px}
+.analysis:first-child,.vocab:first-child,.grammar-point:first-child{border-top:0;padding-top:0;margin-top:0}
+.num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--s2);color:#fff;font-size:1.35rem;font-weight:700;margin-right:10px}
+h3{margin:0 0 12px;color:var(--h3);font-size:1.6rem;line-height:1.35;font-weight:700}
+blockquote{margin:12px 0;padding:14px 18px;border-left:8px solid var(--orange);background:#fff;line-height:1.75}
+.quote{font-style:italic}
+.box{margin:12px 0;padding:14px 16px;background:#fff;border-radius:8px;border:1px solid rgba(26,15,0,.16)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.pill{display:inline-block;padding:8px 14px;border-radius:999px;background:#FEF0E7;color:#E65100;font-weight:700}
+.vocab-head{font-size:1.35rem;font-weight:700;color:#1565C0;margin-bottom:8px}
+.tagrow{display:grid;grid-template-columns:128px 1fr;gap:10px;margin:10px 0;align-items:start}
+.tag{border-radius:8px 0 0 8px;padding:8px 10px;font-weight:700;text-align:center}
+.der{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.pattern{background:#FEF0E7;color:#E65100}
+ul{margin:8px 0 16px 28px;padding:0}li{margin:8px 0}
+.grammar-point h3{color:#4A148C}
+.formula{font-weight:700;font-style:italic;color:#4A148C}
+details{margin:24px 0;border:3px solid var(--foldb);border-radius:8px;overflow:hidden;background:var(--foldin)}
+summary{min-height:72px;padding:18px 22px;background:var(--fold);color:#fff;font-weight:700;font-size:1.35rem;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+.arrow{transition:transform .3s ease}
+details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:22px 26px}
+.compact p{margin-bottom:8px}
+@media(max-width:700px){body{font-size:22px;padding:18px 10px 56px}h1{font-size:2.25rem;padding:14px 16px}.subtitle{font-size:1.8rem}.credit{font-size:1.65rem}.body{padding:20px 16px}.tagrow{grid-template-columns:1fr}.tag{text-align:left;border-radius:8px}.link-panel{padding:14px;margin:18px auto 28px}.link-grid{grid-template-columns:1fr}.link-card{min-height:96px}.link-title{font-size:1.25rem}}
+</style>
+</head>
+<body>
+<main>
+<div class="top">
+<h1>Battle of the Balls: Football or Soccer?</h1>
+<p class="subtitle">足球還是 soccer？一場英語名稱的文化之戰</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</div>
+
+<nav class="link-panel" aria-label="課程與聯絡連結">
+<p class="link-title">七月新課程與聯絡方式</p>
+<div class="link-grid">
+<a class="link-card course-echo" href="https://linwayet.github.io/4ulive/index.html">
+<strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+<span>用錯誤訂正、回聲練習與句型反覆輸出，幫助學生把英文弱點轉成穩定得分能力。</span>
+</a>
+<a class="link-card course-analysis" href="https://linwayet.github.io/popup/index">
+<strong>學生分析</strong>
+<span>透過學習表現與弱點分析，快速了解學生目前程度，規劃更精準的學測與分科準備方向。</span>
+</a>
+<a class="link-card line-link" href="https://line.me/ti/p/~linwayet">
+<strong>Line 聯絡：linwayet</strong>
+<span>加入林威老師個人 Line 帳號，詢問課程、教材使用方式與英文學習規劃。</span>
+</a>
+</div>
+</nav>
+
+<section class="card s1">
+<h2 class="section-title">區塊一　英文文章原文</h2>
+<div class="body">
+<p>Battle of the Balls: Football or Soccer?</p>
+<p>As the 2026 FIFA World Cup <strong class="keyword">approaches</strong>, an interesting <strong class="keyword">debate</strong> kicks off once again: Should the sport be called soccer or football? Both words appear in <strong class="keyword">media</strong> and conversations, yet their <strong class="keyword">usage</strong> changes across countries. If they refer to the same sport, how did this <strong class="keyword">linguistic</strong> <strong class="keyword">split</strong> begin, and which one's actually correct?</p>
+<p>The term soccer didn't <strong class="keyword">originate</strong> in the US, as is often <strong class="keyword">assumed</strong>. Its roots can be <strong class="keyword">traced</strong> back to 19th-century Britain, where several forms of football were played under different rules. To <strong class="keyword">distinguish</strong> <strong class="keyword">association</strong> football from rugby football, Oxford University students shortened the word <strong class="keyword">association</strong> to a sock and added the playful <strong class="keyword">suffix</strong> '-er', common in student <strong class="keyword">slang</strong> at the time. Through pronunciation changes, a soccer gradually became soccer, a word that was <strong class="keyword">informal</strong> but widely understood.</p>
+<p>For many decades, football and soccer were both used in the UK without confusion. Over time, as rugby became less central to British sports culture and association football became <strong class="keyword">dominant</strong>, the word football came to mean association football alone. Meanwhile, countries such as the US, Canada, and Australia kept the word soccer to avoid <strong class="keyword">ambiguity</strong> with other sports that were also called football. By the 1980s, soccer had come to be viewed <strong class="keyword">negatively</strong> in the UK as an American <strong class="keyword">expression</strong>, despite its British origins.</p>
+<p>The terms association also changed, with soccer being seen as less sophisticated than football. Today, debates over football versus soccer often reflect <strong class="keyword">identity</strong> rather than linguistic <strong class="keyword">correctness</strong>. The next time the question comes up, remember that the word soccer started out as British slang long before it crossed the Atlantic.</p>
+</div>
+</section>
+
+<section class="card s2">
+<h2 class="section-title">區塊二　8句精讀</h2>
+<div class="body">
+<div class="analysis">
+<h3><span class="num">①</span>時間副詞子句開場</h3>
+<blockquote class="quote">As the 2026 FIFA World Cup approaches, an interesting debate kicks off once again: Should the sport be called soccer or football?</blockquote>
+<div class="box">隨著 2026 年 FIFA 世界盃接近，一場有趣的辯論再次展開：這項運動應該被稱為 soccer 還是 football？</div>
+<div class="box">文法解析：這句以 <strong>As + S + V</strong> 引導時間副詞子句，表示「隨著……」。主要子句是 <strong>an interesting debate kicks off</strong>，冒號後面補充辯論的核心問題。<strong>Should the sport be called...</strong> 使用被動語態，因為重點在「這項運動被如何稱呼」，不是誰命名。</div>
+<div class="pills"><span class="pill">approach：接近</span><span class="pill">debate：辯論</span><span class="pill">kick off：開始</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">②</span>對等連接與轉折</h3>
+<blockquote class="quote">Both words appear in media and conversations, yet their usage changes across countries.</blockquote>
+<div class="box">這兩個字都出現在媒體和日常對話中，然而它們的用法會因國家而異。</div>
+<div class="box">文法解析：<strong>Both A and B</strong> 表示「A 和 B 兩者都」，用來並列兩個名詞。<strong>yet</strong> 在此作連接副詞，語氣接近 however，表示前後句意轉折。<strong>across countries</strong> 表示「跨國、在不同國家之間」，不是單一地點。</div>
+<div class="pills"><span class="pill">media：媒體</span><span class="pill">usage：用法</span><span class="pill">across countries：在各國之間</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">③</span>間接問句</h3>
+<blockquote class="quote">If they refer to the same sport, how did this linguistic split begin, and which one's actually correct?</blockquote>
+<div class="box">如果它們指的是同一項運動，這個語言上的分歧是如何開始的？哪一個其實才正確？</div>
+<div class="box">文法解析：<strong>If they refer to...</strong> 是條件副詞子句，提供討論前提。後面兩個疑問句以 <strong>how</strong> 與 <strong>which</strong> 開頭，分別詢問起源與正確性。<strong>linguistic split</strong> 是名詞片語，linguistic 修飾 split，表示「語言上的分裂」。</div>
+<div class="pills"><span class="pill">refer to：指的是</span><span class="pill">linguistic：語言的</span><span class="pill">split：分歧</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">④</span>非限定補充說明</h3>
+<blockquote class="quote">Its roots can be traced back to 19th-century Britain, where several forms of football were played under different rules.</blockquote>
+<div class="box">它的根源可以追溯到 19 世紀的英國，當時那裡有好幾種足球類運動依照不同規則進行。</div>
+<div class="box">文法解析：<strong>can be traced back to</strong> 是情態助動詞加被動語態，表示「可以被追溯到」。逗號後的 <strong>where</strong> 引導非限定形容詞子句，補充說明 Britain 這個地點。<strong>were played</strong> 也是被動語態，強調運動被進行，而不是誰在玩。</div>
+<div class="pills"><span class="pill">trace back to：追溯到</span><span class="pill">19th-century Britain：19 世紀英國</span><span class="pill">under different rules：依照不同規則</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">⑤</span>不定詞表目的</h3>
+<blockquote class="quote">To distinguish association football from rugby football, Oxford University students shortened the word association to a sock and added the playful suffix '-er', common in student slang at the time.</blockquote>
+<div class="box">為了區分英式足球和橄欖球，牛津大學學生把 association 這個字縮短成 sock，並加上當時學生俚語中常見、帶有玩笑意味的字尾 -er。</div>
+<div class="box">文法解析：句首 <strong>To distinguish...</strong> 是不定詞片語表目的；這裡的 to 是不定詞，不是介係詞。主要子句有兩個對等動詞：<strong>shortened</strong> 和 <strong>added</strong>。句尾 <strong>common in student slang at the time</strong> 是形容詞片語，補充說明 suffix '-er' 的性質。</div>
+<div class="pills"><span class="pill">distinguish A from B：區分 A 與 B</span><span class="pill">suffix：字尾</span><span class="pill">slang：俚語</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">⑥</span>as 引導時間變化</h3>
+<blockquote class="quote">Over time, as rugby became less central to British sports culture and association football became dominant, the word football came to mean association football alone.</blockquote>
+<div class="box">隨著時間過去，當橄欖球在英國運動文化中變得較不核心，而英式足球變得主流時，football 這個字逐漸只指英式足球。</div>
+<div class="box">文法解析：<strong>as rugby became...</strong> 是時間副詞子句，描述背景變化。子句中使用兩個並列的 <strong>became</strong>，形成文化地位的對比。主要子句的 <strong>came to mean</strong> 表示「逐漸變成表示……」，常用來描述意義或狀態的漸變。</div>
+<div class="pills"><span class="pill">central to：對……很核心</span><span class="pill">dominant：主導的</span><span class="pill">come to mean：逐漸意指</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">⑦</span>不定詞與關係子句</h3>
+<blockquote class="quote">Meanwhile, countries such as the US, Canada, and Australia kept the word soccer to avoid ambiguity with other sports that were also called football.</blockquote>
+<div class="box">同時，美國、加拿大、澳洲等國保留 soccer 這個字，以避免和其他也被稱為 football 的運動產生歧義。</div>
+<div class="box">文法解析：<strong>such as</strong> 用來舉例，列出屬於 countries 的例子。<strong>to avoid ambiguity</strong> 是不定詞表目的，說明保留 soccer 的原因。<strong>that were also called football</strong> 是形容詞子句，修飾 other sports。</div>
+<div class="pills"><span class="pill">such as：例如</span><span class="pill">avoid ambiguity：避免歧義</span><span class="pill">be called：被稱為</span></div>
+</div>
+<div class="analysis">
+<h3><span class="num">⑧</span>對比焦點 rather than</h3>
+<blockquote class="quote">Today, debates over football versus soccer often reflect identity rather than linguistic correctness.</blockquote>
+<div class="box">如今，football 與 soccer 之間的爭論往往反映的是身分認同，而不是語言上的正確性。</div>
+<div class="box">文法解析：主詞是 <strong>debates over football versus soccer</strong>，over 表示「關於」。動詞 <strong>reflect</strong> 表示「反映」，後面接抽象名詞 identity。<strong>rather than</strong> 用來建立對比，強調真正重點是身分認同，不是語言正確性。</div>
+<div class="pills"><span class="pill">reflect：反映</span><span class="pill">identity：身分認同</span><span class="pill">rather than：而不是</span></div>
+</div>
+</div>
+</section>
+
+<section class="card s3">
+<h2 class="section-title">區塊三　20個單字整理</h2>
+<div class="body">
+<div class="vocab"><div class="vocab-head">1　approach　[əˈprotʃ]　v. 接近；處理　n. 方法</div><div class="tagrow"><span class="tag der">衍生詞</span><span>approachable (adj. 親切的；可接近的)；approach (n. 方法)；approaching (adj. 即將來臨的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>approach a problem 處理問題；a practical approach 實際的方法；as the date approaches 隨著日期接近</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a carefully planned approach 精心規劃的方法；rapidly approaching 快速接近的</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>approach 強調「接近或處理」；access 強調「取得進入或使用的權限」。</span></div><ul><li>As the 2026 FIFA World Cup approaches, an interesting debate kicks off once again.<br>（隨著 2026 年 FIFA 世界盃接近，一場有趣的辯論再次展開。）</li><li>As the exam approaches, many students make a clearer study plan.<br>（隨著考試接近，許多學生會制定更清楚的讀書計畫。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">2　debate　[dɪˈbet]　n. 辯論；討論　v. 辯論</div><div class="tagrow"><span class="tag der">衍生詞</span><span>debatable (adj. 可爭論的)；debater (n. 辯論者)；debating (n. 辯論活動)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>hold a debate 舉行辯論；public debate 公開討論；debate over 關於……的辯論</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a heated debate 激烈辯論；a long-running debate 長期爭論</span></div><ul><li>An interesting debate kicks off once again: Should the sport be called soccer or football?<br>（一場有趣的辯論再次展開：這項運動應該被稱為 soccer 還是 football？）</li><li>The class held a debate about whether phones should be allowed in school.<br>（班上針對手機是否應該在校園開放使用舉行了辯論。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">3　media　[ˈmidɪə]　n. 媒體；傳播媒介</div><div class="tagrow"><span class="tag der">衍生詞</span><span>medium (n. 媒介；單數)；mediate (v. 調停；仲介)；mediation (n. 調解)</span></div><div class="tagrow"><span class="tag root">字根</span><span>medi「中間」：medium 媒介；mediate 調停；intermediate 中級的</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>social media 社群媒體；mass media 大眾媒體；media coverage 媒體報導</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>international media 國際媒體；reliable media 可靠媒體</span></div><ul><li>Both words appear in media and conversations.<br>（這兩個字都出現在媒體和對話中。）</li><li>Teenagers should learn how to judge information from social media.<br>（青少年應該學會如何判斷社群媒體上的資訊。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">4　usage　[ˈjusɪdʒ]　n. 用法；使用情形</div><div class="tagrow"><span class="tag der">衍生詞</span><span>use (v./n. 使用；用途)；useful (adj. 有用的)；user (n. 使用者)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>word usage 字詞用法；common usage 常見用法；daily usage 日常使用</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>formal usage 正式用法；regional usage 地區用法</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>usage 指語言或物品的「使用方式」；custom 指社會習俗或慣例。</span></div><ul><li>Their usage changes across countries.<br>（它們的用法會因國家而異。）</li><li>The teacher explained the correct usage of the new phrase.<br>（老師解釋了這個新片語的正確用法。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">5　linguistic　[lɪŋˈɡwɪstɪk]　adj. 語言的；語言學的</div><div class="tagrow"><span class="tag der">衍生詞</span><span>language (n. 語言)；linguist (n. 語言學家)；linguistics (n. 語言學)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>linguistic change 語言變化；linguistic difference 語言差異；linguistic habit 語言習慣</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a purely linguistic issue 純粹語言問題；linguistic correctness 語言正確性</span></div><ul><li>How did this linguistic split begin?<br>（這個語言上的分歧是如何開始的？）</li><li>Different accents often show linguistic history and local culture.<br>（不同口音常常顯示語言歷史與地方文化。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">6　split　[splɪt]　n. 分裂；分歧　v. 分開；分裂</div><div class="tagrow"><span class="tag der">衍生詞</span><span>splitter (n. 分裂者；分割器)；splitting (adj. 劇烈的；分裂中的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>a cultural split 文化分歧；split into 分裂成；split the cost 分攤費用</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a deep split 深刻分歧；political split 政治分裂</span></div><ul><li>How did this linguistic split begin?<br>（這個語言上的分歧是如何開始的？）</li><li>The issue caused a split between the two groups of students.<br>（這個議題造成兩群學生之間的分歧。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">7　originate　[əˈrɪdʒəˌnet]　v. 起源；發源</div><div class="tagrow"><span class="tag der">衍生詞</span><span>origin (n. 起源)；original (adj. 原本的；原創的)；originally (adv. 原本地)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>originate in 起源於；the origin of ……的起源；original meaning 原本意義</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a historical origin 歷史起源；originally British 原本是英國的</span></div><div class="tagrow"><span class="tag pattern">句型</span><span>A originate(s) in B：A 起源於 B。</span></div><ul><li>The term soccer didn't originate in the US, as is often assumed.<br>（soccer 這個詞並非起源於美國，雖然人們常這樣以為。）</li><li>Many English words originate in Latin or French.<br>（許多英文字源於拉丁文或法文。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">8　assume　[əˈsum]　v. 假定；以為；承擔</div><div class="tagrow"><span class="tag der">衍生詞</span><span>assumption (n. 假設)；assumed (adj. 被假定的)；assuming (conj. 假設)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>assume that 假定……；make an assumption 做出假設；be assumed to 被認為</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a common assumption 常見假設；wrongly assumed 錯誤地以為</span></div><ul><li>The term soccer didn't originate in the US, as is often assumed.<br>（soccer 這個詞並非起源於美國，雖然人們常這樣以為。）</li><li>We should not assume that every quiet student is unhappy.<br>（我們不應該假定每個安靜的學生都不快樂。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">9　trace　[tres]　v. 追溯；查出　n. 痕跡</div><div class="tagrow"><span class="tag der">衍生詞</span><span>traceable (adj. 可追溯的)；tracing (n. 追蹤；描繪)；traces (n. 痕跡)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>trace back to 追溯到；trace the history 追溯歷史；leave a trace 留下痕跡</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>historically traceable 歷史上可追溯的；clear traces 明顯痕跡</span></div><ul><li>Its roots can be traced back to 19th-century Britain.<br>（它的根源可以追溯到 19 世紀的英國。）</li><li>The police tried to trace the message back to its sender.<br>（警方試著將訊息追查回寄件者。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">10　distinguish　[dɪˈstɪŋɡwɪʃ]　v. 區分；辨別</div><div class="tagrow"><span class="tag der">衍生詞</span><span>distinction (n. 差別；卓越)；distinct (adj. 明顯不同的)；distinguished (adj. 傑出的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>distinguish A from B 區分 A 與 B；make a distinction 做出區別；distinct difference 明顯差異</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>clearly distinguish 清楚區分；a distinguished professor 傑出的教授</span></div><div class="tagrow"><span class="tag pattern">句型</span><span>to distinguish... 是不定詞表目的；to 是不定詞標記，非介係詞。</span></div><ul><li>To distinguish association football from rugby football, Oxford University students shortened the word association.<br>（為了區分英式足球和橄欖球，牛津大學學生縮短了 association 這個字。）</li><li>Young children may find it hard to distinguish facts from opinions.<br>（年幼的孩子可能覺得很難區分事實與意見。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">11　association　[əˌsosɪˈeʃən]　n. 協會；聯想；關聯</div><div class="tagrow"><span class="tag der">衍生詞</span><span>associate (v. 聯想；交往)；associated (adj. 相關的)；associative (adj. 聯想的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>association football 英式足球；in association with 與……合作；word association 字詞聯想</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a professional association 專業協會；close association 密切關聯</span></div><ul><li>To distinguish association football from rugby football, Oxford University students shortened the word association.<br>（為了區分英式足球和橄欖球，牛津大學學生縮短了 association 這個字。）</li><li>The school has a strong association with local museums.<br>（這所學校與當地博物館有密切關聯。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">12　suffix　[ˈsʌfɪks]　n. 字尾；後綴</div><div class="tagrow"><span class="tag der">衍生詞</span><span>prefix (n. 字首)；affix (n. 詞綴)；suffixal (adj. 字尾的)</span></div><div class="tagrow"><span class="tag root">字根</span><span>fix「固定」：fix 固定；prefix 字首；affix 附加；fixture 固定裝置</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>add a suffix 加上字尾；playful suffix 俏皮字尾；suffix rule 字尾規則</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a common suffix 常見字尾；grammatical suffix 文法字尾</span></div><ul><li>Oxford University students added the playful suffix '-er'.<br>（牛津大學學生加上了俏皮的字尾 -er。）</li><li>The suffix -ness can turn an adjective into a noun.<br>（字尾 -ness 可以把形容詞變成名詞。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">13　slang　[slæŋ]　n. 俚語；俗語</div><div class="tagrow"><span class="tag der">衍生詞</span><span>slangy (adj. 俚語的)；slang expression (n. 俚語表達)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>student slang 學生俚語；internet slang 網路俚語；use slang 使用俚語</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>informal slang 非正式俚語；popular slang 流行俚語</span></div><ul><li>The suffix '-er' was common in student slang at the time.<br>（字尾 -er 在當時的學生俚語中很常見。）</li><li>Some slang words sound natural among friends but not in formal writing.<br>（有些俚語在朋友之間聽起來自然，但不適合正式寫作。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">14　informal　[ɪnˈfɔrməl]　adj. 非正式的</div><div class="tagrow"><span class="tag der">衍生詞</span><span>formal (adj. 正式的)；informally (adv. 非正式地)；informality (n. 非正式)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>informal language 非正式語言；informal meeting 非正式會議；informal style 非正式風格</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>highly informal 非常非正式的；informal conversation 非正式對話</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>informal 是「非正式」；casual 偏向「輕鬆隨意」。</span></div><ul><li>Soccer was informal but widely understood.<br>（soccer 這個字雖然非正式，但被廣泛理解。）</li><li>Please avoid informal words in an academic essay.<br>（請避免在學術作文中使用非正式字詞。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">15　dominant　[ˈdɑmənənt]　adj. 主導的；占優勢的</div><div class="tagrow"><span class="tag der">衍生詞</span><span>dominate (v. 支配；主導)；dominance (n. 優勢)；domination (n. 支配)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>become dominant 變得主流；dominant culture 主流文化；dominant role 主導角色</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>politically dominant 政治上占優勢的；a dominant position 主導地位</span></div><ul><li>Association football became dominant.<br>（英式足球變得主流。）</li><li>English has become a dominant language in international business.<br>（英語已成為國際商業中的主導語言。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">16　ambiguity　[ˌæmbɪˈɡjuətɪ]　n. 歧義；模糊不清</div><div class="tagrow"><span class="tag der">衍生詞</span><span>ambiguous (adj. 模糊的；有歧義的)；ambiguously (adv. 模糊地)</span></div><div class="tagrow"><span class="tag root">字根</span><span>ambi「兩邊」：ambiguous 模稜兩可的；ambivalent 矛盾的；ambidextrous 雙手靈巧的</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>avoid ambiguity 避免歧義；remove ambiguity 消除模糊；language ambiguity 語言歧義</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>serious ambiguity 嚴重歧義；deliberate ambiguity 刻意模糊</span></div><ul><li>Countries kept the word soccer to avoid ambiguity with other sports.<br>（各國保留 soccer 這個字以避免與其他運動產生歧義。）</li><li>A good writer chooses words carefully to avoid ambiguity.<br>（好的寫作者會仔細選字以避免歧義。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">17　negatively　[ˈnɛɡətɪvlɪ]　adv. 負面地；消極地</div><div class="tagrow"><span class="tag der">衍生詞</span><span>negative (adj. 負面的)；negativity (n. 負面性)；negate (v. 否定)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>view negatively 負面看待；react negatively 負面反應；negative effect 負面影響</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>strongly negative 強烈負面的；socially negative 社會上負面的</span></div><ul><li>Soccer had come to be viewed negatively in the UK as an American expression.<br>（soccer 在英國逐漸被負面地視為美式用語。）</li><li>Some people react negatively when their habits are questioned.<br>（有些人在自己的習慣被質疑時會有負面反應。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">18　expression　[ɪkˈsprɛʃən]　n. 表達；詞語；表情</div><div class="tagrow"><span class="tag der">衍生詞</span><span>express (v. 表達)；expressive (adj. 富表現力的)；expressively (adv. 富表情地)</span></div><div class="tagrow"><span class="tag root">字根</span><span>press「壓」：express 表達；pressure 壓力；impress 使留下印象；depress 使沮喪</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>American expression 美式用語；facial expression 臉部表情；express an opinion 表達意見</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a common expression 常見表達；clear expression 清楚表達</span></div><ul><li>Soccer had come to be viewed negatively in the UK as an American expression.<br>（soccer 在英國逐漸被負面地視為美式用語。）</li><li>The expression “break the ice” means to make people feel relaxed.<br>（break the ice 這個表達表示讓人們放鬆下來。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">19　identity　[aɪˈdɛntətɪ]　n. 身分；認同</div><div class="tagrow"><span class="tag der">衍生詞</span><span>identify (v. 辨認；認同)；identical (adj. 相同的)；identification (n. 辨識；身分證明)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>national identity 國家認同；cultural identity 文化認同；identity card 身分證</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a strong identity 強烈認同；shared identity 共同身分認同</span></div><ul><li>Debates over football versus soccer often reflect identity rather than linguistic correctness.<br>（football 與 soccer 的爭論往往反映身分認同，而不是語言正確性。）</li><li>Language can be an important part of cultural identity.<br>（語言可以是文化認同的重要部分。）</li></ul></div>
+<div class="vocab"><div class="vocab-head">20　correctness　[kəˈrɛktnəs]　n. 正確性</div><div class="tagrow"><span class="tag der">衍生詞</span><span>correct (adj./v. 正確的；改正)；correctly (adv. 正確地)；correction (n. 改正)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>linguistic correctness 語言正確性；political correctness 政治正確；check correctness 檢查正確性</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>grammatical correctness 文法正確性；absolute correctness 絕對正確性</span></div><ul><li>Debates over football versus soccer often reflect identity rather than linguistic correctness.<br>（football 與 soccer 的爭論往往反映身分認同，而不是語言正確性。）</li><li>In writing, clarity is sometimes more important than perfect correctness.<br>（在寫作中，清楚有時比完全正確更重要。）</li></ul></div>
+</div>
+</section>
+
+<section class="card s4">
+<h2 class="section-title">區塊四　文法解析</h2>
+<div class="body">
+<div class="grammar-point">
+<h3>【名詞子句】Wh- Noun Clauses 疑問詞名詞子句</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">If they refer to the same sport, how did this linguistic split begin, and which one's actually correct?</blockquote>
+<p><strong>【句型】</strong></p>
+<p class="formula">疑問詞 + S + V</p>
+<p><strong>【核心說明】</strong></p>
+<p>疑問詞 how、which、why、what 等可以引導問句，也可以引導名詞子句。若放在動詞後當受詞，語序要改成直述句語序，例如 <strong>I wonder how this split began</strong>，不能寫成 <strong>how did this split begin</strong>。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>直接問句要倒裝：How did it begin?</li><li>間接問句不倒裝：I know how it began.</li><li>疑問詞名詞子句可當主詞、受詞或補語。</li><li>which 常在有限選項中做選擇。</li></ul>
+<p><strong>【主題例句】</strong></p>
+<p>Many fans still wonder why the same sport has two English names.（許多球迷仍想知道為什麼同一項運動有兩個英文名稱。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>中文常直接說「我不知道它怎麼開始」，英文要注意間接問句語序。只要疑問詞子句不是獨立問句，就不要把助動詞放到主詞前面。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<p>✗ I don't know how did this linguistic split begin.</p>
+<p>✓ I don't know how this linguistic split began.（間接問句要用直述語序。）</p>
+<p>Choose the correct sentence: A. Can you explain why is soccer used? B. Can you explain why soccer is used? C. Can you explain why does soccer use? D. Can you explain why used soccer?</p>
+<p>答案：B。說明：why 引導名詞子句時，後面要接主詞 soccer 加動詞 is used。</p>
+</div>
+<div class="grammar-point">
+<h3>【不定詞】Infinitive of Purpose 不定詞表目的</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">To distinguish association football from rugby football, Oxford University students shortened the word association to a sock and added the playful suffix '-er', common in student slang at the time.</blockquote>
+<p><strong>【句型】</strong></p>
+<p class="formula">To + 原形動詞, S + V ...</p>
+<p><strong>【核心說明】</strong></p>
+<p>句首的 <strong>To distinguish...</strong> 表示目的，意思是「為了區分……」。這裡的 to 是不定詞標記，不是介係詞，所以後面必須接原形動詞 distinguish。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>不定詞表目的可放句首，後面通常加逗號。</li><li>to 後面接原形動詞：to distinguish、to avoid、to explain。</li><li>可改寫成 in order to，語氣較正式。</li><li>否定目的用 in order not to 或 so as not to。</li></ul>
+<p><strong>【主題例句】</strong></p>
+<p>To avoid ambiguity, some countries continue to use the word soccer.（為了避免歧義，有些國家繼續使用 soccer 這個字。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>看到 to 不要立刻判斷它是介係詞。若後面接原形動詞，它就是不定詞；若後面接名詞或 V-ing，才可能是介係詞。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<p>✗ To distinguishing the two words, students checked the history.</p>
+<p>✓ To distinguish the two words, students checked the history.（不定詞 to 後面接原形動詞。）</p>
+<p>Fill in the blank: _____ ambiguity, writers should define key terms clearly. A. Avoid B. To avoid C. Avoiding to D. Avoided</p>
+<p>答案：B。說明：句首表示目的，應使用 To avoid。</p>
+</div>
+<div class="grammar-point">
+<h3>【介係詞】Despite + N/V-ing 儘管……</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">By the 1980s, soccer had come to be viewed negatively in the UK as an American expression, despite its British origins.</blockquote>
+<p><strong>【句型】</strong></p>
+<p class="formula">despite + 名詞 / V-ing</p>
+<p><strong>【核心說明】</strong></p>
+<p><strong>despite</strong> 是介係詞，表示「儘管」。它後面接名詞、名詞片語或動名詞，不能直接接完整子句；本文的 <strong>despite its British origins</strong> 就是 despite 加名詞片語。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>despite + N：despite the problem。</li><li>despite + V-ing：despite facing criticism。</li><li>若要接完整子句，改用 although、though 或 even though。</li><li>despite the fact that + 子句 是較正式的例外結構。</li></ul>
+<p><strong>【主題例句】</strong></p>
+<p>Despite its British origin, the word soccer is often thought of as American.（儘管 soccer 源自英國，它常被視為美式用語。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>despite 和 although 中文都可翻成「儘管」，但文法結構不同。despite 後面不能直接放主詞加動詞，這是高中英文常見錯誤。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<p>✗ Despite soccer started in Britain, many people think it is American.</p>
+<p>✓ Although soccer started in Britain, many people think it is American.（despite 不能直接接子句，改用 although。）</p>
+<p>Choose the correct sentence: A. Despite it was British, the word changed. B. Despite its British roots, the word changed. C. Despite the word was British, it changed. D. Despite because it was British, it changed.</p>
+<p>答案：B。說明：despite 後面接名詞片語 its British roots，結構正確。</p>
+</div>
+</div>
+</section>
+
+<details>
+<summary>折疊一　常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body compact">
+<p>ab-　離開、相反　—　abnormal（異常的）</p><p>ad-　向、加　—　advance（前進）</p><p>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</p><p>anti-　反對、抗　—　antibiotic（抗生素）</p><p>arch-　主要、首要　—　archenemy（死敵）</p><p>auto-　自動、自我　—　autograph（親筆簽名）</p><p>bene-　好的、善　—　benefit（好處）</p><p>bi-　二、雙　—　bilingual（雙語的）</p><p>circum-　環繞、周圍　—　circumstance（情況）</p><p>co-/con-/com-　一起、共同　—　cooperate（合作）</p><p>contra-　相反、對抗　—　contradict（反駁）</p><p>de-　去除、下降　—　decode（解碼）</p><p>dia-　穿過、透過　—　dialogue（對話）</p><p>dis-　否定、分離　—　disagree（不同意）</p><p>en-/em-　使成為　—　enable（使能夠）</p><p>epi-　在上、在外　—　epidemic（流行病）</p><p>ex-　外、前任　—　export（出口）；ex-president（前總統）</p><p>extra-　額外、外部　—　extraordinary（非凡的）</p><p>hetero-　不同　—　heterogeneous（異質的）</p><p>homo-　相同　—　homogeneous（同質的）</p><p>hyper-　過度、超　—　hyperactive（過動的）</p><p>hypo-　低於、不足　—　hypodermic（皮下的）</p><p>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</p><p>inter-　在…之間　—　international（國際的）</p><p>iso-　相等、相同　—　isolate（隔離）</p><p>mal-　壞、不良　—　malfunction（故障）</p><p>micro-　微小　—　microscope（顯微鏡）</p><p>mis-　錯誤　—　misunderstand（誤解）</p><p>mono-　單一　—　monologue（獨白）</p><p>multi-　多　—　multicultural（多元文化的）</p><p>neo-　新的　—　neonatal（新生的）</p><p>non-　非、沒有　—　nonsense（無意義）</p><p>pan-　全部　—　pandemic（大流行病）</p><p>peri-　周圍　—　perimeter（周長）</p><p>poly-　多　—　polygon（多邊形）</p><p>post-　之後　—　postwar（戰後的）</p><p>pre-　之前　—　preview（預覽）</p><p>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</p><p>pseudo-　假的　—　pseudonym（筆名）</p><p>re-　再、回　—　review（複習）</p><p>semi-　一半、部分　—　semicircle（半圓）</p><p>sub-　在下、次級　—　subway（地鐵）</p><p>super-　超越、在上　—　superstar（超級明星）</p><p>syn-/sym-　一起、共同　—　synchronize（同步）</p><p>tele-　遠距　—　telephone（電話）</p><p>trans-　穿越、轉變　—　transport（運輸）</p><p>tri-　三　—　triangle（三角形）</p><p>un-　否定、不　—　unhappy（不快樂）</p><p>vice-　副、代替　—　vice-president（副總統）</p>
+</div>
+</details>
+
+<details>
+<summary>折疊二　常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body compact">
+<p><strong>名詞字尾</strong></p>
+<p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</p><p>-ment　行為或結果　—　agreement（協議）、development（發展）</p><p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p><p>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p><p>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p><p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p><p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p><p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
+<p><strong>形容詞字尾</strong></p>
+<p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</p><p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p><p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p><p>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</p><p>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
+<p><strong>動詞字尾</strong></p>
+<p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</p><p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p><p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p><p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
+<p><strong>副詞字尾</strong></p>
+<p>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</p><p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p><p>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
+</div>
+</details>
+
+<details>
+<summary>折疊三　30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+<div class="detail-body compact">
+<p>1. football [ˈfʊtˌbɔl] (n. 足球；橄欖球) — football culture（足球文化）</p><p>2. soccer [ˈsɑkɚ] (n. 足球) — soccer fan（足球迷）</p><p>3. world [wɝld] (n. 世界) — worldwide (adj. 全球的)</p><p>4. cup [kʌp] (n. 盃；杯子) — World Cup（世界盃）</p><p>5. sport [sport] (n. 運動) — sports culture（運動文化）</p><p>6. country [ˈkʌntrɪ] (n. 國家) — international country（國際國家用法）</p><p>7. word [wɝd] (n. 字；詞) — word choice（選字）</p><p>8. conversation [ˌkɑnvɚˈseʃən] (n. 對話) — conversational (adj. 對話式的)</p><p>9. correct [kəˈrɛkt] (adj. 正確的) — correction (n. 改正)</p><p>10. term [tɝm] (n. 術語；詞語) — technical term（專門術語）</p><p>11. root [rut] (n. 根源；字根) — rooted (adj. 根深蒂固的)</p><p>12. century [ˈsɛntʃərɪ] (n. 世紀) — 19th-century（十九世紀的）</p><p>13. Britain [ˈbrɪtən] (n. 英國) — British (adj. 英國的)</p><p>14. form [fɔrm] (n. 形式) — formal (adj. 正式的)</p><p>15. rule [rul] (n. 規則) — rule-based (adj. 以規則為基礎的)</p><p>16. student [ˈstudənt] (n. 學生) — student slang（學生俚語）</p><p>17. pronunciation [prəˌnʌnsɪˈeʃən] (n. 發音) — pronounce (v. 發音)</p><p>18. change [tʃendʒ] (n./v. 改變) — changing (adj. 變化中的)</p><p>19. confusion [kənˈfjuʒən] (n. 混淆) — confuse (v. 使困惑)</p><p>20. culture [ˈkʌltʃɚ] (n. 文化) — cultural (adj. 文化的)</p><p>21. meanwhile [ˈminˌhwaɪl] (adv. 同時) — in the meanwhile（在此期間）</p><p>22. Canada [ˈkænədə] (n. 加拿大) — Canadian (adj. 加拿大的)</p><p>23. Australia [ɔˈstreljə] (n. 澳洲) — Australian (adj. 澳洲的)</p><p>24. origin [ˈɔrədʒɪn] (n. 起源) — original (adj. 原本的)</p><p>25. sophisticated [səˈfɪstəˌketɪd] (adj. 精緻的；老練的) — sophistication (n. 精緻)</p><p>26. reflect [rɪˈflɛkt] (v. 反映) — reflection (n. 反映；反思)</p><p>27. question [ˈkwɛstʃən] (n. 問題) — questionable (adj. 可疑的)</p><p>28. remember [rɪˈmɛmbɚ] (v. 記得) — memory (n. 記憶)</p><p>29. Atlantic [ətˈlæntɪk] (n. 大西洋) — transatlantic (adj. 跨大西洋的)</p><p>30. rugby [ˈrʌɡbɪ] (n. 橄欖球) — rugby football（橄欖球）</p>
+<p><strong>文章相關常用片語 5 個：</strong></p>
+<p>• kick off（開始）</p><p>• refer to（指的是）</p><p>• trace back to（追溯到）</p><p>• distinguish A from B（區分 A 與 B）</p><p>• start out as（起初是）</p>
+</div>
+</details>
+
+<details>
+<summary>折疊四　練文筆食材<span class="arrow">⌄</span></summary>
+<div class="detail-body compact">
+<p>① As + S + V, S + V（隨著……，……）<br>→ 適用：描寫背景變化或趨勢。<br>例：As technology improves, online learning becomes more flexible.</p>
+<p>② Both A and B（A 和 B 兩者都）<br>→ 適用：並列兩個重點。<br>例：Both teachers and students need clear communication.</p>
+<p>③ If + S + V, wh- question（如果……，那麼……？）<br>→ 適用：提出議題或引導討論。<br>例：If students learn online, how can schools keep them motivated?</p>
+<p>④ be traced back to + 時間/地點（可追溯到……）<br>→ 適用：介紹歷史起源。<br>例：This tradition can be traced back to the early twentieth century.</p>
+<p>⑤ To + V, S + V（為了……，……）<br>→ 適用：說明目的。<br>例：To reduce stress, many students exercise after school.</p>
+<p>⑥ Through + N, S + V（透過……，……）<br>→ 適用：說明方法或過程。<br>例：Through daily practice, learners can build stronger writing skills.</p>
+<p>⑦ Over time, S + V（隨著時間過去，……）<br>→ 適用：描述逐漸發生的變化。<br>例：Over time, small habits can lead to major improvement.</p>
+<p>⑧ as A became..., B became...（當 A 變得……，B 也變得……）<br>→ 適用：比較兩個同步變化。<br>例：As cities became larger, public transportation became more important.</p>
+<p>⑨ such as + N（例如……）<br>→ 適用：舉例說明。<br>例：Many countries, such as Japan and Korea, value public manners.</p>
+<p>⑩ to avoid + N/V-ing（為了避免……）<br>→ 適用：解釋採取行動的原因。<br>例：To avoid confusion, the teacher wrote the rules on the board.</p>
+<p>⑪ had come to be viewed as...（逐漸被視為……）<br>→ 適用：描述社會觀感的形成。<br>例：Online learning had come to be viewed as a useful option.</p>
+<p>⑫ despite + N/V-ing（儘管……）<br>→ 適用：表達讓步與對比。<br>例：Despite the pressure, the team finished the project on time.</p>
+<p>⑬ rather than + N/V-ing（而不是……）<br>→ 適用：強調真正重點。<br>例：Good learning depends on steady effort rather than luck.</p>
+<p>⑭ The next time + S + V, remember that...（下次……時，記得……）<br>→ 適用：結論或提醒讀者。<br>例：The next time you feel nervous, remember that preparation builds confidence.</p>
+<p>⑮ long before + S + V（早在……之前）<br>→ 適用：強調時間先後。<br>例：People shared stories long before books became common.</p>
+</div>
+</details>
+
+<nav class="link-panel bottom" aria-label="頁尾課程與聯絡連結">
+<p class="link-title">七月新課程與聯絡方式</p>
+<div class="link-grid">
+<a class="link-card course-echo" href="https://linwayet.github.io/4ulive/index.html">
+<strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+<span>用錯誤訂正、回聲練習與句型反覆輸出，幫助學生把英文弱點轉成穩定得分能力。</span>
+</a>
+<a class="link-card course-analysis" href="https://linwayet.github.io/popup/index">
+<strong>學生分析</strong>
+<span>透過學習表現與弱點分析，快速了解學生目前程度，規劃更精準的學測與分科準備方向。</span>
+</a>
+<a class="link-card line-link" href="https://line.me/ti/p/~linwayet">
+<strong>Line 聯絡：linwayet</strong>
+<span>加入林威老師個人 Line 帳號，詢問課程、教材使用方式與英文學習規劃。</span>
+</a>
+</div>
+</nav>
+
+</main>
+</body>
+</html>
