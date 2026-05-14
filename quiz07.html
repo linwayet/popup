@@ -1,264 +1,796 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-        }
-        .header {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .question {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-        }
-        .option-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-            position: relative;
-            transition: background 0.2s;
-        }
-        .option-item:hover {
-            background-color: #fafafa;
-        }
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #eee;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
-        .special-btn {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .footer-tools {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        .tool-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alice 單字本｜Day 2｜科學與運動</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F0FFF8;
+  --ink: #0A2A1A;
+  --accent1: #00695C;
+  --accent2: #0D7C5E;
+  --card-bg: #FFFFFF;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'BIZ UDPGothic', 'Noto Sans TC', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.85;
+  padding: 24px 14px 80px;
+}
+main { max-width: 900px; margin: auto; }
 
-        /* 彈出視窗樣式 */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.95);
-            z-index: 1000;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .overlay-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            font-weight: bold;
-            padding: 10px;
-        }
-        .overlay-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-left: 4px solid #000;
-            padding-left: 10px;
-        }
-        .example-box {
-            background: #f4f4f4;
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border-left: 3px solid #ccc;
-        }
-        h4 { margin: 15px 0 5px 0; color: #333; }
-        .eg-item { margin-bottom: 10px; }
-    </style>
+.page-header {
+  background: linear-gradient(135deg, #004D40 0%, #00695C 40%, #00897B 100%);
+  color: white;
+  padding: 32px 28px;
+  border-radius: 18px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(0,105,92,0.30);
+  position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: "";
+  position: absolute; top: -40%; right: -10%;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.page-header h1 { font-size: 2em; margin-bottom: 8px; position: relative; }
+.page-header p  { opacity: .92; font-size: 1em; position: relative; }
+.tag-row { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.20);
+  padding: 5px 14px; border-radius: 20px; font-size: 0.82em; font-weight: 700;
+}
+.tag.unfam { background: rgba(255,180,180,0.38); }
+.tag.fam   { background: rgba(160,230,200,0.38); }
+
+.section-card {
+  background: white; border-radius: 16px;
+  padding: 28px; margin-bottom: 28px;
+  box-shadow: 0 4px 16px rgba(0,105,92,0.10);
+  border-top: 6px solid #00695C;
+}
+.section-card.grammar { border-top-color: #AD1457; }
+.section-card.reading { border-top-color: #1565C0; }
+.section-card.quiz    { border-top-color: #E65100; }
+.sec-title {
+  font-size: 1.35em; font-weight: 800; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sec-title .icon {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg,#00695C,#00897B);
+  color: white; display: flex; align-items: center;
+  justify-content: center; font-size: 1.1em;
+  box-shadow: 0 3px 8px rgba(0,105,92,0.3);
+}
+.section-card.grammar .sec-title .icon { background: linear-gradient(135deg,#880E4F,#AD1457); }
+.section-card.reading .sec-title .icon { background: linear-gradient(135deg,#0D47A1,#1565C0); }
+.section-card.quiz    .sec-title .icon { background: linear-gradient(135deg,#BF360C,#E65100); }
+.sec-sub {
+  color: #555; font-size: 0.9em; margin-bottom: 22px;
+  padding-bottom: 14px; border-bottom: 2px dashed #B2DFDB;
+}
+
+.vocab-card {
+  border: 2px solid #B2DFDB;
+  border-radius: 14px; padding: 20px 22px;
+  margin-bottom: 20px; background: #F5FFFC;
+  position: relative;
+}
+.vocab-card.unfam { border-color: #EF9A9A; background: #FFF8F8; }
+.badge {
+  position: absolute; top: 14px; right: 14px;
+  font-size: 0.72em; font-weight: 800;
+  padding: 3px 10px; border-radius: 12px;
+}
+.badge.unfam-b { background: #FFCDD2; color: #B71C1C; }
+.badge.fam-b   { background: #B2DFDB; color: #004D40; }
+.vocab-word  { font-size: 1.5em; font-weight: 800; color: #004D40; }
+.vocab-card.unfam .vocab-word { color: #B71C1C; }
+.vocab-kk   { color: #555; font-size: 0.88em; font-style: italic; margin-left: 8px; }
+.vocab-pos  { color: #777; font-size: 0.9em; font-style: italic; }
+.vocab-def  { font-size: 1.05em; color: #0A2A1A; margin: 8px 0 14px; }
+
+.tagrow {
+  display: grid; grid-template-columns: 120px 1fr;
+  border: 1px solid rgba(10,42,26,.13);
+  border-radius: 8px; overflow: hidden; margin: 7px 0;
+}
+.tagrow b   { padding: 9px 12px; font-size: 0.88em; }
+.tagrow span{ background: rgba(255,255,255,.8); padding: 9px 12px; font-size: 0.9em; }
+b.deriv  { background: #FDECEA; color: #B71C1C; }
+b.root   { background: #E3F2FD; color: #0D47A1; }
+b.phrase { background: #E8F5E9; color: #1B5E20; }
+b.idiom  { background: #FFF9C4; color: #E65100; }
+b.confuse{ background: #F3E5F5; color: #6A1B9A; }
+
+.examples { margin-top: 16px; }
+.ex-item { margin-bottom: 12px; padding-left: 14px; border-left: 3px solid #80CBC4; }
+.vocab-card.unfam .ex-item { border-left-color: #EF9A9A; }
+.ex-en { color: #0A2A1A; font-weight: 500; }
+.ex-zh { color: #666; font-size: 0.92em; margin-top: 2px; }
+.ex-num{ color: #00695C; font-weight: 800; margin-right: 4px; }
+.vocab-card.unfam .ex-num { color: #C62828; }
+
+.gram-item {
+  background: #FFF0F5; border-radius: 12px; padding: 20px 22px;
+  margin-bottom: 18px; border-left: 5px solid #AD1457;
+}
+.gram-title { font-size: 1.1em; font-weight: 800; color: #880E4F; margin-bottom: 6px; }
+.gram-pattern {
+  background: white; border: 2px solid #F48FB1;
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 0.95em; margin: 10px 0; color: #4A0020;
+  font-weight: 700; letter-spacing: .3px;
+}
+.gram-note {
+  background: #FFF9C4; border-left: 3px solid #F57F17;
+  border-radius: 6px; padding: 8px 12px;
+  font-size: 0.9em; color: #4A2700; margin: 8px 0;
+}
+.gram-ex { margin: 10px 0 0; }
+.gram-ex .g-en { color: #0A2A1A; }
+.gram-ex .g-zh { color: #666; font-size: 0.9em; margin-top: 2px; }
+.gram-ex .g-row{ margin-bottom: 10px; padding-left: 14px; border-left: 3px solid #F48FB1; }
+
+.reading-box {
+  background: #F0F7FF; border: 2px solid #90CAF9;
+  border-radius: 12px; padding: 22px 24px;
+  margin-bottom: 18px; line-height: 1.95;
+}
+.reading-title { text-align: center; color: #0D47A1; font-size: 1.2em; font-weight: 800; margin-bottom: 6px; }
+.reading-meta  { text-align: center; color: #999; font-size: 0.82em; font-style: italic; margin-bottom: 16px; }
+.reading-box p { text-indent: 2em; margin-bottom: 12px; }
+.kw { color: #004D40; font-weight: 700; }
+
+.r-question {
+  background: white; border-radius: 10px;
+  padding: 16px 18px; margin-bottom: 14px;
+  border-left: 4px solid #90CAF9;
+  box-shadow: 0 2px 8px rgba(13,71,161,0.06);
+}
+.r-stem { font-weight: 700; margin-bottom: 10px; }
+.r-opts { list-style: none; padding-left: 10px; }
+.r-opts li { padding: 3px 0; }
+.r-opts li::before { content: attr(data-l) ". "; font-weight: 800; color: #1565C0; margin-right: 4px; }
+
+.r-question details { margin-top: 10px; }
+.r-question summary {
+  background: linear-gradient(135deg,#0D47A1,#1565C0);
+  color: white; padding: 8px 16px;
+  border-radius: 20px; font-size: 0.85em; font-weight: 700;
+  cursor: pointer; list-style: none; display: inline-flex;
+  align-items: center; gap: 8px;
+}
+.r-question summary::-webkit-details-marker { display: none; }
+.r-answer {
+  background: #E3F2FD; border-radius: 8px;
+  padding: 10px 14px; margin-top: 8px;
+  font-size: 0.9em; color: #0D47A1; font-weight: 600;
+}
+.r-why { font-weight: 400; color: #1565C0; margin-top: 4px; }
+
+.quiz-q {
+  background: #FFF8F3; border-radius: 10px;
+  padding: 14px 18px; margin-bottom: 12px;
+  border-left: 4px solid #E65100;
+}
+.quiz-stem { font-weight: 700; margin-bottom: 8px; }
+.quiz-opts { list-style: none; padding-left: 10px; }
+.quiz-opts li { padding: 3px 0; }
+.quiz-opts li::before { content: attr(data-l) ". "; font-weight: 800; color: #E65100; margin-right: 4px; }
+
+.quiz-reveal-wrapper { margin-top: 18px; }
+.quiz-reveal-wrapper details summary {
+  background: linear-gradient(135deg,#BF360C,#E65100);
+  color: white; padding: 12px 22px;
+  border-radius: 10px; font-size: 1em; font-weight: 800;
+  cursor: pointer; list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  user-select: none;
+}
+.quiz-reveal-wrapper summary::-webkit-details-marker { display: none; }
+.quiz-arrow { transition: transform .3s ease; font-size: 1.1em; }
+details[open] .quiz-arrow { transform: rotate(180deg); }
+.reveal-body { padding: 16px 0 4px; }
+.ans-item {
+  background: white; border-radius: 8px;
+  padding: 12px 16px; margin-bottom: 10px;
+  border-left: 5px solid #00695C;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ans-item .ans-header { font-weight: 800; color: #004D40; margin-bottom: 4px; }
+.ans-item .ans-why { color: #00695C; font-size: 0.9em; }
+
+details.vocab-extra {
+  border: 2px solid #80CBC4; border-radius: 10px;
+  background: #F0FFF8; margin: 20px 0;
+}
+details.vocab-extra summary {
+  min-height: 56px; background: #00695C; color: white;
+  padding: 14px 20px; font-size: 1em; font-weight: 700;
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+}
+details.vocab-extra summary::-webkit-details-marker { display: none; }
+.v-arrow { transition: transform .3s ease; }
+details.vocab-extra[open] .v-arrow { transform: rotate(180deg); }
+.vocab-extra-body { padding: 18px 20px; font-size: 0.92em; }
+
+footer { text-align: center; padding: 24px; color: #777; font-size: 0.88em; margin-top: 30px; }
+
+@media (max-width: 640px) {
+  body { font-size: 18px; }
+  .page-header h1 { font-size: 1.55em; }
+  .tagrow { grid-template-columns: 1fr; }
+  .tagrow b { border-bottom: 1px solid rgba(10,42,26,.1); }
+}
+</style>
 </head>
 <body>
+<main>
 
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
-    
-    <div class="question">
-        To the newly-crowned winner of the piano competition, music is his life's ______, which he has devoted himself to whole-heartedly.
-    </div>
-
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) resource <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) impact <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) passion <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) emphasis <span class="info-icon">ⓘ</span></div>
-    </div>
-
-    <div class="special-btn" onclick="showOverlay('E')">
-        (E) 查看答案與詳細解析
-    </div>
-
-    <div class="special-btn" onclick="showOverlay('F')">
-        (F) 林威老師的話 (衍生詞與音標)
-    </div>
-
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+<div class="page-header">
+  <h1>🔬 Alice 英文單字本 · Day 2</h1>
+  <p>主題：科學與運動 · Motion &amp; Science</p>
+  <div class="tag-row">
+    <span class="tag">📅 2026-05-14 製作</span>
+    <span class="tag">🦐 主題：Motion &amp; Science</span>
+    <span class="tag unfam">🔴 不熟悉詞彙 × 3</span>
+    <span class="tag fam">🟢 同等級熟悉詞彙 × 7</span>
+    <span class="tag">📖 閱讀測驗 × 1</span>
+    <span class="tag">✏️ 單字選擇 × 5</span>
+  </div>
 </div>
 
-<div id="infoOverlay" class="overlay">
-    <span class="close-btn" onclick="closeOverlay()">×</span>
-    <div id="contentArea" class="overlay-content"></div>
+<!-- ===== PART 1: VOCABULARY ===== -->
+<div class="section-card">
+  <div class="sec-title"><span class="icon">📚</span>Part 1｜Day 2 單字 10 個</div>
+  <div class="sec-sub">連結段考文意選填（槍蝦文章）+ 學測綜合測驗（暈車）兩大考題出處 · 衍生詞參考 vocabulary_index.md</div>
+
+  <!-- ① nausea (UNFAMILIAR) -->
+  <div class="vocab-card unfam">
+    <span class="badge unfam-b">🔴 不熟悉</span>
+    <div class="vocab-word">① nausea <span class="vocab-kk">[ˈnɔʒə]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">噁心感；作嘔；極度厭惡</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>nauseous (adj. 感到噁心的)；nauseating (adj. 令人作嘔的)；nauseate (v. 使感到噁心)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>nausea and vomiting 噁心嘔吐；suffer from nausea 受噁心之苦；motion-induced nausea 暈動症引起的噁心</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>nausea 是名詞（feel nausea）；nauseous 是形容詞（I feel nauseous 我覺得想吐）；nauseating 是「令人噁心」（the smell is nauseating）</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>Motion sickness can <b>trigger</b> severe <b>nausea</b>, especially when reading in a moving vehicle.</div>
+        <div class="ex-zh">暈車症可能引發嚴重的噁心感，尤其是在行進中的交通工具裡看書時。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The patient experienced <b>nausea</b> and dizziness as the first <b>symptoms</b> of the illness.</div>
+        <div class="ex-zh">病人以噁心和頭暈作為這種疾病的最初症狀。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The smell of the chemical was so <b>nauseating</b> that workers had to leave the room immediately.</div>
+        <div class="ex-zh">那股化學品的氣味令人作嘔，工作人員不得不立刻離開房間。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② subsequent (UNFAMILIAR) -->
+  <div class="vocab-card unfam">
+    <span class="badge unfam-b">🔴 不熟悉</span>
+    <div class="vocab-word">② subsequent <span class="vocab-kk">[ˈsʌbsɪkwənt]</span> <span class="vocab-pos">adj.</span></div>
+    <div class="vocab-def">隨後的；後續的；接下來的</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>subsequently (adv. 隨後；之後)；subsequence (n. 後續事件)</span></div>
+    <div class="tagrow"><b class="root">字根</b><span>sequ / sec 跟隨 → sequence 順序；consequence 結果；sequel 續集；consecutive 連續的</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>subsequent events 後續事件；in subsequent years 在之後幾年；subsequent to 在……之後（正式用語）</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>subsequent 強調時間上緊接其後；following 較口語化；later 更一般；consequent 強調因果關係上的後果</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The initial <b>impact</b> of the earthquake was severe, and the <b>subsequent</b> aftershocks caused further damage.</div>
+        <div class="ex-zh">地震最初的衝擊相當嚴重，而隨後的餘震又造成了更多的損害。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The scientist's first experiment failed, but <b>subsequent</b> trials led to a breakthrough discovery.</div>
+        <div class="ex-zh">科學家的第一次實驗失敗了，但後續的嘗試卻帶來了突破性的發現。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span><b>Subsequently</b>, the research team <b>detected</b> a pattern in the data that had been overlooked before.</div>
+        <div class="ex-zh">隨後，研究團隊在先前被忽視的數據中偵測到了一個規律。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ acoustic (UNFAMILIAR) -->
+  <div class="vocab-card unfam">
+    <span class="badge unfam-b">🔴 不熟悉</span>
+    <div class="vocab-word">③ acoustic <span class="vocab-kk">[əˈkustɪk]</span> <span class="vocab-pos">adj.</span></div>
+    <div class="vocab-def">聲音的；音響的；聽覺相關的</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>acoustics (n. 音響學；音響效果)；acoustically (adv. 在音響方面)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>acoustic quality 音質；acoustic signal 聲學信號；acoustic guitar 原聲吉他；acoustic chamber 音響腔室</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>acoustic 與聲音效果或音響相關；auditory 指耳朵的「聽覺」感官功能；sonic 指「音速」或「聲波」特性</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The old bells were replaced because their <b>acoustic</b> quality had deteriorated significantly over the centuries.</div>
+        <div class="ex-zh">舊鐘因為幾個世紀以來音質顯著劣化，最終被替換掉了。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The shrimp creates a powerful <b>acoustic</b> shock wave by snapping its claw at high speed.</div>
+        <div class="ex-zh">這種蝦子以極高的速度夾緊鉗子，產生強大的聲波衝擊。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Engineers designed the concert hall to have perfect <b>acoustics</b> so that every note could be heard clearly.</div>
+        <div class="ex-zh">工程師設計這座音樂廳時，力求完美的音響效果，讓每個音符都能清晰聽見。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ trigger (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟢 同等級</span>
+    <div class="vocab-word">④ trigger <span class="vocab-kk">[ˈtrɪɡər]</span> <span class="vocab-pos">v. / n.</span></div>
+    <div class="vocab-def">觸發；引發；啟動 / 扳機；導火線</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>triggered (adj. 被觸發的)；hair-trigger (adj. 一觸即發的)；triggering (v./adj. 觸發中的)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>trigger a reaction 觸發反應；trigger a memory 喚起記憶；pull the trigger 扣扳機；trigger point 觸發點</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>trigger 強調引發連鎖反應的起點；cause 較廣義的「造成」；provoke 偏向激怒或引起情緒反應</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>Reading in a car can <b>trigger</b> motion sickness in people with a sensitive inner ear.</div>
+        <div class="ex-zh">對於內耳較敏感的人來說，在車裡閱讀可能會觸發暈車反應。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The sudden loud noise <b>triggered</b> a stress response that caused the animal to freeze.</div>
+        <div class="ex-zh">突然的巨大聲響觸發了壓力反應，使那隻動物僵在原地。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Scientists are studying what <b>triggers</b> the shrimp's snap, since it happens faster than the eye can see.</div>
+        <div class="ex-zh">科學家正在研究是什麼觸發了這種蝦子的夾擊動作，因為它發生的速度快到肉眼無法捕捉。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ symptom (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟢 同等級</span>
+    <div class="vocab-word">⑤ symptom <span class="vocab-kk">[ˈsɪmptəm]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">症狀；徵兆；表徵</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>symptomatic (adj. 有症狀的；症狀性的；徵兆的)；symptom-free (adj. 無症狀的)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>common symptoms 常見症狀；display symptoms 出現症狀；symptom of a larger problem 更大問題的徵兆；alleviate symptoms 緩解症狀</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>symptom 指疾病的具體表徵；sign 較廣義的「跡象」（包含醫學和非醫學）；indication 泛指任何暗示或提示</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The most common <b>symptoms</b> of motion sickness are <b>nausea</b>, dizziness, and cold sweats.</div>
+        <div class="ex-zh">暈車症最常見的症狀是噁心感、頭暈和冷汗。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>If you experience any of these <b>symptoms</b>, you should consult a doctor as soon as possible.</div>
+        <div class="ex-zh">如果你出現任何這些症狀，應該盡快去看醫生。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>High unemployment is often seen as a <b>symptom</b> of a deeper economic problem.</div>
+        <div class="ex-zh">高失業率常常被視為更深層經濟問題的徵兆。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ chamber (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟢 同等級</span>
+    <div class="vocab-word">⑥ chamber <span class="vocab-kk">[ˈtʃeɪmbər]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">腔室；房間；會議廳；議院</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>chambered (adj. 有腔室的)；chamber music 室內樂；single-chamber 單腔的</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>air chamber 氣室；chamber of commerce 商會；inner chamber 內室；gas chamber 毒氣室</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>chamber 強調密閉空間（科學、建築）；room 是一般房間；cavity 指體內的空腔；compartment 指特定隔間</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The shrimp's claw <b>strikes</b> a small water-filled <b>chamber</b>, creating a powerful shock wave.</div>
+        <div class="ex-zh">蝦子的鉗子撞擊一個充滿水的小腔室，產生強大的衝擊波。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The scientist placed the bacteria in a sealed <b>chamber</b> to observe how they responded to heat.</div>
+        <div class="ex-zh">科學家將細菌放入密封腔室中，觀察它們如何對熱度做出反應。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The lower <b>chamber</b> of parliament voted to approve the new environmental bill.</div>
+        <div class="ex-zh">國會的下議院投票通過了新的環保法案。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑦ detect (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟢 同等級</span>
+    <div class="vocab-word">⑦ detect <span class="vocab-kk">[dɪˈtɛkt]</span> <span class="vocab-pos">v.</span></div>
+    <div class="vocab-def">偵測；發現；察覺（難以察覺的事物）</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>detection (n. 偵測；發現)；detector (n. 偵測器)；detective (n. 偵探)；detectable (adj. 可偵測的)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>detect a signal 偵測信號；detect danger 察覺危險；early detection 早期發現；smoke detector 煙霧偵測器</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>detect 強調通過儀器或技術發現隱藏事物；discover 強調首次發現；identify 強調確認身分或性質；find 一般性發現</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The fish can <b>detect</b> the <b>acoustic</b> shock waves produced by the snapping shrimp from a great distance.</div>
+        <div class="ex-zh">這種魚能從很遠的距離偵測到槍蝦夾擊所產生的聲波衝擊。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>Doctors use special equipment to <b>detect</b> early signs of disease before <b>symptoms</b> appear.</div>
+        <div class="ex-zh">醫生使用特殊儀器在症狀出現之前偵測疾病的早期徵兆。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Security cameras are installed throughout the building to <b>detect</b> any unusual activity.</div>
+        <div class="ex-zh">整棟建築物裝設了監視器，用以偵測任何異常活動。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑧ collapse (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟢 同等級</span>
+    <div class="vocab-word">⑧ collapse <span class="vocab-kk">[kəˈlæps]</span> <span class="vocab-pos">v. / n.</span></div>
+    <div class="vocab-def">倒塌；崩潰；昏倒 / 倒塌；崩潰</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>collapsible (adj. 可折疊的；可倒塌的)；collapsed (adj. 倒塌的)；collapsing (adj. 正在崩潰的)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>collapse from exhaustion 因精疲力竭而倒下；structural collapse 結構倒塌；economic collapse 經濟崩潰；collapse in price 價格崩跌</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>collapse 指突然全面性的崩潰；fall 較一般性；break down 強調機能失效；crumble 強調逐漸瓦解</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The tiny bubble created by the shrimp's snap <b>collapses</b> with tremendous force, stunning its prey.</div>
+        <div class="ex-zh">蝦子夾擊產生的微小氣泡以巨大的力量崩潰，使獵物昏迷。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>After running the marathon, she <b>collapsed</b> on the ground, too exhausted to take another step.</div>
+        <div class="ex-zh">跑完馬拉松後，她倒在地上，累到再也無法踏出一步。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The sudden <b>collapse</b> of the bridge <b>triggered</b> a major investigation into its construction quality.</div>
+        <div class="ex-zh">橋樑突然倒塌引發了對其建造品質的重大調查。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑨ mechanism (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟢 同等級</span>
+    <div class="vocab-word">⑨ mechanism <span class="vocab-kk">[ˈmɛkəˌnɪzəm]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">機制；機械裝置；（生理或心理的）作用方式</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>mechanical (adj. 機械的；機械性的)；mechanically (adv.)；mechanize (v. 機械化)；mechanics (n. 力學；機械學)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>defense mechanism 防禦機制；biological mechanism 生物機制；coping mechanism 應對機制；locking mechanism 鎖定機制</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>mechanism 強調運作的方式或系統結構；process 指步驟流程；system 指更大的整體系統；method 指做法或方法</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>Scientists are fascinated by the shrimp's hunting <b>mechanism</b>, which uses sound rather than claws to stun prey.</div>
+        <div class="ex-zh">科學家對這種蝦子的狩獵機制著迷不已——它用聲音而非鉗子來使獵物昏迷。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The brain has several natural <b>mechanisms</b> for managing stress and maintaining emotional balance.</div>
+        <div class="ex-zh">大腦有幾種自然機制，用以管理壓力並維持情緒平衡。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Researchers are trying to understand the exact <b>mechanism</b> by which this drug reduces inflammation.</div>
+        <div class="ex-zh">研究人員正試圖了解這種藥物減少發炎的確切作用機制。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑩ impact (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟢 同等級</span>
+    <div class="vocab-word">⑩ impact <span class="vocab-kk">[ˈɪmpækt]</span> <span class="vocab-pos">n. / v.</span></div>
+    <div class="vocab-def">影響；衝擊；撞擊（力）</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>impactful (adj. 有深遠影響的)；high-impact (adj. 高衝擊性的)；impact crater 撞擊坑</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>have an impact on 對……有影響；environmental impact 環境衝擊；impact assessment 影響評估；on impact 在撞擊時</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>impact 強調直接且顯著的影響或撞擊；effect 是結果或效果（較廣義）；influence 強調緩慢漸進的影響；consequence 強調因果結果</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The <b>acoustic</b> shock wave has a powerful <b>impact</b> on any creature within range of the snapping shrimp.</div>
+        <div class="ex-zh">這股聲波衝擊對槍蝦攻擊範圍內的任何生物都有強大的撞擊效果。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>Climate change has a <b>significant</b> <b>impact</b> on the survival of marine creatures around the world.</div>
+        <div class="ex-zh">氣候變遷對全球各地海洋生物的生存有著重大影響。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The new policy <b>impacted</b> thousands of families who had been relying on the government subsidy.</div>
+        <div class="ex-zh">這項新政策影響了數千個一直依賴政府補貼的家庭。</div>
+      </div>
+    </div>
+  </div>
+
+  <details class="vocab-extra">
+    <summary>📋 Day 2 單字衍生詞速查表（點擊展開）<span class="v-arrow">⌄</span></summary>
+    <div class="vocab-extra-body">
+      <table style="width:100%;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#00695C;color:white;">
+            <th style="padding:8px 12px;text-align:left;">單字</th>
+            <th style="padding:8px 12px;text-align:left;">衍生詞</th>
+            <th style="padding:8px 12px;text-align:left;">字根</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#FFF8F8;"><td style="padding:7px 12px;font-weight:700;color:#B71C1C;">nausea</td><td style="padding:7px 12px;">nauseous, nauseating, nauseate</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#FFF3F3;"><td style="padding:7px 12px;font-weight:700;color:#B71C1C;">subsequent</td><td style="padding:7px 12px;">subsequently, subsequence</td><td style="padding:7px 12px;">sequ/sec 跟隨</td></tr>
+          <tr style="background:#FFF8F8;"><td style="padding:7px 12px;font-weight:700;color:#B71C1C;">acoustic</td><td style="padding:7px 12px;">acoustics, acoustically</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F5FFFC;"><td style="padding:7px 12px;font-weight:700;color:#004D40;">trigger</td><td style="padding:7px 12px;">triggered, hair-trigger</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F0FFF8;"><td style="padding:7px 12px;font-weight:700;color:#004D40;">symptom</td><td style="padding:7px 12px;">symptomatic, symptom-free</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F5FFFC;"><td style="padding:7px 12px;font-weight:700;color:#004D40;">chamber</td><td style="padding:7px 12px;">chambered, chamber music</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F0FFF8;"><td style="padding:7px 12px;font-weight:700;color:#004D40;">detect</td><td style="padding:7px 12px;">detection, detector, detective, detectable</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F5FFFC;"><td style="padding:7px 12px;font-weight:700;color:#004D40;">collapse</td><td style="padding:7px 12px;">collapsible, collapsed</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F0FFF8;"><td style="padding:7px 12px;font-weight:700;color:#004D40;">mechanism</td><td style="padding:7px 12px;">mechanical, mechanically, mechanize, mechanics</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F5FFFC;"><td style="padding:7px 12px;font-weight:700;color:#004D40;">impact</td><td style="padding:7px 12px;">impactful, high-impact</td><td style="padding:7px 12px;">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
 </div>
 
-<script>
-    const data = {
-        'A': {
-            title: '(A) resource',
-            desc: '解釋：資源；物資',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. Water is a precious natural <b>resource</b>.<br>(水是寶貴的自然資源。)</div>
-                    <div class="eg-item">2. The library is a great <b>resource</b> for students.<br>(圖書館對學生來說是很好的資源。)</div>
-                    <div class="eg-item">3. We need to exploit our local <b>resources</b>.<br>(我們需要開發當地的資源。)</div>
-                </div>`
-        },
-        'B': {
-            title: '(B) impact',
-            desc: '解釋：影響；衝擊',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The new law will have a major <b>impact</b> on the economy.<br>(新法律將對經濟產生重大影響。)</div>
-                    <div class="eg-item">2. The <b>impact</b> of the collision was felt for miles.<br>(碰撞的衝擊力在幾英里外都能感受到。)</div>
-                    <div class="eg-item">3. His speech had a profound <b>impact</b> on the audience.<br>(他的演說對觀眾產生了深遠的影響。)</div>
-                </div>`
-        },
-        'C': {
-            title: '(C) passion',
-            desc: '解釋：熱情；強烈愛好',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. Cooking is her greatest <b>passion</b> in life.<br>(烹飪是她一生最大的愛好。)</div>
-                    <div class="eg-item">2. He spoke with great <b>passion</b> about his work.<br>(他充滿熱情地談論他的工作。)</div>
-                    <div class="eg-item">3. She has a <b>passion</b> for classical music.<br>(她對古典音樂情有獨鍾。)</div>
-                </div>`
-        },
-        'D': {
-            title: '(D) emphasis',
-            desc: '解釋：強調；重點',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The school puts great <b>emphasis</b> on sports.<br>(這間學校非常強調體育。)</div>
-                    <div class="eg-item">2. Where shall we put the <b>emphasis</b> in this project?<br>(我們在這個計畫中應把重點放在哪裡？)</div>
-                    <div class="eg-item">3. The <b>emphasis</b> is on quality rather than quantity.<br>(重點在於品質而非數量。)</div>
-                </div>`
-        },
-        'E': {
-            title: '正確答案：(C)',
-            desc: '解析：題幹提到鋼琴大賽的冠軍全心全意地投入在音樂中，表示音樂是他一生的「熱情」。',
-            example: 'resource (資源)、impact (影響)、emphasis (強調) 在此處無法貼切地形容一個人全心投入的對象。'
-        },
-        'F': {
-            title: '林威老師的話',
-            desc: '衍生詞與音標學習：',
-            detail: `
-                <h4>1. resourceful (形容詞)</h4>
-                <p>KK: [rɪˈsorsfəl] | 中文：資源豐富的；足智多謀的</p>
-                <h4>2. impactful (形容詞)</h4>
-                <p>KK: [ɪmˈpæktfəl] | 中文：有影響力的</p>
-                <h4>3. passionate (形容詞)</h4>
-                <p>KK: [ˈpæʃənɪt] | 中文：熱情的；激昂的</p>
-                <h4>4. emphasize (動詞)</h4>
-                <p>KK: [ˈɛmfəˌsaɪz] | 中文：強調</p>
-            `
-        },
-        'G': {
-            title: '衍生詞更多例句',
-            detail: `
-                <div class="example-box">1. She is a <b>resourceful</b> person who can solve any problem.<br>(她是個足智多謀的人，能解決任何問題。)</div>
-                <div class="example-box">2. The campaign was highly <b>impactful</b>.<br>(這次活動非常有影響力。)</div>
-                <div class="example-box">3. He is a <b>passionate</b> advocate for human rights.<br>(他是人權的熱情倡導者。)</div>
-                <div class="example-box">4. I want to <b>emphasize</b> that this is only a suggestion.<br>(我想強調這僅僅是一個建議。)</div>
-            `
-        },
-        'H': {
-            title: '台灣學測必備片語',
-            detail: `
-                <h4>1. deal with (處理；應付)</h4>
-                <p>例句：How do you <b>deal with</b> difficult customers?<br>(你如何應付奧客？)</p>
-                <h4>2. deal in (經營；買賣)</h4>
-                <p>例句：The shop <b>deals in</b> antique furniture.<br>(這間店經營古董家具。)</p>
-                <h4>3. a great deal of (大量的 + 不可數名詞)</h4>
-                <p>例句：She has <b>a great deal of</b> experience in teaching.<br>(她在教學方面有豐富的經驗。)</p>
-            `
-        }
-    };
+<!-- ===== PART 2: GRAMMAR ===== -->
+<div class="section-card grammar">
+  <div class="sec-title"><span class="icon">📐</span>Part 2｜文法加強 3 大重點</div>
+  <div class="sec-sub">Day 2 文法來自 Alice 兩次考試的高頻錯題 · 關鍵字<b>粗體</b>標示 · 英中對照</div>
 
-    function showOverlay(key) {
-        const item = data[key];
-        let html = `<div class="overlay-title">${item.title}</div>`;
-        if(item.desc) html += `<p>${item.desc}</p>`;
-        if(item.detail) html += `<div>${item.detail}</div>`;
-        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
-        
-        document.getElementById('contentArea').innerHTML = html;
-        document.getElementById('infoOverlay').style.display = 'block';
-    }
+  <!-- Grammar 1: would V vs would have Vpp -->
+  <div class="gram-item">
+    <div class="gram-title">① would + V（過去未來式）vs would have + V-pp（假設語氣）</div>
+    <p style="margin-bottom:8px;color:#880E4F;font-size:0.92em;">錯誤來源：114 學測 Q11 — Alice 選 would have spread，正解是 would spread</p>
+    <div class="gram-pattern">
+      ✅ 站在過去看未來（事情真的發生了）：would + V<br>
+      ✅ 假設與過去相反（事情沒有發生）：would have + V-pp<br>
+      口訣：<b>「已發生的未來 → would V；沒發生的遺憾 → would have V-pp」</b>
+    </div>
+    <div class="gram-note">
+      📌 判斷法：問自己「這件事最後有沒有真的發生？」<br>
+      ・<em>In 1995, no one knew it would spread worldwide.</em>（後來真的擴散了 → would spread）<br>
+      ・<em>If she had left earlier, she would have caught the train.</em>（她沒有早點走，沒趕上 → would have caught）
+    </div>
+    <div class="gram-ex">
+      <div class="g-row">
+        <div class="g-en">In 1990, scientists discovered a new <b>mechanism</b> that <b>would transform</b> the field of medicine forever.</div>
+        <div class="g-zh">1990 年，科學家發現了一種新機制，後來確實永遠改變了醫學領域。（真的發生 → would + V）</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">If researchers <b>had detected</b> the signal earlier, they <b>would have prevented</b> the structural <b>collapse</b>.</div>
+        <div class="g-zh">如果研究人員早一點偵測到這個信號，他們就能阻止那次結構倒塌了。（沒早點發現 → would have + pp）</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">When the lab was founded in 1980, no one imagined it <b>would become</b> one of the world's top research centers.</div>
+        <div class="g-zh">當這間實驗室於 1980 年創立時，沒有人想到它後來真的成為了全球頂尖研究中心。（真的成為了 → would become）</div>
+      </div>
+    </div>
+  </div>
 
-    function closeOverlay() {
-        document.getElementById('infoOverlay').style.display = 'none';
-    }
-</script>
+  <!-- Grammar 2: 介系詞 + whom -->
+  <div class="gram-item">
+    <div class="gram-title">② 介系詞 + whom（關係代名詞受格）</div>
+    <p style="margin-bottom:8px;color:#880E4F;font-size:0.92em;">錯誤來源：高二段考 Q23 — Alice 選 who，正解是 whom（of 後面接受格）</p>
+    <div class="gram-pattern">
+      ✅ 介系詞（of / to / with / for / from…）+ <b>whom</b>（受格）<br>
+      ✅ 主格位置（做主詞）→ <b>who</b><br>
+      ✅ 受詞位置（做受詞）→ <b>whom</b>（較正式）或 who（口語）
+    </div>
+    <div class="gram-note">
+      📌 快速判斷：把關係子句還原為一般句，看空格位置是「誰在做主詞」還是「被誰影響的受詞」。<br>
+      例：400,000 Jews, many of <b>whom</b> died... → of + 受格 → whom<br>
+      例：The scientist <b>who</b> discovered this... → 主詞位置 → who
+    </div>
+    <div class="gram-ex">
+      <div class="g-row">
+        <div class="g-en">The research team had ten members, most of <b>whom</b> had studied <b>acoustic</b> science for over a decade.</div>
+        <div class="g-zh">研究團隊有十名成員，其中大多數人研究聲學超過十年了。（of + 受格 = whom）</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">The professor <b>who</b> discovered the <b>mechanism</b> received the Nobel Prize in Physics.</div>
+        <div class="g-zh">那位發現該機制的教授榮獲了諾貝爾物理學獎。（主詞位置 = who）</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">She is the scientist <b>whom</b> the committee selected to lead the new <b>detection</b> project.</div>
+        <div class="g-zh">她就是委員會選定來領導新偵測計畫的那位科學家。（selected 的受詞 = whom）</div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Grammar 3: while 的三種用法 -->
+  <div class="gram-item">
+    <div class="gram-title">③ while 的三種核心用法：①同時 ②對比 ③讓步</div>
+    <p style="margin-bottom:8px;color:#880E4F;font-size:0.92em;">學測文章高頻字，常出現在文意選填與閱讀測驗中，需正確判斷語意</p>
+    <div class="gram-pattern">
+      ① 同時（兩件事同時發生）：S + V, <b>while</b> + S + V<br>
+      ② 對比（兩者不同）：S + V, <b>while</b> + S + V  （語意上形成反差）<br>
+      ③ 讓步（儘管）：<b>While</b> + S + V, S + V  （= although，放句首）
+    </div>
+    <div class="gram-note">
+      📌 判斷技巧：看兩個子句是否能「同時發生」→ ①；看兩個子句是否「相反對比」→ ②；看 while 子句是否是「讓步條件」→ ③。
+    </div>
+    <div class="gram-ex">
+      <div class="g-row">
+        <div class="g-en"><b>①同時：</b>The shrimp snaps its claw <b>while</b> its body remains perfectly stationary.</div>
+        <div class="g-zh">蝦子夾擊鉗子的同時，身體保持完全靜止不動。</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en"><b>②對比：</b>The large bell <b>survived</b> the revolution, <b>while</b> all the others were melted down for weapons.</div>
+        <div class="g-zh">那口大鐘在革命中倖存下來，而其他所有的鐘卻都被熔做武器。（對比）</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en"><b>③讓步：</b><b>While</b> the <b>symptoms</b> of motion sickness may seem mild, they can <b>impact</b> daily life significantly.</div>
+        <div class="g-zh">儘管暈車症的症狀看起來可能輕微，卻可能對日常生活造成相當大的影響。（讓步 = although）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PART 3: READING ===== -->
+<div class="section-card reading">
+  <div class="sec-title"><span class="icon">📖</span>Part 3｜閱讀測驗</div>
+  <div class="sec-sub">主題與段考文意選填（槍蝦）高度相關 · 長度約 115 年學測閱讀 1/2 · 3 題選擇</div>
+
+  <div class="reading-box">
+    <div class="reading-title">Nature's Tiny Weapon</div>
+    <div class="reading-meta">~ 115 words · 約學測閱讀 1/2 長度 ~</div>
+    <p>The snapping shrimp, also known as the pistol shrimp, is one of nature's most remarkable hunters. Despite measuring only a few centimeters, this tiny creature has developed an extraordinary <span class="kw">mechanism</span> for catching prey. When it snaps its oversized claw, it creates a powerful <span class="kw">acoustic</span> shock wave that can stun or even kill small fish.</p>
+    <p>The process begins when a bump inside the claw <span class="kw">triggers</span> a rapid <span class="kw">collapse</span> of a small water-filled <span class="kw">chamber</span>. This releases a burst of energy that scientists can <span class="kw">detect</span> from a distance. The <span class="kw">subsequent</span> pressure wave hits prey with surprising force.</p>
+    <p>The <span class="kw">impact</span> of this discovery has been significant. Engineers are now studying the shrimp's hunting technique to design new underwater technologies.</p>
+  </div>
+
+  <div class="r-question">
+    <div class="r-stem">1. What is the main purpose of the passage?</div>
+    <ul class="r-opts">
+      <li data-l="A">To warn readers about the dangers of snapping shrimp.</li>
+      <li data-l="B">To explain how the snapping shrimp hunts using sound.</li>
+      <li data-l="C">To compare the snapping shrimp with other sea creatures.</li>
+      <li data-l="D">To discuss the negative impact of shrimp on coral reefs.</li>
+    </ul>
+    <details>
+      <summary>點此查看答案 ▼</summary>
+      <div class="r-answer">✔ 正解：(B)
+        <div class="r-why">全文說明槍蝦如何用聲波狩獵的機制，最後一段才提到工程應用。(A)(C)(D) 都是干擾選項，文章完全沒有涉及危險警告、物種比較或珊瑚礁影響。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="r-question">
+    <div class="r-stem">2. According to the passage, what triggers the acoustic shock wave?</div>
+    <ul class="r-opts">
+      <li data-l="A">The shrimp's tail hitting the seafloor.</li>
+      <li data-l="B">A rapid collapse of a water-filled chamber inside the claw.</li>
+      <li data-l="C">The shrimp releasing a cloud of ink into the water.</li>
+      <li data-l="D">A loud call that the shrimp produces with its voice.</li>
+    </ul>
+    <details>
+      <summary>點此查看答案 ▼</summary>
+      <div class="r-answer">✔ 正解：(B)
+        <div class="r-why">第二段明確說明：「a bump inside the claw triggers a rapid collapse of a small water-filled chamber.」直接定位回文找關鍵句，排除其他無中生有選項。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="r-question">
+    <div class="r-stem">3. The word "subsequent" in paragraph 2 is closest in meaning to:</div>
+    <ul class="r-opts">
+      <li data-l="A">original and unexpected</li>
+      <li data-l="B">following and coming after</li>
+      <li data-l="C">powerful and unstoppable</li>
+      <li data-l="D">gentle and gradual</li>
+    </ul>
+    <details>
+      <summary>點此查看答案 ▼</summary>
+      <div class="r-answer">✔ 正解：(B)
+        <div class="r-why">subsequent = 隨後的；後來的，closest to "following and coming after"。在文中指「接下來的壓力波」。注意不要選 (C)「強大」— 強大是形容衝擊效果，不是 subsequent 的定義。</div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== PART 4: MCQ ===== -->
+<div class="section-card quiz">
+  <div class="sec-title"><span class="icon">✏️</span>Part 4｜單字單選複習 5 題</div>
+  <div class="sec-sub">考驗 Day 2 單字掌握程度 · 完成後按下方按鈕一次查看全部答案與解析</div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">1. In 1968, few scientists imagined that this tiny shrimp ______ inspire a new generation of underwater technology.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">would have inspired</li>
+      <li data-l="B">would inspire</li>
+      <li data-l="C">had inspired</li>
+      <li data-l="D">has inspired</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">2. The research team had six members, two of ______ had studied marine acoustics for over twenty years.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">which</li>
+      <li data-l="B">that</li>
+      <li data-l="C">who</li>
+      <li data-l="D">whom</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">3. The patient suffered from severe ______ and dizziness after the surgery, so she was kept in the hospital overnight.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">mechanism</li>
+      <li data-l="B">nausea</li>
+      <li data-l="C">chamber</li>
+      <li data-l="D">impact</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">4. The shrimp's ______ for hunting is remarkable — it stuns prey using sound rather than physical force.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">symptom</li>
+      <li data-l="B">collapse</li>
+      <li data-l="C">mechanism</li>
+      <li data-l="D">trigger</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">5. The ______ tests showed that the treatment was working, as all the initial symptoms had disappeared.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">subsequent</li>
+      <li data-l="B">acoustic</li>
+      <li data-l="C">impactful</li>
+      <li data-l="D">collapsible</li>
+    </ul>
+  </div>
+
+  <div class="quiz-reveal-wrapper">
+    <details>
+      <summary>
+        <span>📋 點此查看答案 &amp; 解析 &nbsp;｜&nbsp; 手機版請調正</span>
+        <span class="quiz-arrow">⌄</span>
+      </summary>
+      <div class="reveal-body">
+        <div class="ans-item">
+          <div class="ans-header">第 1 題 ✔ 正解：(B) would inspire</div>
+          <div class="ans-why">
+            站在 1968 年看未來「後來真的啟發了新技術」→ 站在過去看未來的事實 → <b>would + V</b>（過去未來式）。<br>
+            ❌ (A) would have inspired = 假設語氣（「如果…就會啟發了」暗示沒發生，但這裡說的是真的發生的事）。<br>
+            這正是學測 Q11 的考點！
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 2 題 ✔ 正解：(D) whom</div>
+          <div class="ans-why">
+            <b>of + 受格 → whom</b>。介系詞 of 後面必須接受格，先行詞是人（members）。<br>
+            ❌ (C) who = 主格，不可放在介系詞後面。<br>
+            ❌ (A) which = 用於事物，不用於人。
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 3 題 ✔ 正解：(B) nausea</div>
+          <div class="ans-why">
+            <b>nausea</b> = 噁心感（名詞）。搭配 dizziness「頭暈」和術後反應，情境完全符合。<br>
+            ❌ (A) mechanism 是機制，❌ (C) chamber 是腔室，❌ (D) impact 是影響，均不符合身體症狀的情境。
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 4 題 ✔ 正解：(C) mechanism</div>
+          <div class="ans-why">
+            <b>mechanism</b> = 機制；作用方式。「狩獵機制」= hunting mechanism，這是學術文章的典型搭配。<br>
+            ❌ (D) trigger 是動詞「觸發」，當名詞是「扳機」，不能說 hunting trigger。
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 5 題 ✔ 正解：(A) subsequent</div>
+          <div class="ans-why">
+            <b>subsequent</b> tests = 後續的測試（在第一次測試之後進行的）。語境：初始症狀消失後的後續追蹤。<br>
+            ❌ (B) acoustic 是「聲音的」，❌ (C) impactful 是「有影響力的」，❌ (D) collapsible 是「可折疊的」，均不符合語境。
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<footer>
+  🔬 Alice 單字本 Day 2 · 科學與運動 · Motion &amp; Science<br>
+  🔴 不熟悉詞彙：nausea / subsequent / acoustic &nbsp;|&nbsp; 🟢 同等級詞彙：trigger / symptom / chamber / detect / collapse / mechanism / impact<br>
+  📅 製作日期：2026-05-14 · 林威老師客製化教材
+</footer>
+
+</main>
 </body>
 </html>
