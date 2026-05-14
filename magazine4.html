@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>When the World's Most Famous Smile Vanished</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFF8F0;
+      --text: #1A0F00;
+      --h1: #C0392B;
+      --h2: #1565C0;
+      --h3: #2E7D32;
+      --orange: #E65100;
+      --purple: #6A1B9A;
+      --keyword: #0D47A1;
+      --original-head: #0D47A1;
+      --original-border: #90CAF9;
+      --original-card: #F3F8FF;
+      --reading-head: #BF360C;
+      --reading-border: #FFAB91;
+      --reading-card: #FFF3EF;
+      --vocab-head: #1B5E20;
+      --vocab-border: #81C784;
+      --vocab-card: #F1F8F2;
+      --grammar-head: #4A148C;
+      --grammar-border: #CE93D8;
+      --grammar-card: #F9F0FF;
+      --fold-head: #4A3728;
+      --fold-border: #C4A06A;
+      --fold-card: #FAF6F0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 183, 77, 0.24), transparent 34rem),
+        linear-gradient(180deg, #FFF2DF 0%, #FFF8F0 42%, #FFEEDC 100%);
+      color: var(--text);
+      font-family: "BIZ UDPGothic", system-ui, sans-serif;
+      font-size: 23px;
+      line-height: 1.85;
+      font-weight: 400;
+    }
+
+    .page {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .link-panel {
+      margin: 0 auto 34px;
+      padding: 22px;
+      border: 4px solid #E6A23C;
+      border-radius: 8px;
+      background: #FFF6E8;
+      box-shadow: 0 8px 0 rgba(191, 54, 12, 0.18);
+    }
+
+    .link-panel.bottom {
+      margin: 36px auto 0;
+    }
+
+    .link-panel h2 {
+      margin: 0 0 16px;
+      color: #BF360C;
+      font-size: 2rem;
+      line-height: 1.35;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 150px;
+      padding: 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 3px solid transparent;
+      color: #1A0F00;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .link-card:focus,
+    .link-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 0 rgba(26, 15, 0, 0.16);
+      outline: 4px solid rgba(21, 101, 192, 0.28);
+      outline-offset: 3px;
+    }
+
+    .link-card.course {
+      background: #FFE0B2;
+      border-color: #EF6C00;
+    }
+
+    .link-card.analysis {
+      background: #F8D7C3;
+      border-color: #C0392B;
+    }
+
+    .link-card.line {
+      background: #DDF5D8;
+      border-color: #2E7D32;
+    }
+
+    .link-title {
+      display: block;
+      color: #4A148C;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .link-desc {
+      display: block;
+      color: #3A2200;
+      font-size: 1rem;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    h1 {
+      display: inline-block;
+      color: var(--h1);
+      font-size: clamp(3rem, 7vw, 4.6rem);
+      line-height: 1.18;
+      font-weight: 700;
+      margin: 0 0 18px;
+      padding: 20px 26px;
+      border: 6px solid var(--h1);
+      border-radius: 8px;
+      background: #FFFDF9;
+      box-shadow: 0 8px 0 #F4B6A6;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      color: var(--h2);
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      line-height: 1.25;
+      font-weight: 700;
+      margin: 14px 0;
+    }
+
+    .credit {
+      color: #0D47A1;
+      font-size: clamp(1.7rem, 4vw, 2.25rem);
+      font-weight: 700;
+      padding: 12px 18px;
+      display: inline-block;
+      border-bottom: 5px solid #64B5F6;
+      text-shadow: 2px 2px 0 #E3F2FD;
+    }
+
+    section, .folds {
+      margin: 34px 0;
+    }
+
+    .section-title {
+      color: #FFFFFF;
+      font-size: 2.2rem;
+      line-height: 1.35;
+      font-weight: 700;
+      margin: 0;
+      padding: 18px 22px;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .original .section-title { background: var(--original-head); }
+    .reading .section-title { background: var(--reading-head); }
+    .vocabulary .section-title { background: var(--vocab-head); }
+    .grammar .section-title { background: var(--grammar-head); }
+
+    .card {
+      border: 4px solid;
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      padding: 24px;
+    }
+
+    .original .card { border-color: var(--original-border); background: var(--original-card); }
+    .reading .card { border-color: var(--reading-border); background: var(--reading-card); }
+    .vocabulary .card { border-color: var(--vocab-border); background: var(--vocab-card); }
+    .grammar .card { border-color: var(--grammar-border); background: var(--grammar-card); }
+
+    p { margin: 0 0 1.1em; }
+    strong.keyword { color: var(--keyword); font-weight: 700; text-decoration: none; }
+
+    .read-item, .word-item, .grammar-item {
+      padding: 22px;
+      margin: 0 0 24px;
+      border: 3px solid rgba(26, 15, 0, 0.16);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+
+    .num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 56px;
+      height: 56px;
+      margin-right: 12px;
+      border-radius: 50%;
+      background: #BF360C;
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 1.35rem;
+      vertical-align: middle;
+    }
+
+    .original-sentence {
+      font-style: normal;
+      font-weight: 700;
+      color: #5D220B;
+    }
+
+    .zh {
+      color: #2B1703;
+      margin-top: 10px;
+    }
+
+    h3 {
+      color: var(--h3);
+      font-size: 1.6rem;
+      line-height: 1.45;
+      font-weight: 700;
+      margin: 0 0 14px;
+    }
+
+    h4 {
+      color: #4A148C;
+      font-size: 1.35rem;
+      line-height: 1.45;
+      font-weight: 700;
+      margin: 18px 0 8px;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .tag-row {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 14px;
+      align-items: start;
+      margin: 12px 0;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .derivative { background: #FDEDEC; color: #C0392B; }
+    .root { background: #EBF5FB; color: #1565C0; }
+    .phrase { background: #EAFAF1; color: #2E7D32; }
+    .idiom { background: #FEF9E7; color: #D68910; }
+    .confuse { background: #F5EEF8; color: #6A1B9A; }
+    .focus { background: #FEF0E7; color: #E65100; }
+
+    .examples {
+      margin-top: 16px;
+      padding-left: 18px;
+      border-left: 6px solid #81C784;
+    }
+
+    .pattern {
+      font-weight: 700;
+      font-style: normal;
+      color: #4A148C;
+    }
+
+    ul, ol {
+      margin-top: 8px;
+      padding-left: 1.5em;
+    }
+
+    li { margin: 8px 0; }
+
+    details {
+      border: 4px solid var(--fold-border);
+      border-radius: 8px;
+      background: var(--fold-card);
+      margin: 22px 0;
+      overflow: hidden;
+    }
+
+    summary {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 18px 22px;
+      background: var(--fold-head);
+      color: #FFFFFF;
+      font-size: 1.55rem;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .arrow {
+      display: inline-block;
+      font-size: 1.4rem;
+      transition: transform 220ms ease;
+    }
+
+    details[open] .arrow { transform: rotate(180deg); }
+
+    .fold-body {
+      padding: 22px 24px;
+    }
+
+    .compact-list {
+      columns: 2;
+      column-gap: 36px;
+    }
+
+    .compact-list p {
+      break-inside: avoid;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 720px) {
+      body { font-size: 22px; }
+      .page { width: min(100% - 20px, 900px); padding-top: 20px; }
+      h1 { padding: 16px; }
+      .link-panel { padding: 16px; }
+      .link-panel h2 { font-size: 1.6rem; }
+      .link-grid { grid-template-columns: 1fr; }
+      .link-card { min-height: 112px; }
+      .card, .read-item, .word-item, .grammar-item { padding: 18px; }
+      .tag-row { grid-template-columns: 1fr; gap: 8px; }
+      .tag { justify-content: flex-start; }
+      .compact-list { columns: 1; }
+      summary { font-size: 1.35rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="link-panel" aria-label="課程與聯絡連結">
+      <h2>七月課程與聯絡方式</h2>
+      <div class="link-grid">
+        <a class="link-card course" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+          <span class="link-title">七月課程介紹：錯中學 ECHO 計劃</span>
+          <span class="link-desc">暑期英文學習課程，透過錯誤回饋、修正與輸出練習，幫助學生把弱點變成進步路線。</span>
+        </a>
+        <a class="link-card analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+          <span class="link-title">學生分析</span>
+          <span class="link-desc">整理學生學習狀態與英文能力需求，適合家長與學生了解課程規劃前的分析方向。</span>
+        </a>
+        <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+          <span class="link-title">林威老師 Line</span>
+          <span class="link-desc">個人 Line 帳號：linwayet。可用手機點選加入，詢問七月課程與學習安排。</span>
+        </a>
+      </div>
+    </nav>
+
+    <header>
+      <h1>When the World's Most Famous Smile Vanished</h1>
+      <div class="subtitle">蒙娜麗莎失竊案：一場讓名畫成為全球文化符號的盜竊</div>
+      <div class="credit">林威老師與 AI agent 團隊製作</div>
+    </header>
+
+    <section class="original">
+      <h2 class="section-title">一、英文文章原文</h2>
+      <div class="card">
+        <p>when the world's most famous smile <strong class="keyword">vanished</strong>. Vincenzo Perugia looked like any other handyman at the Louvre on a Monday morning in 1911, when the museum was closed to the public for <strong class="keyword">maintenance</strong>. In a white worker's blouse, he entered the museum without drawing attention, took the Mona Lisa off the wall, and walked out into the streets of Paris. Throughout Monday, no one <strong class="keyword">suspected</strong> anything <strong class="keyword">unusual</strong>.</p>
+        <p>It was in the studio to be photographed for commercial postcards or museum catalogs. It wasn't until 11 a.m. the following day that a guard discovered an <strong class="keyword">abandoned</strong> frame on a service staircase. That was when museum staff finally realized the painting was gone. Soon, the news spread internationally, shocking the world. People flocked to the Louvre to leave flowers at its gates in <strong class="keyword">tribute</strong> to the missing <strong class="keyword">masterpiece</strong>.</p>
+        <p>Perugia until 1913, when he tried to sell the painting in Italy. <strong class="keyword">Investigators</strong> later pointed out that Perugia was an outside <strong class="keyword">employee</strong> who had previously worked at the Louvre. On the morning of the <strong class="keyword">theft</strong>, his <strong class="keyword">escape</strong> was far from smooth. When he found his exit door was locked, Perugia changed his <strong class="keyword">route</strong>. He removed the painted wooden panel from its frame on a staircase, wrapped it in his blouse, and left the museum the way he entered.</p>
+        <p>For two years, the Mona Lisa remained <strong class="keyword">hidden</strong> in his home. Perugia avoided <strong class="keyword">arrest</strong> despite leaving a <strong class="keyword">thumbprint</strong> behind. As a former worker, he was questioned during a <strong class="keyword">routine</strong> staff check, but detectives never searched his home or took his fingerprints. The police remained blinded by <strong class="keyword">prejudice</strong>. They believed such <strong class="keyword">theft</strong> could have only been <strong class="keyword">committed</strong> by someone of higher social standing, never imagining a working-class man,</p>
+        <p>could have been responsible for it. Before the <strong class="keyword">heist</strong>, the Mona Lisa was admired mainly in art circles. But Perugia's crime turned the painting into a cultural <strong class="keyword">icon</strong>.</p>
+      </div>
+    </section>
+
+    <section class="reading">
+      <h2 class="section-title">二、8 句精讀</h2>
+      <div class="card">
+        <div class="read-item">
+          <p><span class="num">①</span><span class="original-sentence">Vincenzo Perugia looked like any other handyman at the Louvre on a Monday morning in 1911, when the museum was closed to the public for maintenance.</span></p>
+          <p class="zh">1911 年某個星期一早晨，文森佐・佩魯賈在羅浮宮看起來就像任何一位普通雜工；當時博物館因維修而不對外開放。</p>
+          <h4>文法解析</h4>
+          <p>這句使用「主要子句 + when 引導的非限定形容詞子句」。主要子句說明 Perugia 的外表與時間地點，逗號後的 when 補充說明那個星期一早晨的背景。for maintenance 表示「為了維修」，for 後接名詞。</p>
+          <div class="pills"><span class="pill phrase">handyman（雜工）</span><span class="pill focus">be closed to（不對…開放）</span><span class="pill derivative">maintenance（維修）</span></div>
+        </div>
+
+        <div class="read-item">
+          <p><span class="num">②</span><span class="original-sentence">In a white worker's blouse, he entered the museum without drawing attention, took the Mona Lisa off the wall, and walked out into the streets of Paris.</span></p>
+          <p class="zh">他穿著白色工人罩衫進入博物館，沒有引起注意，便把《蒙娜麗莎》從牆上取下，走出博物館來到巴黎街頭。</p>
+          <h4>文法解析</h4>
+          <p>這句以介系詞片語 In a white worker's blouse 開頭，描述人物狀態。後面用三個平行動詞 entered, took, walked 表示連續動作。without drawing attention 中的 drawing 是動名詞，因為 without 是介系詞，後面要接名詞或 V-ing。</p>
+          <div class="pills"><span class="pill phrase">draw attention（引起注意）</span><span class="pill focus">take ... off（把…取下）</span><span class="pill idiom">walk out into（走出去進入）</span></div>
+        </div>
+
+        <div class="read-item">
+          <p><span class="num">③</span><span class="original-sentence">It wasn't until 11 a.m. the following day that a guard discovered an abandoned frame on a service staircase.</span></p>
+          <p class="zh">直到隔天上午 11 點，一名警衛才在服務樓梯上發現一個被遺棄的畫框。</p>
+          <h4>文法解析</h4>
+          <p>這是強調句型 It was not until ... that ...，用來強調「直到某時間才發生」。that 後面接真正發生的事件。an abandoned frame 中的 abandoned 是過去分詞當形容詞，表示「被遺棄的」。</p>
+          <div class="pills"><span class="pill focus">It wasn't until ... that ...（直到…才…）</span><span class="pill derivative">abandoned（被遺棄的）</span><span class="pill phrase">service staircase（服務樓梯）</span></div>
+        </div>
+
+        <div class="read-item">
+          <p><span class="num">④</span><span class="original-sentence">Soon, the news spread internationally, shocking the world.</span></p>
+          <p class="zh">很快地，這則消息傳遍國際，震驚了全世界。</p>
+          <h4>文法解析</h4>
+          <p>這句後半 shocking the world 是現在分詞構句，補充說明前面整件事造成的結果。spread 是不及物動詞，表示消息「傳開」。internationally 是副詞，修飾 spread。</p>
+          <div class="pills"><span class="pill derivative">internationally（國際地）</span><span class="pill focus">shocking the world（震驚世界）</span><span class="pill phrase">news spread（消息傳開）</span></div>
+        </div>
+
+        <div class="read-item">
+          <p><span class="num">⑤</span><span class="original-sentence">Investigators later pointed out that Perugia was an outside employee who had previously worked at the Louvre.</span></p>
+          <p class="zh">調查人員後來指出，佩魯賈是一名外部員工，先前曾在羅浮宮工作過。</p>
+          <h4>文法解析</h4>
+          <p>pointed out 後面接 that 名詞子句，說明調查人員指出的內容。who had previously worked at the Louvre 是形容詞子句，修飾 employee。had worked 是過去完成式，表示這份工作經驗早於調查人員指出此事的時間。</p>
+          <div class="pills"><span class="pill phrase">point out（指出）</span><span class="pill derivative">investigator（調查人員）</span><span class="pill focus">previously（先前）</span></div>
+        </div>
+
+        <div class="read-item">
+          <p><span class="num">⑥</span><span class="original-sentence">When he found his exit door was locked, Perugia changed his route.</span></p>
+          <p class="zh">當他發現出口門被鎖住時，佩魯賈改變了路線。</p>
+          <h4>文法解析</h4>
+          <p>When 引導副詞子句，說明主句 changed his route 發生的時間。found 後面接省略 that 的名詞子句 his exit door was locked。was locked 是被動語態，表示門「被鎖上」。</p>
+          <div class="pills"><span class="pill phrase">exit door（出口門）</span><span class="pill derivative">route（路線）</span><span class="pill focus">be locked（被鎖住）</span></div>
+        </div>
+
+        <div class="read-item">
+          <p><span class="num">⑦</span><span class="original-sentence">Perugia avoided arrest despite leaving a thumbprint behind.</span></p>
+          <p class="zh">儘管留下了一枚拇指指紋，佩魯賈仍避開了逮捕。</p>
+          <h4>文法解析</h4>
+          <p>despite 是介系詞，後面接名詞或 V-ing，因此使用 leaving。avoid 後面也常接名詞或 V-ing，這裡接名詞 arrest。leave ... behind 表示「留下…」。</p>
+          <div class="pills"><span class="pill focus">despite + V-ing（儘管…）</span><span class="pill phrase">leave behind（留下）</span><span class="pill derivative">thumbprint（拇指指紋）</span></div>
+        </div>
+
+        <div class="read-item">
+          <p><span class="num">⑧</span><span class="original-sentence">They believed such theft could have only been committed by someone of higher social standing, never imagining a working-class man,</span></p>
+          <p class="zh">他們相信這樣的盜竊只可能是由社會地位較高的人所犯下，從未想像過一名工人階級男子，</p>
+          <h4>文法解析</h4>
+          <p>這句使用 believe + that 名詞子句的結構，原文省略 that。could have been committed 是情態助動詞 + 完成式被動，表示對過去事件的推測。never imagining ... 是分詞構句，補充說明警方判斷時的盲點；原文句末逗號保留，顯示文章此處承接下一句。</p>
+          <div class="pills"><span class="pill derivative">committed（犯下）</span><span class="pill phrase">social standing（社會地位）</span><span class="pill confuse">working-class（工人階級的）</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vocabulary">
+      <h2 class="section-title">三、20 個單字整理</h2>
+      <div class="card">
+        <div class="word-item">
+          <h3>1　vanish　[ˈvænɪʃ]　v. 消失；突然不見</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>vanishing (adj. 逐漸消失的)；vanished (adj. 已消失的)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>vanish from sight（從視線中消失）；vanish without a trace（消失得無影無蹤）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>vanish 強調突然消失；disappear 可指一般「不見」或「消失」。</span></div>
+          <div class="tag-row"><span class="tag focus">句型</span><span>S + vanish from + 地點：表示某物從某處消失。</span></div>
+          <div class="examples"><p>The world's most famous smile vanished from the Louvre in 1911.<br>（世界上最有名的微笑在 1911 年從羅浮宮消失。）</p><p>The small boat vanished in the thick fog.<br>（那艘小船消失在濃霧中。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>2　maintenance　[ˈmentənəns]　n. 維修；保養；維持</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>maintain (v. 維持；保養)；maintained (adj. 保養良好的)</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>tain = hold（握住、保持）：contain（包含）、retain（保留）、sustain（維持）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>under maintenance（維修中）；routine maintenance（例行保養）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>regular maintenance（定期保養）；costly maintenance（昂貴的維修）</span></div>
+          <div class="examples"><p>The museum was closed to the public for maintenance.<br>（博物館因維修而不對外開放。）</p><p>Old buildings require regular maintenance to stay safe.<br>（老建築需要定期保養才能保持安全。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>3　suspect　[səˈspɛkt]　v. 懷疑；猜想　n. 嫌疑人</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>suspicion (n. 懷疑)；suspicious (adj. 可疑的)；suspiciously (adv. 可疑地)</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>spect = look（看）：inspect（檢查）、respect（尊敬）、perspective（觀點）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>suspect someone of something（懷疑某人涉入某事）；a prime suspect（主要嫌疑人）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>suspect 是「懷疑可能有問題」；doubt 是「不相信某事是真的」。</span></div>
+          <div class="examples"><p>Throughout Monday, no one suspected anything unusual.<br>（整個星期一，沒有人懷疑有任何異常。）</p><p>The teacher suspected that the answer had been copied.<br>（老師懷疑那個答案是抄來的。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>4　unusual　[ʌnˈjuʒuəl]　adj. 不尋常的；罕見的</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>usually (adv. 通常)；usual (adj. 平常的)；unusually (adv. 異常地)</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>un- = not（不）：unknown（未知的）、unfair（不公平的）、unlikely（不可能的）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>an unusual event（不尋常的事件）；nothing unusual（沒有異常）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>highly unusual behavior（非常不尋常的行為）；an unusual pattern（罕見模式）</span></div>
+          <div class="examples"><p>No one suspected anything unusual after Perugia walked out.<br>（佩魯賈走出去後，沒有人懷疑有任何異常。）</p><p>It is unusual for the library to close this early.<br>（圖書館這麼早關門很不尋常。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>5　abandoned　[əˈbændənd]　adj. 被遺棄的；廢棄的</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>abandon (v. 放棄；遺棄)；abandonment (n. 遺棄；放棄)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>an abandoned building（廢棄建築）；abandon a plan（放棄計畫）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a completely abandoned site（完全廢棄的地點）；an abandoned frame（被遺棄的畫框）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>abandoned 強調被留下不管；deserted 強調地方空無一人。</span></div>
+          <div class="examples"><p>A guard discovered an abandoned frame on a service staircase.<br>（一名警衛在服務樓梯上發現一個被遺棄的畫框。）</p><p>The family found an abandoned house near the river.<br>（那家人在河邊發現一棟廢棄房屋。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>6　tribute　[ˈtrɪbjut]　n. 致敬；悼念；貢品</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>tributary (n. 支流；進貢者)；contribute (v. 貢獻)</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>tribut = give（給予）：contribute（貢獻）、distribute（分配）、attribute（歸因於）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>in tribute to（向…致敬）；pay tribute to（向…表達敬意）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a moving tribute（感人的致敬）；public tribute（公開致意）</span></div>
+          <div class="examples"><p>People left flowers at the gates in tribute to the missing masterpiece.<br>（人們在門口獻花，向失蹤的傑作致意。）</p><p>The concert was a moving tribute to the late singer.<br>（那場演唱會是對已故歌手的感人致敬。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>7　masterpiece　[ˈmæstɚˌpis]　n. 傑作；代表作</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>master (n. 大師；v. 精通)；masterful (adj. 技藝高超的)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>a literary masterpiece（文學傑作）；a missing masterpiece（失蹤的傑作）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a world-famous masterpiece（世界知名傑作）；an artistic masterpiece（藝術傑作）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>masterpiece 指水準極高的作品；work 只是一般「作品」。</span></div>
+          <div class="examples"><p>The Mona Lisa became the missing masterpiece people came to mourn.<br>（《蒙娜麗莎》成了人們前來悼念的失蹤傑作。）</p><p>The novel is considered a masterpiece of modern literature.<br>（這本小說被視為現代文學傑作。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>8　investigator　[ɪnˈvɛstəˌɡetɚ]　n. 調查人員；偵查員</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>investigate (v. 調查)；investigation (n. 調查)；investigative (adj. 調查的)</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>vestig = track（足跡、痕跡）：vestige（遺跡）、investigate（追查）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>criminal investigator（刑事調查員）；investigate a case（調查案件）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>experienced investigators（經驗豐富的調查人員）；independent investigator（獨立調查員）</span></div>
+          <div class="examples"><p>Investigators later pointed out Perugia's earlier connection to the Louvre.<br>（調查人員後來指出佩魯賈先前與羅浮宮的關聯。）</p><p>The investigator checked every detail before writing the report.<br>（調查人員在寫報告前檢查了每個細節。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>9　employee　[ɪmˈplɔɪi]　n. 員工；受雇者</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>employ (v. 雇用；使用)；employer (n. 雇主)；employment (n. 就業)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>outside employee（外部員工）；full-time employee（全職員工）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>employee 是受雇者；employer 是雇用別人的雇主。</span></div>
+          <div class="tag-row"><span class="tag focus">句型</span><span>be employed by + 機構：受雇於某機構。</span></div>
+          <div class="examples"><p>Perugia was an outside employee who had previously worked at the Louvre.<br>（佩魯賈是一名先前曾在羅浮宮工作的外部員工。）</p><p>Every employee must wear an ID card in the office.<br>（每位員工在辦公室都必須配戴識別證。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>10　theft　[θɛft]　n. 竊盜；偷竊行為</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>thief (n. 小偷)；steal (v. 偷竊)；stolen (adj. 被偷的)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>art theft（藝術品竊盜）；identity theft（身分盜用）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a daring theft（大膽的竊盜）；organized theft（有組織的偷竊）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>theft 是正式名詞；stealing 較口語，強調偷竊這個動作。</span></div>
+          <div class="examples"><p>On the morning of the theft, his escape was far from smooth.<br>（竊盜當天早晨，他的逃脫一點也不順利。）</p><p>The store installed cameras to prevent theft.<br>（那家商店安裝攝影機以防竊盜。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>11　escape　[ɪˈskep]　n. 逃脫　v. 逃離；避開</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>escaped (adj. 逃脫的)；escapism (n. 逃避現實)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>escape from prison（越獄）；a narrow escape（僥倖逃脫）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a smooth escape（順利逃脫）；a daring escape（大膽逃離）</span></div>
+          <div class="tag-row"><span class="tag focus">句型</span><span>escape from + 地點：從某處逃離；escape + V-ing：避開某事。</span></div>
+          <div class="examples"><p>His escape was far from smooth when the exit door was locked.<br>（出口門被鎖住時，他的逃脫一點也不順利。）</p><p>The hikers found a safe escape from the storm.<br>（登山客找到了逃離暴風雨的安全方法。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>12　route　[rut]　n. 路線；途徑</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>reroute (v. 改道)；routing (n. 路線安排)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>change one's route（改變路線）；a bus route（公車路線）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a direct route（直達路線）；an escape route（逃生路線）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>route 是規劃好的路線；road 是實際道路。</span></div>
+          <div class="examples"><p>Perugia changed his route after finding the exit door locked.<br>（佩魯賈發現出口門被鎖後改變路線。）</p><p>This route is faster, but it has more traffic lights.<br>（這條路線比較快，但紅綠燈較多。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>13　hidden　[ˈhɪdn]　adj. 隱藏的；不易發現的</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>hide (v. 隱藏)；hiding (n. 躲藏)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>remain hidden（保持隱藏）；hidden danger（隱藏的危險）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a hidden meaning（隱含意義）；a hidden treasure（隱藏的寶藏）</span></div>
+          <div class="tag-row"><span class="tag focus">句型</span><span>remain + adj.：保持某種狀態。</span></div>
+          <div class="examples"><p>For two years, the Mona Lisa remained hidden in his home.<br>（兩年來，《蒙娜麗莎》一直藏在他家中。）</p><p>The message has a hidden meaning that few readers notice.<br>（這段訊息有少數讀者才注意到的隱含意義。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>14　arrest　[əˈrɛst]　n. 逮捕　v. 逮捕</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>arrested (adj. 被逮捕的)；arresting (adj. 引人注目的)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>avoid arrest（避開逮捕）；under arrest（遭逮捕）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a sudden arrest（突然逮捕）；a lawful arrest（合法逮捕）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>arrest 指警方逮捕；catch 可指一般抓到，不一定涉及法律。</span></div>
+          <div class="examples"><p>Perugia avoided arrest despite leaving a thumbprint behind.<br>（佩魯賈儘管留下拇指指紋，仍避開逮捕。）</p><p>The police made an arrest after reviewing the video.<br>（警方查看影片後進行逮捕。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>15　thumbprint　[ˈθʌmˌprɪnt]　n. 拇指指紋；拇指印</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>thumb (n. 拇指)；fingerprint (n. 指紋)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>leave a thumbprint（留下拇指指紋）；take fingerprints（採集指紋）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a clear thumbprint（清楚的拇指指紋）；a digital fingerprint（數位指紋）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>thumbprint 是拇指的指紋；fingerprint 可泛指任何手指的指紋。</span></div>
+          <div class="examples"><p>He avoided arrest despite leaving a thumbprint behind.<br>（儘管留下拇指指紋，他仍避開逮捕。）</p><p>The document required a signature and a thumbprint.<br>（這份文件需要簽名和拇指印。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>16　routine　[ruˈtin]　adj. 例行的　n. 慣例；固定程序</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>routinely (adv. 例行地)；routine-based (adj. 以例行程序為基礎的)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>routine check（例行檢查）；daily routine（日常作息）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a routine staff check（例行員工檢查）；a simple routine（簡單流程）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>routine 強調固定、例行；habit 強調個人習慣。</span></div>
+          <div class="examples"><p>He was questioned during a routine staff check.<br>（他在例行員工檢查中受到詢問。）</p><p>Exercise became part of her morning routine.<br>（運動成了她早晨固定作息的一部分。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>17　prejudice　[ˈprɛdʒədɪs]　n. 偏見；成見</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>prejudiced (adj. 有偏見的)；prejudge (v. 預先判斷)</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>pre- = before（在前）；jud = judge（判斷）：prejudge（預判）、judgment（判斷）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>racial prejudice（種族偏見）；be blinded by prejudice（被偏見蒙蔽）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>deep prejudice（根深蒂固的偏見）；social prejudice（社會偏見）</span></div>
+          <div class="examples"><p>The police remained blinded by prejudice.<br>（警方仍被偏見蒙蔽。）</p><p>Prejudice can stop people from seeing the truth.<br>（偏見可能阻止人們看見真相。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>18　commit　[kəˈmɪt]　v. 犯下；承諾；投入</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>committed (adj. 投入的；已犯下的)；commitment (n. 承諾；投入)</span></div>
+          <div class="tag-row"><span class="tag root">字根</span><span>mit = send（送出）：submit（提交）、transmit（傳送）、permit（允許）</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>commit a crime（犯罪）；commit oneself to（致力於）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>commit a crime 是「犯下罪行」；make a mistake 是「犯錯」，不可說 commit a mistake 作高中常用搭配。</span></div>
+          <div class="examples"><p>They believed such theft could have only been committed by someone of higher social standing.<br>（他們相信這種盜竊只可能由社會地位較高的人犯下。）</p><p>Students should commit themselves to honest learning.<br>（學生應該投入誠實的學習。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>19　heist　[haɪst]　n. 搶劫；盜竊案</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>heist movie (n. 盜竊電影)；heist story (n. 盜竊故事)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>bank heist（銀行搶案）；art heist（藝術品盜竊案）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a daring heist（大膽盜竊案）；a famous heist（著名盜竊案）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>heist 常指有計畫的大型盜竊；robbery 強調以暴力或威脅搶劫。</span></div>
+          <div class="examples"><p>Before the heist, the Mona Lisa was admired mainly in art circles.<br>（在這起盜竊案之前，《蒙娜麗莎》主要只在藝術圈受讚賞。）</p><p>The movie is about a clever museum heist.<br>（那部電影是關於一場巧妙的博物館盜竊案。）</p></div>
+        </div>
+
+        <div class="word-item">
+          <h3>20　icon　[ˈaɪˌkɑn]　n. 偶像；象徵；圖示</h3>
+          <div class="tag-row"><span class="tag derivative">衍生詞</span><span>iconic (adj. 具代表性的)；iconography (n. 圖像學)</span></div>
+          <div class="tag-row"><span class="tag phrase">片語</span><span>cultural icon（文化符號）；pop icon（流行偶像）</span></div>
+          <div class="tag-row"><span class="tag idiom">慣用語</span><span>a global icon（全球象徵）；an iconic image（具代表性的圖像）</span></div>
+          <div class="tag-row"><span class="tag confuse">容易混淆</span><span>icon 可指人、物或圖示；idol 多指被崇拜的人。</span></div>
+          <div class="examples"><p>Perugia's crime turned the painting into a cultural icon.<br>（佩魯賈的罪行讓這幅畫成為文化符號。）</p><p>The singer became an icon for a new generation.<br>（那位歌手成了新世代的偶像。）</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grammar">
+      <h2 class="section-title">四、文法解析</h2>
+      <div class="card">
+        <div class="grammar-item">
+          <h3>文法點 1：It was not until ... that ... 強調句</h3>
+          <h4>【引句 Quote】</h4>
+          <p class="original-sentence">It wasn't until 11 a.m. the following day that a guard discovered an abandoned frame on a service staircase.</p>
+          <h4>【句型】</h4>
+          <p class="pattern">It was not until + 時間 / 子句 + that + S + V ...</p>
+          <h4>【核心說明】</h4>
+          <p>這個句型用來強調「直到某個時間點，某件事才發生」。中文常翻成「直到…才…」，重點通常放在時間的延遲或發現太晚。</p>
+          <p>在正式寫作中，這個句型比單純使用 not ... until 更有強調效果，適合用於事件轉折、真相揭露或結果出現的句子。</p>
+          <h4>【使用規則】</h4>
+          <ul>
+            <li>It was not until 後可接時間名詞，也可接完整子句。</li>
+            <li>that 後接主要事件，動詞時態依照文章時間決定。</li>
+            <li>這是強調句，不是一般代名詞 it 的用法。</li>
+            <li>若放在句首使用 Not until，後面主句常需要倒裝。</li>
+          </ul>
+          <h4>【主題例句】</h4>
+          <p>It was not until the frame was found that the museum realized the painting was missing.<br>（直到畫框被發現，博物館才意識到畫作失蹤了。）</p>
+          <h4>【學習提醒】</h4>
+          <p>不要把 It was not until ... that ... 寫成 It was until ... that ...。not 是這個句型的核心，表示「之前都沒有發生」。</p>
+          <h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4>
+          <p>✗ It was until the next day that the guard found the frame.<br>✓ It was not until the next day that the guard found the frame.（until 前必須有 not，才能表達「直到…才…」。）</p>
+          <ol>
+            <li>It was not until Perugia tried to sell the painting ____ the police found him. (A) when (B) that (C) which (D) who</li>
+            <li>改錯：It was not until Monday when anyone suspected the theft.</li>
+          </ol>
+        </div>
+
+        <div class="grammar-item">
+          <h3>文法點 2：現在分詞構句表示結果</h3>
+          <h4>【引句 Quote】</h4>
+          <p class="original-sentence">Soon, the news spread internationally, shocking the world.</p>
+          <h4>【句型】</h4>
+          <p class="pattern">S + V ..., V-ing ...</p>
+          <h4>【核心說明】</h4>
+          <p>逗號後的 V-ing 可以補充說明前面整句造成的結果。這種用法常見於新聞、歷史敘事與英文作文中，能讓句子更緊湊。</p>
+          <p>例句中的 shocking the world 不是另一個主要動詞，而是補充「消息傳開」造成的影響。</p>
+          <h4>【使用規則】</h4>
+          <ul>
+            <li>V-ing 片語通常放在主要子句後，用逗號隔開。</li>
+            <li>它可表示結果、補充說明或伴隨狀態。</li>
+            <li>主詞關係要合理，不能造成語意錯置。</li>
+            <li>若要強調被動結果，可使用過去分詞片語。</li>
+          </ul>
+          <h4>【主題例句】</h4>
+          <p>The theft attracted worldwide attention, turning the Mona Lisa into a household name.<br>（這起竊盜吸引全球注意，使《蒙娜麗莎》成為家喻戶曉的名字。）</p>
+          <h4>【學習提醒】</h4>
+          <p>分詞構句不能隨便省略主詞。若 V-ing 的動作者或邏輯來源不清楚，句子會變得不自然或造成誤解。</p>
+          <h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4>
+          <p>✗ The frame was found, shocked the world.<br>✓ The frame was found, shocking the world.（逗號後補充結果時，動詞要改成 V-ing。）</p>
+          <ol>
+            <li>The story spread across Europe, ____ the painting famous. (A) make (B) made (C) making (D) to making</li>
+            <li>改錯：The news spread quickly, surprised many visitors.</li>
+          </ol>
+        </div>
+
+        <div class="grammar-item">
+          <h3>文法點 3：情態助動詞完成式被動</h3>
+          <h4>【引句 Quote】</h4>
+          <p class="original-sentence">They believed such theft could have only been committed by someone of higher social standing.</p>
+          <h4>【句型】</h4>
+          <p class="pattern">S + modal + have + been + p.p. + by ...</p>
+          <h4>【核心說明】</h4>
+          <p>could have been committed 表示「過去可能已被犯下」，同時又是被動語態，因為重點在 theft，而不是明確的行為者。</p>
+          <p>這種結構常用於推測過去事件，尤其當說話者沒有完整證據，只能根據線索或偏見做判斷時。</p>
+          <h4>【使用規則】</h4>
+          <ul>
+            <li>modal 可用 could, might, must, should 等。</li>
+            <li>have + been + p.p. 表示「過去被…」。</li>
+            <li>by 後面可接行為者；若不重要，也可以省略。</li>
+            <li>only 的位置會影響焦點，放在 been 前後需注意語意。</li>
+          </ul>
+          <h4>【主題例句】</h4>
+          <p>The painting might have been hidden in a small room for years.<br>（那幅畫可能已經被藏在一個小房間裡多年。）</p>
+          <h4>【學習提醒】</h4>
+          <p>看到 could have been p.p. 時，不要只翻成「可以」。在過去事件中，它常表示「可能已經被…」，帶有推測意味。</p>
+          <h4>【⚠️ 常見錯誤 / 🎯 精選試題】</h4>
+          <p>✗ The theft could have only committed by a rich man.<br>✓ The theft could have only been committed by a rich man.（被動語態必須有 been + p.p.。）</p>
+          <ol>
+            <li>The clue might have ____ by the detectives. (A) missed (B) been missed (C) missing (D) be miss</li>
+            <li>改錯：The painting must have hidden in his home.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <div class="folds">
+      <details>
+        <summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+        <div class="fold-body compact-list">
+          <p>ab-　離開、相反　—　abnormal（異常的）</p>
+          <p>ad-　向、加　—　advance（前進）</p>
+          <p>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</p>
+          <p>anti-　反對、抗　—　antibiotic（抗生素）</p>
+          <p>arch-　主要、首要　—　archenemy（死敵）</p>
+          <p>auto-　自動、自我　—　autograph（親筆簽名）</p>
+          <p>bene-　好的、善　—　benefit（好處）</p>
+          <p>bi-　二、雙　—　bilingual（雙語的）</p>
+          <p>circum-　環繞、周圍　—　circumstance（情況）</p>
+          <p>co-/con-/com-　一起、共同　—　cooperate（合作）</p>
+          <p>contra-　相反、對抗　—　contradict（反駁）</p>
+          <p>de-　去除、下降　—　decode（解碼）</p>
+          <p>dia-　穿過、透過　—　dialogue（對話）</p>
+          <p>dis-　否定、分離　—　disagree（不同意）</p>
+          <p>en-/em-　使成為　—　enable（使能夠）</p>
+          <p>epi-　在上、在外　—　epidemic（流行病）</p>
+          <p>ex-　外、前任　—　export（出口）；ex-president（前總統）</p>
+          <p>extra-　額外、外部　—　extraordinary（非凡的）</p>
+          <p>hetero-　不同　—　heterogeneous（異質的）</p>
+          <p>homo-　相同　—　homogeneous（同質的）</p>
+          <p>hyper-　過度、超　—　hyperactive（過動的）</p>
+          <p>hypo-　低於、不足　—　hypodermic（皮下的）</p>
+          <p>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</p>
+          <p>inter-　在…之間　—　international（國際的）</p>
+          <p>iso-　相等、相同　—　isolate（隔離）</p>
+          <p>mal-　壞、不良　—　malfunction（故障）</p>
+          <p>micro-　微小　—　microscope（顯微鏡）</p>
+          <p>mis-　錯誤　—　misunderstand（誤解）</p>
+          <p>mono-　單一　—　monologue（獨白）</p>
+          <p>multi-　多　—　multicultural（多元文化的）</p>
+          <p>neo-　新的　—　neonatal（新生的）</p>
+          <p>non-　非、沒有　—　nonsense（無意義）</p>
+          <p>pan-　全部　—　pandemic（大流行病）</p>
+          <p>peri-　周圍　—　perimeter（周長）</p>
+          <p>poly-　多　—　polygon（多邊形）</p>
+          <p>post-　之後　—　postwar（戰後的）</p>
+          <p>pre-　之前　—　preview（預覽）</p>
+          <p>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</p>
+          <p>pseudo-　假的　—　pseudonym（筆名）</p>
+          <p>re-　再、回　—　review（複習）</p>
+          <p>semi-　一半、部分　—　semicircle（半圓）</p>
+          <p>sub-　在下、次級　—　subway（地鐵）</p>
+          <p>super-　超越、在上　—　superstar（超級明星）</p>
+          <p>syn-/sym-　一起、共同　—　synchronize（同步）</p>
+          <p>tele-　遠距　—　telephone（電話）</p>
+          <p>trans-　穿越、轉變　—　transport（運輸）</p>
+          <p>tri-　三　—　triangle（三角形）</p>
+          <p>un-　否定、不　—　unhappy（不快樂的）</p>
+          <p>vice-　副、代替　—　vice-president（副總統）</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+        <div class="fold-body">
+          <h3>名詞字尾</h3>
+          <p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</p>
+          <p>-ment　行為或結果　—　agreement（協議）、development（發展）</p>
+          <p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p>
+          <p>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p>
+          <p>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p>
+          <p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p>
+          <p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p>
+          <p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
+          <h3>形容詞字尾</h3>
+          <p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</p>
+          <p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p>
+          <p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p>
+          <p>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</p>
+          <p>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
+          <h3>動詞字尾</h3>
+          <p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</p>
+          <p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p>
+          <p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p>
+          <p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
+          <h3>副詞字尾</h3>
+          <p>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</p>
+          <p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p>
+          <p>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>30 個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+        <div class="fold-body">
+          <p>1. famous [ˈfeməs] (adj. 著名的) — fame [fem] (n. 名聲)</p>
+          <p>2. vanish [ˈvænɪʃ] (v. 消失) — vanished [ˈvænɪʃt] (adj. 消失的)</p>
+          <p>3. handyman [ˈhændiˌmæn] (n. 雜工) — handy [ˈhændi] (adj. 方便的)</p>
+          <p>4. museum [mjuˈziəm] (n. 博物館) — museum guide（博物館導覽）</p>
+          <p>5. public [ˈpʌblɪk] (n. 大眾；adj. 公共的) — publicly [ˈpʌblɪkli] (adv. 公開地)</p>
+          <p>6. maintenance [ˈmentənəns] (n. 維修) — maintain [menˈten] (v. 維持)</p>
+          <p>7. attention [əˈtɛnʃən] (n. 注意) — attentive [əˈtɛntɪv] (adj. 專心的)</p>
+          <p>8. suspect [səˈspɛkt] (v. 懷疑) — suspicion [səˈspɪʃən] (n. 懷疑)</p>
+          <p>9. unusual [ʌnˈjuʒuəl] (adj. 不尋常的) — unusually [ʌnˈjuʒuəli] (adv. 異常地)</p>
+          <p>10. commercial [kəˈmɝʃəl] (adj. 商業的) — commerce [ˈkɑmɝs] (n. 商業)</p>
+          <p>11. catalog [ˈkætəˌlɔɡ] (n. 目錄) — catalog entry（目錄條目）</p>
+          <p>12. discover [dɪˈskʌvɚ] (v. 發現) — discovery [dɪˈskʌvəri] (n. 發現)</p>
+          <p>13. abandoned [əˈbændənd] (adj. 被遺棄的) — abandon [əˈbændən] (v. 遺棄)</p>
+          <p>14. frame [frem] (n. 框架) — framed [fremd] (adj. 裝框的)</p>
+          <p>15. staircase [ˈstɛrˌkes] (n. 樓梯) — stairway [ˈstɛrˌwe] (n. 樓梯通道)</p>
+          <p>16. internationally [ˌɪntɚˈnæʃənəli] (adv. 國際地) — international [ˌɪntɚˈnæʃənəl] (adj. 國際的)</p>
+          <p>17. tribute [ˈtrɪbjut] (n. 致敬) — pay tribute（致敬）</p>
+          <p>18. masterpiece [ˈmæstɚˌpis] (n. 傑作) — master [ˈmæstɚ] (n. 大師)</p>
+          <p>19. investigator [ɪnˈvɛstəˌɡetɚ] (n. 調查人員) — investigation [ɪnˌvɛstəˈɡeʃən] (n. 調查)</p>
+          <p>20. employee [ɪmˈplɔɪi] (n. 員工) — employer [ɪmˈplɔɪɚ] (n. 雇主)</p>
+          <p>21. previously [ˈpriviəsli] (adv. 先前) — previous [ˈpriviəs] (adj. 先前的)</p>
+          <p>22. theft [θɛft] (n. 竊盜) — thief [θif] (n. 小偷)</p>
+          <p>23. escape [ɪˈskep] (n./v. 逃脫) — escape route（逃生路線）</p>
+          <p>24. route [rut] (n. 路線) — reroute [riˈrut] (v. 改道)</p>
+          <p>25. hidden [ˈhɪdn] (adj. 隱藏的) — hide [haɪd] (v. 隱藏)</p>
+          <p>26. arrest [əˈrɛst] (n./v. 逮捕) — under arrest（遭逮捕）</p>
+          <p>27. thumbprint [ˈθʌmˌprɪnt] (n. 拇指指紋) — fingerprint [ˈfɪŋɡɚˌprɪnt] (n. 指紋)</p>
+          <p>28. routine [ruˈtin] (adj./n. 例行的；慣例) — routinely [ruˈtinli] (adv. 例行地)</p>
+          <p>29. prejudice [ˈprɛdʒədɪs] (n. 偏見) — prejudiced [ˈprɛdʒədɪst] (adj. 有偏見的)</p>
+          <p>30. icon [ˈaɪˌkɑn] (n. 象徵；偶像) — iconic [aɪˈkɑnɪk] (adj. 具代表性的)</p>
+          <h3>文章相關常用片語 5 個</h3>
+          <p>• draw attention（引起注意）</p>
+          <p>• point out（指出）</p>
+          <p>• far from smooth（一點也不順利）</p>
+          <p>• leave behind（留下）</p>
+          <p>• be responsible for（對…負責；是…的原因）</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>練文筆食材<span class="arrow">⌄</span></summary>
+        <div class="fold-body">
+          <p>① when + S + V（當…時）<br>→ 適用：交代事件背景或轉折時間<br>例：When the museum was closed, the thief found his chance.</p>
+          <p>② without + V-ing（沒有…就…）<br>→ 適用：描述動作發生時沒有伴隨某情況<br>例：He entered the room without making any noise.</p>
+          <p>③ It was not until ... that ...（直到…才…）<br>→ 適用：強調發現或改變發生得很晚<br>例：It was not until the next morning that the truth became clear.</p>
+          <p>④ Soon, S + V, V-ing ...（很快地，…，造成…）<br>→ 適用：描述事件快速擴散與結果<br>例：Soon, the rumor spread online, damaging the school's reputation.</p>
+          <p>⑤ point out that + S + V（指出…）<br>→ 適用：引用調查、報告或專家看法<br>例：Experts pointed out that small mistakes can lead to serious problems.</p>
+          <p>⑥ far from + adj.（一點也不…）<br>→ 適用：加強否定語氣<br>例：The rescue plan was far from simple.</p>
+          <p>⑦ When + S + V, S + V（當…，…）<br>→ 適用：寫出原因與即時反應<br>例：When she saw the locked gate, she changed her plan.</p>
+          <p>⑧ remain + adj.（保持…狀態）<br>→ 適用：描述狀態持續<br>例：The answer remained hidden for several years.</p>
+          <p>⑨ despite + V-ing / N（儘管…）<br>→ 適用：表達讓步與對比<br>例：Despite facing criticism, the team continued its work.</p>
+          <p>⑩ be blinded by + N（被…蒙蔽）<br>→ 適用：分析錯誤判斷的原因<br>例：People may be blinded by fear when they make decisions.</p>
+          <p>⑪ could have been + p.p.（過去可能已被…）<br>→ 適用：推測過去發生的被動事件<br>例：The evidence could have been destroyed before the police arrived.</p>
+          <p>⑫ never imagining + N / that 子句（從未想到…）<br>→ 適用：描寫人物忽略的可能性<br>例：They trusted the plan, never imagining that it would fail.</p>
+          <p>⑬ before + N, S + V（在…之前，…）<br>→ 適用：比較事件前後差異<br>例：Before the scandal, the company had a strong public image.</p>
+          <p>⑭ turn A into B（把 A 變成 B）<br>→ 適用：描寫轉變與影響<br>例：The crisis turned a local issue into a national debate.</p>
+          <p>⑮ be admired mainly in ...（主要在…受到欣賞）<br>→ 適用：說明名聲或影響力的範圍<br>例：The artist was admired mainly in academic circles.</p>
+        </div>
+      </details>
+    </div>
+
+    <nav class="link-panel bottom" aria-label="課程與聯絡連結">
+      <h2>七月課程與聯絡方式</h2>
+      <div class="link-grid">
+        <a class="link-card course" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+          <span class="link-title">七月課程介紹：錯中學 ECHO 計劃</span>
+          <span class="link-desc">暑期英文學習課程，透過錯誤回饋、修正與輸出練習，幫助學生把弱點變成進步路線。</span>
+        </a>
+        <a class="link-card analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+          <span class="link-title">學生分析</span>
+          <span class="link-desc">整理學生學習狀態與英文能力需求，適合家長與學生了解課程規劃前的分析方向。</span>
+        </a>
+        <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+          <span class="link-title">林威老師 Line</span>
+          <span class="link-desc">個人 Line 帳號：linwayet。可用手機點選加入，詢問七月課程與學習安排。</span>
+        </a>
+      </div>
+    </nav>
+  </main>
+</body>
+</html>
