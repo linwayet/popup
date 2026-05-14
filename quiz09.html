@@ -1,262 +1,929 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-        }
-        .header {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .question {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-        }
-        .option-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-            position: relative;
-            transition: background 0.2s;
-        }
-        .option-item:hover {
-            background-color: #fafafa;
-        }
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #eee;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
-        .special-btn {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .footer-tools {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        .tool-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alice 單字本｜Day 1｜城市與遺產</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F0F7FF;
+  --ink: #1A2A40;
+  --accent1: #1565C0;
+  --accent2: #0D7C5E;
+  --accent3: #9C27B0;
+  --warm: #E65100;
+  --card-bg: #FFFFFF;
+  --unfam: #B71C1C;
+  --fam: #1565C0;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'BIZ UDPGothic', 'Noto Sans TC', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.85;
+  padding: 24px 14px 80px;
+}
+main { max-width: 900px; margin: auto; }
 
-        /* 彈出視窗樣式 */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.95);
-            z-index: 1000;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .overlay-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            font-weight: bold;
-            padding: 10px;
-        }
-        .overlay-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-left: 4px solid #000;
-            padding-left: 10px;
-        }
-        .example-box {
-            background: #f4f4f4;
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border-left: 3px solid #ccc;
-        }
-        h4 { margin: 15px 0 5px 0; color: #333; }
-        .eg-item { margin-bottom: 10px; }
-    </style>
+/* ===== HEADER ===== */
+.page-header {
+  background: linear-gradient(135deg, #0D47A1 0%, #1565C0 40%, #1976D2 100%);
+  color: white;
+  padding: 32px 28px;
+  border-radius: 18px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(13,71,161,0.30);
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: "";
+  position: absolute; top: -40%; right: -10%;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.page-header h1 { font-size: 2em; margin-bottom: 8px; position: relative; }
+.page-header p { opacity: .92; font-size: 1em; position: relative; }
+.tag-row { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.22);
+  padding: 5px 14px; border-radius: 20px; font-size: 0.82em; font-weight: 700;
+}
+.tag.unfam { background: rgba(255,180,180,0.35); }
+.tag.fam { background: rgba(180,230,255,0.35); }
+
+/* ===== ANALYSIS DASHBOARD ===== */
+.dashboard {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 16px rgba(21,101,192,0.12);
+  border-left: 8px solid #1565C0;
+}
+.dashboard h2 { color: #0D47A1; font-size: 1.3em; margin-bottom: 16px; }
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px; margin-bottom: 16px;
+}
+.stat-card {
+  border-radius: 12px; padding: 14px 16px; text-align: center;
+  border-left: 5px solid #1565C0;
+}
+.stat-card.good  { background: #E8F5E9; border-left-color: #2E7D32; }
+.stat-card.warn  { background: #FFF8E1; border-left-color: #F57F17; }
+.stat-card.bad   { background: #FFEBEE; border-left-color: #B71C1C; }
+.stat-card.great { background: #E3F2FD; border-left-color: #1565C0; }
+.stat-label { font-size: 0.82em; color: #555; font-weight: 700; margin-bottom: 4px; }
+.stat-value { font-size: 1.6em; font-weight: 800; color: #1A2A40; }
+.stat-note  { font-size: 0.78em; color: #777; margin-top: 3px; }
+.improve-box {
+  background: #F3F8FF; border-radius: 10px; padding: 14px 18px;
+  border: 2px dashed #1976D2; font-size: 0.9em;
+}
+.improve-box h3 { color: #0D47A1; margin-bottom: 8px; }
+.improve-box ol { padding-left: 22px; }
+.improve-box li { margin-bottom: 5px; color: #1A2A40; }
+.lvl {
+  display: inline-block; font-size: 0.75em; padding: 2px 8px;
+  border-radius: 10px; font-weight: 700; margin-right: 6px;
+}
+.lvl.h { background: #FFCDD2; color: #B71C1C; }
+.lvl.m { background: #FFF9C4; color: #F57F17; }
+.lvl.l { background: #E8F5E9; color: #2E7D32; }
+
+/* ===== SECTION HEADINGS ===== */
+.section-card {
+  background: white;
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 4px 16px rgba(21,101,192,0.10);
+  border-top: 6px solid #1565C0;
+}
+.section-card.grammar { border-top-color: #9C27B0; }
+.section-card.reading { border-top-color: #0D7C5E; }
+.section-card.quiz    { border-top-color: #E65100; }
+.sec-title {
+  font-size: 1.35em; font-weight: 800; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sec-title .icon {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg,#1565C0,#1976D2);
+  color: white; display: flex; align-items: center;
+  justify-content: center; font-size: 1.1em;
+  box-shadow: 0 3px 8px rgba(21,101,192,0.3);
+}
+.section-card.grammar .sec-title .icon { background: linear-gradient(135deg,#7B1FA2,#9C27B0); }
+.section-card.reading .sec-title .icon { background: linear-gradient(135deg,#00695C,#0D7C5E); }
+.section-card.quiz    .sec-title .icon { background: linear-gradient(135deg,#BF360C,#E65100); }
+.sec-sub {
+  color: #555; font-size: 0.9em; margin-bottom: 22px;
+  padding-bottom: 14px; border-bottom: 2px dashed #BBDEFB;
+}
+
+/* ===== VOCAB CARD ===== */
+.vocab-card {
+  border: 2px solid #BBDEFB;
+  border-radius: 14px; padding: 20px 22px;
+  margin-bottom: 20px; background: #F8FBFF;
+  position: relative;
+}
+.vocab-card.unfam { border-color: #EF9A9A; background: #FFF8F8; }
+.badge {
+  position: absolute; top: 14px; right: 14px;
+  font-size: 0.72em; font-weight: 800;
+  padding: 3px 10px; border-radius: 12px;
+}
+.badge.unfam-b { background: #FFCDD2; color: #B71C1C; }
+.badge.fam-b   { background: #BBDEFB; color: #0D47A1; }
+.vocab-word  { font-size: 1.5em; font-weight: 800; color: #0D47A1; }
+.vocab-card.unfam .vocab-word { color: #B71C1C; }
+.vocab-kk    { color: #555; font-size: 0.88em; font-style: italic; margin-left: 8px; }
+.vocab-pos   { color: #777; font-size: 0.9em; font-style: italic; }
+.vocab-def   { font-size: 1.05em; color: #1A2A40; margin: 8px 0 14px; }
+
+/* tagrow */
+.tagrow {
+  display: grid; grid-template-columns: 120px 1fr;
+  border: 1px solid rgba(26,42,64,.13);
+  border-radius: 8px; overflow: hidden; margin: 7px 0;
+}
+.tagrow b   { padding: 9px 12px; font-size: 0.88em; }
+.tagrow span{ background: rgba(255,255,255,.8); padding: 9px 12px; font-size: 0.9em; }
+b.deriv  { background: #FDECEA; color: #B71C1C; }
+b.root   { background: #E3F2FD; color: #0D47A1; }
+b.phrase { background: #E8F5E9; color: #2E7D32; }
+b.idiom  { background: #FFF9C4; color: #E65100; }
+b.confuse{ background: #F3E5F5; color: #6A1B9A; }
+
+/* examples */
+.examples { margin-top: 16px; }
+.ex-item  { margin-bottom: 12px; padding-left: 14px; border-left: 3px solid #90CAF9; }
+.vocab-card.unfam .ex-item { border-left-color: #EF9A9A; }
+.ex-en { color: #1A2A40; font-weight: 500; }
+.ex-zh { color: #666; font-size: 0.92em; margin-top: 2px; }
+.ex-num{ color: #1976D2; font-weight: 800; margin-right: 4px; }
+.vocab-card.unfam .ex-num { color: #C62828; }
+
+/* ===== GRAMMAR ===== */
+.gram-item {
+  background: #FAF5FF; border-radius: 12px; padding: 20px 22px;
+  margin-bottom: 18px; border-left: 5px solid #9C27B0;
+}
+.gram-title { font-size: 1.1em; font-weight: 800; color: #6A1B9A; margin-bottom: 6px; }
+.gram-pattern {
+  background: white; border: 2px solid #CE93D8;
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 0.95em; margin: 10px 0; color: #4A148C;
+  font-weight: 700; letter-spacing: .3px;
+}
+.gram-note {
+  background: #FFF9C4; border-left: 3px solid #F57F17;
+  border-radius: 6px; padding: 8px 12px;
+  font-size: 0.9em; color: #4A2700; margin: 8px 0;
+}
+.gram-ex { margin: 10px 0 0; }
+.gram-ex .g-en { color: #1A2A40; }
+.gram-ex .g-zh { color: #666; font-size: 0.9em; margin-top: 2px; }
+.gram-ex .g-row{ margin-bottom: 10px; padding-left: 14px; border-left: 3px solid #CE93D8; }
+
+/* ===== READING ===== */
+.reading-box {
+  background: #F8FFFE; border: 2px solid #80CBC4;
+  border-radius: 12px; padding: 22px 24px;
+  margin-bottom: 18px; line-height: 1.95;
+}
+.reading-title { text-align: center; color: #00695C; font-size: 1.2em; font-weight: 800; margin-bottom: 6px; }
+.reading-meta  { text-align: center; color: #999; font-size: 0.82em; font-style: italic; margin-bottom: 16px; }
+.reading-box p { text-indent: 2em; margin-bottom: 12px; }
+.kw { color: #0D47A1; font-weight: 700; }
+.reading-box.unfam-kw .kw { color: #B71C1C; }
+
+.r-question {
+  background: white; border-radius: 10px;
+  padding: 16px 18px; margin-bottom: 14px;
+  border-left: 4px solid #80CBC4;
+  box-shadow: 0 2px 8px rgba(0,109,92,0.06);
+}
+.r-stem { font-weight: 700; margin-bottom: 10px; }
+.r-opts { list-style: none; padding-left: 10px; }
+.r-opts li { padding: 3px 0; cursor: default; }
+.r-opts li::before {
+  content: attr(data-l) ". ";
+  font-weight: 800; color: #0D7C5E; margin-right: 4px;
+}
+
+/* reading answer details */
+.r-question details { margin-top: 10px; }
+.r-question summary {
+  background: linear-gradient(135deg,#00695C,#0D7C5E);
+  color: white; padding: 8px 16px;
+  border-radius: 20px; font-size: 0.85em; font-weight: 700;
+  cursor: pointer; list-style: none; display: inline-flex;
+  align-items: center; gap: 8px;
+}
+.r-question summary::-webkit-details-marker { display: none; }
+.r-answer {
+  background: #E8F5E9; border-radius: 8px;
+  padding: 10px 14px; margin-top: 8px;
+  font-size: 0.9em; color: #1B5E20; font-weight: 600;
+}
+.r-why { font-weight: 400; color: #2E7D32; margin-top: 4px; }
+
+/* ===== MCQ QUIZ ===== */
+.quiz-q {
+  background: #FFF8F3; border-radius: 10px;
+  padding: 14px 18px; margin-bottom: 12px;
+  border-left: 4px solid #E65100;
+}
+.quiz-stem { font-weight: 700; margin-bottom: 8px; color: #1A2A40; }
+.quiz-opts { list-style: none; padding-left: 10px; }
+.quiz-opts li { padding: 3px 0; }
+.quiz-opts li::before {
+  content: attr(data-l) ". ";
+  font-weight: 800; color: #E65100; margin-right: 4px;
+}
+.quiz-reveal-wrapper { margin-top: 18px; }
+.quiz-reveal-wrapper details summary {
+  background: linear-gradient(135deg, #BF360C, #E65100);
+  color: white; padding: 12px 22px;
+  border-radius: 10px; font-size: 1em; font-weight: 800;
+  cursor: pointer; list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  user-select: none; -webkit-tap-highlight-color: transparent;
+}
+.quiz-reveal-wrapper summary::-webkit-details-marker { display: none; }
+.quiz-arrow { transition: transform .3s ease; font-size: 1.1em; }
+details[open] .quiz-arrow { transform: rotate(180deg); }
+.reveal-body { padding: 16px 0 4px; }
+.ans-item {
+  background: white; border-radius: 8px;
+  padding: 12px 16px; margin-bottom: 10px;
+  border-left: 5px solid #2E7D32;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ans-item .ans-header { font-weight: 800; color: #1B5E20; margin-bottom: 4px; }
+.ans-item .ans-why { color: #2E7D32; font-size: 0.9em; }
+
+/* ===== FOOTER / ACCORDION ===== */
+details.vocab-extra {
+  border: 2px solid #90CAF9; border-radius: 10px;
+  background: #F0F7FF; margin: 20px 0;
+}
+details.vocab-extra summary {
+  min-height: 56px; background: #1565C0; color: white;
+  padding: 14px 20px; font-size: 1em; font-weight: 700;
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+}
+details.vocab-extra summary::-webkit-details-marker { display: none; }
+.v-arrow { transition: transform .3s ease; }
+details.vocab-extra[open] .v-arrow { transform: rotate(180deg); }
+.vocab-extra-body { padding: 18px 20px; font-size: 0.92em; }
+
+footer {
+  text-align: center; padding: 24px;
+  color: #777; font-size: 0.88em; margin-top: 30px;
+}
+
+@media (max-width: 640px) {
+  body { font-size: 18px; }
+  .page-header h1 { font-size: 1.55em; }
+  .tagrow { grid-template-columns: 1fr; }
+  .tagrow b { border-bottom: 1px solid rgba(26,42,64,.1); }
+  .stat-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
 </head>
 <body>
+<main>
 
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
-    
-    <div class="question">
-        There were so many people at the bus station that I had to ______ my way through the crowd to board the bus in time.
-    </div>
-
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) crash <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) tumble <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) elbow <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) struggle <span class="info-icon">ⓘ</span></div>
-    </div>
-
-    <div class="special-btn" onclick="showOverlay('E')">
-        (E) 查看答案與詳細解析
-    </div>
-
-    <div class="special-btn" onclick="showOverlay('F')">
-        (F) 林威老師的話 (衍生詞與音標)
-    </div>
-
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+<!-- ===== PAGE HEADER ===== -->
+<div class="page-header">
+  <h1>📘 Alice 英文單字本 · Day 1</h1>
+  <p>主題：城市遺產與歷史記憶 · Heritage & Memory</p>
+  <div class="tag-row">
+    <span class="tag">📅 2026-05-14 製作</span>
+    <span class="tag">🏛️ 主題：Heritage & Memory</span>
+    <span class="tag unfam">🔴 不熟悉詞彙 × 3</span>
+    <span class="tag fam">🔵 同等級熟悉詞彙 × 7</span>
+    <span class="tag">📖 閱讀測驗 × 1</span>
+    <span class="tag">✏️ 單字選擇 × 5</span>
+  </div>
 </div>
 
-<div id="infoOverlay" class="overlay">
-    <span class="close-btn" onclick="closeOverlay()">×</span>
-    <div id="contentArea" class="overlay-content"></div>
+<!-- ===== ANALYSIS DASHBOARD ===== -->
+<div class="dashboard">
+  <h2>🧭 Alice 兩次考試弱點儀表板</h2>
+  <p style="font-size:0.88em;color:#555;margin-bottom:14px;">114 學測 + 新店高中高二英文段考</p>
+  <div class="stat-grid">
+    <div class="stat-card great">
+      <div class="stat-label">學測 詞彙題</div>
+      <div class="stat-value">8 / 10</div>
+      <div class="stat-note">blurring, draft 混淆</div>
+    </div>
+    <div class="stat-card warn">
+      <div class="stat-label">學測 綜合測驗</div>
+      <div class="stat-value">5 / 10</div>
+      <div class="stat-note">時態、片語、多義字</div>
+    </div>
+    <div class="stat-card bad">
+      <div class="stat-label">學測 文意選填</div>
+      <div class="stat-value">2 / 10</div>
+      <div class="stat-note">⚠️ 最大弱點 × 錯 8 題</div>
+    </div>
+    <div class="stat-card good">
+      <div class="stat-label">學測 篇章結構</div>
+      <div class="stat-value">4 / 4</div>
+      <div class="stat-note">滿分 🎉</div>
+    </div>
+    <div class="stat-card good">
+      <div class="stat-label">段考 詞彙題</div>
+      <div class="stat-value">11 / 11</div>
+      <div class="stat-note">滿分 ⭐</div>
+    </div>
+    <div class="stat-card warn">
+      <div class="stat-label">段考 綜合測驗</div>
+      <div class="stat-value">10 / 15</div>
+      <div class="stat-note">假設語氣、關係詞</div>
+    </div>
+    <div class="stat-card warn">
+      <div class="stat-label">段考 文意選填</div>
+      <div class="stat-value">5 / 10</div>
+      <div class="stat-note">動詞動作詞 + 副詞搭配</div>
+    </div>
+    <div class="stat-card bad">
+      <div class="stat-label">段考 閱讀測驗</div>
+      <div class="stat-value">0 / 4</div>
+      <div class="stat-note">❗ 細節題、段落目的</div>
+    </div>
+  </div>
+  <div class="improve-box">
+    <h3>📋 本單字本加強重點 (Day 1)</h3>
+    <ol>
+      <li><span class="lvl h">最優先</span><b>文意選填弱點詞彙</b>：intricate, restoration, renowned — 學測 Q21-Q28 的核心錯誤字</li>
+      <li><span class="lvl m">次優先</span><b>文法句型</b>：have difficulty V-ing、be noted for、where 關係副詞 — 段考高頻錯題</li>
+      <li><span class="lvl l">持續加強</span><b>閱讀策略</b>：本日閱讀測驗練習「主旨題 vs 細節題」判斷技巧</li>
+    </ol>
+  </div>
 </div>
 
-<script>
-    const data = {
-        'A': {
-            title: '(A) crash',
-            desc: '解釋：碰撞；墜毀；倒下',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The car <b>crashed</b> into a tree.<br>(這輛車撞上了一棵樹。)</div>
-                    <div class="eg-item">2. Thousands of people lost money when the stock market <b>crashed</b>.<br>(股市崩盤時，成千上萬的人賠了錢。)</div>
-                    <div class="eg-item">3. Waves <b>crashed</b> against the shore.<br>(海浪拍打著岸邊。)</div>
-                </div>`
-        },
-        'B': {
-            title: '(B) tumble',
-            desc: '解釋：跌倒；滾下；暴跌',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. He <b>tumbled</b> down the stairs and broke his arm.<br>(他從樓梯上摔下來，摔斷了手臂。)</div>
-                    <div class="eg-item">2. Share prices <b>tumbled</b> yesterday.<br>(股票價格昨天大幅下跌。)</div>
-                    <div class="eg-item">3. The children <b>tumbled</b> out of the bus.<br>(孩子們從公車上連滾帶爬地跑了出來。)</div>
-                </div>`
-        },
-        'C': {
-            title: '(C) elbow',
-            desc: '解釋：用手肘推擠開路 (動詞用法)',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. He <b>elbowed</b> his way to the front of the queue.<br>(他用手肘擠到了隊伍的最前面。)</div>
-                    <div class="eg-item">2. She <b>elbowed</b> me aside to get a better look.<br>(她把我擠到一旁以便看得更清楚。)</div>
-                    <div class="eg-item">3. I had to <b>elbow</b> through the crowd to reach the exit.<br>(我不得不推擠人群以到達出口。)</div>
-                </div>`
-        },
-        'D': {
-            title: '(D) struggle',
-            desc: '解釋：奮力；掙扎；鬥爭',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. She <b>struggled</b> to lift the heavy box.<br>(她費力地搬起那個重箱子。)</div>
-                    <div class="eg-item">2. The company is <b>struggling</b> for survival.<br>(這家公司正為生存而掙扎。)</div>
-                    <div class="eg-item">3. He <b>struggled</b> against the wind.<br>(他在風中艱難前行。)</div>
-                </div>`
-        },
-        'E': {
-            title: '正確答案：(C)',
-            desc: '解析：題幹提到人潮擁擠，為了及時上車必須「擠出路來」。動詞 elbow 常與 way 搭配 (elbow one\'s way)，表示用手肘推擠開路。',
-            example: 'crash (撞擊) 與 tumble (摔倒) 語意不符；struggle (奮力) 雖然語意接近，但通常接 struggle through 而非搭配 one\'s way。'
-        },
-        'F': {
-            title: '林威老師的話',
-            desc: '衍生詞與音標學習：',
-            detail: `
-                <h4>1. elbow (名詞)</h4>
-                <p>KK: [ˈɛlbo] | 中文：手肘</p>
-                <h4>2. crash (名詞)</h4>
-                <p>KK: [kræʃ] | 中文：碰撞聲；崩盤</p>
-                <h4>3. tumbling (形容詞)</h4>
-                <p>KK: [ˈtʌmblɪŋ] | 中文：翻滾的</p>
-                <h4>4. struggle (名詞)</h4>
-                <p>KK: [ˈstrʌɡl] | 中文：奮鬥；掙扎</p>
-            `
-        },
-        'G': {
-            title: '衍生詞更多例句',
-            detail: `
-                <div class="example-box">1. He rested his <b>elbows</b> on the table.<br>(他把手肘靠在桌子上。)</div>
-                <div class="example-box">2. We heard a loud <b>crash</b> in the kitchen.<br>(我們聽到廚房傳來巨大的碰撞聲。)</div>
-                <div class="example-box">3. The <b>tumbling</b> water created a beautiful waterfall.<br>(奔騰而下的水流形成了美麗的瀑布。)</div>
-                <div class="example-box">4. Life is a constant <b>struggle</b>.<br>(生活是持續不斷的奮鬥。)</div>
-            `
-        },
-        'H': {
-            title: '台灣學測必備片語',
-            detail: `
-                <h4>1. tumble down (倒塌；跌落)</h4>
-                <p>例句：The old building <b>tumbled down</b> during the earthquake.<br>(那棟舊建築在地震中倒塌了。)</p>
-                <h4>2. stumble on/upon (偶然發現；絆倒)</h4>
-                <p>例句：Workmen <b>stumbled upon</b> the ancient ruins while digging a trench.<br>(工人在挖溝時偶然發現了古代遺跡。)</p>
-            `
-        }
-    };
+<!-- ===== PART 1: VOCABULARY ===== -->
+<div class="section-card">
+  <div class="sec-title"><span class="icon">📚</span>Part 1｜Day 1 單字 10 個</div>
+  <div class="sec-sub">
+    🔴 紅色卡片 = Alice 不熟悉的詞彙（30%）｜🔵 藍色框 = 同等級熟悉詞彙（70%）<br>
+    衍生詞格式參考 vocabulary_index.md 及 notre-dame-bells 文章詞彙
+  </div>
 
-    function showOverlay(key) {
-        const item = data[key];
-        let html = `<div class="overlay-title">${item.title}</div>`;
-        if(item.desc) html += `<p>${item.desc}</p>`;
-        if(item.detail) html += `<div>${item.detail}</div>`;
-        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
-        
-        document.getElementById('contentArea').innerHTML = html;
-        document.getElementById('infoOverlay').style.display = 'block';
-    }
+  <!-- ① intricate (UNFAMILIAR) -->
+  <div class="vocab-card unfam">
+    <span class="badge unfam-b">🔴 不熟悉</span>
+    <div class="vocab-word">① intricate <span class="vocab-kk">[ˈɪntrɪkɪt]</span> <span class="vocab-pos">adj.</span></div>
+    <div class="vocab-def">錯綜複雜的；精細的</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>intricately (adv. 精細地)；intricacy (n. 複雜性；錯綜之處)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>intricate design 精細的設計；intricate pattern 錯綜的圖案；intricate process 複雜的過程</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>complex 強調層次多；intricate 強調細節精巧、彼此交織；complicated 偏向難以理解</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The craftsman spent months carving the <b>intricate</b> details on the cathedral door.</div>
+        <div class="ex-zh">這位工匠花了幾個月的時間，在教堂大門上雕刻那些精細的細節。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The city's water system is an <b>intricate</b> network of pipes and tunnels built over centuries.</div>
+        <div class="ex-zh">這座城市的供水系統是一個歷經數百年建造的錯綜複雜管道與隧道網絡。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Learning a second language involves an <b>intricate</b> balance of grammar, vocabulary, and culture.</div>
+        <div class="ex-zh">學習第二外語需要在文法、詞彙與文化之間取得精細的平衡。</div>
+      </div>
+    </div>
+  </div>
 
-    function closeOverlay() {
-        document.getElementById('infoOverlay').style.display = 'none';
-    }
-</script>
+  <!-- ② restoration (UNFAMILIAR) -->
+  <div class="vocab-card unfam">
+    <span class="badge unfam-b">🔴 不熟悉</span>
+    <div class="vocab-word">② restoration <span class="vocab-kk">[ˌrɛstəˈreɪʃən]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">修復；恢復；復原</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>restore (v. 修復；恢復)；restorative (adj. 恢復性的)；restorer (n. 修復者)</span></div>
+    <div class="tagrow"><b class="root">字根</b><span>sta / st 站立；穩定 → stand 站；stable 穩定；establish 建立</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>process of restoration 修復過程；under restoration 修復中；careful restoration 細心修復</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>restoration 強調修復至原貌；repair 泛指一般修理；renovation 多指翻新改建</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The <b>restoration</b> of Notre-Dame cathedral took five years after the devastating fire of 2019.</div>
+        <div class="ex-zh">巴黎聖母院在 2019 年那場毀滅性大火之後，歷時五年才完成修復。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The government invested millions in the <b>restoration</b> of ancient temples across the country.</div>
+        <div class="ex-zh">政府投入數百萬資金，用於全國各地古廟的修復工程。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Art <b>restoration</b> requires both scientific knowledge and a deep appreciation of artistic style.</div>
+        <div class="ex-zh">藝術品修復既需要科學知識，也需要對藝術風格有深刻的理解與感受。</div>
+      </div>
+    </div>
+  </div>
 
+  <!-- ③ renowned (UNFAMILIAR) -->
+  <div class="vocab-card unfam">
+    <span class="badge unfam-b">🔴 不熟悉</span>
+    <div class="vocab-word">③ renowned <span class="vocab-kk">[rɪˈnaʊnd]</span> <span class="vocab-pos">adj.</span></div>
+    <div class="vocab-def">著名的；享有盛名的</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>renown (n. 聲望；盛名)；world-renowned (adj. 舉世聞名的)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>be renowned for 以……聞名；renowned artist 著名藝術家；internationally renowned 國際知名的</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>renowned 較正式，含「受人尊敬」語感；famous 一般性著名；noted 強調因特定特質被注意；celebrated 強調被讚揚</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>Emmanuel, the great bell of Notre-Dame, is <b>renowned</b> for its harmonically beautiful sound.</div>
+        <div class="ex-zh">巴黎聖母院的大鐘 Emmanuel，以其和諧優美的音色聞名於世。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The city is <b>renowned</b> for its magnificent medieval architecture and vibrant street culture.</div>
+        <div class="ex-zh">這座城市以其宏偉的中世紀建築和充滿活力的街頭文化聞名。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>She became a <b>renowned</b> researcher after publishing her groundbreaking study on ancient artifacts.</div>
+        <div class="ex-zh">她在發表了有關古代文物的突破性研究後，成為一位享譽學界的知名研究員。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ monument (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🔵 同等級</span>
+    <div class="vocab-word">④ monument <span class="vocab-kk">[ˈmɑnjʊmənt]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">紀念碑；歷史遺跡；古蹟</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>monumental (adj. 宏偉的；重大的)；monumentally (adv. 非常地)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>historic monument 歷史古蹟；national monument 國家紀念物；a monument to 對……的見證</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>monument 可指紀念碑或古蹟；memorial 多指為紀念某人設立的設施；landmark 泛指著名地標</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The Eiffel Tower is one of the most visited <b>monuments</b> in the world, attracting millions each year.</div>
+        <div class="ex-zh">艾菲爾鐵塔是全球參觀人數最多的古蹟之一，每年吸引數百萬遊客。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>This ancient <b>monument</b> stands as a reminder of the civilization that built it over a thousand years ago.</div>
+        <div class="ex-zh">這座古老的遺跡讓人們記起，是哪個文明在一千多年前建造了它。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The city erected a <b>monument</b> in memory of those who lost their lives in the disaster.</div>
+        <div class="ex-zh">這座城市豎立了一座紀念碑，以緬懷在那場災難中不幸罹難的人們。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ heritage (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🔵 同等級</span>
+    <div class="vocab-word">⑤ heritage <span class="vocab-kk">[ˈhɛrɪtɪdʒ]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">文化遺產；遺留下來的傳統</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>inherit (v. 繼承)；inheritance (n. 繼承；財產)；inheritor (n. 繼承人)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>cultural heritage 文化遺產；world heritage site 世界遺產地；national heritage 國家文化遺產</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>heritage 指文化或歷史遺留的整體；inheritance 多指個人繼承的財產或特質；legacy 強調留給後代的影響</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The ancient town was listed as a UNESCO world <b>heritage</b> site in 1987.</div>
+        <div class="ex-zh">這座古老城鎮在 1987 年被列為聯合國教科文組織的世界遺產地。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>Protecting our cultural <b>heritage</b> means not only preserving buildings, but also languages and traditions.</div>
+        <div class="ex-zh">保護我們的文化遺產不只是保存建築物，也包括保存語言與傳統習俗。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The museum's collection is part of the national <b>heritage</b> that future generations will inherit.</div>
+        <div class="ex-zh">這座博物館的館藏是未來世代將繼承的國家文化遺產的一部分。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ preserve (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🔵 同等級</span>
+    <div class="vocab-word">⑥ preserve <span class="vocab-kk">[prɪˈzɜrv]</span> <span class="vocab-pos">v. / n.</span></div>
+    <div class="vocab-def">保存；保護；維持（原貌）</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>preservation (n. 保存；維護)；preservative (n./adj. 防腐劑；保存性的)；well-preserved (adj. 保存完好的)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>preserve traditions 保存傳統；preserve food 保存食物；preserve wildlife 保護野生動物；in good preservation 保存良好</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>preserve 強調防止損壞或流失；protect 著重防禦外來威脅；conserve 強調節約使用；maintain 強調維持現有狀態</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>It is our responsibility to <b>preserve</b> ancient monuments so that future generations can experience them.</div>
+        <div class="ex-zh">保存古老遺跡讓後代子孫也能親身感受，是我們的責任。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The cold, dry climate of the region helped to <b>preserve</b> the artifacts found inside the ancient tomb.</div>
+        <div class="ex-zh">該地區乾冷的氣候有助於保存在古墓內發現的文物。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Local volunteers worked hard to <b>preserve</b> the traditional customs and folk songs of their village.</div>
+        <div class="ex-zh">當地志工努力保存村莊的傳統習俗和民歌。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑦ ancient (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🔵 同等級</span>
+    <div class="vocab-word">⑦ ancient <span class="vocab-kk">[ˈeɪnʃənt]</span> <span class="vocab-pos">adj. / n.</span></div>
+    <div class="vocab-def">古老的；古代的；（the ancients）古人</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>the ancients (n. 古人；前人)；anciently (adv. 在古代)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>ancient civilization 古代文明；ancient ruins 古代遺址；ancient history 古代史；in ancient times 在古代</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>ancient 指很久遠的年代（通常千年以上）；antique 指古老且有收藏價值的物品；old 是一般性描述</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The pyramids of Egypt are among the most impressive <b>ancient</b> structures ever built by human hands.</div>
+        <div class="ex-zh">埃及金字塔是人類雙手建造過最令人歎為觀止的古代建築之一。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>Archaeologists discovered an <b>ancient</b> city buried under layers of desert sand.</div>
+        <div class="ex-zh">考古學家在一層層的沙漠沙丘下發現了一座被掩埋的古城。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Studying <b>ancient</b> languages helps us understand how people lived and thought thousands of years ago.</div>
+        <div class="ex-zh">研究古代語言有助於我們了解數千年前的人們如何生活與思考。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑧ disaster (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🔵 同等級</span>
+    <div class="vocab-word">⑧ disaster <span class="vocab-kk">[dɪˈzæstər]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">災難；災禍；慘敗</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>disastrous (adj. 災難性的；極其糟糕的)；disastrously (adv. 災難性地)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>natural disaster 天然災害；disaster relief 災難救助；disaster area 災區；a recipe for disaster 釀成災難的方法</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>disaster 指嚴重不幸事件；catastrophe 語氣最強，指毀滅性大災難；accident 指一般意外事故；tragedy 強調悲劇性</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The earthquake was one of the worst natural <b>disasters</b> in the country's recorded history.</div>
+        <div class="ex-zh">這場地震是該國有史以來最嚴重的自然災害之一。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The 2019 fire at Notre-Dame was a cultural <b>disaster</b> that shocked the entire world.</div>
+        <div class="ex-zh">2019 年巴黎聖母院的大火是一場震驚全世界的文化災難。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>International teams were quickly sent to provide <b>disaster</b> relief to the victims of the flood.</div>
+        <div class="ex-zh">國際救援隊迅速被派往，為洪水災民提供救災援助。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑨ significant (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🔵 同等級</span>
+    <div class="vocab-word">⑨ significant <span class="vocab-kk">[sɪɡˈnɪfɪkənt]</span> <span class="vocab-pos">adj.</span></div>
+    <div class="vocab-def">重要的；有意義的；顯著的</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>significance (n. 重要性；意義)；significantly (adv. 顯著地；大幅地)；insignificant (adj. 不重要的；微不足道的)</span></div>
+    <div class="tagrow"><b class="root">字根</b><span>sign 記號 → signature 簽名；signal 信號；design 設計</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>of great significance 意義重大；a significant achievement 重要成就；significantly different 顯著不同</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>significant 強調重要性或意義；important 較口語化；remarkable 強調值得特別注意；notable 強調值得記錄</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The <b>restoration</b> of Notre-Dame is a <b>significant</b> cultural achievement for France and the world.</div>
+        <div class="ex-zh">巴黎聖母院的修復，是法國乃至全球意義重大的文化成就。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>Archaeologists made a <b>significant</b> discovery when they found an ancient mosaic buried under the market.</div>
+        <div class="ex-zh">當考古學家在市場下方發現一幅被掩埋的古代馬賽克時，取得了重大發現。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The loss of a historical <b>monument</b> is <b>significant</b> not just for one nation, but for all of humanity.</div>
+        <div class="ex-zh">失去一座歷史古蹟的意義，不只對某個國家重大，對全人類來說皆然。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑩ survive (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🔵 同等級</span>
+    <div class="vocab-word">⑩ survive <span class="vocab-kk">[sərˈvaɪv]</span> <span class="vocab-pos">v.</span></div>
+    <div class="vocab-def">倖存；存活；度過（困難）</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>survival (n. 生存；倖存)；survivor (n. 倖存者)；survivable (adj. 可存活的)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>survive a disaster 從災難中倖存；survival rate 存活率；survival of the fittest 適者生存；sole survivor 唯一倖存者</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>survive 強調熬過困難或危險；outlive 強調活得比某人或某物久；retain 強調保留（接物品、特質，不接人）</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>Incredibly, the ancient bell <b>survived</b> the fire and continued to ring for generations to come.</div>
+        <div class="ex-zh">令人難以置信的是，這口古老的鐘在大火中倖存下來，繼續為後代子孫鳴響。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The rare manuscripts <b>survived</b> centuries of wars and floods because they were stored in a dry vault.</div>
+        <div class="ex-zh">這些珍貴的手稿因為存放在乾燥的地下室，歷經數百年的戰亂與洪水倖存至今。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Archaeologists are amazed at how much of the <b>ancient</b> city managed to <b>survive</b> underground.</div>
+        <div class="ex-zh">考古學家對這座古城有多少部分成功在地下存留至今感到驚嘆不已。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion: 衍生詞總整理 -->
+  <details class="vocab-extra">
+    <summary>📋 Day 1 單字衍生詞速查表（點擊展開）<span class="v-arrow">⌄</span></summary>
+    <div class="vocab-extra-body">
+      <table style="width:100%;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#1565C0;color:white;">
+            <th style="padding:8px 12px;text-align:left;">單字</th>
+            <th style="padding:8px 12px;text-align:left;">衍生詞</th>
+            <th style="padding:8px 12px;text-align:left;">字根</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#FFF8F8;"><td style="padding:7px 12px;font-weight:700;color:#B71C1C;">intricate</td><td style="padding:7px 12px;">intricately, intricacy</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#FFF3F3;"><td style="padding:7px 12px;font-weight:700;color:#B71C1C;">restoration</td><td style="padding:7px 12px;">restore, restorative, restorer</td><td style="padding:7px 12px;">sta/st 站立</td></tr>
+          <tr style="background:#FFF8F8;"><td style="padding:7px 12px;font-weight:700;color:#B71C1C;">renowned</td><td style="padding:7px 12px;">renown, world-renowned</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F8FBFF;"><td style="padding:7px 12px;font-weight:700;color:#0D47A1;">monument</td><td style="padding:7px 12px;">monumental, monumentally</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F3F8FF;"><td style="padding:7px 12px;font-weight:700;color:#0D47A1;">heritage</td><td style="padding:7px 12px;">inherit, inheritance, inheritor</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F8FBFF;"><td style="padding:7px 12px;font-weight:700;color:#0D47A1;">preserve</td><td style="padding:7px 12px;">preservation, preservative, well-preserved</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F3F8FF;"><td style="padding:7px 12px;font-weight:700;color:#0D47A1;">ancient</td><td style="padding:7px 12px;">the ancients, anciently</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F8FBFF;"><td style="padding:7px 12px;font-weight:700;color:#0D47A1;">disaster</td><td style="padding:7px 12px;">disastrous, disastrously</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F3F8FF;"><td style="padding:7px 12px;font-weight:700;color:#0D47A1;">significant</td><td style="padding:7px 12px;">significance, significantly, insignificant</td><td style="padding:7px 12px;">sign 記號</td></tr>
+          <tr style="background:#F8FBFF;"><td style="padding:7px 12px;font-weight:700;color:#0D47A1;">survive</td><td style="padding:7px 12px;">survival, survivor, survivable</td><td style="padding:7px 12px;">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
+</div>
+
+<!-- ===== PART 2: GRAMMAR ===== -->
+<div class="section-card grammar">
+  <div class="sec-title"><span class="icon">📐</span>Part 2｜文法加強 3 大重點</div>
+  <div class="sec-sub">依據 Alice 在 114 學測 + 高二段考中最常錯的題型設計，例句關鍵字以<b>粗體</b>標示，英中對照</div>
+
+  <!-- Grammar 1: have difficulty V-ing -->
+  <div class="gram-item">
+    <div class="gram-title">① have difficulty / trouble + V-ing（做某事有困難）</div>
+    <p style="margin-bottom:8px;color:#4A148C;font-size:0.92em;">錯誤來源：高二段考 Q35 — Alice 選了 to find，正解是 finding</p>
+    <div class="gram-pattern">
+      ✅ have difficulty / trouble / fun / a hard time &nbsp;<b>(in) + V-ing</b><br>
+      ❌ have difficulty <b>to + V</b>（不定詞不可用在此句型）
+    </div>
+    <div class="gram-note">
+      📌 同類固定句型：<b>spend time V-ing</b>（花時間做）、<b>have fun V-ing</b>（開心做）、<b>it's worth V-ing</b>（值得做）。記住：這四個句型統統接 <b>V-ing</b>，不接 to V。
+    </div>
+    <div class="gram-ex">
+      <div class="g-row">
+        <div class="g-en">Tourists often <b>have difficulty understanding</b> the local dialect when visiting small towns.</div>
+        <div class="g-zh">遊客在造訪小鎮時，常常很難聽懂當地方言。</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">Art restorers <b>had great trouble recreating</b> the <b>intricate</b> patterns on the ancient mosaic.</div>
+        <div class="g-zh">藝術修復師在重建古代馬賽克上精細複雜的圖案時，遭遇了極大的困難。</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">Many people <b>have a hard time imagining</b> what life was like before modern technology existed.</div>
+        <div class="g-zh">許多人很難想像在現代科技出現之前，生活是什麼樣子。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grammar 2: be noted/renowned for -->
+  <div class="gram-item">
+    <div class="gram-title">② be noted / renowned / known / famous for（以……聞名）</div>
+    <p style="margin-bottom:8px;color:#4A148C;font-size:0.92em;">錯誤來源：114 學測 Q21 — Alice 選了 familiar，但 be familiar 應接 <b>with</b>（對……熟悉）</p>
+    <div class="gram-pattern">
+      ✅ be <b>noted / renowned / known / famous + for</b> + N / V-ing（以……聞名）<br>
+      ✅ be <b>familiar + with</b> + N（對……熟悉）← 注意介系詞不同！<br>
+      ❌ be familiar <b>for</b>（錯誤用法，not a thing）
+    </div>
+    <div class="gram-note">
+      📌 配對記憶：noted/renowned/known/famous → 接 <b>for</b>；familiar → 接 <b>with</b>。考試看到 be ___ for，選項絕不能選 familiar！
+    </div>
+    <div class="gram-ex">
+      <div class="g-row">
+        <div class="g-en">Notre-Dame is <b>noted for</b> its <b>intricate</b> architecture, stunning windows, and, above all, its bells.</div>
+        <div class="g-zh">巴黎聖母院以其精細建築、令人驚豔的玻璃窗，尤其是鐘聲聞名。</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">The professor is <b>renowned for</b> her <b>significant</b> contributions to the study of ancient civilizations.</div>
+        <div class="g-zh">這位教授以她對古代文明研究的重大貢獻而享有盛名。</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">After years of study, she became <b>familiar with</b> the <b>intricate</b> process of art <b>restoration</b>.</div>
+        <div class="g-zh">經過多年學習，她對藝術修復那複雜的過程已相當熟悉。（be familiar with = 熟悉）</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grammar 3: where (relative adverb) -->
+  <div class="gram-item">
+    <div class="gram-title">③ where 引導關係副詞子句（地點先行詞 + 完整子句）</div>
+    <p style="margin-bottom:8px;color:#4A148C;font-size:0.92em;">錯誤來源：高二段考 Q34 — Alice 選了 which，但後面子句完整，應用關係副詞 where</p>
+    <div class="gram-pattern">
+      ✅ 地點名詞 + <b>where</b> + <b>完整子句</b>（主詞 + 動詞 都有）<br>
+      ✅ 地點名詞 + <b>which</b> + <b>不完整子句</b>（缺少受詞時才用 which）<br>
+      判斷法：把 where/which 帶入後，子句是否還缺一個名詞？缺 → which；不缺 → where
+    </div>
+    <div class="gram-note">
+      📌 快速口訣：where = 在那裡（副詞）；子句自己有完整的主詞和受詞 → 選 where。<br>
+      例：He visited the city <b>where</b> he was born.（he was born 完整 → where）<br>
+      例：He visited the city <b>which</b> he loves.（he loves __ 缺受詞 → which）
+    </div>
+    <div class="gram-ex">
+      <div class="g-row">
+        <div class="g-en">He returned to the museum <b>where</b> the <b>ancient</b> artifacts were first discovered.</div>
+        <div class="g-zh">他回到了最初發現那些古代文物的博物館。（the ancient artifacts were first discovered 子句完整 → where）</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">Paris is a city <b>where</b> remarkable <b>monuments</b> stand on almost every street corner.</div>
+        <div class="g-zh">巴黎是一座幾乎每個街角都矗立著令人讚嘆古蹟的城市。</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">The library <b>where</b> she had studied for years was listed as a <b>significant heritage</b> site.</div>
+        <div class="g-zh">她求學多年的那座圖書館，被列為重要的文化遺產保護地。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PART 3: READING ===== -->
+<div class="section-card reading">
+  <div class="sec-title"><span class="icon">📖</span>Part 3｜閱讀測驗</div>
+  <div class="sec-sub">主題與 Day 1 單字高度相關 · 長度約 115 年學測閱讀 1/2 · 3 題選擇</div>
+
+  <div class="reading-box">
+    <div class="reading-title">The Living Past</div>
+    <div class="reading-meta">~ 115 words · 約學測閱讀 1/2 長度 ~</div>
+    <p>Every year, millions of tourists travel to see the world's most <span class="kw">renowned</span> <span class="kw">heritage</span> sites. <span class="kw">Ancient</span> <span class="kw">monuments</span> such as the Colosseum in Rome and the Angkor Wat temples in Cambodia are not simply ruins — they are living connections to the civilizations that created them. However, <span class="kw">preserving</span> these <span class="kw">significant</span> structures is never simple.</p>
+    <p>Natural <span class="kw">disasters</span>, pollution, and human activity all threaten to destroy what centuries have carefully protected. When disaster strikes, <span class="kw">restoration</span> becomes essential. The process of restoring a damaged <span class="kw">monument</span> can be <span class="kw">intricate</span>, taking years or even decades. Yet for many communities, the effort is worth every penny.</p>
+    <p>Having <span class="kw">survived</span> the test of time, these monuments remind us of our shared human <span class="kw">heritage</span>. They carry <span class="kw">intricate</span> stories written not in books, but in stone.</p>
+  </div>
+
+  <div class="r-question">
+    <div class="r-stem">1. What is the main idea of this passage?</div>
+    <ul class="r-opts">
+      <li data-l="A">Ancient buildings are too expensive to repair and should be left as ruins.</li>
+      <li data-l="B">Heritage sites connect us to our past and are worth the effort to preserve.</li>
+      <li data-l="C">Tourism is harmful to ancient monuments and must be strictly controlled.</li>
+      <li data-l="D">Natural disasters are the single greatest threat to ancient civilizations.</li>
+    </ul>
+    <details>
+      <summary>點此查看答案 ▼</summary>
+      <div class="r-answer">✔ 正解：(B)
+        <div class="r-why">全文強調遺址是「與過去的聯繫」，且「值得投入心力保存」。注意末段：「remind us of our shared human heritage」— 這才是全文核心。(A)(C)(D) 都只是細節或未提及。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="r-question">
+    <div class="r-stem">2. According to the passage, why does restoration sometimes take decades?</div>
+    <ul class="r-opts">
+      <li data-l="A">Governments often disagree on how to fund restoration projects.</li>
+      <li data-l="B">Tourism needs to be halted completely during the restoration process.</li>
+      <li data-l="C">The process of restoring a monument can be intricate and time-consuming.</li>
+      <li data-l="D">Restoration materials are extremely difficult to find in modern times.</li>
+    </ul>
+    <details>
+      <summary>點此查看答案 ▼</summary>
+      <div class="r-answer">✔ 正解：(C)
+        <div class="r-why">第二段明確說：「The process of restoring a damaged monument can be <b>intricate</b>, taking years or even decades.」直接對應選項 (C)。注意：本題考細節定位，務必回文找到對應句。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="r-question">
+    <div class="r-stem">3. The word "intricate" (paragraph 3) is closest in meaning to:</div>
+    <ul class="r-opts">
+      <li data-l="A">simple and easy to follow</li>
+      <li data-l="B">complex and full of fine detail</li>
+      <li data-l="C">short and quickly forgotten</li>
+      <li data-l="D">ancient and historically distant</li>
+    </ul>
+    <details>
+      <summary>點此查看答案 ▼</summary>
+      <div class="r-answer">✔ 正解：(B)
+        <div class="r-why">intricate = 錯綜複雜的；精細的 → closest to "complex and full of fine detail"。注意：(A) 是反義；(D) 是 ancient 的意思，不要混淆。</div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== PART 4: MCQ QUIZ ===== -->
+<div class="section-card quiz">
+  <div class="sec-title"><span class="icon">✏️</span>Part 4｜單字單選複習 5 題</div>
+  <div class="sec-sub">考驗今日 10 個單字的掌握程度 · 完成後按下方按鈕一次查看全部答案與解析</div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">1. The artist is ______ for the <u>intricate</u> details she carves into each wooden sculpture.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">familiar</li>
+      <li data-l="B">noted</li>
+      <li data-l="C">suited</li>
+      <li data-l="D">related</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">2. After the flood, the city launched a five-year ______ project to rebuild its ancient temples.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">disaster</li>
+      <li data-l="B">heritage</li>
+      <li data-l="C">restoration</li>
+      <li data-l="D">monument</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">3. Scientists have difficulty ______ how the builders of ancient monuments moved such enormous stones.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">to explain</li>
+      <li data-l="B">explain</li>
+      <li data-l="C">explained</li>
+      <li data-l="D">explaining</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">4. The town ______ she grew up has been added to the national heritage list.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">which</li>
+      <li data-l="B">whom</li>
+      <li data-l="C">where</li>
+      <li data-l="D">that</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">5. Surprisingly, the ancient bell ______ the revolution and still rings in the cathedral today.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">restored</li>
+      <li data-l="B">preserved</li>
+      <li data-l="C">survived</li>
+      <li data-l="D">inherited</li>
+    </ul>
+  </div>
+
+  <!-- SINGLE CLICK REVEAL -->
+  <div class="quiz-reveal-wrapper">
+    <details>
+      <summary>
+        <span>📋 點此查看答案 &amp; 解析 &nbsp;｜&nbsp; 手機版請調正</span>
+        <span class="quiz-arrow">⌄</span>
+      </summary>
+      <div class="reveal-body">
+        <div class="ans-item">
+          <div class="ans-header">第 1 題 ✔ 正解：(B) noted</div>
+          <div class="ans-why">
+            be <b>noted for</b> = 以……聞名（固定搭配）。<br>
+            ❌ (A) familiar 應接 <b>with</b>（be familiar with）不接 for — 這正是學測 Q21 的錯誤！<br>
+            ❌ (C) suited 搭配 for，語意為「適合」，與「聞名」無關。
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 2 題 ✔ 正解：(C) restoration</div>
+          <div class="ans-why">
+            <b>restoration</b> project = 修復計畫；restore v. 修復。<br>
+            (A) disaster = 災難（rebuild 之前是 disaster 發生，但空格說的是 rebuild 的動作 → restoration）<br>
+            (D) monument 是「古蹟」名詞，不能當 project 的修飾詞（需改為 monumental project）。
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 3 題 ✔ 正解：(D) explaining</div>
+          <div class="ans-why">
+            <b>have difficulty + V-ing</b> 是固定句型，不可用不定詞（to explain）。<br>
+            ❌ (A) to explain — 高二段考 Q35 Alice 就是選了這個錯誤選項！<br>
+            口訣：have difficulty / trouble / fun / a hard time → 全部接 <b>V-ing</b>。
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 4 題 ✔ 正解：(C) where</div>
+          <div class="ans-why">
+            先行詞 = the town（地點），後面子句「she grew up」主詞 + 動詞完整，不缺受詞 → 用關係副詞 <b>where</b>。<br>
+            ❌ (A) which — which 後面子句需缺少受詞（如：the town <b>which</b> she loves）<br>
+            ❌ (D) that — that 不可用於非限定子句（此處有逗號或地點副詞語意）
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 5 題 ✔ 正解：(C) survived</div>
+          <div class="ans-why">
+            <b>survive</b> + 困難/災難 = 從……倖存。「熬過革命」→ survived the revolution。<br>
+            ❌ (A) restored = 被修復（被動語態應為 was restored）<br>
+            ❌ (B) preserved = 保存（preserved 後通常接物品被動保存，不接 the revolution 這種事件）<br>
+            ❌ (D) inherited = 繼承（不接 the revolution）
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  📘 Alice 單字本 Day 1 · 城市遺產與歷史記憶 · Heritage &amp; Memory<br>
+  🔴 不熟悉詞彙：intricate / restoration / renowned &nbsp;|&nbsp; 🔵 同等級詞彙：monument / heritage / preserve / ancient / disaster / significant / survive<br>
+  📅 製作日期：2026-05-14 · 林威老師客製化教材
+</footer>
+
+</main>
 </body>
 </html>
