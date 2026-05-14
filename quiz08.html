@@ -1,264 +1,815 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>115學測英文練習 - 林威老師編輯</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 500px;
-            width: 100%;
-            border: 1px solid #e0e0e0;
-            padding: 20px;
-            border-radius: 12px;
-            position: relative;
-        }
-        .header {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 10px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-        }
-        .question {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 20px;
-        }
-        .options-list {
-            list-style: none;
-            padding: 0;
-        }
-        .option-item {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #f0f0f0;
-            border-radius: 8px;
-            cursor: pointer;
-            position: relative;
-            transition: background 0.2s;
-        }
-        .option-item:hover {
-            background-color: #fafafa;
-        }
-        .info-icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: #eee;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 20px;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
-        .special-btn {
-            display: block;
-            margin: 10px 0;
-            padding: 10px;
-            background: #f9f9f9;
-            border: 1px dashed #ccc;
-            border-radius: 8px;
-            text-align: center;
-            cursor: pointer;
-        }
-        .footer-tools {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        .tool-link {
-            font-size: 0.9rem;
-            text-decoration: underline;
-            cursor: pointer;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alice 單字本｜Day 3｜社會與改變</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F8F5FF;
+  --ink: #1A0A2E;
+  --accent1: #6A1B9A;
+  --accent2: #7B1FA2;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'BIZ UDPGothic', 'Noto Sans TC', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.85;
+  padding: 24px 14px 80px;
+}
+main { max-width: 900px; margin: auto; }
 
-        /* 彈出視窗樣式 */
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255,255,255,0.95);
-            z-index: 1000;
-            padding: 40px 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-        }
-        .overlay-content {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            font-weight: bold;
-            padding: 10px;
-        }
-        .overlay-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            border-left: 4px solid #000;
-            padding-left: 10px;
-        }
-        .example-box {
-            background: #f4f4f4;
-            padding: 12px;
-            margin-top: 10px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            border-left: 3px solid #ccc;
-        }
-        h4 { margin: 15px 0 5px 0; color: #333; }
-        .eg-item { margin-bottom: 10px; }
-    </style>
+.page-header {
+  background: linear-gradient(135deg, #4A148C 0%, #6A1B9A 40%, #8E24AA 100%);
+  color: white;
+  padding: 32px 28px;
+  border-radius: 18px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 30px rgba(74,20,140,0.30);
+  position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: "";
+  position: absolute; top: -40%; right: -10%;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.page-header h1 { font-size: 2em; margin-bottom: 8px; position: relative; }
+.page-header p  { opacity: .92; font-size: 1em; position: relative; }
+.tag-row { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tag {
+  display: inline-block; background: rgba(255,255,255,0.20);
+  padding: 5px 14px; border-radius: 20px; font-size: 0.82em; font-weight: 700;
+}
+.tag.unfam { background: rgba(255,180,180,0.38); }
+.tag.fam   { background: rgba(220,180,255,0.38); }
+
+.section-card {
+  background: white; border-radius: 16px;
+  padding: 28px; margin-bottom: 28px;
+  box-shadow: 0 4px 16px rgba(106,27,154,0.10);
+  border-top: 6px solid #6A1B9A;
+}
+.section-card.grammar { border-top-color: #C62828; }
+.section-card.reading { border-top-color: #00695C; }
+.section-card.quiz    { border-top-color: #E65100; }
+.sec-title {
+  font-size: 1.35em; font-weight: 800; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sec-title .icon {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: linear-gradient(135deg,#6A1B9A,#8E24AA);
+  color: white; display: flex; align-items: center;
+  justify-content: center; font-size: 1.1em;
+  box-shadow: 0 3px 8px rgba(106,27,154,0.3);
+}
+.section-card.grammar .sec-title .icon { background: linear-gradient(135deg,#B71C1C,#C62828); }
+.section-card.reading .sec-title .icon { background: linear-gradient(135deg,#004D40,#00695C); }
+.section-card.quiz    .sec-title .icon { background: linear-gradient(135deg,#BF360C,#E65100); }
+.sec-sub {
+  color: #555; font-size: 0.9em; margin-bottom: 22px;
+  padding-bottom: 14px; border-bottom: 2px dashed #CE93D8;
+}
+
+.vocab-card {
+  border: 2px solid #CE93D8;
+  border-radius: 14px; padding: 20px 22px;
+  margin-bottom: 20px; background: #FCF7FF;
+  position: relative;
+}
+.vocab-card.unfam { border-color: #EF9A9A; background: #FFF8F8; }
+.badge {
+  position: absolute; top: 14px; right: 14px;
+  font-size: 0.72em; font-weight: 800;
+  padding: 3px 10px; border-radius: 12px;
+}
+.badge.unfam-b { background: #FFCDD2; color: #B71C1C; }
+.badge.fam-b   { background: #E1BEE7; color: #4A148C; }
+.vocab-word  { font-size: 1.5em; font-weight: 800; color: #4A148C; }
+.vocab-card.unfam .vocab-word { color: #B71C1C; }
+.vocab-kk   { color: #555; font-size: 0.88em; font-style: italic; margin-left: 8px; }
+.vocab-pos  { color: #777; font-size: 0.9em; font-style: italic; }
+.vocab-def  { font-size: 1.05em; color: #1A0A2E; margin: 8px 0 14px; }
+
+.tagrow {
+  display: grid; grid-template-columns: 120px 1fr;
+  border: 1px solid rgba(26,10,46,.13);
+  border-radius: 8px; overflow: hidden; margin: 7px 0;
+}
+.tagrow b   { padding: 9px 12px; font-size: 0.88em; }
+.tagrow span{ background: rgba(255,255,255,.8); padding: 9px 12px; font-size: 0.9em; }
+b.deriv  { background: #FDECEA; color: #B71C1C; }
+b.root   { background: #E3F2FD; color: #0D47A1; }
+b.phrase { background: #E8F5E9; color: #1B5E20; }
+b.idiom  { background: #FFF9C4; color: #E65100; }
+b.confuse{ background: #F3E5F5; color: #6A1B9A; }
+
+.examples { margin-top: 16px; }
+.ex-item { margin-bottom: 12px; padding-left: 14px; border-left: 3px solid #CE93D8; }
+.vocab-card.unfam .ex-item { border-left-color: #EF9A9A; }
+.ex-en { color: #1A0A2E; font-weight: 500; }
+.ex-zh { color: #666; font-size: 0.92em; margin-top: 2px; }
+.ex-num{ color: #6A1B9A; font-weight: 800; margin-right: 4px; }
+.vocab-card.unfam .ex-num { color: #C62828; }
+
+.gram-item {
+  background: #FFF5F5; border-radius: 12px; padding: 20px 22px;
+  margin-bottom: 18px; border-left: 5px solid #C62828;
+}
+.gram-title { font-size: 1.1em; font-weight: 800; color: #B71C1C; margin-bottom: 6px; }
+.gram-pattern {
+  background: white; border: 2px solid #EF9A9A;
+  border-radius: 8px; padding: 10px 14px;
+  font-size: 0.95em; margin: 10px 0; color: #4A0000;
+  font-weight: 700; letter-spacing: .3px;
+}
+.gram-note {
+  background: #FFF9C4; border-left: 3px solid #F57F17;
+  border-radius: 6px; padding: 8px 12px;
+  font-size: 0.9em; color: #4A2700; margin: 8px 0;
+}
+.gram-ex { margin: 10px 0 0; }
+.gram-ex .g-en { color: #1A0A2E; }
+.gram-ex .g-zh { color: #666; font-size: 0.9em; margin-top: 2px; }
+.gram-ex .g-row{ margin-bottom: 10px; padding-left: 14px; border-left: 3px solid #EF9A9A; }
+
+.reading-box {
+  background: #F0FFF8; border: 2px solid #80CBC4;
+  border-radius: 12px; padding: 22px 24px;
+  margin-bottom: 18px; line-height: 1.95;
+}
+.reading-title { text-align: center; color: #004D40; font-size: 1.2em; font-weight: 800; margin-bottom: 6px; }
+.reading-meta  { text-align: center; color: #999; font-size: 0.82em; font-style: italic; margin-bottom: 16px; }
+.reading-box p { text-indent: 2em; margin-bottom: 12px; }
+.kw { color: #4A148C; font-weight: 700; }
+
+.r-question {
+  background: white; border-radius: 10px;
+  padding: 16px 18px; margin-bottom: 14px;
+  border-left: 4px solid #80CBC4;
+  box-shadow: 0 2px 8px rgba(0,105,92,0.06);
+}
+.r-stem { font-weight: 700; margin-bottom: 10px; }
+.r-opts { list-style: none; padding-left: 10px; }
+.r-opts li { padding: 3px 0; }
+.r-opts li::before { content: attr(data-l) ". "; font-weight: 800; color: #00695C; margin-right: 4px; }
+
+.r-question details { margin-top: 10px; }
+.r-question summary {
+  background: linear-gradient(135deg,#004D40,#00695C);
+  color: white; padding: 8px 16px;
+  border-radius: 20px; font-size: 0.85em; font-weight: 700;
+  cursor: pointer; list-style: none; display: inline-flex;
+  align-items: center; gap: 8px;
+}
+.r-question summary::-webkit-details-marker { display: none; }
+.r-answer {
+  background: #E8F5E9; border-radius: 8px;
+  padding: 10px 14px; margin-top: 8px;
+  font-size: 0.9em; color: #1B5E20; font-weight: 600;
+}
+.r-why { font-weight: 400; color: #2E7D32; margin-top: 4px; }
+
+.quiz-q {
+  background: #FFF8F3; border-radius: 10px;
+  padding: 14px 18px; margin-bottom: 12px;
+  border-left: 4px solid #E65100;
+}
+.quiz-stem { font-weight: 700; margin-bottom: 8px; }
+.quiz-opts { list-style: none; padding-left: 10px; }
+.quiz-opts li { padding: 3px 0; }
+.quiz-opts li::before { content: attr(data-l) ". "; font-weight: 800; color: #E65100; margin-right: 4px; }
+
+.quiz-reveal-wrapper { margin-top: 18px; }
+.quiz-reveal-wrapper details summary {
+  background: linear-gradient(135deg,#BF360C,#E65100);
+  color: white; padding: 12px 22px;
+  border-radius: 10px; font-size: 1em; font-weight: 800;
+  cursor: pointer; list-style: none;
+  display: flex; align-items: center; justify-content: space-between;
+  user-select: none;
+}
+.quiz-reveal-wrapper summary::-webkit-details-marker { display: none; }
+.quiz-arrow { transition: transform .3s ease; font-size: 1.1em; }
+details[open] .quiz-arrow { transform: rotate(180deg); }
+.reveal-body { padding: 16px 0 4px; }
+.ans-item {
+  background: white; border-radius: 8px;
+  padding: 12px 16px; margin-bottom: 10px;
+  border-left: 5px solid #6A1B9A;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.ans-item .ans-header { font-weight: 800; color: #4A148C; margin-bottom: 4px; }
+.ans-item .ans-why { color: #6A1B9A; font-size: 0.9em; }
+
+details.vocab-extra {
+  border: 2px solid #CE93D8; border-radius: 10px;
+  background: #F8F5FF; margin: 20px 0;
+}
+details.vocab-extra summary {
+  min-height: 56px; background: #6A1B9A; color: white;
+  padding: 14px 20px; font-size: 1em; font-weight: 700;
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+}
+details.vocab-extra summary::-webkit-details-marker { display: none; }
+.v-arrow { transition: transform .3s ease; }
+details.vocab-extra[open] .v-arrow { transform: rotate(180deg); }
+.vocab-extra-body { padding: 18px 20px; font-size: 0.92em; }
+
+.phrase-box {
+  background: #FFF8E1; border: 2px solid #FFD54F;
+  border-radius: 12px; padding: 18px 22px; margin-bottom: 16px;
+}
+.phrase-box h4 { color: #E65100; font-size: 1em; margin-bottom: 10px; }
+.phrase-row { margin-bottom: 10px; }
+.phrase-row .p-name { font-weight: 800; color: #BF360C; }
+.phrase-row .p-def  { color: #4A2700; font-size: 0.92em; }
+.phrase-row .p-ex   { color: #555; font-size: 0.9em; font-style: italic; padding-left: 12px; }
+
+footer { text-align: center; padding: 24px; color: #777; font-size: 0.88em; margin-top: 30px; }
+
+@media (max-width: 640px) {
+  body { font-size: 18px; }
+  .page-header h1 { font-size: 1.55em; }
+  .tagrow { grid-template-columns: 1fr; }
+  .tagrow b { border-bottom: 1px solid rgba(26,10,46,.1); }
+}
+</style>
 </head>
 <body>
+<main>
 
-<div class="container">
-    <div class="header">林威老師編輯 2026年2月11日 | 115學測英文科</div>
-    
-    <div class="question">
-        The drunk driver who shouted at passers-by and ______ them with glass bottles was quickly arrested by the police.
-    </div>
-
-    <div class="options-list">
-        <div class="option-item" onclick="showOverlay('A')">(A) shattered <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('B')">(B) assaulted <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('C')">(C) overturned <span class="info-icon">ⓘ</span></div>
-        <div class="option-item" onclick="showOverlay('D')">(D) condemned <span class="info-icon">ⓘ</span></div>
-    </div>
-
-    <div class="special-btn" onclick="showOverlay('E')">
-        (E) 查看答案與詳細解析
-    </div>
-
-    <div class="special-btn" onclick="showOverlay('F')">
-        (F) 林威老師的話 (衍生詞與音標)
-    </div>
-
-    <div class="footer-tools">
-        <div class="tool-link" onclick="showOverlay('G')">更多的例句 ⓘ</div>
-        <div class="tool-link" onclick="showOverlay('H')">更多的片語 ⓘ</div>
-    </div>
+<div class="page-header">
+  <h1>🌍 Alice 英文單字本 · Day 3</h1>
+  <p>主題：社會與改變 · Society &amp; Change</p>
+  <div class="tag-row">
+    <span class="tag">📅 2026-05-14 製作</span>
+    <span class="tag">🎭 主題：Society &amp; Change</span>
+    <span class="tag unfam">🔴 不熟悉詞彙 × 3</span>
+    <span class="tag fam">🟣 同等級熟悉詞彙 × 7</span>
+    <span class="tag">📖 閱讀測驗 × 1</span>
+    <span class="tag">✏️ 單字選擇 × 5</span>
+  </div>
 </div>
 
-<div id="infoOverlay" class="overlay">
-    <span class="close-btn" onclick="closeOverlay()">×</span>
-    <div id="contentArea" class="overlay-content"></div>
+<!-- ===== PART 1: VOCABULARY ===== -->
+<div class="section-card">
+  <div class="sec-title"><span class="icon">📚</span>Part 1｜Day 3 單字 10 個</div>
+  <div class="sec-sub">連結段考 Irena Sendler 文章（社會貢獻）+ 學測交通號誌文章（社會演變）兩大考題出處</div>
+
+  <!-- ① periodically (UNFAMILIAR) -->
+  <div class="vocab-card unfam">
+    <span class="badge unfam-b">🔴 不熟悉</span>
+    <div class="vocab-word">① periodically <span class="vocab-kk">[ˌpɪrɪˈɑdɪkli]</span> <span class="vocab-pos">adv.</span></div>
+    <div class="vocab-def">定期地；週期性地；不時地</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>periodic (adj. 定期的；週期性的)；period (n. 時期；週期)；periodical (n. 定期刊物；期刊)</span></div>
+    <div class="tagrow"><b class="root">字根</b><span>peri- 周圍 + odos 路 → period 繞一圈所需的時間 → 週期；時期</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>periodically reviewed 定期審查；periodically updated 定期更新；periodic table 元素週期表；periodic check 定期檢查</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>periodically 強調有規律的間隔；occasionally 強調偶爾（不規律）；regularly 強調規律性（可指任意頻率）；frequently 強調頻率高</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The government <b>periodically</b> reviews traffic laws to ensure they <b>evolve</b> with changing road conditions.</div>
+        <div class="ex-zh">政府定期審查交通法規，確保它們能隨著不斷變化的道路狀況而演進。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The equipment needs to be <b>periodically</b> tested to <b>maintain</b> its accuracy and safety.</div>
+        <div class="ex-zh">這些設備需要定期測試，以維持其準確性與安全性。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The community center is <b>periodically</b> updated with new programs to serve the <b>diverse</b> needs of residents.</div>
+        <div class="ex-zh">社區中心定期更新新的活動計畫，以服務居民多元的需求。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② disrupted (UNFAMILIAR) -->
+  <div class="vocab-card unfam">
+    <span class="badge unfam-b">🔴 不熟悉</span>
+    <div class="vocab-word">② disrupt <span class="vocab-kk">[dɪsˈrʌpt]</span> <span class="vocab-pos">v.</span> / disrupted <span class="vocab-pos">adj.</span></div>
+    <div class="vocab-def">打亂；中斷；擾亂（原本的秩序或進行）</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>disruption (n. 中斷；干擾)；disruptive (adj. 造成干擾的；顛覆性的)；undisrupted (adj. 未受干擾的)</span></div>
+    <div class="tagrow"><b class="root">字根</b><span>rupt 破裂 → rupture 破裂；corrupt 腐化；interrupt 打斷；bankrupt 破產</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>disrupt the schedule 打亂時間表；disruptive technology 顛覆性技術；cause disruption 造成混亂；disrupted service 中斷的服務</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>disrupt 強調打亂原本順利進行的事；interrupt 強調在中間打斷；disturb 強調對人的干擾；interfere 強調妨礙、干預</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The war <b>disrupted</b> daily life for millions of families, forcing them to flee their homes.</div>
+        <div class="ex-zh">戰爭打亂了數百萬個家庭的日常生活，迫使他們逃離家園。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>A sudden <b>disruption</b> to the train service caused thousands of commuters to be late for work.</div>
+        <div class="ex-zh">一場突如其來的火車服務中斷，導致數千名通勤者上班遲到。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Smartphones were once seen as <b>disruptive</b> technology that would <b>transform</b> how people communicate.</div>
+        <div class="ex-zh">智慧型手機曾被視為一種顛覆性技術，人們認為它將改變人際溝通的方式。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ caution (UNFAMILIAR) -->
+  <div class="vocab-card unfam">
+    <span class="badge unfam-b">🔴 不熟悉</span>
+    <div class="vocab-word">③ caution <span class="vocab-kk">[ˈkɔʃən]</span> <span class="vocab-pos">n. / v.</span></div>
+    <div class="vocab-def">謹慎；小心；警告；告誡</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>cautious (adj. 謹慎的)；cautiously (adv. 謹慎地)；cautionary (adj. 警告性的；引以為戒的)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>proceed with caution 謹慎行事；exercise caution 保持謹慎；caution against 警告不要做；a word of caution 一句警語；throw caution to the wind 不管三七二十一</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>caution 是較正式的「謹慎」；careful 是日常用語；warning 偏向具體的警告訊息；precaution 是「事先的防範措施」</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>Drivers should proceed with <b>caution</b> at intersections where the traffic lights have been <b>disrupted</b>.</div>
+        <div class="ex-zh">在交通號誌遭到中斷的路口，駕駛應該謹慎行進。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The doctor <b>cautioned</b> the patient against traveling too soon after the surgery.</div>
+        <div class="ex-zh">醫生警告病人不要在手術後太快旅行。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>A word of <b>caution</b>: this experiment should only be performed by trained professionals in a controlled environment.</div>
+        <div class="ex-zh">提醒一點：這項實驗只應由受過訓練的專業人員在受控環境中進行。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ ceremony (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟣 同等級</span>
+    <div class="vocab-word">④ ceremony <span class="vocab-kk">[ˈsɛrəˌmoʊni]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">典禮；儀式；正式的禮節</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>ceremonial (adj. 儀式的；典禮的)；ceremonially (adv.)；ceremonies (n. 複數)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>graduation ceremony 畢業典禮；opening ceremony 開幕典禮；hold a ceremony 舉行典禮；stand on ceremony 拘於禮節</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>ceremony 指正式的典禮或儀式；ritual 強調宗教性或習慣性重複的儀式；event 是更廣義的活動；function 指正式場合或功能</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The graduation <b>ceremony</b> was <b>disrupted</b> by heavy rain, but the students still <b>celebrated</b> joyfully indoors.</div>
+        <div class="ex-zh">畢業典禮被大雨打亂，但學生們仍然在室內開心地慶祝。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>Ancient coronation <b>ceremonies</b> were held to formally install a new king and announce his rule to the people.</div>
+        <div class="ex-zh">古代的加冕典禮是為了正式冊立新國王，並向人民宣告他的統治。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Despite his busy schedule, the President attended the opening <b>ceremony</b> and delivered a speech.</div>
+        <div class="ex-zh">儘管行程繁忙，總統仍出席了開幕典禮並發表了演講。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ transform (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟣 同等級</span>
+    <div class="vocab-word">⑤ transform <span class="vocab-kk">[trænsˈfɔrm]</span> <span class="vocab-pos">v.</span></div>
+    <div class="vocab-def">改變；轉變；使徹底改觀</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>transformation (n. 轉變；改變)；transformative (adj. 有深遠改變的)；transformer (n. 變壓器)</span></div>
+    <div class="tagrow"><b class="root">字根</b><span>trans- 穿越；跨越 + form 形狀 → transform 改變形狀/本質；transport 運輸；transfer 轉移；translate 翻譯</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>transform into 轉變為；transformative experience 改變人生的體驗；social transformation 社會轉型；transform the landscape 改變格局</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>transform 強調本質上的深刻改變；change 較一般性；convert 強調功能或用途的轉換；alter 強調局部調整</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The Internet <b>transformed</b> how people communicate, shop, and access information around the world.</div>
+        <div class="ex-zh">網際網路改變了全世界人們溝通、購物和獲取資訊的方式。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>This <b>ceremony</b> marked the beginning of a <b>transformative</b> period for the entire community.</div>
+        <div class="ex-zh">這場典禮標誌著整個社區一段深刻轉變時期的開始。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Irena Sendler <b>transformed</b> her role as a social worker into a mission to rescue Jewish children.</div>
+        <div class="ex-zh">伊蕾娜·桑德勒將自己的社工身分轉化為一項拯救猶太孩童的使命。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑥ contribute (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟣 同等級</span>
+    <div class="vocab-word">⑥ contribute <span class="vocab-kk">[kənˈtrɪbjut]</span> <span class="vocab-pos">v.</span></div>
+    <div class="vocab-def">貢獻；促成；投稿；捐款</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>contribution (n. 貢獻；捐款)；contributor (n. 貢獻者；撰稿人)；contributing (adj. 促成的；投稿的)</span></div>
+    <div class="tagrow"><b class="root">字根</b><span>trib 給予 → tribute 貢品；distribute 分配；attribute 歸因；retribute 報應</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>contribute to 對……有貢獻；make a contribution 做出貢獻；contributing factor 促成因素；contribute funds 捐款</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>contribute to 後接好事或壞事均可；donate 特指金錢或物品的捐贈；add to 強調增加（程度）；devote to 強調投入心力</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>Every member of the team must <b>contribute</b> equally to ensure the project's success.</div>
+        <div class="ex-zh">團隊的每位成員都必須平等地做出貢獻，以確保專案成功。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>Her courage and compassion <b>contributed</b> significantly to saving over 2,500 Jewish children during the war.</div>
+        <div class="ex-zh">她的勇氣和慈悲心，對戰時拯救超過 2,500 名猶太兒童有著重大貢獻。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Air pollution is a major <b>contributing</b> factor to respiratory diseases in large cities.</div>
+        <div class="ex-zh">空氣污染是大城市呼吸道疾病的主要促成因素之一。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑦ maintain (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟣 同等級</span>
+    <div class="vocab-word">⑦ maintain <span class="vocab-kk">[meɪnˈteɪn]</span> <span class="vocab-pos">v.</span></div>
+    <div class="vocab-def">維持；保養；堅持（立場）</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>maintenance (n. 維護；保養；贍養費)；maintainable (adj. 可維持的)；well-maintained (adj. 保養良好的)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>maintain order 維持秩序；routine maintenance 定期保養；maintenance work 維護工程；maintain a relationship 維繫關係；lack of maintenance 缺乏保養</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>maintain 強調持續保持現狀或功能正常；preserve 強調防止破壞或流失；sustain 強調在困難中持續支撐；keep 最口語化</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>It is essential to <b>periodically</b> inspect and <b>maintain</b> road infrastructure to prevent accidents.</div>
+        <div class="ex-zh">定期檢查和維護道路基礎設施以防止事故，這是至關重要的。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>The teacher worked hard to <b>maintain</b> a calm and respectful atmosphere in the classroom.</div>
+        <div class="ex-zh">老師努力維持課堂上平和且相互尊重的氣氛。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Despite pressure from critics, she <b>maintained</b> that her decision was the right one.</div>
+        <div class="ex-zh">儘管面對批評者的壓力，她仍堅持認為自己的決定是正確的。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑧ evolve (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟣 同等級</span>
+    <div class="vocab-word">⑧ evolve <span class="vocab-kk">[ɪˈvɑlv]</span> <span class="vocab-pos">v.</span></div>
+    <div class="vocab-def">演化；逐漸發展；演變</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>evolution (n. 演化；進化；演變)；evolutionary (adj. 演化的)；evolved (adj. 進化的)；evolvement (n.)</span></div>
+    <div class="tagrow"><b class="root">字根</b><span>volv / volu 滾動；轉動 → revolve 旋轉；involve 牽涉；revolution 革命；volume 量；convolve 捲積</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>evolve over time 隨時間演化；evolve from 從……演化而來；evolving situation 不斷變化的局勢；evolution of society 社會演變</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>evolve 強調緩慢自然的改變（常指生物或制度）；develop 強調有目的的發展；change 最廣義；transform 強調質的大轉變</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>Traffic control systems have <b>evolved</b> from simple railway signals to sophisticated electronic networks.</div>
+        <div class="ex-zh">交通管制系統從簡單的鐵路號誌演進到複雜的電子網絡系統。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>Language is not fixed; it <b>evolves</b> <b>periodically</b> as new words and expressions are created by speakers.</div>
+        <div class="ex-zh">語言並非固定不變的；它隨著使用者創造新詞彙和表達方式而定期演變。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The <b>evolution</b> of democratic systems took centuries of struggle and sacrifice.</div>
+        <div class="ex-zh">民主制度的演進歷經了數百年的奮鬥與犧牲。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑨ efficient (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟣 同等級</span>
+    <div class="vocab-word">⑨ efficient <span class="vocab-kk">[ɪˈfɪʃənt]</span> <span class="vocab-pos">adj.</span></div>
+    <div class="vocab-def">有效率的；效能高的；不浪費的</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>efficiency (n. 效率；效能)；efficiently (adv. 有效率地)；inefficient (adj. 效率低的)；inefficiency (n. 低效率)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>fuel-efficient 節能的；work efficiently 有效率地工作；energy efficiency 能源效率；highly efficient 高效率的</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>efficient 強調以最少資源達成最大成果；effective 強調達到預期目標；productive 強調產出多；capable 強調有能力</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>The dabbawala system is remarkably <b>efficient</b>, delivering thousands of meals daily with almost no errors.</div>
+        <div class="ex-zh">送餐員系統效率驚人，每天遞送數千份餐點，幾乎沒有任何差錯。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>By organizing tasks carefully, the team was able to <b>efficiently</b> complete the project two weeks ahead of schedule.</div>
+        <div class="ex-zh">透過仔細規劃工作，團隊能夠有效率地提前兩週完成專案。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>Modern traffic light systems are far more <b>efficient</b> than the original gas-lamp designs from the 19th century.</div>
+        <div class="ex-zh">現代交通號誌系統比 19 世紀最初的瓦斯燈設計效率高出許多。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑩ diversity (FAMILIAR) -->
+  <div class="vocab-card">
+    <span class="badge fam-b">🟣 同等級</span>
+    <div class="vocab-word">⑩ diversity <span class="vocab-kk">[dɪˈvɜrsɪti]</span> <span class="vocab-pos">n.</span></div>
+    <div class="vocab-def">多樣性；多元化；差異性</div>
+    <div class="tagrow"><b class="deriv">衍生詞</b><span>diverse (adj. 多樣的；多元的)；diversify (v. 使多元化)；diversification (n. 多元化)；diversely (adv.)</span></div>
+    <div class="tagrow"><b class="phrase">片語</b><span>cultural diversity 文化多樣性；diversity of opinion 意見多元；promote diversity 促進多元；linguistic diversity 語言多元性</span></div>
+    <div class="tagrow"><b class="confuse">容易混淆</b><span>diversity 強調各種不同種類共存；variety 強調數量上的多種選擇；difference 強調兩者之間的不同；inequality 強調不平等</span></div>
+    <div class="examples">
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">①</span>Mumbai's <b>diversity</b> is one of its greatest strengths — people of many languages, religions, and backgrounds live side by side.</div>
+        <div class="ex-zh">孟買的多元性是它最大的優勢之一——來自不同語言、宗教和背景的人們比鄰而居。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">②</span>Schools that embrace <b>diversity</b> often produce more creative and open-minded graduates.</div>
+        <div class="ex-zh">接納多元性的學校，往往培育出更具創意和開放心態的畢業生。</div>
+      </div>
+      <div class="ex-item">
+        <div class="ex-en"><span class="ex-num">③</span>The government launched a new policy to <b>promote diversity</b> in hiring practices across all public institutions.</div>
+        <div class="ex-zh">政府推出了新政策，促進所有公共機構在招聘上落實多元化。</div>
+      </div>
+    </div>
+  </div>
+
+  <details class="vocab-extra">
+    <summary>📋 Day 3 單字衍生詞速查表（點擊展開）<span class="v-arrow">⌄</span></summary>
+    <div class="vocab-extra-body">
+      <table style="width:100%;border-collapse:collapse;font-size:0.9em;">
+        <thead>
+          <tr style="background:#6A1B9A;color:white;">
+            <th style="padding:8px 12px;text-align:left;">單字</th>
+            <th style="padding:8px 12px;text-align:left;">衍生詞</th>
+            <th style="padding:8px 12px;text-align:left;">字根</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background:#FFF8F8;"><td style="padding:7px 12px;font-weight:700;color:#B71C1C;">periodically</td><td style="padding:7px 12px;">periodic, period, periodical</td><td style="padding:7px 12px;">peri- 周圍</td></tr>
+          <tr style="background:#FFF3F3;"><td style="padding:7px 12px;font-weight:700;color:#B71C1C;">disrupt</td><td style="padding:7px 12px;">disruption, disruptive, undisrupted</td><td style="padding:7px 12px;">rupt 破裂</td></tr>
+          <tr style="background:#FFF8F8;"><td style="padding:7px 12px;font-weight:700;color:#B71C1C;">caution</td><td style="padding:7px 12px;">cautious, cautiously, cautionary</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#FCF7FF;"><td style="padding:7px 12px;font-weight:700;color:#4A148C;">ceremony</td><td style="padding:7px 12px;">ceremonial, ceremonially</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#F8F2FF;"><td style="padding:7px 12px;font-weight:700;color:#4A148C;">transform</td><td style="padding:7px 12px;">transformation, transformative, transformer</td><td style="padding:7px 12px;">trans- 穿越</td></tr>
+          <tr style="background:#FCF7FF;"><td style="padding:7px 12px;font-weight:700;color:#4A148C;">contribute</td><td style="padding:7px 12px;">contribution, contributor, contributing</td><td style="padding:7px 12px;">trib 給予</td></tr>
+          <tr style="background:#F8F2FF;"><td style="padding:7px 12px;font-weight:700;color:#4A148C;">maintain</td><td style="padding:7px 12px;">maintenance, maintainable, well-maintained</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#FCF7FF;"><td style="padding:7px 12px;font-weight:700;color:#4A148C;">evolve</td><td style="padding:7px 12px;">evolution, evolutionary, evolved</td><td style="padding:7px 12px;">volv 滾動</td></tr>
+          <tr style="background:#F8F2FF;"><td style="padding:7px 12px;font-weight:700;color:#4A148C;">efficient</td><td style="padding:7px 12px;">efficiency, efficiently, inefficient</td><td style="padding:7px 12px;">—</td></tr>
+          <tr style="background:#FCF7FF;"><td style="padding:7px 12px;font-weight:700;color:#4A148C;">diversity</td><td style="padding:7px 12px;">diverse, diversify, diversification</td><td style="padding:7px 12px;">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </details>
 </div>
 
-<script>
-    const data = {
-        'A': {
-            title: '(A) shattered',
-            desc: '解釋：粉碎；砸碎',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The window <b>shattered</b> into a thousand pieces.<br>(窗戶碎成了一千片。)</div>
-                    <div class="eg-item">2. The news <b>shattered</b> her dreams of a happy future.<br>(這個消息粉碎了她對幸福未來的夢想。)</div>
-                    <div class="eg-item">3. The explosion <b>shattered</b> nearby shop windows.<br>(爆炸震碎了附近商店的櫥窗。)</div>
-                </div>`
-        },
-        'B': {
-            title: '(B) assaulted',
-            desc: '解釋：攻擊；襲擊',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. He was <b>assaulted</b> by a gang of youths.<br>(他遭到一群青少年的襲擊。)</div>
-                    <div class="eg-item">2. The woman was physically <b>assaulted</b> in the park.<br>(那名女子在公園遭到肢體攻擊。)</div>
-                    <div class="eg-item">3. He was charged with <b>assaulting</b> a police officer.<br>(他被指控襲警。)</div>
-                </div>`
-        },
-        'C': {
-            title: '(C) overturned',
-            desc: '解釋：推翻；翻轉',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The car <b>overturned</b> in the middle of the road.<br>(車子在馬路中央翻覆了。)</div>
-                    <div class="eg-item">2. The Supreme Court <b>overturned</b> the lower court's decision.<br>(最高法院推翻了地方法院的判決。)</div>
-                    <div class="eg-item">3. He <b>overturned</b> the chair in his anger.<br>(他在憤怒中推翻了椅子。)</div>
-                </div>`
-        },
-        'D': {
-            title: '(D) condemned',
-            desc: '解釋：譴責；宣告...有罪',
-            detail: `
-                <div class="example-box">
-                    <div class="eg-item">1. The world leaders <b>condemned</b> the terrorist attack.<br>(各國領袖譴責了這次恐怖攻擊。)</div>
-                    <div class="eg-item">2. The judge <b>condemned</b> him to five years in prison.<br>(法官判處他五年徒刑。)</div>
-                    <div class="eg-item">3. The old building was <b>condemned</b> as unsafe.<br>(這棟舊建築因不安全而被宣告為危樓。)</div>
-                </div>`
-        },
-        'E': {
-            title: '正確答案：(B)',
-            desc: '解析：題幹提到酒駕司機對路人咆哮並用玻璃瓶「攻擊」他們，因此 (B) assaulted 最符合語境。',
-            example: 'shattered (粉碎) 通常受詞是物；overturned (推翻) 與 condemned (譴責) 在肢體衝突的文脈中不合適。'
-        },
-        'F': {
-            title: '林威老師的話',
-            desc: '衍生詞與音標學習：',
-            detail: `
-                <h4>1. assault (名詞)</h4>
-                <p>KK: [əˈsɔlt] | 中文：攻擊；襲擊</p>
-                <h4>2. condemnation (名詞)</h4>
-                <p>KK: [ˌkɑndɛmˈneʃən] | 中文：譴責</p>
-                <h4>3. shatterproof (形容詞)</h4>
-                <p>KK: [ˈʃætɚˌpruf] | 中文：防碎的</p>
-                <h4>4. overturn (動詞)</h4>
-                <p>KK: [ˌovɚˈtɝn] | 中文：推翻；翻轉</p>
-            `
-        },
-        'G': {
-            title: '衍生詞更多例句',
-            detail: `
-                <div class="example-box">1. Sexual <b>assault</b> is a serious crime.<br>(性侵害是嚴重的犯罪行為。)</div>
-                <div class="example-box">2. The plan met with widespread <b>condemnation</b>.<br>(這項計畫遭到了廣泛的譴責。)</div>
-                <div class="example-box">3. Safety glasses are usually made of <b>shatterproof</b> plastic.<br>(安全眼鏡通常由防碎塑膠製成。)</div>
-                <div class="example-box">4. They are trying to <b>overturn</b> the election results.<br>(他們正試圖推翻選舉結果。)</div>
-            `
-        },
-        'H': {
-            title: '台灣學測必備片語',
-            detail: `
-                <h4>1. pass out (暈倒；昏厥)</h4>
-                <p>例句：It was so hot in the room that several people <b>passed out</b>.<br>(房間裡太熱了，好幾個人暈了過去。)</p>
-                <h4>2. pass away (去世；過世)</h4>
-                <p>例句：His grandfather <b>passed away</b> peacefully in his sleep.<br>(他的祖父在睡夢中安詳地去世了。)</p>
-                <h4>3. pass down (傳承；流傳)</h4>
-                <p>例句：This diamond ring has been <b>passed down</b> in my family for generations.<br>(這枚鑽石戒指在我家族中世代相傳。)</p>
-            `
-        }
-    };
+<!-- ===== PART 2: GRAMMAR ===== -->
+<div class="section-card grammar">
+  <div class="sec-title"><span class="icon">📐</span>Part 2｜文法加強 3 大重點</div>
+  <div class="sec-sub">Day 3 文法涵蓋假設語氣（兩次考試均出現）+ 主旨題策略 + 片語辨析 · 關鍵字<b>粗體</b></div>
 
-    function showOverlay(key) {
-        const item = data[key];
-        let html = `<div class="overlay-title">${item.title}</div>`;
-        if(item.desc) html += `<p>${item.desc}</p>`;
-        if(item.detail) html += `<div>${item.detail}</div>`;
-        if(item.example) html += `<div class="example-box"><b>解析補充：</b><br>${item.example}</div>`;
-        
-        document.getElementById('contentArea').innerHTML = html;
-        document.getElementById('infoOverlay').style.display = 'block';
-    }
+  <!-- Grammar 1: 假設語氣過去完成 -->
+  <div class="gram-item">
+    <div class="gram-title">① 假設語氣：與過去事實相反（If + had + pp, would have + pp）</div>
+    <p style="margin-bottom:8px;color:#B71C1C;font-size:0.92em;">錯誤來源：高二段考 Q25 — Alice 選 hasn't saved（現在完成式），正解是 hadn't saved（假設語氣）</p>
+    <div class="gram-pattern">
+      ✅ If + 主詞 + <b>had (not) + pp</b>，主詞 + <b>would / could + have + pp</b><br>
+      📌 此句型 = 「當時沒有那樣做，所以後來…」的遺憾或假想<br>
+      ❌ If + 主詞 + <b>didn't / hasn't</b> + V（現在或現在完成，都是錯的！）
+    </div>
+    <div class="gram-note">
+      📌 三層時態公式：<br>
+      ・與現在相反：If I <b>were</b>... → I <b>would</b> + V<br>
+      ・與過去相反：If I <b>had been</b>... → I <b>would have</b> + pp<br>
+      ・站在過去看未來（真事）：no one knew it <b>would</b> + V（見 Day 2 文法①）
+    </div>
+    <div class="gram-ex">
+      <div class="g-row">
+        <div class="g-en">If Irena Sendler <b>hadn't risked</b> her life, those 2,500 children <b>would have ended up</b> in concentration camps.</div>
+        <div class="g-zh">如果伊蕾娜·桑德勒當年沒有冒著生命危險，那 2,500 名孩童就會被送進集中營了。（她確實冒了險 → 過去事實相反假設）</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">If the traffic light system <b>hadn't evolved</b> over time, modern cities <b>would have struggled</b> to <b>maintain</b> order on the roads.</div>
+        <div class="g-zh">如果交通號誌系統當年沒有不斷演進，現代城市在維持道路秩序上就會非常吃力了。</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en">If she <b>had proceeded</b> with <b>caution</b>, she <b>wouldn't have made</b> such a costly mistake.</div>
+        <div class="g-zh">如果她當時謹慎行事，就不會犯下那麼代價高昂的錯誤了。</div>
+      </div>
+    </div>
+  </div>
 
-    function closeOverlay() {
-        document.getElementById('infoOverlay').style.display = 'none';
-    }
-</script>
+  <!-- Grammar 2: 主旨題策略 -->
+  <div class="gram-item">
+    <div class="gram-title">② 主旨題解題策略：看首末段，選能涵蓋全文的選項</div>
+    <p style="margin-bottom:8px;color:#B71C1C;font-size:0.92em;">錯誤來源：114 學測 Q35（只看到發明者細節）+ 段考 Q52（只看局部段落目的）</p>
+    <div class="gram-pattern">
+      主旨 = 全文的中心思想，必須涵蓋「首段 + 中段 + 末段」<br>
+      ❌ 太窄：只提到文章某一段的人名、事件或數字<br>
+      ❌ 太廣：超出文章討論範圍的大主題
+    </div>
+    <div class="gram-note">
+      📌 三步驟：① 閱讀首段（背景）→ ② 閱讀末段（結論）→ ③ 問自己：「哪個選項能同時涵蓋首段和末段？」<br>
+      陷阱選項特徵：只提到某個具體人物、只提到某個細節事件 → 選項「太窄」= 不是主旨。
+    </div>
+    <div class="gram-ex">
+      <div class="g-row">
+        <div class="g-en"><b>Example（學測Q35 類型）：</b>文章從 railway arm signal（1868）→ 三色號誌（1920s）→ 自動感應號誌→ 自駕車不需號誌。<br>主旨是：(A) The evolution of traffic control systems. ✔ &nbsp;(B) The inventors of traffic lights. ✗（太窄，後段沒提人）</div>
+        <div class="g-zh">全文從古到今涵蓋整個演進歷程 → (A) 能涵蓋全文；(B) 只說發明人，末段根本沒提發明人。</div>
+      </div>
+      <div class="g-row">
+        <div class="g-en"><b>段落目的題（段考Q52 類型）：</b>某段描述 Keith 面對空倉庫、原料斷絕的困境。這段的「目的」是什麼？<br>答：(A) 交代 Keith 面臨的絕境（引出後面的創意解決方案）</div>
+        <div class="g-zh">段落目的題 = 這段在全篇故事中扮演什麼「功能角色」，而不是這段說了什麼「內容細節」。</div>
+      </div>
+    </div>
+  </div>
 
+  <!-- Grammar 3: 片語辨析 -->
+  <div class="gram-item">
+    <div class="gram-title">③ 片語辨析：make up for / give rise to / keep track of / look out for</div>
+    <p style="margin-bottom:8px;color:#B71C1C;font-size:0.92em;">錯誤來源：114 學測 Q14 — Alice 選 made up for，正解是 gave rise to（語意方向相反）</p>
+    <div class="phrase-box">
+      <div class="phrase-row">
+        <div class="p-name">give rise to</div>
+        <div class="p-def">→ 引起；產生（後接「新生的事物或結果」）</div>
+        <div class="p-ex">The new policy <b>gave rise to</b> a series of protests. / 新政策引發了一連串抗議。</div>
+      </div>
+      <div class="phrase-row">
+        <div class="p-name">make up for</div>
+        <div class="p-def">→ 彌補（後接「缺失、損失、錯誤」）</div>
+        <div class="p-ex">He worked overtime to <b>make up for</b> the lost time. / 他加班來彌補失去的時間。</div>
+      </div>
+      <div class="phrase-row">
+        <div class="p-name">keep track of</div>
+        <div class="p-def">→ 追蹤；留意；記錄（後接「需要追蹤的事物」）</div>
+        <div class="p-ex">She uses an app to <b>keep track of</b> her daily expenses. / 她用 app 追蹤每日開支。</div>
+      </div>
+      <div class="phrase-row">
+        <div class="p-name">look out for</div>
+        <div class="p-def">→ 注意；提防；照顧（後接「需要注意或保護的對象」）</div>
+        <div class="p-ex">Please <b>look out for</b> any signs of danger on the road. / 請注意路上任何危險跡象。</div>
+      </div>
+    </div>
+    <div class="gram-note">
+      📌 判斷技巧：看後面接的名詞是「新事物/結果」→ give rise to；是「損失/錯誤」→ make up for；是「需追蹤的」→ keep track of；是「威脅/需保護的」→ look out for。
+    </div>
+  </div>
+</div>
+
+<!-- ===== PART 3: READING ===== -->
+<div class="section-card reading">
+  <div class="sec-title"><span class="icon">📖</span>Part 3｜閱讀測驗</div>
+  <div class="sec-sub">主題與段考閱讀（孟買便當員 dabbawalas）高度相關 · 長度約 115 年學測閱讀 1/2 · 3 題選擇</div>
+
+  <div class="reading-box">
+    <div class="reading-title">The Lunchbox Heroes of Mumbai</div>
+    <div class="reading-meta">~ 113 words · 約學測閱讀 1/2 長度 ~</div>
+    <p>Every weekday in Mumbai, India, an army of workers called dabbawalas delivers home-cooked meals to office workers across the city. The system is remarkably <span class="kw">efficient</span> — lunches are collected in the morning, sorted, and <span class="kw">delivered</span> with near-perfect accuracy.</p>
+    <p>What makes this system extraordinary is how it has <span class="kw">evolved</span>. Despite requiring no computers or modern technology, dabbawalas <span class="kw">maintain</span> a system that <span class="kw">contributes</span> to the city's <span class="kw">diversity</span> by connecting workers of all backgrounds to the comfort of a home-cooked meal.</p>
+    <p>Even today, this <span class="kw">ceremony</span> of delivering food <span class="kw">transforms</span> a simple <span class="kw">routine</span> into a powerful social bond. It is a tradition that no amount of technology has been able to <span class="kw">disrupt</span>.</p>
+  </div>
+
+  <div class="r-question">
+    <div class="r-stem">1. What is the passage MAINLY about?</div>
+    <ul class="r-opts">
+      <li data-l="A">The history of home cooking in India.</li>
+      <li data-l="B">How dabbawalas use modern technology to deliver meals.</li>
+      <li data-l="C">The efficient and socially significant dabbawala system in Mumbai.</li>
+      <li data-l="D">Why Mumbai has the best food delivery service in Asia.</li>
+    </ul>
+    <details>
+      <summary>點此查看答案 ▼</summary>
+      <div class="r-answer">✔ 正解：(C)
+        <div class="r-why">全文介紹 dabbawala 系統的高效率（efficient）、社會意義（diversity, social bond）和持久性（no technology has disrupted）。(B) 錯在文章說「no computers」，(D) 太誇大且文章未提及「best in Asia」。記住：主旨要涵蓋首段到末段！</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="r-question">
+    <div class="r-stem">2. According to the passage, what makes the dabbawala system "extraordinary"?</div>
+    <ul class="r-opts">
+      <li data-l="A">It uses the most advanced AI technology available.</li>
+      <li data-l="B">It has evolved to work perfectly without modern computers.</li>
+      <li data-l="C">It was invented by a famous government program.</li>
+      <li data-l="D">It delivers food that is cheaper than restaurant meals.</li>
+    </ul>
+    <details>
+      <summary>點此查看答案 ▼</summary>
+      <div class="r-answer">✔ 正解：(B)
+        <div class="r-why">第二段說：「Despite requiring no computers or modern technology, dabbawalas maintain a system...」— 沒有電腦，仍然近乎完美。(A) 完全相反。(C)(D) 文章沒有提及，是「無中生有」的干擾選項。</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="r-question">
+    <div class="r-stem">3. What does the last paragraph suggest about the dabbawala tradition?</div>
+    <ul class="r-opts">
+      <li data-l="A">It has been replaced by a more efficient digital system.</li>
+      <li data-l="B">It is expected to collapse due to modernization.</li>
+      <li data-l="C">It has a deep social value that technology cannot replace.</li>
+      <li data-l="D">It only serves wealthy office workers in the city center.</li>
+    </ul>
+    <details>
+      <summary>點此查看答案 ▼</summary>
+      <div class="r-answer">✔ 正解：(C)
+        <div class="r-why">末段說：「a powerful social bond... no amount of technology has been able to disrupt」→ 科技無法取代這個傳統的社會價值。末段是作者「最終立場」的所在，是主旨和結論的關鍵。</div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===== PART 4: MCQ ===== -->
+<div class="section-card quiz">
+  <div class="sec-title"><span class="icon">✏️</span>Part 4｜單字單選複習 5 題</div>
+  <div class="sec-sub">考驗 Day 3 單字掌握程度 · 完成後按下方按鈕一次查看全部答案與解析</div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">1. If she ______ more carefully, she would have avoided the misunderstanding entirely.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">communicated</li>
+      <li data-l="B">has communicated</li>
+      <li data-l="C">had communicated</li>
+      <li data-l="D">would communicate</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">2. The new educational policy ______ a growing demand for more culturally diverse curricula.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">made up for</li>
+      <li data-l="B">kept track of</li>
+      <li data-l="C">looked out for</li>
+      <li data-l="D">gave rise to</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">3. The traffic system needs to be ______ checked and updated to keep up with the city's growing population.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">cautiously</li>
+      <li data-l="B">periodically</li>
+      <li data-l="C">disruptively</li>
+      <li data-l="D">efficiently</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">4. The dabbawala system is ______ because it delivers thousands of meals every day with almost zero errors.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">diverse</li>
+      <li data-l="B">cautious</li>
+      <li data-l="C">efficient</li>
+      <li data-l="D">disrupted</li>
+    </ul>
+  </div>
+
+  <div class="quiz-q">
+    <div class="quiz-stem">5. The team ______ greatly to the community by volunteering at local events every weekend.</div>
+    <ul class="quiz-opts">
+      <li data-l="A">transformed</li>
+      <li data-l="B">maintained</li>
+      <li data-l="C">contributed</li>
+      <li data-l="D">evolved</li>
+    </ul>
+  </div>
+
+  <div class="quiz-reveal-wrapper">
+    <details>
+      <summary>
+        <span>📋 點此查看答案 &amp; 解析 &nbsp;｜&nbsp; 手機版請調正</span>
+        <span class="quiz-arrow">⌄</span>
+      </summary>
+      <div class="reveal-body">
+        <div class="ans-item">
+          <div class="ans-header">第 1 題 ✔ 正解：(C) had communicated</div>
+          <div class="ans-why">
+            與過去事實相反的假設語氣：<b>If + 主詞 + had + pp</b>，主句用 would have + pp。<br>
+            ❌ (A) communicated = 過去式直述語氣，不是假設語氣<br>
+            ❌ (B) has communicated = 現在完成式（現在 → 不對）<br>
+            ❌ (D) would communicate = 只能在「if 子句主句」用，不在 if 子句本身用<br>
+            這是高二段考 Q25 的核心考點！
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 2 題 ✔ 正解：(D) gave rise to</div>
+          <div class="ans-why">
+            <b>give rise to</b> = 引起；產生（後接新事物/結果）。「新政策 → 引發了需求增長」。<br>
+            ❌ (A) make up for = 彌補損失（後接缺失，語意完全不同，這是學測Q14的錯誤！）<br>
+            ❌ (B) keep track of = 追蹤記錄<br>
+            ❌ (C) look out for = 注意提防
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 3 題 ✔ 正解：(B) periodically</div>
+          <div class="ans-why">
+            <b>periodically</b> = 定期地（有規律地間隔）。「定期檢查和更新」是固定搭配。<br>
+            ❌ (A) cautiously = 謹慎地（修飾動作方式，不修飾頻率）<br>
+            ❌ (C) disruptively = 破壞性地（語意相反，不會想破壞性地更新）<br>
+            ❌ (D) efficiently = 有效率地（possible，但題目強調「頻率」而非「方式」）
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 4 題 ✔ 正解：(C) efficient</div>
+          <div class="ans-why">
+            <b>efficient</b> = 有效率的。「每天遞送數千份、幾乎零失誤」是高效率的定義。<br>
+            ❌ (D) disrupted = 被干擾的（語意相反，如果 disrupted 哪還能每天完美運作？）<br>
+            本題也連結到段考 Fanta 閱讀和 dabbawala 閱讀的詞彙。
+          </div>
+        </div>
+        <div class="ans-item">
+          <div class="ans-header">第 5 題 ✔ 正解：(C) contributed</div>
+          <div class="ans-why">
+            <b>contribute to</b> = 對……做出貢獻（介系詞 to 固定搭配）。「每週末在社區活動志願服務」= 對社區做出貢獻。<br>
+            ❌ (A) transformed = 改變（transformed the community 改變了社區，語意可能通，但 transformed greatly to 語法不正確）<br>
+            ❌ (B) maintained = 維持（maintained greatly to 語法不正確）<br>
+            ❌ (D) evolved = 演化（evolved to 是「演化成」，語意不符）
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<footer>
+  🌍 Alice 單字本 Day 3 · 社會與改變 · Society &amp; Change<br>
+  🔴 不熟悉詞彙：periodically / disrupt / caution &nbsp;|&nbsp; 🟣 同等級詞彙：ceremony / transform / contribute / maintain / evolve / efficient / diversity<br>
+  📅 製作日期：2026-05-14 · 林威老師客製化教材
+</footer>
+
+</main>
 </body>
 </html>
