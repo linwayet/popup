@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding Domestic Violence and Protection</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF8F0;--ink:#1A0F00;--h1:#C0392B;--h2:#1565C0;--h3:#2E7D32;
+  --warm1:#FFF1DE;--warm2:#FFE3C2;--warm3:#FFD1A6;--cta-red:#C0392B;--cta-teal:#00796B;--cta-gold:#A76500;
+  --blue:#0D47A1;--orange:#E65100;--purple:#6A1B9A;
+  --s1:#0D47A1;--s1-line:#90CAF9;--s1-bg:#F3F8FF;
+  --s2:#BF360C;--s2-line:#FFAB91;--s2-bg:#FFF3EF;
+  --s3:#1B5E20;--s3-line:#81C784;--s3-bg:#F1F8F2;
+  --s4:#4A148C;--s4-line:#CE93D8;--s4-bg:#F9F0FF;
+  --fold:#4A3728;--fold-line:#C4A06A;--fold-bg:#FAF6F0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,var(--warm1) 0%,var(--bg) 38%,#FFF4E6 100%);color:var(--ink);font-family:"BIZ UDPGothic",sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:28px 14px 56px}
+.page{max-width:880px;margin:0 auto}
+.promo{margin:0 auto 28px;padding:18px;border:3px solid #F3A35C;border-radius:12px;background:linear-gradient(135deg,#FFF7EA 0%,#FFE4C7 100%);box-shadow:0 12px 26px rgba(166,85,0,.13)}
+.promo.bottom{margin:44px auto 0}
+.promo-title{margin:0 0 14px;color:#8B2F00;font-size:1.55rem;font-weight:700;text-align:center}
+.promo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.promo-link{display:flex;min-height:116px;flex-direction:column;justify-content:center;gap:6px;padding:16px;border-radius:10px;text-decoration:none;color:#fff;font-weight:700;box-shadow:0 7px 0 rgba(80,42,0,.18);transition:transform .2s ease,box-shadow .2s ease}
+.promo-link:focus,.promo-link:hover{transform:translateY(-2px);box-shadow:0 9px 0 rgba(80,42,0,.16);outline:3px solid #7B3F00;outline-offset:3px}
+.promo-link.course-a{background:linear-gradient(135deg,#E65100,#C0392B)}
+.promo-link.course-b{background:linear-gradient(135deg,#D68910,#7B4D00)}
+.promo-link.line{background:linear-gradient(135deg,#00897B,#2E7D32)}
+.promo-kicker{font-size:.9rem;line-height:1.35;opacity:.95}
+.promo-name{font-size:1.15rem;line-height:1.35}
+.promo-desc{font-size:.86rem;line-height:1.45;font-weight:400}
+.hero{padding:28px 20px 24px;text-align:center}
+h1{display:inline-block;margin:0 auto 16px;padding:18px 24px;border:5px solid var(--h1);border-radius:8px;background:#FFFDF9;color:var(--h1);font-size:3.15rem;line-height:1.2;font-weight:700;box-shadow:8px 8px 0 #F6C7BD}
+.subtitle{margin:8px 0;color:var(--h2);font-size:2.2rem;line-height:1.35;font-weight:700}
+.credit{margin:12px 0 0;color:#0D47A1;font-size:1.65rem;font-weight:700;letter-spacing:.04em;text-shadow:2px 2px 0 #D7ECFF}
+h2{margin:46px 0 18px;color:var(--h2);font-size:2.2rem;line-height:1.35;font-weight:700}
+h3{margin:0 0 12px;color:var(--h3);font-size:1.6rem;line-height:1.4;font-weight:700}
+p{margin:14px 0}
+.card{border:3px solid;border-radius:8px;overflow:hidden;background:#fff}
+.head{padding:16px 22px;color:#fff;font-size:1.45rem;font-weight:700;line-height:1.4}
+.body{padding:24px}
+.original{border-color:var(--s1-line)}.original .head{background:var(--s1)}.original .body{background:var(--s1-bg)}
+.reading{border-color:var(--s2-line)}.reading .head{background:var(--s2)}.reading .body{background:var(--s2-bg)}
+.vocab{border-color:var(--s3-line)}.vocab .head{background:var(--s3)}.vocab .body{background:var(--s3-bg)}
+.grammar{border-color:var(--s4-line)}.grammar .head{background:var(--s4)}.grammar .body{background:var(--s4-bg)}
+.key{color:var(--blue);font-weight:700;text-decoration:none}
+.item{padding:22px 0;border-top:2px solid rgba(26,15,0,.16)}
+.item:first-child{border-top:0;padding-top:0}
+.num{display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--s2);color:#fff;font-weight:700;margin-right:10px}
+.quote{font-weight:700;color:#3A1B00}
+.sentence{font-style:italic}
+.box{margin-top:12px;padding:14px 16px;border-radius:8px;background:rgba(255,255,255,.72);border:1px solid rgba(26,15,0,.12)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.pill{display:inline-flex;align-items:center;min-height:40px;padding:4px 14px;border-radius:999px;background:#FEF0E7;color:var(--orange);font-weight:700}
+.vtop{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px}
+.vnum{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--s3);color:#fff;font-weight:700;font-size:1rem}
+.word{color:var(--blue);font-size:1.65rem;font-weight:700}
+.kk{color:#BF360C;font-weight:700}
+.tagrow{display:grid;grid-template-columns:132px 1fr;gap:0;margin:10px 0;align-items:stretch}
+.tag{display:flex;align-items:center;justify-content:center;padding:8px 12px;border-radius:8px 0 0 8px;font-weight:700}
+.tagtext{padding:8px 12px;background:rgba(255,255,255,.78);border-radius:0 8px 8px 0;border:1px solid rgba(26,15,0,.12);border-left:0}
+.deriv{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.pattern{background:#FEF0E7;color:#E65100}
+ul{margin:10px 0 0 28px;padding:0}li{margin:10px 0}
+.example p{margin:8px 0}
+.glabel{color:var(--purple);font-weight:700;margin-top:16px}
+.formula{font-weight:700;font-style:italic;color:#4A148C}
+details{margin-top:22px;border:3px solid var(--fold-line);border-radius:8px;overflow:hidden;background:var(--fold-bg)}
+summary{min-height:72px;padding:16px 22px;background:var(--fold);color:#fff;font-weight:700;font-size:1.35rem;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:18px}
+summary::-webkit-details-marker{display:none}
+.arrow{transition:transform .3s ease;font-size:1.4rem}
+details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:22px;background:var(--fold-bg)}
+.gridline{padding:8px 0;border-bottom:1px solid rgba(74,55,40,.22)}
+.gridline:last-child{border-bottom:0}
+.mark{color:var(--orange);font-weight:700}
+@media(max-width:720px){body{font-size:22px;padding:18px 10px 40px}.body{padding:18px}.promo{padding:14px}.promo-grid{grid-template-columns:1fr}.promo-link{min-height:96px}.promo-title{font-size:1.35rem}h1{font-size:3rem}.subtitle{font-size:2.2rem}.tagrow{grid-template-columns:1fr}.tag,.tagtext{border-radius:8px;border-left:1px solid rgba(26,15,0,.12)}}
+</style>
+</head>
+<body>
+<main class="page">
+<nav class="promo" aria-label="課程與聯絡連結">
+<p class="promo-title">七月課程與聯絡資訊</p>
+<div class="promo-grid">
+<a class="promo-link course-a" href="https://linwayet.github.io/4ulive/index.html">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">錯中學 ECHO 計劃</span>
+<span class="promo-desc">用錯題回饋建立英文弱點修補節奏。</span>
+</a>
+<a class="promo-link course-b" href="https://linwayet.github.io/popup/index">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">學生分析</span>
+<span class="promo-desc">整理學習表現，協助找到下一步進步方向。</span>
+</a>
+<a class="promo-link line" href="https://line.me/ti/p/~linwayet">
+<span class="promo-kicker">個人 Line</span>
+<span class="promo-name">linwayet</span>
+<span class="promo-desc">課程詢問與學習諮詢可由此聯絡。</span>
+</a>
+</div>
+</nav>
+<section class="hero">
+<h1>Understanding Domestic Violence and Protection</h1>
+<p class="subtitle">認識家庭暴力與保護制度</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<section>
+<h2>英文文章原文</h2>
+<div class="card original">
+<div class="head">原文 Original Article</div>
+<div class="body">
+<p>In July 2025, a horrific <strong class="key">incident</strong> in Tucheng, New Taipei City, shocked the nation.</p>
+<p>A man, reportedly angered by his wife's decision to prevent him from seeing their child and obtain a <strong class="key">protection</strong> order against him, attacked both his wife and her sister in broad daylight, resulting in their deaths.</p>
+<p>While such extreme cases make headlines, they represent only the visible tip of a much larger problem. Behind closed doors, countless individuals endure abuse in silence, their suffering often unnoticed until it is too late.</p>
+<p>Domestic violence refers to patterns of abusive behavior used to control or harm someone in a close relationship. While it often occurs between <strong class="key">spouses</strong><sup>2</sup> or partners, it may also involve other family or household members. It encompasses more than physical <strong class="key">assault</strong><sup>3</sup>. Emotional, financial, and sexual abuse are all common forms, each aiming to <strong class="key">exert</strong><sup>4</sup> control over the victim. Emotional abuse may involve constant criticism, <strong class="key">humiliation</strong><sup>5</sup>, or threats that <strong class="key">undermine</strong><sup>6</sup> a victim's self-esteem. Financial abuse occurs when one person controls all money or resources, leaving the other dependent and powerless. Sexual abuse, even within marriage, is also a form of domestic violence, as <strong class="key">consent</strong> must never be assumed.</p>
+<p>Identifying an abusive situation can be challenging, particularly when the abuse is <strong class="key">subtle</strong><sup>7</sup> or gradual. Warning signs include a close family member or partner who monitors your every move, <strong class="key">dictates</strong><sup>8</sup> who you can see, or belittles your achievements. You might feel anxious or fearful around them, walking on eggshells and constantly adjusting your actions to avoid triggering anger. Abusive behavior is often inconsistent. The abuser may behave kindly at times or promise to change, which can confuse the victim and <strong class="key">obscure</strong><sup>9</sup> the seriousness of the abuse.</p>
+<hr>
+<p>Taiwan's legal system addresses domestic violence through the Domestic Violence Prevention Act. This <strong class="key">legislation</strong><sup>1</sup> allows victims to obtain <strong class="key">protection</strong> orders that may prohibit the abuser from contacting or approaching them, require the abuser to move out of shared residences, and <strong class="key">mandate</strong><sup>2</sup> participation in treatment programs. Police are obligated to respond immediately to domestic violence calls and may arrest perpetrators without <strong class="key">warrants</strong><sup>3</sup> in certain cases. However, legal <strong class="key">protection</strong> is only effective if victims know their rights and feel safe reporting abuse. Many hesitate due to fear, shame, or economic dependence, highlighting the need for ongoing public education and accessible resources.</p>
+<p>Other countries offer valuable lessons in addressing domestic violence. In Spain, for example, risk <strong class="key">assessment</strong><sup>4</sup> tools are employed to help authorities identify the cases most likely to <strong class="key">escalate</strong> to <strong class="key">lethal</strong><sup>5</sup> violence. "Clare's Law" in the UK allows individuals to request information about their partner's history of domestic violence. Specialized domestic violence courts in Australia and the US train judges to better understand victim trauma and patterns of control. At a more <strong class="key">preventive</strong><sup>6</sup> level, Sweden focuses on education, teaching young people in schools about healthy relationships.</p>
+<p>If you or someone you know is experiencing domestic violence, reaching out for help is the first step toward safety. Taiwan's 113 Protection Hotline offers <strong class="key">confidential</strong><sup>7</sup> support and guidance 24 hours a day, providing immediate counseling and connections to emergency services, shelters, and legal assistance. Local family support centers offer practical help with <strong class="key">housing</strong><sup>8</sup>, employment, and childcare. When it's safe to do so, <strong class="key">documenting</strong><sup>9</sup> evidence of abuse through photographs, medical records, or written accounts can help authorities respond more effectively. A clearer understanding of domestic violence and the resources available is crucial to reducing the risk of future tragedies.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>8句精讀</h2>
+<div class="card reading">
+<div class="head">八句精讀 8 Key Sentence Analyses</div>
+<div class="body">
+<div class="item">
+<h3><span class="num">①</span>事件背景與分詞結果</h3>
+<p class="quote sentence">A man, reportedly angered by his wife's decision to prevent him from seeing their child and obtain a protection order against him, attacked both his wife and her sister in broad daylight, resulting in their deaths.</p>
+<p>據報導，一名男子因妻子決定阻止他見孩子並取得保護令而憤怒，於光天化日下攻擊妻子與妻子的妹妹，導致兩人死亡。</p>
+<div class="box">文法解析：這句的主幹是 <span class="mark">A man attacked both his wife and her sister</span>。插入的 <span class="sentence">reportedly angered by...</span> 是過去分詞片語，補充說明男子的狀態；句尾 <span class="sentence">resulting in their deaths</span> 是現在分詞構句，表示前面攻擊行為造成的結果。</div>
+<div class="pills"><span class="pill">protection order：保護令</span><span class="pill">in broad daylight：光天化日下</span><span class="pill">result in：導致</span></div>
+</div>
+<div class="item">
+<h3><span class="num">②</span>讓步子句與比喻</h3>
+<p class="quote sentence">While such extreme cases make headlines, they represent only the visible tip of a much larger problem.</p>
+<p>雖然這類極端案件會成為新聞頭條，但它們只代表一個更大問題中可見的一小部分。</p>
+<div class="box">文法解析：<span class="sentence">While...</span> 在這裡不是「當……時」，而是讓步連接詞，意思是「雖然」。主句使用 <span class="sentence">the visible tip of a much larger problem</span> 這個比喻，強調媒體看見的案件只是表層，背後仍有大量隱藏的受害者。</div>
+<div class="pills"><span class="pill">make headlines：登上新聞頭條</span><span class="pill">visible tip：可見的一角</span></div>
+</div>
+<div class="item">
+<h3><span class="num">③</span>關係子句修飾行為模式</h3>
+<p class="quote sentence">Domestic violence refers to patterns of abusive behavior used to control or harm someone in a close relationship.</p>
+<p>家庭暴力指的是在親密關係中，用來控制或傷害某人的虐待行為模式。</p>
+<div class="box">文法解析：<span class="sentence">used to control or harm...</span> 是過去分詞片語，修飾前面的 <span class="sentence">patterns of abusive behavior</span>，意思接近 <span class="sentence">that are used to...</span>。其中 <span class="sentence">to control or harm</span> 的 to 是不定詞，表示目的，不是介係詞。</div>
+<div class="pills"><span class="pill">refer to：指的是</span><span class="pill">abusive behavior：虐待行為</span><span class="pill">close relationship：親密關係</span></div>
+</div>
+<div class="item">
+<h3><span class="num">④</span>分詞構句表示結果</h3>
+<p class="quote sentence">Financial abuse occurs when one person controls all money or resources, leaving the other dependent and powerless.</p>
+<p>當一個人控制所有金錢或資源，使另一方依賴且無力時，財務虐待便會發生。</p>
+<div class="box">文法解析：<span class="sentence">when one person controls...</span> 是時間副詞子句，說明財務虐待發生的情境。句尾 <span class="sentence">leaving the other dependent and powerless</span> 是現在分詞構句，表示前面動作帶來的結果，也就是被控制的一方變得依賴且無力。</div>
+<div class="pills"><span class="pill">financial abuse：財務虐待</span><span class="pill">dependent：依賴的</span><span class="pill">powerless：無力的</span></div>
+</div>
+<div class="item">
+<h3><span class="num">⑤</span>關係子句與並列動詞</h3>
+<p class="quote sentence">Warning signs include a close family member or partner who monitors your every move, dictates who you can see, or belittles your achievements.</p>
+<p>警訊包括某位親近家人或伴侶會監控你的一舉一動、規定你可以見誰，或貶低你的成就。</p>
+<div class="box">文法解析：<span class="sentence">who monitors..., dictates..., or belittles...</span> 是形容詞子句，修飾 <span class="sentence">a close family member or partner</span>。三個動詞平行並列，呈現控制型關係常見的三種行為；<span class="sentence">who you can see</span> 則是名詞子句，作為 dictates 的受詞。</div>
+<div class="pills"><span class="pill">warning signs：警訊</span><span class="pill">dictate：支配；命令</span><span class="pill">belittle：貶低</span></div>
+</div>
+<div class="item">
+<h3><span class="num">⑥</span>法規權限與平行結構</h3>
+<p class="quote sentence">This legislation allows victims to obtain protection orders that may prohibit the abuser from contacting or approaching them, require the abuser to move out of shared residences, and mandate participation in treatment programs.</p>
+<p>這項法律允許被害人取得保護令，保護令可以禁止施暴者聯絡或接近被害人、要求施暴者搬離共同住所，並強制參與治療方案。</p>
+<div class="box">文法解析：主句是 <span class="sentence">This legislation allows victims to obtain protection orders</span>，其中 <span class="sentence">to obtain</span> 是受詞補語的不定詞。後面的 <span class="sentence">that may prohibit..., require..., and mandate...</span> 是關係子句，三個動詞平行，清楚列出保護令可能具備的功能。</div>
+<div class="pills"><span class="pill">legislation：法律；立法</span><span class="pill">prohibit A from V-ing：禁止 A 做某事</span><span class="pill">shared residence：共同住所</span></div>
+</div>
+<div class="item">
+<h3><span class="num">⑦</span>if 條件句與動名詞</h3>
+<p class="quote sentence">However, legal protection is only effective if victims know their rights and feel safe reporting abuse.</p>
+<p>然而，只有在被害人知道自己的權利，並且覺得通報虐待是安全的情況下，法律保護才有效。</p>
+<div class="box">文法解析：<span class="sentence">if victims know...</span> 是條件副詞子句，說明法律保護有效的條件。<span class="sentence">feel safe reporting abuse</span> 中的 reporting 是動名詞，表示「在通報虐待這件事上感到安全」。only effective if 讓語氣更強，提醒讀者制度與實際可近性同樣重要。</div>
+<div class="pills"><span class="pill">legal protection：法律保護</span><span class="pill">report abuse：通報虐待</span></div>
+</div>
+<div class="item">
+<h3><span class="num">⑧</span>when 子句與主詞動名詞</h3>
+<p class="quote sentence">When it's safe to do so, documenting evidence of abuse through photographs, medical records, or written accounts can help authorities respond more effectively.</p>
+<p>在安全的情況下，透過照片、醫療紀錄或書面記錄來保存虐待證據，可以幫助主管機關更有效地回應。</p>
+<div class="box">文法解析：<span class="sentence">When it's safe to do so</span> 是時間條件子句，提醒行動前要先確認安全。主詞是很長的動名詞片語 <span class="sentence">documenting evidence of abuse...</span>，動詞是 <span class="sentence">can help</span>；help 後接原形動詞 respond，表示「幫助某人做某事」。</div>
+<div class="pills"><span class="pill">document evidence：記錄證據</span><span class="pill">written accounts：書面記錄</span><span class="pill">effectively：有效地</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>20個單字整理</h2>
+<div class="card vocab">
+<div class="head">單字表 Vocabulary List</div>
+<div class="body">
+<div class="item"><div class="vtop"><span class="vnum">1</span><span class="word">incident</span><span class="kk">[ˈɪnsədənt]</span><span>n. 事件；事故</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">incidental (adj. 附帶的)；incidentally (adv. 順帶一提)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">cid/cas「落下；發生」：accident（意外）、coincidence（巧合）、occasion（場合）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">a violent incident（暴力事件）；report an incident（通報事件）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">incident 指具體事件；accident 多指意外事故，通常非故意。</span></div>
+<div class="example"><p>A horrific incident in Tucheng shocked the nation.<br>（土城的一起可怕事件震驚全國。）</p><p>The teacher asked students to describe the incident clearly.<br>（老師要求學生清楚描述那起事件。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">2</span><span class="word">protection</span><span class="kk">[prəˈtɛkʃən]</span><span>n. 保護；防護</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">protect (v. 保護)；protective (adj. 保護的)；protector (n. 保護者)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">tect「覆蓋；保護」：detect（偵測）、architect（建築師）、technology（技術）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">protection order（保護令）；legal protection（法律保護）</span></div>
+<div class="tagrow"><span class="tag pattern">句型</span><span class="tagtext">provide/offer protection against N：提供防範某事的保護。</span></div>
+<div class="example"><p>Victims may obtain protection orders against an abuser.<br>（被害人可以取得針對施暴者的保護令。）</p><p>Good laws should offer protection to people in danger.<br>（良好的法律應該保護處於危險中的人。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">3</span><span class="word">spouse</span><span class="kk">[spaʊs]</span><span>n. 配偶</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">spousal (adj. 配偶的；婚姻的)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">between spouses（配偶之間）；a former spouse（前配偶）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">a legally recognized spouse（法律承認的配偶）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">spouse 是正式用字，可指 husband 或 wife；partner 可指伴侶，不一定已婚。</span></div>
+<div class="example"><p>Domestic violence often occurs between spouses or partners.<br>（家庭暴力常發生在配偶或伴侶之間。）</p><p>A spouse should never use fear to control a family member.<br>（配偶絕不應用恐懼控制家人。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">4</span><span class="word">assault</span><span class="kk">[əˈsɔlt]</span><span>n. 攻擊；襲擊 v. 攻擊</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">assailant (n. 攻擊者)；assaultive (adj. 攻擊性的)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">physical assault（肢體攻擊）；sexual assault（性侵害）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">a serious physical assault（嚴重肢體攻擊）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">assault 強調攻擊行為；attack 範圍較廣，可用於人身、網路、疾病等。</span></div>
+<div class="example"><p>Domestic violence encompasses more than physical assault.<br>（家庭暴力涵蓋的不只是肢體攻擊。）</p><p>The victim reported the assault to the police the next day.<br>（被害人隔天向警方通報那起攻擊。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">5</span><span class="word">exert</span><span class="kk">[ɪɡˈzɝt]</span><span>v. 施加；運用；盡力</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">exertion (n. 用力；努力)；self-exertion (n. 自我努力)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">sert「連接；放置」：insert（插入）、assert（斷言）、desert（遺棄）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">exert control over N（對……施加控制）；exert pressure on N（對……施壓）</span></div>
+<div class="tagrow"><span class="tag pattern">句型</span><span class="tagtext">exert + influence/control/pressure + on/over + N。</span></div>
+<div class="example"><p>Each form of abuse aims to exert control over the victim.<br>（每一種虐待形式都意圖對被害人施加控制。）</p><p>Parents should guide children without exerting too much pressure on them.<br>（父母應該引導孩子，而不是對他們施加過多壓力。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">6</span><span class="word">humiliation</span><span class="kk">[hjuˌmɪliˈeʃən]</span><span>n. 羞辱；恥辱</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">humiliate (v. 羞辱)；humiliating (adj. 令人羞辱的)；humble (adj. 謙卑的)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">hum「土；低」：human（人類）、humble（謙卑的）、humility（謙遜）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">public humiliation（公開羞辱）；deep humiliation（深刻羞辱）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">humiliation 是被羞辱的感受或行為；embarrassment 較偏尷尬，不一定帶有惡意。</span></div>
+<div class="example"><p>Emotional abuse may involve constant criticism, humiliation, or threats.<br>（情緒虐待可能包含持續批評、羞辱或威脅。）</p><p>No student should experience humiliation in the classroom.<br>（沒有學生應在教室裡遭受羞辱。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">7</span><span class="word">undermine</span><span class="kk">[ˌʌndɚˈmaɪn]</span><span>v. 逐漸損害；暗中破壞</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">undermining (adj./n. 逐漸破壞的；破壞)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">undermine confidence（削弱信心）；undermine trust（破壞信任）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">seriously undermine self-esteem（嚴重削弱自尊）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">undermine 通常是逐漸、暗中造成傷害；destroy 則是明顯且較徹底的破壞。</span></div>
+<div class="example"><p>Threats can undermine a victim's self-esteem.<br>（威脅會削弱被害人的自尊。）</p><p>Constant doubt may undermine a young person's confidence.<br>（持續的懷疑可能削弱年輕人的自信。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">8</span><span class="word">consent</span><span class="kk">[kənˈsɛnt]</span><span>n. 同意；同意權 v. 同意</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">consensual (adj. 雙方同意的)；consentingly (adv. 同意地)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">sent/sens「感覺」：sense（感覺）、sensible（明智的）、consensus（共識）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">give consent（給予同意）；without consent（未經同意）</span></div>
+<div class="tagrow"><span class="tag pattern">句型</span><span class="tagtext">consent to + N/V-ing：to 是介係詞，後面接名詞或動名詞。</span></div>
+<div class="example"><p>Consent must never be assumed, even within marriage.<br>（即使在婚姻中，也絕不能假定對方已同意。）</p><p>The school needs parents' consent before the trip.<br>（學校在旅行前需要家長同意。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">9</span><span class="word">subtle</span><span class="kk">[ˈsʌtl]</span><span>adj. 細微的；不易察覺的</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">subtly (adv. 細微地；巧妙地)；subtlety (n. 細微之處)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">a subtle sign（細微跡象）；subtle pressure（不易察覺的壓力）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">a very subtle form of control（一種非常隱微的控制形式）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">subtle 指細微到不容易察覺；simple 指簡單，兩字拼法相近但意思不同。</span></div>
+<div class="example"><p>Abuse can be challenging to identify when it is subtle or gradual.<br>（虐待若是細微或逐漸發生，可能很難辨識。）</p><p>Her tone carried a subtle warning that everyone noticed.<br>（她的語氣帶著細微的警告，大家都注意到了。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">10</span><span class="word">dictate</span><span class="kk">[ˈdɪkˌtet]</span><span>v. 命令；支配；口述</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">dictation (n. 聽寫；口述)；dictator (n. 獨裁者)；dictatorial (adj. 獨裁的)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">dict「說」：dictionary（字典）、predict（預測）、contradict（反駁）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">dictate rules（制定規則）；dictate who you can see（規定你能見誰）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">dictate 含強勢命令意味；suggest 只是建議。</span></div>
+<div class="example"><p>An abuser may dictate who the victim can see.<br>（施暴者可能規定被害人可以見誰。）</p><p>Friends should not dictate each other's choices.<br>（朋友不應支配彼此的選擇。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">11</span><span class="word">obscure</span><span class="kk">[əbˈskjʊr]</span><span>v. 使模糊；遮蔽 adj. 模糊的</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">obscurity (n. 模糊；無名)；obscurely (adv. 模糊地)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">obscure the truth（模糊真相）；an obscure meaning（模糊的意思）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">completely obscure the seriousness of a problem（完全模糊問題的嚴重性）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">obscure 可作動詞或形容詞；unclear 主要是形容詞，表示不清楚。</span></div>
+<div class="example"><p>Kind behavior at times can obscure the seriousness of the abuse.<br>（偶爾友善的行為可能模糊虐待的嚴重性。）</p><p>Too many details may obscure the main point of an essay.<br>（太多細節可能讓文章主旨變得模糊。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">12</span><span class="word">legislation</span><span class="kk">[ˌlɛdʒɪsˈleʃən]</span><span>n. 法律；立法</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">legislate (v. 立法)；legislative (adj. 立法的)；legislator (n. 立法者)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">leg「法律；選出」：legal（合法的）、legitimate（合法的）、legislator（立法者）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">pass legislation（通過立法）；domestic violence legislation（家暴相關法律）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">legislation 偏「法律或立法總稱」；law 可指單一法律，也可泛指法律。</span></div>
+<div class="example"><p>This legislation allows victims to obtain protection orders.<br>（這項法律允許被害人取得保護令。）</p><p>New legislation can improve public safety when it is enforced well.<br>（新法若執行得當，可以提升公共安全。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">13</span><span class="word">mandate</span><span class="kk">[ˈmænˌdet]</span><span>v. 強制規定 n. 授權；命令</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">mandatory (adj. 強制的)；mandated (adj. 法定要求的)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">mand「命令；委託」：command（命令）、demand（要求）、recommend（推薦）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">mandate participation（強制參與）；a government mandate（政府授權）</span></div>
+<div class="tagrow"><span class="tag pattern">句型</span><span class="tagtext">mandate that + S + (should) V：正式用法中可接原形動詞。</span></div>
+<div class="example"><p>Protection orders may mandate participation in treatment programs.<br>（保護令可能強制施暴者參與治療方案。）</p><p>The new rule mandates that every driver wear a seat belt.<br>（新規定要求每位駕駛都要繫安全帶。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">14</span><span class="word">warrant</span><span class="kk">[ˈwɔrənt]</span><span>n. 令狀；搜查令 v. 使有必要</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">warranted (adj. 有正當理由的)；unwarranted (adj. 無正當理由的)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">without a warrant（沒有令狀）；an arrest warrant（逮捕令）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">warrant 是法律文件；warranty 是商品保固。</span></div>
+<div class="tagrow"><span class="tag pattern">句型</span><span class="tagtext">warrant + N/V-ing 作動詞時表示「使……有必要」。</span></div>
+<div class="example"><p>Police may arrest perpetrators without warrants in certain cases.<br>（在某些情況下，警方可在沒有令狀時逮捕加害者。）</p><p>The evidence was serious enough to warrant further investigation.<br>（證據嚴重到有必要進一步調查。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">15</span><span class="word">assessment</span><span class="kk">[əˈsɛsmənt]</span><span>n. 評估；估量</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">assess (v. 評估)；assessor (n. 評估者)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">risk assessment（風險評估）；make an assessment（做評估）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">a careful risk assessment（一項謹慎的風險評估）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">assessment 強調評估結果或過程；evaluation 常用於課程、表現或計畫成效評量。</span></div>
+<div class="example"><p>Risk assessment tools help authorities identify dangerous cases.<br>（風險評估工具幫助主管機關辨識危險案件。）</p><p>Before making a decision, we need an honest assessment of the problem.<br>（做決定前，我們需要誠實評估這個問題。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">16</span><span class="word">escalate</span><span class="kk">[ˈɛskəˌlet]</span><span>v. 升高；惡化；擴大</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">escalation (n. 升高；惡化)；escalator (n. 電扶梯)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">escalate to violence（升高為暴力）；escalate quickly（迅速惡化）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">a rapidly escalating conflict（迅速升高的衝突）</span></div>
+<div class="tagrow"><span class="tag pattern">句型</span><span class="tagtext">escalate from A to B：從 A 升高為 B。</span></div>
+<div class="example"><p>Some cases are most likely to escalate to lethal violence.<br>（有些案件最可能升高為致命暴力。）</p><p>A small argument can escalate if no one tries to calm down.<br>（若沒有人試著冷靜，小爭吵也可能惡化。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">17</span><span class="word">lethal</span><span class="kk">[ˈliθəl]</span><span>adj. 致命的</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">lethality (n. 致命性)；nonlethal (adj. 非致命的)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">lethal violence（致命暴力）；a lethal weapon（致命武器）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">potentially lethal behavior（可能致命的行為）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">lethal、fatal、deadly 都可指致命；fatal 常描述結果已造成死亡。</span></div>
+<div class="example"><p>Authorities try to identify cases likely to escalate to lethal violence.<br>（主管機關試圖辨識可能升高為致命暴力的案件。）</p><p>Drunk driving can have lethal consequences.<br>（酒駕可能造成致命後果。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">18</span><span class="word">preventive</span><span class="kk">[prɪˈvɛntɪv]</span><span>adj. 預防性的</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">prevent (v. 防止)；prevention (n. 預防)；preventable (adj. 可預防的)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">ven/vent「來」：event（事件）、intervene（介入）、convention（會議）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">preventive measures（預防措施）；preventive education（預防教育）</span></div>
+<div class="tagrow"><span class="tag pattern">句型</span><span class="tagtext">prevent + O + from + V-ing：阻止某人做某事。</span></div>
+<div class="example"><p>At a more preventive level, Sweden focuses on education.<br>（在更預防性的層面上，瑞典重視教育。）</p><p>Wearing a helmet is a preventive measure against serious injury.<br>（戴安全帽是預防重傷的措施。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">19</span><span class="word">confidential</span><span class="kk">[ˌkɑnfəˈdɛnʃəl]</span><span>adj. 機密的；保密的</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">confidence (n. 信任；自信)；confide (v. 吐露秘密)；confidentiality (n. 保密性)</span></div>
+<div class="tagrow"><span class="tag root">字根</span><span class="tagtext">fid「信任」：faith（信念）、confident（有信心的）、fidelity（忠誠）</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">confidential support（保密支持）；keep information confidential（保密資訊）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">strictly confidential information（嚴格保密的資訊）</span></div>
+<div class="example"><p>Taiwan's 113 Protection Hotline offers confidential support.<br>（台灣 113 保護專線提供保密支持。）</p><p>Students can ask the counselor for confidential advice.<br>（學生可以向輔導老師尋求保密建議。）</p></div></div>
+
+<div class="item"><div class="vtop"><span class="vnum">20</span><span class="word">document</span><span class="kk">[ˈdɑkjəmənt] / [ˈdɑkjəˌmɛnt]</span><span>n. 文件 v. 記錄；保存證據</span></div>
+<div class="tagrow"><span class="tag deriv">衍生詞</span><span class="tagtext">documentation (n. 文件資料；記錄)；documentary (n./adj. 紀錄片；紀錄的)</span></div>
+<div class="tagrow"><span class="tag phrase">片語</span><span class="tagtext">document evidence（記錄證據）；official documents（正式文件）</span></div>
+<div class="tagrow"><span class="tag idiom">慣用語</span><span class="tagtext">carefully document every incident（仔細記錄每一起事件）</span></div>
+<div class="tagrow"><span class="tag confuse">容易混淆</span><span class="tagtext">作名詞時重音常在第一音節；作動詞時重音常在第三音節。</span></div>
+<div class="example"><p>Documenting evidence of abuse can help authorities respond effectively.<br>（記錄虐待證據能幫助主管機關有效回應。）</p><p>The reporter documented the changes in the community over ten years.<br>（那位記者記錄了社區十年間的變化。）</p></div></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>文法解析</h2>
+<div class="card grammar">
+<div class="head">三個核心文法 Grammar Focus</div>
+<div class="body">
+<div class="item">
+<h3>一、分詞構句表示補充結果</h3>
+<p class="glabel">【引句 Quote】</p><p class="sentence">Financial abuse occurs when one person controls all money or resources, leaving the other dependent and powerless.</p>
+<p class="glabel">【句型】</p><p class="formula">S + V ..., V-ing + O/C.</p>
+<p class="glabel">【核心說明】</p><p>現在分詞構句可以用來補充主句所造成的自然結果。它常放在句尾，讓句子更精簡，也讓讀者看出前後動作的因果關係。</p>
+<p>本句中，控制金錢與資源是主句動作，而「使另一方依賴且無力」是結果。英文用 <span class="sentence">leaving...</span> 連接，避免重複寫成一個完整句子。</p>
+<p class="glabel">【使用規則】</p><ul><li>分詞構句的邏輯主詞通常要和主句主詞或整個主句有清楚關係。</li><li>V-ing 可表示同時發生、附帶狀況或結果。</li><li>若表示被動，常用 past participle，例如 <span class="sentence">angered by...</span>。</li><li>不要讓分詞片語的主詞不明，否則句意會混亂。</li></ul>
+<p class="glabel">【主題例句】</p><p>Constant threats can isolate victims, making it harder for them to seek help.<br>（持續威脅可能孤立被害人，使他們更難求助。）</p>
+<p class="glabel">【學習提醒】</p><p>中文常用「然後、因此、使得」連接結果；英文若兩個動作關係密切，可以用 V-ing 簡化。寫作時要先確認主句完整，再加分詞構句。</p>
+<p class="glabel">【⚠️ 常見錯誤 / 🎯 精選試題】</p><p>✗ Controlling all money, the victim becomes powerless.（意思變成被害人控制金錢。）<br>✓ The abuser controls all money, leaving the victim powerless.（分詞構句清楚表示結果。）</p><p>選擇：The policy improved reporting systems, ___ victims faster access to help.<br>(A) gives (B) giving (C) gave<br>答案：B</p>
+</div>
+
+<div class="item">
+<h3>二、關係子句修飾名詞</h3>
+<p class="glabel">【引句 Quote】</p><p class="sentence">Warning signs include a close family member or partner who monitors your every move, dictates who you can see, or belittles your achievements.</p>
+<p class="glabel">【句型】</p><p class="formula">N + who/that/which + V ...</p>
+<p class="glabel">【核心說明】</p><p>關係子句用來補充或限定前面的名詞。本句的 <span class="sentence">who</span> 指人，修飾 <span class="sentence">a close family member or partner</span>，說明這個人具有哪些控制行為。</p>
+<p>同一個關係子句中可以放入平行動詞，例如 monitors、dictates、belittles。這種寫法能讓句子有層次，也能避免連續寫好幾個短句。</p>
+<p class="glabel">【使用規則】</p><ul><li>修飾人時常用 who 或 that；修飾事物時常用 which 或 that。</li><li>關係子句要緊接被修飾的名詞，避免修飾錯對象。</li><li>平行結構中的動詞形式要一致。</li><li>非限定關係子句前要加逗號，補充額外資訊。</li></ul>
+<p class="glabel">【主題例句】</p><p>A hotline that offers confidential guidance can help victims take the first step.<br>（提供保密指引的專線能幫助被害人踏出第一步。）</p>
+<p class="glabel">【學習提醒】</p><p>看到 who、which、that 時，先往前找它修飾的名詞，再判斷子句是否缺主詞或受詞。這能幫你拆解學測長句。</p>
+<p class="glabel">【⚠️ 常見錯誤 / 🎯 精選試題】</p><p>✗ People which need help should call the hotline.<br>✓ People who need help should call the hotline.（people 是人，要用 who。）</p><p>改錯：The law which protect victims is important.<br>答案：which protect → which protects</p>
+</div>
+
+<div class="item">
+<h3>三、if 條件子句</h3>
+<p class="glabel">【引句 Quote】</p><p class="sentence">Legal protection is only effective if victims know their rights and feel safe reporting abuse.</p>
+<p class="glabel">【句型】</p><p class="formula">S + V + if + S + V ...</p>
+<p class="glabel">【核心說明】</p><p>if 子句用來說明條件：只有條件成立，主句的結果才可能成立。本句強調法律本身不夠，還需要被害人知道權利並能安全通報。</p>
+<p>在真實條件句中，if 子句通常用現在式表示一般情況或未來可能性；主要子句可用現在式、未來式或情態助動詞。</p>
+<p class="glabel">【使用規則】</p><ul><li>if 子句放句首時，後面通常加逗號；放句尾時通常不加逗號。</li><li>真實條件句：If + S + 現在式, S + will/can/may + V。</li><li>條件句可搭配 only，強調必要條件。</li><li>不要在 if 子句中誤用 will 表示單純未來。</li></ul>
+<p class="glabel">【主題例句】</p><p>If schools teach healthy relationships early, young people may recognize warning signs sooner.<br>（如果學校及早教導健康關係，年輕人可能更早辨識警訊。）</p>
+<p class="glabel">【學習提醒】</p><p>中文常說「如果……就……」，英文不一定要翻出 then。考試時若看到 if，先抓條件，再抓結果，長句就會清楚很多。</p>
+<p class="glabel">【⚠️ 常見錯誤 / 🎯 精選試題】</p><p>✗ If victims will know their rights, they can seek help.<br>✓ If victims know their rights, they can seek help.（真實條件句的 if 子句用現在式。）</p><p>選擇：Legal support can work better if people ___ how to report abuse.<br>(A) know (B) will know (C) knew<br>答案：A</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>延伸整理</h2>
+<details>
+<summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<div class="gridline">ab-　離開、相反　—　abnormal（異常的）</div><div class="gridline">ad-　向、加　—　advance（前進）</div><div class="gridline">ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</div><div class="gridline">anti-　反對、抗　—　antibiotic（抗生素）</div><div class="gridline">arch-　主要、首要　—　archenemy（死敵）</div><div class="gridline">auto-　自動、自我　—　autograph（親筆簽名）</div><div class="gridline">bene-　好的、善　—　benefit（好處）</div><div class="gridline">bi-　二、雙　—　bilingual（雙語的）</div><div class="gridline">circum-　環繞、周圍　—　circumstance（情況）</div><div class="gridline">co-/con-/com-　一起、共同　—　cooperate（合作）</div><div class="gridline">contra-　相反、對抗　—　contradict（反駁）</div><div class="gridline">de-　去除、下降　—　decode（解碼）</div><div class="gridline">dia-　穿過、透過　—　dialogue（對話）</div><div class="gridline">dis-　否定、分離　—　disagree（不同意）</div><div class="gridline">en-/em-　使成為　—　enable（使能夠）</div><div class="gridline">epi-　在上、在外　—　epidemic（流行病）</div><div class="gridline">ex-　外、前任　—　export（出口）；ex-president（前總統）</div><div class="gridline">extra-　額外、外部　—　extraordinary（非凡的）</div><div class="gridline">hetero-　不同　—　heterogeneous（異質的）</div><div class="gridline">homo-　相同　—　homogeneous（同質的）</div><div class="gridline">hyper-　過度、超　—　hyperactive（過動的）</div><div class="gridline">hypo-　低於、不足　—　hypodermic（皮下的）</div><div class="gridline">in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</div><div class="gridline">inter-　在…之間　—　international（國際的）</div><div class="gridline">iso-　相等、相同　—　isolate（隔離）</div><div class="gridline">mal-　壞、不良　—　malfunction（故障）</div><div class="gridline">micro-　微小　—　microscope（顯微鏡）</div><div class="gridline">mis-　錯誤　—　misunderstand（誤解）</div><div class="gridline">mono-　單一　—　monologue（獨白）</div><div class="gridline">multi-　多　—　multicultural（多元文化的）</div><div class="gridline">neo-　新的　—　neonatal（新生的）</div><div class="gridline">non-　非、沒有　—　nonsense（無意義）</div><div class="gridline">pan-　全部　—　pandemic（大流行病）</div><div class="gridline">peri-　周圍　—　perimeter（周長）</div><div class="gridline">poly-　多　—　polygon（多邊形）</div><div class="gridline">post-　之後　—　postwar（戰後的）</div><div class="gridline">pre-　之前　—　preview（預覽）</div><div class="gridline">pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div><div class="gridline">pseudo-　假的　—　pseudonym（筆名）</div><div class="gridline">re-　再、回　—　review（複習）</div><div class="gridline">semi-　一半、部分　—　semicircle（半圓）</div><div class="gridline">sub-　在下、次級　—　subway（地鐵）</div><div class="gridline">super-　超越、在上　—　superstar（超級明星）</div><div class="gridline">syn-/sym-　一起、共同　—　synchronize（同步）</div><div class="gridline">tele-　遠距　—　telephone（電話）</div><div class="gridline">trans-　穿越、轉變　—　transport（運輸）</div><div class="gridline">tri-　三　—　triangle（三角形）</div><div class="gridline">un-　否定、不　—　unhappy（不快樂的）</div><div class="gridline">vice-　副、代替　—　vice-president（副總統）</div>
+</div>
+</details>
+
+<details>
+<summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<h3>名詞字尾</h3>
+<div class="gridline">-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</div><div class="gridline">-ment　行為或結果　—　agreement（協議）、development（發展）</div><div class="gridline">-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</div><div class="gridline">-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</div><div class="gridline">-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</div><div class="gridline">-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</div><div class="gridline">-ship　身分或關係　—　friendship（友誼）、leadership（領導）</div><div class="gridline">-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</div><div class="gridline">-ance/-ence　狀態或行為　—　guidance（指引）、dependence（依賴）</div><div class="gridline">-al　行為或過程　—　refusal（拒絕）、arrival（抵達）</div>
+<h3>形容詞字尾</h3>
+<div class="gridline">-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</div><div class="gridline">-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</div><div class="gridline">-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</div><div class="gridline">-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</div><div class="gridline">-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</div><div class="gridline">-ive　具有…性質的　—　preventive（預防性的）、active（主動的）</div><div class="gridline">-ary　與…有關的　—　documentary（紀錄的）、temporary（暫時的）</div><div class="gridline">-ent/-ant　具有…性質的　—　confident（有信心的）、important（重要的）</div>
+<h3>動詞字尾</h3>
+<div class="gridline">-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</div><div class="gridline">-ify　使成為…　—　beautify（美化）、clarify（澄清）</div><div class="gridline">-ate　形成動詞　—　dominate（支配）、activate（啟動）</div><div class="gridline">-en　使變成…　—　strengthen（加強）、soften（使柔軟）</div>
+<h3>副詞與其他字尾</h3>
+<div class="gridline">-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</div><div class="gridline">-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</div><div class="gridline">-wise　表示方式或角度　—　clockwise（順時針方向）</div><div class="gridline">-ism　主義或制度　—　realism（寫實主義）、criticism（批評）</div><div class="gridline">-logy　學科　—　psychology（心理學）、biology（生物學）</div><div class="gridline">-graph　書寫或記錄工具　—　photograph（照片）、paragraph（段落）</div><div class="gridline">-meter　測量工具　—　thermometer（溫度計）、speedometer（速度計）</div><div class="gridline">-scope　觀察工具　—　microscope（顯微鏡）、telescope（望遠鏡）</div>
+</div>
+</details>
+
+<details>
+<summary>30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<div class="gridline">1. domestic [dəˈmɛstɪk] (adj. 家庭的；國內的) — domestic violence（家庭暴力）</div>
+<div class="gridline">2. violence [ˈvaɪələns] (n. 暴力) — violent [ˈvaɪələnt] (adj. 暴力的)</div>
+<div class="gridline">3. horrific [hɔˈrɪfɪk] (adj. 可怕的) — horror [ˈhɔrɚ] (n. 恐怖)</div>
+<div class="gridline">4. prevent [prɪˈvɛnt] (v. 防止；阻止) — prevention [prɪˈvɛnʃən] (n. 預防)</div>
+<div class="gridline">5. obtain [əbˈten] (v. 取得) — obtain permission（取得許可）</div>
+<div class="gridline">6. attack [əˈtæk] (v./n. 攻擊) — attacker [əˈtækɚ] (n. 攻擊者)</div>
+<div class="gridline">7. represent [ˌrɛprɪˈzɛnt] (v. 代表) — representative [ˌrɛprɪˈzɛntətɪv] (n. 代表)</div>
+<div class="gridline">8. visible [ˈvɪzəbəl] (adj. 可見的) — visibility [ˌvɪzəˈbɪləti] (n. 能見度)</div>
+<div class="gridline">9. abuse [əˈbjus] (n./v. 虐待；濫用) — abusive [əˈbjusɪv] (adj. 虐待的)</div>
+<div class="gridline">10. silence [ˈsaɪləns] (n. 沉默) — silent [ˈsaɪlənt] (adj. 沉默的)</div>
+<div class="gridline">11. relationship [rɪˈleʃənˌʃɪp] (n. 關係) — close relationship（親密關係）</div>
+<div class="gridline">12. household [ˈhaʊsˌhoʊld] (n./adj. 家庭；家用的) — household members（家庭成員）</div>
+<div class="gridline">13. emotional [ɪˈmoʃənəl] (adj. 情緒的) — emotion [ɪˈmoʃən] (n. 情緒)</div>
+<div class="gridline">14. financial [faɪˈnænʃəl] (adj. 財務的) — finance [ˈfaɪˌnæns] (n. 財務)</div>
+<div class="gridline">15. victim [ˈvɪktɪm] (n. 被害人) — victim support（被害人支持）</div>
+<div class="gridline">16. criticism [ˈkrɪtəˌsɪzəm] (n. 批評) — criticize [ˈkrɪtəˌsaɪz] (v. 批評)</div>
+<div class="gridline">17. threat [θrɛt] (n. 威脅) — threaten [ˈθrɛtən] (v. 威脅)</div>
+<div class="gridline">18. dependent [dɪˈpɛndənt] (adj. 依賴的) — dependence [dɪˈpɛndəns] (n. 依賴)</div>
+<div class="gridline">19. powerless [ˈpaʊɚləs] (adj. 無力的) — power [ˈpaʊɚ] (n. 權力；力量)</div>
+<div class="gridline">20. identify [aɪˈdɛntəˌfaɪ] (v. 辨識) — identification [aɪˌdɛntəfəˈkeʃən] (n. 辨識)</div>
+<div class="gridline">21. monitor [ˈmɑnətɚ] (v. 監控) — monitoring [ˈmɑnətərɪŋ] (n. 監控)</div>
+<div class="gridline">22. achievement [əˈtʃivmənt] (n. 成就) — achieve [əˈtʃiv] (v. 達成)</div>
+<div class="gridline">23. inconsistent [ˌɪnkənˈsɪstənt] (adj. 不一致的) — consistency [kənˈsɪstənsi] (n. 一致性)</div>
+<div class="gridline">24. prohibit [proʊˈhɪbɪt] (v. 禁止) — prohibition [ˌproʊəˈbɪʃən] (n. 禁止)</div>
+<div class="gridline">25. residence [ˈrɛzədəns] (n. 住所) — resident [ˈrɛzədənt] (n. 居民)</div>
+<div class="gridline">26. perpetrator [ˈpɝpəˌtretɚ] (n. 加害者) — perpetrate [ˈpɝpəˌtret] (v. 犯下)</div>
+<div class="gridline">27. hesitate [ˈhɛzəˌtet] (v. 猶豫) — hesitation [ˌhɛzəˈteʃən] (n. 猶豫)</div>
+<div class="gridline">28. authority [əˈθɔrəti] (n. 主管機關；權威) — authorities（主管機關）</div>
+<div class="gridline">29. trauma [ˈtrɔmə] (n. 創傷) — traumatic [trɔˈmætɪk] (adj. 創傷的)</div>
+<div class="gridline">30. tragedy [ˈtrædʒədi] (n. 悲劇) — tragic [ˈtrædʒɪk] (adj. 悲劇的)</div>
+<h3>文章相關常用片語 5 個</h3>
+<p>• protection order（保護令）<br>• behind closed doors（私下；不為人知地）<br>• walking on eggshells（小心翼翼，害怕惹怒他人）<br>• legal assistance（法律協助）<br>• risk assessment（風險評估）</p>
+</div>
+</details>
+
+<details>
+<summary>練文筆食材<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<p>① While + S + V, S + V（雖然……但是……）<br>→ 適用：先承認表面現象，再提出核心問題。<br>例：While punishment is necessary, prevention is even more important.</p>
+<p>② the visible tip of a much larger problem（更大問題中可見的一角）<br>→ 適用：討論社會議題的隱藏面。<br>例：Online scams are only the visible tip of a much larger problem.</p>
+<p>③ refer to + N（指的是……）<br>→ 適用：下定義。<br>例：Digital literacy refers to the ability to judge online information wisely.</p>
+<p>④ be used to + V（被用來……）<br>→ 適用：說明工具或行為目的；to 是不定詞。<br>例：Social media can be used to spread helpful information.</p>
+<p>⑤ more than + N（不只是……）<br>→ 適用：擴大讀者對概念的理解。<br>例：Education is more than memorizing facts.</p>
+<p>⑥ each aiming to + V（每一個都旨在……）<br>→ 適用：列舉多個項目後總結共同目的。<br>例：The programs offer counseling and training, each aiming to rebuild confidence.</p>
+<p>⑦ when + S + V, S + V（當……時）<br>→ 適用：說明情境與結果。<br>例：When pressure becomes too heavy, students should ask for help.</p>
+<p>⑧ who + V, V, or V（關係子句平行動詞）<br>→ 適用：描述某人的多個特徵或行為。<br>例：A good leader listens carefully, explains clearly, and acts responsibly.</p>
+<p>⑨ which can + V（這可能會……）<br>→ 適用：補充前一句造成的影響。<br>例：Rumors spread quickly online, which can damage a person's reputation.</p>
+<p>⑩ through + N（透過……）<br>→ 適用：說明方法或途徑。<br>例：Communities can reduce fear through education and support.</p>
+<p>⑪ the first step toward + N（邁向……的第一步）<br>→ 適用：寫結論或倡議行動。<br>例：Admitting a problem is the first step toward change.</p>
+<p>⑫ help + O + V（幫助某人做某事）<br>→ 適用：說明政策、工具或行動的效果。<br>例：Clear rules help students understand their responsibilities.</p>
+<p>⑬ be crucial to + V-ing/N（對……至關重要）<br>→ 適用：強調必要性。<br>例：Public trust is crucial to building a safer society.</p>
+<p>⑭ reduce the risk of + N/V-ing（降低……的風險）<br>→ 適用：討論預防與公共安全。<br>例：Regular exercise can reduce the risk of serious illness.</p>
+<p>⑮ not... until it is too late（直到太晚才……）<br>→ 適用：提醒忽視問題的後果。<br>例：Many people do not value clean water until it is too late.</p>
+</div>
+</details>
+</section>
+<nav class="promo bottom" aria-label="課程與聯絡連結">
+<p class="promo-title">七月課程與聯絡資訊</p>
+<div class="promo-grid">
+<a class="promo-link course-a" href="https://linwayet.github.io/4ulive/index.html">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">錯中學 ECHO 計劃</span>
+<span class="promo-desc">用錯題回饋建立英文弱點修補節奏。</span>
+</a>
+<a class="promo-link course-b" href="https://linwayet.github.io/popup/index">
+<span class="promo-kicker">七月開課</span>
+<span class="promo-name">學生分析</span>
+<span class="promo-desc">整理學習表現，協助找到下一步進步方向。</span>
+</a>
+<a class="promo-link line" href="https://line.me/ti/p/~linwayet">
+<span class="promo-kicker">個人 Line</span>
+<span class="promo-name">linwayet</span>
+<span class="promo-desc">課程詢問與學習諮詢可由此聯絡。</span>
+</a>
+</div>
+</nav>
+</main>
+</body>
+</html>
