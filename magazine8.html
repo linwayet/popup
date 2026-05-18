@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life of the Long-tailed Tit</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#FFF4E6;--ink:#1A0F00;--red:#C0392B;--blue:#1565C0;--green:#2E7D32;--orange:#E65100;--purple:#6A1B9A;--kw:#0D47A1;--s1:#0D47A1;--s1b:#90CAF9;--s1bg:#F3F8FF;--s2:#BF360C;--s2b:#FFAB91;--s2bg:#FFF3EF;--s3:#1B5E20;--s3b:#81C784;--s3bg:#F1F8F2;--s4:#4A148C;--s4b:#CE93D8;--s4bg:#F9F0FF;--fold:#4A3728;--foldb:#C4A06A;--foldbg:#FAF6F0}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#FFE8CC 0%,#FFF4E6 42%,#FFF9F1 100%);color:var(--ink);font-family:"BIZ UDPGothic",sans-serif;font-size:23px;line-height:1.85;font-weight:400;padding:30px 14px 70px}
+.page{max-width:880px;margin:0 auto}
+.link-panel{margin:0 auto 30px;padding:20px;border:4px solid #F4A261;border-radius:18px;background:linear-gradient(135deg,#FFF7DF,#FFE4C2);box-shadow:0 10px 24px rgba(166,91,22,.14)}
+.link-panel.bottom{margin:34px auto 0}
+.link-title{margin:0 0 14px;color:#BF360C;font-size:1.55rem;font-weight:700;text-align:center;line-height:1.35}
+.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.link-card{display:flex;flex-direction:column;gap:8px;min-height:150px;padding:18px;border-radius:16px;text-decoration:none;color:#1A0F00;border:3px solid rgba(255,255,255,.88);box-shadow:0 6px 0 rgba(74,55,40,.12)}
+.link-card strong{font-size:1.18rem;line-height:1.35}
+.link-card span{font-size:.98rem;line-height:1.55}
+.link-echo{background:#FFE0B2}.link-analysis{background:#FFCCBC}.link-line{background:#DFF3D6}
+.link-echo strong{color:#C0392B}.link-analysis strong{color:#6A1B9A}.link-line strong{color:#1B5E20}
+.line-id{display:inline-block;margin-top:auto;padding:8px 12px;border-radius:999px;background:#fff;color:#1B5E20;font-weight:700;text-align:center}
+.hero{text-align:center;margin:0 0 34px;padding:24px 18px 28px;border:5px solid var(--red);border-radius:8px;background:#fffdf8;box-shadow:0 8px 0 rgba(192,57,43,.18)}
+h1{margin:0;color:var(--red);font-size:3.1rem;line-height:1.18;font-weight:700}
+.subtitle{margin:12px 0 0;color:var(--blue);font-size:2.2rem;line-height:1.25;font-weight:700}
+.credit{margin:10px 0 0;color:var(--blue);font-family:"Lobster","BIZ UDPGothic",sans-serif;font-size:2rem;line-height:1.25}
+h2{margin:42px 0 16px;font-size:2.1rem;line-height:1.3;color:var(--blue);font-weight:700}
+h3{margin:0 0 12px;color:var(--green);font-size:1.6rem;line-height:1.45;font-weight:700}
+p{margin:10px 0}
+.card{border:3px solid;border-radius:8px;overflow:hidden;background:#fff}
+.head{padding:16px 22px;color:#fff;font-size:1.45rem;font-weight:700}
+.body{padding:24px}
+.original{border-color:var(--s1b)}.original .head{background:var(--s1)}.original .body{background:var(--s1bg)}
+.analysis{border-color:var(--s2b)}.analysis .head{background:var(--s2)}.analysis .body{background:var(--s2bg)}
+.vocab{border-color:var(--s3b)}.vocab .head{background:var(--s3)}.vocab .body{background:var(--s3bg)}
+.grammar{border-color:var(--s4b)}.grammar .head{background:var(--s4)}.grammar .body{background:var(--s4bg)}
+.kw{color:var(--kw);font-weight:700;text-decoration:none}
+.item{padding:20px 0;border-top:2px solid rgba(74,55,40,.18)}
+.item:first-child{padding-top:0;border-top:0}
+.num{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:var(--s2);color:#fff;font-weight:700;margin-right:10px}
+.quote{font-weight:700;color:#4A3728;background:#fffaf5;border-left:8px solid var(--orange);padding:14px 18px;border-radius:6px}
+.trans,.parse,.shine,.example{background:rgba(255,255,255,.78);padding:12px 16px;border-radius:6px;margin-top:12px}
+.pills{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.pill{display:inline-block;border-radius:999px;padding:5px 13px;background:#FEF0E7;color:var(--orange);font-weight:700}
+.vtop{display:flex;gap:12px;flex-wrap:wrap;align-items:baseline}
+.vnum{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;border-radius:50%;background:var(--s3);color:#fff;font-weight:700}
+.word{font-size:1.55rem;color:var(--s3);font-weight:700}
+.kk{color:var(--red);font-weight:700}
+.tagrow{display:grid;grid-template-columns:120px 1fr;gap:10px;margin:10px 0;align-items:start}
+.tag{border-radius:8px 0 0 8px;padding:6px 10px;font-weight:700;text-align:center}
+.deriv{background:#FDEDEC;color:#C0392B}.root{background:#EBF5FB;color:#1565C0}.phrase{background:#EAFAF1;color:#2E7D32}.idiom{background:#FEF9E7;color:#D68910}.confuse{background:#F5EEF8;color:#6A1B9A}.focus{background:#FEF0E7;color:#E65100}
+blockquote{margin:10px 0;padding:14px 18px;border-left:8px solid var(--purple);background:#fff;color:#4A3728;font-weight:700}
+ul{margin:8px 0 0 28px;padding:0}li{margin:8px 0}
+details{margin-top:22px;border:3px solid var(--foldb);border-radius:8px;overflow:hidden;background:var(--foldbg)}
+summary{min-height:72px;padding:16px 22px;background:var(--fold);color:#fff;font-size:1.35rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+summary::-webkit-details-marker{display:none}.arrow{transition:transform .3s ease}details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:22px;background:var(--foldbg)}
+.small-list p{border-bottom:1px solid #d8c3a8;padding:8px 0;margin:0}
+@media(max-width:720px){body{font-size:21px;padding:18px 10px 50px}.link-panel{padding:14px;margin-bottom:22px;border-radius:14px}.link-title{font-size:1.3rem}.link-grid{grid-template-columns:1fr}.link-card{min-height:0;padding:16px}.hero{padding:18px 12px}h1{font-size:2.35rem}.subtitle{font-size:1.75rem}.credit{font-size:1.55rem}.body{padding:18px}.tagrow{grid-template-columns:1fr}.tag{text-align:left;border-radius:8px;min-height:44px}.num{width:42px;height:42px}}
+</style>
+</head>
+<body>
+<main class="page">
+<nav class="link-panel" aria-label="課程與聯絡連結">
+<p class="link-title">七月課程與聯絡資訊</p>
+<div class="link-grid">
+<a class="link-card link-echo" href="https://linwayet.github.io/4ulive/index.html">
+<strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+<span>用錯誤分析、回饋修正與反覆練習，幫助學生把英文弱點變成可進步的方向。</span>
+</a>
+<a class="link-card link-analysis" href="https://linwayet.github.io/popup/index">
+<strong>學生分析</strong>
+<span>整理學生學習狀況與常見問題，方便掌握需要加強的單字、文法與閱讀能力。</span>
+</a>
+<a class="link-card link-line" href="https://line.me/ti/p/~linwayet">
+<strong>林威老師個人 Line</strong>
+<span>課程詢問、學習討論與聯絡使用。</span>
+<span class="line-id">Line ID：linwayet</span>
+</a>
+</div>
+</nav>
+<section class="hero">
+<h1>Life of the Long-tailed Tit</h1>
+<p class="subtitle">長尾山雀的簡單與非凡生活</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<section>
+<h2>【區塊一】英文文章原文</h2>
+<div class="card original">
+<div class="head">英文文章原文 Original Article</div>
+<div class="body">
+<p>Life of the long-tailed tit is both simple and <strong class="kw">extraordinary</strong>. This small bird, easily <strong class="kw">recognized</strong> by its round body and very long tail, lives in forests, parks, and gardens across Europe and Asia. At first glance, it appears <strong class="kw">fragile</strong> and <strong class="kw">defenseless</strong>, weighing only a few grams. However, behind its soft feathers lies a life full of careful planning and <strong class="kw">cooperation</strong>, especially during the <strong class="kw">breeding</strong> season.</p>
+<p>Despite its <strong class="kw">delicate</strong> appearance, the long-tailed tit is <strong class="kw">capable</strong> of <strong class="kw">remarkable</strong> engineering. Each pair builds a nest that is both strong and <strong class="kw">flexible</strong>, using <strong class="kw">materials</strong> such as moss, spider silk, and <strong class="kw">lichen</strong>. The nest is shaped like a dome, with only a tiny entrance on the side. Spider silk plays a key role, as it allows the nest to stretch as the chicks grow. In addition, the outer <strong class="kw">layer</strong> is covered with <strong class="kw">lichen</strong>, helping the nest blend into its <strong class="kw">surroundings</strong> and avoid <strong class="kw">predators</strong>.</p>
+<p>Building such a nest takes great effort. A pair may spend up to three weeks <strong class="kw">completing</strong> it, making hundreds or even thousands of trips to gather <strong class="kw">materials</strong>. Inside, the nest is lined with soft feathers to keep the eggs warm. The female usually lays many eggs, sometimes more than ten, which means the parents must work <strong class="kw">constantly</strong> to feed their young after they <strong class="kw">hatch</strong>.</p>
+<p>Interestingly, long-tailed tits also show strong social behavior. If a pair loses its nest, they may help other pairs raise their chicks instead of trying again themselves. This <strong class="kw">cooperative</strong> system increases the chances of survival for the group as a whole. Through teamwork, careful design, and <strong class="kw">persistence</strong>, the long-tailed tit proves that even the smallest creatures can achieve impressive things.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊二】8句精讀</h2>
+<div class="card analysis">
+<div class="head">8句精讀 Eight Key Sentence Analyses</div>
+<div class="body">
+<div class="item"><h3><span class="num">①</span>句子一</h3><div class="quote"><em>Life of the long-tailed tit is both simple and extraordinary.</em></div><div class="trans">長尾山雀的生活既簡單又非凡。</div><div class="parse"><strong>文法解析：</strong>本句使用 <strong>both A and B</strong> 對等連接結構，把 simple 和 extraordinary 兩個形容詞並列。這種句型常用來強調同一個主詞同時具備兩種特質。A 和 B 的詞性要一致，因此此處兩邊都用形容詞。</div><div class="shine"><strong>亮點詞彙／片語：</strong><div class="pills"><span class="pill">extraordinary 非凡的</span><span class="pill">both A and B 既 A 又 B</span></div></div></div>
+<div class="item"><h3><span class="num">②</span>句子二</h3><div class="quote"><em>This small bird, easily recognized by its round body and very long tail, lives in forests, parks, and gardens across Europe and Asia.</em></div><div class="trans">這種小鳥很容易因其圓滾滾的身體和很長的尾巴而被辨認出來，牠生活在歐洲與亞洲各地的森林、公園和花園中。</div><div class="parse"><strong>文法解析：</strong><strong>easily recognized by...</strong> 是過去分詞片語，放在名詞 this small bird 後面補充說明。它可還原為 which is easily recognized by...，屬於簡化的形容詞子句。句子的主要主詞是 This small bird，主要動詞是 lives。</div><div class="shine"><strong>亮點詞彙／片語：</strong><div class="pills"><span class="pill">recognized 被辨認出來的</span><span class="pill">across Europe and Asia 遍及歐亞</span></div></div></div>
+<div class="item"><h3><span class="num">③</span>句子三</h3><div class="quote"><em>At first glance, it appears fragile and defenseless, weighing only a few grams.</em></div><div class="trans">乍看之下，牠顯得脆弱且毫無防衛能力，重量只有幾公克。</div><div class="parse"><strong>文法解析：</strong><strong>At first glance</strong> 是句首副詞片語，表示「第一眼看起來」。appears 是連綴動詞，後面接形容詞 fragile and defenseless 作主詞補語。weighing only a few grams 是分詞構句，補充說明牠看起來脆弱的原因或背景。</div><div class="shine"><strong>亮點詞彙／片語：</strong><div class="pills"><span class="pill">fragile 脆弱的</span><span class="pill">defenseless 無防衛能力的</span><span class="pill">at first glance 乍看之下</span></div></div></div>
+<div class="item"><h3><span class="num">④</span>句子四</h3><div class="quote"><em>However, behind its soft feathers lies a life full of careful planning and cooperation, especially during the breeding season.</em></div><div class="trans">然而，在牠柔軟的羽毛背後，是一段充滿細心規劃與合作的生活，尤其是在繁殖季節。</div><div class="parse"><strong>文法解析：</strong>本句是地方副詞片語置於句首造成的倒裝句，正常語序可理解為 a life full of careful planning and cooperation lies behind its soft feathers。behind its soft feathers 先出現，讓讀者先看到表面形象，再轉入真正重點。full of... 是形容詞片語，修飾 a life。</div><div class="shine"><strong>亮點詞彙／片語：</strong><div class="pills"><span class="pill">cooperation 合作</span><span class="pill">breeding season 繁殖季</span></div></div></div>
+<div class="item"><h3><span class="num">⑤</span>句子五</h3><div class="quote"><em>Despite its delicate appearance, the long-tailed tit is capable of remarkable engineering.</em></div><div class="trans">儘管外表纖細，長尾山雀卻具備驚人的築巢工程能力。</div><div class="parse"><strong>文法解析：</strong><strong>Despite + 名詞</strong> 表示「儘管……」，despite 是介系詞，後面不可直接接完整子句。is capable of 後面接名詞或動名詞，表示「有能力做某事」。本句用外表和能力形成明顯對比。</div><div class="shine"><strong>亮點詞彙／片語：</strong><div class="pills"><span class="pill">delicate 纖細的</span><span class="pill">capable of 有能力</span><span class="pill">remarkable 驚人的</span></div></div></div>
+<div class="item"><h3><span class="num">⑥</span>句子六</h3><div class="quote"><em>Each pair builds a nest that is both strong and flexible, using materials such as moss, spider silk, and lichen.</em></div><div class="trans">每一對鳥都會建造一個既堅固又有彈性的巢，使用苔蘚、蜘蛛絲和地衣等材料。</div><div class="parse"><strong>文法解析：</strong><strong>that is both strong and flexible</strong> 是形容詞子句，修飾前面的 a nest。using materials... 是現在分詞片語，補充說明築巢時使用的方法與材料。such as 用來舉例，後面接同類名詞。</div><div class="shine"><strong>亮點詞彙／片語：</strong><div class="pills"><span class="pill">flexible 有彈性的</span><span class="pill">materials 材料</span><span class="pill">such as 例如</span></div></div></div>
+<div class="item"><h3><span class="num">⑦</span>句子七</h3><div class="quote"><em>Spider silk plays a key role, as it allows the nest to stretch as the chicks grow.</em></div><div class="trans">蜘蛛絲扮演關鍵角色，因為它能讓巢隨著雛鳥成長而伸展。</div><div class="parse"><strong>文法解析：</strong>第一個 as 引導原因子句，意思接近 because。第二個 as 引導時間副詞子句，表示「隨著……」。allows the nest to stretch 是 <strong>allow + 受詞 + to V</strong>，其中 to 是不定詞標記，不是介系詞。</div><div class="shine"><strong>亮點詞彙／片語：</strong><div class="pills"><span class="pill">play a key role 扮演關鍵角色</span><span class="pill">stretch 伸展</span></div></div></div>
+<div class="item"><h3><span class="num">⑧</span>句子八</h3><div class="quote"><em>Through teamwork, careful design, and persistence, the long-tailed tit proves that even the smallest creatures can achieve impressive things.</em></div><div class="trans">透過團隊合作、細心設計與堅持，長尾山雀證明了即使是最小的生物也能完成令人印象深刻的事。</div><div class="parse"><strong>文法解析：</strong><strong>Through...</strong> 是介系詞片語，表示手段或方法。proves 後面接 that 名詞子句，作為 proves 的受詞。even 用來加強語氣，強調 smallest creatures 這個看似不可能的主詞也能達成 impressive things。</div><div class="shine"><strong>亮點詞彙／片語：</strong><div class="pills"><span class="pill">persistence 堅持</span><span class="pill">achieve 達成</span><span class="pill">impressive 令人印象深刻的</span></div></div></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊三】20個單字整理</h2>
+<div class="card vocab">
+<div class="head">20個關鍵單字 Vocabulary</div>
+<div class="body">
+<div class="item"><div class="vtop"><span class="vnum">1</span><span class="word">extraordinary</span><span class="kk">[ɪkˈstrɔrdəˌnɛrɪ]</span><strong>adj.</strong> 非凡的；異常的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>ordinary (adj. 普通的)；extraordinarily (adv. 非常地；非凡地)；ordinarily (adv. 通常地)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>an extraordinary achievement 非凡成就；extraordinary ability 卓越能力；nothing extraordinary 沒什麼特別</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>truly extraordinary courage 真正非凡的勇氣；an extraordinary discovery 非凡發現</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>extraordinary 強調超乎平常；special 只表示特別，不一定很驚人。</span></div><p>Life of the long-tailed tit is both simple and extraordinary.<br>（長尾山雀的生活既簡單又非凡。）</p><p>The rescue team showed extraordinary courage during the storm.<br>（救援隊在暴風雨中展現了非凡的勇氣。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">2</span><span class="word">recognize</span><span class="kk">[ˈrɛkəɡˌnaɪz]</span><strong>v.</strong> 認出；承認；認可</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>recognized (adj. 被認可的；可辨認的)；recognition (n. 認出；認可)；recognizable (adj. 可辨認的)</span></div><div class="tagrow"><span class="tag root">字根</span><span>cogn / gn「知道」：cognition 認知；ignore 忽視；diagnosis 診斷</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>recognize a face 認出一張臉；be recognized by 以……被辨認；officially recognize 正式承認</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a widely recognized symbol 廣為人知的象徵；easily recognized features 容易辨認的特徵</span></div><p>This small bird is easily recognized by its round body and very long tail.<br>（這種小鳥很容易因圓身體和長尾巴而被辨認出來。）</p><p>I recognized my classmate by her bright red backpack.<br>（我靠她鮮紅色的背包認出了我的同學。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">3</span><span class="word">fragile</span><span class="kk">[ˈfrædʒəl]</span><strong>adj.</strong> 脆弱的；易碎的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>fragility (n. 脆弱性)；fragilely (adv. 脆弱地)；fragment (n. 碎片)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>fragile glass 易碎玻璃；a fragile body 脆弱的身體；fragile peace 脆弱的和平</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>extremely fragile wings 極為脆弱的翅膀；a fragile relationship 脆弱關係</span></div><div class="tagrow"><span class="tag confuse">容易混淆</span><span>fragile 指容易受損；weak 指力量不足，範圍較廣。</span></div><p>At first glance, it appears fragile and defenseless, weighing only a few grams.<br>（乍看之下，牠顯得脆弱且毫無防衛能力，重量只有幾公克。）</p><p>The old vase is beautiful but very fragile.<br>（那只舊花瓶很美，但非常易碎。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">4</span><span class="word">defenseless</span><span class="kk">[dɪˈfɛnsləs]</span><strong>adj.</strong> 無防衛能力的；無助的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>defense (n. 防衛；防禦)；defend (v. 保護；防衛)；defensive (adj. 防禦性的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>defenseless animals 無防衛能力的動物；defend against attacks 防禦攻擊；in defense of 為……辯護</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>completely defenseless chicks 完全無防衛能力的雛鳥；a defenseless position 無助處境</span></div><p>At first glance, it appears fragile and defenseless, weighing only a few grams.<br>（乍看之下，牠顯得脆弱且毫無防衛能力，重量只有幾公克。）</p><p>The baby birds were defenseless without their parents nearby.<br>（沒有父母在附近時，雛鳥毫無防衛能力。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">5</span><span class="word">cooperation</span><span class="kk">[koˌɑpəˈreʃən]</span><strong>n.</strong> 合作；協力</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>cooperate (v. 合作)；cooperative (adj. 合作的)；cooperator (n. 合作者)</span></div><div class="tagrow"><span class="tag root">字根</span><span>co-「共同」+ oper「工作」：operate 操作；operation 運作；operator 操作者</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>international cooperation 國際合作；close cooperation 密切合作；cooperate with 與……合作</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>strong cooperation 強力合作；effective cooperation 有效合作</span></div><p>Behind its soft feathers lies a life full of careful planning and cooperation.<br>（在牠柔軟的羽毛背後，是充滿細心規劃與合作的生活。）</p><p>Good cooperation helped the students finish the project early.<br>（良好的合作幫助學生提早完成專題。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">6</span><span class="word">breeding</span><span class="kk">[ˈbridɪŋ]</span><strong>n./adj.</strong> 繁殖；繁殖的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>breed (v. 繁殖；飼養)；breeder (n. 飼養者)；bred (v. breed 的過去式與過去分詞)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>breeding season 繁殖季；breeding ground 溫床；animal breeding 動物繁殖</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>a short breeding season 短暫繁殖季；successful breeding 成功繁殖</span></div><p>Their cooperation is especially important during the breeding season.<br>（牠們的合作在繁殖季節尤其重要。）</p><p>Many birds return to the same area during the breeding season.<br>（許多鳥在繁殖季會回到同一個地區。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">7</span><span class="word">delicate</span><span class="kk">[ˈdɛləkət]</span><strong>adj.</strong> 纖細的；精緻的；微妙的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>delicacy (n. 精緻；佳餚)；delicately (adv. 精細地)；delicateness (n. 纖細)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>delicate appearance 纖細外表；delicate balance 微妙平衡；delicate skin 嬌嫩皮膚</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>surprisingly delicate structure 出乎意料地精細的結構；a delicate issue 微妙議題</span></div><p>Despite its delicate appearance, the long-tailed tit is capable of remarkable engineering.<br>（儘管外表纖細，長尾山雀卻具備驚人的築巢工程能力。）</p><p>The artist used delicate lines to draw the bird's feathers.<br>（藝術家用精細的線條畫出鳥的羽毛。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">8</span><span class="word">capable</span><span class="kk">[ˈkepəbəl]</span><strong>adj.</strong> 有能力的；能幹的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>capability (n. 能力)；capacity (n. 容量；能力)；capably (adv. 能幹地)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>be capable of 有能力；capable student 能幹的學生；capable leader 有能力的領導者</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>highly capable engineers 很能幹的工程師；capable of change 有能力改變</span></div><div class="tagrow"><span class="tag focus">句型</span><span>be capable of + N/V-ing；of 是介系詞，後面若接動作要用 V-ing。</span></div><p>The long-tailed tit is capable of remarkable engineering.<br>（長尾山雀具備驚人的築巢工程能力。）</p><p>She is capable of solving difficult problems on her own.<br>（她有能力獨自解決困難問題。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">9</span><span class="word">remarkable</span><span class="kk">[rɪˈmɑrkəbəl]</span><strong>adj.</strong> 值得注意的；非凡的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>remark (n./v. 評論)；remarkably (adv. 顯著地)；remarked (v. 評論了)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>remarkable progress 顯著進步；remarkable engineering 驚人工程；a remarkable story 非凡故事</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>truly remarkable skill 真正驚人的技巧；remarkably flexible 非常有彈性</span></div><p>The long-tailed tit is capable of remarkable engineering.<br>（長尾山雀具備驚人的築巢工程能力。）</p><p>The team made remarkable progress in just two weeks.<br>（這個團隊在短短兩週內取得顯著進步。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">10</span><span class="word">flexible</span><span class="kk">[ˈflɛksəbəl]</span><strong>adj.</strong> 有彈性的；可變通的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>flexibility (n. 彈性；適應性)；flexibly (adv. 彈性地)；flex (v. 彎曲)</span></div><div class="tagrow"><span class="tag root">字根</span><span>flex「彎曲」：reflect 反射；deflect 使偏斜；flexibility 彈性</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>flexible schedule 彈性行程；flexible material 有彈性的材料；remain flexible 保持彈性</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>highly flexible design 高度彈性的設計；a flexible plan 彈性計畫</span></div><p>Each pair builds a nest that is both strong and flexible.<br>（每一對鳥都會建造一個既堅固又有彈性的巢。）</p><p>A flexible schedule helps students manage their time better.<br>（彈性行程能幫助學生更好地管理時間。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">11</span><span class="word">material</span><span class="kk">[məˈtɪrɪəl]</span><strong>n.</strong> 材料；素材</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>materials (n. 材料，複數)；materialize (v. 實現；成形)；materialistic (adj. 物質主義的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>building materials 建材；raw materials 原料；teaching materials 教材</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>natural materials 天然材料；soft materials 柔軟材料</span></div><p>Each pair builds a nest using materials such as moss, spider silk, and lichen.<br>（每一對鳥都使用苔蘚、蜘蛛絲和地衣等材料築巢。）</p><p>The students used recycled materials to make a model house.<br>（學生使用回收材料製作模型屋。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">12</span><span class="word">lichen</span><span class="kk">[ˈlaɪkən]</span><strong>n.</strong> 地衣</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>lichen-covered (adj. 覆滿地衣的)；lichenous (adj. 地衣似的)；lichens (n. 地衣，複數)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>covered with lichen 覆蓋著地衣；lichen on rocks 岩石上的地衣；a lichen-covered branch 覆滿地衣的樹枝</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>pale lichen 淡色地衣；dry lichen 乾燥地衣</span></div><p>The pair uses materials such as moss, spider silk, and lichen.<br>（這對鳥使用苔蘚、蜘蛛絲和地衣等材料。）</p><p>Lichen can grow slowly on rocks and old trees.<br>（地衣可以在岩石和老樹上慢慢生長。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">13</span><span class="word">layer</span><span class="kk">[ˈleɚ]</span><strong>n.</strong> 層；階層</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>layered (adj. 分層的)；layering (n. 分層)；multilayered (adj. 多層的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>outer layer 外層；a thin layer 薄薄一層；ozone layer 臭氧層</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>protective layer 保護層；thick outer layer 厚外層</span></div><p>The outer layer is covered with lichen.<br>（外層覆蓋著地衣。）</p><p>Please add a thin layer of paint to the wooden box.<br>（請在木盒上加一層薄薄的油漆。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">14</span><span class="word">surroundings</span><span class="kk">[səˈraʊndɪŋz]</span><strong>n.</strong> 周遭環境；周圍事物</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>surround (v. 包圍)；surrounding (adj. 周圍的)；surrounded (adj. 被包圍的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>blend into surroundings 融入環境；natural surroundings 自然環境；be surrounded by 被……包圍</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>peaceful surroundings 寧靜環境；familiar surroundings 熟悉環境</span></div><p>Lichen helps the nest blend into its surroundings and avoid predators.<br>（地衣幫助巢融入周遭環境並避開掠食者。）</p><p>New students need time to get used to their surroundings.<br>（新生需要時間適應周遭環境。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">15</span><span class="word">predator</span><span class="kk">[ˈprɛdətɚ]</span><strong>n.</strong> 掠食者；捕食性動物</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>predators (n. 掠食者，複數)；predatory (adj. 掠食性的)；prey (n. 獵物)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>avoid predators 避開掠食者；natural predator 天敵；top predator 頂級掠食者</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>dangerous predators 危險掠食者；hidden predators 隱藏的掠食者</span></div><p>The nest blends into its surroundings and helps the chicks avoid predators.<br>（這個巢融入周遭環境，幫助雛鳥避開掠食者。）</p><p>Small fish often hide among rocks to escape predators.<br>（小魚常躲在岩石間以逃離掠食者。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">16</span><span class="word">complete</span><span class="kk">[kəmˈplit]</span><strong>v./adj.</strong> 完成；完整的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>completion (n. 完成)；completely (adv. 完全地)；completing (v-ing 完成)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>complete a task 完成任務；up to three weeks completing 花最多三週完成；complete control 完全控制</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>successfully complete 成功完成；a complete answer 完整答案</span></div><p>A pair may spend up to three weeks completing it.<br>（一對鳥可能花最多三週完成它。）</p><p>We must complete the report before Friday afternoon.<br>（我們必須在星期五下午前完成報告。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">17</span><span class="word">constantly</span><span class="kk">[ˈkɑnstəntlɪ]</span><strong>adv.</strong> 不斷地；經常地</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>constant (adj. 持續的)；constancy (n. 持續性)；inconstant (adj. 易變的)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>work constantly 不斷工作；constantly changing 持續改變；constant effort 持續努力</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>almost constantly 幾乎不斷地；constant pressure 持續壓力</span></div><p>The parents must work constantly to feed their young after they hatch.<br>（幼鳥孵化後，親鳥必須不停工作來餵養牠們。）</p><p>My phone is constantly reminding me to drink water.<br>（我的手機不斷提醒我要喝水。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">18</span><span class="word">hatch</span><span class="kk">[hætʃ]</span><strong>v.</strong> 孵化；孵出</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>hatching (n./adj. 孵化；孵化中的)；hatched (adj. 已孵化的)；hatchling (n. 剛孵出的幼體)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>eggs hatch 蛋孵化；after they hatch 在牠們孵化後；hatch a plan 策劃計畫</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>newly hatched chicks 剛孵化的雛鳥；successfully hatch 成功孵化</span></div><p>The parents must work constantly to feed their young after they hatch.<br>（幼鳥孵化後，親鳥必須不停工作來餵養牠們。）</p><p>The eggs will hatch in about two weeks.<br>（這些蛋大約兩週後會孵化。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">19</span><span class="word">cooperative</span><span class="kk">[koˈɑpərətɪv]</span><strong>adj.</strong> 合作的；協力的</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>cooperate (v. 合作)；cooperation (n. 合作)；cooperatively (adv. 合作地)</span></div><div class="tagrow"><span class="tag root">字根</span><span>co-「共同」+ oper「工作」：cooperate 合作；operation 運作；operator 操作者</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>cooperative system 合作系統；cooperative learning 合作學習；be cooperative 配合</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>highly cooperative members 高度配合的成員；a cooperative attitude 合作態度</span></div><p>This cooperative system increases the chances of survival for the group as a whole.<br>（這種合作系統提高了整個群體的生存機會。）</p><p>A cooperative attitude makes group work easier.<br>（合作的態度會讓小組工作更容易。）</p></div>
+<div class="item"><div class="vtop"><span class="vnum">20</span><span class="word">persistence</span><span class="kk">[pɚˈsɪstəns]</span><strong>n.</strong> 堅持；毅力</div><div class="tagrow"><span class="tag deriv">衍生詞</span><span>persist (v. 堅持；持續)；persistent (adj. 堅持不懈的)；persistently (adv. 堅持地)</span></div><div class="tagrow"><span class="tag phrase">片語</span><span>through persistence 透過堅持；show persistence 展現毅力；persistent effort 持續努力</span></div><div class="tagrow"><span class="tag idiom">慣用語</span><span>great persistence 極大毅力；quiet persistence 默默堅持</span></div><p>Through teamwork, careful design, and persistence, the long-tailed tit proves that even the smallest creatures can achieve impressive things.<br>（透過團隊合作、細心設計與堅持，長尾山雀證明了即使是最小的生物也能完成令人印象深刻的事。）</p><p>Her persistence helped her improve her English writing.<br>（她的堅持幫助她改善英文寫作。）</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<h2>【區塊四】文法解析</h2>
+<div class="card grammar">
+<div class="head">3個文法點 Grammar Focus</div>
+<div class="body">
+<div class="item grammar-point"><h3>【介系詞 despite】Despite + N/V-ing 儘管……</h3><p><strong>【引句 Quote】</strong></p><blockquote><em>Despite its delicate appearance, the long-tailed tit is capable of remarkable engineering.</em></blockquote><p><strong>【句型】</strong></p><p><strong><em>Despite + N/V-ing, S + V...</em></strong></p><p><strong>【核心說明】</strong></p><p>despite 是介系詞，用來表達讓步，意思是「儘管……」。它後面通常接名詞、名詞片語或動名詞，不直接接主詞加動詞的完整子句。</p><p><strong>【使用規則】</strong></p><ul><li>despite + 名詞：Despite the rain, we went out.</li><li>despite + V-ing：Despite feeling tired, she kept reading.</li><li>若要接完整子句，應使用 although、though 或 even though。</li><li>despite the fact that + 子句 是正式用法，但句子較長。</li></ul><p><strong>【主題例句】</strong></p><p>Despite its tiny size, the bird builds a strong nest.<br>（儘管體型很小，這種鳥會築出堅固的巢。）</p><p><strong>【學習提醒】</strong></p><p>很多學生會把 despite 當連接詞使用，但它是介系詞。看到 despite 後面若出現 he is、it was 這種完整子句，通常就要改成 although 或改成 V-ing。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p><p>✗ Despite it looks weak, the bird is skillful.</p><p>✓ Although it looks weak, the bird is skillful.</p><p>說明：despite 後不可直接接完整子句；若要保留子句，需改用 although。</p><p>題目：_____ its delicate appearance, the long-tailed tit builds a strong nest. (A) Although (B) Despite (C) Because (D) When</p><p>答案：B。說明：空格後是名詞片語 its delicate appearance，所以用介系詞 Despite。</p></div>
+<div class="item grammar-point"><h3>【分詞片語】Participial Phrase 分詞補充說明</h3><p><strong>【引句 Quote】</strong></p><blockquote><em>Each pair builds a nest that is both strong and flexible, using materials such as moss, spider silk, and lichen.</em></blockquote><p><strong>【句型】</strong></p><p><strong><em>S + V..., V-ing...</em></strong></p><p><strong>【核心說明】</strong></p><p>現在分詞片語可以放在主要子句後面，補充說明方法、原因、結果或伴隨動作。本句 using materials... 說明長尾山雀築巢時使用的材料。</p><p><strong>【使用規則】</strong></p><ul><li>分詞片語的邏輯主詞通常要和主要子句主詞一致。</li><li>V-ing 常表示主動或同時發生的動作。</li><li>若是被動意義，通常改用過去分詞 p.p.。</li><li>分詞片語常用逗號和主要子句分開。</li></ul><p><strong>【主題例句】</strong></p><p>The birds flew back to the nest, carrying food for their chicks.<br>（這些鳥飛回巢中，帶著食物給牠們的雛鳥。）</p><p><strong>【學習提醒】</strong></p><p>使用分詞片語時，要確認補充動作是誰做的。如果主要子句主詞和分詞動作的執行者不同，句子會變得不清楚。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p><p>✗ Using spider silk, the nest becomes flexible.</p><p>✓ Using spider silk, each pair makes the nest flexible.</p><p>說明：使用蜘蛛絲的是 each pair，不是 nest，因此主要子句主詞要改成真正做動作的人或動物。</p><p>題目：The bird built a nest, _____ soft feathers inside. (A) place (B) placed (C) placing (D) to placing</p><p>答案：C。說明：placing 是現在分詞，補充說明築巢時的伴隨動作。</p></div>
+<div class="item grammar-point"><h3>【關係子句】Relative Clause 形容詞子句</h3><p><strong>【引句 Quote】</strong></p><blockquote><em>Each pair builds a nest that is both strong and flexible.</em></blockquote><p><strong>【句型】</strong></p><p><strong><em>N + that/which + V...</em></strong></p><p><strong>【核心說明】</strong></p><p>關係子句用來修飾前面的名詞，提供更多資訊。本句 that is both strong and flexible 修飾 a nest，說明這個巢的特性。</p><p><strong>【使用規則】</strong></p><ul><li>that 可修飾人或物；which 通常修飾物。</li><li>關係代名詞若在子句中作主詞，通常不可省略。</li><li>形容詞子句要緊跟被修飾的名詞，避免修飾對象不清楚。</li><li>若子句是 be + 分詞，可常簡化為分詞片語。</li></ul><p><strong>【主題例句】</strong></p><p>The chicks need a nest that can stretch as they grow.<br>（雛鳥需要一個能隨著牠們成長而伸展的巢。）</p><p><strong>【學習提醒】</strong></p><p>寫作時不要把關係子句放得太遠，否則讀者不容易判斷它修飾哪個名詞。先找出要補充的名詞，再把 that/which 子句接在它後面。</p><p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p><p>✗ Each pair builds a nest is strong and flexible.</p><p>✓ Each pair builds a nest that is strong and flexible.</p><p>說明：英文不能把兩個動詞 builds 和 is 直接放在同一句中而沒有連接；需加 that 形成形容詞子句。</p><p>題目：The material _____ helps the nest stretch is spider silk. (A) who (B) that (C) what (D) where</p><p>答案：B。說明：先行詞 material 是物，且關係代名詞在子句中作主詞，因此用 that。</p></div>
+</div>
+</div>
+</section>
+
+<details>
+<summary>常見字首整理（50個）<span class="arrow">▼</span></summary>
+<div class="detail-body small-list">
+<p>ab-　離開、相反　—　abnormal（異常的）</p><p>ad-　向、加　—　advance（前進）</p><p>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</p><p>anti-　反對、抗　—　antibiotic（抗生素）</p><p>arch-　主要、首要　—　archenemy（死敵）</p><p>auto-　自動、自我　—　autograph（親筆簽名）</p><p>bene-　好的、善　—　benefit（好處）</p><p>bi-　二、雙　—　bilingual（雙語的）</p><p>circum-　環繞、周圍　—　circumstance（情況）</p><p>co-/con-/com-　一起、共同　—　cooperate（合作）</p><p>contra-　相反、對抗　—　contradict（反駁）</p><p>de-　去除、下降　—　decode（解碼）</p><p>dia-　穿過、透過　—　dialogue（對話）</p><p>dis-　否定、分離　—　disagree（不同意）</p><p>en-/em-　使成為　—　enable（使能夠）</p><p>epi-　在上、在外　—　epidemic（流行病）</p><p>ex-　外、前任　—　export（出口）；ex-president（前總統）</p><p>extra-　額外、外部　—　extraordinary（非凡的）</p><p>hetero-　不同　—　heterogeneous（異質的）</p><p>homo-　相同　—　homogeneous（同質的）</p><p>hyper-　過度、超　—　hyperactive（過動的）</p><p>hypo-　低於、不足　—　hypodermic（皮下的）</p><p>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</p><p>inter-　在…之間　—　international（國際的）</p><p>iso-　相等、相同　—　isolate（隔離）</p><p>mal-　壞、不良　—　malfunction（故障）</p><p>micro-　微小　—　microscope（顯微鏡）</p><p>mis-　錯誤　—　misunderstand（誤解）</p><p>mono-　單一　—　monologue（獨白）</p><p>multi-　多　—　multicultural（多元文化的）</p><p>neo-　新的　—　neonatal（新生的）</p><p>non-　非、沒有　—　nonsense（無意義）</p><p>pan-　全部　—　pandemic（大流行病）</p><p>peri-　周圍　—　perimeter（周長）</p><p>poly-　多　—　polygon（多邊形）</p><p>post-　之後　—　postwar（戰後的）</p><p>pre-　之前　—　preview（預覽）</p><p>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</p><p>pseudo-　假的　—　pseudonym（筆名）</p><p>re-　再、回　—　review（複習）</p><p>semi-　一半、部分　—　semicircle（半圓）</p><p>sub-　在下、次級　—　subway（地鐵）</p><p>super-　超越、在上　—　superstar（超級明星）</p><p>syn-/sym-　一起、共同　—　synchronize（同步）</p><p>tele-　遠距　—　telephone（電話）</p><p>trans-　穿越、轉變　—　transport（運輸）</p><p>tri-　三　—　triangle（三角形）</p><p>un-　否定、不　—　unhappy（不快樂的）</p><p>vice-　副、代替　—　vice-president（副總統）</p>
+</div>
+</details>
+
+<details>
+<summary>常見英文字尾整理（約30個）<span class="arrow">▼</span></summary>
+<div class="detail-body small-list">
+<p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</p><p>-ment　行為或結果　—　agreement（協議）、development（發展）</p><p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p><p>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p><p>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p><p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p><p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p><p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p><p>-ance/-ence　狀態或行為　—　persistence（堅持）、difference（差異）</p><p>-cy　狀態或性質　—　privacy（隱私）、accuracy（準確）</p><p>-dom　領域或狀態　—　freedom（自由）、kingdom（王國）</p><p>-ism　主義或制度　—　realism（寫實主義）、tourism（觀光業）</p><p>-age　集合或結果　—　package（包裹）、shortage（短缺）</p><p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</p><p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p><p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p><p>-less　缺乏…的　—　defenseless（無防衛能力的）、powerless（無力的）</p><p>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p><p>-ive　具有…性質的　—　cooperative（合作的）、active（活躍的）</p><p>-ary/-ory　與…有關的　—　ordinary（普通的）、sensory（感官的）</p><p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</p><p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p><p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p><p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p><p>-ly　形容詞轉副詞　—　constantly（不斷地）、carefully（仔細地）</p><p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p><p>-wise　表示方式或角度　—　clockwise（順時針方向）</p><p>-ing　動名詞或現在分詞　—　breeding（繁殖）、building（建造）</p><p>-ed　過去式、過去分詞或形容詞　—　recognized（被辨認的）、covered（覆蓋的）</p><p>-est　最高級　—　smallest（最小的）、strongest（最強的）</p>
+</div>
+</details>
+
+<details>
+<summary>30個常用單字與衍生詞<span class="arrow">▼</span></summary>
+<div class="detail-body">
+<p>1. life [laɪf] (n. 生活；生命) — lifetime [ˈlaɪfˌtaɪm] (n. 一生)</p><p>2. simple [ˈsɪmpəl] (adj. 簡單的) — simply [ˈsɪmplɪ] (adv. 簡單地)</p><p>3. extraordinary [ɪkˈstrɔrdəˌnɛrɪ] (adj. 非凡的) — extraordinarily (adv. 非凡地)</p><p>4. recognize [ˈrɛkəɡˌnaɪz] (v. 認出) — recognition (n. 認可)</p><p>5. fragile [ˈfrædʒəl] (adj. 脆弱的) — fragility (n. 脆弱)</p><p>6. defenseless [dɪˈfɛnsləs] (adj. 無防衛能力的) — defense (n. 防衛)</p><p>7. feather [ˈfɛðɚ] (n. 羽毛) — feathered (adj. 有羽毛的)</p><p>8. cooperation [koˌɑpəˈreʃən] (n. 合作) — cooperate (v. 合作)</p><p>9. breeding [ˈbridɪŋ] (n. 繁殖) — breed (v. 繁殖)</p><p>10. delicate [ˈdɛləkət] (adj. 纖細的) — delicacy (n. 精緻；佳餚)</p><p>11. appearance [əˈpɪrəns] (n. 外表) — appear (v. 顯得；出現)</p><p>12. capable [ˈkepəbəl] (adj. 有能力的) — capability (n. 能力)</p><p>13. remarkable [rɪˈmɑrkəbəl] (adj. 驚人的) — remarkably (adv. 顯著地)</p><p>14. engineering [ˌɛndʒəˈnɪrɪŋ] (n. 工程) — engineer (n. 工程師)</p><p>15. flexible [ˈflɛksəbəl] (adj. 有彈性的) — flexibility (n. 彈性)</p><p>16. material [məˈtɪrɪəl] (n. 材料) — materialize (v. 實現)</p><p>17. entrance [ˈɛntrəns] (n. 入口) — enter (v. 進入)</p><p>18. stretch [strɛtʃ] (v. 伸展) — stretching (n. 伸展)</p><p>19. layer [ˈleɚ] (n. 層) — layered (adj. 分層的)</p><p>20. surroundings [səˈraʊndɪŋz] (n. 周遭環境) — surround (v. 包圍)</p><p>21. predator [ˈprɛdətɚ] (n. 掠食者) — predatory (adj. 掠食性的)</p><p>22. complete [kəmˈplit] (v. 完成) — completion (n. 完成)</p><p>23. gather [ˈɡæðɚ] (v. 收集) — gathering (n. 聚集)</p><p>24. constantly [ˈkɑnstəntlɪ] (adv. 不斷地) — constant (adj. 持續的)</p><p>25. hatch [hætʃ] (v. 孵化) — hatchling (n. 剛孵出的幼體)</p><p>26. behavior [bɪˈhevjɚ] (n. 行為) — behave (v. 表現)</p><p>27. cooperative [koˈɑpərətɪv] (adj. 合作的) — cooperatively (adv. 合作地)</p><p>28. survival [sɚˈvaɪvəl] (n. 生存) — survive (v. 生存)</p><p>29. persistence [pɚˈsɪstəns] (n. 堅持) — persistent (adj. 堅持不懈的)</p><p>30. impressive [ɪmˈprɛsɪv] (adj. 令人印象深刻的) — impress (v. 使印象深刻)</p>
+<p>文章相關常用片語 5 個（附中文）：</p>
+<p>• at first glance（乍看之下）</p><p>• be capable of（有能力）</p><p>• play a key role（扮演關鍵角色）</p><p>• blend into its surroundings（融入周遭環境）</p><p>• as a whole（整體而言）</p>
+</div>
+</details>
+
+<details>
+<summary>練文筆食材<span class="arrow">▼</span></summary>
+<div class="detail-body">
+<p>① both A and B（既 A 又 B）<br>→ 適用：同時描述兩個特點。<br>例：The plan is both simple and effective.</p>
+<p>② be recognized by...（因……而被辨認）<br>→ 適用：介紹人事物的明顯特徵。<br>例：The building is recognized by its glass roof.</p>
+<p>③ At first glance, S + V（乍看之下，……）<br>→ 適用：先寫表面印象，再轉折到真實情況。<br>例：At first glance, the task seemed easy.</p>
+<p>④ Behind N lies N（在……背後，是……）<br>→ 適用：寫出表象與深層意義的對比。<br>例：Behind his success lies years of practice.</p>
+<p>⑤ Despite + N/V-ing（儘管……）<br>→ 適用：表達讓步與對比。<br>例：Despite the pressure, she stayed calm.</p>
+<p>⑥ be capable of + N/V-ing（有能力……）<br>→ 適用：描述能力或潛力。<br>例：Young people are capable of changing society.</p>
+<p>⑦ such as + N（例如……）<br>→ 適用：舉出具體例子。<br>例：We can reduce waste by using materials such as paper and glass again.</p>
+<p>⑧ play a key role（扮演關鍵角色）<br>→ 適用：說明某因素的重要性。<br>例：Education plays a key role in social progress.</p>
+<p>⑨ as S + V（隨著……）<br>→ 適用：描述兩件事同步變化。<br>例：As students grow older, they become more independent.</p>
+<p>⑩ In addition, S + V（此外，……）<br>→ 適用：補充同方向資訊。<br>例：In addition, the new rule saves time.</p>
+<p>⑪ help + O + V（幫助某人／某物……）<br>→ 適用：描述功能或效果。<br>例：Clear notes help students review lessons quickly.</p>
+<p>⑫ instead of + V-ing/N（而不是……）<br>→ 適用：對比兩種選擇。<br>例：He chose to apologize instead of making excuses.</p>
+<p>⑬ increase the chances of...（增加……的機會）<br>→ 適用：討論成功率或可能性。<br>例：Regular practice increases the chances of success.</p>
+<p>⑭ Through N, S + V（透過……，……）<br>→ 適用：說明方法與結果。<br>例：Through teamwork, the class finished the project.</p>
+<p>⑮ prove that S + V（證明……）<br>→ 適用：引出結論或論點。<br>例：The experience proved that small actions can matter.</p>
+</div>
+</details>
+<nav class="link-panel bottom" aria-label="課程與聯絡連結">
+<p class="link-title">七月課程與聯絡資訊</p>
+<div class="link-grid">
+<a class="link-card link-echo" href="https://linwayet.github.io/4ulive/index.html">
+<strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+<span>用錯誤分析、回饋修正與反覆練習，幫助學生把英文弱點變成可進步的方向。</span>
+</a>
+<a class="link-card link-analysis" href="https://linwayet.github.io/popup/index">
+<strong>學生分析</strong>
+<span>整理學生學習狀況與常見問題，方便掌握需要加強的單字、文法與閱讀能力。</span>
+</a>
+<a class="link-card link-line" href="https://line.me/ti/p/~linwayet">
+<strong>林威老師個人 Line</strong>
+<span>課程詢問、學習討論與聯絡使用。</span>
+<span class="line-id">Line ID：linwayet</span>
+</a>
+</div>
+</nav>
+</main>
+</body>
+</html>
