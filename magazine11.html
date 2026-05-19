@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Canterville Ghost</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFF4E8;
+      --text: #1A0F00;
+      --h1: #C0392B;
+      --h2: #1565C0;
+      --h3: #2E7D32;
+      --keyword: #0D47A1;
+      --orange: #E65100;
+      --purple: #6A1B9A;
+      --paper: #FFFFFF;
+      --shadow: rgba(26, 15, 0, 0.14);
+      --warm-card: #FFFDF8;
+      --warm-gold: #F9A825;
+      --warm-coral: #E65100;
+      --warm-rose: #C0392B;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 204, 128, 0.46), transparent 34rem),
+        linear-gradient(180deg, #FFF1DE 0%, #FFF8F0 42%, #FFEFD9 100%);
+      color: var(--text);
+      font-family: "BIZ UDPGothic", system-ui, sans-serif;
+      font-size: 23px;
+      line-height: 1.85;
+      font-weight: 400;
+    }
+
+    .page {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 28px 16px 18px;
+    }
+
+    h1 {
+      display: inline-block;
+      margin: 0 0 18px;
+      padding: 16px 28px;
+      border: 5px solid #C0392B;
+      border-radius: 8px;
+      color: var(--h1);
+      background: #FFFDF8;
+      font-size: clamp(3rem, 9vw, 4.6rem);
+      line-height: 1.18;
+      font-weight: 700;
+      letter-spacing: 0;
+      box-shadow: 0 8px 0 #F7C6B7, 0 18px 28px var(--shadow);
+    }
+
+    .subtitle {
+      margin: 0 0 12px;
+      color: var(--h2);
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .maker {
+      display: inline-block;
+      color: #0D47A1;
+      font-size: clamp(1.6rem, 4vw, 2.1rem);
+      font-weight: 700;
+      padding: 8px 18px;
+      border-bottom: 6px double #1565C0;
+      text-shadow: 2px 2px 0 #CFE8FF;
+    }
+
+    .resource-panel {
+      margin: 28px auto 36px;
+      padding: 18px;
+      border: 4px solid #F9A825;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFE0B2 52%, #FFF3E0 100%);
+      box-shadow: 0 12px 26px rgba(191, 54, 12, 0.18);
+    }
+
+    .resource-title {
+      margin: 0 0 14px;
+      color: #BF360C;
+      font-size: 1.55rem;
+      line-height: 1.35;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .resource-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .resource-link {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 118px;
+      padding: 16px;
+      border: 3px solid rgba(26, 15, 0, 0.12);
+      border-radius: 12px;
+      color: #1A0F00;
+      background: #FFFFFF;
+      text-decoration: none;
+      box-shadow: 0 6px 0 rgba(230, 81, 0, 0.18);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .resource-link:focus,
+    .resource-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 9px 0 rgba(230, 81, 0, 0.2);
+      outline: 4px solid rgba(21, 101, 192, 0.28);
+      outline-offset: 2px;
+    }
+
+    .resource-link strong {
+      display: block;
+      color: #C0392B;
+      font-size: 1.2rem;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .resource-link span {
+      display: block;
+      margin-top: 8px;
+      color: #4A3728;
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    .resource-link.course-a { border-color: #E65100; background: #FFF3E0; }
+    .resource-link.course-b { border-color: #2E7D32; background: #F1F8F2; }
+    .resource-link.line-id { border-color: #00A884; background: #E9FFF6; }
+
+    .bottom-resources {
+      margin-top: 42px;
+    }
+
+    section, details {
+      margin-top: 32px;
+    }
+
+    .section-title {
+      margin: 0;
+      padding: 16px 22px;
+      color: #FFFFFF;
+      font-size: 1.75rem;
+      line-height: 1.35;
+      font-weight: 700;
+      border-radius: 8px 8px 0 0;
+    }
+
+    .source-title { background: #0D47A1; }
+    .reading-title { background: #BF360C; }
+    .vocab-title { background: #1B5E20; }
+    .grammar-title { background: #4A148C; }
+    .fold-title { background: #4A3728; }
+
+    .card {
+      border: 4px solid;
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      padding: 24px;
+      background: var(--paper);
+    }
+
+    .source-card { border-color: #90CAF9; background: #F3F8FF; }
+    .reading-card { border-color: #FFAB91; background: #FFF3EF; }
+    .vocab-card { border-color: #81C784; background: #F1F8F2; }
+    .grammar-card { border-color: #CE93D8; background: #F9F0FF; }
+    .fold-card { border-color: #C4A06A; background: #FAF6F0; border-top: 4px solid #C4A06A; }
+
+    .article p {
+      margin: 0 0 1.25em;
+    }
+
+    strong.keyword {
+      color: var(--keyword);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .reading-item, .word-entry, .grammar-item {
+      margin: 0 0 28px;
+      padding: 22px;
+      border: 3px solid rgba(26, 15, 0, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.76);
+    }
+
+    .badge-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: #BF360C;
+      color: #FFFFFF;
+      font-size: 1.35rem;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+
+    .sentence {
+      display: block;
+      margin-top: 12px;
+      color: #4A148C;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .translation {
+      margin: 10px 0 14px;
+      color: #1A0F00;
+      font-weight: 700;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--h3);
+      font-size: 1.6rem;
+      line-height: 1.45;
+      font-weight: 700;
+    }
+
+    .small-heading {
+      color: #E65100;
+      font-weight: 700;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 700;
+      border: 2px solid rgba(26, 15, 0, 0.12);
+    }
+
+    .tag-der { background: #FDEDEC; color: #C0392B; }
+    .tag-root { background: #EBF5FB; color: #1565C0; }
+    .tag-phrase { background: #EAFAF1; color: #2E7D32; }
+    .tag-idiom { background: #FEF9E7; color: #D68910; }
+    .tag-confuse { background: #F5EEF8; color: #6A1B9A; }
+    .tag-focus { background: #FEF0E7; color: #E65100; }
+
+    .label-line {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 14px;
+      margin: 12px 0;
+      align-items: start;
+    }
+
+    .tag-label {
+      min-height: 44px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .examples {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 3px dotted rgba(26, 15, 0, 0.22);
+    }
+
+    .examples p {
+      margin: 0 0 10px;
+    }
+
+    .grammar-block-title {
+      color: #6A1B9A;
+      font-weight: 700;
+      margin-top: 16px;
+    }
+
+    ul, ol {
+      padding-left: 1.35em;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    summary {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 22px;
+      color: #FFFFFF;
+      background: #4A3728;
+      border-radius: 8px;
+      font-size: 1.55rem;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 260ms ease;
+      color: #FFD180;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    details[open] .arrow { transform: rotate(180deg); }
+
+    details[open] summary {
+      border-radius: 8px 8px 0 0;
+    }
+
+    .compact-list p {
+      margin: 0 0 10px;
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 22px; }
+      .page { width: min(100% - 20px, 900px); padding-top: 18px; }
+      .card, .reading-item, .word-entry, .grammar-item { padding: 18px; }
+      .label-line { grid-template-columns: 1fr; gap: 6px; }
+      .tag-label { text-align: left; }
+      .resource-panel { padding: 14px; }
+      .resource-links { grid-template-columns: 1fr; }
+      .resource-link { min-height: 92px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <h1>The Canterville Ghost</h1>
+      <p class="subtitle">勇氣、同情心與救贖的幽靈故事</p>
+      <p class="maker">林威老師與 AI agent 團隊製作</p>
+    </header>
+
+    <nav class="resource-panel" aria-label="課程與聯絡連結">
+      <p class="resource-title">七月課程與聯絡方式</p>
+      <div class="resource-links">
+        <a class="resource-link course-a" href="https://linwayet.github.io/4ulive/index.html">
+          <strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+          <span>從錯題回音中整理弱點，建立可複習、可追蹤的英文學習節奏。</span>
+        </a>
+        <a class="resource-link course-b" href="https://linwayet.github.io/popup/index">
+          <strong>學生分析</strong>
+          <span>用學習資料看見學生狀態，協助安排更精準的補強方向。</span>
+        </a>
+        <a class="resource-link line-id" href="https://line.me/ti/p/~linwayet">
+          <strong>林威老師 Line</strong>
+          <span>Line ID：linwayet，可加入後詢問課程與學習規劃。</span>
+        </a>
+      </div>
+    </nav>
+
+    <section>
+      <h2 class="section-title source-title">一、英文文章原文</h2>
+      <div class="card source-card article">
+        <p>When the <strong class="keyword">wealthy</strong> American Otis family decided to buy Canterville Chase, an old English house,<br>
+Lord Canterville <strong class="keyword">warned</strong> them about the ghosts that lived there.<br>
+For three hundred years, Sir Simon de Canterville had <strong class="keyword">haunted</strong> the house,<br>
+<strong class="keyword">terrifying</strong> everyone who <strong class="keyword">dared</strong> to stay in it.<br>
+But Mr. Otis simply laughed.<br>
+He was a <strong class="keyword">practical</strong> modern man who didn't believe in such <strong class="keyword">nonsense</strong>.<br>
+So the family, Mr. and Mrs. Otis, their daughter Virginia, their son Washington,<br>
+and the <strong class="keyword">mischievous</strong> young twins moved in without any fear at all.<br>
+Soon after they moved in, however, strange things began to happen.<br>
+There was a dark red mark on the library floor, said to be the blood of Lady Eleanor Canterville,<br>
+who had been <strong class="keyword">murdered</strong> by her husband, Sir Simon.<br>
+Mrs. Otis tried to clean it, but no matter how hard she tried,<br>
+the mark kept coming back.<br>
+One night, the ghost made his appearance, <strong class="keyword">groaning</strong> and <strong class="keyword">dragging</strong> heavy chains through the hallways.<br>
+He expected the family to scream and run away in terror.<br>
+Instead, Mr. Otis <strong class="keyword">calmly</strong> stepped into the hallway and offered the ghost some oil for his noisy chains.<br>
+The ghost was completely shocked.<br>
+Never had anyone treated him with such <strong class="keyword">indifference</strong>.</p>
+
+        <p>As the weeks passed, Theoda's children, especially the twins, played tricks on Sir Simon's ghost.<br>
+They dropped buckets of water on him, threw pillows at him, and laughed at his <strong class="keyword">attempts</strong> to haunt them.<br>
+Sir Simon grew tired and <strong class="keyword">miserable</strong>.<br>
+He had not been at peace since 1584, when Lady Eleanor's brothers locked him in a room until he <strong class="keyword">starved</strong> to death.<br>
+His guilty soul had <strong class="keyword">wandered</strong> the <strong class="keyword">mansion</strong> ever since.<br>
+All he wanted was to rest in the Garden of Death, where everything was peaceful.<br>
+One afternoon, young Virginia discovered the ghost sitting alone, looking sadder than she had ever seen anyone look.<br>
+Unlike her family, she felt sorry for him.<br>
+I have been so <strong class="keyword">wicked</strong>, Sir Simon whispered.<br>
+Only a pure heart can release me from this <strong class="keyword">suffering</strong>.<br>
+Virginia promised to help, and she disappeared with the ghost into the walls of the <strong class="keyword">mansion</strong>.<br>
+Hours later, she returned safely, carrying a box of beautiful jewels, Sir Simon's thank-you gift.<br>
+The family followed her to a secret room, where they found the ghost's skeleton finally at rest.<br>
+They buried Sir Simon properly in the churchyard, and from that day on, his troubled spirit never appeared again.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title reading-title">二、8 句精讀</h2>
+      <div class="card reading-card">
+        <div class="reading-item">
+          <span class="badge-num">①</span>
+          <span class="sentence">When the wealthy American Otis family decided to buy Canterville Chase, an old English house, Lord Canterville warned them about the ghosts that lived there.</span>
+          <p class="translation">當富有的美國 Otis 一家決定買下 Canterville Chase 這棟古老英國宅邸時，Canterville 勳爵警告他們，那裡住著鬼魂。</p>
+          <p><span class="small-heading">文法解析：</span>這是含有時間副詞子句的複合句。When 引導「當……時」，說明主要動作 warned 發生的時間。an old English house 是 Canterville Chase 的同位語，用來補充說明前面的名詞。that lived there 是形容詞子句，修飾 ghosts。</p>
+          <div class="pill-row"><span class="pill tag-focus">wealthy：富有的</span><span class="pill tag-phrase">warn A about B：警告 A 關於 B</span><span class="pill tag-root">ghosts that lived there：關係子句</span></div>
+        </div>
+
+        <div class="reading-item">
+          <span class="badge-num">②</span>
+          <span class="sentence">For three hundred years, Sir Simon de Canterville had haunted the house, terrifying everyone who dared to stay in it.</span>
+          <p class="translation">三百年來，Sir Simon de Canterville 一直在這棟屋子裡作祟，嚇壞每一個敢住在裡面的人。</p>
+          <p><span class="small-heading">文法解析：</span>had haunted 是過去完成式，表示這件事早在故事中某個過去時間之前就已經持續很久。terrifying everyone 是現在分詞片語，補充說明作祟造成的結果。who dared to stay in it 是形容詞子句，修飾 everyone。to stay 的 to 是不定詞，不是介係詞。</p>
+          <div class="pill-row"><span class="pill tag-focus">haunted：作祟</span><span class="pill tag-idiom">dare to V：敢於做某事</span><span class="pill tag-phrase">terrifying everyone：使眾人害怕</span></div>
+        </div>
+
+        <div class="reading-item">
+          <span class="badge-num">③</span>
+          <span class="sentence">He was a practical modern man who didn't believe in such nonsense.</span>
+          <p class="translation">他是一位務實的現代人，不相信這種胡說八道。</p>
+          <p><span class="small-heading">文法解析：</span>主句是 He was a practical modern man。who didn't believe in such nonsense 是形容詞子句，說明這位 modern man 的特質。believe in 表示「相信某事物的存在或價值」，後面接名詞。such 加名詞可以強化語氣，表示「這種……」。</p>
+          <div class="pill-row"><span class="pill tag-focus">practical：實際的</span><span class="pill tag-confuse">believe / believe in：相信內容 / 相信存在或價值</span><span class="pill tag-focus">nonsense：無稽之談</span></div>
+        </div>
+
+        <div class="reading-item">
+          <span class="badge-num">④</span>
+          <span class="sentence">There was a dark red mark on the library floor, said to be the blood of Lady Eleanor Canterville, who had been murdered by her husband, Sir Simon.</span>
+          <p class="translation">圖書室地板上有一個暗紅色污漬，據說是 Lady Eleanor Canterville 的血；她是被丈夫 Sir Simon 謀殺的。</p>
+          <p><span class="small-heading">文法解析：</span>There was 表示「有……存在」，常用來介紹場景中的事物。said to be 是過去分詞片語，省略 which was，補充說明 mark 的傳聞身分。who had been murdered by her husband 是非限定形容詞子句，補充 Lady Eleanor 的遭遇。had been murdered 是過去完成式被動語態。</p>
+          <div class="pill-row"><span class="pill tag-phrase">said to be：據說是</span><span class="pill tag-focus">murdered：被謀殺</span><span class="pill tag-root">by her husband：被動語態的行為者</span></div>
+        </div>
+
+        <div class="reading-item">
+          <span class="badge-num">⑤</span>
+          <span class="sentence">One night, the ghost made his appearance, groaning and dragging heavy chains through the hallways.</span>
+          <p class="translation">某天夜裡，鬼魂現身，一邊呻吟，一邊拖著沉重的鎖鏈穿過走廊。</p>
+          <p><span class="small-heading">文法解析：</span>made his appearance 是較正式的說法，意思是「出現、登場」。groaning and dragging heavy chains 是兩個並列的現在分詞片語，描寫 ghost 出現時同時進行的動作。through the hallways 是介係詞片語，表示移動經過的空間。這種分詞片語能讓句子更有畫面感。</p>
+          <div class="pill-row"><span class="pill tag-phrase">make one's appearance：現身</span><span class="pill tag-focus">groaning：呻吟</span><span class="pill tag-focus">dragging chains：拖著鎖鏈</span></div>
+        </div>
+
+        <div class="reading-item">
+          <span class="badge-num">⑥</span>
+          <span class="sentence">Instead, Mr. Otis calmly stepped into the hallway and offered the ghost some oil for his noisy chains.</span>
+          <p class="translation">相反地，Otis 先生冷靜地走進走廊，還給鬼魂一些油，好讓他吵鬧的鎖鏈安靜一點。</p>
+          <p><span class="small-heading">文法解析：</span>Instead 放在句首，表示結果與前一句預期相反。stepped 和 offered 是兩個並列動詞，共用同一個主詞 Mr. Otis。offered the ghost some oil 是授與動詞句型，結構為 offer + 人 + 物。for his noisy chains 表示用途或目的。</p>
+          <div class="pill-row"><span class="pill tag-focus">calmly：冷靜地</span><span class="pill tag-phrase">offer A B：提供 A 某物</span><span class="pill tag-confuse">instead：相反地</span></div>
+        </div>
+
+        <div class="reading-item">
+          <span class="badge-num">⑦</span>
+          <span class="sentence">He had not been at peace since 1584, when Lady Eleanor's brothers locked him in a room until he starved to death.</span>
+          <p class="translation">自 1584 年以來，他一直不得安寧；那一年，Lady Eleanor 的兄弟們把他鎖在房間裡，直到他餓死。</p>
+          <p><span class="small-heading">文法解析：</span>had not been at peace 是過去完成式，表示他在故事中的過去時間以前，就已長期不得安寧。since 1584 表示起點時間。when 引導非限定形容詞子句，補充說明 1584 年發生什麼事。until he starved to death 是時間副詞子句，表示動作持續到某個結果發生。</p>
+          <div class="pill-row"><span class="pill tag-phrase">be at peace：安息、平靜</span><span class="pill tag-focus">starved to death：餓死</span><span class="pill tag-root">since + 時間點：自從</span></div>
+        </div>
+
+        <div class="reading-item">
+          <span class="badge-num">⑧</span>
+          <span class="sentence">Only a pure heart can release me from this suffering.</span>
+          <p class="translation">只有一顆純潔的心，才能把我從這份痛苦中釋放出來。</p>
+          <p><span class="small-heading">文法解析：</span>Only a pure heart 放在主詞位置，用 only 強調「唯一條件」。release A from B 表示「使 A 從 B 中解脫」。can 表示能力或可能性。this suffering 是名詞片語，指 Sir Simon 長久承受的精神痛苦。</p>
+          <div class="pill-row"><span class="pill tag-phrase">release A from B：使 A 從 B 中解脫</span><span class="pill tag-focus">suffering：痛苦</span><span class="pill tag-idiom">a pure heart：純潔的心</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title vocab-title">三、20 個單字整理</h2>
+      <div class="card vocab-card">
+        <div class="word-entry">
+          <h3>1. wealthy [ˈwɛlθi] adj. 富有的；富裕的</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>wealth [wɛlθ] n. 財富；wealthily [ˈwɛlθəli] adv. 富裕地</span></div>
+          <div class="label-line"><span class="tag-label tag-root">字根</span><span>wealth 表「財富」；同字族：well-being（福祉）、well-off（富裕的）</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>a wealthy family 富裕家庭；wealthy nations 富裕國家</span></div>
+          <div class="label-line"><span class="tag-label tag-idiom">慣用語</span><span>a remarkably wealthy businessman 一位非常富有的商人</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>wealthy 強調有錢；healthy 是健康的，字形相近但意思不同。</span></div>
+          <div class="examples"><p>The wealthy American Otis family decided to buy Canterville Chase.<br>（富有的美國 Otis 一家決定買下 Canterville Chase。）</p><p>A wealthy city should still care for poor neighborhoods.<br>（富裕的城市仍應照顧貧困社區。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>2. warn [wɔrn] v. 警告；提醒</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>warning [ˈwɔrnɪŋ] n. 警告；warned [wɔrnd] adj. 被提醒過的</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>warn A about B 警告 A 關於 B；warn A not to V 警告 A 不要做某事，to 是不定詞，非介係詞。</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>warn 是事前提醒危險；remind 是提醒記得某事。</span></div>
+          <div class="label-line"><span class="tag-label tag-focus">句型</span><span>Lord Canterville warned them about the ghosts. warn + 人 + about + 事物。</span></div>
+          <div class="examples"><p>Lord Canterville warned them about the ghosts that lived there.<br>（Canterville 勳爵警告他們，那裡住著鬼魂。）</p><p>The teacher warned us not to ignore small grammar mistakes.<br>（老師警告我們不要忽略小文法錯誤。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>3. haunt [hɔnt] v. 鬼魂出沒；縈繞心頭</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>haunted [ˈhɔntɪd] adj. 鬧鬼的；haunting [ˈhɔntɪŋ] adj. 令人難忘的</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>haunt a house 在屋中作祟；be haunted by memories 被回憶困擾</span></div>
+          <div class="label-line"><span class="tag-label tag-idiom">慣用語</span><span>a famously haunted mansion 一棟有名的鬧鬼大宅</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>haunt 可指鬼出沒，也可指記憶或罪惡感揮之不去；hunt 是狩獵。</span></div>
+          <div class="examples"><p>Sir Simon de Canterville had haunted the house for three hundred years.<br>（Sir Simon de Canterville 已在這棟屋子裡作祟三百年。）</p><p>The memory of the accident haunted him for years.<br>（那場意外的記憶困擾了他多年。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>4. terrify [ˈtɛrəˌfaɪ] v. 使恐懼；嚇壞</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>terrifying [ˈtɛrəˌfaɪɪŋ] adj. 可怕的；terrified [ˈtɛrəˌfaɪd] adj. 感到害怕的；terror [ˈtɛrɚ] n. 恐懼</span></div>
+          <div class="label-line"><span class="tag-label tag-root">字根</span><span>terr 表「害怕」；同字根：terror（恐懼）、terrible（可怕的）</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>terrifying 形容事物令人害怕；terrified 形容人感到害怕。</span></div>
+          <div class="label-line"><span class="tag-label tag-focus">句型</span><span>terrify + 人；分詞片語 terrifying everyone 可補充主句結果。</span></div>
+          <div class="examples"><p>The ghost haunted the house, terrifying everyone who dared to stay in it.<br>（鬼魂在屋中作祟，嚇壞每個敢留下的人。）</p><p>The sudden sound terrified the students during the exam.<br>（突如其來的聲音在考試時嚇壞了學生。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>5. dare [dɛr] v. 敢；膽敢</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>daring [ˈdɛrɪŋ] adj. 大膽的；daredevil [ˈdɛrˌdɛvəl] n. 冒險蠻幹的人</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>dare to V 敢於做某事，to 是不定詞，非介係詞；How dare you! 你好大的膽子！</span></div>
+          <div class="label-line"><span class="tag-label tag-idiom">慣用語</span><span>a daring decision 一個大膽的決定</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>dare 強調膽量；challenge 強調挑戰對方或困難。</span></div>
+          <div class="examples"><p>The ghost terrified everyone who dared to stay in the house.<br>（鬼魂嚇壞每個敢住在屋子裡的人。）</p><p>Few people dared to speak against the unfair rule.<br>（很少人敢反對那條不公平的規定。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>6. practical [ˈpræktɪkəl] adj. 實際的；務實的；實用的</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>practice [ˈpræktɪs] n./v. 練習；practically [ˈpræktɪkəli] adv. 實際上；實用地</span></div>
+          <div class="label-line"><span class="tag-label tag-root">字根</span><span>pract 表「做、行動」；同字根：practice（練習）、practitioner（從業者）</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>a practical solution 實際可行的解方；practical experience 實務經驗</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>practical 是實用或務實；possible 是可能的，不一定可行。</span></div>
+          <div class="examples"><p>Mr. Otis was a practical modern man.<br>（Otis 先生是一位務實的現代人。）</p><p>We need a practical plan, not just an exciting idea.<br>（我們需要實際可行的計畫，而不只是令人興奮的點子。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>7. nonsense [ˈnɑnˌsɛns] n. 胡說；無意義的話或行為</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>nonsensical [nɑnˈsɛnsɪkəl] adj. 荒謬的；sense [sɛns] n. 道理、感覺</span></div>
+          <div class="label-line"><span class="tag-label tag-root">字根</span><span>non 表「不、沒有」；sense 表「感覺、道理」；同字根：nonprofit（非營利的）、nonstop（不停的）</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>such nonsense 這種胡說；talk nonsense 說廢話</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>nonsense 指話語或想法沒有道理；rumor 是謠言，可能真假未明。</span></div>
+          <div class="examples"><p>He didn't believe in such nonsense.<br>（他不相信這種無稽之談。）</p><p>The claim sounded like nonsense until the evidence appeared.<br>（在證據出現前，這個說法聽起來像胡說。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>8. mischievous [ˈmɪstʃəvəs] adj. 淘氣的；惡作劇的</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>mischief [ˈmɪstʃɪf] n. 淘氣行為；mischievously [ˈmɪstʃəvəsli] adv. 調皮地</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>a mischievous child 淘氣的孩子；make mischief 搗蛋</span></div>
+          <div class="label-line"><span class="tag-label tag-idiom">慣用語</span><span>highly mischievous twins 非常調皮的雙胞胎</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>mischievous 通常帶有玩笑性；evil 是邪惡的，語氣更嚴重。</span></div>
+          <div class="examples"><p>The mischievous young twins moved in without any fear at all.<br>（淘氣的小雙胞胎毫無恐懼地搬了進去。）</p><p>His mischievous smile told us he had planned a joke.<br>（他淘氣的微笑告訴我們，他已經安排了一個玩笑。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>9. murder [ˈmɝdɚ] v./n. 謀殺；謀殺案</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>murderer [ˈmɝdərɚ] n. 殺人犯；murderous [ˈmɝdərəs] adj. 殺人的、兇殘的</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>be murdered by 被……謀殺；a murder case 謀殺案</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>murder 是蓄意殺害；kill 是殺死，範圍較廣，不一定是犯罪謀殺。</span></div>
+          <div class="label-line"><span class="tag-label tag-focus">句型</span><span>who had been murdered by her husband 使用過去完成式被動語態。</span></div>
+          <div class="examples"><p>Lady Eleanor Canterville had been murdered by her husband.<br>（Lady Eleanor Canterville 被她的丈夫謀殺。）</p><p>The detective studied the murder case for several weeks.<br>（偵探研究那起謀殺案好幾週。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>10. groan [ɡron] v./n. 呻吟；抱怨聲</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>groaning [ˈɡronɪŋ] n./adj. 呻吟；發出呻吟聲的</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>groan in pain 痛苦呻吟；a loud groan 一聲大呻吟</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>groan 通常低沉且痛苦；shout 是大喊，聲音較強烈明確。</span></div>
+          <div class="examples"><p>The ghost made his appearance, groaning through the hallways.<br>（鬼魂現身，在走廊裡呻吟。）</p><p>The students groaned when they saw another long assignment.<br>（學生們看到另一份長作業時發出抱怨聲。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>11. drag [dræɡ] v. 拖；拉；勉強移動</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>dragging [ˈdræɡɪŋ] n./adj. 拖曳；拖著的；dragged [dræɡd] adj. 被拖的</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>drag heavy chains 拖著沉重鎖鏈；drag A into B 把 A 拖進 B</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>drag 強調費力拖動；pull 只是拉，未必費力或笨重。</span></div>
+          <div class="examples"><p>The ghost was dragging heavy chains through the hallways.<br>（鬼魂拖著沉重鎖鏈穿過走廊。）</p><p>She dragged the old suitcase up the stairs.<br>（她把舊行李箱拖上樓梯。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>12. calmly [ˈkɑmli] adv. 冷靜地；平靜地</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>calm [kɑm] adj./v./n. 平靜的；使平靜；calmness [ˈkɑmnəs] n. 冷靜</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>respond calmly 冷靜回應；remain calm 保持冷靜</span></div>
+          <div class="label-line"><span class="tag-label tag-idiom">慣用語</span><span>surprisingly calmly 出乎意料地冷靜</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>calmly 是副詞，修飾動作；calm 是形容詞或動詞。</span></div>
+          <div class="examples"><p>Mr. Otis calmly stepped into the hallway.<br>（Otis 先生冷靜地走進走廊。）</p><p>During the debate, she calmly explained her reasons.<br>（辯論時，她冷靜地解釋自己的理由。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>13. indifference [ɪnˈdɪfərəns] n. 漠不關心；冷淡</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>indifferent [ɪnˈdɪfərənt] adj. 冷淡的；differ [ˈdɪfɚ] v. 不同</span></div>
+          <div class="label-line"><span class="tag-label tag-root">字根</span><span>in 表「不」；differ 表「不同」；同字根：different（不同的）、difference（差異）</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>with indifference 冷淡地；show indifference to 對……漠不關心</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>indifference 是不在乎；ignorance 是無知或不知道。</span></div>
+          <div class="examples"><p>Never had anyone treated him with such indifference.<br>（從沒有人如此冷淡地對待他。）</p><p>Public indifference can make a social problem worse.<br>（大眾的漠不關心可能讓社會問題惡化。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>14. attempt [əˈtɛmpt] n./v. 嘗試；企圖</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>attempted [əˈtɛmptɪd] adj. 未遂的；attempting [əˈtɛmptɪŋ] adj. 嘗試中的</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>an attempt to V 試圖做某事，to 是不定詞，非介係詞；make an attempt 嘗試</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>attempt 語氣較正式，常指努力嘗試；try 較口語。</span></div>
+          <div class="examples"><p>The twins laughed at his attempts to haunt them.<br>（雙胞胎嘲笑他試圖嚇人的行動。）</p><p>Her first attempt to solve the problem was successful.<br>（她第一次嘗試解決問題就成功了。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>15. miserable [ˈmɪzərəbəl] adj. 悲慘的；痛苦的；很不舒服的</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>misery [ˈmɪzəri] n. 痛苦；miserably [ˈmɪzərəbli] adv. 悲慘地</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>feel miserable 感到痛苦；a miserable life 悲慘的生活</span></div>
+          <div class="label-line"><span class="tag-label tag-idiom">慣用語</span><span>deeply miserable 極度痛苦的</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>miserable 強調情緒或處境痛苦；poor 可指貧窮或品質差。</span></div>
+          <div class="examples"><p>Sir Simon grew tired and miserable.<br>（Sir Simon 變得疲倦又痛苦。）</p><p>Many people feel miserable when they are lonely for a long time.<br>（許多人長期孤單時會感到痛苦。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>16. starve [stɑrv] v. 挨餓；餓死</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>starvation [stɑrˈveʃən] n. 飢餓；starving [ˈstɑrvɪŋ] adj. 飢餓的</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>starve to death 餓死；be starving 非常餓</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>starve 是嚴重飢餓；hungry 只是肚子餓，程度較輕。</span></div>
+          <div class="examples"><p>He starved to death after being locked in a room.<br>（他被鎖在房間裡後餓死了。）</p><p>After the long hike, we were all starving.<br>（長途健行後，我們都餓壞了。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>17. wander [ˈwɑndɚ] v. 漫遊；徘徊；走神</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>wanderer [ˈwɑndərɚ] n. 流浪者；wandering [ˈwɑndərɪŋ] adj. 徘徊的</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>wander around 四處閒逛；one's mind wanders 某人走神</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>wander 是無明確方向地走；wonder 是想知道或驚奇。</span></div>
+          <div class="examples"><p>His guilty soul had wandered the mansion ever since.<br>（從那以後，他帶著罪惡感的靈魂就在大宅中徘徊。）</p><p>Tourists wandered through the old streets after dinner.<br>（晚餐後，遊客們在古老街道中閒逛。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>18. mansion [ˈmænʃən] n. 大宅；豪宅</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>mansion-like adj. 像豪宅的；manor [ˈmænɚ] n. 莊園宅邸</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>a historic mansion 歷史大宅；a deserted mansion 荒廢豪宅</span></div>
+          <div class="label-line"><span class="tag-label tag-idiom">慣用語</span><span>a mysterious old mansion 一棟神祕的古老大宅</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>mansion 指大型豪宅；apartment 是公寓；house 範圍較廣。</span></div>
+          <div class="examples"><p>His guilty soul had wandered the mansion ever since.<br>（他的靈魂從那以後一直在大宅中徘徊。）</p><p>The museum was once a mansion owned by a rich family.<br>（這座博物館曾是一個富裕家庭擁有的豪宅。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>19. wicked [ˈwɪkɪd] adj. 邪惡的；缺德的</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>wickedness [ˈwɪkɪdnəs] n. 邪惡；wickedly [ˈwɪkɪdli] adv. 邪惡地</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>a wicked act 邪惡行為；wicked behavior 缺德行為</span></div>
+          <div class="label-line"><span class="tag-label tag-idiom">慣用語</span><span>truly wicked deeds 真正邪惡的行為</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>wicked 帶有道德邪惡；bad 是一般的壞，程度較廣。</span></div>
+          <div class="examples"><p>I have been so wicked, Sir Simon whispered.<br>（Sir Simon 低聲說：我一直如此邪惡。）</p><p>The story shows that wicked choices can leave deep pain.<br>（這個故事顯示，邪惡的選擇可能留下深刻痛苦。）</p></div>
+        </div>
+
+        <div class="word-entry">
+          <h3>20. suffering [ˈsʌfərɪŋ] n. 痛苦；苦難</h3>
+          <div class="label-line"><span class="tag-label tag-der">衍生詞</span><span>suffer [ˈsʌfɚ] v. 受苦；sufferer [ˈsʌfərɚ] n. 受苦者</span></div>
+          <div class="label-line"><span class="tag-label tag-phrase">片語</span><span>release A from suffering 使 A 從痛苦中解脫；human suffering 人類苦難</span></div>
+          <div class="label-line"><span class="tag-label tag-confuse">容易混淆</span><span>suffering 是長期或深層痛苦；pain 可指身體疼痛，也可指情緒痛。</span></div>
+          <div class="label-line"><span class="tag-label tag-focus">句型</span><span>release me from this suffering 中 from 表示「從……中」。</span></div>
+          <div class="examples"><p>Only a pure heart can release me from this suffering.<br>（只有純潔的心能使我從這份痛苦中解脫。）</p><p>Good friends can reduce our suffering during hard times.<br>（好朋友能在艱難時刻減輕我們的痛苦。）</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title grammar-title">四、文法解析</h2>
+      <div class="card grammar-card">
+        <div class="grammar-item">
+          <h3>文法點 1：過去完成式</h3>
+          <p class="grammar-block-title">【引句 Quote】</p>
+          <p><span class="sentence">Sir Simon de Canterville had haunted the house for three hundred years.</span></p>
+          <p class="grammar-block-title">【句型】</p>
+          <p><strong><span class="sentence">S + had + p.p. + ...</span></strong></p>
+          <p class="grammar-block-title">【核心說明】</p>
+          <p>過去完成式用來表示「在某個過去時間之前已經完成或持續的動作」。在故事敘事中，它常用來交代背景，讓讀者知道某件事比主要情節更早發生。</p>
+          <p>本文用 had haunted 說明 Sir Simon 在 Otis 一家搬進來以前，就已經作祟三百年，因此這不是當下才開始的事件。</p>
+          <p class="grammar-block-title">【使用規則】</p>
+          <ul>
+            <li>基本形式為 had + 過去分詞。</li>
+            <li>常搭配 before、since、for、when 等時間線索。</li>
+            <li>若句中有兩個過去動作，較早發生者可用過去完成式。</li>
+            <li>被動語態可寫成 had been + p.p.。</li>
+          </ul>
+          <p class="grammar-block-title">【主題例句】</p>
+          <p>The ghost had waited for forgiveness long before Virginia arrived.<br>（在 Virginia 到來很久以前，鬼魂就已等待寬恕。）</p>
+          <p class="grammar-block-title">【學習提醒】</p>
+          <p>不要看到過去事件就全部使用過去完成式。只有在需要強調「比另一個過去時間更早」時，才使用 had + p.p.。</p>
+          <p class="grammar-block-title">【⚠️ 常見錯誤 / 🎯 精選試題】</p>
+          <p>✗ Sir Simon has haunted the house before the Otis family moved in.<br>✓ Sir Simon had haunted the house before the Otis family moved in.（主要敘事在過去，較早背景用過去完成式。）</p>
+          <p>選擇：Before Virginia helped him, Sir Simon ___ in the mansion for centuries.<br>A. wanders　B. had wandered　C. has wandered<br>答案：B</p>
+        </div>
+
+        <div class="grammar-item">
+          <h3>文法點 2：現在分詞片語</h3>
+          <p class="grammar-block-title">【引句 Quote】</p>
+          <p><span class="sentence">The ghost made his appearance, groaning and dragging heavy chains through the hallways.</span></p>
+          <p class="grammar-block-title">【句型】</p>
+          <p><strong><span class="sentence">S + V, V-ing ...</span></strong></p>
+          <p class="grammar-block-title">【核心說明】</p>
+          <p>現在分詞片語可以補充主要動作發生時的伴隨情況、結果或方式。它讓句子不用一直重複主詞，也能呈現連續畫面。</p>
+          <p>本文中 groaning and dragging 描寫鬼魂現身時的動作，和 made his appearance 同時發生。</p>
+          <p class="grammar-block-title">【使用規則】</p>
+          <ul>
+            <li>分詞片語的邏輯主詞通常要和主要子句主詞一致。</li>
+            <li>V-ing 可表示主動或同時發生的動作。</li>
+            <li>若表示被動，通常使用 p.p. 片語。</li>
+            <li>分詞片語前常用逗號隔開，增加補充說明。</li>
+          </ul>
+          <p class="grammar-block-title">【主題例句】</p>
+          <p>Virginia entered the secret room, holding a candle in her hand.<br>（Virginia 走進密室，手裡拿著一支蠟燭。）</p>
+          <p class="grammar-block-title">【學習提醒】</p>
+          <p>分詞片語最常見的錯誤是主詞不一致。如果句首或句尾的 V-ing 找不到合理的主詞，句子就會變得不清楚。</p>
+          <p class="grammar-block-title">【⚠️ 常見錯誤 / 🎯 精選試題】</p>
+          <p>✗ Walking into the hallway, the chains made a noise.<br>✓ Walking into the hallway, the ghost made a noise with his chains.（walking 的主詞應是 ghost，不是 chains。）</p>
+          <p>改錯：Feeling sorry for him, the ghost was helped by Virginia.<br>參考答案：Feeling sorry for him, Virginia helped the ghost.</p>
+        </div>
+
+        <div class="grammar-item">
+          <h3>文法點 3：關係子句</h3>
+          <p class="grammar-block-title">【引句 Quote】</p>
+          <p><span class="sentence">There was a dark red mark on the library floor, said to be the blood of Lady Eleanor Canterville, who had been murdered by her husband, Sir Simon.</span></p>
+          <p class="grammar-block-title">【句型】</p>
+          <p><strong><span class="sentence">N, who + V ...</span></strong></p>
+          <p class="grammar-block-title">【核心說明】</p>
+          <p>關係子句用來修飾前面的名詞。who 用來指人，that 可指人或物，where 常用來修飾地點。</p>
+          <p>本文的 who had been murdered by her husband 是非限定關係子句，補充 Lady Eleanor 的背景。逗號表示這段資訊是補充說明，不是用來限定是哪一位 Lady Eleanor。</p>
+          <p class="grammar-block-title">【使用規則】</p>
+          <ul>
+            <li>who 通常修飾人；which 修飾物；that 可修飾人或物。</li>
+            <li>非限定關係子句前要加逗號，不能用 that。</li>
+            <li>限定關係子句不加逗號，用來指出是哪一個人或物。</li>
+            <li>where 可修飾地點，但後面需接完整子句結構。</li>
+          </ul>
+          <p class="grammar-block-title">【主題例句】</p>
+          <p>Virginia, who felt pity for the ghost, decided to help him.<br>（Virginia 同情那個鬼魂，因此決定幫助他。）</p>
+          <p class="grammar-block-title">【學習提醒】</p>
+          <p>考試中要先判斷先行詞是人、物、地點，還要注意句中是否有逗號。有逗號的非限定子句不能使用 that。</p>
+          <p class="grammar-block-title">【⚠️ 常見錯誤 / 🎯 精選試題】</p>
+          <p>✗ Lady Eleanor, that had been murdered, left a blood mark.<br>✓ Lady Eleanor, who had been murdered, left a blood mark.（非限定關係子句修飾人時用 who，不用 that。）</p>
+          <p>選擇：The room ___ they found the skeleton was hidden behind the wall.<br>A. who　B. where　C. which<br>答案：B</p>
+        </div>
+      </div>
+    </section>
+
+    <details>
+      <summary>常見字首整理（50 個）<span class="arrow">▼</span></summary>
+      <div class="card fold-card compact-list">
+        <p>ab-　離開、相反　—　abnormal（異常的）</p>
+        <p>ad-　向、加　—　advance（前進）</p>
+        <p>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</p>
+        <p>anti-　反對、抗　—　antibiotic（抗生素）</p>
+        <p>arch-　主要、首要　—　archenemy（死敵）</p>
+        <p>auto-　自動、自我　—　autograph（親筆簽名）</p>
+        <p>bene-　好的、善　—　benefit（好處）</p>
+        <p>bi-　二、雙　—　bilingual（雙語的）</p>
+        <p>circum-　環繞、周圍　—　circumstance（情況）</p>
+        <p>co-/con-/com-　一起、共同　—　cooperate（合作）</p>
+        <p>contra-　相反、對抗　—　contradict（反駁）</p>
+        <p>de-　去除、下降　—　decode（解碼）</p>
+        <p>dia-　穿過、透過　—　dialogue（對話）</p>
+        <p>dis-　否定、分離　—　disagree（不同意）</p>
+        <p>en-/em-　使成為　—　enable（使能夠）</p>
+        <p>epi-　在上、在外　—　epidemic（流行病）</p>
+        <p>ex-　外、前任　—　export（出口）；ex-president（前總統）</p>
+        <p>extra-　額外、外部　—　extraordinary（非凡的）</p>
+        <p>hetero-　不同　—　heterogeneous（異質的）</p>
+        <p>homo-　相同　—　homogeneous（同質的）</p>
+        <p>hyper-　過度、超　—　hyperactive（過動的）</p>
+        <p>hypo-　低於、不足　—　hypodermic（皮下的）</p>
+        <p>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</p>
+        <p>inter-　在…之間　—　international（國際的）</p>
+        <p>iso-　相等、相同　—　isolate（隔離）</p>
+        <p>mal-　壞、不良　—　malfunction（故障）</p>
+        <p>micro-　微小　—　microscope（顯微鏡）</p>
+        <p>mis-　錯誤　—　misunderstand（誤解）</p>
+        <p>mono-　單一　—　monologue（獨白）</p>
+        <p>multi-　多　—　multicultural（多元文化的）</p>
+        <p>neo-　新的　—　neonatal（新生的）</p>
+        <p>non-　非、沒有　—　nonsense（無意義）</p>
+        <p>pan-　全部　—　pandemic（大流行病）</p>
+        <p>peri-　周圍　—　perimeter（周長）</p>
+        <p>poly-　多　—　polygon（多邊形）</p>
+        <p>post-　之後　—　postwar（戰後的）</p>
+        <p>pre-　之前　—　preview（預覽）</p>
+        <p>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</p>
+        <p>pseudo-　假的　—　pseudonym（筆名）</p>
+        <p>re-　再、回　—　review（複習）</p>
+        <p>semi-　一半、部分　—　semicircle（半圓）</p>
+        <p>sub-　在下、次級　—　subway（地鐵）</p>
+        <p>super-　超越、在上　—　superstar（超級明星）</p>
+        <p>syn-/sym-　一起、共同　—　synchronize（同步）</p>
+        <p>tele-　遠距　—　telephone（電話）</p>
+        <p>trans-　穿越、轉變　—　transport（運輸）</p>
+        <p>tri-　三　—　triangle（三角形）</p>
+        <p>un-　否定、不　—　unhappy（不快樂的）</p>
+        <p>vice-　副、代替　—　vice-president（副總統）</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>常見英文字尾整理（約 30 個）<span class="arrow">▼</span></summary>
+      <div class="card fold-card compact-list">
+        <h3>名詞字尾</h3>
+        <p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</p>
+        <p>-ment　行為或結果　—　agreement（協議）、development（發展）</p>
+        <p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p>
+        <p>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p>
+        <p>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p>
+        <p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p>
+        <p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p>
+        <p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
+        <h3>形容詞字尾</h3>
+        <p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</p>
+        <p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p>
+        <p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p>
+        <p>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</p>
+        <p>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
+        <h3>動詞字尾</h3>
+        <p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</p>
+        <p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p>
+        <p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p>
+        <p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
+        <h3>副詞字尾</h3>
+        <p>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</p>
+        <p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p>
+        <p>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>30 個常用單字與衍生詞<span class="arrow">▼</span></summary>
+      <div class="card fold-card compact-list">
+        <p>1. family [ˈfæməli] (n. 家庭) — family member（家庭成員）</p>
+        <p>2. decide [dɪˈsaɪd] (v. 決定) — decision [dɪˈsɪʒən] (n. 決定)</p>
+        <p>3. house [haʊs] (n. 房子) — household [ˈhaʊsˌhold] (n. 家庭)</p>
+        <p>4. warn [wɔrn] (v. 警告) — warning [ˈwɔrnɪŋ] (n. 警告)</p>
+        <p>5. ghost [ɡost] (n. 鬼魂) — ghost story（鬼故事）</p>
+        <p>6. haunt [hɔnt] (v. 作祟) — haunted [ˈhɔntɪd] (adj. 鬧鬼的)</p>
+        <p>7. terrify [ˈtɛrəˌfaɪ] (v. 嚇壞) — terrifying [ˈtɛrəˌfaɪɪŋ] (adj. 可怕的)</p>
+        <p>8. practical [ˈpræktɪkəl] (adj. 務實的) — practice [ˈpræktɪs] (n./v. 練習)</p>
+        <p>9. nonsense [ˈnɑnˌsɛns] (n. 胡說) — nonsensical [nɑnˈsɛnsɪkəl] (adj. 荒謬的)</p>
+        <p>10. mischievous [ˈmɪstʃəvəs] (adj. 淘氣的) — mischief [ˈmɪstʃɪf] (n. 惡作劇)</p>
+        <p>11. fear [fɪr] (n./v. 恐懼；害怕) — fearful [ˈfɪrfəl] (adj. 害怕的)</p>
+        <p>12. strange [strendʒ] (adj. 奇怪的) — strangely [ˈstrendʒli] (adv. 奇怪地)</p>
+        <p>13. murder [ˈmɝdɚ] (v./n. 謀殺) — murderer [ˈmɝdərɚ] (n. 殺人犯)</p>
+        <p>14. clean [klin] (v./adj. 清潔；乾淨的) — cleaner [ˈklinɚ] (n. 清潔工；清潔劑)</p>
+        <p>15. appear [əˈpɪr] (v. 出現) — appearance [əˈpɪrəns] (n. 出現；外表)</p>
+        <p>16. groan [ɡron] (v./n. 呻吟) — loud groan（大聲呻吟）</p>
+        <p>17. drag [dræɡ] (v. 拖) — drag along（拖著走）</p>
+        <p>18. chain [tʃen] (n. 鎖鏈) — chain reaction（連鎖反應）</p>
+        <p>19. calmly [ˈkɑmli] (adv. 冷靜地) — calm [kɑm] (adj. 平靜的)</p>
+        <p>20. shock [ʃɑk] (v./n. 震驚) — shocked [ʃɑkt] (adj. 震驚的)</p>
+        <p>21. indifference [ɪnˈdɪfərəns] (n. 冷淡) — indifferent [ɪnˈdɪfərənt] (adj. 冷淡的)</p>
+        <p>22. trick [trɪk] (n./v. 惡作劇；欺騙) — play tricks on（捉弄）</p>
+        <p>23. attempt [əˈtɛmpt] (n./v. 嘗試) — attempt to V（試圖做某事）</p>
+        <p>24. miserable [ˈmɪzərəbəl] (adj. 痛苦的) — misery [ˈmɪzəri] (n. 痛苦)</p>
+        <p>25. starve [stɑrv] (v. 挨餓) — starvation [stɑrˈveʃən] (n. 飢餓)</p>
+        <p>26. guilty [ˈɡɪlti] (adj. 有罪惡感的) — guilt [ɡɪlt] (n. 罪惡感)</p>
+        <p>27. wander [ˈwɑndɚ] (v. 徘徊) — wander around（四處閒逛）</p>
+        <p>28. mansion [ˈmænʃən] (n. 大宅) — old mansion（古老大宅）</p>
+        <p>29. wicked [ˈwɪkɪd] (adj. 邪惡的) — wickedness [ˈwɪkɪdnəs] (n. 邪惡)</p>
+        <p>30. suffering [ˈsʌfərɪŋ] (n. 痛苦) — suffer [ˈsʌfɚ] (v. 受苦)</p>
+        <h3>文章相關常用片語 5 個</h3>
+        <p>• believe in（相信……的存在或價值）</p>
+        <p>• move in（搬進去）</p>
+        <p>• run away in terror（驚恐逃跑）</p>
+        <p>• play tricks on（捉弄）</p>
+        <p>• be at rest（安息）</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>練文筆食材<span class="arrow">▼</span></summary>
+      <div class="card fold-card compact-list">
+        <p>① When + S + V, S + V（當……時，……）<br>→ 適用：交代事件背景或時間。<br>例：When the family arrived, strange things began to happen.</p>
+        <p>② be said to V（據說……）<br>→ 適用：描述傳聞、傳說或未完全證實的資訊。<br>例：The old house is said to be haunted.</p>
+        <p>③ no matter how + adj./adv. + S + V（無論多麼……）<br>→ 適用：強調努力後結果仍不變。<br>例：No matter how hard she tried, the mark returned.</p>
+        <p>④ Instead, S + V（相反地，……）<br>→ 適用：呈現與預期相反的反應。<br>例：Instead, Mr. Otis offered the ghost some oil.</p>
+        <p>⑤ Never had S + p.p.（從未……）<br>→ 適用：正式語氣中強調前所未有的經驗。<br>例：Never had the ghost met such a fearless family.</p>
+        <p>⑥ As the weeks passed, S + V（幾週過去後，……）<br>→ 適用：推進故事時間。<br>例：As the weeks passed, the ghost became weaker.</p>
+        <p>⑦ grow + adj.（變得……）<br>→ 適用：描述狀態逐漸改變。<br>例：Sir Simon grew tired and miserable.</p>
+        <p>⑧ since + 時間點（自從……以來）<br>→ 適用：說明狀態持續的起點。<br>例：He had not been at peace since 1584.</p>
+        <p>⑨ All S + V + be + to V（某人唯一想要的是……）<br>→ 適用：強調單一願望或目標。<br>例：All he wanted was to rest in peace.</p>
+        <p>⑩ Unlike + N, S + V（不像……，……）<br>→ 適用：比較不同人物的態度。<br>例：Unlike her family, Virginia felt sorry for him.</p>
+        <p>⑪ Only + N + can + V（只有……能……）<br>→ 適用：強調必要條件。<br>例：Only a pure heart can release him from suffering.</p>
+        <p>⑫ carrying + N（帶著……）<br>→ 適用：用分詞片語補充主詞動作。<br>例：She returned safely, carrying a box of jewels.</p>
+        <p>⑬ from that day on（從那天起）<br>→ 適用：寫故事結尾或轉折後的新狀態。<br>例：From that day on, the house became peaceful.</p>
+      </div>
+    </details>
+
+    <nav class="resource-panel bottom-resources" aria-label="課程與聯絡連結">
+      <p class="resource-title">七月課程與聯絡方式</p>
+      <div class="resource-links">
+        <a class="resource-link course-a" href="https://linwayet.github.io/4ulive/index.html">
+          <strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+          <span>從錯題回音中整理弱點，建立可複習、可追蹤的英文學習節奏。</span>
+        </a>
+        <a class="resource-link course-b" href="https://linwayet.github.io/popup/index">
+          <strong>學生分析</strong>
+          <span>用學習資料看見學生狀態，協助安排更精準的補強方向。</span>
+        </a>
+        <a class="resource-link line-id" href="https://line.me/ti/p/~linwayet">
+          <strong>林威老師 Line</strong>
+          <span>Line ID：linwayet，可加入後詢問課程與學習規劃。</span>
+        </a>
+      </div>
+    </nav>
+  </main>
+</body>
+</html>
