@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Idols vs. Human Stars: Who Will Fans Choose?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FFF8F0;
+      --text: #1A0F00;
+      --h1: #C0392B;
+      --h2: #1565C0;
+      --h3: #2E7D32;
+      --deep-blue: #0D47A1;
+      --orange: #E65100;
+      --purple: #6A1B9A;
+      --article-head: #0D47A1;
+      --article-border: #90CAF9;
+      --article-card: #F3F8FF;
+      --reading-head: #BF360C;
+      --reading-border: #FFAB91;
+      --reading-card: #FFF3EF;
+      --vocab-head: #1B5E20;
+      --vocab-border: #81C784;
+      --vocab-card: #F1F8F2;
+      --grammar-head: #4A148C;
+      --grammar-border: #CE93D8;
+      --grammar-card: #F9F0FF;
+      --fold-head: #4A3728;
+      --fold-border: #C4A06A;
+      --fold-card: #FAF6F0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(255, 183, 77, 0.42), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(255, 138, 101, 0.36), transparent 36%),
+        linear-gradient(180deg, #FFF1DF 0%, var(--bg) 42%, #FFF3E6 100%);
+      color: var(--text);
+      font-family: "BIZ UDPGothic", system-ui, sans-serif;
+      font-size: 23px;
+      line-height: 1.85;
+      font-weight: 400;
+    }
+
+    main {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    .link-panel {
+      margin: 0 0 34px;
+      padding: 22px;
+      border: 4px solid #FFB74D;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 52%, #FFF8E1 100%);
+      box-shadow: 0 8px 0 rgba(230, 81, 0, 0.18);
+    }
+
+    .bottom-link-panel {
+      margin: 42px 0 0;
+    }
+
+    .link-panel h2 {
+      margin: 0 0 14px;
+      color: #BF360C;
+      font-size: clamp(1.7rem, 4vw, 2.35rem);
+      line-height: 1.35;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .link-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .link-card {
+      min-height: 148px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      padding: 18px;
+      border: 3px solid rgba(191, 54, 12, 0.24);
+      border-radius: 8px;
+      background: #FFFFFF;
+      color: var(--text);
+      text-decoration: none;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .link-card:hover,
+    .link-card:focus-visible {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 0 rgba(191, 54, 12, 0.18);
+      outline: 4px solid #FFCC80;
+      outline-offset: 3px;
+    }
+
+    .link-card strong {
+      color: #C0392B;
+      font-size: 1.25rem;
+      line-height: 1.35;
+      text-decoration: none;
+    }
+
+    .link-card span {
+      color: #4A3728;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .line-card strong { color: #1B5E20; }
+
+    .top-title {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    h1 {
+      display: inline-block;
+      margin: 0 auto 18px;
+      padding: 18px 24px;
+      color: var(--h1);
+      border: 5px solid var(--h1);
+      border-radius: 8px;
+      background: #FFFDF8;
+      box-shadow: 8px 8px 0 #F6C7BA;
+      font-size: clamp(3rem, 6vw, 4.4rem);
+      line-height: 1.18;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      margin: 8px 0 10px;
+      color: var(--h2);
+      font-size: clamp(2.2rem, 4.5vw, 3rem);
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .credit {
+      margin: 0;
+      color: #0D47A1;
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      font-weight: 700;
+      text-shadow: 2px 2px 0 #BBDEFB;
+    }
+
+    section {
+      margin: 38px 0;
+    }
+
+    .section-title {
+      margin: 0;
+      padding: 18px 22px;
+      color: #FFFFFF;
+      border-radius: 8px 8px 0 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .article-title { background: var(--article-head); }
+    .reading-title { background: var(--reading-head); }
+    .vocab-title { background: var(--vocab-head); }
+    .grammar-title { background: var(--grammar-head); }
+    .fold-title { background: var(--fold-head); }
+
+    .card {
+      padding: 24px;
+      border: 4px solid;
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+    }
+
+    .article-card { background: var(--article-card); border-color: var(--article-border); }
+    .reading-card { background: var(--reading-card); border-color: var(--reading-border); }
+    .vocab-card { background: var(--vocab-card); border-color: var(--vocab-border); }
+    .grammar-card { background: var(--grammar-card); border-color: var(--grammar-border); }
+    .fold-card { background: var(--fold-card); border-color: var(--fold-border); }
+
+    .article p {
+      margin: 0 0 22px;
+    }
+
+    .article strong {
+      color: var(--deep-blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    h3 {
+      color: var(--h3);
+      font-size: 1.6rem;
+      line-height: 1.45;
+      margin: 24px 0 12px;
+      font-weight: 700;
+    }
+
+    .reading-item,
+    .vocab-item,
+    .grammar-item {
+      margin: 0 0 24px;
+      padding: 20px;
+      border: 3px solid rgba(26, 15, 0, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    .number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 1.45rem;
+      vertical-align: middle;
+    }
+
+    .sentence {
+      display: block;
+      margin: 12px 0;
+      color: #3E2723;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    em {
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .label-row {
+      display: grid;
+      grid-template-columns: 128px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin: 10px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      min-height: 44px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .tag-derivative { background: #FDEDEC; color: #C0392B; }
+    .tag-root { background: #EBF5FB; color: #1565C0; }
+    .tag-phrase { background: #EAFAF1; color: #2E7D32; }
+    .tag-idiom { background: #FEF9E7; color: #D68910; }
+    .tag-confuse { background: #F5EEF8; color: #6A1B9A; }
+    .tag-focus { background: #FEF0E7; color: #E65100; }
+
+    .pill {
+      display: inline-block;
+      margin: 5px 6px 5px 0;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #FEF0E7;
+      color: var(--orange);
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    .vocab-headline {
+      color: var(--vocab-head);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .examples {
+      margin-top: 14px;
+      padding: 14px 18px;
+      border-left: 6px solid var(--vocab-head);
+      background: #FFFFFF;
+      border-radius: 6px;
+    }
+
+    .examples p,
+    .grammar-item p,
+    .reading-item p {
+      margin: 8px 0;
+    }
+
+    .grammar-label {
+      display: block;
+      margin-top: 16px;
+      color: var(--grammar-head);
+      font-weight: 700;
+    }
+
+    ul, ol {
+      padding-left: 1.4em;
+    }
+
+    li {
+      margin: 6px 0;
+    }
+
+    details {
+      margin: 18px 0;
+      border: 3px solid var(--fold-border);
+      border-radius: 8px;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    summary {
+      min-height: 72px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+      background: var(--fold-card);
+      color: var(--fold-head);
+      font-weight: 700;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    .arrow {
+      display: inline-block;
+      transition: transform 240ms ease;
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    details[open] .arrow { transform: rotate(180deg); }
+
+    .fold-content {
+      padding: 18px 22px 24px;
+      background: #FFFFFF;
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 22px; }
+      main { width: min(100% - 24px, 900px); padding-top: 20px; }
+      .card { padding: 18px; }
+      .link-panel { padding: 16px; }
+      .link-grid { grid-template-columns: 1fr; }
+      .link-card { min-height: 132px; }
+      .label-row { grid-template-columns: 1fr; }
+      .number { width: 52px; height: 52px; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <nav class="link-panel" aria-label="課程與聯絡連結">
+    <h2>七月開課與聯絡資訊</h2>
+    <div class="link-grid">
+      <a class="link-card" href="https://linwayet.github.io/4ulive/index.html">
+        <strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+        <span>透過錯誤分析、回饋修正與反覆練習，協助學生把英文弱點轉成穩定進步。</span>
+      </a>
+      <a class="link-card" href="https://linwayet.github.io/popup/index">
+        <strong>學生分析</strong>
+        <span>查看學習表現與需要加強的方向，讓七月課程安排更精準、更有效率。</span>
+      </a>
+      <a class="link-card line-card" href="https://line.me/ti/p/~linwayet">
+        <strong>林威老師 LINE：linwayet</strong>
+        <span>課程詢問、報名與學習規劃，可加入個人 LINE 帳號直接聯繫。</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="top-title">
+    <h1>AI Idols vs. Human Stars: Who Will Fans Choose?</h1>
+    <p class="subtitle">取代還是共存？AI 偶像的崛起</p>
+    <p class="credit">林威老師與 AI agent 團隊製作</p>
+  </div>
+
+  <section>
+    <h2 class="section-title article-title">一、英文文章原文</h2>
+    <div class="card article-card article">
+      <p>④ Open TikTok or Instagram, and you will notice that not all idols¹ are human anymore. These <strong>virtual</strong> idols are often AI-made characters with <strong>fashionable</strong> outfits, perfect skin, and pleasant voices. Some even <strong>release</strong>² music, appear in online shows, and have millions of fans. Many people are wondering if these AI idols might one day <strong>replace</strong> real <strong>celebrities</strong>.</p>
+      <p>⁵ <strong>Supporters</strong> believe AI idols have clear <strong>advantages</strong>³. Being fully designed and controlled, these idols always <strong>maintain</strong> a positive image. There are no <strong>scandals</strong>, no sudden disappearances, and no personal drama. This makes them easier for companies to manage and simpler for fans to follow. Since AI idols are not real people, hateful⁴ words cannot hurt them, which may <strong>reduce</strong> problems linked to ¹⁰ online <strong>abuse</strong>.</p>
+      <p>Cost is another reason why AI idols stand out. Training a real star takes years of lessons, practice, and <strong>promotion</strong>. <strong>Virtual</strong> idols still need creative⁵ teams, but they do not get tired, sick, ¹⁵ or need breaks. They can work around the clock and even appear in different places at once. From a business point of view, this makes them highly <strong>efficient</strong>⁶.</p>
+      <p>⑤ <strong>Despite</strong> these <strong>advantages</strong>, many people believe AI idols cannot truly <strong>replace</strong> real <strong>celebrities</strong>, one key reason being the <strong>emotional</strong> connection¹. Human <strong>performers</strong>² make mistakes, feel nervous on stage, and ⁵ shed real tears when moved by their fans. These imperfect moments often feel honest and <strong>meaningful</strong>³. While AI idols can copy expressions and movements, many fans feel the connection is different from that of real <strong>performers</strong>.</p>
+      <p>There are also concerns about appearance. With ¹⁰ the power to control every detail⁴, AI creators often choose certain looks that are seen as more popular. Over time, this may result in <strong>stereotypes</strong> and suggest that only one type of look deserves⁵ attention.</p>
+      <p><strong>Ownership</strong>⁶ is another issue. AI idols are ¹⁵ built using data collected from real people, including their voices and faces. If an avatar looks or sounds too much like a real <strong>celebrity</strong>, people may argue over who has the right to use it.</p>
+      <p>As AI technology continues to <strong>evolve</strong>, the line ²⁰ between human and <strong>virtual</strong> characters becomes less clear. Whether AI idols will <strong>replace</strong> real stars is still open to debate.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title reading-title">二、8 句精讀</h2>
+    <div class="card reading-card">
+      <div class="reading-item">
+        <span class="number">①</span>
+        <span class="sentence"><em>Open TikTok or Instagram, and you will notice that not all idols are human anymore.</em></span>
+        <p>打開 TikTok 或 Instagram，你會注意到並不是所有偶像都還是人類。</p>
+        <p><strong>文法解析：</strong>祈使句 + and + S + V。前面的 Open 是祈使句，用來提出動作；後面的 and you will notice 表示「只要你這麼做，就會發現」。that not all idols are human anymore 是 notice 的受詞子句。</p>
+        <p><strong>亮點詞彙／片語：</strong><span class="pill">not all 並非所有</span><span class="pill">anymore 不再</span><span class="pill">notice 注意到</span></p>
+      </div>
+
+      <div class="reading-item">
+        <span class="number">②</span>
+        <span class="sentence"><em>These virtual idols are often AI-made characters with fashionable outfits, perfect skin, and pleasant voices.</em></span>
+        <p>這些虛擬偶像通常是 AI 製作的角色，擁有時尚的服裝、完美的皮膚和悅耳的聲音。</p>
+        <p><strong>文法解析：</strong>主詞補語結構。These virtual idols 是主詞，are 是連綴動詞，AI-made characters 是主詞補語。with fashionable outfits... 是介系詞片語，用來補充角色具備的特徵。</p>
+        <p><strong>亮點詞彙／片語：</strong><span class="pill">virtual 虛擬的</span><span class="pill">fashionable 時尚的</span><span class="pill">pleasant 悅耳的</span></p>
+      </div>
+
+      <div class="reading-item">
+        <span class="number">③</span>
+        <span class="sentence"><em>Being fully designed and controlled, these idols always maintain a positive image.</em></span>
+        <p>由於完全經過設計與控制，這些偶像總是維持正面的形象。</p>
+        <p><strong>文法解析：</strong>分詞構句。Being fully designed and controlled 放在句首，表示原因，相當於 Because these idols are fully designed and controlled。主要子句是 these idols always maintain a positive image。</p>
+        <p><strong>亮點詞彙／片語：</strong><span class="pill">maintain 維持</span><span class="pill">positive image 正面形象</span><span class="pill">controlled 受控制的</span></p>
+      </div>
+
+      <div class="reading-item">
+        <span class="number">④</span>
+        <span class="sentence"><em>Since AI idols are not real people, hateful words cannot hurt them, which may reduce problems linked to online abuse.</em></span>
+        <p>由於 AI 偶像不是真人，仇恨言論無法傷害他們，這可能會減少與網路霸凌相關的問題。</p>
+        <p><strong>文法解析：</strong>原因副詞子句 + 非限定關係子句。Since 引導原因，說明仇恨言論傷不到 AI 偶像的原因。which may reduce... 補充說明前面整件事可能造成的結果。</p>
+        <p><strong>亮點詞彙／片語：</strong><span class="pill">hateful words 仇恨言論</span><span class="pill">reduce 減少</span><span class="pill">online abuse 網路霸凌</span></p>
+      </div>
+
+      <div class="reading-item">
+        <span class="number">⑤</span>
+        <span class="sentence"><em>Virtual idols still need creative teams, but they do not get tired, sick, or need breaks.</em></span>
+        <p>虛擬偶像仍然需要創意團隊，但他們不會疲倦、生病，也不需要休息。</p>
+        <p><strong>文法解析：</strong>對等連接詞 but 表示轉折。前半句承認 AI 偶像仍需人類團隊，後半句指出它們比真人明星更有效率的原因。get tired 和 get sick 中的 get 表示「變得」。</p>
+        <p><strong>亮點詞彙／片語：</strong><span class="pill">creative teams 創意團隊</span><span class="pill">get tired 變累</span><span class="pill">need breaks 需要休息</span></p>
+      </div>
+
+      <div class="reading-item">
+        <span class="number">⑥</span>
+        <span class="sentence"><em>Despite these advantages, many people believe AI idols cannot truly replace real celebrities, one key reason being the emotional connection.</em></span>
+        <p>儘管有這些優勢，許多人認為 AI 偶像無法真正取代真人名人，其中一個關鍵原因是情感連結。</p>
+        <p><strong>文法解析：</strong>Despite + 名詞片語表示讓步，後面不可直接接完整子句。one key reason being the emotional connection 是獨立分詞結構，補充前面看法的主要理由。</p>
+        <p><strong>亮點詞彙／片語：</strong><span class="pill">despite 儘管</span><span class="pill">replace 取代</span><span class="pill">emotional connection 情感連結</span></p>
+      </div>
+
+      <div class="reading-item">
+        <span class="number">⑦</span>
+        <span class="sentence"><em>While AI idols can copy expressions and movements, many fans feel the connection is different from that of real performers.</em></span>
+        <p>雖然 AI 偶像能模仿表情和動作，許多粉絲仍覺得這種連結不同於與真人表演者之間的連結。</p>
+        <p><strong>文法解析：</strong>While 引導讓步副詞子句，表示「雖然」。that of real performers 中的 that 代替前面的 the connection，避免重複。feel 後面接名詞子句 the connection is different...</p>
+        <p><strong>亮點詞彙／片語：</strong><span class="pill">copy expressions 模仿表情</span><span class="pill">different from 不同於</span><span class="pill">performers 表演者</span></p>
+      </div>
+
+      <div class="reading-item">
+        <span class="number">⑧</span>
+        <span class="sentence"><em>Whether AI idols will replace real stars is still open to debate.</em></span>
+        <p>AI 偶像是否會取代真人明星，仍然有待討論。</p>
+        <p><strong>文法解析：</strong>Whether 引導名詞子句，整個 Whether AI idols will replace real stars 當主詞。be open to debate 是固定表達，表示「仍可討論、尚無定論」。to 在此是介系詞，後面接名詞 debate。</p>
+        <p><strong>亮點詞彙／片語：</strong><span class="pill">whether 是否</span><span class="pill">open to debate 有待討論</span><span class="pill">real stars 真人明星</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title vocab-title">三、20 個單字整理</h2>
+    <div class="card vocab-card">
+      <div class="vocab-item">
+        <div class="vocab-headline">1　virtual　[ˈvɝtʃuəl]　adj.　虛擬的；實質上的</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>virtually [ˈvɝtʃuəli] adv. 實際上；幾乎；virtuality [ˌvɝtʃuˈælətɪ] n. 虛擬性</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>virt 表示「力量、價值」；virtue（美德）、virtuous（有德行的）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>virtual reality（虛擬實境）；virtual character（虛擬角色）</span></div>
+        <div class="label-row"><span class="tag tag-idiom">慣用語</span><span>a fully virtual idol（一位完全虛擬的偶像）；a virtual meeting（一場線上會議）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>virtual 強調「虛擬」或「實質上」；visual 表示「視覺的」。</span></div>
+        <div class="examples"><p>These virtual idols are often AI-made characters.</p><p>（這些虛擬偶像通常是 AI 製作的角色。）</p><p>Many students use virtual tools to practice English speaking.</p><p>（許多學生使用虛擬工具練習英語口說。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">2　fashionable　[ˈfæʃənəbḷ]　adj.　時尚的；流行的</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>fashion [ˈfæʃən] n. 時尚；fashionably [ˈfæʃənəblɪ] adv. 時髦地</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>fashionable outfits（時尚服裝）；become fashionable（變得流行）</span></div>
+        <div class="label-row"><span class="tag tag-idiom">慣用語</span><span>highly fashionable clothing（非常時尚的服裝）；a fashionable district（時髦地區）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>fashionable 多指流行與穿著；popular 泛指受歡迎，不一定與時尚有關。</span></div>
+        <div class="examples"><p>AI-made characters may have fashionable outfits.</p><p>（AI 製作的角色可能有時尚服裝。）</p><p>The singer became famous for her fashionable style.</p><p>（那位歌手因她時尚的風格而出名。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">3　release　[rɪˈlis]　v.　發行；釋放　n.　發行；釋放</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>release date（發行日期）；released adj. 已發行的；已釋放的</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>leas / lax 表示「放鬆、鬆開」；relax（放鬆）、loose（鬆的）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>release music（發行音樂）；release information（發布資訊）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>release 表示正式發行或釋放；publish 多指出版書籍、文章或公開資訊。</span></div>
+        <div class="examples"><p>Some AI idols even release music.</p><p>（有些 AI 偶像甚至會發行音樂。）</p><p>The band will release a new album next month.</p><p>（那個樂團下個月將發行新專輯。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">4　replace　[rɪˈples]　v.　取代；更換</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>replacement [rɪˈplesmənt] n. 取代者；替換；replaceable [rɪˈplesəbḷ] adj. 可替換的</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>re- 表示「再、回」；place 表示「放置」。同字首單字：review（複習）、return（返回）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>replace A with B（用 B 取代 A）；replace real celebrities（取代真人名人）</span></div>
+        <div class="label-row"><span class="tag tag-focus">句型</span><span>replace A with B 中 with 表示「用……」，不是「和……一起」。</span></div>
+        <div class="examples"><p>Many people wonder if AI idols might replace real celebrities.</p><p>（許多人想知道 AI 偶像是否可能取代真人名人。）</p><p>Online classes cannot fully replace face-to-face learning.</p><p>（線上課程無法完全取代面對面學習。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">5　celebrity　[səˈlɛbrətɪ]　n.　名人；明星</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>celebrate [ˈsɛləˌbret] v. 慶祝；celebration [ˌsɛləˈbreʃən] n. 慶祝活動</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>celebr 表示「有名、慶祝」；celebrated（著名的）、celebration（慶祝）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>real celebrities（真人名人）；celebrity culture（名人文化）</span></div>
+        <div class="label-row"><span class="tag tag-idiom">慣用語</span><span>a widely known celebrity（一位廣為人知的名人）；a local celebrity（地方名人）</span></div>
+        <div class="examples"><p>AI idols might one day replace real celebrities.</p><p>（AI 偶像有一天可能會取代真人名人。）</p><p>The celebrity used her influence to support charity work.</p><p>（那位名人運用自己的影響力支持慈善工作。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">6　supporter　[səˈpɔrtɚ]　n.　支持者；擁護者</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>support [səˈpɔrt] v./n. 支持；supportive [səˈpɔrtɪv] adj. 支持的</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>port 表示「搬運、承載」；transport（運輸）、portable（可攜帶的）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>supporters of AI idols（AI 偶像的支持者）；strong supporter（堅定支持者）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>supporter 指支持某人或想法的人；fan 多指粉絲或愛好者。</span></div>
+        <div class="examples"><p>Supporters believe AI idols have clear advantages.</p><p>（支持者相信 AI 偶像有明顯優勢。）</p><p>She is a strong supporter of equal education.</p><p>（她是教育平權的堅定支持者。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">7　advantage　[ədˈvæntɪdʒ]　n.　優勢；有利條件</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>advantageous [ˌædvənˈtedʒəs] adj. 有利的；disadvantage [ˌdɪsədˈvæntɪdʒ] n. 劣勢</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>clear advantages（明顯優勢）；take advantage of（利用；善用）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>advantage 是優勢；benefit 是好處或利益，語氣較廣。</span></div>
+        <div class="examples"><p>AI idols have clear advantages.</p><p>（AI 偶像有明顯優勢。）</p><p>Good time management gives students an advantage.</p><p>（良好的時間管理給學生一項優勢。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">8　maintain　[menˈten]　v.　維持；保養；主張</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>maintenance [ˈmentənəns] n. 維護；maintainable [menˈtenəbḷ] adj. 可維持的</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>tain 表示「握住、保持」；contain（包含）、retain（保留）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>maintain a positive image（維持正面形象）；maintain balance（維持平衡）</span></div>
+        <div class="label-row"><span class="tag tag-focus">句型</span><span>maintain + N 表示「維持某狀態或事物」。</span></div>
+        <div class="examples"><p>These idols always maintain a positive image.</p><p>（這些偶像總是維持正面形象。）</p><p>Students should maintain a healthy study routine.</p><p>（學生應該維持健康的讀書作息。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">9　scandal　[ˈskændḷ]　n.　醜聞；不當事件</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>scandalous [ˈskændələs] adj. 可恥的；scandalize [ˈskændḷˌaɪz] v. 使震驚</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>political scandal（政治醜聞）；avoid scandals（避免醜聞）</span></div>
+        <div class="label-row"><span class="tag tag-idiom">慣用語</span><span>a damaging scandal（一件傷害形象的醜聞）；a public scandal（一件公開醜聞）</span></div>
+        <div class="examples"><p>There are no scandals, no sudden disappearances, and no personal drama.</p><p>（它們沒有醜聞、沒有突然消失，也沒有私人風波。）</p><p>The scandal damaged the actor's career.</p><p>（那件醜聞傷害了那位演員的事業。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">10　reduce　[rɪˈdus]　v.　減少；降低</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>reduction [rɪˈdʌkʃən] n. 減少；reduced [rɪˈdust] adj. 減少的</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>duc / duct 表示「引導、帶領」；produce（生產）、conduct（引導；進行）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>reduce problems（減少問題）；reduce stress（降低壓力）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>reduce 強調降低數量或程度；decrease 可作動詞或名詞，也表示下降。</span></div>
+        <div class="examples"><p>This may reduce problems linked to online abuse.</p><p>（這可能會減少與網路霸凌相關的問題。）</p><p>Regular exercise can reduce stress before exams.</p><p>（規律運動可以降低考前壓力。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">11　abuse　[əˈbjus]　n.　濫用；虐待；辱罵</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>abusive [əˈbjusɪv] adj. 辱罵的；abuser [əˈbjuzɚ] n. 施虐者；濫用者</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>ab- 表示「離開、相反」；use 表示「使用」。abuse 原意可理解為「錯誤使用」。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>online abuse（網路霸凌）；drug abuse（藥物濫用）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>abuse 可指言語攻擊、虐待或濫用；bullying 較常指霸凌行為。</span></div>
+        <div class="examples"><p>AI idols may reduce problems linked to online abuse.</p><p>（AI 偶像可能減少與網路霸凌相關的問題。）</p><p>Schools must take online abuse seriously.</p><p>（學校必須嚴肅看待網路霸凌。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">12　promotion　[prəˈmoʃən]　n.　宣傳；促銷；升遷</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>promote [prəˈmot] v. 促進；宣傳；promotional [prəˈmoʃənḷ] adj. 宣傳的</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>mot / mov 表示「移動」；motion（動作）、remove（移除）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>product promotion（產品宣傳）；get a promotion（升遷）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>promotion 可指宣傳或升遷；advertisement 指廣告本身。</span></div>
+        <div class="examples"><p>Training a real star takes years of lessons, practice, and promotion.</p><p>（培養真人明星需要多年課程、練習與宣傳。）</p><p>The school used social media for event promotion.</p><p>（學校使用社群媒體宣傳活動。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">13　efficient　[ɪˈfɪʃənt]　adj.　有效率的；能幹的</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>efficiency [ɪˈfɪʃənsɪ] n. 效率；efficiently [ɪˈfɪʃəntlɪ] adv. 有效率地</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>fic / fact 表示「做、製造」；effect（效果）、factory（工廠）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>highly efficient（非常有效率的）；efficient use of time（有效率地運用時間）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>efficient 指「省時省力有效率」；effective 指「有效果」。</span></div>
+        <div class="examples"><p>From a business point of view, this makes them highly efficient.</p><p>（從商業角度來看，這使它們非常有效率。）</p><p>An efficient study plan helps students review more calmly.</p><p>（有效率的讀書計畫能幫助學生更從容地複習。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">14　despite　[dɪˈspaɪt]　prep.　儘管；雖然</div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>despite these advantages（儘管有這些優勢）；despite the risk（儘管有風險）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>despite 是介系詞，後接名詞或 V-ing；although 是連接詞，後接完整子句。</span></div>
+        <div class="label-row"><span class="tag tag-focus">句型</span><span>Despite + N/V-ing, S + V。若出現 to V，要注意 to 是不定詞；但 despite 後不可直接接 to V。</span></div>
+        <div class="examples"><p>Despite these advantages, many people believe AI idols cannot truly replace real celebrities.</p><p>（儘管有這些優勢，許多人相信 AI 偶像無法真正取代真人名人。）</p><p>Despite the heavy rain, the students arrived on time.</p><p>（儘管下大雨，學生們仍準時抵達。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">15　emotional　[ɪˈmoʃənḷ]　adj.　情緒的；情感上的</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>emotion [ɪˈmoʃən] n. 情緒；emotionally [ɪˈmoʃənəlɪ] adv. 情緒上地</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>mot / mov 表示「移動」；emotion 原意與內在感受被牽動有關。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>emotional connection（情感連結）；emotional support（情緒支持）</span></div>
+        <div class="label-row"><span class="tag tag-idiom">慣用語</span><span>a deeply emotional moment（一個深具情感的時刻）；emotionally meaningful（情感上有意義的）</span></div>
+        <div class="examples"><p>One key reason is the emotional connection.</p><p>（其中一個關鍵原因是情感連結。）</p><p>The movie created an emotional response among viewers.</p><p>（那部電影在觀眾之間引發情緒反應。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">16　performer　[pɚˈfɔrmɚ]　n.　表演者；演出者</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>perform [pɚˈfɔrm] v. 表演；執行；performance [pɚˈfɔrməns] n. 表演；表現</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>form 表示「形狀、形成」；perform 指把能力或作品呈現出來。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>human performers（真人表演者）；stage performer（舞台表演者）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>performer 可指任何演出者；actor 主要指演員。</span></div>
+        <div class="examples"><p>Human performers make mistakes and feel nervous on stage.</p><p>（真人表演者會犯錯，也會在舞台上緊張。）</p><p>A good performer knows how to connect with the audience.</p><p>（好的表演者知道如何與觀眾連結。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">17　meaningful　[ˈminɪŋfəl]　adj.　有意義的；意味深長的</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>meaning [ˈminɪŋ] n. 意義；meaningfully [ˈminɪŋfəlɪ] adv. 有意義地</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>meaningful moments（有意義的時刻）；meaningful conversation（有意義的對話）</span></div>
+        <div class="label-row"><span class="tag tag-idiom">慣用語</span><span>deeply meaningful experiences（深具意義的經驗）；a meaningful connection（一段有意義的連結）</span></div>
+        <div class="examples"><p>These imperfect moments often feel honest and meaningful.</p><p>（這些不完美的時刻常讓人覺得真誠且有意義。）</p><p>Volunteering can be a meaningful part of school life.</p><p>（志工服務可以是校園生活中有意義的一部分。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">18　stereotype　[ˈstɛrɪəˌtaɪp]　n.　刻板印象　v.　對……有刻板印象</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>stereotypical [ˌstɛrɪəˈtɪpɪkḷ] adj. 刻板的；stereotyped adj. 被定型的</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>stereo 表示「固定、立體」；type 表示「類型」。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>gender stereotype（性別刻板印象）；break stereotypes（打破刻板印象）</span></div>
+        <div class="label-row"><span class="tag tag-confuse">容易混淆</span><span>stereotype 是過度簡化的固定印象；prejudice 是偏見，常帶有負面評價。</span></div>
+        <div class="examples"><p>This may result in stereotypes.</p><p>（這可能導致刻板印象。）</p><p>Students should learn to question cultural stereotypes.</p><p>（學生應學會質疑文化刻板印象。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">19　ownership　[ˈonɚˌʃɪp]　n.　所有權；擁有權</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>own [on] v. 擁有；owner [ˈonɚ] n. 擁有者</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>data ownership（資料所有權）；take ownership of（承擔責任；擁有）</span></div>
+        <div class="label-row"><span class="tag tag-idiom">慣用語</span><span>legal ownership（法律上的所有權）；shared ownership（共同擁有權）</span></div>
+        <div class="examples"><p>Ownership is another issue.</p><p>（所有權是另一個問題。）</p><p>The artist argued for ownership of her voice data.</p><p>（那位藝術家主張她對自己的聲音資料擁有所有權。）</p></div>
+      </div>
+
+      <div class="vocab-item">
+        <div class="vocab-headline">20　evolve　[ɪˈvɑlv]　v.　演變；進化；發展</div>
+        <div class="label-row"><span class="tag tag-derivative">衍生詞</span><span>evolution [ˌɛvəˈluʃən] n. 進化；演變；evolving [ɪˈvɑlvɪŋ] adj. 持續發展的</span></div>
+        <div class="label-row"><span class="tag tag-root">字根</span><span>volv / volut 表示「轉、捲」；revolve（旋轉）、involve（涉及）。</span></div>
+        <div class="label-row"><span class="tag tag-phrase">片語</span><span>continue to evolve（持續演變）；evolve into（演變成）</span></div>
+        <div class="label-row"><span class="tag tag-focus">句型</span><span>continue to evolve 中的 to 是不定詞，表示「繼續去做某事」，不是介系詞。</span></div>
+        <div class="examples"><p>As AI technology continues to evolve, the line between human and virtual characters becomes less clear.</p><p>（隨著 AI 技術持續演變，人類與虛擬角色之間的界線變得更不清楚。）</p><p>Language continues to evolve as society changes.</p><p>（語言會隨著社會改變而持續演變。）</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title grammar-title">四、文法解析</h2>
+    <div class="card grammar-card">
+      <div class="grammar-item">
+        <h3>文法點一：分詞構句表示原因</h3>
+        <span class="grammar-label">【引句 Quote】</span>
+        <p><em>Being fully designed and controlled, these idols always maintain a positive image.</em></p>
+        <span class="grammar-label">【句型】</span>
+        <p><em><strong>V-ing / Being p.p., S + V + ...</strong></em></p>
+        <span class="grammar-label">【核心說明】</span>
+        <p>分詞構句可以把副詞子句簡化，讓句子更精簡。這一句的 Being fully designed and controlled 表示原因，相當於 Because these idols are fully designed and controlled。</p>
+        <p>當主詞與副詞子句主詞相同時，常可省略連接詞與主詞，再把動詞改成分詞形式。若是被動語意，常用 Being p.p. 或 p.p. 的形式。</p>
+        <span class="grammar-label">【使用規則】</span>
+        <ul>
+          <li>分詞構句的邏輯主詞通常要和主要子句主詞一致。</li>
+          <li>主動語意多用 V-ing，被動語意多用 p.p. 或 Being p.p.。</li>
+          <li>放句首時，後面通常加逗號，再接主要子句。</li>
+          <li>可表示原因、時間、條件、讓步或附帶狀況。</li>
+        </ul>
+        <span class="grammar-label">【主題例句】</span>
+        <p>Designed by a professional team, the virtual idol looks almost real.</p>
+        <p>（由專業團隊設計，這位虛擬偶像看起來幾乎像真人。）</p>
+        <span class="grammar-label">【學習提醒】</span>
+        <p>使用分詞構句時，要避免邏輯主詞不一致。如果句首分詞描述的是 AI idols，主要子句主詞就應該是 AI idols 或可明確指向它們的名詞。</p>
+        <span class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+        <p>✗ Being fully controlled, companies can manage AI idols easily.</p>
+        <p>✓ Being fully controlled, AI idols are easier for companies to manage.（被控制的是 AI idols，不是 companies。）</p>
+        <p>選擇：_____ by real voices, the avatar caused a debate about ownership.</p>
+        <p>A. Build　B. Built　C. Building　D. To build</p>
+        <p>答案：B。被動語意要用過去分詞 Built。</p>
+      </div>
+
+      <div class="grammar-item">
+        <h3>文法點二：While 引導讓步副詞子句</h3>
+        <span class="grammar-label">【引句 Quote】</span>
+        <p><em>While AI idols can copy expressions and movements, many fans feel the connection is different from that of real performers.</em></p>
+        <span class="grammar-label">【句型】</span>
+        <p><em><strong>While + S + V, S + V + ...</strong></em></p>
+        <span class="grammar-label">【核心說明】</span>
+        <p>While 除了可以表示「當……的時候」，也常用來表示「雖然」。在本文中，While 帶出 AI 偶像能做到的事，主要子句則指出粉絲仍感受到差異。</p>
+        <p>這種句型很適合寫議論文，因為它能先承認對方觀點，再提出自己的判斷，使語氣更成熟。</p>
+        <span class="grammar-label">【使用規則】</span>
+        <ul>
+          <li>While 表示讓步時，中文常譯為「雖然」。</li>
+          <li>While 子句可放句首或句中；放句首時常用逗號隔開。</li>
+          <li>主要子句通常呈現轉折、限制或不同結果。</li>
+          <li>不要把 while 和 during 混用；during 是介系詞，後面接名詞。</li>
+        </ul>
+        <span class="grammar-label">【主題例句】</span>
+        <p>While AI singers can perform perfectly, human singers can show real emotion.</p>
+        <p>（雖然 AI 歌手可以完美演出，真人歌手能展現真實情感。）</p>
+        <span class="grammar-label">【學習提醒】</span>
+        <p>while 若表示「雖然」，後面要接完整子句。若後面只有名詞，應改用 despite 或 in spite of。</p>
+        <span class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+        <p>✗ While the advantages, AI idols cannot replace real stars.</p>
+        <p>✓ While AI idols have advantages, they cannot replace real stars.（while 後面要接完整子句。）</p>
+        <p>改錯：While virtual idols are efficient, but they may lack emotional depth.</p>
+        <p>答案：刪除 but。While 已經表示讓步，主要子句不需要再加 but。</p>
+      </div>
+
+      <div class="grammar-item">
+        <h3>文法點三：Whether 名詞子句當主詞</h3>
+        <span class="grammar-label">【引句 Quote】</span>
+        <p><em>Whether AI idols will replace real stars is still open to debate.</em></p>
+        <span class="grammar-label">【句型】</span>
+        <p><em><strong>Whether + S + V + ... + V + C</strong></em></p>
+        <span class="grammar-label">【核心說明】</span>
+        <p>Whether 可以引導名詞子句，表示「是否」。在這一句中，Whether AI idols will replace real stars 是整個句子的主詞，後面的 is 是主要動詞。</p>
+        <p>這種句型適合用來提出尚無定論的議題，常見於評論、議論文與新聞分析中。</p>
+        <span class="grammar-label">【使用規則】</span>
+        <ul>
+          <li>Whether 子句可當主詞、受詞或補語。</li>
+          <li>當 Whether 子句當主詞時，主要動詞通常用單數。</li>
+          <li>whether 比 if 更適合放在句首當主詞。</li>
+          <li>open to debate 中的 to 是介系詞，後面接名詞 debate。</li>
+        </ul>
+        <span class="grammar-label">【主題例句】</span>
+        <p>Whether virtual idols can build real trust remains uncertain.</p>
+        <p>（虛擬偶像是否能建立真正信任仍不確定。）</p>
+        <span class="grammar-label">【學習提醒】</span>
+        <p>看到句首 Whether 時，要先找出整個名詞子句的範圍，再判斷主要動詞。不要誤以為 will replace 是全句主要動詞；真正的主要動詞是 is。</p>
+        <span class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+        <p>✗ Whether AI idols will replace real stars are still open to debate.</p>
+        <p>✓ Whether AI idols will replace real stars is still open to debate.（整個名詞子句當單數主詞。）</p>
+        <p>選擇：_____ fans will accept AI idols remains unclear.</p>
+        <p>A. Whether　B. During　C. Because　D. Despite</p>
+        <p>答案：A。Whether 引導名詞子句當主詞。</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title fold-title">五、延伸整理</h2>
+    <div class="card fold-card">
+      <details>
+        <summary><span>常見字首整理（50 個）</span><span class="arrow">▼</span></summary>
+        <div class="fold-content">
+          <ol>
+            <li>a-/an-　否定、沒有　—　anonymous（匿名的）</li>
+            <li>ab-　離開、相反　—　abnormal（異常的）</li>
+            <li>ad-　向、加　—　advance（前進）</li>
+            <li>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</li>
+            <li>anti-　反對、抗　—　antibiotic（抗生素）</li>
+            <li>arch-　主要、首要　—　archenemy（死敵）</li>
+            <li>auto-　自動、自我　—　autograph（親筆簽名）</li>
+            <li>bene-　好的、善　—　benefit（好處）</li>
+            <li>bi-　二、雙　—　bilingual（雙語的）</li>
+            <li>circum-　環繞、周圍　—　circumstance（情況）</li>
+            <li>co-/con-/com-　一起、共同　—　cooperate（合作）</li>
+            <li>contra-　相反、對抗　—　contradict（反駁）</li>
+            <li>de-　去除、下降　—　decode（解碼）</li>
+            <li>dia-　穿過、透過　—　dialogue（對話）</li>
+            <li>dis-　否定、分離　—　disagree（不同意）</li>
+            <li>en-/em-　使成為　—　enable（使能夠）</li>
+            <li>epi-　在上、在外　—　epidemic（流行病）</li>
+            <li>ex-　外、前任　—　export（出口）；ex-president（前總統）</li>
+            <li>extra-　額外、外部　—　extraordinary（非凡的）</li>
+            <li>hetero-　不同　—　heterogeneous（異質的）</li>
+            <li>homo-　相同　—　homogeneous（同質的）</li>
+            <li>hyper-　過度、超　—　hyperactive（過動的）</li>
+            <li>hypo-　低於、不足　—　hypodermic（皮下的）</li>
+            <li>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</li>
+            <li>inter-　在…之間　—　international（國際的）</li>
+            <li>iso-　相等、相同　—　isolate（隔離）</li>
+            <li>mal-　壞、不良　—　malfunction（故障）</li>
+            <li>micro-　微小　—　microscope（顯微鏡）</li>
+            <li>mis-　錯誤　—　misunderstand（誤解）</li>
+            <li>mono-　單一　—　monologue（獨白）</li>
+            <li>multi-　多　—　multicultural（多元文化的）</li>
+            <li>neo-　新的　—　neonatal（新生的）</li>
+            <li>non-　非、沒有　—　nonsense（無意義）</li>
+            <li>pan-　全部　—　pandemic（大流行病）</li>
+            <li>peri-　周圍　—　perimeter（周長）</li>
+            <li>poly-　多　—　polygon（多邊形）</li>
+            <li>post-　之後　—　postwar（戰後的）</li>
+            <li>pre-　之前　—　preview（預覽）</li>
+            <li>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</li>
+            <li>pseudo-　假的　—　pseudonym（筆名）</li>
+            <li>re-　再、回　—　review（複習）</li>
+            <li>semi-　一半、部分　—　semicircle（半圓）</li>
+            <li>sub-　在下、次級　—　subway（地鐵）</li>
+            <li>super-　超越、在上　—　superstar（超級明星）</li>
+            <li>syn-/sym-　一起、共同　—　synchronize（同步）</li>
+            <li>tele-　遠距　—　telephone（電話）</li>
+            <li>trans-　穿越、轉變　—　transport（運輸）</li>
+            <li>tri-　三　—　triangle（三角形）</li>
+            <li>un-　否定、不　—　unhappy（不快樂的）</li>
+            <li>vice-　副、代替　—　vice-president（副總統）</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>常見英文字尾整理（約 30 個）</span><span class="arrow">▼</span></summary>
+        <div class="fold-content">
+          <h3>名詞字尾</h3>
+          <ul>
+            <li>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</li>
+            <li>-ment　行為或結果　—　agreement（協議）、development（發展）</li>
+            <li>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</li>
+            <li>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</li>
+            <li>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</li>
+            <li>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</li>
+            <li>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</li>
+            <li>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</li>
+          </ul>
+          <h3>形容詞字尾</h3>
+          <ul>
+            <li>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</li>
+            <li>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</li>
+            <li>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</li>
+            <li>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</li>
+            <li>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</li>
+          </ul>
+          <h3>動詞字尾</h3>
+          <ul>
+            <li>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</li>
+            <li>-ify　使成為…　—　beautify（美化）、clarify（澄清）</li>
+            <li>-ate　形成動詞　—　dominate（支配）、activate（啟動）</li>
+            <li>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</li>
+          </ul>
+          <h3>副詞字尾</h3>
+          <ul>
+            <li>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</li>
+            <li>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</li>
+            <li>-wise　表示方式或角度　—　clockwise（順時針方向）</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>30 個常用單字與衍生詞</span><span class="arrow">▼</span></summary>
+        <div class="fold-content">
+          <ol>
+            <li>idol [ˈaɪdḷ] (n. 偶像) — idol group（偶像團體）</li>
+            <li>human [ˈhjumən] (adj. 人類的) — humanity [hjuˈmænətɪ] (n. 人性；人類)</li>
+            <li>virtual [ˈvɝtʃuəl] (adj. 虛擬的) — virtual reality（虛擬實境）</li>
+            <li>character [ˈkærɪktɚ] (n. 角色；性格) — characteristic [ˌkærɪktəˈrɪstɪk] (n. 特徵)</li>
+            <li>fashionable [ˈfæʃənəbḷ] (adj. 時尚的) — fashion [ˈfæʃən] (n. 時尚)</li>
+            <li>outfit [ˈaʊtˌfɪt] (n. 服裝) — school outfit（校園穿搭）</li>
+            <li>pleasant [ˈplɛzənt] (adj. 令人愉快的) — pleasure [ˈplɛʒɚ] (n. 愉快)</li>
+            <li>release [rɪˈlis] (v. 發行) — release date（發行日期）</li>
+            <li>celebrity [səˈlɛbrətɪ] (n. 名人) — celebrity culture（名人文化）</li>
+            <li>supporter [səˈpɔrtɚ] (n. 支持者) — support [səˈpɔrt] (v. 支持)</li>
+            <li>advantage [ədˈvæntɪdʒ] (n. 優勢) — take advantage of（善用；利用）</li>
+            <li>maintain [menˈten] (v. 維持) — maintenance [ˈmentənəns] (n. 維護)</li>
+            <li>positive [ˈpɑzətɪv] (adj. 正面的) — positivity [ˌpɑzəˈtɪvətɪ] (n. 正向態度)</li>
+            <li>scandal [ˈskændḷ] (n. 醜聞) — scandalous [ˈskændələs] (adj. 可恥的)</li>
+            <li>disappearance [ˌdɪsəˈpɪrəns] (n. 消失) — disappear [ˌdɪsəˈpɪr] (v. 消失)</li>
+            <li>hateful [ˈhetfəl] (adj. 充滿恨意的) — hate speech（仇恨言論）</li>
+            <li>reduce [rɪˈdus] (v. 減少) — reduction [rɪˈdʌkʃən] (n. 減少)</li>
+            <li>abuse [əˈbjus] (n. 霸凌；濫用) — abusive [əˈbjusɪv] (adj. 辱罵的)</li>
+            <li>promotion [prəˈmoʃən] (n. 宣傳；升遷) — promote [prəˈmot] (v. 促進；宣傳)</li>
+            <li>creative [kriˈetɪv] (adj. 有創意的) — creativity [ˌkrieˈtɪvətɪ] (n. 創造力)</li>
+            <li>efficient [ɪˈfɪʃənt] (adj. 有效率的) — efficiency [ɪˈfɪʃənsɪ] (n. 效率)</li>
+            <li>emotional [ɪˈmoʃənḷ] (adj. 情感上的) — emotion [ɪˈmoʃən] (n. 情緒)</li>
+            <li>performer [pɚˈfɔrmɚ] (n. 表演者) — performance [pɚˈfɔrməns] (n. 表演；表現)</li>
+            <li>meaningful [ˈminɪŋfəl] (adj. 有意義的) — meaning [ˈminɪŋ] (n. 意義)</li>
+            <li>expression [ɪkˈsprɛʃən] (n. 表情；表達) — express [ɪkˈsprɛs] (v. 表達)</li>
+            <li>movement [ˈmuvmənt] (n. 動作；運動) — move [muv] (v. 移動；感動)</li>
+            <li>appearance [əˈpɪrəns] (n. 外表；出現) — appear [əˈpɪr] (v. 出現)</li>
+            <li>stereotype [ˈstɛrɪəˌtaɪp] (n. 刻板印象) — stereotypical [ˌstɛrɪəˈtɪpɪkḷ] (adj. 刻板的)</li>
+            <li>ownership [ˈonɚˌʃɪp] (n. 所有權) — owner [ˈonɚ] (n. 擁有者)</li>
+            <li>evolve [ɪˈvɑlv] (v. 演變) — evolution [ˌɛvəˈluʃən] (n. 演變；進化)</li>
+          </ol>
+          <h3>文章相關常用片語 5 個</h3>
+          <ul>
+            <li>stand out（突出；顯眼）</li>
+            <li>around the clock（日以繼夜）</li>
+            <li>from a business point of view（從商業角度來看）</li>
+            <li>result in（導致；造成）</li>
+            <li>open to debate（有待討論）</li>
+          </ul>
+        </div>
+      </details>
+
+      <details>
+        <summary><span>練文筆食材</span><span class="arrow">▼</span></summary>
+        <div class="fold-content">
+          <p>① not all + N + V（並非所有……都……）<br>→ 適用：修正過度絕對的說法。<br>例：Not all online influencers are real people.</p>
+          <p>② Many people are wondering if...（許多人想知道是否……）<br>→ 適用：提出討論型議題。<br>例：Many people are wondering if technology will change education.</p>
+          <p>③ Being + p.p., S + V（由於被……，所以……）<br>→ 適用：用分詞構句說明原因。<br>例：Being carefully designed, the app is easy to use.</p>
+          <p>④ This makes + O + C（這使……變得……）<br>→ 適用：說明某事造成的結果。<br>例：This makes online learning more flexible.</p>
+          <p>⑤ Since + S + V, S + V（由於……，所以……）<br>→ 適用：清楚寫出原因與結果。<br>例：Since the tool is free, many students use it.</p>
+          <p>⑥ linked to + N（與……相關）<br>→ 適用：描述問題、風險或現象的關聯。<br>例：The stress is linked to heavy homework.</p>
+          <p>⑦ stand out（突出；顯眼）<br>→ 適用：說明人事物的特色。<br>例：Her creativity makes her stand out.</p>
+          <p>⑧ around the clock（日以繼夜）<br>→ 適用：描述持續不間斷的工作。<br>例：The rescue team worked around the clock.</p>
+          <p>⑨ From a ... point of view（從……角度來看）<br>→ 適用：切換分析角度。<br>例：From a student's point of view, the rule is too strict.</p>
+          <p>⑩ Despite + N/V-ing, S + V（儘管……，仍然……）<br>→ 適用：表達讓步與轉折。<br>例：Despite the cost, the project is worth trying.</p>
+          <p>⑪ While + S + V, S + V（雖然……，但是……）<br>→ 適用：承認一方優點後提出限制。<br>例：While AI is useful, it cannot replace human judgment.</p>
+          <p>⑫ result in + N（導致……）<br>→ 適用：寫原因造成結果。<br>例：Too much screen time may result in poor sleep.</p>
+          <p>⑬ If + S + V, S + may V（如果……，可能……）<br>→ 適用：討論可能情況。<br>例：If schools use AI wisely, students may learn more effectively.</p>
+          <p>⑭ As + S + V, S + V（隨著……，……）<br>→ 適用：描述趨勢變化。<br>例：As technology improves, learning becomes more personal.</p>
+          <p>⑮ Whether + S + V + is still open to debate（是否……仍有待討論）<br>→ 適用：總結爭議性議題。<br>例：Whether phones help students learn is still open to debate.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <nav class="link-panel bottom-link-panel" aria-label="課程與聯絡連結">
+    <h2>七月開課與聯絡資訊</h2>
+    <div class="link-grid">
+      <a class="link-card" href="https://linwayet.github.io/4ulive/index.html">
+        <strong>七月課程介紹：錯中學 ECHO 計劃</strong>
+        <span>透過錯誤分析、回饋修正與反覆練習，協助學生把英文弱點轉成穩定進步。</span>
+      </a>
+      <a class="link-card" href="https://linwayet.github.io/popup/index">
+        <strong>學生分析</strong>
+        <span>查看學習表現與需要加強的方向，讓七月課程安排更精準、更有效率。</span>
+      </a>
+      <a class="link-card line-card" href="https://line.me/ti/p/~linwayet">
+        <strong>林威老師 LINE：linwayet</strong>
+        <span>課程詢問、報名與學習規劃，可加入個人 LINE 帳號直接聯繫。</span>
+      </a>
+    </div>
+  </nav>
+</main>
+</body>
+</html>
