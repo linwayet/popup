@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>記憶主題長句句型分析 · 林威英文</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: linear-gradient(135deg, #FBE8D3 0%, #F5ECD7 50%, #F8D9B5 100%);
+  font-family: 'Noto Sans TC','PingFang TC',sans-serif;
+  min-height: 100vh;
+  color: #2D2A26;
+}
+
+/* ====== LINE Warning ====== */
+.line-warning {
+  display: none; background: #FFF4E5; border: 2px solid #FF9500;
+  color: #B84A00; padding: 12px 16px; margin: 12px auto;
+  max-width: 960px; border-radius: 10px; font-size: 13px;
+}
+.line-warning.show { display: block; }
+.line-warning button {
+  background: #B84A00; color: #fff; border: none;
+  padding: 6px 14px; border-radius: 16px; font-size: 12px; font-weight: 700;
+  margin-left: 8px; cursor: pointer;
+}
+
+/* ====== Link Bar ====== */
+.link-bar {
+  background: linear-gradient(135deg, #B84A00 0%, #D85A30 50%, #E8743D 100%);
+  padding: 14px 16px;
+}
+.link-bar-inner { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.link-card {
+  flex: 1 1 280px; background: rgba(255,255,255,0.95); border-radius: 14px;
+  padding: 14px 18px; text-decoration: none; color: #2D2A26;
+  display: flex; align-items: center; gap: 12px;
+  -webkit-tap-highlight-color: rgba(184,74,0,0.1);
+  cursor: pointer; transition: all 0.25s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+.link-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+.link-card .icon {
+  font-size: 28px; width: 50px; height: 50px; border-radius: 50%;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+}
+.link-card.course1 .icon { background: linear-gradient(135deg,#FFE5D0,#FFB077); color: #B84A00; }
+.link-card.course2 .icon { background: linear-gradient(135deg,#D8EFE0,#7FCBA0); color: #0F6E56; }
+.link-card.line .icon { background: linear-gradient(135deg,#C6E8C6,#06C755); color: #fff; }
+.link-card .title { font-size: 15px; font-weight: 700; }
+.link-card .desc { font-size: 12px; color: #666; margin-top: 2px; }
+
+/* ====== Main ====== */
+.main-wrap { max-width: 1000px; margin: 0 auto; padding: 24px 18px; }
+.page-title {
+  text-align: center; font-family: 'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif;
+  font-size: 34px; font-weight: 900; color: #B84A00; letter-spacing: 4px; margin: 18px 0 6px;
+}
+.page-subtitle { text-align: center; color: #B84A00; font-size: 16px; margin-bottom: 24px; letter-spacing: 2px; }
+
+/* ====== Original Sentence Box ====== */
+.original-box {
+  background: linear-gradient(135deg, #FFFBF2 0%, #FFF4DC 100%);
+  border: 2px solid #E8C58C; border-radius: 14px;
+  padding: 20px 24px; margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(184,74,0,0.08);
+}
+.original-label {
+  font-size: 14px; color: #B84A00; font-weight: 700; margin-bottom: 10px;
+}
+.original-text {
+  font-family: 'Caveat', cursive;
+  font-size: 24px; line-height: 1.6; color: #2D2A26; font-weight: 600;
+}
+
+/* ====== SVG Area ====== */
+.svg-area {
+  background: #FFF8EE; border-radius: 14px; padding: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  overflow: hidden;
+}
+
+/* ====== Download Btn ====== */
+.download-area { text-align: center; margin: 18px 0 28px; }
+.download-btn {
+  background: linear-gradient(135deg, #1D9E75 0%, #0F6E56 100%);
+  color: #fff; border: none;
+  padding: 14px 28px; border-radius: 28px;
+  font-size: 16px; font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15,110,86,0.30);
+  transition: all 0.25s;
+}
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15,110,86,0.40); }
+.download-btn:disabled { opacity: 0.6; cursor: wait; }
+.download-hint { font-size: 13px; color: #6B5A45; margin-top: 10px; }
+
+/* ====== Grammar Panel ====== */
+.grammar-panel {
+  background: linear-gradient(135deg, #FFFBF2 0%, #FFF4DC 100%);
+  border-radius: 14px; padding: 24px 22px; margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(184,74,0,0.08);
+}
+.panel-title {
+  font-size: 22px; font-weight: 900; color: #B84A00; margin-bottom: 18px;
+  border-bottom: 2.5px solid #E8C58C; padding-bottom: 10px;
+}
+.grammar-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px dashed #E8C58C;
+  font-size: 16px; line-height: 1.7;
+}
+.grammar-item:last-child { border-bottom: none; }
+.grammar-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 8px;
+}
+.grammar-title { font-weight: 700; font-size: 17px; }
+.grammar-body { color: #2D2A26; }
+.grammar-sub { font-size: 14px; color: #888; }
+
+/* ====== Translation Box ====== */
+.translation-box {
+  background: linear-gradient(135deg, #FEF0D8 0%, #FCE6BD 100%);
+  border-radius: 10px; padding: 18px 20px;
+  border-left: 6px solid #D85A30;
+  margin-bottom: 28px;
+  box-shadow: 0 3px 10px rgba(184,74,0,0.08);
+}
+.translation-label { font-size: 16px; font-weight: 700; color: #B84A00; margin-bottom: 8px; }
+.translation-text { font-size: 17px; line-height: 1.8; color: #2D2A26; }
+
+/* ====== Memory Map (10 words) ====== */
+.memory-map {
+  background: linear-gradient(135deg, #F5F4FF 0%, #ECEAFD 100%);
+  border-radius: 14px; padding: 22px 20px; margin-bottom: 28px;
+  border: 2px solid #BDB6F0;
+  box-shadow: 0 4px 12px rgba(83,74,183,0.10);
+}
+.memory-title { font-size: 20px; font-weight: 900; color: #534AB7; margin-bottom: 6px; text-align: center; }
+.memory-sub { font-size: 14px; color: #7A6FBF; text-align: center; margin-bottom: 18px; }
+.memory-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px;
+}
+.mem-card {
+  background: #fff; border-radius: 10px; padding: 10px 6px;
+  text-align: center; box-shadow: 0 2px 6px rgba(83,74,183,0.10);
+  border-top: 4px solid var(--mem-color);
+}
+.mem-emoji { font-size: 22px; margin-bottom: 4px; }
+.mem-word { font-family: 'Caveat', cursive; font-size: 20px; font-weight: 700; color: var(--mem-color); }
+.mem-cn { font-size: 11px; color: #555; margin-top: 2px; }
+.mem-tag { font-size: 10px; color: #999; margin-top: 2px; }
+
+.memory-tree {
+  background: #fff; border-radius: 10px; padding: 16px 18px; margin-top: 14px;
+  border-left: 5px solid #534AB7;
+}
+.tree-title { font-weight: 700; color: #534AB7; margin-bottom: 8px; font-size: 15px; }
+.tree-list { font-size: 14px; line-height: 1.9; color: #2D2A26; }
+.tree-list code { background: #EEEDFE; color: #534AB7; padding: 1px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+
+/* ====== Vocab Cards ====== */
+.vocab-header {
+  text-align: center; font-size: 22px; font-weight: 900; color: #B84A00; margin: 0 0 18px;
+  letter-spacing: 2px;
+}
+.vocab-card {
+  border-radius: 14px; padding: 18px 20px; margin-bottom: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  border-left: 6px solid var(--vc-color);
+}
+.vocab-word {
+  font-family: 'Caveat', cursive;
+  font-size: 28px; font-weight: 700; color: var(--vc-color);
+}
+.vocab-kk { font-family: monospace; color: #666; font-size: 14px; margin-left: 8px; }
+.vocab-pos { color: #444; font-size: 15px; margin-left: 6px; }
+.vocab-derived {
+  background: var(--vc-derived-bg);
+  border-radius: 8px; padding: 10px 12px; margin: 10px 0;
+  font-size: 14px; line-height: 1.7; color: #2D2A26;
+}
+.vocab-derived strong { color: var(--vc-color); }
+.vocab-examples { margin-top: 8px; }
+.ex-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.ex-num {
+  background: var(--vc-color); color: #fff;
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px; flex-shrink: 0; margin-top: 3px;
+}
+.ex-text { font-size: 15.5px; line-height: 1.6; }
+.ex-cn { color: #555; font-size: 14px; }
+
+/* ====== iOS Modal ====== */
+.ios-modal {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92); z-index: 9999;
+  overflow-y: auto; padding: 16px;
+}
+.ios-modal.show { display: block; }
+.ios-modal .close { text-align: right; }
+.ios-modal .close button {
+  background: #fff; color: #2D2A26; border: none;
+  padding: 8px 16px; border-radius: 20px; font-weight: 700; cursor: pointer;
+}
+.ios-modal .hint, .ios-modal .footer-hint {
+  color: #fff; text-align: center; padding: 10px; font-size: 14px;
+}
+.ios-modal img { width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; }
+
+/* ====== Responsive ====== */
+@media (max-width: 640px) {
+  .page-title { font-size: 26px; letter-spacing: 2px; }
+  .page-subtitle { font-size: 13px; }
+  .original-text { font-size: 19px; }
+  .link-card { flex: 1 1 100%; }
+  .link-card .icon { width: 44px; height: 44px; font-size: 24px; }
+  .link-card .title { font-size: 13px; }
+  .link-card .desc { font-size: 11px; }
+  .main-wrap { padding: 16px 12px; }
+  .grammar-panel { padding: 18px 16px; }
+  .panel-title { font-size: 19px; }
+  .vocab-card { padding: 14px; }
+  .vocab-word { font-size: 22px; }
+  .vocab-examples { font-size: 15px; }
+  .grammar-item { font-size: 15px; }
+  .download-btn { font-size: 14px; padding: 12px 22px; }
+  .memory-grid { grid-template-columns: repeat(2, 1fr); }
+  .mem-word { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LINE Warning -->
+<div id="line-warning" class="line-warning">
+  ⚠️ 您正在 <strong>LINE 內建瀏覽器</strong>中瀏覽，部分功能可能受限。
+  <button onclick="openInBrowser()">在瀏覽器中開啟</button>
+  <br><span style="font-size:12px;color:#888;">或點右上角「⋯」→「在瀏覽器中開啟」</span>
+</div>
+
+<!-- TOP Link Bar -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <h1 class="page-title">林威英文句型分析</h1>
+  <div class="page-subtitle">記憶主題長句拆解 · Memory Vocabulary &amp; Sentence Structure</div>
+
+  <!-- Original sentence -->
+  <div class="original-box">
+    <div class="original-label">📄 原文 Original Sentence</div>
+    <div class="original-text">
+      Although many students believe that memorizing vocabulary is the key to learning English, teachers often remind them that understanding how words are used in context matters far more.
+    </div>
+  </div>
+
+  <!-- SVG Area -->
+  <div class="svg-area">
+    <svg id="grammar-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"
+      style="width:100%;height:auto;display:block;background:#FFF8EE;">
+      <defs>
+        <marker id="arr1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M1 1 L 7 5 L 1 9" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        </marker>
+        <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFF8EE"/>
+          <stop offset="100%" stop-color="#FEF0D8"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#bg-grad)"/>
+
+      <!-- Header -->
+      <text x="960" y="78" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="60" font-weight="900" fill="#B84A00" letter-spacing="8">林威英文句型分析</text>
+      <text x="960" y="128" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="32" font-weight="700" fill="#D85A30" letter-spacing="4">林威老師設計</text>
+      <line x1="540" y1="156" x2="1380" y2="156" stroke="#D4A96A" stroke-width="2.5"/>
+
+      <!-- ===== Adv. Clause (讓步) ===== -->
+      <!-- Labels row -->
+      <text x="195" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="36" font-weight="700" fill="#7C3AED">Adv. Clause (讓步)</text>
+      <text x="465" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#185FA5">S.</text>
+      <text x="730" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#1D9E75">V.</text>
+      <text x="1010" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#534AB7">that-名詞子句 (O.)</text>
+
+      <!-- Main words row 1 -->
+      <text x="195" y="275" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#7C3AED">Although</text>
+      <text x="465" y="275" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#185FA5">many students</text>
+      <text x="730" y="275" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#1D9E75">believe</text>
+      <text x="1010" y="275" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#534AB7">that ...</text>
+
+      <!-- Underlines row 1 -->
+      <line x1="385" y1="290" x2="545" y2="290" stroke="#185FA5" stroke-width="6"/>
+      <line x1="680" y1="290" x2="780" y2="290" stroke="#1D9E75" stroke-width="6"/>
+      <line x1="950" y1="290" x2="1070" y2="290" stroke="#534AB7" stroke-width="6"/>
+
+      <!-- Annotations row 1 -->
+      <text x="195" y="345" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" fill="#7C3AED">↑ 讓步連接詞</text>
+      <text x="1010" y="345" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" fill="#534AB7">↑ that 名詞子句作 believe 的受詞</text>
+
+      <!-- Nested noun-clause expansion -->
+      <text x="960" y="405" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="34" font-weight="700" fill="#534AB7">↓ that-名詞子句內部結構：</text>
+      <rect x="380" y="425" width="1160" height="80" rx="40" ry="40" fill="none" stroke="#5DCAA5" stroke-width="5"/>
+      <text x="960" y="478" text-anchor="middle" font-family="'Caveat',cursive" font-size="50" font-weight="700" fill="#0F6E56">memorizing vocabulary  is  the key to learning English</text>
+      <text x="555" y="538" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="30" fill="#1D9E75">↑ 動名詞片語當 S.</text>
+      <text x="960" y="538" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="30" fill="#1D9E75">↑ be V.</text>
+      <text x="1300" y="538" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="30" fill="#534AB7">↑ S.C.（介系詞 to + Ving）</text>
+
+      <!-- Section divider -->
+      <line x1="200" y1="585" x2="1720" y2="585" stroke="#D4A96A" stroke-width="2" stroke-dasharray="10 7"/>
+
+      <!-- ===== Main Clause ===== -->
+      <text x="280" y="635" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#185FA5">S.</text>
+      <text x="560" y="635" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#1D9E75">V.</text>
+      <text x="780" y="635" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#D85A30">O.</text>
+      <text x="1100" y="635" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#534AB7">that-名詞子句 (受詞補語)</text>
+
+      <text x="280" y="705" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#185FA5">teachers</text>
+      <text x="560" y="705" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#1D9E75">remind</text>
+      <text x="780" y="705" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#D85A30">them</text>
+      <text x="1100" y="705" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#534AB7">that ...</text>
+
+      <line x1="170" y1="720" x2="390" y2="720" stroke="#185FA5" stroke-width="6"/>
+      <line x1="500" y1="720" x2="620" y2="720" stroke="#1D9E75" stroke-width="6"/>
+      <line x1="740" y1="720" x2="820" y2="720" stroke="#D85A30" stroke-width="6"/>
+      <line x1="1030" y1="720" x2="1170" y2="720" stroke="#534AB7" stroke-width="6"/>
+
+      <text x="670" y="775" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="30" fill="#2D2A26">remind + sb + that-子句</text>
+
+      <!-- Nested clause 2 -->
+      <text x="960" y="835" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="34" font-weight="700" fill="#534AB7">↓ 第二個 that-名詞子句內部結構：</text>
+      <rect x="280" y="855" width="1360" height="86" rx="43" ry="43" fill="none" stroke="#5DCAA5" stroke-width="5"/>
+      <text x="960" y="910" text-anchor="middle" font-family="'Caveat',cursive" font-size="46" font-weight="700" fill="#0F6E56">understanding how words are used in context  matters  far more</text>
+
+      <text x="540" y="980" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#1D9E75">↑ 動名詞片語當 S.（內含 how 名詞子句）</text>
+      <text x="1180" y="980" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#1D9E75">↑ V.</text>
+      <text x="1450" y="980" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#C0392B">↑ far 強化比較級</text>
+
+      <!-- Footer -->
+      <line x1="660" y1="1010" x2="1260" y2="1010" stroke="#D4A96A" stroke-width="1.8"/>
+      <text x="960" y="1050" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="28" font-weight="500" fill="#A89070">林威英文句型分析 · SVG 向量版　|　LINE ID: linwayet</text>
+    </svg>
+  </div>
+
+  <!-- Download Btn -->
+  <div class="download-area">
+    <button id="download-btn" class="download-btn" onclick="prepareAndDownloadJpg()">
+      📥 下載句型分析圖（JPG · 1920×1080）
+    </button>
+    <div class="download-hint">📱 手機：點按後圖片直接顯示，<strong>長按圖片儲存到相簿</strong> · 💻 電腦自動下載</div>
+  </div>
+
+  <!-- Grammar Panel -->
+  <div class="grammar-panel">
+    <div class="panel-title">📌 文法重點</div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#185FA5;"></span>
+      <div>
+        <span class="grammar-title" style="color:#185FA5;">① Although 引導讓步副詞子句</span>
+        <span class="grammar-body"> — Although + S. + V., 主句。表「雖然⋯⋯但是」，後面主句<strong>不可</strong>再加 but。</span><br>
+        <span class="grammar-sub">例：<em>Although</em> many students believe ..., teachers often remind ...（不可寫成 ... , but teachers ...）</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#1D9E75;"></span>
+      <div>
+        <span class="grammar-title" style="color:#1D9E75;">② 動名詞片語當主詞（Ving + N. as Subject）</span>
+        <span class="grammar-body"> — 句中出現<strong>兩處</strong>：<em>memorizing vocabulary</em> 與 <em>understanding how words ...</em>，動名詞片語視為單數，動詞用 is / matters。</span><br>
+        <span class="grammar-sub">公式：Ving + 受詞 + 修飾語 = 名詞片語 → 整體當 S. → 後接單數動詞</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#C0392B;"></span>
+      <div>
+        <span class="grammar-title" style="color:#C0392B;">③ that 引導名詞子句作受詞</span>
+        <span class="grammar-body"> — 句中出現<strong>兩個</strong> that 子句：第一個是 believe 的受詞；第二個是 remind 的受詞（remind sb that-clause）。</span><br>
+        <span class="grammar-sub">remind 句型三種：① remind sb of sth ② remind sb to V ③ remind sb that-clause</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#534AB7;"></span>
+      <div>
+        <span class="grammar-title" style="color:#534AB7;">④ how 引導的名詞子句（嵌套）</span>
+        <span class="grammar-body"> — <em>how words are used in context</em>，「how + S. + V.」整個視為名詞，當 understanding 的受詞，內含被動語態（are used）。</span><br>
+        <span class="grammar-sub">疑問詞名詞子句：how / what / why / when / where / whether ＋ 直述語序（不用倒裝）</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#0F6E56;"></span>
+      <div>
+        <span class="grammar-title" style="color:#0F6E56;">⑤ far 強化比較級（far more / much more）</span>
+        <span class="grammar-body"> — <em>matters far more</em>，far、much、a lot、even、still 都可放在比較級前加強語氣，意思是「⋯⋯得多」。</span><br>
+        <span class="grammar-sub">⚠️ very 只能修飾「原級」(very important)，不能修飾比較級。比較級要用 much / far / a lot。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Translation -->
+  <div class="translation-box">
+    <div class="translation-label">📖 全句中文翻譯</div>
+    <div class="translation-text">
+      雖然很多學生認為背單字是學好英文的關鍵，老師卻常常提醒他們：理解單字如何在情境中被使用，遠比死背重要得多。
+    </div>
+  </div>
+
+  <!-- Memory Map (10 words) -->
+  <div class="memory-map">
+    <div class="memory-title">🧠 十個記憶相關單字 · 關係地圖</div>
+    <div class="memory-sub">先看核心字根 memor-，再看延伸字</div>
+
+    <div class="memory-grid">
+      <div class="mem-card" style="--mem-color:#B84A00;">
+        <div class="mem-emoji">🧠</div>
+        <div class="mem-word">memory</div>
+        <div class="mem-cn">記憶／紀念</div>
+        <div class="mem-tag">n. 核心字</div>
+      </div>
+      <div class="mem-card" style="--mem-color:#D85A30;">
+        <div class="mem-emoji">📚</div>
+        <div class="mem-word">memorize</div>
+        <div class="mem-cn">記住、背熟</div>
+        <div class="mem-tag">v. 衍生</div>
+      </div>
+      <div class="mem-card" style="--mem-color:#D85A30;">
+        <div class="mem-emoji">💭</div>
+        <div class="mem-word">memorable</div>
+        <div class="mem-cn">難忘的</div>
+        <div class="mem-tag">adj. 衍生</div>
+      </div>
+      <div class="mem-card" style="--mem-color:#D85A30;">
+        <div class="mem-emoji">🪦</div>
+        <div class="mem-word">memorial</div>
+        <div class="mem-cn">紀念的</div>
+        <div class="mem-tag">adj. 衍生</div>
+      </div>
+      <div class="mem-card" style="--mem-color:#D85A30;">
+        <div class="mem-emoji">🕯️</div>
+        <div class="mem-word">commemorate</div>
+        <div class="mem-cn">緬懷、紀念</div>
+        <div class="mem-tag">v. 衍生</div>
+      </div>
+      <div class="mem-card" style="--mem-color:#534AB7;">
+        <div class="mem-emoji">🔍</div>
+        <div class="mem-word">recollection</div>
+        <div class="mem-cn">回憶</div>
+        <div class="mem-tag">n. 同義</div>
+      </div>
+      <div class="mem-card" style="--mem-color:#534AB7;">
+        <div class="mem-emoji">🌅</div>
+        <div class="mem-word">reminiscence</div>
+        <div class="mem-cn">追憶</div>
+        <div class="mem-tag">n. 同義</div>
+      </div>
+      <div class="mem-card" style="--mem-color:#534AB7;">
+        <div class="mem-emoji">🏡</div>
+        <div class="mem-word">nostalgia</div>
+        <div class="mem-cn">懷舊、鄉愁</div>
+        <div class="mem-tag">n. 情緒</div>
+      </div>
+      <div class="mem-card" style="--mem-color:#C0392B;">
+        <div class="mem-emoji">❌</div>
+        <div class="mem-word">amnesia</div>
+        <div class="mem-cn">失憶症</div>
+        <div class="mem-tag">n. 反義</div>
+      </div>
+      <div class="mem-card" style="--mem-color:#1D9E75;">
+        <div class="mem-emoji">⚡</div>
+        <div class="mem-word">flashback</div>
+        <div class="mem-cn">閃回</div>
+        <div class="mem-tag">n. 影像</div>
+      </div>
+    </div>
+
+    <div class="memory-tree">
+      <div class="tree-title">🔗 三大類解讀</div>
+      <div class="tree-list">
+        <strong>① 核心字根 memor-（記、想起）家族：</strong><code>memory</code>（記憶）→ <code>memorize</code>（背）／<code>memorable</code>（難忘的）／<code>memorial</code>（紀念的）／<code>commemorate</code>（共同 com- + 紀念 → 緬懷）<br>
+        <strong>② 同義 / 情緒層次：</strong><code>recollection</code>（再 re- + collect 收集 → 回想）／<code>reminiscence</code>（追憶，較文學）／<code>nostalgia</code>（思鄉、懷舊，帶溫暖情緒）<br>
+        <strong>③ 反向與心理學詞：</strong><code>amnesia</code>（a- 否定 + mnesia 記 → 失憶症）／<code>flashback</code>（電影／心理學的「往事突然閃現」）<br>
+        <strong>🧠 記憶口訣：</strong>「核心 memory，動詞 memorize，形容 memorable／memorial，動詞 commemorate；同義 recollection／reminiscence；情緒 nostalgia；反 amnesia；閃現 flashback。」
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 Core Vocab Cards -->
+  <h2 class="vocab-header">📚 五個高中核心單字 · 每字兩句生活例句</h2>
+
+  <!-- Card 1 BLUE -->
+  <div class="vocab-card" style="--vc-color:#185FA5; --vc-derived-bg:#E6F1FB; background:linear-gradient(135deg,#F0F7FF,#E0EFFD);">
+    <div>
+      <span class="vocab-word">memorize</span>
+      <span class="vocab-kk">[ˋmɛmə͵raɪz]</span>
+      <span class="vocab-pos">v. 記住、背熟</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>memory (n. 記憶)、memorable (adj. 難忘的)、memorial (adj./n. 紀念的)、memorization (n. 背誦)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">She tried to <strong>memorize</strong> twenty new English words before the test.<br><span class="ex-cn">她試著在考試前背下二十個新的英文單字。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">Actors usually have to <strong>memorize</strong> the whole script in just a few weeks.<br><span class="ex-cn">演員通常必須在短短幾週內背下整本劇本。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 GREEN -->
+  <div class="vocab-card" style="--vc-color:#1D9E75; --vc-derived-bg:#E1F5EE; background:linear-gradient(135deg,#F5FFF8,#DDF5E6);">
+    <div>
+      <span class="vocab-word">vocabulary</span>
+      <span class="vocab-kk">[voˋkæbjə͵lɛrɪ]</span>
+      <span class="vocab-pos">n. 字彙、詞彙量</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>vocab (n. 口語縮寫)、vocal (adj. 聲音的)、vocation (n. 職業；天職)、vocabular (adj. 詞彙的)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">Reading novels is a great way to expand your English <strong>vocabulary</strong>.<br><span class="ex-cn">讀小說是擴充英文字彙量很棒的方法。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">A rich <strong>vocabulary</strong> helps you express your ideas more precisely.<br><span class="ex-cn">豐富的字彙能幫助你更精確地表達想法。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 ORANGE -->
+  <div class="vocab-card" style="--vc-color:#D85A30; --vc-derived-bg:#FAECE7; background:linear-gradient(135deg,#FFF8F0,#FCE8D8);">
+    <div>
+      <span class="vocab-word">remind</span>
+      <span class="vocab-kk">[rɪˋmaɪnd]</span>
+      <span class="vocab-pos">v. 提醒、使想起</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>reminder (n. 提醒物)、reminding (adj. 引人回想的)、mind (n./v. 心；介意)、mindful (adj. 留意的)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">Please <strong>remind</strong> me to call mom when we get home tonight.<br><span class="ex-cn">今晚回家後請提醒我打電話給媽媽。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">This old song always <strong>reminds</strong> me of my high school days.<br><span class="ex-cn">這首老歌總是讓我想起高中時光。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4 PURPLE -->
+  <div class="vocab-card" style="--vc-color:#534AB7; --vc-derived-bg:#EEEDFE; background:linear-gradient(135deg,#F5F4FF,#E5E2FE);">
+    <div>
+      <span class="vocab-word">context</span>
+      <span class="vocab-kk">[ˋkɑntɛkst]</span>
+      <span class="vocab-pos">n. 上下文、情境、脈絡</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>contextual (adj. 依上下文的)、contextualize (v. 置於情境中)、text (n. 文本)、texture (n. 質地)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">You can usually guess the meaning of a new word from the <strong>context</strong>.<br><span class="ex-cn">你通常可以從上下文猜出新單字的意思。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">Taking that sentence out of <strong>context</strong> changes its whole meaning.<br><span class="ex-cn">把那句話抽離情境會徹底改變它的意義。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 5 TEAL -->
+  <div class="vocab-card" style="--vc-color:#0F6E56; --vc-derived-bg:#E1F5EE; background:linear-gradient(135deg,#F0FBF7,#D8F0E3);">
+    <div>
+      <span class="vocab-word">matter</span>
+      <span class="vocab-kk">[ˋmætɚ]</span>
+      <span class="vocab-pos">v. 重要、要緊　／ n. 事情；物質</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>matters (v. 第三人稱單數)、material (n. 材料 adj. 物質的)、materialism (n. 唯物主義)、no matter (片 無論)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">In learning a language, daily practice <strong>matters</strong> more than talent.<br><span class="ex-cn">學語言時，每天的練習比天分還重要。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">No <strong>matter</strong> how busy you are, eating breakfast still <strong>matters</strong>.<br><span class="ex-cn">不管你多忙，吃早餐還是很重要。</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM Link Bar -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- iOS modal -->
+<div id="ios-modal" class="ios-modal">
+  <div class="close"><button onclick="closeIosModal()">✕ 關閉</button></div>
+  <p class="hint">📱 長按下方圖片 → 「儲存圖像」</p>
+  <img id="ios-modal-img" alt="林威英文句型分析">
+  <p class="footer-hint">林威英文句型分析 · 1920×1080 JPG</p>
+</div>
+
+<script>
+const ua = navigator.userAgent || '';
+const isLineBrowser = /Line\//i.test(ua);
+const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+if (isLineBrowser) {
+  document.getElementById('line-warning').classList.add('show');
+}
+
+function openInBrowser() {
+  const sep = window.location.href.includes('?') ? '&' : '?';
+  window.location.href = window.location.href + sep + 'openExternalBrowser=1';
+}
+
+document.querySelectorAll('.link-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href) return;
+    if (isLineBrowser) {
+      e.preventDefault();
+      if (href.includes('line.me')) {
+        window.location.href = href;
+      } else {
+        const sep = href.includes('?') ? '&' : '?';
+        window.location.href = href + sep + 'openExternalBrowser=1';
+      }
+    }
+  });
+});
+
+// ═══ FONT EMBEDDING ═══
+const FONT_FACES = [
+  { name: 'Caveat', css: 'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap' },
+  { name: 'Patrick Hand', css: 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap' },
+  { name: 'Noto Sans TC', css: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap' }
+];
+let embeddedFontCss = null;
+
+async function fetchFontAsBase64(url) {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function buildEmbeddedFontCss() {
+  if (embeddedFontCss) return embeddedFontCss;
+  const allCss = [];
+  for (const fontDef of FONT_FACES) {
+    try {
+      const cssResp = await fetch(fontDef.css);
+      let cssText = await cssResp.text();
+      const urlRegex = /url\((https:\/\/[^)]+\.woff2)\)/g;
+      const urls = [...cssText.matchAll(urlRegex)].map(m => m[1]);
+      const uniqueUrls = [...new Set(urls)];
+      for (const url of uniqueUrls) {
+        try {
+          const dataUri = await fetchFontAsBase64(url);
+          const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          cssText = cssText.replace(new RegExp(escapedUrl, 'g'), dataUri);
+        } catch (err) { console.warn('Failed to embed font URL:', url); }
+      }
+      allCss.push(cssText);
+    } catch (err) { console.warn('Failed to fetch font CSS for', fontDef.name); }
+  }
+  embeddedFontCss = allCss.join('\n');
+  return embeddedFontCss;
+}
+
+async function prepareAndDownloadJpg() {
+  const btn = document.getElementById('download-btn');
+  const origLabel = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 字型載入中，請稍候…';
+
+  try {
+    const fontCss = await buildEmbeddedFontCss();
+    const originalSvg = document.getElementById('grammar-svg');
+    const svgClone = originalSvg.cloneNode(true);
+    svgClone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+    let defs = svgClone.querySelector('defs');
+    if (!defs) {
+      defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      svgClone.insertBefore(defs, svgClone.firstChild);
+    }
+    const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('type', 'text/css');
+    styleEl.textContent = fontCss;
+    defs.insertBefore(styleEl, defs.firstChild);
+
+    const svgData = new XMLSerializer().serializeToString(svgClone);
+    const width = 1920, height = 1080;
+    const canvas = document.createElement('canvas');
+    canvas.width = width; canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FFF8EE';
+    ctx.fillRect(0, 0, width, height);
+
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+
+    btn.innerHTML = '⏳ 產生圖片中…';
+
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, width, height);
+        URL.revokeObjectURL(url);
+        resolve();
+      };
+      img.onerror = function() { URL.revokeObjectURL(url); reject(new Error('Image load failed')); };
+      img.src = url;
+    });
+
+    await new Promise((resolve, reject) => {
+      canvas.toBlob(function(blob) {
+        if (!blob) { reject(new Error('toBlob failed')); return; }
+        const downloadUrl = URL.createObjectURL(blob);
+        const filename = '林威英文句型分析_記憶主題_' + new Date().toISOString().slice(0,10) + '.jpg';
+
+        if (isIOS || isLineBrowser) {
+          const modal = document.getElementById('ios-modal');
+          const modalImg = document.getElementById('ios-modal-img');
+          modalImg.src = downloadUrl;
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        } else {
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 300000);
+        resolve();
+      }, 'image/jpeg', 0.95);
+    });
+  } catch (err) {
+    console.error(err);
+    alert('產生圖片失敗：' + err.message + '\n請改用截圖方式儲存。');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origLabel;
+  }
+}
+
+function closeIosModal() {
+  document.getElementById('ios-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>
