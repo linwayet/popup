@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hot Day in Taiwan? Time for Some Ice Desserts!</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF8F0;--ink:#1A0F00;--h1:#C0392B;--h2:#1565C0;--h3:#2E7D32;--key:#0D47A1;
+  --orange:#E65100;--purple:#6A1B9A;--brown:#4A3728;
+  --s1:#0D47A1;--s1-line:#90CAF9;--s1-card:#F3F8FF;
+  --s2:#BF360C;--s2-line:#FFAB91;--s2-card:#FFF3EF;
+  --s3:#1B5E20;--s3-line:#81C784;--s3-card:#F1F8F2;
+  --s4:#4A148C;--s4-line:#CE93D8;--s4-card:#F9F0FF;
+  --s5:#4A3728;--s5-line:#C4A06A;--s5-card:#FAF6F0;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 12% 4%,rgba(230,81,0,.13),transparent 28%),
+    radial-gradient(circle at 88% 2%,rgba(192,57,43,.12),transparent 24%),
+    linear-gradient(180deg,#FFF3E0 0%,var(--bg) 42%,#FFE8D1 100%);
+  color:var(--ink);
+  font-family:'BIZ UDPGothic',sans-serif;
+  font-size:23px;
+  line-height:1.85;
+  font-weight:400;
+  padding:30px 16px 70px;
+}
+.page{max-width:880px;margin:0 auto}
+.link-panel{
+  margin:0 0 28px;
+  padding:18px;
+  border:3px solid #F6A66A;
+  border-radius:8px;
+  background:#FFF1E3;
+  box-shadow:0 8px 0 #FFD5B3,0 16px 24px rgba(74,55,40,.10);
+}
+.link-panel.bottom{margin:34px 0 0}
+.link-panel h2{
+  margin:0 0 14px;
+  color:#BF360C;
+  font-size:1.65rem;
+}
+.quick-links{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.quick-link{
+  min-height:160px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:8px;
+  padding:18px;
+  border-radius:8px;
+  color:#1A0F00;
+  text-decoration:none;
+  border:3px solid rgba(26,15,0,.12);
+  font-weight:700;
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+.quick-link:hover,.quick-link:focus{
+  transform:translateY(-3px);
+  box-shadow:0 10px 20px rgba(74,55,40,.16);
+}
+.quick-link strong{
+  display:block;
+  color:#FFFFFF;
+  font-size:1.22rem;
+  line-height:1.35;
+  text-shadow:1px 1px 0 rgba(26,15,0,.24);
+}
+.quick-link span{
+  display:block;
+  color:#FFFDF8;
+  font-size:1rem;
+  line-height:1.55;
+  font-weight:700;
+}
+.course-a{background:linear-gradient(135deg,#E65100,#F57C00)}
+.course-b{background:linear-gradient(135deg,#C0392B,#E67E22)}
+.line-card{background:linear-gradient(135deg,#1B5E20,#43A047)}
+.hero{
+  text-align:center;
+  padding:28px 22px 26px;
+  border:5px solid var(--h1);
+  border-radius:8px;
+  background:#FFFFFF;
+  box-shadow:0 10px 0 #F6D6C9,0 18px 28px rgba(74,55,40,.12);
+}
+h1{
+  margin:0 0 12px;
+  color:var(--h1);
+  font-size:3rem;
+  line-height:1.25;
+  font-weight:700;
+}
+.subtitle{
+  margin:0 0 10px;
+  color:var(--h2);
+  font-size:2.2rem;
+  line-height:1.35;
+  font-weight:700;
+}
+.credit{
+  margin:0;
+  color:#0D47A1;
+  font-size:1.55rem;
+  font-weight:700;
+  letter-spacing:.04em;
+  text-shadow:2px 2px 0 #DCEBFF;
+}
+h2{
+  margin:46px 0 18px;
+  color:var(--h2);
+  font-size:2.2rem;
+  line-height:1.35;
+  font-weight:700;
+}
+h3{
+  margin:0 0 12px;
+  color:var(--h3);
+  font-size:1.6rem;
+  line-height:1.35;
+  font-weight:700;
+}
+p{margin:0 0 18px}
+.section{
+  border:3px solid;
+  border-radius:8px;
+  overflow:hidden;
+  background:#fff;
+}
+.section-title{
+  min-height:72px;
+  padding:15px 22px;
+  color:#fff;
+  font-size:1.45rem;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+}
+.body{padding:24px}
+.original{border-color:var(--s1-line)} .original .section-title{background:var(--s1)} .original .body{background:var(--s1-card)}
+.reading{border-color:var(--s2-line)} .reading .section-title{background:var(--s2)} .reading .body{background:var(--s2-card)}
+.vocab{border-color:var(--s3-line)} .vocab .section-title{background:var(--s3)} .vocab .body{background:var(--s3-card)}
+.grammar{border-color:var(--s4-line)} .grammar .section-title{background:var(--s4)} .grammar .body{background:var(--s4-card)}
+strong.key{color:var(--key);font-weight:700;text-decoration:none}
+.sentence,.word-card,.grammar-card{
+  background:rgba(255,255,255,.86);
+  border:2px solid rgba(26,15,0,.12);
+  border-radius:8px;
+  padding:20px;
+  margin:0 0 22px;
+}
+.num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  background:var(--s2);
+  color:#fff;
+  font-weight:700;
+  margin-right:10px;
+}
+.quote{font-weight:700;color:#3A1D0A}
+.quote em{font-style:normal}
+.translation{margin:10px 0 12px}
+.analysis{border-left:7px solid var(--orange);padding-left:14px;margin:12px 0}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  min-height:44px;
+  padding:6px 14px;
+  border-radius:999px;
+  background:#FEF0E7;
+  color:var(--orange);
+  font-weight:700;
+}
+.word-head{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:10px 14px;
+  align-items:center;
+  margin-bottom:12px;
+}
+.word-no{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:var(--s3);
+  color:#fff;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+}
+.word-title{font-size:1.5rem;color:var(--key);font-weight:700}
+.kk{color:#C0392B;font-weight:700}
+.tag-row{
+  display:grid;
+  grid-template-columns:132px 1fr;
+  gap:10px;
+  align-items:start;
+  margin:10px 0;
+}
+.tag{
+  min-height:44px;
+  border-radius:18px 0 0 18px;
+  padding:6px 12px;
+  font-weight:700;
+  text-align:center;
+}
+.deriv{background:#FDEDEC;color:#C0392B}
+.root{background:#EBF5FB;color:#1565C0}
+.phrase{background:#EAFAF1;color:#2E7D32}
+.idiom{background:#FEF9E7;color:#D68910}
+.confuse{background:#F5EEF8;color:#6A1B9A}
+.pattern{background:#FEF0E7;color:#E65100}
+.examples{margin:14px 0 0 0;padding-left:0;list-style:none}
+.examples li{margin:10px 0}
+.grammar-card h3{color:var(--purple)}
+.grammar-card ul,.grammar-card ol{margin:8px 0 18px 34px}
+.grammar-card li{margin:8px 0}
+.formula{font-weight:700;font-style:normal;color:var(--purple);font-size:1.15em}
+details{
+  margin:22px 0 0;
+  border:3px solid var(--s5-line);
+  border-radius:8px;
+  overflow:hidden;
+  background:var(--s5-card);
+}
+summary{
+  min-height:72px;
+  padding:16px 22px;
+  background:var(--s5);
+  color:#fff;
+  font-size:1.35rem;
+  font-weight:700;
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+summary::-webkit-details-marker{display:none}
+.arrow{transition:transform .25s ease}
+details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:22px;background:var(--s5-card)}
+.mini-list{margin:0;padding-left:30px}
+.mini-list li{margin:8px 0}
+.writing-item{margin:0 0 18px}
+@media(max-width:720px){
+  body{font-size:21px;padding:20px 10px 46px}
+  h1{font-size:2.35rem}
+  .subtitle{font-size:1.75rem}
+  h2{font-size:1.8rem}
+  .body{padding:18px}
+  .quick-links{grid-template-columns:1fr}
+  .quick-link{min-height:120px}
+  .tag-row{grid-template-columns:1fr}
+  .tag{border-radius:18px;text-align:left}
+}
+</style>
+</head>
+<body>
+<main class="page">
+<section class="link-panel" aria-label="七月課程與聯絡資訊">
+<h2>七月課程與聯絡資訊</h2>
+<div class="quick-links">
+<a class="quick-link course-a" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<strong>七月課程介紹</strong>
+<span>錯中學 ECHO 計劃：從錯題回音中整理弱點，建立更穩的英文理解力。</span>
+</a>
+<a class="quick-link course-b" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<strong>學生分析</strong>
+<span>用學習分析看見學生的卡點，幫助安排更精準的複習方向。</span>
+</a>
+<a class="quick-link line-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<strong>Line：linwayet</strong>
+<span>加入林威老師個人 Line 帳號，洽詢課程與英文學習規劃。</span>
+</a>
+</div>
+</section>
+
+<section class="hero">
+<h1>Hot Day in Taiwan? Time for Some Ice Desserts!</h1>
+<p class="subtitle">一口一口吃進夏天：探索臺灣冰品的魅力</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<h2>英文文章原文</h2>
+<section class="section original">
+<div class="section-title">Original Article</div>
+<div class="body">
+<p>Eating cold <strong class="key">desserts</strong> is a simple way to cool off during summer in Taiwan. <strong class="key">Dessert</strong> shops and street stands across the <strong class="key">island</strong> sell many kinds of cool snacks. One comes as fine ice with add-ons you choose. Another mixes warm toppings with ice in the same bowl. Still another is a thick, <strong class="key">traditional</strong> ice cream that melts slowly and feels extra <strong class="key">smooth</strong>.</p>
+<p>Among these, <strong class="key">baobing</strong>, or shaved ice, is especially <strong class="key">common</strong> in Taiwan. It is made by scraping a block of ice into a soft, snowy hill. Some people add red beans, mung beans, or peanuts for a nutty bite. Others add grass jelly or pudding for a soft <strong class="key">texture</strong>. Still others top their ice with fruits like mangoes or strawberries when they are in season. After adding the <strong class="key">ingredients</strong>, many people pour sweet extras like <strong class="key">syrup</strong>, brown sugar, or <strong class="key">condensed</strong> milk on top.</p>
+<p>Whether served as a <strong class="key">wonderful</strong> quick snack or a shared <strong class="key">dessert</strong> after a meal, <strong class="key">baobing</strong> can be as simple or as rich as you like. Even after you finish, the gentle chill stays with you, keeping the <strong class="key">lingering</strong> summer heat at bay.</p>
+<p>Meanwhile, if you enjoy surprises, hot-and-cold ice may be just the thing for you. It <strong class="key">combines</strong> two temperatures in one bowl, serving freshly cooked toppings paired with a pile of ice. As you eat, the ice melts and blends with the warm toppings, creating a pleasant <strong class="key">contrast</strong>. It is also fun because the <strong class="key">flavor</strong> changes as the bowl warms up. Many people prefer this on cooler days, when a fully cold <strong class="key">dessert</strong> might feel like too much.</p>
+<p>Another <strong class="key">classic</strong> is babu ice cream, a <strong class="key">traditional</strong> Taiwanese ice cream. Made with sugar and <strong class="key">starch</strong>, babu ice cream has a rich <strong class="key">texture</strong> with flavors ranging from taro and peanut to pineapple. It stays firm longer than regular ice cream, making it easier to eat in the heat. Street vendors often serve it in a cone or a small cup. Either way, it is a <strong class="key">convenient</strong> snack to enjoy on the go. For many people, it also brings back childhood <strong class="key">memories</strong> and a sense of <strong class="key">nostalgia</strong>.</p>
+<p>Together, <strong class="key">baobing</strong>, hot-and-cold ice, and babu ice cream give you three fun ways to beat the heat. Try them all, and you may find a new summer favorite!</p>
+</div>
+</section>
+
+<h2>8 句精讀</h2>
+<section class="section reading">
+<div class="section-title">8 Key Sentence Analyses</div>
+<div class="body">
+<div class="sentence">
+<h3><span class="num">①</span>句 1</h3>
+<p class="quote"><em>Eating cold desserts is a simple way to cool off during summer in Taiwan.</em></p>
+<p class="translation">吃冰涼的甜點是在臺灣夏天消暑的一個簡單方法。</p>
+<p class="analysis">文法解析：本句以動名詞片語 <strong>Eating cold desserts</strong> 作主詞，後面接單數動詞 <strong>is</strong>。<strong>to cool off</strong> 是不定詞片語，修飾 <strong>a simple way</strong>，表示「用來消暑的方法」。這裡的 <strong>to</strong> 是不定詞符號，不是介係詞。</p>
+<div class="pills"><span class="pill">cool off 消暑</span><span class="pill">during summer 在夏天期間</span></div>
+</div>
+<div class="sentence">
+<h3><span class="num">②</span>句 2</h3>
+<p class="quote"><em>Still another is a thick, traditional ice cream that melts slowly and feels extra smooth.</em></p>
+<p class="translation">還有另一種是濃厚的傳統冰淇淋，融化得慢，而且口感特別滑順。</p>
+<p class="analysis">文法解析：<strong>that melts slowly and feels extra smooth</strong> 是形容詞子句，修飾前面的 <strong>ice cream</strong>。子句中有兩個並列動詞 <strong>melts</strong> 和 <strong>feels</strong>，共同描述這種冰淇淋的特色。<strong>extra</strong> 在此作副詞，修飾形容詞 <strong>smooth</strong>。</p>
+<div class="pills"><span class="pill">traditional 傳統的</span><span class="pill">extra smooth 特別滑順</span></div>
+</div>
+<div class="sentence">
+<h3><span class="num">③</span>句 3</h3>
+<p class="quote"><em>Among these, baobing, or shaved ice, is especially common in Taiwan.</em></p>
+<p class="translation">在這些冰品當中，刨冰在臺灣尤其常見。</p>
+<p class="analysis">文法解析：<strong>Among these</strong> 是介系詞片語，放在句首用來限定討論範圍。<strong>or shaved ice</strong> 是同位語，用另一種說法補充說明 <strong>baobing</strong>。主詞仍是 <strong>baobing</strong>，所以動詞用單數 <strong>is</strong>。</p>
+<div class="pills"><span class="pill">among these 在這些之中</span><span class="pill">shaved ice 刨冰</span></div>
+</div>
+<div class="sentence">
+<h3><span class="num">④</span>句 4</h3>
+<p class="quote"><em>Still others top their ice with fruits like mangoes or strawberries when they are in season.</em></p>
+<p class="translation">還有一些人會在冰上加上像芒果或草莓這類當季水果。</p>
+<p class="analysis">文法解析：<strong>top A with B</strong> 是動詞片語，意思是「在 A 上加 B」。<strong>like mangoes or strawberries</strong> 舉例說明 fruits 的種類。<strong>when they are in season</strong> 是時間副詞子句，說明這些水果在當季時最常被使用。</p>
+<div class="pills"><span class="pill">top A with B 在 A 上加 B</span><span class="pill">in season 當季</span></div>
+</div>
+<div class="sentence">
+<h3><span class="num">⑤</span>句 5</h3>
+<p class="quote"><em>Whether served as a wonderful quick snack or a shared dessert after a meal, baobing can be as simple or as rich as you like.</em></p>
+<p class="translation">不論是作為美好的快速點心，或是餐後共享的甜點，刨冰都可以依你喜好變得簡單或豐富。</p>
+<p class="analysis">文法解析：<strong>Whether served as...</strong> 是省略主詞與 be 動詞的讓步副詞子句，完整概念可理解為 <strong>Whether it is served as...</strong>。主要子句是 <strong>baobing can be...</strong>。<strong>as simple or as rich as you like</strong> 使用 <strong>as...as</strong> 結構，表示程度可以符合你的喜好。</p>
+<div class="pills"><span class="pill">whether...or... 不論是…或…</span><span class="pill">as rich as you like 依你喜好一樣豐富</span></div>
+</div>
+<div class="sentence">
+<h3><span class="num">⑥</span>句 6</h3>
+<p class="quote"><em>It combines two temperatures in one bowl, serving freshly cooked toppings paired with a pile of ice.</em></p>
+<p class="translation">它把兩種溫度結合在同一碗裡，端上新鮮煮好的配料，並搭配一堆冰。</p>
+<p class="analysis">文法解析：本句主要動詞是 <strong>combines</strong>。逗號後的 <strong>serving...</strong> 是現在分詞構句，補充說明 hot-and-cold ice 如何呈現。<strong>paired with a pile of ice</strong> 是過去分詞片語，修飾 <strong>toppings</strong>，表示「與一堆冰搭配」。</p>
+<div class="pills"><span class="pill">combine A with B 結合 A 與 B</span><span class="pill">paired with 搭配</span></div>
+</div>
+<div class="sentence">
+<h3><span class="num">⑦</span>句 7</h3>
+<p class="quote"><em>It is also fun because the flavor changes as the bowl warms up.</em></p>
+<p class="translation">它也很有趣，因為味道會隨著碗逐漸變暖而改變。</p>
+<p class="analysis">文法解析：<strong>because the flavor changes</strong> 是原因副詞子句，說明它有趣的原因。<strong>as the bowl warms up</strong> 是時間副詞子句，這裡的 <strong>as</strong> 表示「隨著」。同一句中使用 because 與 as，分別表原因與時間，閱讀時要依語意判斷。</p>
+<div class="pills"><span class="pill">flavor 味道</span><span class="pill">warm up 變暖</span></div>
+</div>
+<div class="sentence">
+<h3><span class="num">⑧</span>句 8</h3>
+<p class="quote"><em>Made with sugar and starch, babu ice cream has a rich texture with flavors ranging from taro and peanut to pineapple.</em></p>
+<p class="translation">叭噗冰淇淋由糖和澱粉製成，質地濃厚，口味從芋頭、花生到鳳梨都有。</p>
+<p class="analysis">文法解析：<strong>Made with sugar and starch</strong> 是過去分詞構句，表示被動含義，補充說明 babu ice cream 的製作材料。<strong>with flavors ranging from...to...</strong> 是介系詞片語，當中 <strong>ranging</strong> 修飾 flavors，表示口味範圍。<strong>from A to B</strong> 是常見的範圍結構。</p>
+<div class="pills"><span class="pill">made with 由…製成</span><span class="pill">range from A to B 從 A 到 B 不等</span></div>
+</div>
+</div>
+</section>
+
+<h2>20 個單字整理</h2>
+<section class="section vocab">
+<div class="section-title">Vocabulary Builder</div>
+<div class="body">
+<div class="word-card"><div class="word-head"><span class="word-no">1</span><div><span class="word-title">dessert</span> <span class="kk">[dɪˈzɝt]</span> n. 甜點；餐後點心</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>dessert-like (adj. 像甜點的)；dessert shop 甜點店</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>cold dessert 冰涼甜點；shared dessert 共享甜點；after-dinner dessert 餐後甜點</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a refreshing dessert 清爽的甜點；a popular dessert 受歡迎的甜點</span></div><div class="tag-row"><span class="tag confuse">容易混淆</span><span>dessert 是「甜點」；desert [ˈdɛzɚt] 作名詞是「沙漠」，重音不同。</span></div><ul class="examples"><li>Eating cold desserts is a simple way to cool off during summer in Taiwan.<br>（吃冰涼的甜點是在臺灣夏天消暑的一個簡單方法。）</li><li>Mango shaved ice is my favorite dessert after a hot day at school.<br>（在炎熱的上學日後，芒果刨冰是我最喜歡的甜點。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">2</span><div><span class="word-title">island</span> <span class="kk">[ˈaɪlənd]</span> n. 島；島嶼</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>islander (n. 島民)；islandwide (adj./adv. 全島的／全島地)</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>across the island 遍及全島；a tropical island 熱帶島嶼</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a beautiful island 美麗的島嶼；an island nation 島國</span></div><ul class="examples"><li>Dessert shops and street stands across the island sell many kinds of cool snacks.<br>（全島的甜點店和街邊攤販販售各式冰涼小吃。）</li><li>Taiwan is an island with a rich food culture.<br>（臺灣是一座擁有豐富飲食文化的島嶼。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">3</span><div><span class="word-title">traditional</span> <span class="kk">[trəˈdɪʃənəl]</span> adj. 傳統的；慣例的</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>tradition (n. 傳統)；traditionally (adv. 傳統上)；traditionalist (n. 傳統主義者)</span></div><div class="tag-row"><span class="tag root">字根</span><span>trad / dit「交付、傳遞」：tradition 傳統；transmit 傳送；edition 版本</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>traditional food 傳統食物；traditional culture 傳統文化</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a deeply traditional recipe 很傳統的食譜；traditional Taiwanese ice cream 傳統臺式冰淇淋</span></div><ul class="examples"><li>Another classic is babu ice cream, a traditional Taiwanese ice cream.<br>（另一項經典是叭噗冰淇淋，一種傳統臺式冰淇淋。）</li><li>Many families still prepare traditional dishes during Lunar New Year.<br>（許多家庭在農曆新年仍會準備傳統菜餚。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">4</span><div><span class="word-title">smooth</span> <span class="kk">[smuð]</span> adj. 平滑的；順口的；順利的</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>smoothly (adv. 順利地；平滑地)；smoothness (n. 平滑；順暢)</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>smooth texture 滑順口感；smooth surface 平滑表面</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>extra smooth 特別滑順的；a smooth process 順利的過程</span></div><div class="tag-row"><span class="tag confuse">容易混淆</span><span>smooth 強調觸感或流程順；soft 強調柔軟、不硬。</span></div><ul class="examples"><li>It melts slowly and feels extra smooth.<br>（它融化得慢，而且口感特別滑順。）</li><li>The speech was smooth because she practiced many times.<br>（那場演說很流暢，因為她練習了很多次。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">5</span><div><span class="word-title">baobing</span> <span class="kk">[ˈbaʊˌbɪŋ]</span> n. 刨冰</div></div><div class="tag-row"><span class="tag phrase">片語</span><span>mango baobing 芒果刨冰；a bowl of baobing 一碗刨冰</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a refreshing baobing 清爽的刨冰；a popular baobing shop 受歡迎的刨冰店</span></div><div class="tag-row"><span class="tag confuse">容易混淆</span><span>baobing 可用拼音表示臺灣刨冰；shaved ice 是較一般的英文說法。</span></div><ul class="examples"><li>Among these, baobing, or shaved ice, is especially common in Taiwan.<br>（在這些冰品當中，刨冰在臺灣尤其常見。）</li><li>We ordered baobing with red beans and grass jelly.<br>（我們點了加紅豆和仙草的刨冰。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">6</span><div><span class="word-title">common</span> <span class="kk">[ˈkɑmən]</span> adj. 常見的；共同的；普通的</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>commonly (adv. 常見地；通常)；commonness (n. 普遍性)</span></div><div class="tag-row"><span class="tag root">字根</span><span>com「共同」：community 社群；communicate 溝通；combine 結合</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>common in Taiwan 在臺灣常見；common problem 常見問題</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a very common dessert 很常見的甜點；common sense 常識</span></div><ul class="examples"><li>Baobing is especially common in Taiwan.<br>（刨冰在臺灣尤其常見。）</li><li>It is common for students to buy drinks after school.<br>（學生放學後買飲料很常見。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">7</span><div><span class="word-title">texture</span> <span class="kk">[ˈtɛkstʃɚ]</span> n. 質地；口感；紋理</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>textured (adj. 有紋理的；有口感的)</span></div><div class="tag-row"><span class="tag root">字根</span><span>text「編織」：textile 紡織品；context 上下文；texture 質地</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>soft texture 柔軟口感；rich texture 濃厚質地；fine texture 細緻質地</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a pleasant texture 令人喜歡的口感；a creamy texture 奶油般滑順的口感</span></div><ul class="examples"><li>Others add grass jelly or pudding for a soft texture.<br>（其他人加入仙草或布丁，增添柔軟口感。）</li><li>The cake has a light texture and a strong tea flavor.<br>（這塊蛋糕口感輕盈，而且茶味濃郁。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">8</span><div><span class="word-title">ingredient</span> <span class="kk">[ɪnˈɡridiənt]</span> n. 食材；成分；要素</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>ingredient list (n. 成分表)</span></div><div class="tag-row"><span class="tag root">字根</span><span>grad / gress「走、步」：progress 進步；graduate 畢業；ingredient 進入其中的成分</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>fresh ingredients 新鮮食材；main ingredient 主要成分</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a key ingredient 關鍵要素；healthy ingredients 健康食材</span></div><ul class="examples"><li>After adding the ingredients, many people pour sweet extras on top.<br>（加入食材後，許多人會在上面淋上甜甜的配料。）</li><li>Good ingredients can make a simple dish taste special.<br>（好的食材能讓一道簡單料理吃起來很特別。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">9</span><div><span class="word-title">syrup</span> <span class="kk">[ˈsɪrəp]</span> n. 糖漿；濃糖水</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>syrupy (adj. 糖漿般的；過甜的)</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>maple syrup 楓糖漿；fruit syrup 水果糖漿；cough syrup 止咳糖漿</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>sweet syrup 甜糖漿；a spoonful of syrup 一匙糖漿</span></div><ul class="examples"><li>Many people pour sweet extras like syrup, brown sugar, or condensed milk on top.<br>（許多人會在上面淋上糖漿、黑糖或煉乳等甜甜的配料。）</li><li>The vendor added strawberry syrup to the shaved ice.<br>（攤販在刨冰上加了草莓糖漿。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">10</span><div><span class="word-title">condensed</span> <span class="kk">[kənˈdɛnst]</span> adj. 濃縮的；壓縮的</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>condense (v. 濃縮；縮短)；condensation (n. 凝結；濃縮)</span></div><div class="tag-row"><span class="tag root">字根</span><span>dens「密集」：dense 密集的；density 密度；condense 濃縮</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>condensed milk 煉乳；condensed version 簡縮版</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>sweet condensed milk 甜煉乳；a condensed summary 精簡摘要</span></div><ul class="examples"><li>People pour syrup, brown sugar, or condensed milk on top.<br>（人們會在上面淋上糖漿、黑糖或煉乳。）</li><li>This article has a condensed version for younger readers.<br>（這篇文章有提供給年輕讀者的精簡版。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">11</span><div><span class="word-title">wonderful</span> <span class="kk">[ˈwʌndɚfəl]</span> adj. 絕佳的；美好的</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>wonder (n./v. 驚奇；想知道)；wonderfully (adv. 極好地)</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>wonderful snack 美好的點心；wonderful experience 絕佳體驗</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a truly wonderful meal 一頓真正美好的餐點；wonderful news 好消息</span></div><ul class="examples"><li>Baobing can be served as a wonderful quick snack.<br>（刨冰可以作為美好的快速點心。）</li><li>We had a wonderful time exploring the night market.<br>（我們逛夜市時度過了一段美好時光。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">12</span><div><span class="word-title">lingering</span> <span class="kk">[ˈlɪŋɡərɪŋ]</span> adj. 逗留不去的；持續的</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>linger (v. 逗留；持續不散)；lingeringly (adv. 逗留地)</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>lingering heat 揮之不去的熱氣；lingering smell 持續不散的氣味</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a lingering memory 揮之不去的記憶；a lingering problem 持續存在的問題</span></div><ul class="examples"><li>The gentle chill keeps the lingering summer heat at bay.<br>（溫和的涼意讓揮之不去的暑氣遠離。）</li><li>The song left a lingering feeling of hope in my heart.<br>（那首歌在我心中留下持續不散的希望感。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">13</span><div><span class="word-title">combine</span> <span class="kk">[kəmˈbaɪn]</span> v. 結合；合併</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>combination (n. 結合；組合)；combined (adj. 合併的)</span></div><div class="tag-row"><span class="tag root">字根</span><span>com「共同」+ bine「二」：combine 結合；binary 二元的；bilingual 雙語的</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>combine A with B 把 A 與 B 結合；combine flavors 混合口味</span></div><div class="tag-row"><span class="tag pattern">句型</span><span>combine + 名詞 + with + 名詞：with 是介係詞，後面接名詞或 V-ing。</span></div><ul class="examples"><li>It combines two temperatures in one bowl.<br>（它把兩種溫度結合在同一碗裡。）</li><li>The chef combined tea with milk to create a new drink.<br>（廚師把茶和牛奶結合，創造出一款新飲料。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">14</span><div><span class="word-title">contrast</span> <span class="kk">[ˈkɑntræst]</span> n. 對比；差異 v. 對比；形成對照</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>contrasting (adj. 對比的)；contrasty (adj. 對比強烈的)</span></div><div class="tag-row"><span class="tag root">字根</span><span>contra「相反」：contradict 反駁；contrary 相反的；contrast 對比</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>pleasant contrast 令人愉快的對比；in contrast with/to 與…相比</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a sharp contrast 鮮明對比；stand in contrast to 與…形成對比</span></div><ul class="examples"><li>The ice and warm toppings create a pleasant contrast.<br>（冰和溫熱配料形成令人愉快的對比。）</li><li>Her calm voice was in sharp contrast to the noisy room.<br>（她平靜的聲音和吵鬧的房間形成鮮明對比。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">15</span><div><span class="word-title">flavor</span> <span class="kk">[ˈflevɚ]</span> n. 味道；風味</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>flavorful (adj. 風味十足的)；flavored (adj. 調味的)</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>sweet flavor 甜味；local flavor 在地風味；strong flavor 濃郁味道</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a unique flavor 獨特風味；a rich flavor 濃厚風味</span></div><ul class="examples"><li>The flavor changes as the bowl warms up.<br>（味道會隨著碗逐漸變暖而改變。）</li><li>The soup has a rich flavor because it was cooked for hours.<br>（這湯因為煮了好幾個小時，所以味道濃郁。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">16</span><div><span class="word-title">classic</span> <span class="kk">[ˈklæsɪk]</span> n. 經典 adj. 經典的；典型的</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>classical (adj. 古典的)；classically (adv. 典型地；古典地)</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>a classic dessert 經典甜點；classic example 典型例子</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>an all-time classic 歷久不衰的經典；a classic Taiwanese snack 經典臺灣小吃</span></div><div class="tag-row"><span class="tag confuse">容易混淆</span><span>classic 表「經典」或「典型」；classical 多指「古典音樂、古典文化」。</span></div><ul class="examples"><li>Another classic is babu ice cream.<br>（另一項經典是叭噗冰淇淋。）</li><li>Bubble tea has become a classic Taiwanese drink.<br>（珍珠奶茶已成為經典臺灣飲品。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">17</span><div><span class="word-title">starch</span> <span class="kk">[stɑrtʃ]</span> n. 澱粉</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>starchy (adj. 含澱粉的；拘謹的)</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>corn starch 玉米澱粉；sweet potato starch 地瓜粉；starchy foods 澱粉類食物</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a starchy ingredient 澱粉類食材；a starch-based dessert 以澱粉為基底的甜點</span></div><ul class="examples"><li>Made with sugar and starch, babu ice cream has a rich texture.<br>（叭噗冰淇淋由糖和澱粉製成，質地濃厚。）</li><li>Sweet potato starch is often used in Taiwanese snacks.<br>（地瓜粉常用於臺灣小吃。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">18</span><div><span class="word-title">convenient</span> <span class="kk">[kənˈvinjənt]</span> adj. 方便的；便利的</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>convenience (n. 便利)；conveniently (adv. 方便地)；inconvenient (adj. 不方便的)</span></div><div class="tag-row"><span class="tag root">字根</span><span>ven「來」：convene 召集；intervene 介入；convenient 方便的</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>convenient snack 方便的點心；convenient for 對…方便</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>highly convenient 非常方便的；a convenient location 方便的位置</span></div><ul class="examples"><li>Either way, it is a convenient snack to enjoy on the go.<br>（不論哪種方式，它都是一種方便邊走邊享用的點心。）</li><li>The bus stop near my house is very convenient for students.<br>（我家附近的公車站對學生來說很方便。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">19</span><div><span class="word-title">memory</span> <span class="kk">[ˈmɛməri]</span> n. 記憶；回憶；記憶力</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>memorize (v. 記住)；memorable (adj. 難忘的)；memorial (n. 紀念碑；adj. 紀念的)</span></div><div class="tag-row"><span class="tag root">字根</span><span>memor「記憶」：memorize 記住；memorial 紀念碑；remember 記得</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>childhood memories 童年回憶；bring back memories 喚起回憶</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>a precious memory 珍貴回憶；a clear memory 清楚記憶</span></div><ul class="examples"><li>It brings back childhood memories for many people.<br>（它讓許多人想起童年回憶。）</li><li>The smell of the old bakery brought back a precious memory.<br>（老麵包店的氣味喚起了一段珍貴回憶。）</li></ul></div>
+<div class="word-card"><div class="word-head"><span class="word-no">20</span><div><span class="word-title">nostalgia</span> <span class="kk">[nɑˈstældʒə]</span> n. 懷舊；對往事的思念</div></div><div class="tag-row"><span class="tag deriv">衍生詞</span><span>nostalgic (adj. 懷舊的)；nostalgically (adv. 懷舊地)</span></div><div class="tag-row"><span class="tag root">字根</span><span>-algia「痛、情感上的疼痛」：neuralgia 神經痛；nostalgia 懷舊</span></div><div class="tag-row"><span class="tag phrase">片語</span><span>a sense of nostalgia 懷舊感；feel nostalgia for 對…感到懷念</span></div><div class="tag-row"><span class="tag idiom">慣用語</span><span>deep nostalgia 深深的懷舊；a nostalgic song 懷舊歌曲</span></div><ul class="examples"><li>It also brings back childhood memories and a sense of nostalgia.<br>（它也喚起童年回憶和一種懷舊感。）</li><li>Looking at old photos filled my grandmother with nostalgia.<br>（看著老照片讓我的祖母充滿懷舊之情。）</li></ul></div>
+</div>
+</section>
+
+<h2>文法解析</h2>
+<section class="section grammar">
+<div class="section-title">Grammar Focus</div>
+<div class="body">
+<div class="grammar-card">
+<h3>動名詞片語作主詞</h3>
+<p>【引句 Quote】<br><span class="quote"><em>Eating cold desserts is a simple way to cool off during summer in Taiwan.</em></span></p>
+<p>【句型】<br><span class="formula"><em>V-ing + 單數動詞 + 補語</em></span></p>
+<p>【核心說明】<br>當一個動作被當成「事情」來談時，可以用動名詞 V-ing 當主詞。這種主詞通常視為單一概念，因此後面的動詞多用單數。</p>
+<p>【使用規則】</p>
+<ul><li>V-ing 當主詞表示「做某事」這件事。</li><li>整個 V-ing 片語當主詞時，動詞通常用單數。</li><li>若要表目的，可在名詞後接 to V，例如 a way to cool off。</li><li>to V 中的 to 是不定詞符號，不是介係詞。</li></ul>
+<p>【主題例句】<br>Trying different ice desserts is a fun way to learn about Taiwanese food culture.<br>（嘗試不同冰品是認識臺灣飲食文化的有趣方法。）</p>
+<p>【學習提醒】<br>中文常把「吃冰」放在句首，但英文若要把動作當主詞，不可直接用原形動詞，應改成 V-ing 或 To V。高中考題常測主詞和動詞一致。</p>
+<p>【⚠️ 常見錯誤 / 🎯 精選試題】<br>✗ Eat cold desserts are a simple way to cool off.<br>✓ Eating cold desserts is a simple way to cool off.（V-ing 作主詞，動詞用 is。）</p>
+<ol><li>____ local snacks helps visitors understand a city. (A) Try (B) Trying (C) Tried<br>答案：B</li><li>改錯：Buying fresh fruit are easy in Taiwan.<br>答案：are → is</li></ol>
+</div>
+<div class="grammar-card">
+<h3>分詞構句補充說明</h3>
+<p>【引句 Quote】<br><span class="quote"><em>It combines two temperatures in one bowl, serving freshly cooked toppings paired with a pile of ice.</em></span></p>
+<p>【句型】<br><span class="formula"><em>S + V..., V-ing...</em></span></p>
+<p>【核心說明】<br>現在分詞構句可以放在主要子句後面，補充說明同一主詞所做的附帶動作、結果或方式。此處 serving 說明 hot-and-cold ice 如何把兩種溫度呈現在同一碗裡。</p>
+<p>【使用規則】</p>
+<ul><li>分詞構句的邏輯主詞通常要和主要子句主詞一致。</li><li>V-ing 多表示主動或同時發生的動作。</li><li>過去分詞 paired with 表被動，修飾 toppings。</li><li>若語意不清，應改寫成完整子句。</li></ul>
+<p>【主題例句】<br>The vendor served the shaved ice in a paper bowl, adding mangoes and syrup on top.<br>（攤販把刨冰裝在紙碗裡，並在上面加入芒果和糖漿。）</p>
+<p>【學習提醒】<br>分詞構句最常見的錯誤是主詞不一致。例如「走進店裡，冰品看起來很好吃」英文不能讓 dessert 當作 walking 的主詞。</p>
+<p>【⚠️ 常見錯誤 / 🎯 精選試題】<br>✗ Walking into the shop, the baobing looked delicious.<br>✓ Walking into the shop, I thought the baobing looked delicious.（走進店裡的人是 I。）</p>
+<ol><li>The ice melted slowly, ____ with the warm toppings. (A) blending (B) blended (C) to blend<br>答案：A</li><li>改錯：Waiting in line, the dessert shop smelled sweet.<br>答案：可改為 Waiting in line, we smelled the sweet dessert shop.</li></ol>
+</div>
+<div class="grammar-card">
+<h3>as 引導時間副詞子句</h3>
+<p>【引句 Quote】<br><span class="quote"><em>It is also fun because the flavor changes as the bowl warms up.</em></span></p>
+<p>【句型】<br><span class="formula"><em>S + V + as + S + V</em></span></p>
+<p>【核心說明】<br>as 可以引導時間副詞子句，表示「當…時」或「隨著…」。本句中 as 強調碗逐漸變暖的同時，味道也跟著變化。</p>
+<p>【使用規則】</p>
+<ul><li>as 表時間時，常帶有「同步變化」的感覺。</li><li>because 表原因，as 也可表原因，但本句 because 已清楚標示原因。</li><li>as + S + V 是完整子句，不可只接單一名詞。</li><li>若要接名詞，可用 as a student 這類「作為…」的不同用法。</li></ul>
+<p>【主題例句】<br>As the ice melts, the brown sugar mixes with the milk and becomes sweeter.<br>（隨著冰融化，黑糖和牛奶混合在一起，味道變得更甜。）</p>
+<p>【學習提醒】<br>看到 as 不要只背一個意思。它可能表示「當…時」「因為」「如同」「作為」，考試時要看前後句意。</p>
+<p>【⚠️ 常見錯誤 / 🎯 精選試題】<br>✗ The flavor changes as warming up the bowl.<br>✓ The flavor changes as the bowl warms up.（as 後面接完整子句。）</p>
+<ol><li>____ the dessert warmed up, the flavor became richer. (A) As (B) So (C) Because of<br>答案：A</li><li>改錯：As the ice melting, the syrup spread through the bowl.<br>答案：melting → melted</li></ol>
+</div>
+</div>
+</section>
+
+<details>
+<summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body"><ol class="mini-list">
+<li>ab-　離開、相反　—　abnormal（異常的）</li><li>ad-　向、加　—　advance（前進）</li><li>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</li><li>anti-　反對、抗　—　antibiotic（抗生素）</li><li>arch-　主要、首要　—　archenemy（死敵）</li><li>auto-　自動、自我　—　autograph（親筆簽名）</li><li>bene-　好的、善　—　benefit（好處）</li><li>bi-　二、雙　—　bilingual（雙語的）</li><li>circum-　環繞、周圍　—　circumstance（情況）</li><li>co-/con-/com-　一起、共同　—　cooperate（合作）</li><li>contra-　相反、對抗　—　contradict（反駁）</li><li>de-　去除、下降　—　decode（解碼）</li><li>dia-　穿過、透過　—　dialogue（對話）</li><li>dis-　否定、分離　—　disagree（不同意）</li><li>en-/em-　使成為　—　enable（使能夠）</li><li>epi-　在上、在外　—　epidemic（流行病）</li><li>ex-　外、前任　—　export（出口）；ex-president（前總統）</li><li>extra-　額外、外部　—　extraordinary（非凡的）</li><li>hetero-　不同　—　heterogeneous（異質的）</li><li>homo-　相同　—　homogeneous（同質的）</li><li>hyper-　過度、超　—　hyperactive（過動的）</li><li>hypo-　低於、不足　—　hypodermic（皮下的）</li><li>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</li><li>inter-　在…之間　—　international（國際的）</li><li>iso-　相等、相同　—　isolate（隔離）</li><li>mal-　壞、不良　—　malfunction（故障）</li><li>micro-　微小　—　microscope（顯微鏡）</li><li>mis-　錯誤　—　misunderstand（誤解）</li><li>mono-　單一　—　monologue（獨白）</li><li>multi-　多　—　multicultural（多元文化的）</li><li>neo-　新的　—　neonatal（新生的）</li><li>non-　非、沒有　—　nonsense（無意義）</li><li>pan-　全部　—　pandemic（大流行病）</li><li>peri-　周圍　—　perimeter（周長）</li><li>poly-　多　—　polygon（多邊形）</li><li>post-　之後　—　postwar（戰後的）</li><li>pre-　之前　—　preview（預覽）</li><li>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</li><li>pseudo-　假的　—　pseudonym（筆名）</li><li>re-　再、回　—　review（複習）</li><li>semi-　一半、部分　—　semicircle（半圓）</li><li>sub-　在下、次級　—　subway（地鐵）</li><li>super-　超越、在上　—　superstar（超級明星）</li><li>syn-/sym-　一起、共同　—　synchronize（同步）</li><li>tele-　遠距　—　telephone（電話）</li><li>trans-　穿越、轉變　—　transport（運輸）</li><li>tri-　三　—　triangle（三角形）</li><li>un-　否定、不　—　unhappy（不快樂的）</li><li>vice-　副、代替　—　vice-president（副總統）</li>
+</ol></div>
+</details>
+
+<details>
+<summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<h3>名詞字尾</h3><ol class="mini-list"><li>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</li><li>-ment　行為或結果　—　agreement（協議）、development（發展）</li><li>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</li><li>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</li><li>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</li><li>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</li><li>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</li><li>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</li></ol>
+<h3>形容詞字尾</h3><ol class="mini-list"><li>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</li><li>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</li><li>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</li><li>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</li><li>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</li></ol>
+<h3>動詞字尾</h3><ol class="mini-list"><li>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</li><li>-ify　使成為…　—　beautify（美化）、clarify（澄清）</li><li>-ate　形成動詞　—　dominate（支配）、activate（啟動）</li><li>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</li></ol>
+<h3>副詞字尾</h3><ol class="mini-list"><li>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</li><li>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</li><li>-wise　表示方式或角度　—　clockwise（順時針方向）</li></ol>
+</div>
+</details>
+
+<details>
+<summary>30 個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+<div class="detail-body"><ol class="mini-list">
+<li>summer [ˈsʌmɚ] (n. 夏天) — summer heat（暑氣）</li><li>Taiwan [taɪˈwɑn] (n. 臺灣) — Taiwanese [taɪwəˈniz] (adj. 臺灣的)</li><li>dessert [dɪˈzɝt] (n. 甜點) — dessert shop（甜點店）</li><li>island [ˈaɪlənd] (n. 島嶼) — islandwide（全島的）</li><li>snack [snæk] (n. 點心) — quick snack（快速點心）</li><li>topping [ˈtɑpɪŋ] (n. 配料) — warm topping（溫熱配料）</li><li>traditional [trəˈdɪʃənəl] (adj. 傳統的) — tradition [trəˈdɪʃən] (n. 傳統)</li><li>smooth [smuð] (adj. 滑順的) — smoothly [ˈsmuðli] (adv. 順利地)</li><li>baobing [ˈbaʊˌbɪŋ] (n. 刨冰) — shaved ice（刨冰）</li><li>common [ˈkɑmən] (adj. 常見的) — commonly [ˈkɑmənli] (adv. 通常)</li><li>scrape [skrep] (v. 刮；削) — scrape off（刮掉）</li><li>texture [ˈtɛkstʃɚ] (n. 口感；質地) — textured [ˈtɛkstʃɚd] (adj. 有紋理的)</li><li>ingredient [ɪnˈɡridiənt] (n. 食材) — main ingredient（主要成分）</li><li>syrup [ˈsɪrəp] (n. 糖漿) — maple syrup（楓糖漿）</li><li>condensed [kənˈdɛnst] (adj. 濃縮的) — condense [kənˈdɛns] (v. 濃縮)</li><li>wonderful [ˈwʌndɚfəl] (adj. 美好的) — wonderfully [ˈwʌndɚfəli] (adv. 極好地)</li><li>shared [ʃɛrd] (adj. 共享的) — share [ʃɛr] (v. 分享)</li><li>lingering [ˈlɪŋɡərɪŋ] (adj. 持續不散的) — linger [ˈlɪŋɡɚ] (v. 逗留)</li><li>meanwhile [ˈminˌhwaɪl] (adv. 同時；另一方面) — in the meantime（同時）</li><li>surprise [sɚˈpraɪz] (n./v. 驚喜；使驚訝) — surprising [sɚˈpraɪzɪŋ] (adj. 令人驚訝的)</li><li>combine [kəmˈbaɪn] (v. 結合) — combination [ˌkɑmbəˈneʃən] (n. 組合)</li><li>temperature [ˈtɛmprətʃɚ] (n. 溫度) — room temperature（室溫）</li><li>freshly [ˈfrɛʃli] (adv. 新鮮地；剛剛) — fresh [frɛʃ] (adj. 新鮮的)</li><li>pleasant [ˈplɛzənt] (adj. 愉快的) — pleasure [ˈplɛʒɚ] (n. 樂趣)</li><li>contrast [ˈkɑntræst] (n. 對比) — in contrast（相比之下）</li><li>flavor [ˈflevɚ] (n. 風味) — flavorful [ˈflevɚfəl] (adj. 風味十足的)</li><li>classic [ˈklæsɪk] (n./adj. 經典；經典的) — classical [ˈklæsɪkəl] (adj. 古典的)</li><li>starch [stɑrtʃ] (n. 澱粉) — starchy [ˈstɑrtʃi] (adj. 含澱粉的)</li><li>vendor [ˈvɛndɚ] (n. 攤販；小販) — street vendor（街頭攤販）</li><li>nostalgia [nɑˈstældʒə] (n. 懷舊) — nostalgic [nɑˈstældʒɪk] (adj. 懷舊的)</li>
+</ol><p>文章相關常用片語 5 個：</p><ul class="mini-list"><li>cool off（消暑；涼快下來）</li><li>in season（當季）</li><li>at bay（使…無法靠近）</li><li>on the go（忙碌中；邊走邊）</li><li>bring back memories（喚起回憶）</li></ul></div>
+</details>
+
+<details>
+<summary>練文筆食材<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<div class="writing-item">① a simple way to V（做某事的簡單方法）<br>→ 適用：介紹方法或解決方案時<br>例：Drinking enough water is a simple way to stay healthy.</div>
+<div class="writing-item">② across + 地點（遍及…）<br>→ 適用：描述範圍很廣的現象<br>例：Night markets across Taiwan attract many visitors.</div>
+<div class="writing-item">③ One..., another..., still another...（一個…另一個…還有一個…）<br>→ 適用：列舉三種選項或例子<br>例：One student chose music, another chose art, and still another chose science.</div>
+<div class="writing-item">④ be made by V-ing（藉由…製成）<br>→ 適用：說明製作方式<br>例：This dessert is made by mixing tea with milk.</div>
+<div class="writing-item">⑤ top A with B（在 A 上加 B）<br>→ 適用：描述食物配料<br>例：You can top the toast with honey and bananas.</div>
+<div class="writing-item">⑥ Whether..., ...（不論…，…）<br>→ 適用：強調兩種情況都成立<br>例：Whether eaten hot or cold, the snack tastes great.</div>
+<div class="writing-item">⑦ as simple or as rich as you like（可依喜好簡單或豐富）<br>→ 適用：描述彈性選擇<br>例：Your travel plan can be as simple or as rich as you like.</div>
+<div class="writing-item">⑧ keep + O + at bay（阻止…靠近）<br>→ 適用：寫健康、壓力或問題控制<br>例：Regular exercise helps keep stress at bay.</div>
+<div class="writing-item">⑨ may be just the thing for you（可能正適合你）<br>→ 適用：推薦選項<br>例：If you like quiet places, this library may be just the thing for you.</div>
+<div class="writing-item">⑩ combine A with B（把 A 與 B 結合）<br>→ 適用：描寫創新、混合特色<br>例：The course combines language learning with cultural activities.</div>
+<div class="writing-item">⑪ creating a pleasant contrast（形成令人愉快的對比）<br>→ 適用：描述設計、食物、文章轉折<br>例：The sweet sauce and salty cheese create a pleasant contrast.</div>
+<div class="writing-item">⑫ ranging from A to B（範圍從 A 到 B）<br>→ 適用：列出種類範圍<br>例：The club offers activities ranging from hiking to photography.</div>
+<div class="writing-item">⑬ making it easier to V（使做某事更容易）<br>→ 適用：說明結果或好處<br>例：Online maps make it easier to explore a new city.</div>
+<div class="writing-item">⑭ Either way, S + V（不論哪種方式，…）<br>→ 適用：收束兩種可能情況<br>例：You can study alone or with friends. Either way, review is important.</div>
+<div class="writing-item">⑮ bring back childhood memories（喚起童年回憶）<br>→ 適用：寫食物、音樂、地方與懷舊感<br>例：The old song brought back childhood memories for my father.</div>
+</div>
+</details>
+
+<section class="link-panel bottom" aria-label="七月課程與聯絡資訊">
+<h2>七月課程與聯絡資訊</h2>
+<div class="quick-links">
+<a class="quick-link course-a" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<strong>七月課程介紹</strong>
+<span>錯中學 ECHO 計劃：從錯題回音中整理弱點，建立更穩的英文理解力。</span>
+</a>
+<a class="quick-link course-b" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<strong>學生分析</strong>
+<span>用學習分析看見學生的卡點，幫助安排更精準的複習方向。</span>
+</a>
+<a class="quick-link line-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<strong>Line：linwayet</strong>
+<span>加入林威老師個人 Line 帳號，洽詢課程與英文學習規劃。</span>
+</a>
+</div>
+</section>
+</main>
+</body>
+</html>
