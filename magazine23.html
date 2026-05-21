@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>A City in Pink: Lithuania Celebrates Its Favorite Soup</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg-color: #FFF5E8;
+        --text-main: #1A0F00;
+        --h1-color: #C0392B;
+        --h2-color: #1565C0;
+        --h3-color: #2E7D32;
+        --accent-a: #E65100;
+        --accent-b: #6A1B9A;
+        --keyword-color: #0D47A1;
+        
+        --b1-head: #0D47A1; --b1-border: #90CAF9; --b1-bg: #F3F8FF;
+        --b2-head: #BF360C; --b2-border: #FFAB91; --b2-bg: #FFF3EF;
+        --b3-head: #1B5E20; --b3-border: #81C784; --b3-bg: #F1F8F2;
+        --b4-head: #4A148C; --b4-border: #CE93D8; --b4-bg: #F9F0FF;
+        --fold-head: #4A3728; --fold-border: #C4A06A; --fold-bg: #FAF6F0;
+
+        --tag-deriv-bg: #FDEDEC; --tag-deriv-text: #C0392B;
+        --tag-root-bg: #EBF5FB; --tag-root-text: #1565C0;
+        --tag-phrase-bg: #EAFAF1; --tag-phrase-text: #2E7D32;
+        --tag-idiom-bg: #FEF9E7; --tag-idiom-text: #D68910;
+        --tag-confuse-bg: #F5EEF8; --tag-confuse-text: #6A1B9A;
+        --tag-focus-bg: #FEF0E7; --tag-focus-text: #E65100;
+
+        /* 新增連結卡片配色 */
+        --card1-bg: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+        --card2-bg: linear-gradient(135deg, #4ECDC4 0%, #44A08D 100%);
+        --card3-bg: linear-gradient(135deg, #A770EF 0%, #CF8BF3 100%);
+    }
+
+    body {
+        font-family: 'BIZ UDPGothic', sans-serif;
+        background: linear-gradient(to bottom, #FFF5E8 0%, #FFE4C4 100%);
+        color: var(--text-main);
+        font-size: 24px;
+        line-height: 1.85;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        word-wrap: break-word;
+    }
+
+    /* ========== 連結卡片區塊 ========== */
+    .link-cards-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin: 30px 0 50px 0;
+        padding: 0;
+    }
+
+    @media (min-width: 600px) {
+        .link-cards-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .link-card {
+        background: var(--card1-bg);
+        border-radius: 16px;
+        padding: 24px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+        color: #FFFFFF;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .link-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.25);
+    }
+
+    .link-card.card-1 {
+        background: var(--card1-bg);
+    }
+
+    .link-card.card-2 {
+        background: var(--card2-bg);
+    }
+
+    .link-card.card-3 {
+        background: var(--card3-bg);
+    }
+
+    .link-card-icon {
+        font-size: 3rem;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    .link-card-title {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .link-card-desc {
+        font-size: 1rem;
+        line-height: 1.5;
+        opacity: 0.95;
+        margin-bottom: 12px;
+    }
+
+    .link-card-url {
+        font-size: 0.85rem;
+        opacity: 0.8;
+        word-break: break-all;
+        font-family: monospace;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 6px 10px;
+        border-radius: 6px;
+        margin-top: auto;
+    }
+
+    /* ========== 頁面頂部標題 ========== */
+    .page-header {
+        text-align: center;
+        margin: 40px 0 50px 0;
+        background: linear-gradient(135deg, #FFE5B4 0%, #FFDAB9 50%, #FFE5B4 100%);
+        padding: 40px 20px;
+        border-radius: 20px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    }
+    .h1-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--h1-color);
+        border: 4px solid var(--h1-color);
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 6px 6px 0px rgba(192, 57, 43, 0.2);
+        margin-bottom: 20px;
+        display: inline-block;
+        background: #FFFFFF;
+    }
+    @media (max-width: 600px) {
+        .h1-title {
+            font-size: 1.8rem;
+            padding: 15px;
+        }
+    }
+    .h2-subtitle {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--h2-color);
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(21, 101, 192, 0.1);
+    }
+    @media (max-width: 600px) {
+        .h2-subtitle {
+            font-size: 1.5rem;
+        }
+    }
+    .h3-author {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--keyword-color);
+        text-shadow: 2px 2px 4px rgba(13, 71, 161, 0.1);
+    }
+    @media (max-width: 600px) {
+        .h3-author {
+            font-size: 1.2rem;
+        }
+    }
+
+    /* 區塊共用設定 */
+    .section-card {
+        border-radius: 16px;
+        margin-bottom: 40px;
+        overflow: hidden;
+        border-width: 3px;
+        border-style: solid;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        transition: transform 0.2s ease;
+    }
+    .section-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+    }
+    .section-title {
+        color: #FFFFFF;
+        font-size: 1.8rem;
+        font-weight: 700;
+        padding: 18px 24px;
+        margin: 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .section-content {
+        padding: 30px;
+    }
+
+    /* 各區塊專屬配色 */
+    .b1 { border-color: var(--b1-border); background-color: var(--b1-bg); }
+    .b1 .section-title { background: linear-gradient(135deg, #0D47A1 0%, #1565C0 100%); }
+    
+    .b2 { border-color: var(--b2-border); background-color: var(--b2-bg); }
+    .b2 .section-title { background: linear-gradient(135deg, #BF360C 0%, #E65100 100%); }
+    
+    .b3 { border-color: var(--b3-border); background-color: var(--b3-bg); }
+    .b3 .section-title { background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 100%); }
+    
+    .b4 { border-color: var(--b4-border); background-color: var(--b4-bg); }
+    .b4 .section-title { background: linear-gradient(135deg, #4A148C 0%, #6A1B9A 100%); }
+
+    /* 原文與關鍵字 */
+    .original-text p {
+        margin-bottom: 20px;
+        max-width: 40em;
+    }
+    .kw {
+        font-weight: 700;
+        color: var(--keyword-color);
+        background: linear-gradient(120deg, #E3F2FD 0%, #BBDEFB 100%);
+        padding: 2px 6px;
+        border-radius: 4px;
+    }
+
+    /* 精讀標籤與內容 */
+    .reading-item {
+        margin-bottom: 40px;
+        padding-bottom: 20px;
+        border-bottom: 2px dashed #D7CCC8;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 20px;
+        border-radius: 12px;
+    }
+    .reading-item:last-child {
+        border-bottom: none; margin-bottom: 0;
+    }
+    .circle-num {
+        display: inline-block;
+        font-weight: 700;
+        color: var(--h1-color);
+        margin-right: 10px;
+        font-size: 1.3rem;
+    }
+    .eng-sentence {
+        font-style: italic;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #1565C0;
+    }
+    .cht-translation {
+        margin-bottom: 15px;
+        color: #3E2723;
+        font-weight: 500;
+    }
+    .grammar-analysis {
+        background: rgba(255,255,255,0.8);
+        padding: 18px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        border-left: 5px solid var(--b2-head);
+    }
+    .pill {
+        display: inline-block;
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 5px;
+        background: linear-gradient(135deg, #FFE0B2 0%, #FFCC80 100%);
+        color: var(--tag-focus-text);
+        box-shadow: 0 3px 8px rgba(230, 81, 0, 0.2);
+    }
+
+    /* 單字區塊 */
+    .vocab-item {
+        margin-bottom: 45px;
+        background: linear-gradient(135deg, #FFFFFF 0%, #F5F5F5 100%);
+        padding: 28px;
+        border-radius: 14px;
+        border-left: 8px solid var(--b3-head);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .vocab-header {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--h3-color);
+        margin-bottom: 15px;
+    }
+    .vocab-tags {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 12px;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+    @media (max-width: 600px) {
+        .vocab-tags {
+            grid-template-columns: 1fr;
+        }
+    }
+    .tag-label {
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-weight: 700;
+        text-align: center;
+        font-size: 20px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    }
+    .t-deriv { background: var(--tag-deriv-bg); color: var(--tag-deriv-text); }
+    .t-root { background: var(--tag-root-bg); color: var(--tag-root-text); }
+    .t-phrase { background: var(--tag-phrase-bg); color: var(--tag-phrase-text); }
+    .t-idiom { background: var(--tag-idiom-bg); color: var(--tag-idiom-text); }
+    .t-confuse { background: var(--tag-confuse-bg); color: var(--tag-confuse-text); }
+    .t-pattern { background: var(--tag-focus-bg); color: var(--tag-focus-text); }
+    
+    .example-sentence {
+        margin-top: 15px;
+        padding-left: 18px;
+        border-left: 5px solid var(--b3-border);
+        background: rgba(129, 199, 132, 0.1);
+        padding: 12px 18px;
+        border-radius: 8px;
+    }
+
+    /* 文法區塊 */
+    .grammar-item {
+        background: linear-gradient(135deg, #FFFFFF 0%, #F9F9F9 100%);
+        padding: 32px;
+        border-radius: 14px;
+        margin-bottom: 40px;
+        border: 3px solid var(--b2-border);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    .grammar-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--h2-color);
+        margin-bottom: 20px;
+        background: linear-gradient(120deg, #E3F2FD 0%, #BBDEFB 100%);
+        padding: 12px 20px;
+        border-radius: 10px;
+        display: inline-block;
+    }
+    .grammar-content {
+        line-height: 1.9;
+    }
+
+    /* 折疊區塊 */
+    details {
+        border: 3px solid var(--fold-border);
+        background-color: var(--fold-bg);
+        border-radius: 14px;
+        margin-bottom: 25px;
+        padding: 0;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+    summary {
+        background: linear-gradient(135deg, #D7CCC8 0%, #BCAAA4 100%);
+        color: var(--fold-head);
+        font-size: 1.5rem;
+        font-weight: 700;
+        padding: 18px 24px;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.3s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    summary:hover {
+        background: linear-gradient(135deg, #BCAAA4 0%, #A1887F 100%);
+    }
+    .arrow {
+        transition: transform 0.3s ease;
+        font-size: 1.2rem;
+    }
+    details[open] .arrow {
+        transform: rotate(180deg);
+    }
+    .details-content {
+        padding: 30px;
+        line-height: 1.9;
+    }
+    .flex-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .flex-list > div {
+        background: rgba(255, 255, 255, 0.7);
+        padding: 15px;
+        border-radius: 10px;
+        border-left: 5px solid var(--fold-head);
+    }
+    .flex-list hr {
+        border: none;
+        border-top: 2px dashed var(--fold-border);
+        margin: 20px 0;
+    }
+    .flex-list strong {
+        color: var(--fold-head);
+        font-size: 1.1rem;
+    }
+</style>
+</head>
+<body>
+
+<!-- ========== 頂部連結卡片區 ========== -->
+<div class="link-cards-container">
+    <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="link-card card-1">
+        <span class="link-card-icon">🎯</span>
+        <div class="link-card-title">錯中學 ECHO 計劃</div>
+        <div class="link-card-desc">2025 年七月開課<br>從錯誤中學習的創新英文教學法</div>
+    </a>
+    
+    <a href="https://linwayet.github.io/popup/index" target="_blank" class="link-card card-2">
+        <span class="link-card-icon">📊</span>
+        <div class="link-card-title">學生分析系統</div>
+        <div class="link-card-desc">2025 年七月開課<br>個人化學習進度追蹤與分析</div>
+    </a>
+    
+    <a href="https://line.me/ti/p/linwayet" target="_blank" class="link-card card-3">
+        <span class="link-card-icon">💬</span>
+        <div class="link-card-title">LINE 聯絡老師</div>
+        <div class="link-card-desc">ID: linwayet<br>歡迎加入詢問課程相關問題</div>
+    </a>
+</div>
+
+<!-- ========== 原文章內容開始 ========== -->
+<div class="page-header">
+    <div class="h1-title">A City in Pink</div>
+    <div class="h2-subtitle">Lithuania Celebrates Its Favorite Soup</div>
+    <div class="h3-author">立陶宛的粉紅城市：冷湯節慶</div>
+</div>
+
+<div class="section-card b1">
+    <h2 class="section-title">📖 原文閱讀</h2>
+    <div class="section-content original-text">
+        <p>Imagine a <span class="kw">whole city turning bright pink</span> for a day. That's <span class="kw">exactly</span> what happens every summer in <span class="kw">Vilnius, Lithuania</span>, when thousands of people come together to celebrate their love for cold beet soup at the <span class="kw">Cold Borscht Day festival</span>.</p>
+
+        <p><span class="kw">Cold borscht</span>, also called <span class="kw">šaltibarščiai</span> [SHAL-tee-bar-shchay] in Lithuanian, is a <span class="kw">creamy pink soup</span> made from beets, cucumber slices, and sour cream. It sounds simple, but this <span class="kw">bright and cheerful</span> dish has a special place in the hearts of Lithuanians.</p>
+
+        <p>For many Lithuanians, <span class="kw">cold borscht</span> isn't just a soup – it's a symbol of summer and <span class="kw">national pride</span>. Families enjoy it during the warm months when beets and other fresh vegetables are at their best. It's <span class="kw">the natural</span> choice for <span class="kw">beating the heat</span>, while also celebrating the <span class="kw">juice</span> of local traditions.</p>
+
+        <p>The festival started in 2017, and it quickly became <span class="kw">a perfect</span> recipe for bringing people together. Every June, the capital city fills with pink <span class="kw">decorations</span>. People dress in pink clothes, restaurants offer their own <span class="kw">takes</span> on the famous dish, and even buildings are lit up in shades of pink. The <span class="kw">secret</span> to its success? A joyful <span class="kw">spirit</span> that turns <span class="kw">a simple tradition into a huge celebration</span>.</p>
+
+        <p>One of the most memorable attractions at the festival is a <span class="kw">50-meter slide</span> that lets visitors zoom down into a <span class="kw">huge bowl</span> filled with pink plastic balls. If that sounds <span class="kw">daring</span>, there's also a cold borscht race where participants must <span class="kw">balance</span> a bowl of soup while running as fast as they can – all while trying not to <span class="kw">spill</span> a <span class="kw">drop</span>.</p>
+
+        <p>The Cold Borscht Day festival is more than just a fun event. It's a proud <span class="kw">display</span> of Lithuanian <span class="kw">culture</span>, showing how food can bring a <span class="kw">society</span> together. In a world where traditions are often forgotten, this festival offers a colorful reminder that sometimes the best way to <span class="kw">honor</span> your roots is simply to have fun with them.</p>
+    </div>
+</div>
+
+<div class="section-card b2">
+    <h2 class="section-title">📝 精讀八句</h2>
+    <div class="section-content">
+        
+        <div class="reading-item">
+            <div><span class="circle-num">❶</span><span class="eng-sentence">Imagine a whole city turning bright pink for a day.</span></div>
+            <div class="cht-translation">🔹 想像一整座城市在一天內變成亮粉紅色。</div>
+            <div class="grammar-analysis">
+                <strong>文法解析：</strong><br>
+                • imagine + O + V-ing（想像...發生某動作）<br>
+                • a whole city = 整座城市（強調規模）<br>
+                • turn + 顏色 = 變成某種顏色<br>
+                • for a day = 為期一天
+            </div>
+            <div><span class="pill">感官想像句型</span> <span class="pill">動名詞作受詞補語</span></div>
+        </div>
+
+        <div class="reading-item">
+            <div><span class="circle-num">❷</span><span class="eng-sentence">That's exactly what happens every summer in Vilnius, Lithuania.</span></div>
+            <div class="cht-translation">🔹 這正是每年夏天在立陶宛維爾紐斯發生的事。</div>
+            <div class="grammar-analysis">
+                <strong>文法解析：</strong><br>
+                • That's exactly what... = 這正是...（強調真實性）<br>
+                • what happens = 所發生的事（名詞子句）<br>
+                • every summer = 每年夏天（頻率副詞）
+            </div>
+            <div><span class="pill">名詞子句</span> <span class="pill">強調句型</span></div>
+        </div>
+
+        <div class="reading-item">
+            <div><span class="circle-num">❸</span><span class="eng-sentence">For many Lithuanians, cold borscht isn't just a soup – it's a symbol of summer and national pride.</span></div>
+            <div class="cht-translation">🔹 對許多立陶宛人來說，冷湯不只是一道湯——它是夏天與民族驕傲的象徵。</div>
+            <div class="grammar-analysis">
+                <strong>文法解析：</strong><br>
+                • For many Lithuanians = 對許多立陶宛人來說（介系詞片語）<br>
+                • isn't just... – it's... = 不只是...——它是...（對比句型）<br>
+                • a symbol of = ...的象徵<br>
+                • national pride = 民族驕傲
+            </div>
+            <div><span class="pill">對比句型</span> <span class="pill">象徵意義</span></div>
+        </div>
+
+        <div class="reading-item">
+            <div><span class="circle-num">❹</span><span class="eng-sentence">The festival started in 2017, and it quickly became a perfect recipe for bringing people together.</span></div>
+            <div class="cht-translation">🔹 這個節慶始於 2017 年，並迅速成為凝聚人心的完美配方。</div>
+            <div class="grammar-analysis">
+                <strong>文法解析：</strong><br>
+                • started in 2017 = 於 2017 年開始（過去簡單式）<br>
+                • quickly became = 快速變成（副詞 + 連綴動詞）<br>
+                • a perfect recipe for = 完美的配方/方法（隱喻用法）<br>
+                • bring people together = 凝聚人心
+            </div>
+            <div><span class="pill">隱喻用法</span> <span class="pill">連綴動詞</span></div>
+        </div>
+
+        <div class="reading-item">
+            <div><span class="circle-num">❺</span><span class="eng-sentence">People dress in pink clothes, restaurants offer their own takes on the famous dish, and even buildings are lit up in shades of pink.</span></div>
+            <div class="cht-translation">🔹 人們穿粉紅色衣服，餐廳提供他們自己對這道名菜的詮釋，甚至建築物都被點亮成粉紅色調。</div>
+            <div class="grammar-analysis">
+                <strong>文法解析：</strong><br>
+                • dress in = 穿著...（介系詞 in 表示穿戴狀態）<br>
+                • offer their own takes on = 提供他們自己的詮釋<br>
+                • be lit up = 被點亮（被動語態）<br>
+                • shades of pink = 粉紅色調（shade = 色調）
+            </div>
+            <div><span class="pill">並列句</span> <span class="pill">被動語態</span></div>
+        </div>
+
+        <div class="reading-item">
+            <div><span class="circle-num">❻</span><span class="eng-sentence">One of the most memorable attractions at the festival is a 50-meter slide.</span></div>
+            <div class="cht-translation">🔹 節慶中最令人難忘的景點之一是一座 50 公尺的滑水道。</div>
+            <div class="grammar-analysis">
+                <strong>文法解析：</strong><br>
+                • One of the most memorable... = 最令人難忘的...之一<br>
+                • attractions at the festival = 節慶的景點<br>
+                • a 50-meter slide = 一座 50 公尺的滑水道（數字 + 連字號 + 名詞作形容詞）
+            </div>
+            <div><span class="pill">最高級</span> <span class="pill">複合形容詞</span></div>
+        </div>
+
+        <div class="reading-item">
+            <div><span class="circle-num">❼</span><span class="eng-sentence">Participants must balance a bowl of soup while running as fast as they can – all while trying not to spill a drop.</span></div>
+            <div class="cht-translation">🔹 參賽者必須一邊盡可能快速奔跑，一邊平衡一碗湯——同時努力不灑出一滴。</div>
+            <div class="grammar-analysis">
+                <strong>文法解析：</strong><br>
+                • must balance = 必須平衡（情態動詞 + 原形動詞）<br>
+                • while running = 當奔跑時（連接詞 + V-ing，省略主詞）<br>
+                • as fast as they can = 盡可能快速（原級比較）<br>
+                • all while trying not to spill = 同時努力不灑出（不定詞的否定）
+            </div>
+            <div><span class="pill">分詞構句</span> <span class="pill">原級比較</span></div>
+        </div>
+
+        <div class="reading-item">
+            <div><span class="circle-num">❽</span><span class="eng-sentence">Sometimes the best way to honor your roots is simply to have fun with them.</span></div>
+            <div class="cht-translation">🔹 有時候紀念自己的根源最好的方式，就是單純地與它們同樂。</div>
+            <div class="grammar-analysis">
+                <strong>文法解析：</strong><br>
+                • the best way to... = 做...最好的方式（不定詞當形容詞）<br>
+                • honor your roots = 紀念你的根源<br>
+                • is simply to have fun = 就是單純地同樂（be 動詞 + to V）<br>
+                • have fun with = 與...同樂
+            </div>
+            <div><span class="pill">不定詞當主詞補語</span> <span class="pill">建議句型</span></div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card b3">
+    <h2 class="section-title">📚 單字整理（18 個）</h2>
+    <div class="section-content">
+
+        <div class="vocab-item">
+            <div class="vocab-header">1. imagine [ɪˈmædʒɪn]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>imagination [ɪˌmædʒəˈneʃən] (n. 想像力) — imaginative (adj. 富想像力的) — imaginary (adj. 想像中的)</span>
+            </div>
+            <div><strong>(v.)</strong> 想像</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> Can you imagine living in a house made of ice?<br>
+                <em>你能想像住在冰屋裡嗎？</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> I can't imagine life without music.<br>
+                <em>我無法想像沒有音樂的生活。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">2. exactly [ɪɡˈzæktlɪ]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>exact [ɪɡˈzækt] (adj. 確切的) — exactness (n. 精確) — exacting (adj. 嚴格的)</span>
+            </div>
+            <div><strong>(adv.)</strong> 確切地、正好</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> That's exactly what I was thinking!<br>
+                <em>那正是我在想的事！</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> The clock showed exactly 3:00 PM.<br>
+                <em>時鐘顯示正好下午三點。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">3. festival [ˈfɛstəvl]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>festive [ˈfɛstɪv] (adj. 歡樂的) — festivity (n. 慶祝活動)</span>
+            </div>
+            <div><strong>(n.)</strong> 節慶、慶典</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> The music festival attracts thousands of fans every year.<br>
+                <em>這個音樂節每年吸引數千名粉絲。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> Our town holds a food festival every autumn.<br>
+                <em>我們鎮上每年秋天都會舉辦美食節。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">4. creamy [ˈkrimɪ]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>cream [krim] (n. 鮮奶油) — creaminess (n. 濃郁度)</span>
+            </div>
+            <div><strong>(adj.)</strong> 濃郁的、多脂的</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> This soup has a rich, creamy texture.<br>
+                <em>這道湯有濃郁綿密的口感。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> I prefer creamy peanut butter over crunchy.<br>
+                <em>我比較喜歡滑順的花生醬而非顆粒的。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">5. slice [slaɪs]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-pattern">用法</span>
+                <span>a slice of (一片...) — slice into (切成...)</span>
+            </div>
+            <div><strong>(n.)</strong> 切片、薄片</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> Would you like a slice of pizza?<br>
+                <em>你想要一片披薩嗎？</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> She cut the bread into thin slices.<br>
+                <em>她把麵包切成薄片。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">6. cheerful [ˈtʃɪrfəl]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>cheer [tʃɪr] (v. 歡呼) — cheerfully (adv. 愉快地) — cheerfulness (n. 愉快)</span>
+            </div>
+            <div><strong>(adj.)</strong> 令人愉快的、快樂的</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> The room was decorated in cheerful colors.<br>
+                <em>房間裝飾著令人愉快的色彩。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> She always has a cheerful attitude.<br>
+                <em>她總是保持開朗的態度。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">7. natural [ˈnætʃərəl]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>nature [ˈnetʃɚ] (n. 大自然) — naturally (adv. 自然地) — naturalist (n. 博物學家)</span>
+            </div>
+            <div><strong>(adj.)</strong> 天然的、自然的</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> This juice is made from natural ingredients.<br>
+                <em>這種果汁由天然成分製成。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> It's natural to feel nervous before a test.<br>
+                <em>考試前感到緊張是很自然的。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">8. juice [dʒus]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>juicy [ˈdʒusɪ] (adj. 多汁的) — juiciness (n. 多汁性)</span>
+            </div>
+            <div><strong>(n.)</strong> 汁液、果汁</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> I'd like a glass of orange juice, please.<br>
+                <em>我想要一杯柳橙汁，謝謝。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> The juice from the watermelon dripped everywhere.<br>
+                <em>西瓜汁滴得到處都是。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">9. perfect [ˈpɝfɪkt]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>perfection [pɚˈfɛkʃən] (n. 完美) — perfectly (adv. 完美地) — perfectionist (n. 完美主義者)</span>
+            </div>
+            <div><strong>(adj.)</strong> 完美的</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> The weather is perfect for a picnic.<br>
+                <em>這天氣非常適合野餐。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> Nobody's perfect – we all make mistakes.<br>
+                <em>沒有人是完美的——我們都會犯錯。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">10. recipe [ˈrɛsəpɪ]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-pattern">用法</span>
+                <span>a recipe for (做...的配方/方法)</span>
+            </div>
+            <div><strong>(n.)</strong> 食譜、配方</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> Do you have a recipe for chocolate cake?<br>
+                <em>你有巧克力蛋糕的食譜嗎？</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> Hard work is the recipe for success.<br>
+                <em>努力工作是成功的配方。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">11. secret [ˈsikrɪt]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>secretly [ˈsikrɪtlɪ] (adv. 秘密地) — secrecy [ˈsikrəsɪ] (n. 保密)</span>
+            </div>
+            <div><strong>(n.)</strong> 秘密</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> Can you keep a secret?<br>
+                <em>你能保守秘密嗎？</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> The secret to happiness is gratitude.<br>
+                <em>快樂的秘訣是感恩。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">12. spirit [ˈspɪrɪt]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>spiritual [ˈspɪrɪtʃʊəl] (adj. 精神上的) — spirited (adj. 活潑的)</span>
+            </div>
+            <div><strong>(n.)</strong> 精神、心靈</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> The team showed great fighting spirit.<br>
+                <em>團隊展現了強大的戰鬥精神。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> The holiday spirit fills the air in December.<br>
+                <em>十二月時空氣中充滿了節慶氣氛。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">13. decoration [ˌdɛkəˈreʃən]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>decorate [ˈdɛkəˌret] (v. 裝飾) — decorative (adj. 裝飾性的)</span>
+            </div>
+            <div><strong>(n.)</strong> 裝飾、裝飾品</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> We put up Christmas decorations in early December.<br>
+                <em>我們在十二月初布置聖誕裝飾。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> The room needs some decoration to make it cozier.<br>
+                <em>房間需要一些裝飾讓它更溫馨。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">14. daring [ˈdɛrɪŋ]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>dare [dɛr] (v. 膽敢) — daringly (adv. 大膽地)</span>
+            </div>
+            <div><strong>(adj.)</strong> 大膽的</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> That was a daring rescue attempt.<br>
+                <em>那是一次大膽的救援行動。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> She wore a daring outfit to the party.<br>
+                <em>她在派對上穿了一套大膽的服裝。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">15. balance [ˈbæləns]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>balanced (adj. 平衡的) — imbalance (n. 不平衡)</span>
+            </div>
+            <div><strong>(v.)</strong> 平衡</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> Can you balance on one foot?<br>
+                <em>你能單腳站立平衡嗎？</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> It's important to balance work and leisure.<br>
+                <em>在工作與休閒之間取得平衡很重要。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">16. spill [spɪl]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-pattern">用法</span>
+                <span>spill over (溢出) — spill the beans (洩漏秘密)</span>
+            </div>
+            <div><strong>(v.)</strong> 灑出、溢出</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> Be careful not to spill your drink!<br>
+                <em>小心別把飲料灑出來！</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> I accidentally spilled coffee on my shirt.<br>
+                <em>我不小心把咖啡灑在襯衫上。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">17. display [dɪˈsple]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-pattern">用法</span>
+                <span>on display (展出中) — display of (展現...)</span>
+            </div>
+            <div><strong>(n.)</strong> 展示、表現</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> The museum has a new dinosaur display.<br>
+                <em>博物館有一個新的恐龍展覽。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> Her performance was an impressive display of talent.<br>
+                <em>她的表演是才華的精彩展現。</em>
+            </div>
+        </div>
+
+        <div class="vocab-item">
+            <div class="vocab-header">18. honor [ˈɑnɚ]</div>
+            <div class="vocab-tags">
+                <span class="tag-label t-deriv">衍生詞</span>
+                <span>honorable [ˈɑnərəbl] (adj. 值得尊敬的) — honorary (adj. 榮譽的)</span>
+            </div>
+            <div><strong>(v.)</strong> 紀念、尊敬</div>
+            <div class="example-sentence">
+                <strong>例句 1：</strong> We honor our veterans every November.<br>
+                <em>我們每年十一月都會紀念退伍軍人。</em>
+            </div>
+            <div class="example-sentence">
+                <strong>例句 2：</strong> It's an honor to meet you.<br>
+                <em>很榮幸見到您。</em>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="section-card b4">
+    <h2 class="section-title">🔍 文法解析</h2>
+    <div class="section-content">
+        
+        <div class="grammar-item">
+            <div class="grammar-title">1. imagine + O + V-ing（想像...發生某動作）</div>
+            <div class="grammar-content">
+                <strong>說明：</strong><br>
+                這個句型用來邀請讀者進入某個情境或畫面。imagine 後面接受詞（O），再接動名詞（V-ing）作為受詞補語。<br><br>
+                <strong>例句：</strong><br>
+                • Imagine a whole city turning bright pink for a day.<br>
+                <em>想像一整座城市在一天內變成亮粉紅色。</em><br><br>
+                • Imagine yourself living in a castle.<br>
+                <em>想像你自己住在城堡裡。</em>
+            </div>
+        </div>
+
+        <div class="grammar-item">
+            <div class="grammar-title">2. That's exactly what...（這正是...）</div>
+            <div class="grammar-content">
+                <strong>說明：</strong><br>
+                這個句型用來強調某個現象或事實的真實性。what 引導名詞子句，作為主詞補語。<br><br>
+                <strong>例句：</strong><br>
+                • That's exactly what happens every summer in Vilnius.<br>
+                <em>這正是每年夏天在維爾紐斯發生的事。</em><br><br>
+                • That's exactly what I was thinking!<br>
+                <em>那正是我在想的事！</em>
+            </div>
+        </div>
+
+        <div class="grammar-item">
+            <div class="grammar-title">3. isn't just... – it's...（不只是...——它是...）</div>
+            <div class="grammar-content">
+                <strong>說明：</strong><br>
+                這個對比句型用來強調某事物的深層意義超越表象。透過「不只是」與「它是」的對照，凸顯真正的價值。<br><br>
+                <strong>例句：</strong><br>
+                • Cold borscht isn't just a soup – it's a symbol of summer.<br>
+                <em>冷湯不只是一道湯——它是夏天的象徵。</em><br><br>
+                • This book isn't just a story – it's a life lesson.<br>
+                <em>這本書不只是一個故事——它是人生的一課。</em>
+            </div>
+        </div>
+
+        <div class="grammar-item">
+            <div class="grammar-title">4. while + V-ing（當...時）</div>
+            <div class="grammar-content">
+                <strong>說明：</strong><br>
+                while 引導的副詞子句可以省略主詞與 be 動詞，直接用 V-ing 表達「當...時」。這種用法常見於描述同時發生的動作。<br><br>
+                <strong>例句：</strong><br>
+                • Participants must balance a bowl of soup while running.<br>
+                <em>參賽者必須一邊奔跑一邊平衡一碗湯。</em><br><br>
+                • She listens to music while studying.<br>
+                <em>她一邊聽音樂一邊念書。</em>
+            </div>
+        </div>
+
+        <div class="grammar-item">
+            <div class="grammar-title">5. the best way to... is (simply) to...（做...最好的方式是...）</div>
+            <div class="grammar-content">
+                <strong>說明：</strong><br>
+                這個句型用來給出建議或結論。兩個不定詞（to V）分別當形容詞與主詞補語，形成對稱結構。<br><br>
+                <strong>例句：</strong><br>
+                • The best way to honor your roots is simply to have fun with them.<br>
+                <em>紀念自己的根源最好的方式，就是單純地與它們同樂。</em><br><br>
+                • The best way to learn English is to practice every day.<br>
+                <em>學英文最好的方式就是每天練習。</em>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- 底部折疊區塊 -->
+<div class="section-card" style="border: none; background: transparent; box-shadow: none;">
+    
+    <details>
+        <summary>常見字首整理（50 個）<span class="arrow">▼</span></summary>
+        <div class="details-content flex-list">
+            <div>ab-　離開、相反　—　abnormal（異常的）</div>
+            <div>ad-　向、加　—　advance（前進）</div>
+            <div>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</div>
+            <div>anti-　反對、抗　—　antibiotic（抗生素）</div>
+            <div>arch-　主要、首要　—　archenemy（死敵）</div>
+            <div>auto-　自動、自我　—　autograph（親筆簽名）</div>
+            <div>bene-　好的、善　—　benefit（好處）</div>
+            <div>bi-　二、雙　—　bilingual（雙語的）</div>
+            <div>circum-　環繞、周圍　—　circumstance（情況）</div>
+            <div>co-/con-/com-　一起、共同　—　cooperate（合作）</div>
+            <div>contra-　相反、對抗　—　contradict（反駁）</div>
+            <div>de-　去除、下降　—　decode（解碼）</div>
+            <div>dia-　穿過、透過　—　dialogue（對話）</div>
+            <div>dis-　否定、分離　—　disagree（不同意）</div>
+            <div>en-/em-　使成為　—　enable（使能夠）</div>
+            <div>epi-　在上、在外　—　epidemic（流行病）</div>
+            <div>ex-　外、前任　—　export（出口）；ex-president（前總統）</div>
+            <div>extra-　額外、外部　—　extraordinary（非凡的）</div>
+            <div>hetero-　不同　—　heterogeneous（異質的）</div>
+            <div>homo-　相同　—　homogeneous（同質的）</div>
+            <div>hyper-　過度、超　—　hyperactive（過動的）</div>
+            <div>hypo-　低於、不足　—　hypodermic（皮下的）</div>
+            <div>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</div>
+            <div>inter-　在…之間　—　international（國際的）</div>
+            <div>iso-　相等、相同　—　isolate（隔離）</div>
+            <div>mal-　壞、不良　—　malfunction（故障）</div>
+            <div>micro-　微小　—　microscope（顯微鏡）</div>
+            <div>mis-　錯誤　—　misunderstand（誤解）</div>
+            <div>mono-　單一　—　monologue（獨白）</div>
+            <div>multi-　多　—　multicultural（多元文化的）</div>
+            <div>neo-　新的　—　neonatal（新生的）</div>
+            <div>non-　非、沒有　—　nonsense（無意義）</div>
+            <div>pan-　全部　—　pandemic（大流行病）</div>
+            <div>peri-　周圍　—　perimeter（周長）</div>
+            <div>poly-　多　—　polygon（多邊形）</div>
+            <div>post-　之後　—　postwar（戰後的）</div>
+            <div>pre-　之前　—　preview（預覽）</div>
+            <div>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</div>
+            <div>pseudo-　假的　—　pseudonym（筆名）</div>
+            <div>re-　再、回　—　review（複習）</div>
+            <div>semi-　一半、部分　—　semicircle（半圓）</div>
+            <div>sub-　在下、次級　—　subway（地鐵）</div>
+            <div>super-　超越、在上　—　superstar（超級明星）</div>
+            <div>syn-/sym-　一起、共同　—　synchronize（同步）</div>
+            <div>tele-　遠距　—　telephone（電話）</div>
+            <div>trans-　穿越、轉變　—　transport（運輸）</div>
+            <div>tri-　三　—　triangle（三角形）</div>
+            <div>un-　否定、不　—　unhappy（不快樂的）</div>
+            <div>vice-　副、代替　—　vice-president（副總統）</div>
+        </div>
+    </details>
+
+    <details>
+        <summary>常見英文字尾整理（約 30 個）<span class="arrow">▼</span></summary>
+        <div class="details-content flex-list">
+            <strong>名詞字尾</strong>
+            <div>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</div>
+            <div>-ment　行為或結果　—　agreement（協議）、development（發展）</div>
+            <div>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</div>
+            <div>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</div>
+            <div>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</div>
+            <div>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</div>
+            <div>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</div>
+            <div>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</div>
+            <br>
+            <strong>形容詞字尾</strong>
+            <div>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</div>
+            <div>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</div>
+            <div>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</div>
+            <div>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</div>
+            <div>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</div>
+            <br>
+            <strong>動詞字尾</strong>
+            <div>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</div>
+            <div>-ify　使成為…　—　beautify（美化）、clarify（澄清）</div>
+            <div>-ate　形成動詞　—　dominate（支配）、activate（啟動）</div>
+            <div>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</div>
+            <br>
+            <strong>副詞字尾</strong>
+            <div>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</div>
+            <div>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</div>
+            <div>-wise　表示方式或角度　—　clockwise（順時針方向）</div>
+        </div>
+    </details>
+
+    <details>
+        <summary>30個常用單字與衍生詞<span class="arrow">▼</span></summary>
+        <div class="details-content flex-list">
+            <div>1. imagine [ɪˈmædʒɪn] (v. 想像) — imagination [ɪˌmædʒəˈneʃən] (n. 想像力)</div>
+            <div>2. exactly [ɪɡˈzæktlɪ] (adv. 確切地) — exact [ɪɡˈzækt] (adj. 確切的)</div>
+            <div>3. festival [ˈfɛstəvl] (n. 節慶) — festive [ˈfɛstɪv] (adj. 歡樂的)</div>
+            <div>4. creamy [ˈkrimɪ] (adj. 濃郁的/多脂的) — cream [krim] (n. 鮮奶油)</div>
+            <div>5. slice [slaɪs] (n. 切片) — slice [slaɪs] (v. 切片)</div>
+            <div>6. cheerful [ˈtʃɪrfəl] (adj. 令人愉快的) — cheer [tʃɪr] (v. 歡呼)</div>
+            <div>7. natural [ˈnætʃərəl] (adj. 天然的) — nature [ˈnetʃɚ] (n. 大自然)</div>
+            <div>8. juice [dʒus] (n. 汁液) — juicy [ˈdʒusɪ] (adj. 多汁的)</div>
+            <div>9. perfect [ˈpɝfɪkt] (adj. 完美的) — perfection [pɚˈfɛkʃən] (n. 完美)</div>
+            <div>10. recipe [ˈrɛsəpɪ] (n. 食譜) — a secret recipe (秘密食譜)</div>
+            <div>11. secret [ˈsikrɪt] (adj. 秘密的) — secretly [ˈsikrɪtlɪ] (adv. 秘密地)</div>
+            <div>12. joyful [ˈdʒɔɪfəl] (adj. 歡樂的) — joy [dʒɔɪ] (n. 歡樂)</div>
+            <div>13. spirit [ˈspɪrɪt] (n. 精神) — spiritual [ˈspɪrɪtʃʊəl] (adj. 精神上的)</div>
+            <div>14. famous [ˈfeməs] (adj. 著名的) — fame [fem] (n. 名聲)</div>
+            <div>15. variety [vəˈraɪətɪ] (n. 種類/多樣性) — various [ˈvɛrɪəs] (adj. 各式各樣的)</div>
+            <div>16. spicy [ˈspaɪsɪ] (adj. 辛辣的) — spice [spaɪs] (n. 香料)</div>
+            <div>17. twist [twɪst] (n. 變化/轉折) — twist [twɪst] (v. 扭轉)</div>
+            <div>18. flavor [ˈflevɚ] (v. 給...調味) — flavorful [ˈflevɚfəl] (adj. 充滿風味的)</div>
+            <div>19. daring [ˈdɛrɪŋ] (adj. 大膽的) — dare [dɛr] (v. 膽敢)</div>
+            <div>20. decorate [ˈdɛkəˌret] (v. 裝飾) — decoration [ˌdɛkəˈreʃən] (n. 裝飾品)</div>
+            <div>21. huge [hjudʒ] (adj. 巨大的) — hugeness [ˈhjudʒnɪs] (n. 巨大)</div>
+            <div>22. balance [ˈbæləns] (v. 使平衡) — well-balanced (均衡的)</div>
+            <div>23. race [res] (v. 賽跑) — racer [ˈresɚ] (n. 參賽者)</div>
+            <div>24. spill [spɪl] (v. 灑出) — spill a drink (打翻飲料)</div>
+            <div>25. drop [drɑp] (n. 滴) — drop [drɑp] (v. 掉落)</div>
+            <div>26. display [dɪˈsple] (n. 展示/表現) — on display (展出中)</div>
+            <div>27. culture [ˈkʌltʃɚ] (n. 文化) — cultural [ˈkʌltʃərəl] (adj. 文化的)</div>
+            <div>28. society [səˈsaɪətɪ] (n. 社會) — social [ˈsoʃəl] (adj. 社會的)</div>
+            <div>29. pride [praɪd] (n. 自豪/驕傲) — proud [praʊd] (adj. 驕傲的)</div>
+            <div>30. honor [ˈɑnɚ] (v. 紀念/尊敬) — honorable [ˈɑnərəbl] (adj. 值得尊敬的)</div>
+            
+            <br><strong>文章相關常用片語 5 個：</strong>
+            <div>• grow up (長大)</div>
+            <div>• from an early age (從小)</div>
+            <div>• dress up (裝扮)</div>
+            <div>• join the fun (參與同樂)</div>
+            <div>• fill with (裝滿...)</div>
+        </div>
+    </details>
+
+    <details>
+        <summary>練文筆食材<span class="arrow">▼</span></summary>
+        <div class="details-content flex-list">
+            <div>
+                <strong>① imagine + O + V-ing（想像...發生某動作）</strong><br>
+                → 適用：引導讀者進入某個情境或畫面時<br>
+                例：Imagine a whole city turning bright pink for a day.
+            </div>
+            <hr>
+            <div>
+                <strong>② that's exactly what happens...（這正是...發生的事）</strong><br>
+                → 適用：強調某個現象或事實的真實性<br>
+                例：That's exactly what happens every summer in Vilnius.
+            </div>
+            <hr>
+            <div>
+                <strong>③ represent much more than just...（代表的不僅僅是...）</strong><br>
+                → 適用：強調某事物的深層意義超越表象<br>
+                例：This dish represents much more than just a seasonal favorite.
+            </div>
+            <hr>
+            <div>
+                <strong>④ grow up + V-ing（在...的過程中長大）</strong><br>
+                → 適用：描述某人的成長背景或習慣<br>
+                例：Children grow up eating it from an early age.
+            </div>
+            <hr>
+            <div>
+                <strong>⑤ offer a joyful celebration of...（提供了對...的歡樂慶祝）</strong><br>
+                → 適用：描述活動、節慶的意義或氛圍<br>
+                例：The festival offers a joyful celebration of Lithuanian identity.
+            </div>
+            <hr>
+            <div>
+                <strong>⑥ offer one's own take on...（提供某人自己對...的獨特詮釋）</strong><br>
+                → 適用：表達對同一事物有不同的創意展現<br>
+                例：Restaurants offer their own takes of the famous dish.
+            </div>
+            <hr>
+            <div>
+                <strong>⑦ One of the most memorable attractions is...（最令人難忘的景點之一是...）</strong><br>
+                → 適用：介紹旅遊、活動中的亮點<br>
+                例：One of the most memorable attractions is a 50-meter slide.
+            </div>
+            <hr>
+            <div>
+                <strong>⑧ let + O + V（讓...做某事）</strong><br>
+                → 適用：表達賦予能力或允許<br>
+                例：The slide lets visitors zoom down into a huge bowl.
+            </div>
+            <hr>
+            <div>
+                <strong>⑨ all while trying not to...（同時努力不去...）</strong><br>
+                → 適用：描述在做某事的同時，極力避免發生另一件事<br>
+                例：They run fast, all while trying not to spill a drop.
+            </div>
+            <hr>
+            <div>
+                <strong>⑩ Sometimes the best way to... is simply to...（有時候做...最好的方式就是單純地...）</strong><br>
+                → 適用：在文章結尾給出簡潔有力的結論或建議<br>
+                例：Sometimes the best way to honor your roots is simply to have fun with them.
+            </div>
+        </div>
+    </details>
+
+</div>
+
+<!-- ========== 底部連結卡片區 ========== -->
+<div class="link-cards-container">
+    <a href="https://linwayet.github.io/4ulive/index.html" target="_blank" class="link-card card-1">
+        <span class="link-card-icon">🎯</span>
+        <div class="link-card-title">錯中學 ECHO 計劃</div>
+        <div class="link-card-desc">2025 年七月開課<br>從錯誤中學習的創新英文教學法</div>
+    </a>
+    
+    <a href="https://linwayet.github.io/popup/index" target="_blank" class="link-card card-2">
+        <span class="link-card-icon">📊</span>
+        <div class="link-card-title">學生分析系統</div>
+        <div class="link-card-desc">2025 年七月開課<br>個人化學習進度追蹤與分析</div>
+    </a>
+    
+    <a href="https://line.me/ti/p/linwayet" target="_blank" class="link-card card-3">
+        <span class="link-card-icon">💬</span>
+        <div class="link-card-title">LINE 聯絡老師</div>
+        <div class="link-card-desc">ID: linwayet<br>歡迎加入詢問課程相關問題</div>
+    </a>
+</div>
+
+<div style="text-align: center; padding: 40px 20px; color: #8D6E63; font-size: 1.1rem;">
+    <p>📚 林威英文教材 © 2025</p>
+    <p>專為台灣高中生設計的英文學習資源</p>
+</div>
+
+</body>
+</html>
