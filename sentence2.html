@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>睡眠主題長句句型分析 · 林威英文</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: linear-gradient(135deg, #FBE8D3 0%, #F5ECD7 50%, #F8D9B5 100%);
+  font-family: 'Noto Sans TC','PingFang TC',sans-serif;
+  min-height: 100vh;
+  color: #2D2A26;
+}
+
+/* ====== LINE Warning ====== */
+.line-warning {
+  display: none; background: #FFF4E5; border: 2px solid #FF9500;
+  color: #B84A00; padding: 12px 16px; margin: 12px auto;
+  max-width: 960px; border-radius: 10px; font-size: 13px;
+}
+.line-warning.show { display: block; }
+.line-warning button {
+  background: #B84A00; color: #fff; border: none;
+  padding: 6px 14px; border-radius: 16px; font-size: 12px; font-weight: 700;
+  margin-left: 8px; cursor: pointer;
+}
+
+/* ====== Link Bar ====== */
+.link-bar {
+  background: linear-gradient(135deg, #B84A00 0%, #D85A30 50%, #E8743D 100%);
+  padding: 14px 16px;
+}
+.link-bar-inner { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.link-card {
+  flex: 1 1 280px; background: rgba(255,255,255,0.95); border-radius: 14px;
+  padding: 14px 18px; text-decoration: none; color: #2D2A26;
+  display: flex; align-items: center; gap: 12px;
+  -webkit-tap-highlight-color: rgba(184,74,0,0.1);
+  cursor: pointer; transition: all 0.25s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+.link-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+.link-card .icon {
+  font-size: 28px; width: 50px; height: 50px; border-radius: 50%;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+}
+.link-card.course1 .icon { background: linear-gradient(135deg,#FFE5D0,#FFB077); color: #B84A00; }
+.link-card.course2 .icon { background: linear-gradient(135deg,#D8EFE0,#7FCBA0); color: #0F6E56; }
+.link-card.line .icon { background: linear-gradient(135deg,#C6E8C6,#06C755); color: #fff; }
+.link-card .title { font-size: 15px; font-weight: 700; }
+.link-card .desc { font-size: 12px; color: #666; margin-top: 2px; }
+
+/* ====== Main ====== */
+.main-wrap { max-width: 1000px; margin: 0 auto; padding: 24px 18px; }
+.page-title {
+  text-align: center; font-family: 'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif;
+  font-size: 34px; font-weight: 900; color: #B84A00; letter-spacing: 4px; margin: 18px 0 6px;
+}
+.page-subtitle { text-align: center; color: #B84A00; font-size: 16px; margin-bottom: 24px; letter-spacing: 2px; }
+
+/* ====== Original Sentence Box ====== */
+.original-box {
+  background: linear-gradient(135deg, #FFFBF2 0%, #FFF4DC 100%);
+  border: 2px solid #E8C58C; border-radius: 14px;
+  padding: 20px 24px; margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(184,74,0,0.08);
+}
+.original-label {
+  font-size: 14px; color: #B84A00; font-weight: 700; margin-bottom: 10px;
+}
+.original-text {
+  font-family: 'Caveat', cursive;
+  font-size: 24px; line-height: 1.6; color: #2D2A26; font-weight: 600;
+}
+
+/* ====== SVG Area ====== */
+.svg-area {
+  background: #FFF8EE; border-radius: 14px; padding: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  overflow: hidden;
+}
+
+/* ====== Download Btn ====== */
+.download-area { text-align: center; margin: 18px 0 28px; }
+.download-btn {
+  background: linear-gradient(135deg, #1D9E75 0%, #0F6E56 100%);
+  color: #fff; border: none;
+  padding: 14px 28px; border-radius: 28px;
+  font-size: 16px; font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15,110,86,0.30);
+  transition: all 0.25s;
+}
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15,110,86,0.40); }
+.download-btn:disabled { opacity: 0.6; cursor: wait; }
+.download-hint { font-size: 13px; color: #6B5A45; margin-top: 10px; }
+
+/* ====== Grammar Panel ====== */
+.grammar-panel {
+  background: linear-gradient(135deg, #FFFBF2 0%, #FFF4DC 100%);
+  border-radius: 14px; padding: 24px 22px; margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(184,74,0,0.08);
+}
+.panel-title {
+  font-size: 22px; font-weight: 900; color: #B84A00; margin-bottom: 18px;
+  border-bottom: 2.5px solid #E8C58C; padding-bottom: 10px;
+}
+.grammar-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px dashed #E8C58C;
+  font-size: 16px; line-height: 1.7;
+}
+.grammar-item:last-child { border-bottom: none; }
+.grammar-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 8px;
+}
+.grammar-title { font-weight: 700; font-size: 17px; }
+.grammar-body { color: #2D2A26; }
+.grammar-sub { font-size: 14px; color: #888; }
+
+/* ====== Translation Box ====== */
+.translation-box {
+  background: linear-gradient(135deg, #FEF0D8 0%, #FCE6BD 100%);
+  border-radius: 10px; padding: 18px 20px;
+  border-left: 6px solid #D85A30;
+  margin-bottom: 28px;
+  box-shadow: 0 3px 10px rgba(184,74,0,0.08);
+}
+.translation-label { font-size: 16px; font-weight: 700; color: #B84A00; margin-bottom: 8px; }
+.translation-text { font-size: 17px; line-height: 1.8; color: #2D2A26; }
+
+/* ====== Sleep Map (10 words) ====== */
+.sleep-map {
+  background: linear-gradient(135deg, #EEF3FB 0%, #DCE6F7 100%);
+  border-radius: 14px; padding: 22px 20px; margin-bottom: 28px;
+  border: 2px solid #A8BCDF;
+  box-shadow: 0 4px 12px rgba(24,95,165,0.12);
+}
+.sleep-title { font-size: 20px; font-weight: 900; color: #185FA5; margin-bottom: 6px; text-align: center; }
+.sleep-sub { font-size: 14px; color: #4A6FA5; text-align: center; margin-bottom: 18px; }
+.sleep-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px;
+}
+.sl-card {
+  background: #fff; border-radius: 10px; padding: 10px 6px;
+  text-align: center; box-shadow: 0 2px 6px rgba(24,95,165,0.10);
+  border-top: 4px solid var(--sl-color);
+}
+.sl-emoji { font-size: 22px; margin-bottom: 4px; }
+.sl-word { font-family: 'Caveat', cursive; font-size: 20px; font-weight: 700; color: var(--sl-color); }
+.sl-cn { font-size: 11px; color: #555; margin-top: 2px; }
+.sl-tag { font-size: 10px; color: #999; margin-top: 2px; }
+
+.sleep-tree {
+  background: #fff; border-radius: 10px; padding: 16px 18px; margin-top: 14px;
+  border-left: 5px solid #185FA5;
+}
+.tree-title { font-weight: 700; color: #185FA5; margin-bottom: 8px; font-size: 15px; }
+.tree-list { font-size: 14px; line-height: 1.9; color: #2D2A26; }
+.tree-list code { background: #E6F1FB; color: #185FA5; padding: 1px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+
+/* ====== Vocab Cards ====== */
+.vocab-header {
+  text-align: center; font-size: 22px; font-weight: 900; color: #B84A00; margin: 0 0 18px;
+  letter-spacing: 2px;
+}
+.vocab-card {
+  border-radius: 14px; padding: 18px 20px; margin-bottom: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  border-left: 6px solid var(--vc-color);
+}
+.vocab-word {
+  font-family: 'Caveat', cursive;
+  font-size: 28px; font-weight: 700; color: var(--vc-color);
+}
+.vocab-kk { font-family: monospace; color: #666; font-size: 14px; margin-left: 8px; }
+.vocab-pos { color: #444; font-size: 15px; margin-left: 6px; }
+.vocab-derived {
+  background: var(--vc-derived-bg);
+  border-radius: 8px; padding: 10px 12px; margin: 10px 0;
+  font-size: 14px; line-height: 1.7; color: #2D2A26;
+}
+.vocab-derived strong { color: var(--vc-color); }
+.vocab-examples { margin-top: 8px; }
+.ex-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.ex-num {
+  background: var(--vc-color); color: #fff;
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px; flex-shrink: 0; margin-top: 3px;
+}
+.ex-text { font-size: 15.5px; line-height: 1.6; }
+.ex-cn { color: #555; font-size: 14px; }
+
+/* ====== iOS Modal ====== */
+.ios-modal {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92); z-index: 9999;
+  overflow-y: auto; padding: 16px;
+}
+.ios-modal.show { display: block; }
+.ios-modal .close { text-align: right; }
+.ios-modal .close button {
+  background: #fff; color: #2D2A26; border: none;
+  padding: 8px 16px; border-radius: 20px; font-weight: 700; cursor: pointer;
+}
+.ios-modal .hint, .ios-modal .footer-hint {
+  color: #fff; text-align: center; padding: 10px; font-size: 14px;
+}
+.ios-modal img { width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; }
+
+/* ====== Responsive ====== */
+@media (max-width: 640px) {
+  .page-title { font-size: 26px; letter-spacing: 2px; }
+  .page-subtitle { font-size: 13px; }
+  .original-text { font-size: 19px; }
+  .link-card { flex: 1 1 100%; }
+  .link-card .icon { width: 44px; height: 44px; font-size: 24px; }
+  .link-card .title { font-size: 13px; }
+  .link-card .desc { font-size: 11px; }
+  .main-wrap { padding: 16px 12px; }
+  .grammar-panel { padding: 18px 16px; }
+  .panel-title { font-size: 19px; }
+  .vocab-card { padding: 14px; }
+  .vocab-word { font-size: 22px; }
+  .vocab-examples { font-size: 15px; }
+  .grammar-item { font-size: 15px; }
+  .download-btn { font-size: 14px; padding: 12px 22px; }
+  .sleep-grid { grid-template-columns: repeat(2, 1fr); }
+  .sl-word { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LINE Warning -->
+<div id="line-warning" class="line-warning">
+  ⚠️ 您正在 <strong>LINE 內建瀏覽器</strong>中瀏覽，部分功能可能受限。
+  <button onclick="openInBrowser()">在瀏覽器中開啟</button>
+  <br><span style="font-size:12px;color:#888;">或點右上角「⋯」→「在瀏覽器中開啟」</span>
+</div>
+
+<!-- TOP Link Bar -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <h1 class="page-title">林威英文句型分析</h1>
+  <div class="page-subtitle">睡眠主題長句拆解 · Sleep Vocabulary &amp; Sentence Structure</div>
+
+  <!-- Original sentence -->
+  <div class="original-box">
+    <div class="original-label">📄 原文 Original Sentence</div>
+    <div class="original-text">
+      Although teenagers know that getting enough sleep is essential for their health, many of them stay up late scrolling through their phones, not realizing that the blue light emitted from screens can seriously disturb their sleep cycles.
+    </div>
+  </div>
+
+  <!-- SVG Area -->
+  <div class="svg-area">
+    <svg id="grammar-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"
+      style="width:100%;height:auto;display:block;background:#FFF8EE;">
+      <defs>
+        <marker id="arr1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M1 1 L 7 5 L 1 9" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        </marker>
+        <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFF8EE"/>
+          <stop offset="100%" stop-color="#FEF0D8"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#bg-grad)"/>
+
+      <!-- Header -->
+      <text x="960" y="78" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="60" font-weight="900" fill="#B84A00" letter-spacing="8">林威英文句型分析</text>
+      <text x="960" y="128" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="32" font-weight="700" fill="#D85A30" letter-spacing="4">林威老師設計</text>
+      <line x1="540" y1="156" x2="1380" y2="156" stroke="#D4A96A" stroke-width="2.5"/>
+
+      <!-- ===== Section 1: Although-Clause ===== -->
+      <text x="195" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="36" font-weight="700" fill="#7C3AED">Adv. Clause (讓步)</text>
+      <text x="500" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#185FA5">S.</text>
+      <text x="720" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#1D9E75">V.</text>
+      <text x="1010" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#534AB7">that-名詞子句 (O.)</text>
+
+      <text x="195" y="275" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#7C3AED">Although</text>
+      <text x="500" y="275" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#185FA5">teenagers</text>
+      <text x="720" y="275" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#1D9E75">know</text>
+      <text x="1010" y="275" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#534AB7">that ...</text>
+
+      <line x1="410" y1="290" x2="595" y2="290" stroke="#185FA5" stroke-width="6"/>
+      <line x1="675" y1="290" x2="770" y2="290" stroke="#1D9E75" stroke-width="6"/>
+      <line x1="950" y1="290" x2="1070" y2="290" stroke="#534AB7" stroke-width="6"/>
+
+      <!-- That clause 1 expansion -->
+      <text x="960" y="350" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="34" font-weight="700" fill="#534AB7">↓ that-名詞子句內部結構：</text>
+      <rect x="350" y="370" width="1220" height="80" rx="40" ry="40" fill="none" stroke="#5DCAA5" stroke-width="5"/>
+      <text x="960" y="423" text-anchor="middle" font-family="'Caveat',cursive" font-size="50" font-weight="700" fill="#0F6E56">getting enough sleep  is  essential for their health</text>
+      <text x="555" y="485" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="30" fill="#1D9E75">↑ 動名詞片語當 S.</text>
+      <text x="960" y="485" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="30" fill="#1D9E75">↑ be V.</text>
+      <text x="1330" y="485" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="30" fill="#534AB7">↑ S.C.（形容詞 + 介系詞片語）</text>
+
+      <!-- Divider -->
+      <line x1="200" y1="535" x2="1720" y2="535" stroke="#D4A96A" stroke-width="2" stroke-dasharray="10 7"/>
+
+      <!-- ===== Section 2: Main Clause + 2 participle phrases ===== -->
+      <text x="290" y="585" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#185FA5">S.</text>
+      <text x="700" y="585" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#1D9E75">V. (片語動詞)</text>
+
+      <text x="290" y="655" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#185FA5">many of them</text>
+      <text x="700" y="655" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#1D9E75">stay up late</text>
+
+      <line x1="155" y1="670" x2="425" y2="670" stroke="#185FA5" stroke-width="6"/>
+      <line x1="570" y1="670" x2="830" y2="670" stroke="#1D9E75" stroke-width="6"/>
+
+      <!-- Participle phrase 1 (positive) -->
+      <text x="960" y="725" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="34" font-weight="700" fill="#C0392B">↓ 現在分詞片語 ①（伴隨狀況・肯定）：</text>
+      <rect x="450" y="745" width="1020" height="72" rx="36" ry="36" fill="none" stroke="#C0392B" stroke-width="5" stroke-dasharray="9 6"/>
+      <text x="960" y="794" text-anchor="middle" font-family="'Caveat',cursive" font-size="46" font-weight="700" fill="#C0392B">scrolling through their phones</text>
+
+      <!-- Participle phrase 2 (negative) with embedded that-clause -->
+      <text x="960" y="852" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="34" font-weight="700" fill="#C0392B">↓ 現在分詞片語 ②（伴隨狀況・否定 not + Ving）：</text>
+      <rect x="60" y="872" width="1800" height="74" rx="37" ry="37" fill="none" stroke="#C0392B" stroke-width="5" stroke-dasharray="9 6"/>
+      <text x="960" y="922" text-anchor="middle" font-family="'Caveat',cursive" font-size="42" font-weight="700" fill="#C0392B">not realizing  that the blue light  emitted from screens  can seriously disturb their sleep cycles</text>
+
+      <!-- Annotations for inside phrase 2 -->
+      <text x="220" y="980" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="26" fill="#C0392B">↑ not + Ving</text>
+      <text x="540" y="980" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="26" fill="#534AB7">↑ that 名詞子句 (O.)</text>
+      <text x="900" y="980" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="26" fill="#185FA5">↑ pp. 片語修飾 light（＝ which is emitted）</text>
+      <text x="1450" y="980" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="26" fill="#1D9E75">↑ can + adv. + V. (情態助動詞)</text>
+
+      <!-- Footer -->
+      <line x1="660" y1="1010" x2="1260" y2="1010" stroke="#D4A96A" stroke-width="1.8"/>
+      <text x="960" y="1050" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="28" font-weight="500" fill="#A89070">林威英文句型分析 · SVG 向量版　|　LINE ID: linwayet</text>
+    </svg>
+  </div>
+
+  <!-- Download Btn -->
+  <div class="download-area">
+    <button id="download-btn" class="download-btn" onclick="prepareAndDownloadJpg()">
+      📥 下載句型分析圖（JPG · 1920×1080）
+    </button>
+    <div class="download-hint">📱 手機：點按後圖片直接顯示，<strong>長按圖片儲存到相簿</strong> · 💻 電腦自動下載</div>
+  </div>
+
+  <!-- Grammar Panel -->
+  <div class="grammar-panel">
+    <div class="panel-title">📌 文法重點</div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#185FA5;"></span>
+      <div>
+        <span class="grammar-title" style="color:#185FA5;">① Although 引導讓步副詞子句</span>
+        <span class="grammar-body"> — Although + S. + V., 主句。表「雖然⋯⋯但是」，後面主句<strong>不可</strong>再加 but。</span><br>
+        <span class="grammar-sub">例：<em>Although</em> teenagers know ..., many of them stay up late ...（不可寫成 ... , but many of them ...）</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#1D9E75;"></span>
+      <div>
+        <span class="grammar-title" style="color:#1D9E75;">② 動名詞片語當主詞 + 兩個 that 名詞子句</span>
+        <span class="grammar-body"> — <em>getting enough sleep is essential ...</em> 動名詞片語視為單數，動詞用 is。句中有<strong>兩個</strong> that 子句：一個當 know 的受詞、一個當 realizing 的受詞。</span><br>
+        <span class="grammar-sub">公式：Ving 片語 = 名詞 → 當 S. → 後接單數動詞 is / matters / has 等</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#C0392B;"></span>
+      <div>
+        <span class="grammar-title" style="color:#C0392B;">③ 兩個分詞構句並列（伴隨狀況・一肯一否）</span>
+        <span class="grammar-body"> — 主句後接兩個現在分詞片語：①肯定 <em>scrolling through their phones</em>；②否定 <em>not realizing that ...</em>。「not + Ving」是分詞構句的否定形，<strong>not 必須放在 Ving 前面</strong>。</span><br>
+        <span class="grammar-sub">原句還原：..., and they scroll through their phones, and they do not realize that ...</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#534AB7;"></span>
+      <div>
+        <span class="grammar-title" style="color:#534AB7;">④ 過去分詞片語後位修飾名詞</span>
+        <span class="grammar-body"> — <em>the blue light <strong>emitted from screens</strong></em> ＝ the blue light <strong>which is emitted from</strong> screens，省略「關係代名詞 + be 動詞」。被動意義 + 修飾前面名詞 → 用過去分詞片語精簡。</span><br>
+        <span class="grammar-sub">公式：N. + pp. + by/from/with ... ＝ N. + which/who + be + pp. + by/from/with ...</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#0F6E56;"></span>
+      <div>
+        <span class="grammar-title" style="color:#0F6E56;">⑤ stay up late 片語動詞 + can 情態助動詞</span>
+        <span class="grammar-body"> — <em>stay up</em>（熬夜不睡）為動詞片語，後接副詞 late 強化；<em>can seriously disturb</em>：can 表「可能、有能力」的推測，後接副詞 + 原形動詞。</span><br>
+        <span class="grammar-sub">stay up vs. get up：stay up 熬夜不睡 ／ get up 起床；can / could / may / might 後一律接原形動詞</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Translation -->
+  <div class="translation-box">
+    <div class="translation-label">📖 全句中文翻譯</div>
+    <div class="translation-text">
+      雖然青少年都知道睡飽對健康很重要，許多人仍熬夜滑手機，卻沒意識到螢幕散發出來的藍光會嚴重干擾他們的睡眠週期。
+    </div>
+  </div>
+
+  <!-- Sleep Map (10 words) -->
+  <div class="sleep-map">
+    <div class="sleep-title">🛌 十個 sleep 相關單字 · 關係地圖</div>
+    <div class="sleep-sub">先看核心，再看狀態深淺與行為內容</div>
+
+    <div class="sleep-grid">
+      <div class="sl-card" style="--sl-color:#185FA5;">
+        <div class="sl-emoji">😴</div>
+        <div class="sl-word">sleep</div>
+        <div class="sl-cn">睡眠</div>
+        <div class="sl-tag">n./v. 核心字</div>
+      </div>
+      <div class="sl-card" style="--sl-color:#C0392B;">
+        <div class="sl-emoji">🌙❌</div>
+        <div class="sl-word">insomnia</div>
+        <div class="sl-cn">失眠症</div>
+        <div class="sl-tag">n. 障礙</div>
+      </div>
+      <div class="sl-card" style="--sl-color:#D85A30;">
+        <div class="sl-emoji">☀️</div>
+        <div class="sl-word">awake</div>
+        <div class="sl-cn">清醒的</div>
+        <div class="sl-tag">adj./v. 反義</div>
+      </div>
+      <div class="sl-card" style="--sl-color:#1D9E75;">
+        <div class="sl-emoji">🥱</div>
+        <div class="sl-word">drowsy</div>
+        <div class="sl-cn">昏昏欲睡的</div>
+        <div class="sl-tag">adj. 淺</div>
+      </div>
+      <div class="sl-card" style="--sl-color:#1D9E75;">
+        <div class="sl-emoji">💤</div>
+        <div class="sl-word">doze</div>
+        <div class="sl-cn">打瞌睡</div>
+        <div class="sl-tag">v. 輕度</div>
+      </div>
+      <div class="sl-card" style="--sl-color:#1D9E75;">
+        <div class="sl-emoji">🛋️</div>
+        <div class="sl-word">nap</div>
+        <div class="sl-cn">小睡</div>
+        <div class="sl-tag">n./v. 短暫</div>
+      </div>
+      <div class="sl-card" style="--sl-color:#0F6E56;">
+        <div class="sl-emoji">🌌</div>
+        <div class="sl-word">slumber</div>
+        <div class="sl-cn">沉睡</div>
+        <div class="sl-tag">n./v. 深</div>
+      </div>
+      <div class="sl-card" style="--sl-color:#534AB7;">
+        <div class="sl-emoji">😪💨</div>
+        <div class="sl-word">snore</div>
+        <div class="sl-cn">打呼</div>
+        <div class="sl-tag">v. 行為</div>
+      </div>
+      <div class="sl-card" style="--sl-color:#534AB7;">
+        <div class="sl-emoji">💭</div>
+        <div class="sl-word">dream</div>
+        <div class="sl-cn">夢</div>
+        <div class="sl-tag">n./v. 內容</div>
+      </div>
+      <div class="sl-card" style="--sl-color:#C0392B;">
+        <div class="sl-emoji">👹</div>
+        <div class="sl-word">nightmare</div>
+        <div class="sl-cn">噩夢</div>
+        <div class="sl-tag">n. 負面夢</div>
+      </div>
+    </div>
+
+    <div class="sleep-tree">
+      <div class="tree-title">🔗 三大類解讀</div>
+      <div class="tree-list">
+        <strong>① 核心 + 反向：</strong><code>sleep</code>（睡眠核心字）→ 出問題就是 <code>insomnia</code>（失眠症，字根 in-「無」+ somn 「睡」）→ 完全沒睡則是 <code>awake</code>（清醒，反義）<br>
+        <strong>② 深淺四階段：</strong><code>drowsy</code>（昏昏欲睡，形容詞）→ <code>doze</code>（打瞌睡，輕度入睡）→ <code>nap</code>（小睡片刻，常指白天）→ <code>slumber</code>（沉睡，文學詩意用法）<br>
+        <strong>③ 行為 vs. 夢的內容：</strong>行為層面 <code>snore</code>（打呼，聲音）／夢的兩面：<code>dream</code>（中性的夢） vs. <code>nightmare</code>（噩夢；night 夜晚 + mare 古英語的「妖魔」）<br>
+        <strong>🧠 記憶口訣：</strong>「核心 sleep，反義 awake，障礙 insomnia；深淺四階 drowsy → doze → nap → slumber；睡中行為 snore，夢的兩面 dream vs. nightmare。」
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 Core Vocab Cards -->
+  <h2 class="vocab-header">📚 五個高中核心單字 · 每字兩句生活例句</h2>
+
+  <!-- Card 1 BLUE -->
+  <div class="vocab-card" style="--vc-color:#185FA5; --vc-derived-bg:#E6F1FB; background:linear-gradient(135deg,#F0F7FF,#E0EFFD);">
+    <div>
+      <span class="vocab-word">essential</span>
+      <span class="vocab-kk">[ɪˋsɛnʃəl]</span>
+      <span class="vocab-pos">adj. 必要的、不可或缺的</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>essence (n. 本質)、essentially (adv. 本質上)、essentials (n. 必需品)、non-essential (adj. 非必要的)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">A balanced diet is <strong>essential</strong> for teenagers' physical growth.<br><span class="ex-cn">均衡的飲食對青少年的身體成長是不可或缺的。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">Water and oxygen are <strong>essential</strong> to all living things.<br><span class="ex-cn">水與氧氣對所有生物來說都是必要的。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 GREEN -->
+  <div class="vocab-card" style="--vc-color:#1D9E75; --vc-derived-bg:#E1F5EE; background:linear-gradient(135deg,#F5FFF8,#DDF5E6);">
+    <div>
+      <span class="vocab-word">emit</span>
+      <span class="vocab-kk">[ɪˋmɪt]</span>
+      <span class="vocab-pos">v. 發出（光、熱、聲、氣味、廢氣）</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>emission (n. 排放、散發)、emitted (pp. 被散發出的)、emitter (n. 發射器)、low-emission (adj. 低排放的)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">Cars <strong>emit</strong> a large amount of carbon dioxide every day.<br><span class="ex-cn">汽車每天會排放大量的二氧化碳。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">The screen of your phone <strong>emits</strong> blue light that affects sleep.<br><span class="ex-cn">手機螢幕會發出影響睡眠的藍光。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 ORANGE -->
+  <div class="vocab-card" style="--vc-color:#D85A30; --vc-derived-bg:#FAECE7; background:linear-gradient(135deg,#FFF8F0,#FCE8D8);">
+    <div>
+      <span class="vocab-word">disturb</span>
+      <span class="vocab-kk">[dɪsˋtɝb]</span>
+      <span class="vocab-pos">v. 打擾、干擾、使不安</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>disturbance (n. 騷擾、騷動)、disturbed (adj. 不安的)、disturbing (adj. 令人不安的)、undisturbed (adj. 未受打擾的)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">Please don't <strong>disturb</strong> me while I'm preparing for the exam.<br><span class="ex-cn">我在準備考試時請不要打擾我。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">Loud noises at night can seriously <strong>disturb</strong> your sleep quality.<br><span class="ex-cn">晚上的噪音可能會嚴重干擾你的睡眠品質。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4 PURPLE -->
+  <div class="vocab-card" style="--vc-color:#534AB7; --vc-derived-bg:#EEEDFE; background:linear-gradient(135deg,#F5F4FF,#E5E2FE);">
+    <div>
+      <span class="vocab-word">cycle</span>
+      <span class="vocab-kk">[ˋsaɪk!]</span>
+      <span class="vocab-pos">n. 週期、循環　／ v. 騎腳踏車</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>cyclic (adj. 週期性的)、cyclist (n. 騎自行車的人)、recycle (v. 回收)、bicycle (n. 腳踏車)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">A complete sleep <strong>cycle</strong> usually lasts about ninety minutes.<br><span class="ex-cn">一個完整的睡眠週期通常約持續九十分鐘。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">The water <strong>cycle</strong> includes evaporation, condensation, and rainfall.<br><span class="ex-cn">水的循環包括蒸發、凝結與降雨。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 5 TEAL -->
+  <div class="vocab-card" style="--vc-color:#0F6E56; --vc-derived-bg:#E1F5EE; background:linear-gradient(135deg,#F0FBF7,#D8F0E3);">
+    <div>
+      <span class="vocab-word">realize</span>
+      <span class="vocab-kk">[ˋrɪə͵laɪz]</span>
+      <span class="vocab-pos">v. 意識到、了解；實現（夢想）</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>realization (n. 領悟；實現)、real (adj. 真實的)、reality (n. 現實)、realistic (adj. 寫實的；現實的)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">I didn't <strong>realize</strong> how late it was until I checked the clock.<br><span class="ex-cn">我直到看了時鐘才意識到已經這麼晚了。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">She finally <strong>realized</strong> her dream of studying abroad after years of effort.<br><span class="ex-cn">經過多年努力，她終於實現了出國留學的夢想。</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM Link Bar -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- iOS modal -->
+<div id="ios-modal" class="ios-modal">
+  <div class="close"><button onclick="closeIosModal()">✕ 關閉</button></div>
+  <p class="hint">📱 長按下方圖片 → 「儲存圖像」</p>
+  <img id="ios-modal-img" alt="林威英文句型分析">
+  <p class="footer-hint">林威英文句型分析 · 1920×1080 JPG</p>
+</div>
+
+<script>
+const ua = navigator.userAgent || '';
+const isLineBrowser = /Line\//i.test(ua);
+const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+if (isLineBrowser) {
+  document.getElementById('line-warning').classList.add('show');
+}
+
+function openInBrowser() {
+  const sep = window.location.href.includes('?') ? '&' : '?';
+  window.location.href = window.location.href + sep + 'openExternalBrowser=1';
+}
+
+document.querySelectorAll('.link-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href) return;
+    if (isLineBrowser) {
+      e.preventDefault();
+      if (href.includes('line.me')) {
+        window.location.href = href;
+      } else {
+        const sep = href.includes('?') ? '&' : '?';
+        window.location.href = href + sep + 'openExternalBrowser=1';
+      }
+    }
+  });
+});
+
+// ═══ FONT EMBEDDING ═══
+const FONT_FACES = [
+  { name: 'Caveat', css: 'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap' },
+  { name: 'Patrick Hand', css: 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap' },
+  { name: 'Noto Sans TC', css: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap' }
+];
+let embeddedFontCss = null;
+
+async function fetchFontAsBase64(url) {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function buildEmbeddedFontCss() {
+  if (embeddedFontCss) return embeddedFontCss;
+  const allCss = [];
+  for (const fontDef of FONT_FACES) {
+    try {
+      const cssResp = await fetch(fontDef.css);
+      let cssText = await cssResp.text();
+      const urlRegex = /url\((https:\/\/[^)]+\.woff2)\)/g;
+      const urls = [...cssText.matchAll(urlRegex)].map(m => m[1]);
+      const uniqueUrls = [...new Set(urls)];
+      for (const url of uniqueUrls) {
+        try {
+          const dataUri = await fetchFontAsBase64(url);
+          const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          cssText = cssText.replace(new RegExp(escapedUrl, 'g'), dataUri);
+        } catch (err) { console.warn('Failed to embed font URL:', url); }
+      }
+      allCss.push(cssText);
+    } catch (err) { console.warn('Failed to fetch font CSS for', fontDef.name); }
+  }
+  embeddedFontCss = allCss.join('\n');
+  return embeddedFontCss;
+}
+
+async function prepareAndDownloadJpg() {
+  const btn = document.getElementById('download-btn');
+  const origLabel = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 字型載入中，請稍候…';
+
+  try {
+    const fontCss = await buildEmbeddedFontCss();
+    const originalSvg = document.getElementById('grammar-svg');
+    const svgClone = originalSvg.cloneNode(true);
+    svgClone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+    let defs = svgClone.querySelector('defs');
+    if (!defs) {
+      defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      svgClone.insertBefore(defs, svgClone.firstChild);
+    }
+    const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('type', 'text/css');
+    styleEl.textContent = fontCss;
+    defs.insertBefore(styleEl, defs.firstChild);
+
+    const svgData = new XMLSerializer().serializeToString(svgClone);
+    const width = 1920, height = 1080;
+    const canvas = document.createElement('canvas');
+    canvas.width = width; canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FFF8EE';
+    ctx.fillRect(0, 0, width, height);
+
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+
+    btn.innerHTML = '⏳ 產生圖片中…';
+
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, width, height);
+        URL.revokeObjectURL(url);
+        resolve();
+      };
+      img.onerror = function() { URL.revokeObjectURL(url); reject(new Error('Image load failed')); };
+      img.src = url;
+    });
+
+    await new Promise((resolve, reject) => {
+      canvas.toBlob(function(blob) {
+        if (!blob) { reject(new Error('toBlob failed')); return; }
+        const downloadUrl = URL.createObjectURL(blob);
+        const filename = '林威英文句型分析_睡眠主題_' + new Date().toISOString().slice(0,10) + '.jpg';
+
+        if (isIOS || isLineBrowser) {
+          const modal = document.getElementById('ios-modal');
+          const modalImg = document.getElementById('ios-modal-img');
+          modalImg.src = downloadUrl;
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        } else {
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 300000);
+        resolve();
+      }, 'image/jpeg', 0.95);
+    });
+  } catch (err) {
+    console.error(err);
+    alert('產生圖片失敗：' + err.message + '\n請改用截圖方式儲存。');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origLabel;
+  }
+}
+
+function closeIosModal() {
+  document.getElementById('ios-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>

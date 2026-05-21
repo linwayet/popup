@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>養寵物主題長句句型分析 · 林威英文</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: linear-gradient(135deg, #FBE8D3 0%, #F5ECD7 50%, #F8D9B5 100%);
+  font-family: 'Noto Sans TC','PingFang TC',sans-serif;
+  min-height: 100vh;
+  color: #2D2A26;
+}
+
+/* ====== LINE Warning ====== */
+.line-warning {
+  display: none; background: #FFF4E5; border: 2px solid #FF9500;
+  color: #B84A00; padding: 12px 16px; margin: 12px auto;
+  max-width: 960px; border-radius: 10px; font-size: 13px;
+}
+.line-warning.show { display: block; }
+.line-warning button {
+  background: #B84A00; color: #fff; border: none;
+  padding: 6px 14px; border-radius: 16px; font-size: 12px; font-weight: 700;
+  margin-left: 8px; cursor: pointer;
+}
+
+/* ====== Link Bar ====== */
+.link-bar {
+  background: linear-gradient(135deg, #B84A00 0%, #D85A30 50%, #E8743D 100%);
+  padding: 14px 16px;
+}
+.link-bar-inner { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.link-card {
+  flex: 1 1 280px; background: rgba(255,255,255,0.95); border-radius: 14px;
+  padding: 14px 18px; text-decoration: none; color: #2D2A26;
+  display: flex; align-items: center; gap: 12px;
+  -webkit-tap-highlight-color: rgba(184,74,0,0.1);
+  cursor: pointer; transition: all 0.25s;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+.link-card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.15); }
+.link-card .icon {
+  font-size: 28px; width: 50px; height: 50px; border-radius: 50%;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+}
+.link-card.course1 .icon { background: linear-gradient(135deg,#FFE5D0,#FFB077); color: #B84A00; }
+.link-card.course2 .icon { background: linear-gradient(135deg,#D8EFE0,#7FCBA0); color: #0F6E56; }
+.link-card.line .icon { background: linear-gradient(135deg,#C6E8C6,#06C755); color: #fff; }
+.link-card .title { font-size: 15px; font-weight: 700; }
+.link-card .desc { font-size: 12px; color: #666; margin-top: 2px; }
+
+/* ====== Main ====== */
+.main-wrap { max-width: 1000px; margin: 0 auto; padding: 24px 18px; }
+.page-title {
+  text-align: center; font-family: 'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif;
+  font-size: 34px; font-weight: 900; color: #B84A00; letter-spacing: 4px; margin: 18px 0 6px;
+}
+.page-subtitle { text-align: center; color: #B84A00; font-size: 16px; margin-bottom: 24px; letter-spacing: 2px; }
+
+/* ====== Original Sentence Box ====== */
+.original-box {
+  background: linear-gradient(135deg, #FFFBF2 0%, #FFF4DC 100%);
+  border: 2px solid #E8C58C; border-radius: 14px;
+  padding: 20px 24px; margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(184,74,0,0.08);
+}
+.original-label {
+  font-size: 14px; color: #B84A00; font-weight: 700; margin-bottom: 10px;
+}
+.original-text {
+  font-family: 'Caveat', cursive;
+  font-size: 24px; line-height: 1.6; color: #2D2A26; font-weight: 600;
+}
+
+/* ====== SVG Area ====== */
+.svg-area {
+  background: #FFF8EE; border-radius: 14px; padding: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+  overflow: hidden;
+}
+
+/* ====== Download Btn ====== */
+.download-area { text-align: center; margin: 18px 0 28px; }
+.download-btn {
+  background: linear-gradient(135deg, #1D9E75 0%, #0F6E56 100%);
+  color: #fff; border: none;
+  padding: 14px 28px; border-radius: 28px;
+  font-size: 16px; font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(15,110,86,0.30);
+  transition: all 0.25s;
+}
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15,110,86,0.40); }
+.download-btn:disabled { opacity: 0.6; cursor: wait; }
+.download-hint { font-size: 13px; color: #6B5A45; margin-top: 10px; }
+
+/* ====== Grammar Panel ====== */
+.grammar-panel {
+  background: linear-gradient(135deg, #FFFBF2 0%, #FFF4DC 100%);
+  border-radius: 14px; padding: 24px 22px; margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(184,74,0,0.08);
+}
+.panel-title {
+  font-size: 22px; font-weight: 900; color: #B84A00; margin-bottom: 18px;
+  border-bottom: 2.5px solid #E8C58C; padding-bottom: 10px;
+}
+.grammar-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 0; border-bottom: 1px dashed #E8C58C;
+  font-size: 16px; line-height: 1.7;
+}
+.grammar-item:last-child { border-bottom: none; }
+.grammar-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 8px;
+}
+.grammar-title { font-weight: 700; font-size: 17px; }
+.grammar-body { color: #2D2A26; }
+.grammar-sub { font-size: 14px; color: #888; }
+
+/* ====== Translation Box ====== */
+.translation-box {
+  background: linear-gradient(135deg, #FEF0D8 0%, #FCE6BD 100%);
+  border-radius: 10px; padding: 18px 20px;
+  border-left: 6px solid #D85A30;
+  margin-bottom: 28px;
+  box-shadow: 0 3px 10px rgba(184,74,0,0.08);
+}
+.translation-label { font-size: 16px; font-weight: 700; color: #B84A00; margin-bottom: 8px; }
+.translation-text { font-size: 17px; line-height: 1.8; color: #2D2A26; }
+
+/* ====== Pet Map (10 words) ====== */
+.pet-map {
+  background: linear-gradient(135deg, #FFF5E5 0%, #FFE5C7 100%);
+  border-radius: 14px; padding: 22px 20px; margin-bottom: 28px;
+  border: 2px solid #E8B77A;
+  box-shadow: 0 4px 12px rgba(184,74,0,0.12);
+}
+.pet-title { font-size: 20px; font-weight: 900; color: #B84A00; margin-bottom: 6px; text-align: center; }
+.pet-sub { font-size: 14px; color: #B86A2F; text-align: center; margin-bottom: 18px; }
+.pet-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px;
+}
+.pt-card {
+  background: #fff; border-radius: 10px; padding: 10px 6px;
+  text-align: center; box-shadow: 0 2px 6px rgba(184,74,0,0.10);
+  border-top: 4px solid var(--pt-color);
+}
+.pt-emoji { font-size: 22px; margin-bottom: 4px; }
+.pt-word { font-family: 'Caveat', cursive; font-size: 20px; font-weight: 700; color: var(--pt-color); }
+.pt-cn { font-size: 11px; color: #555; margin-top: 2px; }
+.pt-tag { font-size: 10px; color: #999; margin-top: 2px; }
+
+.pet-tree {
+  background: #fff; border-radius: 10px; padding: 16px 18px; margin-top: 14px;
+  border-left: 5px solid #B84A00;
+}
+.tree-title { font-weight: 700; color: #B84A00; margin-bottom: 8px; font-size: 15px; }
+.tree-list { font-size: 14px; line-height: 1.9; color: #2D2A26; }
+.tree-list code { background: #FFE5C7; color: #B84A00; padding: 1px 6px; border-radius: 4px; font-family: monospace; font-size: 13px; }
+
+/* ====== Vocab Cards ====== */
+.vocab-header {
+  text-align: center; font-size: 22px; font-weight: 900; color: #B84A00; margin: 0 0 18px;
+  letter-spacing: 2px;
+}
+.vocab-card {
+  border-radius: 14px; padding: 18px 20px; margin-bottom: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  border-left: 6px solid var(--vc-color);
+}
+.vocab-word {
+  font-family: 'Caveat', cursive;
+  font-size: 28px; font-weight: 700; color: var(--vc-color);
+}
+.vocab-kk { font-family: monospace; color: #666; font-size: 14px; margin-left: 8px; }
+.vocab-pos { color: #444; font-size: 15px; margin-left: 6px; }
+.vocab-derived {
+  background: var(--vc-derived-bg);
+  border-radius: 8px; padding: 10px 12px; margin: 10px 0;
+  font-size: 14px; line-height: 1.7; color: #2D2A26;
+}
+.vocab-derived strong { color: var(--vc-color); }
+.vocab-examples { margin-top: 8px; }
+.ex-row { display: flex; gap: 8px; margin-bottom: 8px; }
+.ex-num {
+  background: var(--vc-color); color: #fff;
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px; flex-shrink: 0; margin-top: 3px;
+}
+.ex-text { font-size: 15.5px; line-height: 1.6; }
+.ex-cn { color: #555; font-size: 14px; }
+
+/* ====== iOS Modal ====== */
+.ios-modal {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92); z-index: 9999;
+  overflow-y: auto; padding: 16px;
+}
+.ios-modal.show { display: block; }
+.ios-modal .close { text-align: right; }
+.ios-modal .close button {
+  background: #fff; color: #2D2A26; border: none;
+  padding: 8px 16px; border-radius: 20px; font-weight: 700; cursor: pointer;
+}
+.ios-modal .hint, .ios-modal .footer-hint {
+  color: #fff; text-align: center; padding: 10px; font-size: 14px;
+}
+.ios-modal img { width: 100%; height: auto; display: block; border-radius: 8px; margin-top: 10px; }
+
+/* ====== Responsive ====== */
+@media (max-width: 640px) {
+  .page-title { font-size: 26px; letter-spacing: 2px; }
+  .page-subtitle { font-size: 13px; }
+  .original-text { font-size: 19px; }
+  .link-card { flex: 1 1 100%; }
+  .link-card .icon { width: 44px; height: 44px; font-size: 24px; }
+  .link-card .title { font-size: 13px; }
+  .link-card .desc { font-size: 11px; }
+  .main-wrap { padding: 16px 12px; }
+  .grammar-panel { padding: 18px 16px; }
+  .panel-title { font-size: 19px; }
+  .vocab-card { padding: 14px; }
+  .vocab-word { font-size: 22px; }
+  .vocab-examples { font-size: 15px; }
+  .grammar-item { font-size: 15px; }
+  .download-btn { font-size: 14px; padding: 12px 22px; }
+  .pet-grid { grid-template-columns: repeat(2, 1fr); }
+  .pt-word { font-size: 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LINE Warning -->
+<div id="line-warning" class="line-warning">
+  ⚠️ 您正在 <strong>LINE 內建瀏覽器</strong>中瀏覽，部分功能可能受限。
+  <button onclick="openInBrowser()">在瀏覽器中開啟</button>
+  <br><span style="font-size:12px;color:#888;">或點右上角「⋯」→「在瀏覽器中開啟」</span>
+</div>
+
+<!-- TOP Link Bar -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <h1 class="page-title">林威英文句型分析</h1>
+  <div class="page-subtitle">養寵物主題長句拆解 · Raising a Pet · Vocabulary &amp; Sentence Structure</div>
+
+  <!-- Original sentence -->
+  <div class="original-box">
+    <div class="original-label">📄 原文 Original Sentence</div>
+    <div class="original-text">
+      What many people don't realize before adopting a pet is that raising an animal requires not only patience and money but also a long-term commitment that can easily last more than ten years.
+    </div>
+  </div>
+
+  <!-- SVG Area -->
+  <div class="svg-area">
+    <svg id="grammar-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"
+      style="width:100%;height:auto;display:block;background:#FFF8EE;">
+      <defs>
+        <marker id="arr1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M1 1 L 7 5 L 1 9" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        </marker>
+        <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFF8EE"/>
+          <stop offset="100%" stop-color="#FEF0D8"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#bg-grad)"/>
+
+      <!-- Header -->
+      <text x="960" y="78" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="60" font-weight="900" fill="#B84A00" letter-spacing="8">林威英文句型分析</text>
+      <text x="960" y="128" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="32" font-weight="700" fill="#D85A30" letter-spacing="4">林威老師設計</text>
+      <line x1="540" y1="156" x2="1380" y2="156" stroke="#D4A96A" stroke-width="2.5"/>
+
+      <!-- ===== Section 1: What-Clause as Subject ===== -->
+      <text x="600" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#185FA5">What-名詞子句 (S.)</text>
+      <text x="1340" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#1D9E75">be V.</text>
+      <text x="1580" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#534AB7">that-名詞子句 (S.C.)</text>
+
+      <rect x="80" y="225" width="1110" height="78" rx="39" ry="39" fill="none" stroke="#185FA5" stroke-width="5"/>
+      <text x="635" y="278" text-anchor="middle" font-family="'Caveat',cursive" font-size="50" font-weight="700" fill="#185FA5">What many people don't realize before adopting a pet</text>
+
+      <text x="1340" y="278" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#1D9E75">is</text>
+      <text x="1580" y="278" text-anchor="middle" font-family="'Caveat',cursive" font-size="56" font-weight="700" fill="#534AB7">that ...</text>
+
+      <line x1="1310" y1="293" x2="1370" y2="293" stroke="#1D9E75" stroke-width="6"/>
+      <line x1="1510" y1="293" x2="1650" y2="293" stroke="#534AB7" stroke-width="6"/>
+
+      <!-- Annotations for What-clause -->
+      <text x="260" y="350" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#185FA5">↑ What 引導名詞子句作整句主詞</text>
+      <text x="900" y="350" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#7C3AED">↑ before + Ving（介系詞 + 動名詞）</text>
+
+      <!-- Divider -->
+      <line x1="200" y1="395" x2="1720" y2="395" stroke="#D4A96A" stroke-width="2" stroke-dasharray="10 7"/>
+
+      <!-- ===== Section 2: that-Clause inside Structure ===== -->
+      <text x="960" y="445" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="34" font-weight="700" fill="#534AB7">↓ that-名詞子句內部結構：</text>
+
+      <text x="320" y="500" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="40" font-weight="700" fill="#185FA5">S.（動名詞片語）</text>
+      <text x="800" y="500" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="40" font-weight="700" fill="#1D9E75">V.</text>
+      <text x="1300" y="500" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="40" font-weight="700" fill="#D85A30">O.（not only A but also B）</text>
+
+      <text x="320" y="570" text-anchor="middle" font-family="'Caveat',cursive" font-size="54" font-weight="700" fill="#185FA5">raising an animal</text>
+      <text x="800" y="570" text-anchor="middle" font-family="'Caveat',cursive" font-size="54" font-weight="700" fill="#1D9E75">requires</text>
+      <text x="1300" y="570" text-anchor="middle" font-family="'Caveat',cursive" font-size="54" font-weight="700" fill="#D85A30">A + B (受詞群)</text>
+
+      <line x1="125" y1="585" x2="515" y2="585" stroke="#185FA5" stroke-width="6"/>
+      <line x1="720" y1="585" x2="880" y2="585" stroke="#1D9E75" stroke-width="6"/>
+      <line x1="1130" y1="585" x2="1470" y2="585" stroke="#D85A30" stroke-width="6"/>
+
+      <!-- Not only A but also B expansion -->
+      <text x="960" y="640" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" font-weight="700" fill="#C0392B">↓ not only A but also B 對等相關連接（連接兩組名詞）：</text>
+
+      <rect x="60" y="660" width="1800" height="92" rx="46" ry="46" fill="none" stroke="#5DCAA5" stroke-width="5"/>
+      <text x="270" y="715" text-anchor="middle" font-family="'Caveat',cursive" font-size="44" font-weight="700" fill="#C0392B">not only</text>
+      <text x="610" y="715" text-anchor="middle" font-family="'Caveat',cursive" font-size="44" font-weight="700" fill="#0F6E56">patience and money</text>
+      <text x="1010" y="715" text-anchor="middle" font-family="'Caveat',cursive" font-size="44" font-weight="700" fill="#C0392B">but also</text>
+      <text x="1490" y="715" text-anchor="middle" font-family="'Caveat',cursive" font-size="44" font-weight="700" fill="#0F6E56">a long-term commitment ...</text>
+
+      <text x="610" y="785" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#0F6E56">↑ A：兩個名詞（and 並列）</text>
+      <text x="1490" y="785" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#0F6E56">↑ B：名詞片語（含關係子句修飾）</text>
+
+      <!-- Relative clause modifying commitment -->
+      <text x="960" y="845" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" font-weight="700" fill="#7C3AED">↓ that 引導關係子句修飾 commitment：</text>
+      <rect x="280" y="865" width="1360" height="72" rx="36" ry="36" fill="none" stroke="#7C3AED" stroke-width="5"/>
+      <text x="960" y="914" text-anchor="middle" font-family="'Caveat',cursive" font-size="46" font-weight="700" fill="#7C3AED">that  can easily last  more than ten years</text>
+
+      <text x="480" y="975" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="26" fill="#7C3AED">↑ 關代 that＝commitment</text>
+      <text x="960" y="975" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="26" fill="#1D9E75">↑ can + adv. + V. 情態</text>
+      <text x="1440" y="975" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="26" fill="#C0392B">↑ more than + 數字（超過⋯⋯）</text>
+
+      <!-- Footer -->
+      <line x1="660" y1="1010" x2="1260" y2="1010" stroke="#D4A96A" stroke-width="1.8"/>
+      <text x="960" y="1050" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="28" font-weight="500" fill="#A89070">林威英文句型分析 · SVG 向量版　|　LINE ID: linwayet</text>
+    </svg>
+  </div>
+
+  <!-- Download Btn -->
+  <div class="download-area">
+    <button id="download-btn" class="download-btn" onclick="prepareAndDownloadJpg()">
+      📥 下載句型分析圖（JPG · 1920×1080）
+    </button>
+    <div class="download-hint">📱 手機：點按後圖片直接顯示，<strong>長按圖片儲存到相簿</strong> · 💻 電腦自動下載</div>
+  </div>
+
+  <!-- Grammar Panel -->
+  <div class="grammar-panel">
+    <div class="panel-title">📌 文法重點</div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#185FA5;"></span>
+      <div>
+        <span class="grammar-title" style="color:#185FA5;">① What 引導名詞子句當主詞（學測必考重點）</span>
+        <span class="grammar-body"> — What 本身已包含「<strong>關係代名詞 + 先行詞</strong>」(＝ the thing that)，整個 What 子句作整句的 <strong>S.</strong>，後面動詞用<strong>單數</strong>（is）。</span><br>
+        <span class="grammar-sub">公式：<em>What + S. + V.</em> = 「⋯⋯的東西／事情」　例：What I want is a cup of coffee.</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#1D9E75;"></span>
+      <div>
+        <span class="grammar-title" style="color:#1D9E75;">② before + Ving（介系詞 + 動名詞）</span>
+        <span class="grammar-body"> — <em>before adopting a pet</em>，before 在這裡是<strong>介系詞</strong>，後面必須接動名詞（Ving）或名詞，<strong>不能</strong>接原形動詞。</span><br>
+        <span class="grammar-sub">⚠️ before 也可當連接詞，後接 S. + V.：before <em>they</em> <em>adopt</em> a pet（語意相同，結構不同）</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#C0392B;"></span>
+      <div>
+        <span class="grammar-title" style="color:#C0392B;">③ that 名詞子句當主詞補語 + 動名詞當主詞</span>
+        <span class="grammar-body"> — be V. 後接 <em>that-clause</em> 當 <strong>S.C.</strong>。子句內 <em>raising an animal</em>（動名詞片語當 S.）→ 視為單數 → 動詞用 <em>requires</em>。</span><br>
+        <span class="grammar-sub">公式：S. + be + <strong>that-clause (S.C.)</strong>　例：The truth is that he lied.</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#534AB7;"></span>
+      <div>
+        <span class="grammar-title" style="color:#534AB7;">④ not only A but also B 對等相關連接詞</span>
+        <span class="grammar-body"> — A 與 B <strong>詞性必須一致</strong>。本句 A＝<em>patience and money</em>（名詞）、B＝<em>a long-term commitment ...</em>（名詞片語），<strong>三者並列</strong>都是 requires 的受詞。</span><br>
+        <span class="grammar-sub">⚠️ 主詞動詞一致：not only A but also B 當主詞時，動詞與「B」一致（就近原則）</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#0F6E56;"></span>
+      <div>
+        <span class="grammar-title" style="color:#0F6E56;">⑤ that 引導關係子句修飾名詞</span>
+        <span class="grammar-body"> — <em>a long-term commitment <strong>that can easily last</strong> more than ten years</em>。關代 that＝先行詞 commitment，作關係子句的主詞，後接 can + adv. + V.（情態助動詞句型）。</span><br>
+        <span class="grammar-sub">⚠️ 此處 that 是「關係代名詞」，與前面當「名詞子句連接詞」的 that 功能不同（同一個句子兩種 that 用法）</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Translation -->
+  <div class="translation-box">
+    <div class="translation-label">📖 全句中文翻譯</div>
+    <div class="translation-text">
+      很多人在領養寵物之前沒意識到的是：養一隻動物不只需要耐心和金錢，更需要一份輕易就能持續超過十年的長期承諾。
+    </div>
+  </div>
+
+  <!-- Pet Map (10 words) -->
+  <div class="pet-map">
+    <div class="pet-title">🐾 十個 pet 相關單字 · 關係地圖</div>
+    <div class="pet-sub">先看核心，再看取得方式、照護行為與陪伴關係</div>
+
+    <div class="pet-grid">
+      <div class="pt-card" style="--pt-color:#B84A00;">
+        <div class="pt-emoji">🐾</div>
+        <div class="pt-word">pet</div>
+        <div class="pt-cn">寵物</div>
+        <div class="pt-tag">n. 核心字</div>
+      </div>
+      <div class="pt-card" style="--pt-color:#1D9E75;">
+        <div class="pt-emoji">🏡❤️</div>
+        <div class="pt-word">adopt</div>
+        <div class="pt-cn">領養</div>
+        <div class="pt-tag">v. 取得（善）</div>
+      </div>
+      <div class="pt-card" style="--pt-color:#C0392B;">
+        <div class="pt-emoji">💔🚪</div>
+        <div class="pt-word">abandon</div>
+        <div class="pt-cn">遺棄</div>
+        <div class="pt-tag">v. 反向（惡）</div>
+      </div>
+      <div class="pt-card" style="--pt-color:#D85A30;">
+        <div class="pt-emoji">🐶🐩</div>
+        <div class="pt-word">breed</div>
+        <div class="pt-cn">品種／繁殖</div>
+        <div class="pt-tag">n./v. 屬性</div>
+      </div>
+      <div class="pt-card" style="--pt-color:#185FA5;">
+        <div class="pt-emoji">👨‍⚕️🐕</div>
+        <div class="pt-word">vet</div>
+        <div class="pt-cn">獸醫</div>
+        <div class="pt-tag">n. 照護專業</div>
+      </div>
+      <div class="pt-card" style="--pt-color:#185FA5;">
+        <div class="pt-emoji">💉</div>
+        <div class="pt-word">vaccinate</div>
+        <div class="pt-cn">接種疫苗</div>
+        <div class="pt-tag">v. 醫療照護</div>
+      </div>
+      <div class="pt-card" style="--pt-color:#1D9E75;">
+        <div class="pt-emoji">✂️🧴</div>
+        <div class="pt-word">groom</div>
+        <div class="pt-cn">梳理毛髮</div>
+        <div class="pt-tag">v. 日常照護</div>
+      </div>
+      <div class="pt-card" style="--pt-color:#0F6E56;">
+        <div class="pt-emoji">🦮</div>
+        <div class="pt-word">leash</div>
+        <div class="pt-cn">牽繩</div>
+        <div class="pt-tag">n. 用品</div>
+      </div>
+      <div class="pt-card" style="--pt-color:#534AB7;">
+        <div class="pt-emoji">✅🐕</div>
+        <div class="pt-word">obedient</div>
+        <div class="pt-cn">聽話的</div>
+        <div class="pt-tag">adj. 性格</div>
+      </div>
+      <div class="pt-card" style="--pt-color:#534AB7;">
+        <div class="pt-emoji">👫🐾</div>
+        <div class="pt-word">companion</div>
+        <div class="pt-cn">同伴</div>
+        <div class="pt-tag">n. 關係</div>
+      </div>
+    </div>
+
+    <div class="pet-tree">
+      <div class="tree-title">🔗 三大類解讀</div>
+      <div class="tree-list">
+        <strong>① 取得 vs. 拋棄（道德兩端）：</strong><code>pet</code>（寵物核心字）→ 善取 <code>adopt</code>（從收容所領養）→ 惡棄 <code>abandon</code>（棄置不顧）。學測常見句型：「<strong>Adopt, don't shop.</strong>」（領養代替購買）<br>
+        <strong>② 屬性 + 三種照護行為：</strong><code>breed</code>（品種，名詞；繁殖，動詞）／ 醫療照護：去找 <code>vet</code>（獸醫）<code>vaccinate</code>（打疫苗）／ 日常照護：<code>groom</code>（梳毛、洗澡、剪指甲）<br>
+        <strong>③ 用品、性格、關係（陪伴三要素）：</strong>出門必備 <code>leash</code>（牽繩）／ 訓練良好的寵物 <code>obedient</code>（聽話的，反義 disobedient）／ 最終成為一生的 <code>companion</code>（同伴，比 friend 多了情感連結）<br>
+        <strong>🧠 記憶口訣：</strong>「核心 pet，善取 adopt vs. 惡棄 abandon；品種 breed、獸醫 vet、疫苗 vaccinate、梳毛 groom；牽繩 leash、聽話 obedient、最終都是 companion。」
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 Core Vocab Cards -->
+  <h2 class="vocab-header">📚 五個高中核心單字 · 每字兩句生活例句</h2>
+
+  <!-- Card 1 BLUE -->
+  <div class="vocab-card" style="--vc-color:#185FA5; --vc-derived-bg:#E6F1FB; background:linear-gradient(135deg,#F0F7FF,#E0EFFD);">
+    <div>
+      <span class="vocab-word">adopt</span>
+      <span class="vocab-kk">[əˋdɑpt]</span>
+      <span class="vocab-pos">v. 領養；採用（方法、想法）</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>adoption (n. 領養、採用)、adopted (adj. 被領養的)、adoptive (adj. 收養的；adoptive parents 養父母)、adopter (n. 採用者)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">My family decided to <strong>adopt</strong> a puppy from the local animal shelter.<br><span class="ex-cn">我們家決定從當地的動物收容所領養一隻小狗。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">The company finally <strong>adopted</strong> a new policy to protect the environment.<br><span class="ex-cn">公司終於採用了一項保護環境的新政策。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2 GREEN -->
+  <div class="vocab-card" style="--vc-color:#1D9E75; --vc-derived-bg:#E1F5EE; background:linear-gradient(135deg,#F5FFF8,#DDF5E6);">
+    <div>
+      <span class="vocab-word">require</span>
+      <span class="vocab-kk">[rɪˋkwaɪr]</span>
+      <span class="vocab-pos">v. 需要、要求</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>requirement (n. 必要條件)、required (adj. 必需的)、requisite (adj. 必要的)、prerequisite (n. 先決條件)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">Learning a new language <strong>requires</strong> daily practice and patience.<br><span class="ex-cn">學一個新的語言需要每天練習與耐心。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">The job <strong>requires</strong> at least three years of teaching experience.<br><span class="ex-cn">這份工作至少需要三年的教學經驗。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3 ORANGE -->
+  <div class="vocab-card" style="--vc-color:#D85A30; --vc-derived-bg:#FAECE7; background:linear-gradient(135deg,#FFF8F0,#FCE8D8);">
+    <div>
+      <span class="vocab-word">patience</span>
+      <span class="vocab-kk">[ˋpeʃəns]</span>
+      <span class="vocab-pos">n. 耐心、忍耐</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>patient (adj. 有耐心的 n. 病人)、patiently (adv. 耐心地)、impatience (n. 不耐煩)、impatient (adj. 不耐煩的)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">Teaching young children really tests your <strong>patience</strong> every day.<br><span class="ex-cn">教小孩子真的每天都在考驗你的耐心。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">Training a puppy takes a lot of <strong>patience</strong> and consistent effort.<br><span class="ex-cn">訓練一隻小狗需要大量的耐心和持續的努力。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4 PURPLE -->
+  <div class="vocab-card" style="--vc-color:#534AB7; --vc-derived-bg:#EEEDFE; background:linear-gradient(135deg,#F5F4FF,#E5E2FE);">
+    <div>
+      <span class="vocab-word">commitment</span>
+      <span class="vocab-kk">[kəˋmɪtmənt]</span>
+      <span class="vocab-pos">n. 承諾、投入、責任義務</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>commit (v. 承諾、犯罪)、committed (adj. 投入的)、committee (n. 委員會)、commitment-free (adj. 無義務的)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">Marriage is a lifelong <strong>commitment</strong> that should not be taken lightly.<br><span class="ex-cn">婚姻是一輩子的承諾，不該被輕率對待。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">Raising a dog requires a serious <strong>commitment</strong> of time and money.<br><span class="ex-cn">養一隻狗需要在時間與金錢上做出認真的承諾。</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 5 TEAL -->
+  <div class="vocab-card" style="--vc-color:#0F6E56; --vc-derived-bg:#E1F5EE; background:linear-gradient(135deg,#F0FBF7,#D8F0E3);">
+    <div>
+      <span class="vocab-word">long-term</span>
+      <span class="vocab-kk">[ˋlɔŋˋtɝm]</span>
+      <span class="vocab-pos">adj. 長期的（修飾名詞用）</span>
+    </div>
+    <div class="vocab-derived">
+      <strong>衍生詞：</strong>short-term (adj. 短期的)、term (n. 期限；學期)、long-lasting (adj. 持久的)、term limit (片 任期限制)
+    </div>
+    <div class="vocab-examples">
+      <div class="ex-row">
+        <div class="ex-num">1</div>
+        <div class="ex-text">Regular exercise has many <strong>long-term</strong> benefits for your health.<br><span class="ex-cn">規律運動對你的健康有許多長期的益處。</span></div>
+      </div>
+      <div class="ex-row">
+        <div class="ex-num">2</div>
+        <div class="ex-text">Owning a pet is a <strong>long-term</strong> responsibility, not just a short trend.<br><span class="ex-cn">養寵物是一份長期的責任，不只是一時的流行。</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM Link Bar -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- iOS modal -->
+<div id="ios-modal" class="ios-modal">
+  <div class="close"><button onclick="closeIosModal()">✕ 關閉</button></div>
+  <p class="hint">📱 長按下方圖片 → 「儲存圖像」</p>
+  <img id="ios-modal-img" alt="林威英文句型分析">
+  <p class="footer-hint">林威英文句型分析 · 1920×1080 JPG</p>
+</div>
+
+<script>
+const ua = navigator.userAgent || '';
+const isLineBrowser = /Line\//i.test(ua);
+const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+if (isLineBrowser) {
+  document.getElementById('line-warning').classList.add('show');
+}
+
+function openInBrowser() {
+  const sep = window.location.href.includes('?') ? '&' : '?';
+  window.location.href = window.location.href + sep + 'openExternalBrowser=1';
+}
+
+document.querySelectorAll('.link-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href) return;
+    if (isLineBrowser) {
+      e.preventDefault();
+      if (href.includes('line.me')) {
+        window.location.href = href;
+      } else {
+        const sep = href.includes('?') ? '&' : '?';
+        window.location.href = href + sep + 'openExternalBrowser=1';
+      }
+    }
+  });
+});
+
+// ═══ FONT EMBEDDING ═══
+const FONT_FACES = [
+  { name: 'Caveat', css: 'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap' },
+  { name: 'Patrick Hand', css: 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap' },
+  { name: 'Noto Sans TC', css: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap' }
+];
+let embeddedFontCss = null;
+
+async function fetchFontAsBase64(url) {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function buildEmbeddedFontCss() {
+  if (embeddedFontCss) return embeddedFontCss;
+  const allCss = [];
+  for (const fontDef of FONT_FACES) {
+    try {
+      const cssResp = await fetch(fontDef.css);
+      let cssText = await cssResp.text();
+      const urlRegex = /url\((https:\/\/[^)]+\.woff2)\)/g;
+      const urls = [...cssText.matchAll(urlRegex)].map(m => m[1]);
+      const uniqueUrls = [...new Set(urls)];
+      for (const url of uniqueUrls) {
+        try {
+          const dataUri = await fetchFontAsBase64(url);
+          const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          cssText = cssText.replace(new RegExp(escapedUrl, 'g'), dataUri);
+        } catch (err) { console.warn('Failed to embed font URL:', url); }
+      }
+      allCss.push(cssText);
+    } catch (err) { console.warn('Failed to fetch font CSS for', fontDef.name); }
+  }
+  embeddedFontCss = allCss.join('\n');
+  return embeddedFontCss;
+}
+
+async function prepareAndDownloadJpg() {
+  const btn = document.getElementById('download-btn');
+  const origLabel = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 字型載入中，請稍候…';
+
+  try {
+    const fontCss = await buildEmbeddedFontCss();
+    const originalSvg = document.getElementById('grammar-svg');
+    const svgClone = originalSvg.cloneNode(true);
+    svgClone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+    let defs = svgClone.querySelector('defs');
+    if (!defs) {
+      defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      svgClone.insertBefore(defs, svgClone.firstChild);
+    }
+    const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('type', 'text/css');
+    styleEl.textContent = fontCss;
+    defs.insertBefore(styleEl, defs.firstChild);
+
+    const svgData = new XMLSerializer().serializeToString(svgClone);
+    const width = 1920, height = 1080;
+    const canvas = document.createElement('canvas');
+    canvas.width = width; canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FFF8EE';
+    ctx.fillRect(0, 0, width, height);
+
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+
+    btn.innerHTML = '⏳ 產生圖片中…';
+
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, width, height);
+        URL.revokeObjectURL(url);
+        resolve();
+      };
+      img.onerror = function() { URL.revokeObjectURL(url); reject(new Error('Image load failed')); };
+      img.src = url;
+    });
+
+    await new Promise((resolve, reject) => {
+      canvas.toBlob(function(blob) {
+        if (!blob) { reject(new Error('toBlob failed')); return; }
+        const downloadUrl = URL.createObjectURL(blob);
+        const filename = '林威英文句型分析_養寵物主題_' + new Date().toISOString().slice(0,10) + '.jpg';
+
+        if (isIOS || isLineBrowser) {
+          const modal = document.getElementById('ios-modal');
+          const modalImg = document.getElementById('ios-modal-img');
+          modalImg.src = downloadUrl;
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        } else {
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 300000);
+        resolve();
+      }, 'image/jpeg', 0.95);
+    });
+  } catch (err) {
+    console.error(err);
+    alert('產生圖片失敗：' + err.message + '\n請改用截圖方式儲存。');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origLabel;
+  }
+}
+
+function closeIosModal() {
+  document.getElementById('ios-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>
