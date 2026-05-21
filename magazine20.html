@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet Splash: An Otter in Training for Underwater Search</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF4E6;
+  --ink:#1A0F00;
+  --h1:#C0392B;
+  --h2:#1565C0;
+  --h3:#2E7D32;
+  --deep-blue:#0D47A1;
+  --orange:#E65100;
+  --purple:#6A1B9A;
+  --s1-head:#0D47A1;
+  --s1-line:#90CAF9;
+  --s1-body:#F3F8FF;
+  --s2-head:#BF360C;
+  --s2-line:#FFAB91;
+  --s2-body:#FFF3EF;
+  --s3-head:#1B5E20;
+  --s3-line:#81C784;
+  --s3-body:#F1F8F2;
+  --s4-head:#4A148C;
+  --s4-line:#CE93D8;
+  --s4-body:#F9F0FF;
+  --fold-head:#4A3728;
+  --fold-line:#C4A06A;
+  --fold-body:#FAF6F0;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:
+    linear-gradient(180deg,#FFE8CC 0%,#FFF4E6 34%,#FFF8F0 72%,#FFEFD8 100%);
+  color:var(--ink);
+  font-family:"BIZ UDPGothic",sans-serif;
+  font-size:23px;
+  line-height:1.85;
+  font-weight:400;
+  padding:28px 14px 72px;
+}
+main{max-width:880px;margin:0 auto}
+h1,h2,h3,p{margin-top:0}
+.link-panel{
+  border:4px solid #F39C12;
+  border-radius:12px;
+  background:#FFFDF8;
+  padding:20px;
+  margin:0 0 30px;
+  box-shadow:0 8px 0 #FFD59E;
+}
+.link-panel.bottom-links{margin:34px 0 0}
+.link-panel h2{
+  color:#C0392B;
+  font-size:2rem;
+  line-height:1.3;
+  text-align:center;
+  margin:0 0 16px;
+}
+.link-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.link-card{
+  display:block;
+  min-height:112px;
+  padding:16px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  color:#1A0F00;
+  border:3px solid;
+  background:#FFFFFF;
+}
+.link-card strong{
+  display:block;
+  font-size:1.25rem;
+  line-height:1.35;
+  margin-bottom:8px;
+}
+.link-card span{
+  display:block;
+  font-size:1rem;
+  line-height:1.55;
+}
+.echo-link{border-color:#E65100;background:#FFF3E0}
+.echo-link strong{color:#BF360C}
+.analysis-link{border-color:#2E7D32;background:#F1F8E9}
+.analysis-link strong{color:#1B5E20}
+.line-link{border-color:#1565C0;background:#E3F2FD}
+.line-link strong{color:#0D47A1}
+.top-title{
+  border:5px solid var(--h1);
+  background:#FFFFFF;
+  border-radius:8px;
+  padding:26px 22px;
+  text-align:center;
+  box-shadow:0 8px 0 #F4B7AE;
+  margin-bottom:34px;
+}
+h1{
+  color:var(--h1);
+  font-size:3rem;
+  line-height:1.22;
+  font-weight:700;
+  margin-bottom:14px;
+}
+.subtitle{
+  color:var(--h2);
+  font-size:2.2rem;
+  line-height:1.3;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.credit{
+  color:#1565C0;
+  font-family:"Pacifico","Lobster","BIZ UDPGothic",sans-serif;
+  font-size:2rem;
+  line-height:1.35;
+  margin:0;
+}
+section{margin:34px 0}
+.section-title{
+  color:var(--h2);
+  font-size:2.2rem;
+  line-height:1.3;
+  font-weight:700;
+  margin:0 0 14px;
+}
+.card{
+  border:3px solid;
+  border-radius:8px;
+  overflow:hidden;
+  background:#FFFFFF;
+}
+.head{
+  color:#FFFFFF;
+  padding:16px 22px;
+  font-size:1.6rem;
+  line-height:1.35;
+  font-weight:700;
+}
+.body{padding:24px}
+.original{border-color:var(--s1-line)} .original .head{background:var(--s1-head)} .original .body{background:var(--s1-body)}
+.reading{border-color:var(--s2-line)} .reading .head{background:var(--s2-head)} .reading .body{background:var(--s2-body)}
+.vocab{border-color:var(--s3-line)} .vocab .head{background:var(--s3-head)} .vocab .body{background:var(--s3-body)}
+.grammar{border-color:var(--s4-line)} .grammar .head{background:var(--s4-head)} .grammar .body{background:var(--s4-body)}
+.kw{color:var(--deep-blue);font-weight:700;text-decoration:none}
+.article p{margin-bottom:22px}
+.analysis,.vocab-item,.grammar-point{
+  border-top:2px solid rgba(26,15,0,.18);
+  padding-top:22px;
+  margin-top:22px;
+}
+.analysis:first-child,.vocab-item:first-child,.grammar-point:first-child{border-top:0;padding-top:0;margin-top:0}
+.num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  background:#BF360C;
+  color:#FFFFFF;
+  font-size:1.35rem;
+  font-weight:700;
+  margin-right:10px;
+  vertical-align:middle;
+}
+.quote{
+  background:#FFFFFF;
+  border-left:8px solid #E65100;
+  border-radius:6px;
+  padding:14px 18px;
+  margin:12px 0;
+  font-style:italic;
+  font-weight:700;
+}
+.pill{
+  display:inline-block;
+  border-radius:999px;
+  padding:5px 14px;
+  margin:5px 6px 5px 0;
+  font-size:1rem;
+  font-weight:700;
+  background:#FEF0E7;
+  color:#E65100;
+}
+.vocab-head{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 14px;
+  align-items:baseline;
+  margin-bottom:12px;
+}
+.vocab-no{
+  background:#1B5E20;
+  color:#FFFFFF;
+  border-radius:50%;
+  width:46px;
+  height:46px;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:700;
+}
+.word{color:#1B5E20;font-size:1.7rem;font-weight:700}
+.kk{color:#C0392B;font-weight:700}
+.label-row{
+  display:grid;
+  grid-template-columns:128px 1fr;
+  margin:10px 0;
+  gap:0;
+}
+.label{
+  padding:8px 12px;
+  border-radius:8px 0 0 8px;
+  font-weight:700;
+  text-align:center;
+}
+.content{
+  background:#FFFFFF;
+  border-radius:0 8px 8px 0;
+  padding:8px 14px;
+}
+.deriv{background:#FDEDEC;color:#C0392B}
+.root{background:#EBF5FB;color:#1565C0}
+.phrase{background:#EAFAF1;color:#2E7D32}
+.idiom{background:#FEF9E7;color:#D68910}
+.confuse{background:#F5EEF8;color:#6A1B9A}
+.pattern{background:#FEF0E7;color:#E65100}
+ul{margin:8px 0 0 30px;padding:0}
+li{margin:8px 0}
+blockquote{
+  background:#FFFFFF;
+  border-left:8px solid #6A1B9A;
+  border-radius:6px;
+  margin:10px 0 18px;
+  padding:14px 18px;
+  font-style:italic;
+  font-weight:700;
+}
+.formula{font-weight:700;font-style:italic;color:#4A148C}
+details{
+  border:3px solid var(--fold-line);
+  border-radius:8px;
+  margin:22px 0;
+  overflow:hidden;
+  background:var(--fold-body);
+}
+summary{
+  min-height:72px;
+  padding:16px 22px;
+  background:var(--fold-head);
+  color:#FFFFFF;
+  font-size:1.45rem;
+  font-weight:700;
+  cursor:pointer;
+  list-style:none;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+}
+summary::-webkit-details-marker{display:none}
+.arrow{transition:transform .3s ease}
+details[open] .arrow{transform:rotate(180deg)}
+.detail-body{padding:22px 24px;background:var(--fold-body)}
+.compact-list p{border-bottom:1px solid #C4A06A;margin:0;padding:8px 0}
+.compact-list p:last-child{border-bottom:0}
+@media(max-width:720px){
+  body{font-size:21px;padding:18px 10px 54px}
+  h1{font-size:2.25rem}
+  .subtitle,.section-title{font-size:1.75rem}
+  .credit{font-size:1.6rem}
+  .link-panel{padding:16px;margin-bottom:24px}
+  .link-panel h2{font-size:1.55rem}
+  .link-grid{grid-template-columns:1fr}
+  .link-card{min-height:96px;padding:15px}
+  .body{padding:18px}
+  .label-row{grid-template-columns:1fr}
+  .label{border-radius:8px 8px 0 0;text-align:left}
+  .content{border-radius:0 0 8px 8px}
+}
+</style>
+</head>
+<body>
+<main>
+<nav class="link-panel" aria-label="課程與聯絡連結">
+<h2>七月課程與聯絡方式</h2>
+<div class="link-grid">
+<a class="link-card echo-link" href="https://linwayet.github.io/4ulive/index.html">
+<strong>七月課程：錯中學 ECHO 計劃</strong>
+<span>從錯誤中看見學習盲點，透過回饋與修正建立更穩的英文能力。</span>
+</a>
+<a class="link-card analysis-link" href="https://linwayet.github.io/popup/index">
+<strong>七月課程：學生分析</strong>
+<span>協助學生了解自己的英文狀態、弱點與進步方向，安排更有效的學習策略。</span>
+</a>
+<a class="link-card line-link" href="https://line.me/ti/p/~linwayet">
+<strong>林威老師 Line：linwayet</strong>
+<span>課程詢問、學習規劃與教材相關問題，可加入 Line 帳號聯絡。</span>
+</a>
+</div>
+</nav>
+
+<div class="top-title">
+<h1>Meet Splash: An Otter in Training for Underwater Search</h1>
+<p class="subtitle">水下搜救訓練員：海獺與搜救員</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</div>
+
+<section>
+<h2 class="section-title">【區塊一】英文文章原文</h2>
+<div class="card original">
+<div class="head">英文文章原文</div>
+<div class="body article">
+<p>Unit 5　水下搜救訓練員　海獺與搜救員</p>
+<p>Meet Splash: An Otter in <strong class="kw">Training</strong> for Underwater Search</p>
+<p>Please meet a brave and <strong class="kw">athletic</strong> member of a search and <strong class="kw">rescue</strong> team. This team member began <strong class="kw">training</strong> as a baby and is now excellent at diving, swimming, and finding objects underwater. With trainer Wayne Farris and the team at Pacific Marine Mammal Center, a sea otter named Splash has become one of the most <strong class="kw">unique</strong> animals working alongside humans.</p>
+<p>During <strong class="kw">training</strong> <strong class="kw">sessions</strong>, each task is paired with a <strong class="kw">reward</strong>—usually seafood like shrimp or clams. This is called positive <strong class="kw">reinforcement</strong>. Over time, Splash has learned to <strong class="kw">recognize</strong> <strong class="kw">specific</strong> objects underwater and bring them back to the <strong class="kw">surface</strong>. Otters are natural divers, able to hold their breath for several minutes and navigate easily below the <strong class="kw">surface</strong>. Splash uses these same <strong class="kw">instincts</strong> during <strong class="kw">training</strong> exercises that <strong class="kw">mimic</strong> real search <strong class="kw">scenarios</strong>.</p>
+<p>The program works by slowly introducing Splash to more challenging tasks. At first, trainers place objects in shallow water for the otter to <strong class="kw">retrieve</strong>. As skills improve, the objects are moved deeper or hidden in harder-to-reach locations. Splash <strong class="kw">locates</strong> the <strong class="kw">target</strong> using touch and sight, then surfaces with the object to receive a <strong class="kw">reward</strong>.</p>
+<p>The goal of the program is not only to train one otter, but also to better understand how sea otters can support human teams in the future. In situations where <strong class="kw">visibility</strong> is poor or the <strong class="kw">environment</strong> is too dangerous for divers, an animal like Splash could play a key role. The research also helps scientists learn more about otter <strong class="kw">cognition</strong>, memory, and problem-solving skills.</p>
+<p>Splash shows that with patience, trust, and plenty of snacks, even the most unexpected teammates can rise to the <strong class="kw">challenge</strong>.</p>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">【區塊二】8句精讀</h2>
+<div class="card reading">
+<div class="head">8句精讀</div>
+<div class="body">
+<div class="analysis">
+<h3><span class="num">①</span>句子一</h3>
+<div class="quote">Please meet a brave and athletic member of a search and rescue team.</div>
+<p>請認識一位勇敢又矯健的搜救隊成員。</p>
+<p><strong>文法解析：</strong>這是祈使句，省略主詞 you，直接以動詞原形 <em>meet</em> 開頭。<em>a brave and athletic member</em> 是受詞名詞片語，兩個形容詞共同修飾 <em>member</em>。<em>of a search and rescue team</em> 是介系詞片語，補充說明這位成員屬於哪一種團隊。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">athletic：運動能力強的</span><span class="pill">search and rescue team：搜救隊</span></p>
+</div>
+<div class="analysis">
+<h3><span class="num">②</span>句子二</h3>
+<div class="quote">This team member began training as a baby and is now excellent at diving, swimming, and finding objects underwater.</div>
+<p>這位隊員從幼年時期就開始訓練，現在非常擅長潛水、游泳，以及在水下尋找物品。</p>
+<p><strong>文法解析：</strong>本句用對等連接詞 <em>and</em> 連接兩個動詞片語：<em>began training</em> 與 <em>is now excellent at...</em>。<em>excellent at</em> 後面接名詞或 V-ing，因此 <em>diving, swimming, and finding</em> 都使用動名詞。句尾的 <em>underwater</em> 是副詞，說明尋找物品發生的位置。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">begin V-ing：開始做某事</span><span class="pill">be excellent at：擅長</span><span class="pill">underwater：在水下</span></p>
+</div>
+<div class="analysis">
+<h3><span class="num">③</span>句子三</h3>
+<div class="quote">With trainer Wayne Farris and the team at Pacific Marine Mammal Center, a sea otter named Splash has become one of the most unique animals working alongside humans.</div>
+<p>在訓練員 Wayne Farris 與太平洋海洋哺乳動物中心團隊的協助下，一隻名叫 Splash 的海獺已成為與人類並肩工作的最獨特動物之一。</p>
+<p><strong>文法解析：</strong><em>With...</em> 是句首介系詞片語，表示伴隨或協助的背景。主要子句是 <em>a sea otter named Splash has become...</em>，使用現在完成式，強調從過去訓練到現在造成的結果。<em>named Splash</em> 是過去分詞片語，修飾 <em>a sea otter</em>；<em>working alongside humans</em> 是現在分詞片語，修飾 <em>animals</em>。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">unique：獨特的</span><span class="pill">alongside humans：與人類並肩</span></p>
+</div>
+<div class="analysis">
+<h3><span class="num">④</span>句子四</h3>
+<div class="quote">During training sessions, each task is paired with a reward—usually seafood like shrimp or clams.</div>
+<p>在訓練課程中，每一項任務都會搭配獎勵，通常是像蝦子或蛤蜊這類海鮮。</p>
+<p><strong>文法解析：</strong><em>During training sessions</em> 是時間介系詞片語，放在句首建立情境。主要句型是被動語態 <em>each task is paired with...</em>，表示任務「被搭配」獎勵。破折號後面的 <em>usually seafood like shrimp or clams</em> 是補充說明，讓讀者知道獎勵的具體內容。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">session：課程；時段</span><span class="pill">be paired with：與……配對</span><span class="pill">reward：獎勵</span></p>
+</div>
+<div class="analysis">
+<h3><span class="num">⑤</span>句子五</h3>
+<div class="quote">Over time, Splash has learned to recognize specific objects underwater and bring them back to the surface.</div>
+<p>隨著時間過去，Splash 已學會辨識水下的特定物品，並把它們帶回水面。</p>
+<p><strong>文法解析：</strong><em>Over time</em> 表示「經過一段時間」，常與現在完成式搭配。<em>has learned to recognize...</em> 使用 <em>learn to V</em>，表示學會做某事。<em>recognize</em> 與 <em>bring</em> 共用同一個不定詞結構，形成「學會辨識並帶回」的連續動作。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">recognize：辨識</span><span class="pill">specific objects：特定物品</span><span class="pill">surface：水面；表面</span></p>
+</div>
+<div class="analysis">
+<h3><span class="num">⑥</span>句子六</h3>
+<div class="quote">As skills improve, the objects are moved deeper or hidden in harder-to-reach locations.</div>
+<p>隨著技能提升，物品會被移到更深處，或藏在較難到達的位置。</p>
+<p><strong>文法解析：</strong><em>As skills improve</em> 是時間副詞子句，這裡的 <em>as</em> 表示「隨著」。主要子句使用被動語態 <em>are moved</em> 與 <em>hidden</em>，因為重點在物品被安排的位置，而不是誰移動或藏起它們。<em>harder-to-reach</em> 是複合形容詞，放在名詞 <em>locations</em> 前面修飾它。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">as：隨著</span><span class="pill">harder-to-reach locations：較難到達的位置</span></p>
+</div>
+<div class="analysis">
+<h3><span class="num">⑦</span>句子七</h3>
+<div class="quote">The goal of the program is not only to train one otter, but also to better understand how sea otters can support human teams in the future.</div>
+<p>這項計畫的目標不只是訓練一隻海獺，也包含更深入了解海獺未來如何支援人類團隊。</p>
+<p><strong>文法解析：</strong>本句使用 <em>not only... but also...</em> 連接兩個平行的不定詞片語：<em>to train</em> 與 <em>to better understand</em>。<em>how sea otters can support human teams</em> 是名詞子句，作為 <em>understand</em> 的受詞。<em>in the future</em> 放在句尾，指出這項研究的長期應用方向。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">not only... but also...：不只……而且……</span><span class="pill">support human teams：支援人類團隊</span></p>
+</div>
+<div class="analysis">
+<h3><span class="num">⑧</span>句子八</h3>
+<div class="quote">Splash shows that with patience, trust, and plenty of snacks, even the most unexpected teammates can rise to the challenge.</div>
+<p>Splash 顯示出，只要有耐心、信任與充足的點心，即使是最出乎意料的隊友也能迎接挑戰。</p>
+<p><strong>文法解析：</strong><em>that...</em> 引導名詞子句，作為動詞 <em>shows</em> 的受詞。<em>with patience, trust, and plenty of snacks</em> 是介系詞片語，表示達成結果的條件或方法。<em>even the most unexpected teammates</em> 用 <em>even</em> 加強語氣，凸顯「出乎意料的隊友」也能做到。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">unexpected：出乎意料的</span><span class="pill">rise to the challenge：迎接挑戰</span></p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">【區塊三】20個單字整理</h2>
+<div class="card vocab">
+<div class="head">20個單字整理</div>
+<div class="body">
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">1</span><span class="word">athletic</span><span class="kk">[æθˈlɛtɪk]</span><span>adj. 運動能力強的；健壯的</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">athlete (n. 運動員)；athletics (n. 田徑；體育活動)；athletically (adv. 運動地；身手矯健地)</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">highly athletic animals（運動能力很強的動物）；an athletic teammate（身手矯健的隊友）；athletic ability（運動能力）</div></div>
+<div class="label-row"><div class="label confuse">容易混淆</div><div class="content">athletic 強調體能與運動能力；energetic 強調精力充沛，不一定擅長運動。</div></div>
+<ul><li>Please meet a brave and athletic member of a search and rescue team.<br>（請認識一位勇敢又矯健的搜救隊成員。）</li><li>The athletic student joined the swimming team last semester.<br>（那位運動能力強的學生上學期加入了游泳隊。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">2</span><span class="word">rescue</span><span class="kk">[ˈrɛskju]</span><span>n./v. 救援；營救</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">rescuer (n. 救援者)；rescued (adj. 被救出的)；rescuing (n./adj. 救援；救援中的)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">search and rescue（搜救）；rescue team（救援隊）；rescue mission（救援任務）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">a trained rescue team（受過訓練的救援隊）；a difficult rescue mission（困難的救援任務）；rescue efforts（救援行動）</div></div>
+<ul><li>Please meet a brave and athletic member of a search and rescue team.<br>（請認識一位勇敢又矯健的搜救隊成員。）</li><li>The rescue team arrived before the storm became stronger.<br>（救援隊在暴風雨變得更強之前抵達。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">3</span><span class="word">training</span><span class="kk">[ˈtrenɪŋ]</span><span>n. 訓練；培訓</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">train (v. 訓練)；trainer (n. 訓練員)；trained (adj. 受過訓練的)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">training session（訓練課程）；training exercise（訓練演練）；in training（正在受訓）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">professional training（專業訓練）；regular training sessions（定期訓練課程）；a trained animal（受過訓練的動物）</div></div>
+<ul><li>This team member began training as a baby.<br>（這位隊員從幼年時期就開始訓練。）</li><li>Good training helps students build confidence before a competition.<br>（良好的訓練能幫助學生在比賽前建立信心。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">4</span><span class="word">unique</span><span class="kk">[juˈnik]</span><span>adj. 獨特的；特別的</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">uniquely (adv. 獨特地)；uniqueness (n. 獨特性)；unique feature (n. 獨特特色)</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">a truly unique animal（真正獨特的動物）；unique skills（獨特技能）；a unique opportunity（難得的機會）</div></div>
+<div class="label-row"><div class="label confuse">容易混淆</div><div class="content">unique 原意是「獨一無二」，正式寫作中不宜過度使用 very unique；special 則較廣泛，表示特別。</div></div>
+<ul><li>Splash has become one of the most unique animals working alongside humans.<br>（Splash 已成為與人類並肩工作的最獨特動物之一。）</li><li>Every student has a unique way of solving problems.<br>（每位學生都有獨特的解題方式。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">5</span><span class="word">session</span><span class="kk">[ˈsɛʃən]</span><span>n. 一段課程；會議；時段</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">sessional (adj. 會期的；課程期間的)；session chair (n. 會議主持人)；training session (n. 訓練課程)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">during a session（在一段課程中）；practice session（練習時段）；study session（讀書會）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">a productive session（有效率的一段課程）；regular sessions（定期課程）；a short session（短時段課程）</div></div>
+<ul><li>During training sessions, each task is paired with a reward.<br>（在訓練課程中，每一項任務都會搭配獎勵。）</li><li>Our teacher held a review session before the big exam.<br>（我們老師在大考前安排了一場複習課。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">6</span><span class="word">reward</span><span class="kk">[rɪˈwɔrd]</span><span>n./v. 獎勵；報酬；獎賞</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">rewarding (adj. 有成就感的；值得的)；rewarded (adj. 受到獎勵的)；rewarder (n. 給予獎賞者)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">receive a reward（獲得獎勵）；be paired with a reward（與獎勵配對）；reward good behavior（獎勵良好行為）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">a small reward（小獎勵）；a well-deserved reward（應得的獎賞）；a rewarding experience（有成就感的經驗）</div></div>
+<ul><li>Each task is paired with a reward—usually seafood like shrimp or clams.<br>（每一項任務都會搭配獎勵，通常是像蝦子或蛤蜊這類海鮮。）</li><li>Finishing a difficult project can be a rewarding experience.<br>（完成一項困難的專題可能是很有成就感的經驗。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">7</span><span class="word">reinforcement</span><span class="kk">[ˌriɪnˈfɔrsmənt]</span><span>n. 強化；增強；加強物</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">reinforce (v. 強化；加強)；reinforced (adj. 加強的)；reinforcing (adj. 強化用的)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">positive reinforcement（正向強化）；reinforcement learning（強化學習）；social reinforcement（社會性增強）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">effective reinforcement（有效的強化）；positive reinforcement methods（正向強化方法）；behavioral reinforcement（行為強化）</div></div>
+<ul><li>This is called positive reinforcement.<br>（這稱為正向強化。）</li><li>Praise can be a useful form of reinforcement in class.<br>（讚美在課堂上可以是一種有用的強化方式。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">8</span><span class="word">recognize</span><span class="kk">[ˈrɛkəɡˌnaɪz]</span><span>v. 辨識；認出；承認</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">recognition (n. 辨識；認可)；recognizable (adj. 可辨認的)；recognized (adj. 被認可的)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">recognize a face（認出一張臉）；recognize an object（辨識物品）；be recognized as（被認為是）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">easily recognize（輕易認出）；officially recognized（正式認可的）；visual recognition（視覺辨識）</div></div>
+<ul><li>Splash has learned to recognize specific objects underwater.<br>（Splash 已學會辨識水下的特定物品。）</li><li>I can recognize my friend by her voice on the phone.<br>（我能透過電話中的聲音認出我的朋友。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">9</span><span class="word">specific</span><span class="kk">[spəˈsɪfɪk]</span><span>adj. 特定的；明確的</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">specify (v. 明確指出)；specifically (adv. 具體地)；specification (n. 規格；明細)</div></div>
+<div class="label-row"><div class="label root">字根</div><div class="content">spect「看」：inspect（檢查）；respect（尊重）；expect（期待）；spectator（觀眾）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">a specific object（特定物品）；specific instructions（明確指示）；be specific about（對……說明清楚）</div></div>
+<ul><li>Splash has learned to recognize specific objects underwater.<br>（Splash 已學會辨識水下的特定物品。）</li><li>Please give me a specific reason for changing the plan.<br>（請給我一個更改計畫的明確理由。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">10</span><span class="word">surface</span><span class="kk">[ˈsɝfəs]</span><span>n. 表面；水面 v. 浮出；出現</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">surfacing (n. 浮出；鋪面)；surface-level (adj. 表面的)；resurface (v. 重新浮現)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">come to the surface（浮到表面）；below the surface（在表面下）；surface with an object（帶著物品浮出）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">the water surface（水面）；a smooth surface（平滑表面）；surface details（表面細節）</div></div>
+<ul><li>Splash has learned to bring objects back to the surface.<br>（Splash 已學會把物品帶回水面。）</li><li>The truth may not be clear on the surface.<br>（真相表面上可能並不清楚。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">11</span><span class="word">instinct</span><span class="kk">[ˈɪnstɪŋkt]</span><span>n. 本能；直覺</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">instinctive (adj. 本能的)；instinctively (adv. 本能地)；natural instinct (n. 天生本能)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">use an instinct（運用本能）；natural instinct（天生本能）；survival instinct（求生本能）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">strong instincts（強烈本能）；instinctive behavior（本能行為）；follow one's instinct（依直覺行事）</div></div>
+<ul><li>Splash uses these same instincts during training exercises.<br>（Splash 在訓練演練中運用這些相同的本能。）</li><li>Many animals use instinct to protect themselves from danger.<br>（許多動物用本能保護自己免於危險。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">12</span><span class="word">mimic</span><span class="kk">[ˈmɪmɪk]</span><span>v. 模仿；模擬</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">mimicry (n. 模仿)；mimicked (adj. 被模仿的)；mimicking (n./adj. 模仿；模仿中的)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">mimic a real situation（模擬真實情況）；mimic behavior（模仿行為）；mimic natural sounds（模仿自然聲音）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">closely mimic（逼真地模擬）；mimic real scenarios（模擬真實情境）；a mimicked action（被模仿的動作）</div></div>
+<ul><li>Splash uses these same instincts during training exercises that mimic real search scenarios.<br>（Splash 在模擬真實搜尋情境的訓練演練中運用這些相同的本能。）</li><li>The drill was designed to mimic an emergency at school.<br>（這次演練是為了模擬學校中的緊急狀況。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">13</span><span class="word">scenario</span><span class="kk">[səˈnɛrio]</span><span>n. 情境；可能發生的情況</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">scenario-based (adj. 情境式的)；scenario planning (n. 情境規劃)；worst-case scenario (n. 最壞情況)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">real scenario（真實情境）；search scenario（搜尋情境）；worst-case scenario（最壞情況）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">a realistic scenario（逼真的情境）；possible scenarios（可能情況）；emergency scenarios（緊急情境）</div></div>
+<ul><li>The exercises mimic real search scenarios.<br>（這些演練模擬真實搜尋情境。）</li><li>Students discussed different scenarios before making a decision.<br>（學生在做決定前討論了不同情境。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">14</span><span class="word">retrieve</span><span class="kk">[rɪˈtriv]</span><span>v. 找回；取回；檢索</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">retrieval (n. 取回；檢索)；retrievable (adj. 可取回的)；retriever (n. 尋回犬；取回者)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">retrieve an object（取回物品）；retrieve information（檢索資訊）；retrieve data（取回資料）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">quickly retrieve（快速取回）；successful retrieval（成功取回）；data retrieval（資料檢索）</div></div>
+<ul><li>Trainers place objects in shallow water for the otter to retrieve.<br>（訓練員把物品放在淺水中讓海獺取回。）</li><li>I used the school computer to retrieve my report from the cloud.<br>（我用學校電腦從雲端取回我的報告。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">15</span><span class="word">locate</span><span class="kk">[ˈloˌket]</span><span>v. 找出位置；定位；位於</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">location (n. 位置)；located (adj. 位於)；locator (n. 定位器)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">locate a target（找出目標）；be located in（位於）；locate the source（找出來源）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">accurately locate（準確定位）；a hidden location（隱藏位置）；target location（目標位置）</div></div>
+<ul><li>Splash locates the target using touch and sight.<br>（Splash 透過觸覺與視覺找出目標。）</li><li>The app can locate the nearest bus stop for you.<br>（這個應用程式可以幫你找出最近的公車站。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">16</span><span class="word">target</span><span class="kk">[ˈtɑrɡɪt]</span><span>n. 目標；對象 v. 以……為目標</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">targeted (adj. 有目標的)；targeting (n. 瞄準；鎖定)；targetable (adj. 可作為目標的)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">locate the target（找出目標）；target audience（目標讀者）；set a target（設定目標）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">a clear target（明確目標）；a training target（訓練目標）；target skills（目標技能）</div></div>
+<ul><li>Splash locates the target using touch and sight.<br>（Splash 透過觸覺與視覺找出目標。）</li><li>Our class set a target of reading five English articles a week.<br>（我們班設定每週讀五篇英文文章的目標。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">17</span><span class="word">visibility</span><span class="kk">[ˌvɪzəˈbɪlətɪ]</span><span>n. 能見度；可見性</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">visible (adj. 可看見的)；visibly (adv. 明顯地)；invisible (adj. 看不見的)</div></div>
+<div class="label-row"><div class="label root">字根</div><div class="content">vis「見」：visible（可看見的）；vision（視力；願景）；visual（視覺的）；revise（修訂）</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">poor visibility（能見度差）；improve visibility（改善能見度）；low visibility（低能見度）</div></div>
+<ul><li>In situations where visibility is poor, an animal like Splash could play a key role.<br>（在能見度差的情況下，像 Splash 這樣的動物可能扮演關鍵角色。）</li><li>Heavy rain reduced visibility on the road this morning.<br>（今天早上的大雨降低了道路能見度。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">18</span><span class="word">environment</span><span class="kk">[ɪnˈvaɪrənmənt]</span><span>n. 環境；周遭條件</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">environmental (adj. 環境的)；environmentally (adv. 環境方面地)；environmentalist (n. 環保人士)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">dangerous environment（危險環境）；learning environment（學習環境）；protect the environment（保護環境）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">a safe environment（安全環境）；a challenging environment（具挑戰性的環境）；environmental protection（環境保護）</div></div>
+<ul><li>In situations where the environment is too dangerous for divers, Splash could play a key role.<br>（在環境對潛水員來說太危險的情況下，Splash 可能扮演關鍵角色。）</li><li>A quiet environment can help students focus on reading.<br>（安靜的環境能幫助學生專心閱讀。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">19</span><span class="word">cognition</span><span class="kk">[kɑɡˈnɪʃən]</span><span>n. 認知；認知能力</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">cognitive (adj. 認知的)；cognitively (adv. 認知上地)；recognition (n. 辨識；認可)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">animal cognition（動物認知）；cognitive skills（認知技能）；human cognition（人類認知）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">advanced cognition（高階認知）；cognitive development（認知發展）；cognitive ability（認知能力）</div></div>
+<ul><li>The research helps scientists learn more about otter cognition.<br>（這項研究幫助科學家更了解海獺的認知能力。）</li><li>Reading in two languages may improve certain cognitive skills.<br>（使用兩種語言閱讀可能提升某些認知技能。）</li></ul>
+</div>
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-no">20</span><span class="word">challenge</span><span class="kk">[ˈtʃælɪndʒ]</span><span>n. 挑戰 v. 挑戰；質疑</span></div>
+<div class="label-row"><div class="label deriv">衍生詞</div><div class="content">challenging (adj. 具挑戰性的)；challenger (n. 挑戰者)；challenged (adj. 受到挑戰的)</div></div>
+<div class="label-row"><div class="label phrase">片語</div><div class="content">rise to the challenge（迎接挑戰）；face a challenge（面對挑戰）；a challenging task（具挑戰性的任務）</div></div>
+<div class="label-row"><div class="label idiom">慣用語</div><div class="content">a serious challenge（嚴峻挑戰）；an unexpected challenge（意外挑戰）；challenge oneself（挑戰自己）</div></div>
+<ul><li>Even the most unexpected teammates can rise to the challenge.<br>（即使是最出乎意料的隊友也能迎接挑戰。）</li><li>Preparing for a speech contest is a challenge, but it is useful.<br>（準備演講比賽是一項挑戰，但它很有用。）</li></ul>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">【區塊四】文法解析</h2>
+<div class="card grammar">
+<div class="head">文法解析</div>
+<div class="body">
+<div class="grammar-point">
+<h3>【文法一】Passive Voice 被動語態</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote>During training sessions, each task is paired with a reward—usually seafood like shrimp or clams.</blockquote>
+<p><strong>【句型】</strong></p>
+<p class="formula">S + be + p.p. + with/by + N</p>
+<p><strong>【核心說明】</strong></p>
+<p>被動語態用來強調「事情被如何處理」，而不是強調執行動作的人。本句重點在每一項任務都會搭配獎勵，因此使用 <em>is paired with</em>。</p>
+<p>在科普或訓練流程文章中，被動語態很常見，因為作者常要說明制度、步驟或安排，而不是一直重複「訓練員做了什麼」。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>現在簡單被動：am / is / are + p.p.，表示一般事實或固定流程。</li><li>若要說明搭配對象，常用 be paired with，而不是 be paired by。</li><li>若要說明執行者，可使用 by + N，但沒有必要時可以省略。</li><li>主詞是單數時用 is；主詞是複數時用 are。</li></ul>
+<p><strong>【主題例句】</strong></p>
+<p>Each object is hidden in a different place during the exercise.<br>（每個物品在演練中都被藏在不同位置。）</p>
+<p>The otter is rewarded with seafood after it completes the task.<br>（海獺完成任務後會得到海鮮作為獎勵。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>很多學生會忘記被動語態中的過去分詞。只寫 <em>is pair</em> 或 <em>is move</em> 都不完整，必須改成 <em>is paired</em>、<em>is moved</em>。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<p>✗ Each task is pair with a reward.</p>
+<p>✓ Each task is paired with a reward.（pair 要改成過去分詞 paired。）</p>
+<p>題目：The objects ________ deeper as Splash improves.</p>
+<p>A. move　B. are moved　C. is moved　D. moving</p>
+<p>答案：B。說明：主詞 objects 是複數，且物品是「被移動」，所以用 are moved。</p>
+</div>
+<div class="grammar-point">
+<h3>【文法二】Infinitive of Purpose 表目的不定詞</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote>At first, trainers place objects in shallow water for the otter to retrieve.</blockquote>
+<p><strong>【句型】</strong></p>
+<p class="formula">S + V + O + for + N + to + V</p>
+<p><strong>【核心說明】</strong></p>
+<p><em>to retrieve</em> 是不定詞，表示「為了取回」。在 <em>for the otter to retrieve</em> 中，<em>for the otter</em> 說明不定詞動作的執行者。</p>
+<p>這種句型適合用來描述訓練目的、活動安排或任務設計。注意這裡的 <em>to</em> 是不定詞標記，不是介係詞，所以後面接動詞原形。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>表目的最常見形式是 to + V，例如 to learn、to search、to retrieve。</li><li>若要強調某人執行該目的，可用 for + N + to + V。</li><li>to 後面必須接原形動詞，不可接 V-ing。</li><li>正式寫作可用 in order to + V，但句子會較正式。</li></ul>
+<p><strong>【主題例句】</strong></p>
+<p>The trainers use rewards to encourage Splash.<br>（訓練員使用獎勵來鼓勵 Splash。）</p>
+<p>Scientists study otters in order to understand animal cognition.<br>（科學家研究海獺，以了解動物認知。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>看到 <em>to</em> 時要先判斷它是不定詞還是介係詞。若後面是動詞原形，如 <em>to retrieve</em>，就是不定詞；若後面是名詞或 V-ing，如 <em>look forward to seeing</em>，才是介係詞。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<p>✗ Trainers place objects in shallow water for the otter to retrieving.</p>
+<p>✓ Trainers place objects in shallow water for the otter to retrieve.（to 是不定詞，後面接原形動詞。）</p>
+<p>題目：請選出正確句子。</p>
+<p>A. Splash trains to finding objects.　B. Splash trains to find objects.　C. Splash trains for find objects.　D. Splash trains to found objects.</p>
+<p>答案：B。說明：表目的用 to + 原形動詞，因此是 to find。</p>
+</div>
+<div class="grammar-point">
+<h3>【文法三】Noun Clause 名詞子句</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote>Splash shows that with patience, trust, and plenty of snacks, even the most unexpected teammates can rise to the challenge.</blockquote>
+<p><strong>【句型】</strong></p>
+<p class="formula">S + V + that + S + V</p>
+<p><strong>【核心說明】</strong></p>
+<p><em>that...</em> 引導名詞子句，作為動詞 <em>shows</em> 的受詞，說明 Splash「顯示出什麼」。名詞子句可以把一個完整想法包成名詞功能，放在動詞後面。</p>
+<p>在文章結論句中，名詞子句很適合用來整理作者想傳達的核心觀點。本句的核心訊息是：出乎意料的隊友也能迎接挑戰。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>that 子句本身要有完整主詞與動詞。</li><li>常接 that 子句的動詞包括 show、think、believe、know、suggest、prove。</li><li>口語中 that 有時可省略，但正式寫作保留 that 較清楚。</li><li>若 that 子句前面有介系詞，通常要改成 the fact that。</li></ul>
+<p><strong>【主題例句】</strong></p>
+<p>The research shows that otters can learn complex tasks.<br>（研究顯示海獺能學習複雜任務。）</p>
+<p>Scientists believe that animal training can reveal problem-solving skills.<br>（科學家相信動物訓練能展現解決問題的能力。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>名詞子句不是形容詞子句。<em>that</em> 若後面接完整句並作動詞受詞，多半是名詞子句；若用來修飾前面的名詞，才是形容詞子句。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<p>✗ Splash shows that with patience can rise to the challenge.</p>
+<p>✓ Splash shows that with patience, unexpected teammates can rise to the challenge.（that 子句需要清楚的主詞與動詞。）</p>
+<p>題目：The program proves ________ animals can support human teams.</p>
+<p>A. what　B. that　C. who　D. because</p>
+<p>答案：B。說明：空格後是完整句 animals can support human teams，作 proves 的受詞，因此用 that 名詞子句。</p>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<h2 class="section-title">底部折疊區塊</h2>
+<details>
+<summary>常見字首整理（50 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body compact-list">
+<p>ab-　離開、相反　—　abnormal（異常的）</p>
+<p>ad-　向、加　—　advance（前進）</p>
+<p>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</p>
+<p>anti-　反對、抗　—　antibiotic（抗生素）</p>
+<p>arch-　主要、首要　—　archenemy（死敵）</p>
+<p>auto-　自動、自我　—　autograph（親筆簽名）</p>
+<p>bene-　好的、善　—　benefit（好處）</p>
+<p>bi-　二、雙　—　bilingual（雙語的）</p>
+<p>circum-　環繞、周圍　—　circumstance（情況）</p>
+<p>co-/con-/com-　一起、共同　—　cooperate（合作）</p>
+<p>contra-　相反、對抗　—　contradict（反駁）</p>
+<p>de-　去除、下降　—　decode（解碼）</p>
+<p>dia-　穿過、透過　—　dialogue（對話）</p>
+<p>dis-　否定、分離　—　disagree（不同意）</p>
+<p>en-/em-　使成為　—　enable（使能夠）</p>
+<p>epi-　在上、在外　—　epidemic（流行病）</p>
+<p>ex-　外、前任　—　export（出口）；ex-president（前總統）</p>
+<p>extra-　額外、外部　—　extraordinary（非凡的）</p>
+<p>hetero-　不同　—　heterogeneous（異質的）</p>
+<p>homo-　相同　—　homogeneous（同質的）</p>
+<p>hyper-　過度、超　—　hyperactive（過動的）</p>
+<p>hypo-　低於、不足　—　hypodermic（皮下的）</p>
+<p>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</p>
+<p>inter-　在…之間　—　international（國際的）</p>
+<p>iso-　相等、相同　—　isolate（隔離）</p>
+<p>mal-　壞、不良　—　malfunction（故障）</p>
+<p>micro-　微小　—　microscope（顯微鏡）</p>
+<p>mis-　錯誤　—　misunderstand（誤解）</p>
+<p>mono-　單一　—　monologue（獨白）</p>
+<p>multi-　多　—　multicultural（多元文化的）</p>
+<p>neo-　新的　—　neonatal（新生的）</p>
+<p>non-　非、沒有　—　nonsense（無意義）</p>
+<p>pan-　全部　—　pandemic（大流行病）</p>
+<p>peri-　周圍　—　perimeter（周長）</p>
+<p>poly-　多　—　polygon（多邊形）</p>
+<p>post-　之後　—　postwar（戰後的）</p>
+<p>pre-　之前　—　preview（預覽）</p>
+<p>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</p>
+<p>pseudo-　假的　—　pseudonym（筆名）</p>
+<p>re-　再、回　—　review（複習）</p>
+<p>semi-　一半、部分　—　semicircle（半圓）</p>
+<p>sub-　在下、次級　—　subway（地鐵）</p>
+<p>super-　超越、在上　—　superstar（超級明星）</p>
+<p>syn-/sym-　一起、共同　—　synchronize（同步）</p>
+<p>tele-　遠距　—　telephone（電話）</p>
+<p>trans-　穿越、轉變　—　transport（運輸）</p>
+<p>tri-　三　—　triangle（三角形）</p>
+<p>un-　否定、不　—　unhappy（不快樂的）</p>
+<p>vice-　副、代替　—　vice-president（副總統）</p>
+</div>
+</details>
+<details>
+<summary>常見英文字尾整理（約 30 個）<span class="arrow">⌄</span></summary>
+<div class="detail-body compact-list">
+<p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</p>
+<p>-ment　行為或結果　—　agreement（協議）、development（發展）</p>
+<p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p>
+<p>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p>
+<p>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p>
+<p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p>
+<p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p>
+<p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
+<p>-ance/-ence　狀態或性質　—　importance（重要性）、difference（差異）</p>
+<p>-ure　行為、結果或狀態　—　pressure（壓力）、failure（失敗）</p>
+<p>-age　集合、狀態或費用　—　package（包裹）、postage（郵資）</p>
+<p>-cy　狀態或職位　—　privacy（隱私）、agency（機構）</p>
+<p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</p>
+<p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p>
+<p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p>
+<p>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</p>
+<p>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
+<p>-ive　具有…性質的　—　active（主動的）、creative（有創意的）</p>
+<p>-ary/-ory　與…有關的　—　ordinary（普通的）、introductory（介紹性的）</p>
+<p>-ant/-ent　具有…性質的　—　important（重要的）、different（不同的）</p>
+<p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</p>
+<p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p>
+<p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p>
+<p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
+<p>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</p>
+<p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p>
+<p>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
+</div>
+</details>
+<details>
+<summary>30個常用單字與衍生詞<span class="arrow">⌄</span></summary>
+<div class="detail-body compact-list">
+<p>1. otter [ˈɑtɚ] (n. 海獺；水獺) — sea otter（海獺）</p>
+<p>2. brave [brev] (adj. 勇敢的) — bravery [ˈbrevərɪ] (n. 勇氣)</p>
+<p>3. athletic [æθˈlɛtɪk] (adj. 運動能力強的) — athlete [ˈæθˌlit] (n. 運動員)</p>
+<p>4. rescue [ˈrɛskju] (n./v. 救援) — rescuer [ˈrɛskjuɚ] (n. 救援者)</p>
+<p>5. training [ˈtrenɪŋ] (n. 訓練) — trainer [ˈtrenɚ] (n. 訓練員)</p>
+<p>6. excellent [ˈɛksələnt] (adj. 優秀的) — excellence [ˈɛksələns] (n. 卓越)</p>
+<p>7. diving [ˈdaɪvɪŋ] (n. 潛水) — dive [daɪv] (v. 潛水)</p>
+<p>8. unique [juˈnik] (adj. 獨特的) — uniqueness [juˈniknəs] (n. 獨特性)</p>
+<p>9. session [ˈsɛʃən] (n. 課程；時段) — training session（訓練課程）</p>
+<p>10. reward [rɪˈwɔrd] (n./v. 獎勵) — rewarding [rɪˈwɔrdɪŋ] (adj. 有成就感的)</p>
+<p>11. reinforcement [ˌriɪnˈfɔrsmənt] (n. 強化) — reinforce [ˌriɪnˈfɔrs] (v. 強化)</p>
+<p>12. recognize [ˈrɛkəɡˌnaɪz] (v. 辨識) — recognition [ˌrɛkəɡˈnɪʃən] (n. 辨識；認可)</p>
+<p>13. specific [spəˈsɪfɪk] (adj. 特定的) — specifically [spəˈsɪfɪkəlɪ] (adv. 具體地)</p>
+<p>14. surface [ˈsɝfəs] (n. 表面；水面) — resurface [riˈsɝfəs] (v. 重新浮現)</p>
+<p>15. natural [ˈnætʃərəl] (adj. 自然的) — naturally [ˈnætʃərəlɪ] (adv. 自然地)</p>
+<p>16. navigate [ˈnævəˌɡet] (v. 導航；行進) — navigation [ˌnævəˈɡeʃən] (n. 導航)</p>
+<p>17. instinct [ˈɪnstɪŋkt] (n. 本能) — instinctive [ɪnˈstɪŋktɪv] (adj. 本能的)</p>
+<p>18. mimic [ˈmɪmɪk] (v. 模擬；模仿) — mimicry [ˈmɪmɪkrɪ] (n. 模仿)</p>
+<p>19. scenario [səˈnɛrio] (n. 情境) — worst-case scenario（最壞情況）</p>
+<p>20. challenging [ˈtʃælɪndʒɪŋ] (adj. 具挑戰性的) — challenge [ˈtʃælɪndʒ] (n./v. 挑戰)</p>
+<p>21. shallow [ˈʃælo] (adj. 淺的) — shallow water（淺水）</p>
+<p>22. retrieve [rɪˈtriv] (v. 取回) — retrieval [rɪˈtrivəl] (n. 取回；檢索)</p>
+<p>23. locate [ˈloˌket] (v. 找出位置) — location [loˈkeʃən] (n. 位置)</p>
+<p>24. target [ˈtɑrɡɪt] (n. 目標) — targeted [ˈtɑrɡɪtɪd] (adj. 有目標的)</p>
+<p>25. visibility [ˌvɪzəˈbɪlətɪ] (n. 能見度) — visible [ˈvɪzəbəl] (adj. 可看見的)</p>
+<p>26. environment [ɪnˈvaɪrənmənt] (n. 環境) — environmental [ɪnˌvaɪrənˈmɛntəl] (adj. 環境的)</p>
+<p>27. role [rol] (n. 角色；作用) — key role（關鍵角色）</p>
+<p>28. cognition [kɑɡˈnɪʃən] (n. 認知) — cognitive [ˈkɑɡnətɪv] (adj. 認知的)</p>
+<p>29. memory [ˈmɛmərɪ] (n. 記憶) — memorize [ˈmɛməˌraɪz] (v. 記住)</p>
+<p>30. unexpected [ˌʌnɪkˈspɛktɪd] (adj. 出乎意料的) — expect [ɪkˈspɛkt] (v. 預期)</p>
+<p>文章相關常用片語 5 個（附中文）：</p>
+<p>• search and rescue（搜救）</p>
+<p>• be paired with（與……配對）</p>
+<p>• bring back to the surface（帶回水面）</p>
+<p>• play a key role（扮演關鍵角色）</p>
+<p>• rise to the challenge（迎接挑戰）</p>
+</div>
+</details>
+<details>
+<summary>練文筆食材<span class="arrow">⌄</span></summary>
+<div class="detail-body">
+<p>① be excellent at + V-ing（擅長做某事）<br>→ 適用：描述能力或專長時<br>例：Splash is excellent at finding objects underwater.</p>
+<p>② one of the most + adj. + plural noun（最……的……之一）<br>→ 適用：強調某人或某物的突出地位<br>例：Splash is one of the most unique animals in the program.</p>
+<p>③ be paired with + N（與……配對）<br>→ 適用：說明訓練、學習或制度中的搭配方式<br>例：Each task is paired with a reward.</p>
+<p>④ over time（隨著時間過去）<br>→ 適用：描述逐漸發展的變化<br>例：Over time, students become more confident in English.</p>
+<p>⑤ learn to + V（學會做某事）<br>→ 適用：描述技能養成<br>例：Splash learned to recognize specific objects.</p>
+<p>⑥ able to + V（能夠做某事）<br>→ 適用：描述能力或可能性<br>例：Otters are able to hold their breath for several minutes.</p>
+<p>⑦ by + V-ing（藉由做某事）<br>→ 適用：說明方法<br>例：The program works by introducing harder tasks step by step.</p>
+<p>⑧ as + S + V（隨著……）<br>→ 適用：描述兩件事同步變化<br>例：As skills improve, the tasks become more difficult.</p>
+<p>⑨ using + N（使用……）<br>→ 適用：補充說明方法或工具<br>例：Splash locates the target using touch and sight.</p>
+<p>⑩ not only... but also...（不只……而且……）<br>→ 適用：連接兩個同等重要的重點<br>例：The goal is not only to train Splash but also to understand otter cognition.</p>
+<p>⑪ in situations where + S + V（在……的情況下）<br>→ 適用：說明條件或應用場景<br>例：In situations where visibility is poor, trained animals may help.</p>
+<p>⑫ too + adj. + for + N（對……來說太……）<br>→ 適用：描述超出某人能力或安全範圍<br>例：The environment may be too dangerous for divers.</p>
+<p>⑬ play a key role（扮演關鍵角色）<br>→ 適用：強調重要性<br>例：Technology can play a key role in rescue work.</p>
+<p>⑭ help + O + V（幫助某人做某事）<br>→ 適用：描述功能或貢獻<br>例：The research helps scientists learn more about animal memory.</p>
+<p>⑮ rise to the challenge（迎接挑戰）<br>→ 適用：結尾時鼓勵或總結克服困難<br>例：With patience and trust, unexpected teammates can rise to the challenge.</p>
+</div>
+</details>
+</section>
+<nav class="link-panel bottom-links" aria-label="課程與聯絡連結">
+<h2>七月課程與聯絡方式</h2>
+<div class="link-grid">
+<a class="link-card echo-link" href="https://linwayet.github.io/4ulive/index.html">
+<strong>七月課程：錯中學 ECHO 計劃</strong>
+<span>從錯誤中看見學習盲點，透過回饋與修正建立更穩的英文能力。</span>
+</a>
+<a class="link-card analysis-link" href="https://linwayet.github.io/popup/index">
+<strong>七月課程：學生分析</strong>
+<span>協助學生了解自己的英文狀態、弱點與進步方向，安排更有效的學習策略。</span>
+</a>
+<a class="link-card line-link" href="https://line.me/ti/p/~linwayet">
+<strong>林威老師 Line：linwayet</strong>
+<span>課程詢問、學習規劃與教材相關問題，可加入 Line 帳號聯絡。</span>
+</a>
+</div>
+</nav>
+</main>
+</body>
+</html>
