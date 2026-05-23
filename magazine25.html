@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Safety in Public Spaces: Be Ready for the Unexpected</title>
+    <title>Inside Bipolar Disorder: Understanding the Unpredictable</title>
     <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,1146 +16,1215 @@
             --accent-b: #6A1B9A;
             --keyword-color: #0D47A1;
             
-            --block1-head: #0D47A1;
-            --block1-border: #90CAF9;
-            --block1-bg: #F3F8FF;
+            /* Card Colors */
+            --card-1-bg: #F3F8FF; --card-1-border: #90CAF9; --card-1-header: #0D47A1;
+            --card-2-bg: #FFF3EF; --card-2-border: #FFAB91; --card-2-header: #BF360C;
+            --card-3-bg: #F1F8F2; --card-3-border: #81C784; --card-3-header: #1B5E20;
+            --card-4-bg: #F9F0FF; --card-4-border: #CE93D8; --card-4-header: #4A148C;
+            --card-5-bg: #FAF6F0; --card-5-border: #C4A06A; --card-5-header: #4A3728;
             
-            --block2-head: #BF360C;
-            --block2-border: #FFAB91;
-            --block2-bg: #FFF3EF;
-            
-            --block3-head: #1B5E20;
-            --block3-border: #81C784;
-            --block3-bg: #F1F8F2;
-            
-            --block4-head: #4A148C;
-            --block4-border: #CE93D8;
-            --block4-bg: #F9F0FF;
-            
-            --bottom-head: #4A3728;
-            --bottom-border: #C4A06A;
-            --bottom-bg: #FAF6F0;
-
-            --tag-deriv-bg: #FDEDEC; --tag-deriv-text: #C0392B;
+            /* Tag Colors */
+            --tag-deri-bg: #FDEDEC; --tag-deri-text: #C0392B;
             --tag-root-bg: #EBF5FB; --tag-root-text: #1565C0;
-            --tag-phrase-bg: #EAFAF1; --tag-phrase-text: #2E7D32;
-            --tag-idiom-bg: #FEF9E7; --tag-idiom-text: #D68910;
-            --tag-confuse-bg: #F5EEF8; --tag-confuse-text: #6A1B9A;
-            --tag-accent-bg: #FEF0E7; --tag-accent-text: #E65100;
+            --tag-phra-bg: #EAFAF1; --tag-phra-text: #2E7D32;
+            --tag-idio-bg: #FEF9E7; --tag-idio-text: #D68910;
+            --tag-conf-bg: #F5EEF8; --tag-conf-text: #6A1B9A;
+            --tag-prep-bg: #E8F5E9; --tag-prep-text: #2E7D32;
+            --tag-emph-bg: #FEF0E7; --tag-emph-text: #E65100;
         }
 
-        * { box-sizing: border-box; }
         body {
-            background-color: var(--bg-color);
-            color: var(--main-text);
             font-family: 'BIZ UDPGothic', sans-serif;
-            font-size: 22px;
+            background:
+                radial-gradient(circle at top left, rgba(255, 183, 77, 0.34), transparent 34%),
+                linear-gradient(180deg, #FFF1DD 0%, #FFF8F0 46%, #FFEFD8 100%);
+            color: var(--main-text);
             line-height: 1.85;
+            font-size: 22px;
             margin: 0;
-            padding: 20px;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
         .container {
             max-width: 900px;
-            margin: 0 auto;
+            width: 100%;
         }
-        
-        /* Header styles */
-        .title-box {
-            border: 4px solid var(--h1-color);
-            padding: 20px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+
         h1 {
             color: var(--h1-color);
-            font-size: 3rem;
-            margin: 0;
-            font-weight: 700;
+            font-size: 3.5rem;
+            text-align: center;
+            border: 4px solid var(--h1-color);
+            padding: 20px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 8px 8px 0px var(--h1-color);
         }
+
         .subtitle {
             color: var(--h2-color);
             font-size: 2.2rem;
             text-align: center;
-            margin: 10px 0;
-        }
-        .credit {
-            color: #1565C0;
-            font-family: 'Lobster', 'Pacifico', cursive, sans-serif;
-            font-size: 1.8rem;
-            text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
+            font-weight: bold;
         }
 
-        /* Section styles */
-        h2 {
-            font-size: 2.2rem;
-            border-left: 8px solid currentColor;
-            padding-left: 15px;
-            margin-top: 50px;
-            margin-bottom: 20px;
+        .author-line {
+            color: #1565C0;
+            font-size: 1.4rem;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: bold;
+            font-family: cursive, sans-serif;
         }
+
         .card {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 16px;
             margin-bottom: 40px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             border: 2px solid;
         }
-        .card-head {
-            color: #ffffff;
+
+        .card-header {
             padding: 15px 25px;
-            font-weight: 700;
+            color: white;
             font-size: 1.6rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
         }
-        .card-body {
+
+        .card-content {
             padding: 30px;
         }
 
-        /* Block-specific colors */
-        .block-1 { border-color: var(--block1-border); }
-        .block-1 .card-head { background-color: var(--block1-head); }
-        .block-1 .card-body { background-color: var(--block1-bg); }
-        
-        .block-2 { border-color: var(--block2-border); }
-        .block-2 .card-head { background-color: var(--block2-head); }
-        .block-2 .card-body { background-color: var(--block2-bg); }
-        
-        .block-3 { border-color: var(--block3-border); }
-        .block-3 .card-head { background-color: var(--block3-head); }
-        .block-3 .card-body { background-color: var(--block3-bg); }
-        
-        .block-4 { border-color: var(--block4-border); }
-        .block-4 .card-head { background-color: var(--block4-head); }
-        .block-4 .card-body { background-color: var(--block4-bg); }
+        /* Section 1: Original Text */
+        .section-1 { border-color: var(--card-1-border); background-color: var(--card-1-bg); }
+        .section-1 .card-header { background-color: var(--card-1-header); }
+        .section-1 strong { color: var(--keyword-color); font-weight: bold; }
 
-        /* Keywords in article */
-        .kw { color: var(--keyword-color); font-weight: 700; }
-
-        /* Block 2: Key Sentence Analysis */
-        .sentence-item { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px dashed #ccc; }
-        .sentence-item:last-child { border-bottom: none; }
-        .num-circle {
-            background-color: var(--h3-color);
-            color: white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+        /* Section 2: Deep Reading */
+        .section-2 { border-color: var(--card-2-border); background-color: var(--card-2-bg); }
+        .section-2 .card-header { background-color: var(--card-2-header); }
+        .sentence-item { margin-bottom: 40px; }
+        .circle-num {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-right: 10px;
-            font-weight: 700;
+            width: 40px;
+            height: 40px;
+            background: var(--card-2-header);
+            color: white;
+            border-radius: 50%;
+            margin-right: 15px;
+            font-weight: bold;
+            flex-shrink: 0;
         }
-        .quote-box { font-style: italic; background: rgba(255,255,255,0.5); padding: 10px 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid var(--h3-color); }
-        .translation { margin-bottom: 10px; font-weight: 500; }
-        .grammar-desc { color: #444; margin-bottom: 10px; }
+        .sentence-text { font-style: italic; font-weight: bold; margin-bottom: 10px; display: block; }
+        .grammar-box { background: white; padding: 15px; border-radius: 8px; border-left: 5px solid var(--card-2-header); margin-top: 15px; }
         .pill {
             display: inline-block;
-            background-color: var(--tag-phrase-bg);
-            color: var(--tag-phrase-text);
-            padding: 2px 12px;
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.9rem;
-            margin-right: 8px;
-            border: 1px solid var(--tag-phrase-text);
-        }
-
-        /* Block 3: Vocabulary */
-        .vocab-item { margin-bottom: 40px; }
-        .vocab-header { display: flex; align-items: baseline; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
-        .vocab-id { background: var(--h2-color); color: white; padding: 0 10px; border-radius: 5px; font-weight: 700; }
-        .vocab-word { font-size: 2rem; color: var(--h2-color); font-weight: 700; }
-        .kk { color: #D32F2F; font-size: 1.2rem; }
-        .pos-def { font-weight: 700; margin-bottom: 10px; }
-        .tag-row { display: flex; align-items: flex-start; margin-bottom: 8px; }
-        .tag-label {
-            min-width: 100px;
-            padding: 2px 10px;
-            border-radius: 5px 0 0 5px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-align: center;
-            color: white;
-        }
-        .tag-content {
-            padding: 2px 15px;
-            background: rgba(255,255,255,0.6);
-            border-radius: 0 5px 5px 0;
-            flex-grow: 1;
+            background: var(--tag-emph-bg);
+            color: var(--tag-emph-text);
             font-size: 0.95rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-weight: bold;
         }
-        .deriv-label { background-color: var(--tag-deriv-text); }
-        .root-label { background-color: var(--tag-root-text); }
-        .idiom-label { background-color: var(--tag-idiom-text); }
-        .phrase-label { background-color: var(--tag-phrase-text); }
-        .confuse-label { background-color: var(--tag-confuse-text); }
-        .pattern-label { background-color: var(--tag-accent-text); }
 
-        .example-box { margin-top: 15px; }
-        .example-item { margin-bottom: 10px; padding-left: 20px; border-left: 3px solid var(--block3-border); }
+        /* Section 3: Vocabulary */
+        .section-3 { border-color: var(--card-3-border); background-color: var(--card-3-bg); }
+        .section-3 .card-header { background-color: var(--card-3-header); }
+        .vocab-item { margin-bottom: 45px; background: white; padding: 25px; border-radius: 12px; border: 1px solid #e0e0e0; }
+        .vocab-head { font-size: 1.8rem; font-weight: bold; color: var(--card-3-header); margin-bottom: 10px; display: flex; align-items: center; }
+        .kk { font-size: 1.2rem; color: #666; margin-left: 15px; }
+        .pos { font-style: italic; color: #888; margin-left: 10px; }
+        .definition { font-weight: bold; color: #333; display: block; margin-bottom: 15px; font-size: 1.2rem; }
+        .tag-row { display: flex; margin-bottom: 15px; align-items: flex-start; }
+        .tag-label {
+            min-width: 120px;
+            padding: 4px 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-right: 15px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        .tag-content { flex: 1; font-size: 1.1rem; line-height: 1.6; }
+        .example-block { margin-top: 15px; padding-top: 15px; border-top: 1px dashed #ddd; }
+        .ex-en { font-family: serif; color: #1a1a1a; display: block; margin-bottom: 5px; font-size: 1.15rem; }
+        .ex-zh { color: #555; display: block; margin-bottom: 10px; font-size: 1.1rem; }
 
-        /* Block 4: Grammar */
-        .grammar-point { background: white; padding: 25px; border-radius: 10px; margin-bottom: 30px; }
-        .grammar-point h3 { color: var(--h3-color); border-bottom: 2px solid var(--h3-color); padding-bottom: 5px; }
-        .gp-quote { font-style: italic; font-weight: 700; background: #eee; padding: 10px; margin: 10px 0; }
-        .gp-pattern { font-style: italic; font-weight: 700; color: #d32f2f; margin: 10px 0; }
-        .gp-rule { margin: 15px 0; }
-        .gp-rule li { margin-bottom: 5px; }
-        .error-box { background: #ffebee; border: 1px solid #ffcdd2; padding: 15px; border-radius: 5px; margin: 15px 0; }
-        .correct { color: #2e7d32; font-weight: 700; }
-        .wrong { color: #c62828; font-weight: 700; }
-        .quiz { background: #e3f2fd; padding: 15px; border-radius: 5px; margin-top: 15px; }
+        /* Section 4: Grammar */
+        .section-4 { border-color: var(--card-4-border); background-color: var(--card-4-bg); }
+        .section-4 .card-header { background-color: var(--card-4-header); }
+        .grammar-point { margin-bottom: 50px; background: white; padding: 30px; border-radius: 12px; }
+        .grammar-title { font-size: 1.6rem; font-weight: bold; color: var(--card-4-header); border-bottom: 2px solid var(--card-4-header); margin-bottom: 20px; padding-bottom: 10px; }
+        .g-section { margin-bottom: 20px; }
+        .g-label { font-weight: bold; color: var(--card-4-header); display: block; margin-bottom: 8px; }
+        .g-quote { font-style: italic; background: #f9f9f9; padding: 10px; border-left: 4px solid #ccc; }
+        .g-pattern { font-weight: bold; font-style: italic; font-size: 1.2rem; background: #eee; padding: 5px 10px; border-radius: 4px; }
+        .wrong { color: #d32f2f; }
+        .right { color: #388e3c; font-weight: bold; }
 
         /* Bottom Details */
-        details {
-            border: 2px solid var(--bottom-border);
-            border-radius: 10px;
-            margin-bottom: 15px;
-            background-color: var(--bottom-bg);
-            overflow: hidden;
-        }
-        summary {
-            background-color: var(--bottom-head);
-            color: white;
-            padding: 20px;
-            font-weight: 700;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            min-height: 72px;
-        }
+        .bottom-section { border-color: var(--card-5-border); background-color: var(--card-5-bg); }
+        .bottom-section .card-header { background-color: var(--card-5-header); }
+        details { margin-bottom: 15px; background: white; border-radius: 8px; border: 1px solid #ddd; }
+        summary { padding: 15px 25px; cursor: pointer; font-weight: bold; font-size: 1.3rem; display: flex; justify-content: space-between; align-items: center; list-style: none; }
         summary::-webkit-details-marker { display: none; }
-        summary::after { content: '▼'; transition: transform 0.3s; }
+        summary::after { content: '▼'; font-size: 0.8rem; transition: transform 0.3s; }
         details[open] summary::after { transform: rotate(180deg); }
-        .details-body { padding: 25px; }
-        
+        .details-inner { padding: 20px 30px; border-top: 1px solid #eee; }
 
-        /* Links Section CSS */
-        .link-cards-section {
-            background-color: #F8F4ED;
-            padding: 60px 0;
-            border-radius: 15px;
-            margin-bottom: 40px;
+        .link-strip {
+            border: 4px solid #F57C00;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 48%, #FFF8E1 100%);
+            box-shadow: 0 8px 0 #F8B76A;
+            padding: 18px;
+            margin: 0 0 38px;
         }
-        .bottom-section {
-            margin-top: 50px;
-            margin-bottom: 20px;
+        .link-strip.bottom-links {
+            margin: 38px 0 0;
         }
-        .link-cards-title {
-            color: #8B5E3C;
-            font-size: 24px;
-            font-weight: bold;
+        .link-strip h2 {
+            color: #BF360C;
+            font-size: 1.65rem;
             text-align: center;
-            margin-top: 0;
-            margin-bottom: 30px;
+            margin: 0 0 14px;
+            font-weight: 700;
+            line-height: 1.35;
         }
-        .cards-container {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            padding: 0 20px;
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
         }
-        .link-card {
-            background-color: #FFFFFF;
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 2px 8px rgba(139, 94, 60, 0.15);
-            transition: all 0.3s ease;
-            text-decoration: none;
+        .promo-link {
             display: flex;
             flex-direction: column;
-            flex: 1;
-            position: relative;
+            justify-content: center;
+            min-height: 132px;
+            padding: 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: #1A0F00;
+            border: 3px solid rgba(26, 15, 0, 0.16);
+            background: #FFFFFF;
         }
-        .link-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 16px rgba(139, 94, 60, 0.25);
+        .promo-link:nth-child(1) {
+            background: linear-gradient(135deg, #FFE0B2, #FFF8E1);
+            border-color: #FB8C00;
         }
-        .card-title {
-            color: #8B5E3C;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 12px;
-            font-family: 'BIZ UDPGothic', sans-serif;
+        .promo-link:nth-child(2) {
+            background: linear-gradient(135deg, #FFCCBC, #FFF3E0);
+            border-color: #E65100;
         }
-        .card-desc {
-            color: #2D2A26;
-            font-size: 16px;
-            line-height: 1.7;
-            margin: 0;
-            margin-bottom: 24px;
-            font-family: 'BIZ UDPGothic', sans-serif;
+        .promo-link:nth-child(3) {
+            background: linear-gradient(135deg, #F8BBD0, #FFF8E1);
+            border-color: #C2185B;
         }
-        .card-arrow {
-            color: #D4A574;
-            font-size: 20px;
-            position: absolute;
-            bottom: 20px;
-            right: 24px;
+        .promo-title {
+            display: block;
+            color: #BF360C;
+            font-size: 1.18rem;
+            font-weight: 700;
+            line-height: 1.45;
+            margin-bottom: 8px;
         }
-
-        @media (max-width: 768px) {
-            .cards-container {
+        .promo-desc {
+            display: block;
+            color: #3C1B08;
+            font-size: 1rem;
+            line-height: 1.65;
+            font-weight: 700;
+        }
+        
+        /* Utility */
+        .mt-10 { margin-top: 10px; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 8px; }
+        @media (max-width: 720px) {
+            body {
+                padding: 24px 12px;
+                font-size: 20px;
+            }
+            h1 {
+                font-size: 2.45rem;
+                padding: 16px;
+                box-shadow: 5px 5px 0 var(--h1-color);
+            }
+            .subtitle {
+                font-size: 1.75rem;
+            }
+            .card-content {
+                padding: 20px;
+            }
+            .link-grid {
+                grid-template-columns: 1fr;
+            }
+            .promo-link {
+                min-height: 112px;
+            }
+            .tag-row {
                 flex-direction: column;
-                gap: 16px;
             }
-            .link-card {
-                width: 100%;
-                box-sizing: border-box;
+            .tag-label {
+                margin: 0 0 8px;
             }
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .subtitle { font-size: 1.5rem; }
-            body { font-size: 18px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-
-        <!-- Top Links Section -->
-        <section class="link-cards-section" id="link-cards-section-top">
-            <div class="link-cards-title">七月課程與聯絡方式</div>
-            <div class="cards-container">
-                <a href="https://linwayet.github.io/4ulive/index.html" class="link-card" target="_blank" rel="noopener noreferrer">
-                    <div class="card-title">七月課程介紹</div>
-                    <p class="card-desc">錯中學 ECHO 計劃從錯題回音中整理弱點，建立可複習、可追蹤的英文學習節奏。</p>
-                    <div class="card-arrow">→</div>
+        <nav class="link-strip" aria-label="課程與聯絡連結">
+            <h2>七月課程與聯絡方式</h2>
+            <div class="link-grid">
+                <a class="promo-link" href="https://linwayet.github.io/4ulive/index.html">
+                    <span class="promo-title">七月課程介紹：錯中學 ECHO 計劃</span>
+                    <span class="promo-desc">用錯誤回饋帶學生練閱讀、文法與表達，適合暑期系統加強。</span>
                 </a>
-                <a href="https://linwayet.github.io/popup/index" class="link-card" target="_blank" rel="noopener noreferrer">
-                    <div class="card-title">學生分析用學習資料</div>
-                    <p class="card-desc">看見學生狀態，協助安排更精準的補強方向。</p>
-                    <div class="card-arrow">→</div>
+                <a class="promo-link" href="https://linwayet.github.io/popup/index">
+                    <span class="promo-title">學生分析</span>
+                    <span class="promo-desc">整理學生學習狀態與弱點，協助安排更精準的英文讀書方向。</span>
                 </a>
-                <a href="https://line.me/ti/p/~linwayet" class="link-card" target="_blank" rel="noopener noreferrer">
-                    <div class="card-title">林威老師 Line</div>
-                    <p class="card-desc">Line ID: linwayet，可加入後詢問課程與學習規劃。</p>
-                    <div class="card-arrow">→</div>
+                <a class="promo-link" href="https://line.me/ti/p/~linwayet">
+                    <span class="promo-title">林威老師 Line：linwayet</span>
+                    <span class="promo-desc">課程詢問、教材討論與學習規劃，可加入 Line 聯繫。</span>
                 </a>
             </div>
-        </section>
+        </nav>
 
-        <!-- Header Section -->
-        <div class="title-box">
-            <h1>Safety in Public Spaces: Be Ready for the Unexpected</h1>
-        </div>
-        <div class="subtitle">公共場所安全：隨時準備應對突發狀況</div>
-        <div class="credit">林威老師與 AI agent 團隊製作</div>
+        <h1>Inside Bipolar Disorder</h1>
+        <div class="subtitle">Understanding the Unpredictable</div>
+        <div class="author-line">林威老師與 AI agent 團隊製作</div>
 
-        <!-- Section 1: Article -->
-        <h2 style="color: var(--h2-color);">【區塊一】英文文章原文</h2>
-        <div class="card block-1">
-            <div class="card-head">【原文 Original Article】</div>
-            <div class="card-body">
-                <p>In December 2025, a <span class="kw">series</span> of attacks <span class="kw">occurred</span> at Taipei MRT stations. The attacker used smoke bombs before starting <span class="kw">random</span> knife attacks. Many people were at first <span class="kw">confused</span> by the smoke, but these few seconds of <span class="kw">confusion</span> are often the key time to <span class="kw">escape</span>. An important rule to protect yourself is "run, hide, fight."</p>
-                <p>"Run" means to get away as fast as you can. Don't "freeze" to confirm what's happening. As you escape, warn others nearby and call 110. "Hide" means to stay out of the attacker's sight, find cover, and stay quiet. If you can't escape, hide behind solid <span class="kw">barriers</span>, such as counters, or lock yourself inside a room. Turn off your devices, stay low, and keep your body protected. "Fight" only when all else fails and you have no choice but to <span class="kw">resist</span>. The key idea is not winning, but creating an <span class="kw">opening</span> to escape.</p>
-                <p>Finally, remember your <span class="kw">environment</span> is full of tools. A backpack can shield your torso. A jacket wrapped around your arm can protect you. An umbrella or even a chair can help create distance or cover while you move away.</p>
-                <hr>
-                <p>Taiwan's public transportation system and event venues offer <span class="kw">reliable</span> <span class="kw">safety</span> tools. For passengers, it helps to know what support already exists and how to use it quickly.</p>
-                <p>Take the Taiwan High Speed Rail as an example. Both <span class="kw">emergency</span> buttons and intercom systems are available on trains. These tools let passengers report <span class="kw">suspicious</span> activity, medical emergencies, or violent events in real time. In addition, there is a hidden safety <span class="kw">feature</span>: The seat cushions can be <span class="kw">removed</span> in emergencies and used as protective padding. To keep everyone safe, the company also works closely with the police, using CCTV cameras and <span class="kw">security</span> control rooms to watch the environment. At major stations, you may notice more security guards and staff during peak hours.</p>
-                <p>Whether you are on a train or at a large concert, the way to stay safe is the same: stay alert and know your <span class="kw">surroundings</span>. At sports games and festival events, organizers also have safety plans in place. When you arrive, take a minute to look around for the nearest <span class="kw">exits</span>. Notice where the staff members are so that you can find them quickly if you need help or directions.</p>
-                <hr>
-                <p>While we must stay alert in public, we also need to have the right supplies ready. A simple step is keeping a grab-and-go kit. This kit is designed for quick <span class="kw">evacuation</span>. It should include a bottle of water, face masks, wet wipes, as well as a power bank and cables to stay <span class="kw">connected</span>. Don't forget to pack a first aid kit, a whistle, and a flashlight, along with cash and copies of your IDs. Keep the kit light, and check it at least twice a year.</p>
-                <p>However, tools alone are not enough; you also need some life-saving skills. In a crisis, your top <span class="kw">priority</span> is to keep yourself safe so you don't become another <span class="kw">victim</span>. Once you're safe, call emergency services and then check for the most serious <span class="kw">injuries</span>. For heavy bleeding, apply firm, direct <span class="kw">pressure</span> on the wound; if available, pack the wound with gauze and keep pressure on. For serious bleeding from an arm or a leg, a tourniquet can be used when pressure isn't enough. If many people are hurt, focus on helping those with life-threatening injuries first while waiting for emergency services.</p>
-                <p>There is nothing more powerful than staying clear-headed in a crisis—remembering to run, hide, or fight, and acting without <span class="kw">hesitation</span>.</p>
+        <!-- Section 1 -->
+        <div class="card section-1">
+            <div class="card-header">英文文章原文</div>
+            <div class="card-content">
+                <p>Can you imagine feeling absolutely on top of the world one day and completely hopeless the next? For people with bipolar disorder, this kind of extreme mood swing is not an <strong>occasional</strong> bad week—it is a regular part of life. Bipolar disorder is a mental health <strong>condition</strong> that causes <strong>dramatic</strong> shifts in a person's mood, energy, and ability to function. Understanding it is a <strong>crucial</strong> step toward reducing <strong>stigma</strong> and improving care.</p>
+                
+                <p>Bipolar disorder is <strong>broadly</strong> divided into two main types. Bipolar I involves <strong>episodes</strong> of full mania—periods of <strong>unusually</strong> high energy, little need for sleep, racing thoughts, and <strong>impulsive</strong> behavior that can last at least a week. During a manic episode, a person might feel <strong>invincible</strong>, make risky financial decisions, or talk so quickly that others can't follow. These episodes are often followed by periods of depression, during which the same person may feel <strong>exhausted</strong>, hopeless, and unable to carry out daily tasks.</p>
+                
+                <p>Bipolar II involves a milder form of mania called hypomania, which does not cause as severe an <strong>impairment</strong> as full mania but is still <strong>noticeable</strong> to those around the person. People with Bipolar II often experience longer and more <strong>frequent</strong> episodes of depression.</p>
+                
+                <p>One of the most challenging aspects of bipolar disorder is its <strong>unpredictability</strong>. Mood episodes can be triggered by stress, disrupted sleep, or life changes—or they can appear without any clear cause. This unpredictability makes it difficult for individuals to plan their lives and <strong>maintain</strong> steady relationships and employment.</p>
+                
+                <p>Despite these challenges, bipolar disorder is a manageable condition. Mood stabilizing medications, combined with therapy and lifestyle <strong>adjustments</strong>—such as maintaining regular sleep, reducing stress, and avoiding alcohol—can significantly reduce the <strong>frequency</strong> and <strong>severity</strong> of episodes. Support from family, friends, and mental health professionals also plays a <strong>vital</strong> role in long-term stability.</p>
+                
+                <p>Understanding bipolar disorder not as a character flaw but as a medical condition is <strong>essential</strong>—both for those who live with it and for the people who care about them.</p>
             </div>
         </div>
 
-        <!-- Section 2: 8 Key Sentences -->
-        <h2 style="color: var(--h2-color);">【區塊二】8句精讀</h2>
-        <div class="card block-2">
-            <div class="card-head">【8句精讀 8 Key Sentence Analyses】</div>
-            <div class="card-body">
+        <!-- Section 2 -->
+        <div class="card section-2">
+            <div class="card-header">8句精讀</div>
+            <div class="card-content">
                 <div class="sentence-item">
-                    <div class="num-circle">1</div>
-                    <div class="quote-box">Many people were at first confused by the smoke, but these few seconds of confusion are often the key time to escape.</div>
-                    <div class="translation">許多人起初被煙霧搞得很困惑，但這幾秒鐘的困惑往往是逃生的關鍵時刻。</div>
-                    <div class="grammar-desc">本句使用了對等連接詞 but 連結兩個對比的子句。注意動詞後的形容詞 confused（人感到困惑的）與名詞 confusion（困惑、混亂）的變化。</div>
-                    <div class="pill">at first 起初</div> <div class="pill">key time 關鍵時刻</div>
+                    <span class="circle-num">1</span>
+                    <span class="sentence-text">Can you imagine feeling absolutely on top of the world one day and completely hopeless the next?</span>
+                    你能想像前一天感覺身處巔峰，隔天卻感到完全絕望嗎？
+                    <div class="grammar-box">
+                        <strong>文法解析：動名詞作受詞</strong><br>
+                        本句使用 imagine 後接動名詞 (feeling...) 作為受詞。後半部的 "the next" 之後省略了 "day"，形成對比結構，生動描述雙極性障礙的情緒起伏。
+                    </div>
+                    <div class="mt-10">
+                        <span class="pill">on top of the world (極為快樂)</span>
+                        <span class="pill">imagine (想像)</span>
+                        <span class="pill">hopeless (絕望的)</span>
+                    </div>
                 </div>
 
                 <div class="sentence-item">
-                    <div class="num-circle">2</div>
-                    <div class="quote-box">Turn off your devices, stay low, and keep your body protected.</div>
-                    <div class="translation">關掉你的裝置，保持低姿勢，並保持身體受保護。</div>
-                    <div class="grammar-desc">這是一個祈使句（Imperative Sentence），由三個動作組成。keep + 受詞 + 受詞補語（protected，過去分詞表被動受保護狀態）。</div>
-                    <div class="pill">turn off 關掉</div> <div class="pill">stay low 保持低姿勢</div>
+                    <span class="circle-num">2</span>
+                    <span class="sentence-text">Bipolar disorder is a mental health condition that causes dramatic shifts in a person's mood, energy, and ability to function.</span>
+                    雙極性障礙是一種心理健康疾病，會導致一個人的情緒、活力與功能運作能力產生巨大轉變。
+                    <div class="grammar-box">
+                        <strong>文法解析：形容詞子句（關係代名詞）</strong><br>
+                        "that causes..." 為關係代名詞引導的形容詞子句，修飾先行詞 condition。最後的 "ability to function" 中，不定詞 to function 用作形容詞修飾 ability。
+                    </div>
+                    <div class="mt-10">
+                        <span class="pill">condition (疾病、狀況)</span>
+                        <span class="pill">dramatic shift (劇烈轉變)</span>
+                        <span class="pill">ability to function (運作能力)</span>
+                    </div>
                 </div>
 
                 <div class="sentence-item">
-                    <div class="num-circle">3</div>
-                    <div class="quote-box">Fight only when all else fails and you have no choice but to resist.</div>
-                    <div class="translation">只有當所有其他方法都失敗且你別無選擇只能抵抗時，才進行反擊。</div>
-                    <div class="grammar-desc">when 引導時間副詞子句。核心句型為 have no choice but to + V，表示「別無選擇只能……」，注意 to 後接原形動詞。</div>
-                    <div class="pill">all else 所有其他事物</div> <div class="pill">have no choice but to 別無選擇只能</div>
+                    <span class="circle-num">3</span>
+                    <span class="sentence-text">Bipolar I involves episodes of full mania—periods of unusually high energy, little need for sleep, racing thoughts, and impulsive behavior that can last at least a week.</span>
+                    第一型雙極性障礙包含躁症發作期——這段期間會出現異常高昂的活力、幾乎不需要睡眠、思緒飛轉以及衝動行為，且可能持續至少一週。
+                    <div class="grammar-box">
+                        <strong>文法解析：同位語結構</strong><br>
+                        破折號引導的 "periods of..." 是前面 "episodes of full mania" 的同位語，用來進一步解釋躁症的具體特徵。後方 that 引導的子句修飾前面的名詞。
+                    </div>
+                    <div class="mt-10">
+                        <span class="pill">mania (躁狂)</span>
+                        <span class="pill">racing thoughts (思緒飛轉)</span>
+                        <span class="pill">impulsive behavior (衝動行為)</span>
+                    </div>
                 </div>
 
                 <div class="sentence-item">
-                    <div class="num-circle">4</div>
-                    <div class="quote-box">Both emergency buttons and intercom systems are available on trains.</div>
-                    <div class="translation">火車上備有緊急按鈕和對講機系統。</div>
-                    <div class="grammar-desc">使用了對等連接詞 Both A and B，主詞為複數，故動詞用 are。available 意為「可得到的、可使用的」。</div>
-                    <div class="pill">emergency button 緊急按鈕</div> <div class="pill">intercom 對講機</div>
+                    <span class="circle-num">4</span>
+                    <span class="sentence-text">During a manic episode, a person might feel invincible, make risky financial decisions, or talk so quickly that others can't follow.</span>
+                    在躁症發作期間，患者可能會感到無所不能、做出具風險的財務決定，或是說話快到讓他人無法跟上。
+                    <div class="grammar-box">
+                        <strong>文法解析：so... that... 句型</strong><br>
+                        "talk so quickly that..." 使用了「如此……以至於……」的結果子句。這組結構用來描述說話速度過快導致他人跟不上的結果。
+                    </div>
+                    <div class="mt-10">
+                        <span class="pill">invincible (無敵的)</span>
+                        <span class="pill">risky (具風險的)</span>
+                        <span class="pill">manic episode (躁症發作)</span>
+                    </div>
                 </div>
 
                 <div class="sentence-item">
-                    <div class="num-circle">5</div>
-                    <div class="quote-box">The seat cushions can be removed in emergencies and used as protective padding.</div>
-                    <div class="translation">椅墊可以在緊急情況下拆卸並用作防護墊。</div>
-                    <div class="grammar-desc">使用了被動語態 can be removed 和 (can be) used。used as 表示「被用作……」。</div>
-                    <div class="pill">seat cushion 椅墊</div> <div class="pill">protective padding 防護墊</div>
+                    <span class="circle-num">5</span>
+                    <span class="sentence-text">These episodes are often followed by periods of depression, during which the same person may feel exhausted, hopeless, and unable to carry out daily tasks.</span>
+                    這些發作期通常接著會出現憂鬱期，在這段期間內，同一位患者可能會感到精疲力竭、絕望且無法執行日常任務。
+                    <div class="grammar-box">
+                        <strong>文法解析：介系詞 + 關係代名詞</strong><br>
+                        "during which" 為正式的關係子句用法，which 指代前面的 "periods of depression"，表示「在這些（憂鬱）期間內」。
+                    </div>
+                    <div class="mt-10">
+                        <span class="pill">carry out (執行)</span>
+                        <span class="pill">exhausted (精疲力竭的)</span>
+                        <span class="pill">daily tasks (日常任務)</span>
+                    </div>
                 </div>
 
                 <div class="sentence-item">
-                    <div class="num-circle">6</div>
-                    <div class="quote-box">To keep everyone safe, the company also works closely with the police, using CCTV cameras and security control rooms to watch the environment.</div>
-                    <div class="translation">為了確保大家的安全，該公司也與警方密切合作，利用監視器和安全監控室來觀察環境。</div>
-                    <div class="grammar-desc">句首的不定詞片語 To keep... 表示目的。using... 是現在分詞構句，表伴隨動作或手段。</div>
-                    <div class="pill">work closely with 與……密切合作</div> <div class="pill">CCTV 監視器</div>
+                    <span class="circle-num">6</span>
+                    <span class="sentence-text">Bipolar II involves a milder form of mania called hypomania, which does not cause as severe an impairment as full mania but is still noticeable to those around the person.</span>
+                    第二型雙極性障礙包含一種較輕微、稱為輕躁症的躁症形式，它不會像完全躁症那樣造成嚴重的損害，但身邊的人仍能察覺。
+                    <div class="grammar-box">
+                        <strong>文法解析：as... as... 比較句型</strong><br>
+                        "as severe an impairment as..." 結構中，形容詞 severe 置於冠詞 an 之前，這是 as... as 結構中「as + 形容詞 + 單數冠詞 + 名詞 + as」的特殊用法。
+                    </div>
+                    <div class="mt-10">
+                        <span class="pill">impairment (損害)</span>
+                        <span class="pill">noticeable (顯著的)</span>
+                        <span class="pill">milder form (較輕微形式)</span>
+                    </div>
                 </div>
 
                 <div class="sentence-item">
-                    <div class="num-circle">7</div>
-                    <div class="quote-box">Notice where the staff members are so that you can find them quickly if you need help or directions.</div>
-                    <div class="translation">注意工作人員在哪裡，以便在你需要幫助或指引時能快速找到他們。</div>
-                    <div class="grammar-desc">where the staff members are 是間接問句（疑問詞+主詞+動詞）作 notice 的受詞。so that 引導目的子句。</div>
-                    <div class="pill">staff member 工作人員</div> <div class="pill">so that 以便</div>
+                    <span class="circle-num">7</span>
+                    <span class="sentence-text">This unpredictability makes it difficult for individuals to plan their lives and maintain steady relationships and employment.</span>
+                    這種不可預測性使得患者難以規劃生活，並難以維持穩定的關係與就業。
+                    <div class="grammar-box">
+                        <strong>文法解析：虛受詞 it 結構</strong><br>
+                        "makes it difficult for individuals to plan..." 中，it 是虛受詞，真正的受詞是後面的不定詞片語 "to plan... and maintain..."。
+                    </div>
+                    <div class="mt-10">
+                        <span class="pill">unpredictability (不可預測性)</span>
+                        <span class="pill">maintain (維持)</span>
+                        <span class="pill">employment (就業、僱用)</span>
+                    </div>
                 </div>
 
                 <div class="sentence-item">
-                    <div class="num-circle">8</div>
-                    <div class="quote-box">For heavy bleeding, apply firm, direct pressure on the wound; if available, pack the wound with gauze and keep pressure on.</div>
-                    <div class="translation">對於嚴重出血，請對傷口施加堅定且直接的壓力；如果可以，用紗布填塞傷口並持續加壓。</div>
-                    <div class="grammar-desc">使用了祈使句給予指示。if available 是省略用法，原為 if it is available。pack the wound with... 用……填塞傷口。</div>
-                    <div class="pill">heavy bleeding 嚴重出血</div> <div class="pill">direct pressure 直接壓力</div>
+                    <span class="circle-num">8</span>
+                    <span class="sentence-text">Understanding bipolar disorder not as a character flaw but as a medical condition is essential—both for those who live with it and for the people who care about them.</span>
+                    將雙極性障礙視為一種醫療疾病而非性格缺陷是至關重要的——無論是對患者本人還是關心他們的人來說。
+                    <div class="grammar-box">
+                        <strong>文法解析：not A but B 結構</strong><br>
+                        "not as a character flaw but as a medical condition" 為對等連接詞結構，用來修正錯誤觀念並強調正確定義。主詞是 Understanding 引導的動名詞片語。
+                    </div>
+                    <div class="mt-10">
+                        <span class="pill">essential (必要的)</span>
+                        <span class="pill">character flaw (性格缺陷)</span>
+                        <span class="pill">medical condition (醫療疾病)</span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3: Vocabulary -->
-        <h2 style="color: var(--h2-color);">【區塊三】18–20個單字整理</h2>
-        <div class="card block-3">
-            <div class="card-head">【單字表 Vocabulary List】</div>
-            <div class="card-body">
-                <!-- 1. unexpected -->
+        <!-- Section 3 -->
+        <div class="card section-3">
+            <div class="card-header">18–20個單字整理</div>
+            <div class="card-content">
+                <!-- 1 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">1</span>
-                        <span class="vocab-word">unexpected</span>
-                        <span class="kk">[ˌʌnɪkˈspɛktɪd]</span>
-                    </div>
-                    <div class="pos-def">adj. 意料之外的；突如其來的</div>
+                    <div class="vocab-head"><span class="circle-num">1</span> unpredictable <span class="kk">[ʌnprɪˈdɪktəbl]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">不可預測的、變幻莫測的</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">unexpectedly (adv. 意外地) ; expectation (n. 期待)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">predict (v. 預測) ↔ prediction (n. 預測) ↔ predictable (adj. 可預測的) ↔ unpredictability (n. 不可預測性)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label root-label">字根</div>
-                        <div class="tag-content">spect「看」：inspect 檢查 ; respect 尊敬 ; prospect 前景</div>
+                        <div class="tag-label" style="background: var(--tag-root-bg); color: var(--tag-root-text);">🔍 字根</div>
+                        <div class="tag-content">dict (說、講)：contradict (矛盾、反駁)、dictionary (字典)、dictate (命令、口述)、verdict (裁決)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">be ready for the unexpected 隨時應付突發狀況</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">highly unpredictable (極度難以預測)；an unpredictable outcome (難料的結果)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">Safety in public spaces involves being ready for the unexpected.<br>（公共場所的安全涉及隨時準備好應對突發狀況。）</div>
-                        <div class="example-item">The news of the store closing was completely unexpected.<br>（商店關門的消息完全出乎意料。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-prep-bg); color: var(--tag-prep-text);">🔗 搭配介系詞</div>
+                        <div class="tag-content">unpredictable to (對...來說不可預測)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">One of the most challenging aspects of bipolar disorder is its <strong>unpredictability</strong>.</span>
+                        <span class="ex-zh">（雙極性障礙最具挑戰性的面向之一就是其不可預測性。）</span>
+                        <span class="ex-en">The weather in the mountains is often <strong>unpredictable</strong> and can change in minutes.</span>
+                        <span class="ex-zh">（山上的天氣通常變幻莫測，幾分鐘內就會改變。）</span>
                     </div>
                 </div>
 
-                <!-- 2. series -->
+                <!-- 2 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">2</span>
-                        <span class="vocab-word">series</span>
-                        <span class="kk">[ˈsɪriz]</span>
-                    </div>
-                    <div class="pos-def">n. 一系列；連續</div>
+                    <div class="vocab-head"><span class="circle-num">2</span> occasional <span class="kk">[əˈkeʒən]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">偶爾的、不時的</span>
                     <div class="tag-row">
-                        <div class="tag-label phrase-label">片語</div>
-                        <div class="tag-content">a series of 一連串的</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">occasion (n. 時機、場合) ↔ occasionally (adv. 偶爾)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">a TV series 電視影集</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">an occasional occurrence (偶爾發生的事)；an occasional visitor (偶爾來訪的客人)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">In December 2025, a series of attacks occurred at Taipei MRT stations.<br>（2025 年 12 月，台北捷運站發生了一連串攻擊事件。）</div>
-                        <div class="example-item">The library is hosting a series of lectures on local history.<br>（圖書館正在舉辦一系列關於當地歷史的講座。）</div>
+                    <div class="example-block">
+                        <span class="ex-en">This kind of extreme mood swing is not an <strong>occasional</strong> bad week.</span>
+                        <span class="ex-zh">（這種極端的情緒起伏並非偶爾的一週狀況不佳。）</span>
+                        <span class="ex-en">He enjoys an <strong>occasional</strong> glass of wine with his dinner.</span>
+                        <span class="ex-zh">（他喜歡在晚餐時偶爾喝杯紅酒。）</span>
                     </div>
                 </div>
 
-                <!-- 3. occur -->
+                <!-- 3 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">3</span>
-                        <span class="vocab-word">occur</span>
-                        <span class="kk">[əˈkɝ]</span>
-                    </div>
-                    <div class="pos-def">v. 發生；想到</div>
+                    <div class="vocab-head"><span class="circle-num">3</span> condition <span class="kk">[kənˈdɪʃən]</span> <span class="pos">n. / v.</span></div>
+                    <span class="definition">健康問題、疾病；狀況、條件；(v.) 使習慣於</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">occurrence (n. 發生 ; 事件)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">conditional (adj. 有條件的) ↔ unconditional (adj. 無條件的) ↔ conditioning (n. 訓練、調節)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">occur to sb 某人想到某事</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">a chronic condition (慢性病)；living conditions (生活環境)；mint condition (完好如新)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">The incident occurred during the busiest time of the day.<br>（該事件發生在一天中最繁忙的時刻。）</div>
-                        <div class="example-item">It occurred to me that I had left my keys in the car.<br>（我突然想到我把鑰匙忘在車裡了。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-prep-bg); color: var(--tag-prep-text);">🔗 搭配介系詞</div>
+                        <div class="tag-content">in stable condition (狀況穩定)；on condition that (在...條件下)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">Bipolar disorder is a mental health <strong>condition</strong> that causes dramatic shifts.</span>
+                        <span class="ex-zh">（雙極性障礙是一種會導致劇烈變動的心理健康疾病。）</span>
+                        <span class="ex-en">The doctor asked about any pre-existing <strong>conditions</strong> before prescribing medicine.</span>
+                        <span class="ex-zh">（醫生在開藥前詢問了是否有任何既有病史。）</span>
                     </div>
                 </div>
 
-                <!-- 4. confusion -->
+                <!-- 4 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">4</span>
-                        <span class="vocab-word">confusion</span>
-                        <span class="kk">[kənˈfjuʒən]</span>
-                    </div>
-                    <div class="pos-def">n. 困惑；混亂</div>
+                    <div class="vocab-head"><span class="circle-num">4</span> dramatic <span class="kk">[drəˈmætɪk]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">巨大的、劇烈的；戲劇性的</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">confuse (v. 使困惑) ; confused (adj. 感到困惑的)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">drama (n. 戲劇) ↔ dramatize (v. 改編成戲劇) ↔ dramatically (adv. 巨大地、顯著地)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label root-label">字根</div>
-                        <div class="tag-content">fuse「注/灌」：refuse 拒絕 ; diffuse 散播 ; infuse 注入</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">a dramatic shift (劇烈轉變)；dramatic improvement (顯著進步)；rather dramatic (相當戲劇性的)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">These few seconds of confusion are often the key time to escape.<br>（這幾秒鐘的困惑往往是逃脫的關鍵時刻。）</div>
-                        <div class="example-item">There was a lot of confusion regarding the new rules.<br>（關於新規則存在很多困惑。）</div>
+                    <div class="example-block">
+                        <span class="ex-en">It causes <strong>dramatic</strong> shifts in a person's mood and energy.</span>
+                        <span class="ex-zh">（它會導致一個人的情緒與活力產生巨大轉變。）</span>
+                        <span class="ex-en">The company saw a <strong>dramatic</strong> increase in profits last quarter.</span>
+                        <span class="ex-zh">（該公司上季度的獲利有了顯著增長。）</span>
                     </div>
                 </div>
 
-                <!-- 5. escape -->
+                <!-- 5 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">5</span>
-                        <span class="vocab-word">escape</span>
-                        <span class="kk">[əˈskep]</span>
-                    </div>
-                    <div class="pos-def">v./n. 逃脫；逃避</div>
+                    <div class="vocab-head"><span class="circle-num">5</span> crucial <span class="kk">[ˈkruʃəl]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">至關重要的、關鍵的</span>
                     <div class="tag-row">
-                        <div class="tag-label phrase-label">片語</div>
-                        <div class="tag-content">escape from 從……逃脫</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">crucially (adv. 關鍵地)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">a narrow escape 九死一生 ; 險些逃脫</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">a crucial factor (關鍵因素)；absolutely crucial (絕對至關重要)；a crucial role (關鍵角色)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">The key idea of fighting is creating an opening to escape.<br>（反擊的核心觀念是製造逃脫的契機。）</div>
-                        <div class="example-item">The thief managed to escape from the police through a narrow window.<br>（小偷設法通過一扇窄窗逃離了警察。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-prep-bg); color: var(--tag-prep-text);">🔗 搭配介系詞</div>
+                        <div class="tag-content">crucial to / crucial for (對...至關重要)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">Understanding it is a <strong>crucial</strong> step toward reducing stigma.</span>
+                        <span class="ex-zh">（理解它是減少汙名化的關鍵一步。）</span>
+                        <span class="ex-en">It is <strong>crucial</strong> for everyone to follow the safety guidelines.</span>
+                        <span class="ex-zh">（每個人都遵守安全指南是至關重要的。）</span>
                     </div>
                 </div>
 
-                <!-- 6. barrier -->
+                <!-- 6 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">6</span>
-                        <span class="vocab-word">barrier</span>
-                        <span class="kk">[ˈbærɪr]</span>
-                    </div>
-                    <div class="pos-def">n. 障礙物；路障；隔閡</div>
+                    <div class="vocab-head"><span class="circle-num">6</span> stigma <span class="kk">[ˈstɪɡmə]</span> <span class="pos">n.</span></div>
+                    <span class="definition">汙名、恥辱、負面標籤</span>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">language barrier 語言障礙 ; trade barrier 貿易壁壘</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">stigmatize (v. 汙名化) ↔ stigmatized (adj. 被汙名的)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">If you can't escape, hide behind solid barriers, such as counters.<br>（如果你無法逃脫，請躲在堅固的障礙物後，例如櫃台。）</div>
-                        <div class="example-item">Lack of confidence can be a significant barrier to success.<br>（缺乏信心可能是通往成功的重要障礙。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">social stigma (社會汙名)；remove the stigma (消除恥辱)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-prep-bg); color: var(--tag-prep-text);">🔗 搭配介系詞</div>
+                        <div class="tag-content">stigma attached to (伴隨...而來的汙名)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">It is a crucial step toward reducing <strong>stigma</strong> and improving care.</span>
+                        <span class="ex-zh">（這是邁向減少汙名化與改善照護的關鍵一步。）</span>
+                        <span class="ex-en">There is often a <strong>stigma</strong> attached to seeking help for mental issues.</span>
+                        <span class="ex-zh">（尋求心理問題的幫助通常會被貼上負面標籤。）</span>
                     </div>
                 </div>
 
-                <!-- 7. resist -->
+                <!-- 7 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">7</span>
-                        <span class="vocab-word">resist</span>
-                        <span class="kk">[rɪˈzɪst]</span>
-                    </div>
-                    <div class="pos-def">v. 抵抗；抵制；忍住</div>
+                    <div class="vocab-head"><span class="circle-num">7</span> broadly <span class="kk">[ˈbrɔdlɪ]</span> <span class="pos">adv.</span></div>
+                    <span class="definition">大體上、概括地、廣泛地</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">resistance (n. 抵抗) ; resistant (adj. 有抵抗力的)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">broad (adj. 寬廣的、廣泛的) ↔ broaden (v. 拓寬) ↔ breadth (n. 寬度、廣泛性)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">resist temptation 抵制誘惑</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">broadly speaking (概括來說)；broadly based (基礎廣泛的)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">Fight only when you have no choice but to resist.<br>（只有當你別無選擇只能抵抗時才反擊。）</div>
-                        <div class="example-item">It was hard to resist eating another piece of cake.<br>（很難忍住不再吃一塊蛋糕。）</div>
+                    <div class="example-block">
+                        <span class="ex-en">Bipolar disorder is <strong>broadly</strong> divided into two main types.</span>
+                        <span class="ex-zh">（雙極性障礙大致上分為兩大主要類型。）</span>
+                        <span class="ex-en">His research is <strong>broadly</strong> applicable to many different fields.</span>
+                        <span class="ex-zh">（他的研究廣泛適用於許多不同領域。）</span>
                     </div>
                 </div>
 
-                <!-- 8. environment -->
+                <!-- 8 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">8</span>
-                        <span class="vocab-word">environment</span>
-                        <span class="kk">[ɪnˈvaɪrənmənt]</span>
-                    </div>
-                    <div class="pos-def">n. 環境</div>
+                    <div class="vocab-head"><span class="circle-num">8</span> episodes <span class="kk">[ˈɛpəˌsodz]</span> <span class="pos">n.</span></div>
+                    <span class="definition">（病症）發作；片段、一集</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">environmental (adj. 環境的) ; environmentalist (n. 環保人士)</div>
+                        <div class="tag-label" style="background: var(--tag-phra-bg); color: var(--tag-phra-text);">📋 片語</div>
+                        <div class="tag-content">a depressive episode (憂鬱發作期)；a manic episode (躁症發作期)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">protect the environment 保護環境 ; working environment 工作環境</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">the latest episode (最新的一集)；a bizarre episode (奇特的插曲)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">Remember your environment is full of tools you can use for protection.<br>（記住你的周圍環境充滿了你可以用來保護自己的工具。）</div>
-                        <div class="example-item">A healthy home environment is important for a child's growth.<br>（健康的家庭環境對孩子的成長非常重要。）</div>
+                    <div class="example-block">
+                        <span class="ex-en">Bipolar I involves <strong>episodes</strong> of full mania.</span>
+                        <span class="ex-zh">（第一型雙極性障礙包含完全躁症的發作期。）</span>
+                        <span class="ex-en">I missed several <strong>episodes</strong> of my favorite show while I was on vacation.</span>
+                        <span class="ex-zh">（我在度假期間錯過了我最愛的節目的好幾集。）</span>
                     </div>
                 </div>
 
-                <!-- 9. reliable -->
+                <!-- 9 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">9</span>
-                        <span class="vocab-word">reliable</span>
-                        <span class="kk">[rɪˈlaɪəbl]</span>
-                    </div>
-                    <div class="pos-def">adj. 可靠的；可信賴的</div>
+                    <div class="vocab-head"><span class="circle-num">9</span> unusually <span class="kk">[ʌnˈjuʒʊəlɪ]</span> <span class="pos">adv.</span></div>
+                    <span class="definition">異常地、不尋常地</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">rely (v. 依賴) ; reliability (n. 可靠性)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">usual (adj. 通常的) ↔ unusual (adj. 不尋常的) ↔ usually (adv. 通常)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">highly reliable 非常可靠的 ; reliable information 可靠消息</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">unusually quiet (異常安靜)；unusually high (異常高)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">Taiwan's public transportation system offers reliable safety tools.<br>（台灣的公共運輸系統提供可靠的安全工具。）</div>
-                        <div class="example-item">We need a reliable person to lead this project.<br>（我們需要一個可靠的人來領導這個計畫。）</div>
+                    <div class="example-block">
+                        <span class="ex-en">These are periods of <strong>unusually</strong> high energy.</span>
+                        <span class="ex-zh">（這些是活力異常高昂的時期。）</span>
+                        <span class="ex-en">It has been <strong>unusually</strong> hot for this time of year.</span>
+                        <span class="ex-zh">（在這個時節，天氣熱得有些反常。）</span>
                     </div>
                 </div>
 
-                <!-- 10. emergency -->
+                <!-- 10 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">10</span>
-                        <span class="vocab-word">emergency</span>
-                        <span class="kk">[iˈmɝdʒənsɪ]</span>
-                    </div>
-                    <div class="pos-def">n. 緊急情況 adj. 緊急的</div>
+                    <div class="vocab-head"><span class="circle-num">10</span> impulsive <span class="kk">[ɪmˈpʌlsɪv]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">衝動的、草率的</span>
                     <div class="tag-row">
-                        <div class="tag-label phrase-label">片語</div>
-                        <div class="tag-content">in case of emergency 以防萬一</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">impulse (n. 衝動) ↔ impulsively (adv. 衝動地) ↔ impulsivity (n. 衝動性)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">emergency services 緊急救援服務 (警、消、醫)</div>
+                        <div class="tag-label" style="background: var(--tag-root-bg); color: var(--tag-root-text);">🔍 字根</div>
+                        <div class="tag-content">pel/puls (推)：compel (強迫)、propel (推進)、expel (驅逐)、repulse (擊退)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">Emergency buttons and intercom systems are available on trains.<br>（火車上備有緊急按鈕和對講機系統。）</div>
-                        <div class="example-item">The pilot made an emergency landing after the engine failed.<br>（引擎故障後，機師進行了緊急降落。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">an impulsive decision (衝動的決定)；an impulsive buyer (衝動型購物者)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">Racing thoughts and <strong>impulsive</strong> behavior can last at least a week.</span>
+                        <span class="ex-zh">（飛轉的思緒與衝動行為可能持續至少一週。）</span>
+                        <span class="ex-en">Don't be so <strong>impulsive</strong>; think before you act.</span>
+                        <span class="ex-zh">（別這麼衝動；在行動前先思考。）</span>
                     </div>
                 </div>
 
-                <!-- 11. suspicious -->
+                <!-- 11 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">11</span>
-                        <span class="vocab-word">suspicious</span>
-                        <span class="kk">[əˈspɪʃəs]</span>
-                    </div>
-                    <div class="pos-def">adj. 可疑的；懷疑的</div>
+                    <div class="vocab-head"><span class="circle-num">11</span> invincible <span class="kk">[ɪnˈvɪnsəbl]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">無敵的、不可征服的</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">suspicion (n. 懷疑) ; suspect (n. 嫌疑人 ; v. 懷疑)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">invincibility (n. 無敵) ↔ vincible (adj. 可征服的)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">suspicious activity 可疑活動 ; feel suspicious about 對……感到懷疑</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">feel invincible (感到無所不能)；seem invincible (看起來不可戰勝)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">These tools let passengers report suspicious activity in real time.<br>（這些工具讓乘客能即時回報可疑活動。）</div>
-                        <div class="example-item">The neighbors became suspicious when they saw strange lights in the house.<br>（鄰居們看到房子裡有奇怪的光時，變得起了疑心。）</div>
+                    <div class="example-block">
+                        <span class="ex-en">During a manic episode, a person might feel <strong>invincible</strong>.</span>
+                        <span class="ex-zh">（在躁症發作期間，患者可能會感到自己無所不能。）</span>
+                        <span class="ex-en">The team seemed <strong>invincible</strong> after winning ten games in a row.</span>
+                        <span class="ex-zh">（在連贏十場比賽後，這支隊伍看起來勢不可擋。）</span>
                     </div>
                 </div>
 
-                <!-- 12. feature -->
+                <!-- 12 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">12</span>
-                        <span class="vocab-word">feature</span>
-                        <span class="kk">[ˈfitʃɚ]</span>
-                    </div>
-                    <div class="pos-def">n. 特徵；功能 v. 以……為特色</div>
+                    <div class="vocab-head"><span class="circle-num">12</span> exhausted <span class="kk">[ɪɡˈzɔstɪd]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">精疲力竭的、耗盡的</span>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">safety feature 安全設計 ; key feature 主要特徵</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">exhaust (v. 使精疲力竭、耗盡) ↔ exhaustion (n. 疲憊、耗盡) ↔ exhaustive (adj. 詳盡的)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">There is a hidden safety feature in the high-speed rail trains.<br>（高鐵列車上有一個隱藏的安全設計。）</div>
-                        <div class="example-item">The new smartphone has many advanced features.<br>（這款新手機有很多先進的功能。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">completely exhausted (徹底精疲力竭)；an exhausted resource (耗盡的資源)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">The same person may feel <strong>exhausted</strong> and hopeless.</span>
+                        <span class="ex-zh">（同一位患者可能會感到精疲力竭且絕望。）</span>
+                        <span class="ex-en">I was <strong>exhausted</strong> after a long day of working in the yard.</span>
+                        <span class="ex-zh">（在院子裡工作了一整天後，我感到筋疲力竭。）</span>
                     </div>
                 </div>
 
-                <!-- 13. remove -->
+                <!-- 13 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">13</span>
-                        <span class="vocab-word">remove</span>
-                        <span class="kk">[rɪˈmuv]</span>
-                    </div>
-                    <div class="pos-def">v. 移除；脫掉；去除</div>
+                    <div class="vocab-head"><span class="circle-num">13</span> impairment <span class="kk">[ɪmˈpɛrmənt]</span> <span class="pos">n.</span></div>
+                    <span class="definition">（功能）損害、損傷</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">removal (n. 移除) ; removable (adj. 可拆卸的)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">impair (v. 損害、削弱) ↔ impaired (adj. 受損的)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">The seat cushions can be removed in emergencies.<br>（椅墊可以在緊急情況下拆卸。）</div>
-                        <div class="example-item">Please remove your shoes before entering the house.<br>（進屋前請脫鞋。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">severe impairment (嚴重損害)；visual impairment (視力受損)；cognitive impairment (認知障礙)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">Hypomania does not cause as severe an <strong>impairment</strong> as full mania.</span>
+                        <span class="ex-zh">（輕躁症不像完全躁症那樣會造成嚴重的損害。）</span>
+                        <span class="ex-en">Loud music can cause permanent <strong>impairment</strong> to your hearing.</span>
+                        <span class="ex-zh">（大聲的音樂可能會對你的聽力造成永久性損害。）</span>
                     </div>
                 </div>
 
-                <!-- 14. security -->
+                <!-- 14 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">14</span>
-                        <span class="vocab-word">security</span>
-                        <span class="kk">[sɪˈkjʊrətɪ]</span>
-                    </div>
-                    <div class="pos-def">n. 安全；保全；保障</div>
+                    <div class="vocab-head"><span class="circle-num">14</span> noticeable <span class="kk">[ˈnotɪsəbl]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">顯著的、易察覺的</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">secure (adj. 安全的 ; v. 獲得 ; 保護)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">notice (v. 注意、n. 通知) ↔ noticeably (adv. 顯著地)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">security guard 保全人員 ; security camera 監視器</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">a noticeable difference (明顯的差異)；highly noticeable (非常顯眼的)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">You may notice more security guards and staff during peak hours.<br>（在尖峰時段，你可能會注意到更多保全人員和工作人員。）</div>
-                        <div class="example-item">The company takes data security very seriously.<br>（公司非常重視數據安全。）</div>
+                    <div class="example-block">
+                        <span class="ex-en">Hypomania is still <strong>noticeable</strong> to those around the person.</span>
+                        <span class="ex-zh">（輕躁症對於患者身邊的人來說仍然是易於察覺的。）</span>
+                        <span class="ex-en">There has been a <strong>noticeable</strong> improvement in his English lately.</span>
+                        <span class="ex-zh">（他的英文最近有了顯著進步。）</span>
                     </div>
                 </div>
 
-                <!-- 15. surroundings -->
+                <!-- 15 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">15</span>
-                        <span class="vocab-word">surroundings</span>
-                        <span class="kk">[səˈraʊndɪŋz]</span>
-                    </div>
-                    <div class="pos-def">n. 周圍環境</div>
+                    <div class="vocab-head"><span class="circle-num">15</span> frequent <span class="kk">[ˈfrikwənt]</span> <span class="pos">adj. / v.</span></div>
+                    <span class="definition">頻繁的、常發生的；(v.) 常去(某地)</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">surround (v. 環繞) ; surrounding (adj. 周圍的)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">frequency (n. 頻率) ↔ frequently (adv. 頻繁地)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">The way to stay safe is to stay alert and know your surroundings.<br>（保持安全的方法是保持警覺並了解你的周圍環境。）</div>
-                        <div class="example-item">The hotel is set in beautiful surroundings near the lake.<br>（這家飯店座落在湖邊美麗的環境中。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">a frequent occurrence (頻繁發生的事)；fairly frequent (相當頻繁的)；frequent flyer (常客、常飛旅客)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">People with Bipolar II often experience longer and more <strong>frequent</strong> episodes.</span>
+                        <span class="ex-zh">（第二型雙極性障礙患者通常經歷較長且更頻繁的發作期。）</span>
+                        <span class="ex-en">He is a <strong>frequent</strong> visitor to this local bookstore.</span>
+                        <span class="ex-zh">（他是這家當地書店的常客。）</span>
                     </div>
                 </div>
 
-                <!-- 16. evacuation -->
+                <!-- 16 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">16</span>
-                        <span class="vocab-word">evacuation</span>
-                        <span class="kk">[ɪˌvækjʊˈeʃən]</span>
-                    </div>
-                    <div class="pos-def">n. 疏散；撤離</div>
+                    <div class="vocab-head"><span class="circle-num">16</span> maintain <span class="kk">[menˈten]</span> <span class="pos">v.</span></div>
+                    <span class="definition">維持、保持；維修；主張</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">evacuate (v. 疏散)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">maintenance (n. 維持、維修)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label root-label">字根</div>
-                        <div class="tag-content">va「空」：vacuum 真空 ; vacant 空的 ; vanish 消失</div>
+                        <div class="tag-label" style="background: var(--tag-root-bg); color: var(--tag-root-text);">🔍 字根</div>
+                        <div class="tag-content">manu (手)：manual (手工的、手冊)、manufacture (製造)、manuscript (手稿)、manipulate (操作)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">The grab-and-go kit is designed for quick evacuation.<br>（緊急避難包是為快速疏散而設計的。）</div>
-                        <div class="example-item">The fire alarm triggered a mass evacuation of the building.<br>（火災警報引發了建築物的大規模疏散。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">maintain order (維持秩序)；strictly maintain (嚴格維持)；maintain eye contact (保持眼神接觸)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-prep-bg); color: var(--tag-prep-text);">🔗 搭配介系詞</div>
+                        <div class="tag-content">maintain at (維持在...水平)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">It is difficult to plan their lives and <strong>maintain</strong> steady relationships.</span>
+                        <span class="ex-zh">（這使得規畫生活與維持穩定關係變得很困難。）</span>
+                        <span class="ex-en">It is important to <strong>maintain</strong> a healthy weight through diet and exercise.</span>
+                        <span class="ex-zh">（透過飲食與運動維持健康的體重是很重要的。）</span>
                     </div>
                 </div>
 
-                <!-- 17. priority -->
+                <!-- 17 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">17</span>
-                        <span class="vocab-word">priority</span>
-                        <span class="kk">[praɪˈɔrətɪ]</span>
-                    </div>
-                    <div class="pos-def">n. 優先事項；首要任務</div>
+                    <div class="vocab-head"><span class="circle-num">17</span> adjustments <span class="kk">[əˈdʒʌstmənts]</span> <span class="pos">n.</span></div>
+                    <span class="definition">調整、適應、調節</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">prior (adj. 在先的 ; 優先的) ; prioritize (v. 優先處理)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">adjust (v. 調整、適應) ↔ adjustable (adj. 可調整的)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">top priority 最優先事項 ; take priority over 比……更優先</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">minor adjustments (微調)；major adjustments (大幅調整)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">In a crisis, your top priority is to keep yourself safe.<br>（在危機中，你的首要任務是保持自己安全。）</div>
-                        <div class="example-item">Customer satisfaction is our company's number one priority.<br>（客戶滿意度是我們公司的首要任務。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-prep-bg); color: var(--tag-prep-text);">🔗 搭配介系詞</div>
+                        <div class="tag-content">adjustment to (對...的調整)；adjust to (適應...)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">Therapy and lifestyle <strong>adjustments</strong> can significantly reduce episodes.</span>
+                        <span class="ex-zh">（心理治療與生活方式的調整可以顯著減少發作。）</span>
+                        <span class="ex-en">We had to make some minor <strong>adjustments</strong> to the travel schedule.</span>
+                        <span class="ex-zh">（我們不得不對旅行行程做出一些微調。）</span>
                     </div>
                 </div>
 
-                <!-- 18. victim -->
+                <!-- 18 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">18</span>
-                        <span class="vocab-word">victim</span>
-                        <span class="kk">[ˈvɪktɪm]</span>
-                    </div>
-                    <div class="pos-def">n. 受害者</div>
+                    <div class="vocab-head"><span class="circle-num">18</span> severity <span class="kk">[səˈvɛrətɪ]</span> <span class="pos">n.</span></div>
+                    <span class="definition">嚴重性、嚴厲程度</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">victimize (v. 使受害 ; 欺負)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">severe (adj. 嚴重的、嚴厲的) ↔ severely (adv. 嚴重地)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">fall victim to 成為……的受害者</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">increasing severity (日益嚴重)；extreme severity (極度嚴重)；severity of the illness (病情的嚴重性)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">Keep yourself safe so you don't become another victim.<br>（保持自己安全，以免成為另一個受害者。）</div>
-                        <div class="example-item">The charity provides support for victims of natural disasters.<br>（該慈善機構為自然災害的受害者提供支持。）</div>
+                    <div class="example-block">
+                        <span class="ex-en">These can significantly reduce the frequency and <strong>severity</strong> of episodes.</span>
+                        <span class="ex-zh">（這些能顯著減少發作的頻率與嚴重程度。）</span>
+                        <span class="ex-en">The <strong>severity</strong> of the winter storms caused many power outages.</span>
+                        <span class="ex-zh">（冬季風暴的嚴酷程度導致了多處停電。）</span>
                     </div>
                 </div>
 
-                <!-- 19. injury -->
+                <!-- 19 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">19</span>
-                        <span class="vocab-word">injury</span>
-                        <span class="kk">[ˈɪndʒərɪ]</span>
-                    </div>
-                    <div class="pos-def">n. 傷害；損害</div>
+                    <div class="vocab-head"><span class="circle-num">19</span> vital <span class="kk">[ˈvaɪtl]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">至關重要的、充滿活力的；維持生命所必需的</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">injure (v. 受傷) ; injured (adj. 受傷的)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">vitality (n. 活力、生命力) ↔ revitalize (v. 使恢復活力)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label idiom-label">慣用語</div>
-                        <div class="tag-content">serious injury 重傷 ; life-threatening injury 危及生命的傷</div>
+                        <div class="tag-label" style="background: var(--tag-root-bg); color: var(--tag-root-text);">🔍 字根</div>
+                        <div class="tag-content">viv/vit (活)：vivid (生動的)、survive (生存)、revive (復甦)、vitamin (維他命)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">Check for the most serious injuries first during a medical emergency.<br>（在醫療緊急情況下，先檢查最嚴重的傷害。）</div>
-                        <div class="example-item">He suffered a leg injury while playing soccer.<br>（他在踢足球時腿部受傷。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">a vital role (關鍵角色)；vital importance (至關重要)；absolutely vital (絕對必要)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-prep-bg); color: var(--tag-prep-text);">🔗 搭配介系詞</div>
+                        <div class="tag-content">vital to / vital for (對...至關重要)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">Support also plays a <strong>vital</strong> role in long-term stability.</span>
+                        <span class="ex-zh">（支持在長期穩定中也扮演著至關重要的角色。）</span>
+                        <span class="ex-en">Regular exercise is <strong>vital</strong> for maintaining overall health.</span>
+                        <span class="ex-zh">（規律運動對於維持整體健康至關重要。）</span>
                     </div>
                 </div>
 
-                <!-- 20. hesitation -->
+                <!-- 20 -->
                 <div class="vocab-item">
-                    <div class="vocab-header">
-                        <span class="vocab-id">20</span>
-                        <span class="vocab-word">hesitation</span>
-                        <span class="kk">[ˌhɛzəˈteʃən]</span>
-                    </div>
-                    <div class="pos-def">n. 猶豫</div>
+                    <div class="vocab-head"><span class="circle-num">20</span> essential <span class="kk">[ɪˈsɛnʃəl]</span> <span class="pos">adj.</span></div>
+                    <span class="definition">必要的、基本的、本質的</span>
                     <div class="tag-row">
-                        <div class="tag-label deriv-label">衍生詞</div>
-                        <div class="tag-content">hesitate (v. 猶豫) ; hesitant (adj. 遲疑的)</div>
+                        <div class="tag-label" style="background: var(--tag-deri-bg); color: var(--tag-deri-text);">📚 衍生詞</div>
+                        <div class="tag-content">essence (n. 本質、精華) ↔ essentially (adv. 本質上)</div>
                     </div>
                     <div class="tag-row">
-                        <div class="tag-label phrase-label">片語</div>
-                        <div class="tag-content">without hesitation 毫不猶豫</div>
+                        <div class="tag-label" style="background: var(--tag-idio-bg); color: var(--tag-idio-text);">💬 慣用語</div>
+                        <div class="tag-content">an essential element (基本要素)；practically essential (實際上必要的)；an essential component (不可或缺的成分)</div>
                     </div>
-                    <div class="example-box">
-                        <div class="example-item">Staying clear-headed and acting without hesitation is key in a crisis.<br>（在危機中保持頭腦清醒並毫不猶豫地採取行動是關鍵。）</div>
-                        <div class="example-item">She answered the difficult question without any hesitation.<br>（她毫不猶豫地回答了那個難題。）</div>
+                    <div class="tag-row">
+                        <div class="tag-label" style="background: var(--tag-prep-bg); color: var(--tag-prep-text);">🔗 搭配介系詞</div>
+                        <div class="tag-content">essential to (對...是必要的)</div>
+                    </div>
+                    <div class="example-block">
+                        <span class="ex-en">Understanding bipolar disorder is <strong>essential</strong>.</span>
+                        <span class="ex-zh">（理解雙極性障礙是必要的。）</span>
+                        <span class="ex-en">Fresh water is <strong>essential</strong> for human survival.</span>
+                        <span class="ex-zh">（淡水對於人類生存是必不可少的。）</span>
                     </div>
                 </div>
-
             </div>
         </div>
 
-        <!-- Section 4: Grammar Analysis -->
-        <h2 style="color: var(--h2-color);">【區塊四】文法解析</h2>
-        <div class="card block-4">
-            <div class="card-head">【文法解析 Grammar Analysis】</div>
-            <div class="card-body">
-                <!-- Point 1: Participle Phrase -->
+        <!-- Section 4 -->
+        <div class="card section-4">
+            <div class="card-header">文法解析</div>
+            <div class="card-content">
+                <!-- Point 1 -->
                 <div class="grammar-point">
-                    <h3>1. 現在分詞構句 (Participle Phrase)</h3>
-                    <div class="gp-quote">...the company also works closely with the police, using CCTV cameras and security control rooms...</div>
-                    <div class="gp-pattern">S + V ..., V-ing ...</div>
-                    <p><strong>核心說明：</strong>當兩個動作同時發生，且主詞相同時，可以將其中一個動作簡化為分詞構句。V-ing 通常用來補充說明動作的方式、手段或伴隨情況。</p>
-                    <p><strong>使用規則：</strong></p>
-                    <ul class="gp-rule">
-                        <li>主詞必須一致：省略從句的主詞與連接詞。</li>
-                        <li>主動關係：被簡化的動詞若與主詞為「主動」關係，改為 V-ing。</li>
-                        <li>位置靈活：可放在句中補充，或放在句尾說明結果。</li>
-                    </ul>
-                    <p><strong>主題例句：</strong></p>
-                    <ul>
-                        <li>Passengers waited for the train, <strong>checking</strong> their phones for updates.（乘客們等待火車，同時查看手機更新資訊。）</li>
-                        <li>Organizers prepared for the event, <strong>setting</strong> up safety barriers around the stage.（主辦單位為活動做準備，在舞台周圍設置安全障礙物。）</li>
-                    </ul>
-                    <p><strong>學習提醒：</strong>分詞構句可以讓句子更簡潔。注意 V-ing 與主詞的邏輯關係必須是主動的。</p>
-                    <div class="error-box">
-                        <span class="wrong">✗</span> The company works with police, used CCTV cameras.<br>
-                        <span class="correct">✓</span> The company works with police, <strong>using</strong> CCTV cameras.<br>
-                        說明：此處為伴隨動作，應使用現在分詞 using。
+                    <div class="grammar-title">介係詞：despite / in spite of（儘管）</div>
+                    <div class="g-section">
+                        <span class="g-label">【引句 Quote】</span>
+                        <p class="g-quote">"Despite these challenges, bipolar disorder is a manageable condition."</p>
                     </div>
-                    <div class="quiz">
-                        選擇題：The student ran out of the building, ________ for help.<br>
-                        (A) shout (B) shouted (C) shouting (D) to shout<br>
-                        答案：C。說明：現在分詞表伴隨動作。
+                    <div class="g-section">
+                        <span class="g-label">【句型】</span>
+                        <p class="g-pattern">despite / in spite of + 名詞 / 動名詞 (V-ing)</p>
                     </div>
-                </div>
-
-                <!-- Point 2: Passive Voice -->
-                <div class="grammar-point">
-                    <h3>2. 助動詞的被動語態 (Passive Voice with Modals)</h3>
-                    <div class="gp-quote">The seat cushions can be removed in emergencies and used as protective padding.</div>
-                    <div class="gp-pattern">Modal (can/should/must) + be + V-ed (p.p.)</div>
-                    <p><strong>核心說明：</strong>當動作的主體不重要或不需要強調時，使用被動語態。結合助動詞（如 can, should, must）時，結構為「助動詞 + be + 過去分詞」。</p>
-                    <p><strong>使用規則：</strong></p>
-                    <ul class="gp-rule">
-                        <li>結構固定：助動詞後接原形 be，再接 p.p.。</li>
-                        <li>多個動詞：若有多個被動動詞並列，後面的 be 常可省略，如本句中的 (can be) used。</li>
-                        <li>強調對象：重點在於「座墊」而非「誰拆卸它」。</li>
-                    </ul>
-                    <p><strong>主題例句：</strong></p>
-                    <ul>
-                        <li>Emergency buttons <strong>should be pressed</strong> only in a real crisis.（緊急按鈕應僅在真正的危機中按下。）</li>
-                        <li>Safety tools <strong>must be checked</strong> regularly to ensure they work.（必須定期檢查安全工具以確保其運作正常。）</li>
-                    </ul>
-                    <p><strong>學習提醒：</strong>過去分詞 (p.p.) 的拼寫需注意規則與不規則變化。</p>
-                    <div class="error-box">
-                        <span class="wrong">✗</span> The kit can remove quickly.<br>
-                        <span class="correct">✓</span> The kit can <strong>be removed</strong> quickly.<br>
-                        說明：包包是被移除的，需用被動語態。
+                    <div class="g-section">
+                        <span class="g-label">【核心說明】</span>
+                        <p>despite 和 in spite of 是介係詞，表達「儘管……」的讓步語意。它們後面只能接名詞或動名詞，不能直接接子句。</p>
                     </div>
-                    <div class="quiz">
-                        選擇題：The emergency exits must ________ clear at all times.<br>
-                        (A) keep (B) be kept (C) kept (D) keeping<br>
-                        答案：B。說明：出口必須「被保持」通暢。
+                    <div class="g-section">
+                        <span class="g-label">【使用規則】</span>
+                        <ul>
+                            <li>後接名詞：Despite the rain, we went out.</li>
+                            <li>後接動名詞：Despite feeling sick, she went to work.</li>
+                            <li>若要接子句，必須改用 although / even though。</li>
+                            <li>正式用法可接 "the fact that" 後加子句。</li>
+                        </ul>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【主題例句】</span>
+                        <p><strong>Despite experiencing extreme mood swings, many individuals lead successful lives.</strong><br>（儘管經歷極端的情緒起伏，許多人仍過著成功的生活。）</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【學習提醒】</span>
+                        <p>常有學生誤寫成 "Despite of"，這是錯誤的。請記住：Despite (單字) = In spite of (三字)。</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                        <p class="wrong">✗ Despite he was tired, he kept walking.</p>
+                        <p class="right">✓ Although he was tired, he kept walking. (或 Despite being tired...)</p>
+                        <p>試題：改正錯誤：Despite of the bad news, he remained calm. (答案：刪除 of)</p>
                     </div>
                 </div>
 
-                <!-- Point 3: Infinitive for Purpose -->
+                <!-- Point 2 -->
                 <div class="grammar-point">
-                    <h3>3. 不定詞表目的 (Infinitive for Purpose)</h3>
-                    <div class="gp-quote">To keep everyone safe, the company also works closely with the police...</div>
-                    <div class="gp-pattern">To + V ..., S + V ... / S + V ... to + V ...</div>
-                    <p><strong>核心說明：</strong>不定詞 (to + V) 最常見的用法之一是表示「目的」，相當於 in order to。放在句首時具有強調效果，且後面通常接逗號。</p>
-                    <p><strong>使用規則：</strong></p>
-                    <ul class="gp-rule">
-                        <li>語意轉化：可與 so that 子句互相替換（需調整結構）。</li>
-                        <li>否定用法：若要表達「為了不……」，應使用 in order not to 或 so as not to。</li>
-                        <li>位置：放在句首強調目的；放在句尾則語氣較自然。</li>
-                    </ul>
-                    <p><strong>主題例句：</strong></p>
-                    <ul>
-                        <li>People carry whistles <strong>to call</strong> for help in an emergency.（人們攜帶哨子以便在緊急情況下求救。）</li>
-                        <li><strong>To avoid</strong> confusion, the staff gave clear directions to the exit.（為了避免混亂，工作人員給出了前往出口的清晰指引。）</li>
-                    </ul>
-                    <p><strong>學習提醒：</strong>不要把表示目的的 to 與介係詞 to 搞混。</p>
-                    <div class="error-box">
-                        <span class="wrong">✗</span> For stay safe, we should stay alert.<br>
-                        <span class="correct">✓</span> <strong>To stay</strong> safe, we should stay alert.<br>
-                        說明：表示目的應使用不定詞 to V 而非介係詞 for。
+                    <div class="grammar-title">形容詞子句：介系詞 + 關係代名詞</div>
+                    <div class="g-section">
+                        <span class="g-label">【引句 Quote】</span>
+                        <p class="g-quote">"These episodes are often followed by periods of depression, during which the same person may feel exhausted..."</p>
                     </div>
-                    <div class="quiz">
-                        選擇題：He used a flashlight ________ the way in the dark.<br>
-                        (A) find (B) to finding (C) to find (D) found<br>
-                        答案：C。說明：不定詞 to V 表示目的。
+                    <div class="g-section">
+                        <span class="g-label">【句型】</span>
+                        <p class="g-pattern">先行詞 + 介系詞 + which / whom + S + V</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【核心說明】</span>
+                        <p>當關係子句中的動詞需要接特定介系詞，且該介系詞與先行詞有關時，介系詞可移至關係代名詞之前。這是一種較為正式的用法。</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【使用規則】</span>
+                        <ul>
+                            <li>which 用於指代事物，whom 用於指代人。</li>
+                            <li>介系詞置前時，絕對不可使用 that。</li>
+                            <li>常見組合：in which (地點)、at which (時間)、with whom (對象)。</li>
+                        </ul>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【主題例句】</span>
+                        <p><strong>Bipolar disorder involves manic episodes, for which stabilization is necessary.</strong><br>（雙極性障礙包含躁症發作，對此穩定病情是必要的。）</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【學習提醒】</span>
+                        <p>during which 常用來指代一段「期間」，在閱讀長難句時應學會辨識其指代的先行詞。</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                        <p class="wrong">✗ The house in that I live is small.</p>
+                        <p class="right">✓ The house in which I live is small. (介系詞後不能接 that)</p>
+                        <p>試題：The office _____ she works is located downtown. (A) which (B) in which (C) at (D) in that (答案：B)</p>
+                    </div>
+                </div>
+
+                <!-- Point 3 -->
+                <div class="grammar-point">
+                    <div class="grammar-title">不定詞：當形容詞（修飾名詞）</div>
+                    <div class="g-section">
+                        <span class="g-label">【引句 Quote】</span>
+                        <p class="g-quote">"...causes dramatic shifts in a person's mood, energy, and ability to function."</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【句型】</span>
+                        <p class="g-pattern">名詞 + to V</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【核心說明】</span>
+                        <p>不定詞片語可以放在名詞後面，充當形容詞使用，用來修飾該名詞，表達「用來……的」或「待完成的……」。</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【使用規則】</span>
+                        <ul>
+                            <li>修飾能力、機會、決定等抽象名詞。</li>
+                            <li>若不定詞動詞為不及物動詞且需要介系詞，則介系詞不可省略 (e.g. a chair to sit on)。</li>
+                            <li>常見搭配：way to V (方式)、need to V (需要)。</li>
+                        </ul>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【主題例句】</span>
+                        <p><strong>Patients need a stable environment to recover in.</strong><br>（患者需要一個穩定的環境來康復。）</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【學習提醒】</span>
+                        <p>ability to function 是極為常見的搭配，表示「運作的能力」。</p>
+                    </div>
+                    <div class="g-section">
+                        <span class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                        <p class="wrong">✗ I have no plan of to travel.</p>
+                        <p class="right">✓ I have no plan to travel. (plan 後接 to V 修飾)</p>
+                        <p>試題：He doesn't have the courage _____ the truth. (A) telling (B) to tell (C) tell (D) to told (答案：B)</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Details Sections -->
-        <h2 style="color: var(--h2-color);">【底部折疊區塊】</h2>
-        
-        <details>
-            <summary>折疊一：常見字首整理 (50個)</summary>
-            <div class="details-body">
-                <p>ab- 離開、相反 — abnormal (異常的)<br>
-                ad- 向、加 — advance (前進)<br>
-                ambi- 雙方、兩面 — ambiguous (模稜兩可的)<br>
-                anti- 反對、抗 — antibiotic (抗生素)<br>
-                arch- 主要、首要 — archenemy (死敵)<br>
-                auto- 自動、自我 — autograph (親筆簽名)<br>
-                bene- 好的、善 — benefit (好處)<br>
-                bi- 二、雙 — bilingual (雙語的)<br>
-                circum- 環繞、周圍 — circumstance (情況)<br>
-                co-/con-/com- 一起、共同 — cooperate (合作)<br>
-                contra- 相反、對抗 — contradict (反駁)<br>
-                de- 去除、下降 — decode (解碼)<br>
-                dia- 穿過、透過 — dialogue (對話)<br>
-                dis- 否定、分離 — disagree (不同意)<br>
-                en-/em- 使成為 — enable (使能夠)<br>
-                epi- 在上、在外 — epidemic (流行病)<br>
-                ex- 外、前任 — export (出口)<br>
-                extra- 額外、外部 — extraordinary (非凡的)<br>
-                hetero- 不同 — heterogeneous (異質的)<br>
-                homo- 相同 — homogeneous (同質的)<br>
-                hyper- 過度、超 — hyperactive (過動的)<br>
-                hypo- 低於、不足 — hypodermic (皮下的)<br>
-                in-/im- 否定、進入 — invisible (看不見的)<br>
-                inter- 在…之間 — international (國際的)<br>
-                iso- 相等、相同 — isolate (隔離)<br>
-                mal- 壞、不良 — malfunction (故障)<br>
-                micro- 微小 — microscope (顯微鏡)<br>
-                mis- 錯誤 — misunderstand (誤解)<br>
-                mono- 單一 — monologue (獨白)<br>
-                multi- 多 — multicultural (多元文化的)<br>
-                neo- 新的 — neonatal (新生的)<br>
-                non- 非、沒有 — nonsense (無意義)<br>
-                pan- 全部 — pandemic (大流行病)<br>
-                peri- 周圍 — perimeter (周長)<br>
-                poly- 多 — polygon (多邊形)<br>
-                post- 之後 — postwar (戰後的)<br>
-                pre- 之前 — preview (預覽)<br>
-                pro- 向前、支持 — progress (進步)<br>
-                pseudo- 假的 — pseudonym (筆名)<br>
-                re- 再、回 — review (複習)<br>
-                semi- 一半、部分 — semicircle (半圓)<br>
-                sub- 在下、次級 — subway (地鐵)<br>
-                super- 超越、在上 — superstar (超級明星)<br>
-                syn-/sym- 一起、共同 — synchronize (同步)<br>
-                tele- 遠距 — telephone (電話)<br>
-                trans- 穿越、轉變 — transport (運輸)<br>
-                tri- 三 — triangle (三角形)<br>
-                un- 否定、不 — unhappy (不快樂的)<br>
-                vice- 副、代替 — vice-president (副總統)</p>
-            </div>
-        </details>
+        <!-- Bottom Details -->
+        <div class="card bottom-section">
+            <div class="card-header">底部進階學習</div>
+            <div class="card-content">
+                <details>
+                    <summary>常見字首整理 (50個)</summary>
+                    <div class="details-inner">
+                        <ul>
+                            <li>ab- 離開、相反 — abnormal（異常的）</li>
+                            <li>ad- 向、加 — advance（前進）</li>
+                            <li>ambi- 雙方、兩面 — ambiguous（模稜兩可的）</li>
+                            <li>anti- 反對、抗 — antibiotic（抗生素）</li>
+                            <li>arch- 主要、首要 — archenemy（死敵）</li>
+                            <li>auto- 自動、自我 — autograph（親筆簽名）</li>
+                            <li>bene- 好的、善 — benefit（好處）</li>
+                            <li>bi- 二、雙 — bilingual（雙語的）</li>
+                            <li>circum- 環繞、周圍 — circumstance（情況）</li>
+                            <li>co-/con-/com- 一起、共同 — cooperate（合作）</li>
+                            <li>contra- 相反、對抗 — contradict（反駁）</li>
+                            <li>de- 去除、下降 — decode（解碼）</li>
+                            <li>dia- 穿過、透過 — dialogue（對話）</li>
+                            <li>dis- 否定、分離 — disagree（不同意）</li>
+                            <li>en-/em- 使成為 — enable（使能夠）</li>
+                            <li>epi- 在上、在外 — epidemic（流行病）</li>
+                            <li>ex- 外、前任 — export（出口）；ex-president（前總統）</li>
+                            <li>extra- 額外、外部 — extraordinary（非凡的）</li>
+                            <li>hetero- 不同 — heterogeneous（異質的）</li>
+                            <li>homo- 相同 — homogeneous（同質的）</li>
+                            <li>hyper- 過度、超 — hyperactive（過動的）</li>
+                            <li>hypo- 低於、不足 — hypodermic（皮下的）</li>
+                            <li>in-/im- 否定、進入 — invisible（看不見的）；import（輸入）</li>
+                            <li>inter- 在…之間 — international（國際的）</li>
+                            <li>iso- 相等、相同 — isolate（隔離）</li>
+                            <li>mal- 壞、不良 — malfunction（故障）</li>
+                            <li>micro- 微小 — microscope（顯微鏡）</li>
+                            <li>mis- 錯誤 — misunderstand（誤解）</li>
+                            <li>mono- 單一 — monologue（獨白）</li>
+                            <li>multi- 多 — multicultural（多元文化的）</li>
+                            <li>neo- 新的 — neonatal（新生的）</li>
+                            <li>non- 非、沒有 — nonsense（無意義）</li>
+                            <li>pan- 全部 — pandemic（大流行病）</li>
+                            <li>peri- 周圍 — perimeter（周長）</li>
+                            <li>poly- 多 — polygon（多邊形）</li>
+                            <li>post- 之後 — postwar（戰後的）</li>
+                            <li>pre- 之前 — preview（預覽）</li>
+                            <li>pro- 向前、支持 — progress（進步）；pro-democracy（支持民主的）</li>
+                            <li>pseudo- 假的 — pseudonym（筆名）</li>
+                            <li>re- 再、回 — review（複習）</li>
+                            <li>semi- 一半、部分 — semicircle（半圓）</li>
+                            <li>sub- 在下、次級 — subway（地鐵）</li>
+                            <li>super- 超越、在上 — superstar（超級明星）</li>
+                            <li>syn-/sym- 一起、共同 — synchronize（同步）</li>
+                            <li>tele- 遠距 — telephone（電話）</li>
+                            <li>trans- 穿越、轉變 — transport（運輸）</li>
+                            <li>tri- 三 — triangle（三角形）</li>
+                            <li>un- 否定、不 — unhappy（不快樂的）</li>
+                            <li>vice- 副、代替 — vice-president（副總統）</li>
+                        </ul>
+                    </div>
+                </details>
 
-        <details>
-            <summary>折疊二：常見英文字尾整理 (約30個)</summary>
-            <div class="details-body">
-                <p><strong>名詞字尾</strong><br>
-                -tion/-sion/-ation 動作、過程 — education (教育)<br>
-                -ment 行為或結果 — agreement (協議)<br>
-                -ness 狀態或性質 — happiness (快樂)<br>
-                -ity/-ty 抽象概念 — ability (能力)<br>
-                -er/-or 執行者 — teacher (老師)<br>
-                -ist 專業的人 — scientist (科學家)<br>
-                -ship 身分或關係 — friendship (友誼)<br>
-                -hood 階段或狀態 — childhood (童年)<br><br>
-                <strong>形容詞字尾</strong><br>
-                -able/-ible 能夠…的 — readable (可讀的)<br>
-                -ous 充滿…的 — dangerous (危險的)<br>
-                -ful 具有…的 — hopeful (充滿希望的)<br>
-                -less 缺乏…的 — hopeless (絕望的)<br>
-                -al/-ic 與…相關的 — natural (自然的)<br><br>
-                <strong>動詞字尾</strong><br>
-                -ize/-ise 使成為… — realize (實現)<br>
-                -ify 使成為… — beautify (美化)<br>
-                -ate 形成動詞 — activate (啟動)<br>
-                -en 使變成… — strengthen (加強)<br><br>
-                <strong>副詞字尾</strong><br>
-                -ly 形容詞轉副詞 — quickly (快速地)<br>
-                -ward(s) 表示方向 — upwards (向上)<br>
-                -wise 表示方式 — clockwise (順時針)</p>
-            </div>
-        </details>
+                <details>
+                    <summary>常見英文字尾整理 (30個)</summary>
+                    <div class="details-inner">
+                        <strong>名詞字尾</strong>
+                        <ul>
+                            <li>-tion/-sion/-ation 動作或結果 — education（教育）</li>
+                            <li>-ment 行為或結果 — agreement（協議）</li>
+                            <li>-ness 狀態或性質 — happiness（快樂）</li>
+                            <li>-ity/-ty 抽象概念 — ability（能力）</li>
+                            <li>-er/-or 執行者 — teacher（老師）、actor（演員）</li>
+                            <li>-ist 專業的人 — artist（藝術家）</li>
+                            <li>-ship 身分關係 — friendship（友誼）</li>
+                            <li>-hood 階段狀態 — childhood（童年）</li>
+                        </ul>
+                        <strong>形容詞字尾</strong>
+                        <ul>
+                            <li>-able/-ible 能夠…的 — readable（可讀的）</li>
+                            <li>-ous 充滿…的 — dangerous（危險的）</li>
+                            <li>-ful 具有…的 — hopeful（充滿希望的）</li>
+                            <li>-less 缺乏…的 — hopeless（絕望的）</li>
+                            <li>-al/-ic 相關的 — natural（自然的）、poetic（詩意的）</li>
+                        </ul>
+                        <strong>動詞字尾</strong>
+                        <ul>
+                            <li>-ize/-ise 使成為… — realize（實現）</li>
+                            <li>-ify 使成為… — beautify（美化）</li>
+                            <li>-ate 形成動詞 — dominate（支配）</li>
+                            <li>-en 使變成… — strengthen（加強）</li>
+                        </ul>
+                    </div>
+                </details>
 
-        <details>
-            <summary>折疊三：30個常用單字與衍生詞</summary>
-            <div class="details-body">
-                <p>1. attack [əˈtæk] (v./n. 攻擊) — attacker (n. 攻擊者)<br>
-                2. confusing [kənˈfjuʒɪŋ] (adj. 令人困惑的) — confuse (v. 使困惑)<br>
-                3. protect [prəˈtɛkt] (v. 保護) — protection (n. 保護)<br>
-                4. solid [ˈsɑlɪd] (adj. 固體的 ; 堅固的) — solidify (v. 凝固)<br>
-                5. resistant [rɪˈzɪstənt] (adj. 有抵抗力的) — resistance (n. 抵抗)<br>
-                6. opening [ˈopənɪŋ] (n. 空隙 ; 契機) — open (v./adj. 開啟)<br>
-                7. shield [ʃild] (v. 防護 ; n. 盾牌)<br>
-                8. torso [ˈtɔrso] (n. 軀幹)<br>
-                9. transportation [ˌtrænspɚˈteʃən] (n. 運輸) — transport (v. 運輸)<br>
-                10. intercom [ˈɪntɝˌkɑm] (n. 對講機)<br>
-                11. suspicious [əˈspɪʃəs] (adj. 可疑的) — suspicion (n. 懷疑)<br>
-                12. medical [ˈmɛdɪkl] (adj. 醫療的) — medicine (n. 藥物)<br>
-                13. violent [ˈvaɪələnt] (adj. 暴力的) — violence (n. 暴力)<br>
-                14. cushion [ˈkʊʃən] (n. 墊子)<br>
-                15. security [sɪˈkjʊrətɪ] (n. 安全 ; 保全) — secure (adj. 安全的)<br>
-                16. surroundings [səˈraʊndɪŋz] (n. 周圍環境) — surround (v. 環繞)<br>
-                17. organizer [ˈɔrɡəˌnaɪzɚ] (n. 組織者) — organize (v. 組織)<br>
-                18. exit [ˈɛɡzɪt] (n. 出口 ; v. 離開)<br>
-                19. supply [səˈplaɪ] (n. 補給品 ; v. 供應)<br>
-                20. kit [kɪt] (n. 成套裝備 ; 工具包)<br>
-                21. evacuation [ɪˌvækjʊˈeʃən] (n. 疏散) — evacuate (v. 疏散)<br>
-                22. power bank (n. 行動電源)<br>
-                23. flashlight [ˈflæʃˌlaɪt] (n. 手電筒)<br>
-                24. crisis [ˈkraɪsɪs] (n. 危機)<br>
-                25. bleeding [ˈblidɪŋ] (n. 出血) — bleed (v. 出血)<br>
-                26. pressure [ˈprɛʃɚ] (n. 壓力) — press (v. 按壓)<br>
-                27. gauze [ɡɔz] (n. 紗布)<br>
-                28. injury [ˈɪndʒərɪ] (n. 傷害) — injure (v. 受傷)<br>
-                29. powerful [ˈpaʊɚfəl] (adj. 強大的) — power (n. 力量)<br>
-                30. hesitation [ˌhɛzəˈteʃən] (n. 猶豫) — hesitate (v. 猶豫)</p>
-                <hr>
-                <p><strong>文章相關常用片語：</strong><br>
-                • as fast as one can（盡其所能地快）<br>
-                • stay out of sight（留在視線之外）<br>
-                • take ... as an example（以……為例）<br>
-                • check ... at least twice a year（每年至少檢查兩次）<br>
-                • focus on（專注於……）</p>
-            </div>
-        </details>
+                <details>
+                    <summary>30個常用單字與衍生詞</summary>
+                    <div class="details-inner">
+                        <ol>
+                            <li>bipolar [ˌbaɪˈpolɚ] (adj. 雙極的) — polarity [poˈlærətɪ] (n. 極性)</li>
+                            <li>disorder [dɪsˈɔrdɚ] (n. 障礙、失調) — orderly [ˈɔrdɚlɪ] (adj. 整齊的)</li>
+                            <li>absolute [ˈæbsəˌlut] (adj. 絕對的) — absolutely [ˈæbsəˌlutlɪ] (adv. 絕對地)</li>
+                            <li>hopeless [ˈhoplɪs] (adj. 絕望的) — hope [hop] (n./v. 希望)</li>
+                            <li>extreme [ɪkˈstrim] (adj. 極端的) — extremely [ɪkˈstrimlɪ] (adv. 非常地)</li>
+                            <li>regular [ˈrɛɡjəlɚ] (adj. 規律的) — regularly [ˈrɛɡjəlɚlɪ] (adv. 規律地)</li>
+                            <li>mental [ˈmɛntl] (adj. 心理的) — mentality [mɛnˈtælətɪ] (n. 心態)</li>
+                            <li>function [ˈfʌŋkʃən] (v. 運作) — functional [ˈfʌŋkʃənl] (adj. 功能性的)</li>
+                            <li>improve [ɪmˈpruv] (v. 改善) — improvement [ɪmˈpruvmənt] (n. 進步)</li>
+                            <li>divide [dɪˈvaɪd] (v. 分開) — division [dɪˈvɪʒən] (n. 部門、分割)</li>
+                            <li>mania [ˈmenɪə] (n. 躁狂) — manic [ˈmænɪk] (adj. 躁狂的)</li>
+                            <li>thought [θɔt] (n. 思考、想法) — thoughtful [θɔtfəl] (adj. 體貼的)</li>
+                            <li>financial [faɪˈnænʃəl] (adj. 財務的) — finance [faɪˈnæns] (n. 金融)</li>
+                            <li>depression [dɪˈprɛʃən] (n. 憂鬱、不景氣) — depress [dɪˈprɛs] (v. 使沮喪)</li>
+                            <li>daily [ˈdelɪ] (adj. 日常的) — day [de] (n. 天)</li>
+                            <li>severe [səˈvɪr] (adj. 嚴重的) — severely [səˈvɪrlɪ] (adv. 嚴重地)</li>
+                            <li>steady [ˈstɛdɪ] (adj. 穩定的) — steadily [ˈstɛdɪlɪ] (adv. 穩定地)</li>
+                            <li>employment [ɪmˈplɔɪmənt] (n. 就業) — employee [ɪmˈplɔɪi] (n. 員工)</li>
+                            <li>challenge [ˈtʃælɪndʒ] (n. 挑戰) — challenging [ˈtʃælɪndʒɪŋ] (adj. 具挑戰性的)</li>
+                            <li>trigger [ˈtrɪɡɚ] (v. 觸發) — gun trigger (扳機)</li>
+                            <li>manageable [ˈmænɪdʒəbl] (adj. 可管理的) — management [ˈmænɪdʒmənt] (n. 管理)</li>
+                            <li>medication [ˌmɛdəˈkeʃən] (n. 藥物) — medical [ˈmɛdəkl] (adj. 醫學的)</li>
+                            <li>therapy [ˈθɛrəpɪ] (n. 治療) — therapist [ˈθɛrəpɪst] (n. 治療師)</li>
+                            <li>lifestyle [ˈlaɪfˌstaɪl] (n. 生活方式) — style [staɪl] (n. 風格)</li>
+                            <li>significantly [sɪɡˈnɪfɪkəntlɪ] (adv. 顯著地) — significant [sɪɡˈnɪfɪkənt] (adj. 重要的)</li>
+                            <li>stability [stəˈbɪlətɪ] (n. 穩定) — stable [ˈstebl] (adj. 穩定的)</li>
+                            <li>medical [ˈmɛdəkl] (adj. 醫療的) — medicine [ˈmɛdəsn] (n. 藥)</li>
+                            <li>character [ˈkærəktɚ] (n. 品格、角色) — characteristic [ˌkærəktəˈrɪstɪk] (adj. 特徵的)</li>
+                            <li>medical condition (醫療疾病)</li>
+                            <li>long-term (長期的)</li>
+                        </ol>
+                        <strong>文章相關常用片語 5 個：</strong>
+                        <ul>
+                            <li>dramatic shift（劇烈轉變）</li>
+                            <li>racing thoughts（思緒飛轉）</li>
+                            <li>carry out daily tasks（執行日常任務）</li>
+                            <li>manageable condition（可控制的疾病）</li>
+                            <li>play a vital role（扮演關鍵角色）</li>
+                        </ul>
+                    </div>
+                </details>
 
-        <details>
-            <summary>折疊四：練文筆食材</summary>
-            <div class="details-body">
-                <p>① <strong>...is the key time to...</strong>（……是……的關鍵時刻）<br>
-                例：The first few hours are the key time to save the patients.</p>
-                
-                <p>② <strong>...as fast as you can</strong>（盡可能快地……）<br>
-                例：You should finish the assignment as fast as you can.</p>
-                
-                <p>③ <strong>...only when... and you have no choice but to...</strong>（唯有當……且你別無選擇只能……）<br>
-                例：Use the emergency exit only when there is a fire and you have no choice but to leave immediately.</p>
-                
-                <p>④ <strong>Take ... as an example.</strong>（以……為例。）<br>
-                例：Take the new policy as an example; it has many benefits for students.</p>
-                
-                <p>⑤ <strong>Whether you are ..., the way to ... is the same: ...</strong>（無論你是在……，……的方法都是一樣的：……）<br>
-                例：Whether you are a student or a teacher, the way to succeed is the same: stay diligent.</p>
-                
-                <p>⑥ <strong>...is designed for...</strong>（……是為……而設計的）<br>
-                例：This building is designed for senior residents.</p>
-                
-                <p>⑦ <strong>Don't forget to ..., along with ...</strong>（別忘了……，以及……）<br>
-                例：Don't forget to bring your passport, along with the tickets.</p>
-                
-                <p>⑧ <strong>...so you don't become another victim.</strong>（……以便你不會成為另一個受害者。）<br>
-                例：Follow the safety rules so you don't become another victim of the accident.</p>
-                
-                <p>⑨ <strong>Once you're safe, ...</strong>（一旦你安全了，……）<br>
-                例：Once you're safe, call your family to let them know.</p>
-                
-                <p>⑩ <strong>There is nothing more powerful than ...</strong>（沒有什麼比……更強大了）<br>
-                例：There is nothing more powerful than staying positive in difficult times.</p>
+                <details>
+                    <summary>練文筆食材</summary>
+                    <div class="details-inner">
+                        <ul>
+                            <li>① <strong>not A but B</strong>（不是A而是B）<br>
+                                → 適用：導正觀念、強調核心本質。<br>
+                                例：Success is <strong>not</strong> a result of luck <strong>but</strong> a result of hard work.</li>
+                            
+                            <li>② <strong>so... that...</strong>（如此...以至於...）<br>
+                                → 適用：表達程度造成的結果。<br>
+                                例：The news was <strong>so</strong> shocking <strong>that</strong> no one could say a word.</li>
+                            
+                            <li>③ <strong>combined with...</strong>（結合...）<br>
+                                → 適用：描述多項因素共同作用。<br>
+                                例：Hard work, <strong>combined with</strong> patience, will eventually lead to success.</li>
+                            
+                            <li>④ <strong>make it difficult for sb to V</strong>（使某人難以做某事）<br>
+                                → 適用：描述障礙或挑戰。<br>
+                                例：The loud noise <strong>makes it difficult for</strong> me <strong>to</strong> focus on my studies.</li>
+                            
+                            <li>⑤ <strong>play a vital role in...</strong>（在...中扮演至關重要的角色）<br>
+                                → 適用：強調重要性。<br>
+                                例：Education <strong>plays a vital role in</strong> shaping a child's future.</li>
+                            
+                            <li>⑥ <strong>step toward...</strong>（邁向...的一步）<br>
+                                → 適用：描述進展或行動。<br>
+                                例：Saving money is the first <strong>step toward</strong> financial freedom.</li>
+                            
+                            <li>⑦ <strong>experiencing shifts in...</strong>（經歷...的轉變）<br>
+                                → 適用：描述變動。</li>
+                            
+                            <li>⑧ <strong>noticeable to...</strong>（對...來說是顯而易見的）<br>
+                                → 適用：描述外部觀察。</li>
+                        </ul>
+                    </div>
+                </details>
             </div>
-        </details>
-
-        <!-- Bottom Links Section -->
-        <section class="link-cards-section bottom-section" id="link-cards-section-bottom">
-            <div class="link-cards-title">七月課程與聯絡方式</div>
-            <div class="cards-container">
-                <a href="https://linwayet.github.io/4ulive/index.html" class="link-card" target="_blank" rel="noopener noreferrer">
-                    <div class="card-title">七月課程介紹</div>
-                    <p class="card-desc">錯中學 ECHO 計劃從錯題回音中整理弱點，建立可複習、可追蹤的英文學習節奏。</p>
-                    <div class="card-arrow">→</div>
+        </div>
+        <nav class="link-strip bottom-links" aria-label="課程與聯絡連結">
+            <h2>七月課程與聯絡方式</h2>
+            <div class="link-grid">
+                <a class="promo-link" href="https://linwayet.github.io/4ulive/index.html">
+                    <span class="promo-title">七月課程介紹：錯中學 ECHO 計劃</span>
+                    <span class="promo-desc">用錯誤回饋帶學生練閱讀、文法與表達，適合暑期系統加強。</span>
                 </a>
-                <a href="https://linwayet.github.io/popup/index" class="link-card" target="_blank" rel="noopener noreferrer">
-                    <div class="card-title">學生分析用學習資料</div>
-                    <p class="card-desc">看見學生狀態，協助安排更精準的補強方向。</p>
-                    <div class="card-arrow">→</div>
+                <a class="promo-link" href="https://linwayet.github.io/popup/index">
+                    <span class="promo-title">學生分析</span>
+                    <span class="promo-desc">整理學生學習狀態與弱點，協助安排更精準的英文讀書方向。</span>
                 </a>
-                <a href="https://line.me/ti/p/~linwayet" class="link-card" target="_blank" rel="noopener noreferrer">
-                    <div class="card-title">林威老師 Line</div>
-                    <p class="card-desc">Line ID: linwayet，可加入後詢問課程與學習規劃。</p>
-                    <div class="card-arrow">→</div>
+                <a class="promo-link" href="https://line.me/ti/p/~linwayet">
+                    <span class="promo-title">林威老師 Line：linwayet</span>
+                    <span class="promo-desc">課程詢問、教材討論與學習規劃，可加入 Line 聯繫。</span>
                 </a>
             </div>
-        </section>
-
+        </nav>
     </div>
 </body>
 </html>
