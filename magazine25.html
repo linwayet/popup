@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safety in Public Spaces: Be Ready for the Unexpected</title>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FFF8F0;
+            --main-text: #1A0F00;
+            --h1-color: #C0392B;
+            --h2-color: #1565C0;
+            --h3-color: #2E7D32;
+            --accent-a: #E65100;
+            --accent-b: #6A1B9A;
+            --keyword-color: #0D47A1;
+            
+            --block1-head: #0D47A1;
+            --block1-border: #90CAF9;
+            --block1-bg: #F3F8FF;
+            
+            --block2-head: #BF360C;
+            --block2-border: #FFAB91;
+            --block2-bg: #FFF3EF;
+            
+            --block3-head: #1B5E20;
+            --block3-border: #81C784;
+            --block3-bg: #F1F8F2;
+            
+            --block4-head: #4A148C;
+            --block4-border: #CE93D8;
+            --block4-bg: #F9F0FF;
+            
+            --bottom-head: #4A3728;
+            --bottom-border: #C4A06A;
+            --bottom-bg: #FAF6F0;
+
+            --tag-deriv-bg: #FDEDEC; --tag-deriv-text: #C0392B;
+            --tag-root-bg: #EBF5FB; --tag-root-text: #1565C0;
+            --tag-phrase-bg: #EAFAF1; --tag-phrase-text: #2E7D32;
+            --tag-idiom-bg: #FEF9E7; --tag-idiom-text: #D68910;
+            --tag-confuse-bg: #F5EEF8; --tag-confuse-text: #6A1B9A;
+            --tag-accent-bg: #FEF0E7; --tag-accent-text: #E65100;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--bg-color);
+            color: var(--main-text);
+            font-family: 'BIZ UDPGothic', sans-serif;
+            font-size: 22px;
+            line-height: 1.85;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        /* Header styles */
+        .title-box {
+            border: 4px solid var(--h1-color);
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: var(--h1-color);
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 700;
+        }
+        .subtitle {
+            color: var(--h2-color);
+            font-size: 2.2rem;
+            text-align: center;
+            margin: 10px 0;
+        }
+        .credit {
+            color: #1565C0;
+            font-family: 'Lobster', 'Pacifico', cursive, sans-serif;
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Section styles */
+        h2 {
+            font-size: 2.2rem;
+            border-left: 8px solid currentColor;
+            padding-left: 15px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            border: 2px solid;
+        }
+        .card-head {
+            color: #ffffff;
+            padding: 15px 25px;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+        .card-body {
+            padding: 30px;
+        }
+
+        /* Block-specific colors */
+        .block-1 { border-color: var(--block1-border); }
+        .block-1 .card-head { background-color: var(--block1-head); }
+        .block-1 .card-body { background-color: var(--block1-bg); }
+        
+        .block-2 { border-color: var(--block2-border); }
+        .block-2 .card-head { background-color: var(--block2-head); }
+        .block-2 .card-body { background-color: var(--block2-bg); }
+        
+        .block-3 { border-color: var(--block3-border); }
+        .block-3 .card-head { background-color: var(--block3-head); }
+        .block-3 .card-body { background-color: var(--block3-bg); }
+        
+        .block-4 { border-color: var(--block4-border); }
+        .block-4 .card-head { background-color: var(--block4-head); }
+        .block-4 .card-body { background-color: var(--block4-bg); }
+
+        /* Keywords in article */
+        .kw { color: var(--keyword-color); font-weight: 700; }
+
+        /* Block 2: Key Sentence Analysis */
+        .sentence-item { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px dashed #ccc; }
+        .sentence-item:last-child { border-bottom: none; }
+        .num-circle {
+            background-color: var(--h3-color);
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: 700;
+        }
+        .quote-box { font-style: italic; background: rgba(255,255,255,0.5); padding: 10px 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid var(--h3-color); }
+        .translation { margin-bottom: 10px; font-weight: 500; }
+        .grammar-desc { color: #444; margin-bottom: 10px; }
+        .pill {
+            display: inline-block;
+            background-color: var(--tag-phrase-bg);
+            color: var(--tag-phrase-text);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 8px;
+            border: 1px solid var(--tag-phrase-text);
+        }
+
+        /* Block 3: Vocabulary */
+        .vocab-item { margin-bottom: 40px; }
+        .vocab-header { display: flex; align-items: baseline; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; }
+        .vocab-id { background: var(--h2-color); color: white; padding: 0 10px; border-radius: 5px; font-weight: 700; }
+        .vocab-word { font-size: 2rem; color: var(--h2-color); font-weight: 700; }
+        .kk { color: #D32F2F; font-size: 1.2rem; }
+        .pos-def { font-weight: 700; margin-bottom: 10px; }
+        .tag-row { display: flex; align-items: flex-start; margin-bottom: 8px; }
+        .tag-label {
+            min-width: 100px;
+            padding: 2px 10px;
+            border-radius: 5px 0 0 5px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-align: center;
+            color: white;
+        }
+        .tag-content {
+            padding: 2px 15px;
+            background: rgba(255,255,255,0.6);
+            border-radius: 0 5px 5px 0;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+        .deriv-label { background-color: var(--tag-deriv-text); }
+        .root-label { background-color: var(--tag-root-text); }
+        .idiom-label { background-color: var(--tag-idiom-text); }
+        .phrase-label { background-color: var(--tag-phrase-text); }
+        .confuse-label { background-color: var(--tag-confuse-text); }
+        .pattern-label { background-color: var(--tag-accent-text); }
+
+        .example-box { margin-top: 15px; }
+        .example-item { margin-bottom: 10px; padding-left: 20px; border-left: 3px solid var(--block3-border); }
+
+        /* Block 4: Grammar */
+        .grammar-point { background: white; padding: 25px; border-radius: 10px; margin-bottom: 30px; }
+        .grammar-point h3 { color: var(--h3-color); border-bottom: 2px solid var(--h3-color); padding-bottom: 5px; }
+        .gp-quote { font-style: italic; font-weight: 700; background: #eee; padding: 10px; margin: 10px 0; }
+        .gp-pattern { font-style: italic; font-weight: 700; color: #d32f2f; margin: 10px 0; }
+        .gp-rule { margin: 15px 0; }
+        .gp-rule li { margin-bottom: 5px; }
+        .error-box { background: #ffebee; border: 1px solid #ffcdd2; padding: 15px; border-radius: 5px; margin: 15px 0; }
+        .correct { color: #2e7d32; font-weight: 700; }
+        .wrong { color: #c62828; font-weight: 700; }
+        .quiz { background: #e3f2fd; padding: 15px; border-radius: 5px; margin-top: 15px; }
+
+        /* Bottom Details */
+        details {
+            border: 2px solid var(--bottom-border);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            background-color: var(--bottom-bg);
+            overflow: hidden;
+        }
+        summary {
+            background-color: var(--bottom-head);
+            color: white;
+            padding: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 72px;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '▼'; transition: transform 0.3s; }
+        details[open] summary::after { transform: rotate(180deg); }
+        .details-body { padding: 25px; }
+        
+
+        /* Links Section CSS */
+        .link-cards-section {
+            background-color: #F8F4ED;
+            padding: 60px 0;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        .bottom-section {
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        .link-cards-title {
+            color: #8B5E3C;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+        }
+        .cards-container {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            padding: 0 20px;
+        }
+        .link-card {
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(139, 94, 60, 0.15);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            position: relative;
+        }
+        .link-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(139, 94, 60, 0.25);
+        }
+        .card-title {
+            color: #8B5E3C;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-family: 'BIZ UDPGothic', sans-serif;
+        }
+        .card-desc {
+            color: #2D2A26;
+            font-size: 16px;
+            line-height: 1.7;
+            margin: 0;
+            margin-bottom: 24px;
+            font-family: 'BIZ UDPGothic', sans-serif;
+        }
+        .card-arrow {
+            color: #D4A574;
+            font-size: 20px;
+            position: absolute;
+            bottom: 20px;
+            right: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .link-card {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1.5rem; }
+            body { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <!-- Top Links Section -->
+        <section class="link-cards-section" id="link-cards-section-top">
+            <div class="link-cards-title">七月課程與聯絡方式</div>
+            <div class="cards-container">
+                <a href="https://linwayet.github.io/4ulive/index.html" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-title">七月課程介紹</div>
+                    <p class="card-desc">錯中學 ECHO 計劃從錯題回音中整理弱點，建立可複習、可追蹤的英文學習節奏。</p>
+                    <div class="card-arrow">→</div>
+                </a>
+                <a href="https://linwayet.github.io/popup/index" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-title">學生分析用學習資料</div>
+                    <p class="card-desc">看見學生狀態，協助安排更精準的補強方向。</p>
+                    <div class="card-arrow">→</div>
+                </a>
+                <a href="https://line.me/ti/p/~linwayet" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-title">林威老師 Line</div>
+                    <p class="card-desc">Line ID: linwayet，可加入後詢問課程與學習規劃。</p>
+                    <div class="card-arrow">→</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Header Section -->
+        <div class="title-box">
+            <h1>Safety in Public Spaces: Be Ready for the Unexpected</h1>
+        </div>
+        <div class="subtitle">公共場所安全：隨時準備應對突發狀況</div>
+        <div class="credit">林威老師與 AI agent 團隊製作</div>
+
+        <!-- Section 1: Article -->
+        <h2 style="color: var(--h2-color);">【區塊一】英文文章原文</h2>
+        <div class="card block-1">
+            <div class="card-head">【原文 Original Article】</div>
+            <div class="card-body">
+                <p>In December 2025, a <span class="kw">series</span> of attacks <span class="kw">occurred</span> at Taipei MRT stations. The attacker used smoke bombs before starting <span class="kw">random</span> knife attacks. Many people were at first <span class="kw">confused</span> by the smoke, but these few seconds of <span class="kw">confusion</span> are often the key time to <span class="kw">escape</span>. An important rule to protect yourself is "run, hide, fight."</p>
+                <p>"Run" means to get away as fast as you can. Don't "freeze" to confirm what's happening. As you escape, warn others nearby and call 110. "Hide" means to stay out of the attacker's sight, find cover, and stay quiet. If you can't escape, hide behind solid <span class="kw">barriers</span>, such as counters, or lock yourself inside a room. Turn off your devices, stay low, and keep your body protected. "Fight" only when all else fails and you have no choice but to <span class="kw">resist</span>. The key idea is not winning, but creating an <span class="kw">opening</span> to escape.</p>
+                <p>Finally, remember your <span class="kw">environment</span> is full of tools. A backpack can shield your torso. A jacket wrapped around your arm can protect you. An umbrella or even a chair can help create distance or cover while you move away.</p>
+                <hr>
+                <p>Taiwan's public transportation system and event venues offer <span class="kw">reliable</span> <span class="kw">safety</span> tools. For passengers, it helps to know what support already exists and how to use it quickly.</p>
+                <p>Take the Taiwan High Speed Rail as an example. Both <span class="kw">emergency</span> buttons and intercom systems are available on trains. These tools let passengers report <span class="kw">suspicious</span> activity, medical emergencies, or violent events in real time. In addition, there is a hidden safety <span class="kw">feature</span>: The seat cushions can be <span class="kw">removed</span> in emergencies and used as protective padding. To keep everyone safe, the company also works closely with the police, using CCTV cameras and <span class="kw">security</span> control rooms to watch the environment. At major stations, you may notice more security guards and staff during peak hours.</p>
+                <p>Whether you are on a train or at a large concert, the way to stay safe is the same: stay alert and know your <span class="kw">surroundings</span>. At sports games and festival events, organizers also have safety plans in place. When you arrive, take a minute to look around for the nearest <span class="kw">exits</span>. Notice where the staff members are so that you can find them quickly if you need help or directions.</p>
+                <hr>
+                <p>While we must stay alert in public, we also need to have the right supplies ready. A simple step is keeping a grab-and-go kit. This kit is designed for quick <span class="kw">evacuation</span>. It should include a bottle of water, face masks, wet wipes, as well as a power bank and cables to stay <span class="kw">connected</span>. Don't forget to pack a first aid kit, a whistle, and a flashlight, along with cash and copies of your IDs. Keep the kit light, and check it at least twice a year.</p>
+                <p>However, tools alone are not enough; you also need some life-saving skills. In a crisis, your top <span class="kw">priority</span> is to keep yourself safe so you don't become another <span class="kw">victim</span>. Once you're safe, call emergency services and then check for the most serious <span class="kw">injuries</span>. For heavy bleeding, apply firm, direct <span class="kw">pressure</span> on the wound; if available, pack the wound with gauze and keep pressure on. For serious bleeding from an arm or a leg, a tourniquet can be used when pressure isn't enough. If many people are hurt, focus on helping those with life-threatening injuries first while waiting for emergency services.</p>
+                <p>There is nothing more powerful than staying clear-headed in a crisis—remembering to run, hide, or fight, and acting without <span class="kw">hesitation</span>.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: 8 Key Sentences -->
+        <h2 style="color: var(--h2-color);">【區塊二】8句精讀</h2>
+        <div class="card block-2">
+            <div class="card-head">【8句精讀 8 Key Sentence Analyses】</div>
+            <div class="card-body">
+                <div class="sentence-item">
+                    <div class="num-circle">1</div>
+                    <div class="quote-box">Many people were at first confused by the smoke, but these few seconds of confusion are often the key time to escape.</div>
+                    <div class="translation">許多人起初被煙霧搞得很困惑，但這幾秒鐘的困惑往往是逃生的關鍵時刻。</div>
+                    <div class="grammar-desc">本句使用了對等連接詞 but 連結兩個對比的子句。注意動詞後的形容詞 confused（人感到困惑的）與名詞 confusion（困惑、混亂）的變化。</div>
+                    <div class="pill">at first 起初</div> <div class="pill">key time 關鍵時刻</div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="num-circle">2</div>
+                    <div class="quote-box">Turn off your devices, stay low, and keep your body protected.</div>
+                    <div class="translation">關掉你的裝置，保持低姿勢，並保持身體受保護。</div>
+                    <div class="grammar-desc">這是一個祈使句（Imperative Sentence），由三個動作組成。keep + 受詞 + 受詞補語（protected，過去分詞表被動受保護狀態）。</div>
+                    <div class="pill">turn off 關掉</div> <div class="pill">stay low 保持低姿勢</div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="num-circle">3</div>
+                    <div class="quote-box">Fight only when all else fails and you have no choice but to resist.</div>
+                    <div class="translation">只有當所有其他方法都失敗且你別無選擇只能抵抗時，才進行反擊。</div>
+                    <div class="grammar-desc">when 引導時間副詞子句。核心句型為 have no choice but to + V，表示「別無選擇只能……」，注意 to 後接原形動詞。</div>
+                    <div class="pill">all else 所有其他事物</div> <div class="pill">have no choice but to 別無選擇只能</div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="num-circle">4</div>
+                    <div class="quote-box">Both emergency buttons and intercom systems are available on trains.</div>
+                    <div class="translation">火車上備有緊急按鈕和對講機系統。</div>
+                    <div class="grammar-desc">使用了對等連接詞 Both A and B，主詞為複數，故動詞用 are。available 意為「可得到的、可使用的」。</div>
+                    <div class="pill">emergency button 緊急按鈕</div> <div class="pill">intercom 對講機</div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="num-circle">5</div>
+                    <div class="quote-box">The seat cushions can be removed in emergencies and used as protective padding.</div>
+                    <div class="translation">椅墊可以在緊急情況下拆卸並用作防護墊。</div>
+                    <div class="grammar-desc">使用了被動語態 can be removed 和 (can be) used。used as 表示「被用作……」。</div>
+                    <div class="pill">seat cushion 椅墊</div> <div class="pill">protective padding 防護墊</div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="num-circle">6</div>
+                    <div class="quote-box">To keep everyone safe, the company also works closely with the police, using CCTV cameras and security control rooms to watch the environment.</div>
+                    <div class="translation">為了確保大家的安全，該公司也與警方密切合作，利用監視器和安全監控室來觀察環境。</div>
+                    <div class="grammar-desc">句首的不定詞片語 To keep... 表示目的。using... 是現在分詞構句，表伴隨動作或手段。</div>
+                    <div class="pill">work closely with 與……密切合作</div> <div class="pill">CCTV 監視器</div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="num-circle">7</div>
+                    <div class="quote-box">Notice where the staff members are so that you can find them quickly if you need help or directions.</div>
+                    <div class="translation">注意工作人員在哪裡，以便在你需要幫助或指引時能快速找到他們。</div>
+                    <div class="grammar-desc">where the staff members are 是間接問句（疑問詞+主詞+動詞）作 notice 的受詞。so that 引導目的子句。</div>
+                    <div class="pill">staff member 工作人員</div> <div class="pill">so that 以便</div>
+                </div>
+
+                <div class="sentence-item">
+                    <div class="num-circle">8</div>
+                    <div class="quote-box">For heavy bleeding, apply firm, direct pressure on the wound; if available, pack the wound with gauze and keep pressure on.</div>
+                    <div class="translation">對於嚴重出血，請對傷口施加堅定且直接的壓力；如果可以，用紗布填塞傷口並持續加壓。</div>
+                    <div class="grammar-desc">使用了祈使句給予指示。if available 是省略用法，原為 if it is available。pack the wound with... 用……填塞傷口。</div>
+                    <div class="pill">heavy bleeding 嚴重出血</div> <div class="pill">direct pressure 直接壓力</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Vocabulary -->
+        <h2 style="color: var(--h2-color);">【區塊三】18–20個單字整理</h2>
+        <div class="card block-3">
+            <div class="card-head">【單字表 Vocabulary List】</div>
+            <div class="card-body">
+                <!-- 1. unexpected -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">1</span>
+                        <span class="vocab-word">unexpected</span>
+                        <span class="kk">[ˌʌnɪkˈspɛktɪd]</span>
+                    </div>
+                    <div class="pos-def">adj. 意料之外的；突如其來的</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">unexpectedly (adv. 意外地) ; expectation (n. 期待)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label root-label">字根</div>
+                        <div class="tag-content">spect「看」：inspect 檢查 ; respect 尊敬 ; prospect 前景</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">be ready for the unexpected 隨時應付突發狀況</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">Safety in public spaces involves being ready for the unexpected.<br>（公共場所的安全涉及隨時準備好應對突發狀況。）</div>
+                        <div class="example-item">The news of the store closing was completely unexpected.<br>（商店關門的消息完全出乎意料。）</div>
+                    </div>
+                </div>
+
+                <!-- 2. series -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">2</span>
+                        <span class="vocab-word">series</span>
+                        <span class="kk">[ˈsɪriz]</span>
+                    </div>
+                    <div class="pos-def">n. 一系列；連續</div>
+                    <div class="tag-row">
+                        <div class="tag-label phrase-label">片語</div>
+                        <div class="tag-content">a series of 一連串的</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">a TV series 電視影集</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">In December 2025, a series of attacks occurred at Taipei MRT stations.<br>（2025 年 12 月，台北捷運站發生了一連串攻擊事件。）</div>
+                        <div class="example-item">The library is hosting a series of lectures on local history.<br>（圖書館正在舉辦一系列關於當地歷史的講座。）</div>
+                    </div>
+                </div>
+
+                <!-- 3. occur -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">3</span>
+                        <span class="vocab-word">occur</span>
+                        <span class="kk">[əˈkɝ]</span>
+                    </div>
+                    <div class="pos-def">v. 發生；想到</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">occurrence (n. 發生 ; 事件)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">occur to sb 某人想到某事</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">The incident occurred during the busiest time of the day.<br>（該事件發生在一天中最繁忙的時刻。）</div>
+                        <div class="example-item">It occurred to me that I had left my keys in the car.<br>（我突然想到我把鑰匙忘在車裡了。）</div>
+                    </div>
+                </div>
+
+                <!-- 4. confusion -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">4</span>
+                        <span class="vocab-word">confusion</span>
+                        <span class="kk">[kənˈfjuʒən]</span>
+                    </div>
+                    <div class="pos-def">n. 困惑；混亂</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">confuse (v. 使困惑) ; confused (adj. 感到困惑的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label root-label">字根</div>
+                        <div class="tag-content">fuse「注/灌」：refuse 拒絕 ; diffuse 散播 ; infuse 注入</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">These few seconds of confusion are often the key time to escape.<br>（這幾秒鐘的困惑往往是逃脫的關鍵時刻。）</div>
+                        <div class="example-item">There was a lot of confusion regarding the new rules.<br>（關於新規則存在很多困惑。）</div>
+                    </div>
+                </div>
+
+                <!-- 5. escape -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">5</span>
+                        <span class="vocab-word">escape</span>
+                        <span class="kk">[əˈskep]</span>
+                    </div>
+                    <div class="pos-def">v./n. 逃脫；逃避</div>
+                    <div class="tag-row">
+                        <div class="tag-label phrase-label">片語</div>
+                        <div class="tag-content">escape from 從……逃脫</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">a narrow escape 九死一生 ; 險些逃脫</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">The key idea of fighting is creating an opening to escape.<br>（反擊的核心觀念是製造逃脫的契機。）</div>
+                        <div class="example-item">The thief managed to escape from the police through a narrow window.<br>（小偷設法通過一扇窄窗逃離了警察。）</div>
+                    </div>
+                </div>
+
+                <!-- 6. barrier -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">6</span>
+                        <span class="vocab-word">barrier</span>
+                        <span class="kk">[ˈbærɪr]</span>
+                    </div>
+                    <div class="pos-def">n. 障礙物；路障；隔閡</div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">language barrier 語言障礙 ; trade barrier 貿易壁壘</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">If you can't escape, hide behind solid barriers, such as counters.<br>（如果你無法逃脫，請躲在堅固的障礙物後，例如櫃台。）</div>
+                        <div class="example-item">Lack of confidence can be a significant barrier to success.<br>（缺乏信心可能是通往成功的重要障礙。）</div>
+                    </div>
+                </div>
+
+                <!-- 7. resist -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">7</span>
+                        <span class="vocab-word">resist</span>
+                        <span class="kk">[rɪˈzɪst]</span>
+                    </div>
+                    <div class="pos-def">v. 抵抗；抵制；忍住</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">resistance (n. 抵抗) ; resistant (adj. 有抵抗力的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">resist temptation 抵制誘惑</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">Fight only when you have no choice but to resist.<br>（只有當你別無選擇只能抵抗時才反擊。）</div>
+                        <div class="example-item">It was hard to resist eating another piece of cake.<br>（很難忍住不再吃一塊蛋糕。）</div>
+                    </div>
+                </div>
+
+                <!-- 8. environment -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">8</span>
+                        <span class="vocab-word">environment</span>
+                        <span class="kk">[ɪnˈvaɪrənmənt]</span>
+                    </div>
+                    <div class="pos-def">n. 環境</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">environmental (adj. 環境的) ; environmentalist (n. 環保人士)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">protect the environment 保護環境 ; working environment 工作環境</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">Remember your environment is full of tools you can use for protection.<br>（記住你的周圍環境充滿了你可以用來保護自己的工具。）</div>
+                        <div class="example-item">A healthy home environment is important for a child's growth.<br>（健康的家庭環境對孩子的成長非常重要。）</div>
+                    </div>
+                </div>
+
+                <!-- 9. reliable -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">9</span>
+                        <span class="vocab-word">reliable</span>
+                        <span class="kk">[rɪˈlaɪəbl]</span>
+                    </div>
+                    <div class="pos-def">adj. 可靠的；可信賴的</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">rely (v. 依賴) ; reliability (n. 可靠性)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">highly reliable 非常可靠的 ; reliable information 可靠消息</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">Taiwan's public transportation system offers reliable safety tools.<br>（台灣的公共運輸系統提供可靠的安全工具。）</div>
+                        <div class="example-item">We need a reliable person to lead this project.<br>（我們需要一個可靠的人來領導這個計畫。）</div>
+                    </div>
+                </div>
+
+                <!-- 10. emergency -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">10</span>
+                        <span class="vocab-word">emergency</span>
+                        <span class="kk">[iˈmɝdʒənsɪ]</span>
+                    </div>
+                    <div class="pos-def">n. 緊急情況 adj. 緊急的</div>
+                    <div class="tag-row">
+                        <div class="tag-label phrase-label">片語</div>
+                        <div class="tag-content">in case of emergency 以防萬一</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">emergency services 緊急救援服務 (警、消、醫)</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">Emergency buttons and intercom systems are available on trains.<br>（火車上備有緊急按鈕和對講機系統。）</div>
+                        <div class="example-item">The pilot made an emergency landing after the engine failed.<br>（引擎故障後，機師進行了緊急降落。）</div>
+                    </div>
+                </div>
+
+                <!-- 11. suspicious -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">11</span>
+                        <span class="vocab-word">suspicious</span>
+                        <span class="kk">[əˈspɪʃəs]</span>
+                    </div>
+                    <div class="pos-def">adj. 可疑的；懷疑的</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">suspicion (n. 懷疑) ; suspect (n. 嫌疑人 ; v. 懷疑)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">suspicious activity 可疑活動 ; feel suspicious about 對……感到懷疑</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">These tools let passengers report suspicious activity in real time.<br>（這些工具讓乘客能即時回報可疑活動。）</div>
+                        <div class="example-item">The neighbors became suspicious when they saw strange lights in the house.<br>（鄰居們看到房子裡有奇怪的光時，變得起了疑心。）</div>
+                    </div>
+                </div>
+
+                <!-- 12. feature -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">12</span>
+                        <span class="vocab-word">feature</span>
+                        <span class="kk">[ˈfitʃɚ]</span>
+                    </div>
+                    <div class="pos-def">n. 特徵；功能 v. 以……為特色</div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">safety feature 安全設計 ; key feature 主要特徵</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">There is a hidden safety feature in the high-speed rail trains.<br>（高鐵列車上有一個隱藏的安全設計。）</div>
+                        <div class="example-item">The new smartphone has many advanced features.<br>（這款新手機有很多先進的功能。）</div>
+                    </div>
+                </div>
+
+                <!-- 13. remove -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">13</span>
+                        <span class="vocab-word">remove</span>
+                        <span class="kk">[rɪˈmuv]</span>
+                    </div>
+                    <div class="pos-def">v. 移除；脫掉；去除</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">removal (n. 移除) ; removable (adj. 可拆卸的)</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">The seat cushions can be removed in emergencies.<br>（椅墊可以在緊急情況下拆卸。）</div>
+                        <div class="example-item">Please remove your shoes before entering the house.<br>（進屋前請脫鞋。）</div>
+                    </div>
+                </div>
+
+                <!-- 14. security -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">14</span>
+                        <span class="vocab-word">security</span>
+                        <span class="kk">[sɪˈkjʊrətɪ]</span>
+                    </div>
+                    <div class="pos-def">n. 安全；保全；保障</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">secure (adj. 安全的 ; v. 獲得 ; 保護)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">security guard 保全人員 ; security camera 監視器</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">You may notice more security guards and staff during peak hours.<br>（在尖峰時段，你可能會注意到更多保全人員和工作人員。）</div>
+                        <div class="example-item">The company takes data security very seriously.<br>（公司非常重視數據安全。）</div>
+                    </div>
+                </div>
+
+                <!-- 15. surroundings -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">15</span>
+                        <span class="vocab-word">surroundings</span>
+                        <span class="kk">[səˈraʊndɪŋz]</span>
+                    </div>
+                    <div class="pos-def">n. 周圍環境</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">surround (v. 環繞) ; surrounding (adj. 周圍的)</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">The way to stay safe is to stay alert and know your surroundings.<br>（保持安全的方法是保持警覺並了解你的周圍環境。）</div>
+                        <div class="example-item">The hotel is set in beautiful surroundings near the lake.<br>（這家飯店座落在湖邊美麗的環境中。）</div>
+                    </div>
+                </div>
+
+                <!-- 16. evacuation -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">16</span>
+                        <span class="vocab-word">evacuation</span>
+                        <span class="kk">[ɪˌvækjʊˈeʃən]</span>
+                    </div>
+                    <div class="pos-def">n. 疏散；撤離</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">evacuate (v. 疏散)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label root-label">字根</div>
+                        <div class="tag-content">va「空」：vacuum 真空 ; vacant 空的 ; vanish 消失</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">The grab-and-go kit is designed for quick evacuation.<br>（緊急避難包是為快速疏散而設計的。）</div>
+                        <div class="example-item">The fire alarm triggered a mass evacuation of the building.<br>（火災警報引發了建築物的大規模疏散。）</div>
+                    </div>
+                </div>
+
+                <!-- 17. priority -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">17</span>
+                        <span class="vocab-word">priority</span>
+                        <span class="kk">[praɪˈɔrətɪ]</span>
+                    </div>
+                    <div class="pos-def">n. 優先事項；首要任務</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">prior (adj. 在先的 ; 優先的) ; prioritize (v. 優先處理)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">top priority 最優先事項 ; take priority over 比……更優先</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">In a crisis, your top priority is to keep yourself safe.<br>（在危機中，你的首要任務是保持自己安全。）</div>
+                        <div class="example-item">Customer satisfaction is our company's number one priority.<br>（客戶滿意度是我們公司的首要任務。）</div>
+                    </div>
+                </div>
+
+                <!-- 18. victim -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">18</span>
+                        <span class="vocab-word">victim</span>
+                        <span class="kk">[ˈvɪktɪm]</span>
+                    </div>
+                    <div class="pos-def">n. 受害者</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">victimize (v. 使受害 ; 欺負)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">fall victim to 成為……的受害者</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">Keep yourself safe so you don't become another victim.<br>（保持自己安全，以免成為另一個受害者。）</div>
+                        <div class="example-item">The charity provides support for victims of natural disasters.<br>（該慈善機構為自然災害的受害者提供支持。）</div>
+                    </div>
+                </div>
+
+                <!-- 19. injury -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">19</span>
+                        <span class="vocab-word">injury</span>
+                        <span class="kk">[ˈɪndʒərɪ]</span>
+                    </div>
+                    <div class="pos-def">n. 傷害；損害</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">injure (v. 受傷) ; injured (adj. 受傷的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label idiom-label">慣用語</div>
+                        <div class="tag-content">serious injury 重傷 ; life-threatening injury 危及生命的傷</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">Check for the most serious injuries first during a medical emergency.<br>（在醫療緊急情況下，先檢查最嚴重的傷害。）</div>
+                        <div class="example-item">He suffered a leg injury while playing soccer.<br>（他在踢足球時腿部受傷。）</div>
+                    </div>
+                </div>
+
+                <!-- 20. hesitation -->
+                <div class="vocab-item">
+                    <div class="vocab-header">
+                        <span class="vocab-id">20</span>
+                        <span class="vocab-word">hesitation</span>
+                        <span class="kk">[ˌhɛzəˈteʃən]</span>
+                    </div>
+                    <div class="pos-def">n. 猶豫</div>
+                    <div class="tag-row">
+                        <div class="tag-label deriv-label">衍生詞</div>
+                        <div class="tag-content">hesitate (v. 猶豫) ; hesitant (adj. 遲疑的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label phrase-label">片語</div>
+                        <div class="tag-content">without hesitation 毫不猶豫</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-item">Staying clear-headed and acting without hesitation is key in a crisis.<br>（在危機中保持頭腦清醒並毫不猶豫地採取行動是關鍵。）</div>
+                        <div class="example-item">She answered the difficult question without any hesitation.<br>（她毫不猶豫地回答了那個難題。）</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Section 4: Grammar Analysis -->
+        <h2 style="color: var(--h2-color);">【區塊四】文法解析</h2>
+        <div class="card block-4">
+            <div class="card-head">【文法解析 Grammar Analysis】</div>
+            <div class="card-body">
+                <!-- Point 1: Participle Phrase -->
+                <div class="grammar-point">
+                    <h3>1. 現在分詞構句 (Participle Phrase)</h3>
+                    <div class="gp-quote">...the company also works closely with the police, using CCTV cameras and security control rooms...</div>
+                    <div class="gp-pattern">S + V ..., V-ing ...</div>
+                    <p><strong>核心說明：</strong>當兩個動作同時發生，且主詞相同時，可以將其中一個動作簡化為分詞構句。V-ing 通常用來補充說明動作的方式、手段或伴隨情況。</p>
+                    <p><strong>使用規則：</strong></p>
+                    <ul class="gp-rule">
+                        <li>主詞必須一致：省略從句的主詞與連接詞。</li>
+                        <li>主動關係：被簡化的動詞若與主詞為「主動」關係，改為 V-ing。</li>
+                        <li>位置靈活：可放在句中補充，或放在句尾說明結果。</li>
+                    </ul>
+                    <p><strong>主題例句：</strong></p>
+                    <ul>
+                        <li>Passengers waited for the train, <strong>checking</strong> their phones for updates.（乘客們等待火車，同時查看手機更新資訊。）</li>
+                        <li>Organizers prepared for the event, <strong>setting</strong> up safety barriers around the stage.（主辦單位為活動做準備，在舞台周圍設置安全障礙物。）</li>
+                    </ul>
+                    <p><strong>學習提醒：</strong>分詞構句可以讓句子更簡潔。注意 V-ing 與主詞的邏輯關係必須是主動的。</p>
+                    <div class="error-box">
+                        <span class="wrong">✗</span> The company works with police, used CCTV cameras.<br>
+                        <span class="correct">✓</span> The company works with police, <strong>using</strong> CCTV cameras.<br>
+                        說明：此處為伴隨動作，應使用現在分詞 using。
+                    </div>
+                    <div class="quiz">
+                        選擇題：The student ran out of the building, ________ for help.<br>
+                        (A) shout (B) shouted (C) shouting (D) to shout<br>
+                        答案：C。說明：現在分詞表伴隨動作。
+                    </div>
+                </div>
+
+                <!-- Point 2: Passive Voice -->
+                <div class="grammar-point">
+                    <h3>2. 助動詞的被動語態 (Passive Voice with Modals)</h3>
+                    <div class="gp-quote">The seat cushions can be removed in emergencies and used as protective padding.</div>
+                    <div class="gp-pattern">Modal (can/should/must) + be + V-ed (p.p.)</div>
+                    <p><strong>核心說明：</strong>當動作的主體不重要或不需要強調時，使用被動語態。結合助動詞（如 can, should, must）時，結構為「助動詞 + be + 過去分詞」。</p>
+                    <p><strong>使用規則：</strong></p>
+                    <ul class="gp-rule">
+                        <li>結構固定：助動詞後接原形 be，再接 p.p.。</li>
+                        <li>多個動詞：若有多個被動動詞並列，後面的 be 常可省略，如本句中的 (can be) used。</li>
+                        <li>強調對象：重點在於「座墊」而非「誰拆卸它」。</li>
+                    </ul>
+                    <p><strong>主題例句：</strong></p>
+                    <ul>
+                        <li>Emergency buttons <strong>should be pressed</strong> only in a real crisis.（緊急按鈕應僅在真正的危機中按下。）</li>
+                        <li>Safety tools <strong>must be checked</strong> regularly to ensure they work.（必須定期檢查安全工具以確保其運作正常。）</li>
+                    </ul>
+                    <p><strong>學習提醒：</strong>過去分詞 (p.p.) 的拼寫需注意規則與不規則變化。</p>
+                    <div class="error-box">
+                        <span class="wrong">✗</span> The kit can remove quickly.<br>
+                        <span class="correct">✓</span> The kit can <strong>be removed</strong> quickly.<br>
+                        說明：包包是被移除的，需用被動語態。
+                    </div>
+                    <div class="quiz">
+                        選擇題：The emergency exits must ________ clear at all times.<br>
+                        (A) keep (B) be kept (C) kept (D) keeping<br>
+                        答案：B。說明：出口必須「被保持」通暢。
+                    </div>
+                </div>
+
+                <!-- Point 3: Infinitive for Purpose -->
+                <div class="grammar-point">
+                    <h3>3. 不定詞表目的 (Infinitive for Purpose)</h3>
+                    <div class="gp-quote">To keep everyone safe, the company also works closely with the police...</div>
+                    <div class="gp-pattern">To + V ..., S + V ... / S + V ... to + V ...</div>
+                    <p><strong>核心說明：</strong>不定詞 (to + V) 最常見的用法之一是表示「目的」，相當於 in order to。放在句首時具有強調效果，且後面通常接逗號。</p>
+                    <p><strong>使用規則：</strong></p>
+                    <ul class="gp-rule">
+                        <li>語意轉化：可與 so that 子句互相替換（需調整結構）。</li>
+                        <li>否定用法：若要表達「為了不……」，應使用 in order not to 或 so as not to。</li>
+                        <li>位置：放在句首強調目的；放在句尾則語氣較自然。</li>
+                    </ul>
+                    <p><strong>主題例句：</strong></p>
+                    <ul>
+                        <li>People carry whistles <strong>to call</strong> for help in an emergency.（人們攜帶哨子以便在緊急情況下求救。）</li>
+                        <li><strong>To avoid</strong> confusion, the staff gave clear directions to the exit.（為了避免混亂，工作人員給出了前往出口的清晰指引。）</li>
+                    </ul>
+                    <p><strong>學習提醒：</strong>不要把表示目的的 to 與介係詞 to 搞混。</p>
+                    <div class="error-box">
+                        <span class="wrong">✗</span> For stay safe, we should stay alert.<br>
+                        <span class="correct">✓</span> <strong>To stay</strong> safe, we should stay alert.<br>
+                        說明：表示目的應使用不定詞 to V 而非介係詞 for。
+                    </div>
+                    <div class="quiz">
+                        選擇題：He used a flashlight ________ the way in the dark.<br>
+                        (A) find (B) to finding (C) to find (D) found<br>
+                        答案：C。說明：不定詞 to V 表示目的。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details Sections -->
+        <h2 style="color: var(--h2-color);">【底部折疊區塊】</h2>
+        
+        <details>
+            <summary>折疊一：常見字首整理 (50個)</summary>
+            <div class="details-body">
+                <p>ab- 離開、相反 — abnormal (異常的)<br>
+                ad- 向、加 — advance (前進)<br>
+                ambi- 雙方、兩面 — ambiguous (模稜兩可的)<br>
+                anti- 反對、抗 — antibiotic (抗生素)<br>
+                arch- 主要、首要 — archenemy (死敵)<br>
+                auto- 自動、自我 — autograph (親筆簽名)<br>
+                bene- 好的、善 — benefit (好處)<br>
+                bi- 二、雙 — bilingual (雙語的)<br>
+                circum- 環繞、周圍 — circumstance (情況)<br>
+                co-/con-/com- 一起、共同 — cooperate (合作)<br>
+                contra- 相反、對抗 — contradict (反駁)<br>
+                de- 去除、下降 — decode (解碼)<br>
+                dia- 穿過、透過 — dialogue (對話)<br>
+                dis- 否定、分離 — disagree (不同意)<br>
+                en-/em- 使成為 — enable (使能夠)<br>
+                epi- 在上、在外 — epidemic (流行病)<br>
+                ex- 外、前任 — export (出口)<br>
+                extra- 額外、外部 — extraordinary (非凡的)<br>
+                hetero- 不同 — heterogeneous (異質的)<br>
+                homo- 相同 — homogeneous (同質的)<br>
+                hyper- 過度、超 — hyperactive (過動的)<br>
+                hypo- 低於、不足 — hypodermic (皮下的)<br>
+                in-/im- 否定、進入 — invisible (看不見的)<br>
+                inter- 在…之間 — international (國際的)<br>
+                iso- 相等、相同 — isolate (隔離)<br>
+                mal- 壞、不良 — malfunction (故障)<br>
+                micro- 微小 — microscope (顯微鏡)<br>
+                mis- 錯誤 — misunderstand (誤解)<br>
+                mono- 單一 — monologue (獨白)<br>
+                multi- 多 — multicultural (多元文化的)<br>
+                neo- 新的 — neonatal (新生的)<br>
+                non- 非、沒有 — nonsense (無意義)<br>
+                pan- 全部 — pandemic (大流行病)<br>
+                peri- 周圍 — perimeter (周長)<br>
+                poly- 多 — polygon (多邊形)<br>
+                post- 之後 — postwar (戰後的)<br>
+                pre- 之前 — preview (預覽)<br>
+                pro- 向前、支持 — progress (進步)<br>
+                pseudo- 假的 — pseudonym (筆名)<br>
+                re- 再、回 — review (複習)<br>
+                semi- 一半、部分 — semicircle (半圓)<br>
+                sub- 在下、次級 — subway (地鐵)<br>
+                super- 超越、在上 — superstar (超級明星)<br>
+                syn-/sym- 一起、共同 — synchronize (同步)<br>
+                tele- 遠距 — telephone (電話)<br>
+                trans- 穿越、轉變 — transport (運輸)<br>
+                tri- 三 — triangle (三角形)<br>
+                un- 否定、不 — unhappy (不快樂的)<br>
+                vice- 副、代替 — vice-president (副總統)</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>折疊二：常見英文字尾整理 (約30個)</summary>
+            <div class="details-body">
+                <p><strong>名詞字尾</strong><br>
+                -tion/-sion/-ation 動作、過程 — education (教育)<br>
+                -ment 行為或結果 — agreement (協議)<br>
+                -ness 狀態或性質 — happiness (快樂)<br>
+                -ity/-ty 抽象概念 — ability (能力)<br>
+                -er/-or 執行者 — teacher (老師)<br>
+                -ist 專業的人 — scientist (科學家)<br>
+                -ship 身分或關係 — friendship (友誼)<br>
+                -hood 階段或狀態 — childhood (童年)<br><br>
+                <strong>形容詞字尾</strong><br>
+                -able/-ible 能夠…的 — readable (可讀的)<br>
+                -ous 充滿…的 — dangerous (危險的)<br>
+                -ful 具有…的 — hopeful (充滿希望的)<br>
+                -less 缺乏…的 — hopeless (絕望的)<br>
+                -al/-ic 與…相關的 — natural (自然的)<br><br>
+                <strong>動詞字尾</strong><br>
+                -ize/-ise 使成為… — realize (實現)<br>
+                -ify 使成為… — beautify (美化)<br>
+                -ate 形成動詞 — activate (啟動)<br>
+                -en 使變成… — strengthen (加強)<br><br>
+                <strong>副詞字尾</strong><br>
+                -ly 形容詞轉副詞 — quickly (快速地)<br>
+                -ward(s) 表示方向 — upwards (向上)<br>
+                -wise 表示方式 — clockwise (順時針)</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>折疊三：30個常用單字與衍生詞</summary>
+            <div class="details-body">
+                <p>1. attack [əˈtæk] (v./n. 攻擊) — attacker (n. 攻擊者)<br>
+                2. confusing [kənˈfjuʒɪŋ] (adj. 令人困惑的) — confuse (v. 使困惑)<br>
+                3. protect [prəˈtɛkt] (v. 保護) — protection (n. 保護)<br>
+                4. solid [ˈsɑlɪd] (adj. 固體的 ; 堅固的) — solidify (v. 凝固)<br>
+                5. resistant [rɪˈzɪstənt] (adj. 有抵抗力的) — resistance (n. 抵抗)<br>
+                6. opening [ˈopənɪŋ] (n. 空隙 ; 契機) — open (v./adj. 開啟)<br>
+                7. shield [ʃild] (v. 防護 ; n. 盾牌)<br>
+                8. torso [ˈtɔrso] (n. 軀幹)<br>
+                9. transportation [ˌtrænspɚˈteʃən] (n. 運輸) — transport (v. 運輸)<br>
+                10. intercom [ˈɪntɝˌkɑm] (n. 對講機)<br>
+                11. suspicious [əˈspɪʃəs] (adj. 可疑的) — suspicion (n. 懷疑)<br>
+                12. medical [ˈmɛdɪkl] (adj. 醫療的) — medicine (n. 藥物)<br>
+                13. violent [ˈvaɪələnt] (adj. 暴力的) — violence (n. 暴力)<br>
+                14. cushion [ˈkʊʃən] (n. 墊子)<br>
+                15. security [sɪˈkjʊrətɪ] (n. 安全 ; 保全) — secure (adj. 安全的)<br>
+                16. surroundings [səˈraʊndɪŋz] (n. 周圍環境) — surround (v. 環繞)<br>
+                17. organizer [ˈɔrɡəˌnaɪzɚ] (n. 組織者) — organize (v. 組織)<br>
+                18. exit [ˈɛɡzɪt] (n. 出口 ; v. 離開)<br>
+                19. supply [səˈplaɪ] (n. 補給品 ; v. 供應)<br>
+                20. kit [kɪt] (n. 成套裝備 ; 工具包)<br>
+                21. evacuation [ɪˌvækjʊˈeʃən] (n. 疏散) — evacuate (v. 疏散)<br>
+                22. power bank (n. 行動電源)<br>
+                23. flashlight [ˈflæʃˌlaɪt] (n. 手電筒)<br>
+                24. crisis [ˈkraɪsɪs] (n. 危機)<br>
+                25. bleeding [ˈblidɪŋ] (n. 出血) — bleed (v. 出血)<br>
+                26. pressure [ˈprɛʃɚ] (n. 壓力) — press (v. 按壓)<br>
+                27. gauze [ɡɔz] (n. 紗布)<br>
+                28. injury [ˈɪndʒərɪ] (n. 傷害) — injure (v. 受傷)<br>
+                29. powerful [ˈpaʊɚfəl] (adj. 強大的) — power (n. 力量)<br>
+                30. hesitation [ˌhɛzəˈteʃən] (n. 猶豫) — hesitate (v. 猶豫)</p>
+                <hr>
+                <p><strong>文章相關常用片語：</strong><br>
+                • as fast as one can（盡其所能地快）<br>
+                • stay out of sight（留在視線之外）<br>
+                • take ... as an example（以……為例）<br>
+                • check ... at least twice a year（每年至少檢查兩次）<br>
+                • focus on（專注於……）</p>
+            </div>
+        </details>
+
+        <details>
+            <summary>折疊四：練文筆食材</summary>
+            <div class="details-body">
+                <p>① <strong>...is the key time to...</strong>（……是……的關鍵時刻）<br>
+                例：The first few hours are the key time to save the patients.</p>
+                
+                <p>② <strong>...as fast as you can</strong>（盡可能快地……）<br>
+                例：You should finish the assignment as fast as you can.</p>
+                
+                <p>③ <strong>...only when... and you have no choice but to...</strong>（唯有當……且你別無選擇只能……）<br>
+                例：Use the emergency exit only when there is a fire and you have no choice but to leave immediately.</p>
+                
+                <p>④ <strong>Take ... as an example.</strong>（以……為例。）<br>
+                例：Take the new policy as an example; it has many benefits for students.</p>
+                
+                <p>⑤ <strong>Whether you are ..., the way to ... is the same: ...</strong>（無論你是在……，……的方法都是一樣的：……）<br>
+                例：Whether you are a student or a teacher, the way to succeed is the same: stay diligent.</p>
+                
+                <p>⑥ <strong>...is designed for...</strong>（……是為……而設計的）<br>
+                例：This building is designed for senior residents.</p>
+                
+                <p>⑦ <strong>Don't forget to ..., along with ...</strong>（別忘了……，以及……）<br>
+                例：Don't forget to bring your passport, along with the tickets.</p>
+                
+                <p>⑧ <strong>...so you don't become another victim.</strong>（……以便你不會成為另一個受害者。）<br>
+                例：Follow the safety rules so you don't become another victim of the accident.</p>
+                
+                <p>⑨ <strong>Once you're safe, ...</strong>（一旦你安全了，……）<br>
+                例：Once you're safe, call your family to let them know.</p>
+                
+                <p>⑩ <strong>There is nothing more powerful than ...</strong>（沒有什麼比……更強大了）<br>
+                例：There is nothing more powerful than staying positive in difficult times.</p>
+            </div>
+        </details>
+
+        <!-- Bottom Links Section -->
+        <section class="link-cards-section bottom-section" id="link-cards-section-bottom">
+            <div class="link-cards-title">七月課程與聯絡方式</div>
+            <div class="cards-container">
+                <a href="https://linwayet.github.io/4ulive/index.html" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-title">七月課程介紹</div>
+                    <p class="card-desc">錯中學 ECHO 計劃從錯題回音中整理弱點，建立可複習、可追蹤的英文學習節奏。</p>
+                    <div class="card-arrow">→</div>
+                </a>
+                <a href="https://linwayet.github.io/popup/index" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-title">學生分析用學習資料</div>
+                    <p class="card-desc">看見學生狀態，協助安排更精準的補強方向。</p>
+                    <div class="card-arrow">→</div>
+                </a>
+                <a href="https://line.me/ti/p/~linwayet" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="card-title">林威老師 Line</div>
+                    <p class="card-desc">Line ID: linwayet，可加入後詢問課程與學習規劃。</p>
+                    <div class="card-arrow">→</div>
+                </a>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
