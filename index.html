@@ -35,6 +35,19 @@
       line-height: 1.75;
       min-height: 100vh;
       padding: 0 0 60px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .main-wrapper {
+      display: flex;
+      flex: 1;
+      position: relative;
+    }
+    
+    .main-content {
+      flex: 1;
+      margin-right: 280px;
     }
 
     /* ── Hero Banner ── */
@@ -405,7 +418,104 @@
       margin: 36px 0 0;
     }
 
+    /* ── Right Sidebar ── */
+    .right-sidebar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 260px;
+      height: 100vh;
+      background: var(--surface);
+      border-left: 2px solid var(--border);
+      padding: 24px 16px;
+      overflow-y: auto;
+      z-index: 100;
+    }
+
+    .sidebar-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Noto Serif TC', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      margin-bottom: 6px;
+      background: var(--bg);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.15s;
+      border-left: 3px solid transparent;
+    }
+
+    .sidebar-item:hover {
+      background: #FFF;
+      border-left-color: var(--accent);
+      transform: translateX(-2px);
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .sidebar-item .num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .sidebar-item.tone-1 .num {
+      background: #FFE5E5;
+      color: #C62828;
+    }
+
+    .sidebar-item.tone-2 .num {
+      background: #E3F2FD;
+      color: #1565C0;
+    }
+
+    .sidebar-item.tone-3 .num {
+      background: #E8F5E9;
+      color: #2E7D32;
+    }
+
+    .sidebar-item.tone-4 .num {
+      background: #FFF3E0;
+      color: #E65100;
+    }
+
+    .sidebar-item.tone-5 .num {
+      background: #F3E5F5;
+      color: #6A1B9A;
+    }
+
     /* ── Responsive ── */
+    @media (max-width: 1200px) {
+      .right-sidebar {
+        display: none;
+      }
+      
+      .main-content {
+        margin-right: 0;
+      }
+    }
+
     @media (max-width: 520px) {
       html { font-size: 20px; }
 
@@ -443,6 +553,9 @@
     <h1>林威老師<em>英文練習平台</em></h1>
     <p class="hero-sub">試卷分析 · 單字精練 · 學測模擬</p>
   </div>
+
+  <div class="main-wrapper">
+    <div class="main-content">
 
   <!-- Profile Card -->
   <div class="container">
@@ -575,6 +688,26 @@
       <a class="exam-btn magazine-tone-3" href="magazine28.html">當月英雜 28</a>
       <a class="exam-btn magazine-tone-4" href="magazine29.html">當月英雜 29</a>
       <a class="exam-btn magazine-tone-4" href="magazine30.html">當月英雜 30</a>
+      <a class="exam-btn magazine-tone-1" href="magazine31.html">當月英雜 31</a>
+      <a class="exam-btn magazine-tone-1" href="magazine32.html">當月英雜 32</a>
+      <a class="exam-btn magazine-tone-2" href="magazine33.html">當月英雜 33</a>
+      <a class="exam-btn magazine-tone-2" href="magazine34.html">當月英雜 34</a>
+      <a class="exam-btn magazine-tone-2" href="magazine35.html">當月英雜 35</a>
+      <a class="exam-btn magazine-tone-3" href="magazine36.html">當月英雜 36</a>
+      <a class="exam-btn magazine-tone-3" href="magazine37.html">當月英雜 37</a>
+      <a class="exam-btn magazine-tone-3" href="magazine38.html">當月英雜 38</a>
+      <a class="exam-btn magazine-tone-4" href="magazine39.html">當月英雜 39</a>
+      <a class="exam-btn magazine-tone-4" href="magazine40.html">當月英雜 40</a>
+      <a class="exam-btn magazine-tone-1" href="magazine41.html">當月英雜 41</a>
+      <a class="exam-btn magazine-tone-1" href="magazine42.html">當月英雜 42</a>
+      <a class="exam-btn magazine-tone-1" href="magazine43.html">當月英雜 43</a>
+      <a class="exam-btn magazine-tone-2" href="magazine44.html">當月英雜 44</a>
+      <a class="exam-btn magazine-tone-2" href="magazine45.html">當月英雜 45</a>
+      <a class="exam-btn magazine-tone-3" href="magazine46.html">當月英雜 46</a>
+      <a class="exam-btn magazine-tone-3" href="magazine47.html">當月英雜 47</a>
+      <a class="exam-btn magazine-tone-4" href="magazine48.html">當月英雜 48</a>
+      <a class="exam-btn magazine-tone-4" href="magazine49.html">當月英雜 49</a>
+      <a class="exam-btn magazine-tone-4" href="magazine50.html">當月英雜 50</a>
     </div>
 
     <!-- 長難句分析 -->
@@ -610,6 +743,99 @@
       <p style="margin-top:6px;">© 錯中學 Echo 計劃 · 林威老師英文教學平台</p>
     </div>
   </div>
+
+    </div><!-- end main-content -->
+
+    <!-- Right Sidebar -->
+    <div class="right-sidebar">
+      <div class="sidebar-header">
+        <span>📰</span>
+        <span>當月英雜專區</span>
+      </div>
+      
+      <a class="sidebar-item tone-1" href="magazine31.html">
+        <span class="num">31</span>
+        <span>當月英雜 31</span>
+      </a>
+      <a class="sidebar-item tone-1" href="magazine32.html">
+        <span class="num">32</span>
+        <span>當月英雜 32</span>
+      </a>
+      <a class="sidebar-item tone-2" href="magazine33.html">
+        <span class="num">33</span>
+        <span>當月英雜 33</span>
+      </a>
+      <a class="sidebar-item tone-2" href="magazine34.html">
+        <span class="num">34</span>
+        <span>當月英雜 34</span>
+      </a>
+      <a class="sidebar-item tone-2" href="magazine35.html">
+        <span class="num">35</span>
+        <span>當月英雜 35</span>
+      </a>
+      <a class="sidebar-item tone-3" href="magazine36.html">
+        <span class="num">36</span>
+        <span>當月英雜 36</span>
+      </a>
+      <a class="sidebar-item tone-3" href="magazine37.html">
+        <span class="num">37</span>
+        <span>當月英雜 37</span>
+      </a>
+      <a class="sidebar-item tone-3" href="magazine38.html">
+        <span class="num">38</span>
+        <span>當月英雜 38</span>
+      </a>
+      <a class="sidebar-item tone-4" href="magazine39.html">
+        <span class="num">39</span>
+        <span>當月英雜 39</span>
+      </a>
+      <a class="sidebar-item tone-4" href="magazine40.html">
+        <span class="num">40</span>
+        <span>當月英雜 40</span>
+      </a>
+      <a class="sidebar-item tone-1" href="magazine41.html">
+        <span class="num">41</span>
+        <span>當月英雜 41</span>
+      </a>
+      <a class="sidebar-item tone-1" href="magazine42.html">
+        <span class="num">42</span>
+        <span>當月英雜 42</span>
+      </a>
+      <a class="sidebar-item tone-1" href="magazine43.html">
+        <span class="num">43</span>
+        <span>當月英雜 43</span>
+      </a>
+      <a class="sidebar-item tone-2" href="magazine44.html">
+        <span class="num">44</span>
+        <span>當月英雜 44</span>
+      </a>
+      <a class="sidebar-item tone-2" href="magazine45.html">
+        <span class="num">45</span>
+        <span>當月英雜 45</span>
+      </a>
+      <a class="sidebar-item tone-3" href="magazine46.html">
+        <span class="num">46</span>
+        <span>當月英雜 46</span>
+      </a>
+      <a class="sidebar-item tone-3" href="magazine47.html">
+        <span class="num">47</span>
+        <span>當月英雜 47</span>
+      </a>
+      <a class="sidebar-item tone-4" href="magazine48.html">
+        <span class="num">48</span>
+        <span>當月英雜 48</span>
+      </a>
+      <a class="sidebar-item tone-4" href="magazine49.html">
+        <span class="num">49</span>
+        <span>當月英雜 49</span>
+      </a>
+      <a class="sidebar-item tone-5" href="magazine50.html">
+        <span class="num">50</span>
+        <span>當月英雜 50</span>
+      </a>
+    </div><!-- end right-sidebar -->
+
+  </div><!-- end main-wrapper -->
 
 </body>
 </html>
