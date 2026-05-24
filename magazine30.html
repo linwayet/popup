@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)file:///Users/linchiachi/Downloads/a-tale-of-three-chocolates.html -->
+<html lang="zh-Hant"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Tale of Three Chocolates - English Learning Article</title>
+    <link href="./A Tale of Three Chocolates - English Learning Article_files/css2" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FFF8F0;
+            --main-text-color: #1A0F00;
+            --h1-color: #C0392B;
+            --h2-color: #1565C0;
+            --h3-color: #2E7D32;
+            --emphasize-a: #E65100;
+            --emphasize-b: #6A1B9A;
+            --keyword-blue: #0D47A1;
+            
+            --block1-head: #0D47A1;
+            --block1-border: #90CAF9;
+            --block1-bg: #F3F8FF;
+            
+            --block2-head: #BF360C;
+            --block2-border: #FFAB91;
+            --block2-bg: #FFF3EF;
+            
+            --block3-head: #1B5E20;
+            --block3-border: #81C784;
+            --block3-bg: #F1F8F2;
+            
+            --block4-head: #4A148C;
+            --block4-border: #CE93D8;
+            --block4-bg: #F9F0FF;
+            
+            --footer-head: #4A3728;
+            --footer-border: #C4A06A;
+            --footer-bg: #FAF6F0;
+
+            --tag-deriv-bg: #FDEDEC; --tag-deriv-text: #C0392B;
+            --tag-root-bg: #EBF5FB; --tag-root-text: #1565C0;
+            --tag-phrase-bg: #EAFAF1; --tag-phrase-text: #2E7D32;
+            --tag-idiom-bg: #FEF9E7; --tag-idiom-text: #D68910;
+            --tag-confuse-bg: #F5EEF8; --tag-confuse-text: #6A1B9A;
+            --tag-emphasis-bg: #FEF0E7; --tag-emphasis-text: #E65100;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'BIZ UDPGothic', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--main-text-color);
+            font-size: 22px;
+            line-height: 1.85;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* 頁面頂部標題 */
+        .page-header { text-align: center; margin-bottom: 50px; }
+        .main-title {
+            font-size: 3rem;
+            color: var(--h1-color);
+            font-weight: 700;
+            border: 4px solid var(--h1-color);
+            padding: 15px 30px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .sub-title {
+            font-size: 2.2rem;
+            color: var(--h2-color);
+            margin: 10px 0;
+        }
+        .author-credit {
+            font-size: 1.6rem;
+            color: #1565C0;
+            font-family: "標楷體", serif; /* Creative font fallback */
+            margin-top: 10px;
+        }
+
+        /* 區塊通用樣式 */
+        section { margin-bottom: 40px; width: 100%; }
+        h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .card {
+            border: 2px solid;
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .card-header {
+            padding: 15px 25px;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1.6rem;
+        }
+        .card-body { padding: 30px; }
+
+        /* 區塊一專屬 */
+        .block1 { border-color: var(--block1-border); background-color: var(--block1-bg); }
+        .block1 .card-header { background-color: var(--block1-head); }
+        .article-text strong { color: var(--keyword-blue); font-weight: 700; }
+
+        /* 區塊二專屬 */
+        .block2 { border-color: var(--block2-border); background-color: var(--block2-bg); }
+        .block2 .card-header { background-color: var(--block2-head); }
+        .sentence-item { margin-bottom: 35px; border-bottom: 1px solid #ddd; padding-bottom: 20px; }
+        .sentence-item:last-child { border-bottom: none; }
+        .num-tag {
+            background-color: var(--block2-head);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-weight: 700;
+        }
+        .quote { font-style: italic; font-weight: 700; margin-bottom: 10px; display: block; }
+        .translation { color: #555; margin-bottom: 15px; display: block; }
+        .analysis { margin-bottom: 15px; }
+        .pill-container { display: flex; gap: 10px; flex-wrap: wrap; }
+        .pill {
+            background-color: var(--tag-emphasis-bg);
+            color: var(--tag-emphasis-text);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        /* 區塊三專屬 */
+        .block3 { border-color: var(--block3-border); background-color: var(--block3-bg); }
+        .block3 .card-header { background-color: var(--block3-head); }
+        .vocab-item { margin-bottom: 40px; border-bottom: 1px dashed #ccc; padding-bottom: 30px; }
+        .vocab-item:last-child { border-bottom: none; }
+        .vocab-head { display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px; }
+        .vocab-num {
+            background-color: var(--block3-head);
+            color: #fff;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .vocab-word { font-size: 1.8rem; font-weight: 700; color: var(--block3-head); }
+        .vocab-kk { color: #A64B00; font-size: 1.2rem; }
+        .vocab-pos { color: #666; font-style: italic; }
+        .tag-row { display: flex; margin-bottom: 10px; align-items: flex-start; }
+        .label-pill {
+            min-width: 100px;
+            text-align: center;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .tag-deriv { background-color: var(--tag-deriv-bg); color: var(--tag-deriv-text); }
+        .tag-root { background-color: var(--tag-root-bg); color: var(--tag-root-text); }
+        .tag-phrase { background-color: var(--tag-phrase-bg); color: var(--tag-phrase-text); }
+        .tag-idiom { background-color: var(--tag-idiom-bg); color: var(--tag-idiom-text); }
+        .tag-prep { background-color: var(--tag-emphasis-bg); color: var(--tag-emphasis-text); }
+        .example-block { margin-top: 15px; background: rgba(255,255,255,0.6); padding: 15px; border-radius: 10px; }
+
+        /* 區塊四專屬 */
+        .block4 { border-color: var(--block4-border); background-color: var(--block4-bg); }
+        .block4 .card-header { background-color: var(--block4-head); }
+        .grammar-point { margin-bottom: 50px; }
+        .grammar-point h3 { color: var(--h3-color); font-size: 1.6rem; border-left: 8px solid var(--h3-color); padding-left: 15px; }
+        .grammar-section { margin-bottom: 20px; }
+        .section-label { font-weight: 700; color: var(--emphasize-a); display: block; margin-bottom: 5px; }
+
+        /* 底部折疊 */
+        .footer-section { border-color: var(--footer-border); background-color: var(--footer-bg); }
+        details { border: 2px solid var(--footer-border); border-radius: 10px; margin-bottom: 15px; overflow: hidden; }
+        summary {
+            background-color: var(--footer-head);
+            color: #fff;
+            padding: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        summary::-webkit-details-marker { display: none; }
+        .arrow { transition: transform 0.3s; }
+        details[open] .arrow { transform: rotate(180deg); }
+        .details-content { padding: 20px; background-color: #fff; }
+
+        .resource-links {
+            width: 100%;
+            margin: 0 auto 34px;
+            padding: 22px;
+            border: 2px solid rgba(183, 96, 40, 0.28);
+            border-radius: 20px;
+            background:
+                linear-gradient(135deg, rgba(255, 247, 225, 0.96), rgba(255, 226, 207, 0.96)),
+                #fff3df;
+            box-shadow: 0 12px 30px rgba(154, 83, 31, 0.13);
+        }
+
+        .resource-links.bottom-links { margin: 34px auto 0; }
+
+        .resource-heading {
+            margin: 0 0 16px;
+            color: #9f3c12;
+            font-size: 1.45rem;
+            line-height: 1.35;
+            text-align: center;
+        }
+
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .promo-link {
+            display: block;
+            min-height: 160px;
+            padding: 18px;
+            border-radius: 18px;
+            color: #381604;
+            text-decoration: none;
+            border: 2px solid rgba(255, 255, 255, 0.75);
+            box-shadow: 0 8px 20px rgba(119, 62, 21, 0.12);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .promo-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 26px rgba(119, 62, 21, 0.18);
+        }
+
+        .promo-link.course-live {
+            background: linear-gradient(135deg, #ffbe69, #ff775f);
+        }
+
+        .promo-link.course-analysis {
+            background: linear-gradient(135deg, #ffd166, #f4a261);
+        }
+
+        .promo-link.line-link {
+            background: linear-gradient(135deg, #a8e063, #56ab2f);
+            color: #123b0a;
+        }
+
+        .link-label {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 3px 10px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.58);
+            font-size: 0.82rem;
+            font-weight: 700;
+        }
+
+        .promo-link strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.15rem;
+            line-height: 1.32;
+        }
+
+        .promo-link span:last-child {
+            display: block;
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        @media (max-width: 600px) {
+            .main-title { font-size: 2rem; }
+            .sub-title { font-size: 1.5rem; }
+            body { font-size: 18px; padding: 22px 12px; }
+            .card-body { padding: 22px 18px; }
+            .link-grid { grid-template-columns: 1fr; }
+            .resource-links { padding: 16px; border-radius: 16px; }
+            .resource-heading { font-size: 1.22rem; }
+            .promo-link { min-height: 0; padding: 16px; }
+            .vocab-head, .tag-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .label-pill { min-width: 0; margin-right: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="resource-links" aria-label="課程與聯絡連結">
+            <h2 class="resource-heading">七月課程與聯絡資訊</h2>
+            <div class="link-grid">
+                <a class="promo-link course-live" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+                    <span class="link-label">七月開課</span>
+                    <strong>錯中學 ECHO 計劃</strong>
+                    <span>用錯誤回音整理學習盲點，建立更清楚的英文理解與修正能力。</span>
+                </a>
+                <a class="promo-link course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+                    <span class="link-label">七月開課</span>
+                    <strong>學生分析</strong>
+                    <span>透過學習紀錄與題目表現，快速看出學生需要補強的關鍵位置。</span>
+                </a>
+                <a class="promo-link line-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+                    <span class="link-label">個人 Line</span>
+                    <strong>Line ID：linwayet</strong>
+                    <span>課程詢問、學習規劃與英文文章學習，都可以用 Line 聯絡。</span>
+                </a>
+            </div>
+        </nav>
+
+        <!-- 頁面頂部標題 -->
+        <header class="page-header">
+            <div class="main-title">A Tale of Three Chocolates</div>
+            <div class="sub-title">三種巧克力的奇幻旅程</div>
+            <div class="author-credit">林威老師與 AI Agent 團隊製作</div>
+        </header>
+
+        <!-- 區塊一：英文文章原文 -->
+        <section class="section-card block1 card">
+            <div class="card-header">【區塊一】英文文章原文</div>
+            <div class="card-body article-text">
+                <p>Whether dark, milk, or white, chocolate in all its many <strong>varieties</strong> is enjoyed around the world. But have you ever wondered what differences really exist between these types? The short answer lies in the <strong>ingredients</strong>. The ingredients can change the taste and <strong>appearance</strong> of chocolate. They can even have different <strong>effects</strong> on your body.</p>
+                <p>Starting with the type with the <strong>lowest</strong> cocoa content, white chocolate contains cocoa butter, but no cocoa <strong>solids</strong>. The lack of cocoa solids is what gives the chocolate its white color, and the butter gives it a <strong>creamy</strong> <strong>texture</strong>. White chocolate usually has a <strong>combination</strong> of vanilla, sugar, milk, and a few other ingredients.</p>
+                <p>Next, milk chocolate <strong>consists</strong> of at least 10% cocoa solids, as well as cocoa butter, sugar, and white chocolate. Milk chocolate is popular for having the perfect <strong>level</strong> of sweetness, and it's the color we normally <strong>associate</strong> with chocolate.</p>
+                <p>Finally, dark chocolate has many of the same ingredients as the other two types, but the biggest difference is the high cocoa solids <strong>concentration</strong> of over 35%. <strong>Unlike</strong> the other two types, it has little to no milk solids. The combination of high cocoa and low milk levels gives it a <strong>delightfully</strong> <strong>bitter</strong> taste. It's a rich color.</p>
+                <p>Beyond chocolate's wonderful taste, it can also provide some health benefits. In general, the more cocoa solids chocolate contains, the more <strong>nutritious</strong> it is, largely due to <strong>compounds</strong> called polyphenols. Dark chocolate has the most cocoa solids, therefore it has the most polyphenols. That's why dark chocolate has been linked to <strong>improved</strong> blood flow, which may support the skin, the brain, and other <strong>vital</strong> organs.</p>
+                <p>Milk chocolate has a medium amount of cocoa solids, so it has some of these benefits. It also contains small amounts of caffeine and compounds that can provide <strong>temporary</strong> energy. However, eating too much milk chocolate can <strong>contribute</strong> to health issues because of its sugar levels. Since it has no cocoa solids, white chocolate is an excellent choice for people who want to avoid caffeine. On the other hand, white chocolate is high in sugar and fat, which can cause a lot of health problems. Which makes it the least healthy option overall.</p>
+                <p>All kinds of chocolate are tasty, but they don't all have health benefits. Chocolate with plenty of cocoa solids is the healthiest, and some studies even suggest that it can help fight <strong>diabetes</strong> and lower stress. So, grab some dark chocolate and prepare to make your belly, and the rest of your body, happy.</p>
+            </div>
+        </section>
+
+        <!-- 區塊二：8句精讀 -->
+        <section class="section-card block2 card">
+            <div class="card-header">【區塊二】8 句精讀</div>
+            <div class="card-body">
+                <div class="sentence-item">
+                    <span class="num-tag">1</span>
+                    <span class="quote">Whether dark, milk, or white, chocolate in all its many varieties is enjoyed around the world.</span>
+                    <span class="translation">無論是黑巧克力、牛奶巧克力還是白巧克力，各種口味的巧克力在世界各地都廣受歡迎。</span>
+                    <div class="analysis"><strong>文法解析：</strong>此句使用了 <em>Whether A, B, or C</em> 的結構，作為讓步副詞子句，表示「無論是……」。主句 <em>chocolate... is enjoyed</em> 使用了現在簡單式的被動語態，表示一種普遍的事實。</div>
+                    <div class="pill-container">
+                        <div class="pill">variety 多樣性</div>
+                        <div class="pill">enjoy 享受/欣賞</div>
+                        <div class="pill">around the world 全世界</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-tag">2</span>
+                    <span class="quote">But have you ever wondered what differences really exist between these types?</span>
+                    <span class="translation">但你是否曾想過，這些類型之間究竟存在哪些差異？</span>
+                    <div class="analysis"><strong>文法解析：</strong><em>what differences really exist...</em> 是由疑問詞 <em>what</em> 引導的名詞子句，作為動詞 <em>wondered</em> 的受詞。這是一個間接問句的結構，語序為「疑問詞 + 主詞 + 動詞」。</div>
+                    <div class="pill-container">
+                        <div class="pill">wonder 想知道</div>
+                        <div class="pill">exist 存在</div>
+                        <div class="pill">difference 差異</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-tag">3</span>
+                    <span class="quote">Starting with the type with the lowest cocoa content, white chocolate contains cocoa butter, but no cocoa solids.</span>
+                    <span class="translation">從可可含量最低的類型開始，白巧克力含有可可脂，但不含可可固形物。</span>
+                    <div class="analysis"><strong>文法解析：</strong>句首的 <em>Starting with...</em> 是分詞構句（現在分詞），邏輯主詞是後方的 <em>white chocolate</em>。這種結構常用於引導讀者進入特定的討論話題。</div>
+                    <div class="pill-container">
+                        <div class="pill">lowest 最低的</div>
+                        <div class="pill">content 含量</div>
+                        <div class="pill">solid 固體</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-tag">4</span>
+                    <span class="quote">The lack of cocoa solids is what gives the chocolate its white color, and the butter gives it a creamy texture.</span>
+                    <span class="translation">可可固形物的缺失正是賦予巧克力白色外觀的原因，而可可脂則賦予了它奶油般的質地。</span>
+                    <div class="analysis"><strong>文法解析：</strong>前半句 <em>what gives...</em> 是關係代名詞 <em>what</em> 引導的名詞子句，作為主詞補語。<em>what</em> 相當於 <em>the thing that</em>。後半句則是用 <em>and</em> 連接的對等句。</div>
+                    <div class="pill-container">
+                        <div class="pill">lack 缺乏</div>
+                        <div class="pill">creamy 奶油狀的</div>
+                        <div class="pill">texture 質地</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-tag">5</span>
+                    <span class="quote">Milk chocolate is popular for having the perfect level of sweetness, and it's the color we normally associate with chocolate.</span>
+                    <span class="translation">牛奶巧克力因具有完美的甜度而受歡迎，且這種顏色正是我們通常會聯想到巧克力的顏色。</span>
+                    <div class="analysis"><strong>文法解析：</strong><em>be popular for + V-ing</em> 表示「因某事而受歡迎」。後半句 <em>the color (that) we normally associate...</em> 是形容詞子句，省掉了關係代名詞 <em>that/which</em>。</div>
+                    <div class="pill-container">
+                        <div class="pill">level 程度/標準</div>
+                        <div class="pill">associate 聯想</div>
+                        <div class="pill">sweetness 甜度</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-tag">6</span>
+                    <span class="quote">In general, the more cocoa solids chocolate contains, the more nutritious it is, largely due to compounds called polyphenols.</span>
+                    <span class="translation">一般來說，巧克力含有的可可固形物越多，它就越有營養，這主要歸功於一種稱為多酚的化合物。</span>
+                    <div class="analysis"><strong>文法解析：</strong><em>The + 比較級..., the + 比較級...</em> 是一個重要的相關連詞結構，表示「愈……，就愈……」。<em>called polyphenols</em> 是過去分詞片語，修飾前面的 <em>compounds</em>。</div>
+                    <div class="pill-container">
+                        <div class="pill">nutritious 有營養的</div>
+                        <div class="pill">compound 化合物</div>
+                        <div class="pill">due to 由於</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-tag">7</span>
+                    <span class="quote">That's why dark chocolate has been linked to improved blood flow, which may support the skin, the brain, and other vital organs.</span>
+                    <span class="translation">這就是為什麼黑巧克力與改善血流有關，這可能有助於皮膚、大腦及其他重要器官。</span>
+                    <div class="analysis"><strong>文法解析：</strong><em>which may support...</em> 是非限定形容詞子句，修飾前面的 <em>improved blood flow</em>（或整件事）。<em>be linked to</em> 表示「與……有關聯」。</div>
+                    <div class="pill-container">
+                        <div class="pill">blood flow 血流</div>
+                        <div class="pill">vital 重要的</div>
+                        <div class="pill">organ 器官</div>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-tag">8</span>
+                    <span class="quote">On the other hand, white chocolate is high in sugar and fat, which can cause a lot of health problems.</span>
+                    <span class="translation">另一方面，白巧克力的糖分和脂肪含量很高，這可能會導致許多健康問題。</span>
+                    <div class="analysis"><strong>文法解析：</strong><em>On the other hand</em> 是轉折詞，用於對比。<em>which can cause...</em> 同樣是非限定形容詞子句，修飾前面提到的「高糖高脂」這一事實。</div>
+                    <div class="pill-container">
+                        <div class="pill">on the other hand 另一方面</div>
+                        <div class="pill">fat 脂肪</div>
+                        <div class="pill">problem 問題</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 區塊三：18–20個單字整理 -->
+        <section class="section-card block3 card">
+            <div class="card-header">【區塊三】18–20 個單字整理</div>
+            <div class="card-body">
+                <!-- Word 1 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">1</span>
+                        <span class="vocab-word">variety</span>
+                        <span class="vocab-kk">[vəˈraɪətɪ]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>各種各樣；種類；多樣化</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">various (adj. 各式各樣的); vary (v. 變化); variable (adj. 易變的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">a wide variety of (各式各樣的); the spice of life (生活的多樣化/趣味)</div>
+                    </div>
+                    <div class="example-block">
+                        Chocolate in all its many varieties is enjoyed around the world.<br>
+                        （各種口味的巧克力在世界各地都廣受歡迎。）<br><br>
+                        This supermarket offers a huge variety of fresh fruits and vegetables.<br>
+                        （這家超市提供琳瑯滿目的新鮮蔬果。）
+                    </div>
+                </div>
+
+                <!-- Word 2 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">2</span>
+                        <span class="vocab-word">ingredient</span>
+                        <span class="vocab-kk">[ɪnˈɡridɪənt]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>（食品的）成分、材料；（構成）要素</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">natural ingredients (天然成分); key ingredient (關鍵要素)</div>
+                    </div>
+                    <div class="example-block">
+                        The short answer lies in the ingredients.<br>
+                        （簡單來說，答案在於成分。）<br><br>
+                        Trust is the most important ingredient in a successful relationship.<br>
+                        （信任是成功關係中最重要的要素。）
+                    </div>
+                </div>
+
+                <!-- Word 3 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">3</span>
+                        <span class="vocab-word">appearance</span>
+                        <span class="vocab-kk">[əˈpɪrəns]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>外觀、外表；出現</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">appear (v. 出現); disappearance (n. 消失)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">physical appearance (外貌); judge by appearance (以貌取人)</div>
+                    </div>
+                    <div class="example-block">
+                        The ingredients can change the taste and appearance of chocolate.<br>
+                        （成分可以改變巧克力的口味與外觀。）<br><br>
+                        Don't be fooled by his calm appearance; he's actually very nervous.<br>
+                        （別被他冷靜的外表騙了，他其實非常緊張。）
+                    </div>
+                </div>
+
+                <!-- Word 4 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">4</span>
+                        <span class="vocab-word">effect</span>
+                        <span class="vocab-kk">[ɪˈfɛkt]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>影響；效果；結果</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">effective (adj. 有效的); effectively (adv. 有效地)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">side effect (副作用); have an effect on (對...有影響)</div>
+                    </div>
+                    <div class="example-block">
+                        They can even have different effects on your body.<br>
+                        （它們甚至可能對你的身體產生不同的影響。）<br><br>
+                        The new law will go into effect next month.<br>
+                        （這項新法律將於下個月生效。）
+                    </div>
+                </div>
+
+                <!-- Word 5 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">5</span>
+                        <span class="vocab-word">solid</span>
+                        <span class="vocab-kk">[ˈsɑlɪd]</span>
+                        <span class="vocab-pos">n. / adj.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>n. 固體；adj. 固體的；堅固的；可靠的</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">solidify (v. 凝固); solidarity (n. 團結)</div>
+                    </div>
+                    <div class="example-block">
+                        White chocolate contains cocoa butter, but no cocoa solids.<br>
+                        （白巧克力含有可可脂，但不含可可固形物。）<br><br>
+                        The freezing water turned into solid ice.<br>
+                        （冰冷的水變成了固體冰。）
+                    </div>
+                </div>
+
+                <!-- Word 6 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">6</span>
+                        <span class="vocab-word">creamy</span>
+                        <span class="vocab-kk">[ˈkrimɪ]</span>
+                        <span class="vocab-pos">adj.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>奶油狀的；細滑的</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">cream (n. 奶油)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">creamy texture (細滑質地); creamy sauce (奶油醬)</div>
+                    </div>
+                    <div class="example-block">
+                        The butter gives it a creamy texture.<br>
+                        （可可脂賦予了它細滑的質地。）<br><br>
+                        I love the creamy taste of this mushroom soup.<br>
+                        （我喜歡這道蘑菇濃湯細滑的口感。）
+                    </div>
+                </div>
+
+                <!-- Word 7 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">7</span>
+                        <span class="vocab-word">texture</span>
+                        <span class="vocab-kk">[ˈtɛkstʃɚ]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>（食物、織物等的）質地、口感、構造</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">textural (adj. 質地的)</div>
+                    </div>
+                    <div class="example-block">
+                        The butter gives it a creamy texture.<br>
+                        （可可脂賦予了它奶油般的質地。）<br><br>
+                        The smooth texture of the silk felt wonderful against her skin.<br>
+                        （絲綢平滑的質地讓她的皮膚感覺非常舒服。）
+                    </div>
+                </div>
+
+                <!-- Word 8 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">8</span>
+                        <span class="vocab-word">combination</span>
+                        <span class="vocab-kk">[ˌkɑmbəˈneʃən]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>結合、組合</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">combine (v. 結合)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">a perfect combination (完美的結合)</div>
+                    </div>
+                    <div class="example-block">
+                        White chocolate usually has a combination of vanilla, sugar, and milk.<br>
+                        （白巧克力通常由香草、糖和牛奶組合而成。）<br><br>
+                        The dish is a delicious combination of sweet and spicy flavors.<br>
+                        （這道菜是甜味與辣味的美味結合。）
+                    </div>
+                </div>
+
+                <!-- Word 9 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">9</span>
+                        <span class="vocab-word">consist</span>
+                        <span class="vocab-kk">[kənˈsɪst]</span>
+                        <span class="vocab-pos">v.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>組成、構成 (+ of)</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">consistent (adj. 一致的); consistency (n. 一致性)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-prep">🔗 搭配介係詞</span>
+                        <div class="tag-content">consist <strong>of</strong> (由...組成)</div>
+                    </div>
+                    <div class="example-block">
+                        Milk chocolate consists of at least 10% cocoa solids.<br>
+                        （牛奶巧克力由至少10%的可可固形物組成。）<br><br>
+                        A team consists of people with different skills working together.<br>
+                        （團隊由具有不同技能、共同工作的人員組成。）
+                    </div>
+                </div>
+
+                <!-- Word 10 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">10</span>
+                        <span class="vocab-word">level</span>
+                        <span class="vocab-kk">[ˈlɛvl]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>程度、標準；水平面</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">high level of (高程度的); sea level (海平面)</div>
+                    </div>
+                    <div class="example-block">
+                        Milk chocolate is popular for having the perfect level of sweetness.<br>
+                        （牛奶巧克力因具有完美的甜度而受歡迎。）<br><br>
+                        She has reached a high level of proficiency in English.<br>
+                        （她的英語能力已經達到了很高的水準。）
+                    </div>
+                </div>
+
+                <!-- Word 11 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">11</span>
+                        <span class="vocab-word">associate</span>
+                        <span class="vocab-kk">[əˈsoʃɪˌet]</span>
+                        <span class="vocab-pos">v.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>聯想、聯繫 (+ with)</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">association (n. 協會;聯繫); associated (adj. 相關的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-prep">🔗 搭配介係詞</span>
+                        <div class="tag-content">associate A <strong>with</strong> B (將A與B聯想在一起)</div>
+                    </div>
+                    <div class="example-block">
+                        It's the color we normally associate with chocolate.<br>
+                        （那是我們通常會聯想到巧克力的顏色。）<br><br>
+                        Most people associate summer with ice cream and the beach.<br>
+                        （大多數人將夏天與冰淇淋和海灘聯繫在一起。）
+                    </div>
+                </div>
+
+                <!-- Word 12 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">12</span>
+                        <span class="vocab-word">concentration</span>
+                        <span class="vocab-kk">[ˌkɑnsɛnˈtreʃən]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>濃度；集中；專注</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">concentrate (v. 集中/專注)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-root">🔍 字根</span>
+                        <div class="tag-content">centr「中心」：center 中心；central 中央的；eccentric 古怪的</div>
+                    </div>
+                    <div class="example-block">
+                        Dark chocolate has a high cocoa solids concentration.<br>
+                        （黑巧克力具有高濃度的可可固形物。）<br><br>
+                        Loud music can disturb your concentration while studying.<br>
+                        （讀書時大聲的音樂會干擾你的注意力。）
+                    </div>
+                </div>
+
+                <!-- Word 13 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">13</span>
+                        <span class="vocab-word">unlike</span>
+                        <span class="vocab-kk">[ʌnˈlaɪk]</span>
+                        <span class="vocab-pos">prep.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>不像、與...不同</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-confuse">⚠️ 容易混淆</span>
+                        <div class="tag-content">dislike (v. 不喜歡); likely (adj. 可能的)</div>
+                    </div>
+                    <div class="example-block">
+                        Unlike the other two types, it has little to no milk solids.<br>
+                        （與其他兩種類型不同，它幾乎不含牛奶固形物。）<br><br>
+                        Unlike his brother, Tom is very shy and quiet.<br>
+                        （與他的哥哥不同，湯姆非常害羞且安靜。）
+                    </div>
+                </div>
+
+                <!-- Word 14 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">14</span>
+                        <span class="vocab-word">delightfully</span>
+                        <span class="vocab-kk">[dɪˈlaɪtfəlɪ]</span>
+                        <span class="vocab-pos">adv.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>令人愉快地；極其</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">delight (n./v. 愉快); delightful (adj. 令人愉快的)</div>
+                    </div>
+                    <div class="example-block">
+                        The combination gives it a delightfully bitter taste.<br>
+                        （這種組合賦予了它一種令人愉悅的苦味。）<br><br>
+                        The weather was delightfully warm during our spring vacation.<br>
+                        （我們春假期間的天氣非常宜人、溫暖。）
+                    </div>
+                </div>
+
+                <!-- Word 15 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">15</span>
+                        <span class="vocab-word">nutritious</span>
+                        <span class="vocab-kk">[njuˈtrɪʃəs]</span>
+                        <span class="vocab-pos">adj.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>有營養的、營養豐富的</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">nutrition (n. 營養); nutrient (n. 營養素)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">a highly nutritious meal (營養極豐富的一餐)</div>
+                    </div>
+                    <div class="example-block">
+                        The more cocoa solids chocolate contains, the more nutritious it is.<br>
+                        （巧克力含有的可可固形物越多，它就越有營養。）<br><br>
+                        Vegetables are highly nutritious and essential for a healthy diet.<br>
+                        （蔬菜營養豐富，對於健康飲食至關重要。）
+                    </div>
+                </div>
+
+                <!-- Word 16 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">16</span>
+                        <span class="vocab-word">compound</span>
+                        <span class="vocab-kk">[ˈkɑmpaʊnd]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>化合物；複合物</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-root">🔍 字根</span>
+                        <div class="tag-content">pos/pon「放」：position 位置; opposite 相反的; postpone 推遲</div>
+                    </div>
+                    <div class="example-block">
+                        This is largely due to compounds called polyphenols.<br>
+                        （這主要歸功於一種稱為多酚的化合物。）<br><br>
+                        Water is a chemical compound consisting of hydrogen and oxygen.<br>
+                        （水是由氫和氧組成的化學化合物。）
+                    </div>
+                </div>
+
+                <!-- Word 17 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">17</span>
+                        <span class="vocab-word">vital</span>
+                        <span class="vocab-kk">[ˈvaɪtl]</span>
+                        <span class="vocab-pos">adj.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>至關重要的；維持生命所必需的</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">vitality (n. 活力); revitalize (v. 振興)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">vital role (關鍵角色); vital signs (生命徵象)</div>
+                    </div>
+                    <div class="example-block">
+                        It may support the skin, the brain, and other vital organs.<br>
+                        （它可能有助於皮膚、大腦及其他重要器官。）<br><br>
+                        Reading is a vital skill that students must master.<br>
+                        （閱讀是學生必須掌握的關鍵技能。）
+                    </div>
+                </div>
+
+                <!-- Word 18 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">18</span>
+                        <span class="vocab-word">temporary</span>
+                        <span class="vocab-kk">[ˈtɛmpəˌrɛrɪ]</span>
+                        <span class="vocab-pos">adj.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>暫時的、短暫的</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">temporarily (adv. 暫時地)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-idiom">💬 慣用語</span>
+                        <div class="tag-content">temporary job (臨時工); temporary relief (暫時的緩解)</div>
+                    </div>
+                    <div class="example-block">
+                        It can provide temporary energy.<br>
+                        （它可以提供暫時的能量。）<br><br>
+                        The power outage was only temporary, lasting about ten minutes.<br>
+                        （停電只是暫時的，持續了大約十分鐘。）
+                    </div>
+                </div>
+
+                <!-- Word 19 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">19</span>
+                        <span class="vocab-word">contribute</span>
+                        <span class="vocab-kk">[kənˈtrɪbjut]</span>
+                        <span class="vocab-pos">v.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>貢獻；導致 (+ to)</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">contribution (n. 貢獻); contributor (n. 捐助者/導致者)</div>
+                    </div>
+                    <div class="tag-row">
+                        <span class="label-pill tag-prep">🔗 搭配介係詞</span>
+                        <div class="tag-content">contribute <strong>to</strong> (導致/有助於)</div>
+                    </div>
+                    <div class="example-block">
+                        Eating too much milk chocolate can contribute to health issues.<br>
+                        （食用過多牛奶巧克力可能會導致健康問題。）<br><br>
+                        Everyone should contribute to protecting the environment.<br>
+                        （每個人都應該為保護環境做出貢獻。）
+                    </div>
+                </div>
+
+                <!-- Word 20 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">20</span>
+                        <span class="vocab-word">diabetes</span>
+                        <span class="vocab-kk">[ˌdaɪəˈbitiz]</span>
+                        <span class="vocab-pos">n.</span>
+                    </div>
+                    <p><strong>中文定義：</strong>糖尿病</p>
+                    <div class="tag-row">
+                        <span class="label-pill tag-deriv">📚 衍生詞</span>
+                        <div class="tag-content">diabetic (adj. 糖尿病的; n. 糖尿病患者)</div>
+                    </div>
+                    <div class="example-block">
+                        Some studies suggest that it can help fight diabetes.<br>
+                        （一些研究指出它有助於對抗糖尿病。）<br><br>
+                        He has to monitor his blood sugar levels regularly due to diabetes.<br>
+                        （由於糖尿病，他必須定期監測血糖水平。）
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 區塊四：文法解析 -->
+        <section class="section-card block4 card">
+            <div class="card-header">【區塊四】文法解析</div>
+            <div class="card-body">
+                <!-- Grammar Point 1 -->
+                <div class="grammar-point">
+                    <h3>【文法名稱】Whether... or...（無論是...還是...）</h3>
+                    <div class="grammar-section">
+                        <span class="section-label">【引句 Quote】</span>
+                        <span class="quote">Whether dark, milk, or white, chocolate in all its many varieties is enjoyed around the world.</span>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【句型】</span>
+                        <span class="quote"><strong><em>Whether A, B, or C, S + V...</em></strong></span>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【核心說明】</span>
+                        <p>這是一個引導「讓步副詞子句」的用法，表示不論在何種情況下，主句的內容都成立。它可以連接單字、片語或完整的子句。</p>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【使用規則】</span>
+                        <ul>
+                            <li>連接兩項時：Whether A or B.</li>
+                            <li>連接多項時：Whether A, B, or C.</li>
+                            <li>後接子句時：Whether S + V or not.</li>
+                            <li>注意：與 whether 引導的名詞子句（是否）不同，讓步子句位於句首時常用逗號與主句隔開。</li>
+                        </ul>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【主題例句】</span>
+                        <p>Whether it is expensive or cheap, you should check the ingredients before buying chocolate.<br>（無論它是昂貴還是便宜，買巧克力前都應該檢查成分。）</p>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【學習提醒】</span>
+                        <p>在表示「無論」時，whether 常用於對比兩者或多者；而 no matter how/what 則強調程度或內容。</p>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                        <p>✗ Either it rains or shines, we will go on a picnic.<br>✓ <strong>Whether</strong> it rains or shines, we will go on a picnic. (Either用於選擇其一，Whether用於讓步)</p>
+                        <p>題目：________ you like it or not, we have to finish this project by Friday.<br>答案：Whether</p>
+                    </div>
+                </div>
+
+                <!-- Grammar Point 2 -->
+                <div class="grammar-point">
+                    <h3>【文法名稱】What 引導的名詞子句（...的事物）</h3>
+                    <div class="grammar-section">
+                        <span class="section-label">【引句 Quote】</span>
+                        <span class="quote">The lack of cocoa solids is what gives the chocolate its white color.</span>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【句型】</span>
+                        <span class="quote"><strong><em>S + be + what + S + V / V...</em></strong></span>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【核心說明】</span>
+                        <p>這裡的 <em>what</em> 是關係代名詞，本身包含了先行詞（the thing that），引導一個名詞子句。這個子句可以在主句中當主詞、受詞或補語。</p>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【使用規則】</span>
+                        <ul>
+                            <li>what = the thing(s) that。</li>
+                            <li>what 後接不完整的子句（缺主詞或受詞）。</li>
+                            <li>當主詞時，動詞通常用單數。</li>
+                        </ul>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【主題例句】</span>
+                        <p>What makes dark chocolate healthy is its high concentration of polyphenols.<br>（讓黑巧克力健康的原因是它高濃度的多酚。）</p>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【學習提醒】</span>
+                        <p>注意不要與 that 引導的名詞子句混淆；that 後面接完整的子句，what 後面接不完整的子句。</p>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                        <p>✗ I don't know that he wants.<br>✓ I don't know <strong>what</strong> he wants. (wants 缺受詞，故用 what)</p>
+                        <p>題目：________ surprised me the most was the different effects of these chocolates.<br>答案：What</p>
+                    </div>
+                </div>
+
+                <!-- Grammar Point 3 -->
+                <div class="grammar-point">
+                    <h3>【文法名稱】The + 比較級..., the + 比較級...（愈...就愈...）</h3>
+                    <div class="grammar-section">
+                        <span class="section-label">【引句 Quote】</span>
+                        <span class="quote">The more cocoa solids chocolate contains, the more nutritious it is.</span>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【句型】</span>
+                        <span class="quote"><strong><em>The + adj/adv比較級 (+ S + V), the + adj/adv比較級 (+ S + V)</em></strong></span>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【核心說明】</span>
+                        <p>這個句型用來表示兩個情況成正比的變化。前一個 the 引導的是副詞子句（條件），後一個 the 引導的是主句（結果）。</p>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【使用規則】</span>
+                        <ul>
+                            <li>比較級後可以接名詞（The more money...）。</li>
+                            <li>主詞和動詞如果是 be 動詞或根據上下文可推知，常可省略。</li>
+                            <li>注意逗號的使用。</li>
+                        </ul>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【主題例句】</span>
+                        <p>The dark chocolate is, the more polyphenols it has.<br>（巧克力愈黑，含有的多酚就愈多。）</p>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【學習提醒】</span>
+                        <p>比較級前的 the 不可省略，這是此特殊句型的特徵。</p>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="section-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                        <p>✗ More you study, better your grades will be.<br>✓ <strong>The</strong> more you study, <strong>the</strong> better your grades will be.</p>
+                        <p>題目：The ________ (early) you start eating healthy, the ________ (good) you will feel.<br>答案：earlier; better</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部折疊區塊 -->
+        <footer class="footer-section">
+            <!-- 折疊一：常見字首整理 -->
+            <details>
+                <summary><span>🔍 常見字首整理（50 個）</span><span class="arrow">▼</span></summary>
+                <div class="details-content">
+                    <p>ab- 離開、相反 — abnormal（異常的）</p>
+                    <p>ad- 向、加 — advance（前進）</p>
+                    <p>ambi- 雙方、兩面 — ambiguous（模稜兩可的）</p>
+                    <p>anti- 反對、抗 — antibiotic（抗生素）</p>
+                    <p>arch- 主要、首要 — archenemy（死敵）</p>
+                    <p>auto- 自動、自我 — autograph（親筆簽名）</p>
+                    <p>bene- 好的、善 — benefit（好處）</p>
+                    <p>bi- 二、雙 — bilingual（雙語的）</p>
+                    <p>circum- 環繞、周圍 — circumstance（情況）</p>
+                    <p>co-/con-/com- 一起、共同 — cooperate（合作）</p>
+                    <p>contra- 相反、對抗 — contradict（反駁）</p>
+                    <p>de- 去除、下降 — decode（解碼）</p>
+                    <p>dia- 穿過、透過 — dialogue（對話）</p>
+                    <p>dis- 否定、分離 — disagree（不同意）</p>
+                    <p>en-/em- 使成為 — enable（使能夠）</p>
+                    <p>epi- 在上、在外 — epidemic（流行病）</p>
+                    <p>ex- 外、前任 — export（出口）；ex-president（前總統）</p>
+                    <p>extra- 額外、外部 — extraordinary（非凡的）</p>
+                    <p>hetero- 不同 — heterogeneous（異質的）</p>
+                    <p>homo- 相同 — homogeneous（同質的）</p>
+                    <p>hyper- 過度、超 — hyperactive（過動的）</p>
+                    <p>hypo- 低於、不足 — hypodermic（皮下的）</p>
+                    <p>in-/im- 否定、進入 — invisible（看不見的）；import（輸入）</p>
+                    <p>inter- 在…之間 — international（國際的）</p>
+                    <p>iso- 相等、相同 — isolate（隔離）</p>
+                    <p>mal- 壞、不良 — malfunction（故障）</p>
+                    <p>micro- 微小 — microscope（顯微鏡）</p>
+                    <p>mis- 錯誤 — misunderstand（誤解）</p>
+                    <p>mono- 單一 — monologue（獨白）</p>
+                    <p>multi- 多 — multicultural（多元文化的）</p>
+                    <p>neo- 新的 — neonatal（新生的）</p>
+                    <p>non- 非、沒有 — nonsense（無意義）</p>
+                    <p>pan- 全部 — pandemic（大流行病）</p>
+                    <p>peri- 周圍 — perimeter（周長）</p>
+                    <p>poly- 多 — polygon（多邊形）</p>
+                    <p>post- 之後 — postwar（戰後的）</p>
+                    <p>pre- 之前 — preview（預覽）</p>
+                    <p>pro- 向前、支持 — progress（進步）；pro-democracy（支持民主的）</p>
+                    <p>pseudo- 假的 — pseudonym（筆名）</p>
+                    <p>re- 再、回 — review（複習）</p>
+                    <p>semi- 一半、部分 — semicircle（半圓）</p>
+                    <p>sub- 在下、次級 — subway（地鐵）</p>
+                    <p>super- 超越、在上 — superstar（超級明星）</p>
+                    <p>syn-/sym- 一起、共同 — synchronize（同步）</p>
+                    <p>tele- 遠距 — telephone（電話）</p>
+                    <p>trans- 穿越、轉變 — transport（運輸）</p>
+                    <p>tri- 三 — triangle（三角形）</p>
+                    <p>un- 否定、不 — unhappy（不快樂的）</p>
+                    <p>vice- 副、代替 — vice-president（副總統）</p>
+                </div>
+            </details>
+
+            <!-- 折疊二：常見英文字尾整理 -->
+            <details>
+                <summary><span>📚 常見英文字尾整理（30 個）</span><span class="arrow">▼</span></summary>
+                <div class="details-content">
+                    <h4>名詞字尾</h4>
+                    <p>-tion/-sion/-ation 動作、過程或結果 — education（教育）</p>
+                    <p>-ment 行為或結果 — agreement（協議）</p>
+                    <p>-ness 狀態或性質 — happiness（快樂）</p>
+                    <p>-ity/-ty 抽象概念或狀態 — ability（能力）</p>
+                    <p>-er/-or 執行者 — teacher（老師）、actor（演員）</p>
+                    <p>-ist 專業的人 — scientist（科學家）</p>
+                    <p>-ship 身分或關係 — friendship（友誼）</p>
+                    <p>-hood 階段或狀態 — childhood（童年）</p>
+                    <h4>形容詞字尾</h4>
+                    <p>-able/-ible 能夠…的 — readable（可讀的）</p>
+                    <p>-ous 充滿…的 — dangerous（危險的）</p>
+                    <p>-ful 具有…的 — hopeful（充滿希望的）</p>
+                    <p>-less 缺乏…的 — hopeless（絕望的）</p>
+                    <p>-al/-ic 相關的 — natural（自然的）、poetic（詩意的）</p>
+                    <h4>動詞字尾</h4>
+                    <p>-ize/-ise 使成為… — realize（實現）</p>
+                    <p>-ify 使成為… — clarify（澄清）</p>
+                    <p>-ate 形成動詞 — activate（啟動）</p>
+                    <p>-en 使變成… — strengthen（加強）</p>
+                    <h4>副詞字尾</h4>
+                    <p>-ly 形容詞轉副詞 — quickly（快速地）</p>
+                    <p>-ward(s) 方向 — homeward（回家）</p>
+                    <p>-wise 方式或角度 — clockwise（順時針）</p>
+                </div>
+            </details>
+
+            <!-- 折疊三：30個常用單字與衍生詞 -->
+            <details>
+                <summary><span>📓 30 個常用單字與衍生詞</span><span class="arrow">▼</span></summary>
+                <div class="details-content">
+                    <ol>
+                        <li>wonder [ˈwʌndɚ] (v. 想知道) — wonderful [ˈwʌndɚfəl] (adj. 極佳的)</li>
+                        <li>variety [vəˈraɪətɪ] (n. 種類) — various [ˈvɛrɪəs] (adj. 多種的)</li>
+                        <li>ingredient [ɪnˈɡridɪənt] (n. 成分) — food ingredients (食材)</li>
+                        <li>appearance [əˈpɪrəns] (n. 外觀) — appear [əˈpɪr] (v. 出現)</li>
+                        <li>effect [ɪˈfɛkt] (n. 效果) — effective [ɪˈfɛktɪv] (adj. 有效的)</li>
+                        <li>butter [ˈbʌtɚ] (n. 奶油) — butterfly [ˈbʌtɚˌflaɪ] (n. 蝴蝶)</li>
+                        <li>solids [ˈsɑlɪdz] (n. 固體) — solidify [səˈlɪdəˌfaɪ] (v. 凝固)</li>
+                        <li>creamy [ˈkrimɪ] (adj. 乳狀的) — cream [krim] (n. 奶油)</li>
+                        <li>texture [ˈtɛkstʃɚ] (n. 質地) — textural [ˈtɛkstʃərəl] (adj. 質地的)</li>
+                        <li>combination [ˌkɑmbəˈneʃən] (n. 結合) — combine [kəmˈbaɪn] (v. 結合)</li>
+                        <li>vanilla [vəˈnɪlə] (n. 香草) — vanilla extract (香草精)</li>
+                        <li>at least (至少) — at most (至多)</li>
+                        <li>sugar [ˈʃʊɡɚ] (n. 糖) — sugary [ˈʃʊɡərɪ] (adj. 甜的)</li>
+                        <li>popular [ˈpɑpjəlɚ] (adj. 受歡迎的) — popularity [ˌpɑpjəˈlærətɪ] (n. 普及/名氣)</li>
+                        <li>level [ˈlɛvl] (n. 標準) — entry-level (入門級的)</li>
+                        <li>associate [əˈsoʃɪˌet] (v. 聯想) — association [əˌsoʃɪˈeʃən] (n. 協會)</li>
+                        <li>difference [ˈdɪfrəns] (n. 差異) — different [ˈdɪfrənt] (adj. 不同的)</li>
+                        <li>concentration [ˌkɑnsɛnˈtreʃən] (n. 濃度) — concentrate [ˈkɑnsɛnˌtret] (v. 專注)</li>
+                        <li>unlike [ʌnˈlaɪk] (prep. 不同於) — likely [ˈlaɪklɪ] (adj. 可能的)</li>
+                        <li>delightfully [dɪˈlaɪtfəlɪ] (adv. 愉悅地) — delight [dɪˈlaɪt] (n. 欣喜)</li>
+                        <li>bitter [ˈbɪtɚ] (adj. 苦的) — bitterness [ˈbɪtɚnɪs] (n. 苦味)</li>
+                        <li>rich [rɪtʃ] (adj. 濃郁的/富有的) — richness [ˈrɪtʃnɪs] (n. 豐富/濃郁)</li>
+                        <li>nutritious [njuˈtrɪʃəs] (adj. 營養的) — nutrition [njuˈtrɪʃən] (n. 營養)</li>
+                        <li>compound [ˈkɑmpaʊnd] (n. 化合物) — chemical compound (化學成分)</li>
+                        <li>improve [ɪmˈpruv] (v. 改善) — improvement [ɪmˈpruvmənt] (n. 進步)</li>
+                        <li>blood flow (血流) — blood vessel (血管)</li>
+                        <li>vital [ˈvaɪtl] (adj. 重要的) — vitality [vaɪˈtælətɪ] (n. 活力)</li>
+                        <li>organ [ˈɔrɡən] (n. 器官) — organic [ɔrˈɡænɪk] (adj. 有機的)</li>
+                        <li>temporary [ˈtɛmpəˌrɛrɪ] (adj. 暫時的) — temporarily [ˈtɛmpəˌrɛrəlɪ] (adv. 暫時地)</li>
+                        <li>contribute [kənˈtrɪbjut] (v. 導致) — contribution [ˌkɑntrəˈbjuʃən] (n. 貢獻)</li>
+                    </ol>
+                    <p>• associated with (與...相關)</p>
+                    <p>• linked to (與...有關聯)</p>
+                    <p>• in general (總體而言)</p>
+                    <p>• on the other hand (另一方面)</p>
+                    <p>• due to (由於)</p>
+                </div>
+            </details>
+
+            <!-- 折疊四：練文筆食材 -->
+            <details>
+                <summary><span>✍️ 練文筆食材</span><span class="arrow">▼</span></summary>
+                <div class="details-content">
+                    <p>① <strong>Whether A, B, or C...</strong>（無論是 A, B, 還是 C...）<br>→ 適用：窮舉情況，強調主句的一致性。<br>例：Whether you are a student or a teacher, you need to keep learning.</p>
+                    <p>② <strong>Have you ever wondered...?</strong>（你是否曾想過...？）<br>→ 適用：文章開頭，引發讀者好奇心。<br>例：Have you ever wondered how the internet works?</p>
+                    <p>③ <strong>Starting with...</strong>（從...開始）<br>→ 適用：有順序地介紹多個項目時。<br>例：Starting with the most important point, we need to focus on safety.</p>
+                    <p>④ <strong>The lack of... is what gives...</strong>（...的缺失正是賦予...的原因）<br>→ 適用：解釋特徵的成因。<br>例：The lack of practice is what makes him fail the test.</p>
+                    <p>⑤ <strong>Be popular for + V-ing...</strong>（因...而受歡迎）<br>→ 適用：描述事物的優點。<br>例：Taiwan is popular for having many delicious snacks.</p>
+                    <p>⑥ <strong>In general...</strong>（一般來說）<br>→ 適用：下概括性的結論。<br>例：In general, exercising daily is good for your health.</p>
+                    <p>⑦ <strong>The + 比較級..., the + 比較級...</strong>（愈...愈...）<br>→ 適用：描述比例關係。<br>例：The harder you work, the luckier you get.</p>
+                    <p>⑧ <strong>largely due to...</strong>（主要歸功於/由於...）<br>→ 適用：說明主要原因。<br>例：The project's success was largely due to team cooperation.</p>
+                    <p>⑨ <strong>Be linked to...</strong>（與...有關聯）<br>→ 適用：描述因果或相關性。<br>例：Lack of sleep is often linked to high stress levels.</p>
+                    <p>⑩ <strong>On the other hand...</strong>（另一方面）<br>→ 適用：表達對比或相反觀點。<br>例：Online learning is convenient; on the other hand, it requires self-discipline.</p>
+                </div>
+            </details>
+        </footer>
+
+        <nav class="resource-links bottom-links" aria-label="課程與聯絡連結">
+            <h2 class="resource-heading">七月課程與聯絡資訊</h2>
+            <div class="link-grid">
+                <a class="promo-link course-live" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+                    <span class="link-label">七月開課</span>
+                    <strong>錯中學 ECHO 計劃</strong>
+                    <span>用錯誤回音整理學習盲點，建立更清楚的英文理解與修正能力。</span>
+                </a>
+                <a class="promo-link course-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+                    <span class="link-label">七月開課</span>
+                    <strong>學生分析</strong>
+                    <span>透過學習紀錄與題目表現，快速看出學生需要補強的關鍵位置。</span>
+                </a>
+                <a class="promo-link line-link" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+                    <span class="link-label">個人 Line</span>
+                    <strong>Line ID：linwayet</strong>
+                    <span>課程詢問、學習規劃與英文文章學習，都可以用 Line 聯絡。</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+
+</body></html>
