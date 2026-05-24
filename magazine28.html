@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>百科全書的兩千年知識史</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFF8F0;--ink:#1A0F00;--bg:#F8F4ED;--main:#C0392B;--sub:#1565C0;--soft:#2E7D32;--line:#C4A06A;--navy:#0D47A1;--green:#1B5E20;--green-bg:#F1F8F2;--blue:#1565C0;--blue-bg:#E3F2FD;--purple:#4A148C;--purple-bg:#F9F0FF;--orange:#E65100;--orange-bg:#FEF0E7;--gold:#FFF3EF;--rose:#C0392B;--deep-blue:#0D47A1}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:'BIZ UDPGothic',sans-serif;font-size:22px;line-height:1.85;padding:28px 14px 64px;background:var(--paper)}
+.page{max-width:900px;margin:0 auto}
+.hero,.section-card{background:#fff;border:2px solid var(--line);border-radius:18px;box-shadow:0 14px 34px rgba(80,60,35,0.07);overflow:hidden;margin-bottom:30px}
+.hero{border-top:12px solid var(--rose);padding:40px;text-align:center}
+h1{margin:16px 0 10px;color:var(--rose);font-size:3rem;line-height:1.2;font-weight:700;border:4px solid var(--rose);padding:20px;display:inline-block;border-radius:15px}
+.subtitle{font-size:2.2rem;color:var(--sub);margin:15px 0;font-weight:700}
+.credit{font-size:2rem;color:var(--sub);font-family:'Lobster', 'Pacifico', cursive;margin:10px 0}
+h2{margin:42px 0 14px;font-size:2.2rem;line-height:1.3;color:var(--sub);font-weight:700}
+h3{margin:0 0 10px;font-size:1.6rem;line-height:1.35;color:var(--soft);font-weight:700}
+p{margin:15px 0}
+.section-head{padding:20px 24px;color:#fff;font-size:1.8rem;font-weight:700}
+.navy-bg{background:var(--navy)}.orange-red-bg{background:#BF360C}.forest-green-bg{background:var(--green)}.deep-purple-bg{background:var(--purple)}.brown-bg{background:#4A3728}
+.section-body{padding:30px 32px}
+.bg-green{background:var(--green-bg)}.bg-blue{background:var(--blue-bg)}.bg-purple{background:var(--purple-bg)}.bg-orange{background:var(--orange-bg)}
+.analysis-block,.vocab-item,.grammar-item{margin-top:25px;padding-top:25px;border-top:2px solid rgba(31,27,22,0.12)}
+.analysis-block:first-child,.vocab-item:first-child,.grammar-item:first-child{margin-top:0;padding-top:0;border-top:none}
+.quote{padding:15px 20px;background:var(--gold);border-radius:12px;font-weight:700;font-style:italic;border-left:8px solid var(--orange)}
+.subbox{margin-top:12px;padding:15px 18px;border-radius:12px;background:rgba(255,255,255,0.85);box-shadow:inset 0 2px 4px rgba(0,0,0,0.05)}
+.num-circle{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;border-radius:50%;background:var(--rose);color:#fff;font-weight:700;font-size:22px;margin-right:12px;flex-shrink:0}
+.vocab-top{display:flex;gap:18px;flex-wrap:wrap;align-items:baseline}
+.vocab-num{min-width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;font-weight:700;font-size:18px}
+.vocab-word{font-size:30px;color:var(--green);font-weight:700}
+.kk{color:var(--rose);font-size:20px}
+.vocab-line{margin:12px 0}
+.tag-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.tag-container{display:flex;align-items:stretch;border-radius:8px;overflow:hidden;box-shadow:2px 2px 5px rgba(0,0,0,0.1)}
+.tag-label{padding:4px 12px;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center}
+.tag-val{padding:4px 14px;font-size:16px;background:#fff;color:var(--ink);display:flex;align-items:center;border:1px solid #ddd;border-left:none}
+.tag-deriv .tag-label{background:#C0392B}.tag-root .tag-label{background:#1565C0}.tag-phrase .tag-label{background:#2E7D32}.tag-idiom .tag-label{background:#D68910}.tag-confuse .tag-label{background:#6A1B9A}.tag-prep .tag-label{background:#E65100}
+.bold-blue{color:var(--deep-blue);font-weight:700}
+.example-box{border-left:4px solid var(--line);padding-left:16px;margin:12px 0}
+.grammar-point{margin-bottom:40px}
+.grammar-point h3{color:var(--purple);font-size:1.8rem}
+.error-box{background:#FFEBEE;padding:15px;border-radius:10px;border:2px solid #D32F2F;margin-top:15px}
+details{margin-top:20px;border:3px solid var(--line);border-radius:18px;overflow:hidden}
+summary{padding:20px 24px;background:#4A3728;color:#fff;font-size:24px;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:72px}
+summary::-webkit-details-marker{display:none}
+summary .arrow{transition:transform 0.3s ease;font-size:28px}
+details[open] .arrow{transform:rotate(180deg)}
+details .detail-body{padding:25px 32px;background:var(--paper)}
+.pill{display:inline-block;padding:4px 12px;background:var(--blue-bg);color:var(--blue);border-radius:20px;font-size:18px;font-weight:700;margin-right:8px}
+@media(max-width:900px){.page{width:100%}}
+
+/* Warm mobile-friendly wrapper added for course links and centered reading. */
+html{background:#fff2df}
+body{
+  background:
+    radial-gradient(circle at top left, rgba(255,183,77,.35), transparent 34rem),
+    radial-gradient(circle at bottom right, rgba(244,143,177,.26), transparent 30rem),
+    linear-gradient(180deg,#fff7e8 0%,#ffeeda 52%,#fff8ef 100%) !important;
+  padding:18px 12px 54px !important;
+}
+.page{max-width:960px;margin-left:auto;margin-right:auto}
+.course-links{
+  max-width:960px;
+  margin:0 auto 26px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.course-links:last-child{margin-top:36px;margin-bottom:0}
+.course-link{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-height:150px;
+  padding:18px 18px 20px;
+  color:#2a1608;
+  text-decoration:none;
+  border:2px solid rgba(117,63,15,.18);
+  border-radius:22px;
+  box-shadow:0 14px 28px rgba(118,62,20,.14);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.course-link:hover,
+.course-link:focus-visible{
+  transform:translateY(-3px);
+  box-shadow:0 18px 34px rgba(118,62,20,.2);
+  border-color:rgba(117,63,15,.38);
+  outline:none;
+}
+.course-link.echo{background:linear-gradient(135deg,#ffe0b2 0%,#ffcc80 48%,#ffd7c2 100%)}
+.course-link.analysis{background:linear-gradient(135deg,#ffe8a3 0%,#ffb74d 50%,#ffcdd2 100%)}
+.course-link.line{background:linear-gradient(135deg,#dcedc8 0%,#a5d6a7 48%,#fff3c4 100%)}
+.link-kicker{
+  width:max-content;
+  max-width:100%;
+  padding:4px 10px;
+  border-radius:999px;
+  color:#fff;
+  background:#b84b1d;
+  font-size:15px;
+  line-height:1.3;
+  font-weight:700;
+}
+.line .link-kicker{background:#1b7f35}
+.link-title{font-size:24px;line-height:1.25;font-weight:800;color:#6d2e0e}
+.line .link-title{color:#145a28}
+.link-desc{font-size:17px;line-height:1.55;color:#4c2b17}
+.hero,.section-card{border-radius:22px;box-shadow:0 16px 34px rgba(118,62,20,.12)}
+.hero{background:linear-gradient(180deg,#fffaf2 0%,#fff4e0 100%) !important}
+@media(max-width:760px){
+  body{font-size:19px !important;padding:12px 10px 42px !important}
+  .course-links{grid-template-columns:1fr;gap:12px;margin-bottom:18px}
+  .course-link{min-height:auto;padding:16px;border-radius:18px}
+  .link-title{font-size:22px}
+  .link-desc{font-size:16px}
+  .hero{padding:24px 16px !important;border-radius:18px}
+  h1{font-size:2.05rem !important;padding:14px !important;max-width:100%}
+  .subtitle{font-size:1.35rem !important}
+  .credit{font-size:1.25rem !important}
+  h2{font-size:1.55rem !important}
+  .section-head{font-size:1.35rem !important;padding:16px 18px !important}
+  .section-body,details .detail-body{padding:20px 16px !important}
+  summary{font-size:20px !important;padding:16px !important}
+  .vocab-word{font-size:25px !important}
+  .tag-container{width:100%}
+  .tag-label{min-width:78px;justify-content:center}
+  .tag-val{flex:1}
+}
+
+</style></head><body>
+<main class="page">
+
+<nav class="course-links" aria-label="七月課程與聯絡資訊">
+  <a class="course-link echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">錯中學 ECHO 計劃</span>
+    <span class="link-desc">用錯誤回饋整理盲點，建立更穩的英文輸出能力。</span>
+  </a>
+  <a class="course-link analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">學生分析</span>
+    <span class="link-desc">從學習表現看出強弱項，安排更精準的複習方向。</span>
+  </a>
+  <a class="course-link line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="link-kicker">個人 Line</span>
+    <span class="link-title">linwayet</span>
+    <span class="link-desc">課程詢問、學習規劃與英文問題都可以直接聯絡。</span>
+  </a>
+</nav>
+
+<section class="hero">
+<h1>百科全書的兩千年知識史</h1>
+<p class="subtitle">2,000 Years of Encyclopedic Knowledge</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<!-- ========== 區塊一：文章原文 ========== -->
+<section>
+<h2>【區塊一】英文文章原文</h2>
+<div class="section-card">
+<div class="section-head navy-bg">【原文 Original Article】</div>
+<div class="section-body">
+<p>Consider the challenge of fitting everything humans know about the world into one place. From facts about unusual plants and animals to distant lands, people have always wanted to gather and <span class="bold-blue">preserve</span> knowledge. Encyclopedias were created to do exactly that, turning <span class="bold-blue">curiosity</span> into written records and helping others explore the world one page at a time.</p>
+<p>This vast work contained 37 books that covered everything from medicine to magic. Pliny's <span class="bold-blue">dedication</span> to his work was <span class="bold-blue">obvious</span>, yet knowing everything about everything is an <span class="bold-blue">impossible</span> task for just one man. <span class="bold-blue">Consequently</span>, his texts are filled with wild <span class="bold-blue">inaccuracies</span>, such as tales of milk raining from the sky and turtles.</p>
+<p>Centuries later, the invention of the printing press made it possible to <span class="bold-blue">circulate</span> information even further. In the mid-18th century, Diderot's Encyclopedie, an important French work, was <span class="bold-blue">intended</span> to bring <span class="bold-blue">valuable</span> knowledge to <span class="bold-blue">ordinary</span> people. Meanwhile, in the UK, the Encyclopedia Britannica became hugely popular for its <span class="bold-blue">reliable</span> articles written by experts in different fields.</p>
+<p>As human knowledge increased, encyclopedia makers struggled to keep pace, with information sometimes becoming <span class="bold-blue">outdated</span> as fast as the ink dried.</p>
+<p>By 2012, Encyclopedia Britannica had been put online, but it was already late to the party. In 2001, the way we access information changed forever, thanks to the <span class="bold-blue">arrival</span> of Wikipedia. Unlike traditional encyclopedias written by experts, Wikipedia allows anyone to <span class="bold-blue">contribute</span> and edit articles. The site has been <span class="bold-blue">incredibly</span> successful with hundreds of millions of page views daily. However, it also created new challenges, not all information is <span class="bold-blue">accurate</span> or reliable, and false information can be added quickly. Perhaps unsurprisingly, some people are turning to AI sources, such as Elon Musk's Grokipedia, which was released in 2025. Grokipedia's entries are written by an AI assistant, not humans. It promises to be closer to the truth, but at the moment, it largely copies Wikipedia entries.</p>
+<p>From Pliny to AI assistants via Wikipedia's <span class="bold-blue">collaborative</span> platform, encyclopedias have <span class="bold-blue">transformed</span> <span class="bold-blue">dramatically</span>. When we look to the future, the format will likely continue to change, and so too will the facts. But humanity's hunger for knowledge and our drive to share it? That will never change.</p>
+</div></div>
+</section>
+
+<!-- ========== 區塊二：八句精讀 ========== -->
+<section>
+<h2>【區塊二】八句精讀</h2>
+<div class="section-card">
+<div class="section-head orange-red-bg">【八句精讀 8 Key Sentence Analyses】</div>
+<div class="section-body bg-orange">
+
+<div class="analysis-block">
+<h3><span class="num-circle">1</span> 句 1</h3>
+<div class="quote">From facts about unusual plants and animals to distant lands, people have always wanted to gather and preserve knowledge.</div>
+<div class="subbox">從關於奇特動植物的事實到遙遠的土地，人們一直想要收集並保存知識。</div>
+<div class="subbox"><strong>文法解析：</strong><em>From A to B</em> 結構引導範圍。主要子句使用現在完成式 <em>have always wanted</em>，表達從過去持續到現在的渴望。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">preserve 保存</span> <span class="pill">distant 遙遠的</span> <span class="pill">gather 收集</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">2</span> 句 2</h3>
+<div class="quote">Encyclopedias were created to do exactly that, turning curiosity into written records and helping others explore the world one page at a time.</div>
+<div class="subbox">百科全書的創立正是為了做到這一點，將好奇心轉化為書面記錄，並幫助他人一次一頁地探索世界。</div>
+<div class="subbox"><strong>文法解析：</strong><em>were created</em> 為被動語態。逗號後的 <em>turning... and helping...</em> 為分詞構句，表伴隨動作或結果，修飾前方的創立行為。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">curiosity 好奇心</span> <span class="pill">written records 書面記錄</span> <span class="pill">one page at a time 一次一頁</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">3</span> 句 3</h3>
+<div class="quote">Pliny's dedication to his work was obvious, yet knowing everything about everything is an impossible task for just one man.</div>
+<div class="subbox">普林尼對工作的投入顯而易見，然而對一個人來說，要無所不知是不可能的任務。</div>
+<div class="subbox"><strong>文法解析：</strong><em>yet</em> 為對等連接詞，表轉折。<em>knowing everything...</em> 為動名詞片語當作主詞，視為單數。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">dedication 奉獻/投入</span> <span class="pill">obvious 顯而易見的</span> <span class="pill">impossible 不可能的</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">4</span> 句 4</h3>
+<div class="quote">Consequently, his texts are filled with wild inaccuracies, such as tales of milk raining from the sky and turtles.</div>
+<div class="subbox">因此，他的文本中充斥著離奇的錯誤，例如牛奶從天而降以及海龜的傳說。</div>
+<div class="subbox"><strong>文法解析：</strong><em>Consequently</em> 為副詞連接詞表結果。<em>be filled with</em> 意為「充滿……」。<em>such as</em> 引導舉例。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">consequently 因此</span> <span class="pill">inaccuracy 不準確之處</span> <span class="pill">tales 故事/傳說</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">5</span> 句 5</h3>
+<div class="quote">Centuries later, the invention of the printing press made it possible to circulate information even further.</div>
+<div class="subbox">幾個世紀後，印刷機的發明使得資訊的傳播能夠更進一步。</div>
+<div class="subbox"><strong>文法解析：</strong>此處 <em>it</em> 為虛受詞，真正的受詞是後面的不定詞片語 <em>to circulate...</em>，而 <em>possible</em> 則為受詞補語。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">invention 發明</span> <span class="pill">printing press 印刷機</span> <span class="pill">circulate 傳播/循環</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">6</span> 句 6</h3>
+<div class="quote">In 2001, the way we access information changed forever, thanks to the arrival of Wikipedia.</div>
+<div class="subbox">在 2001 年，由於維基百科的到來，我們獲取資訊的方式永遠改變了。</div>
+<div class="subbox"><strong>文法解析：</strong><em>the way (that/in which) we access information</em> 為主詞，其中包含一個形容詞子句。<em>thanks to</em> 為介系詞片語，意為「由於」。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">access 獲取</span> <span class="pill">thanks to 由於</span> <span class="pill">arrival 到來</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">7</span> 句 7</h3>
+<div class="quote">Unlike traditional encyclopedias written by experts, Wikipedia allows anyone to contribute and edit articles.</div>
+<div class="subbox">不同於由專家撰寫的傳統百科全書，維基百科允許任何人貢獻和編輯文章。</div>
+<div class="subbox"><strong>文法解析：</strong><em>written by experts</em> 為過去分詞片語，修飾前面的 <em>encyclopedias</em>。<em>allow + O + to V</em> 為常見句型，表示「允許某人做某事」。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">unlike 不同於</span> <span class="pill">contribute 貢獻</span> <span class="pill">edit 編輯</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">8</span> 句 8</h3>
+<div class="quote">When we look to the future, the format will likely continue to change, and so too will the facts.</div>
+<div class="subbox">當我們展望未來，形式很可能會繼續改變，事實也將會隨之改變。</div>
+<div class="subbox"><strong>文法解析：</strong><em>so too will the facts</em> 為倒裝句，用來表示「也一樣」，<em>will</em> 為助動詞。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">look to 展望</span> <span class="pill">format 形式/格式</span> <span class="pill">likely 很可能</span></div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 區塊三：18–20個單字整理 ========== -->
+<section>
+<h2>【區塊三】20 個單字整理</h2>
+<div class="section-card">
+<div class="section-head forest-green-bg">【單字表 Vocabulary List】</div>
+<div class="section-body bg-green">
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">1</span> <span class="vocab-word">preserve</span> <span class="kk">[prɪˈzɝv]</span> (v.) <span class="pos">中文：保存、維護</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">preservation (n.) 保存</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a carefully preserved relic 謹慎保存的遺物</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">preserve knowledge 保存知識</div></div>
+</div>
+<div class="example-box">
+People have always wanted to gather and <strong>preserve</strong> knowledge.
+（人們一直想要收集並保存知識。）<br>
+The museum aims to <strong>preserve</strong> ancient artifacts for future generations.
+（博物館旨在為後代子孫保存古代文物。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">2</span> <span class="vocab-word">curiosity</span> <span class="kk">[ˌkjʊrɪˈɑsəti]</span> (n.) <span class="pos">中文：好奇心</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">curious (adj.) 好奇的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a burning intellectual curiosity 強烈的求知慾</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">satisfy one's curiosity 滿足某人的好奇心</div></div>
+</div>
+<div class="example-box">
+Encyclopedias help turn <strong>curiosity</strong> into written records.
+（百科全書有助於將好奇心轉化為書面記錄。）<br>
+His <strong>curiosity</strong> about space led him to become an astronaut.
+（他對太空的好奇心引領他成為一名太空人。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">3</span> <span class="vocab-word">dedication</span> <span class="kk">[ˌdɛdəˈkeʃən]</span> (n.) <span class="pos">中文：奉獻、投入</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">dedicate (v.) 奉獻</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">absolute personal dedication 絕對的個人投入</div></div>
+<div class="tag-container tag-prep"><div class="tag-label">常用介系詞</div><div class="tag-val">dedication to ... 對...的投入</div></div>
+</div>
+<div class="example-box">
+Pliny's <strong>dedication</strong> to his work was obvious.
+（普林尼對工作的投入顯而易見。）<br>
+Success requires a high level of <strong>dedication</strong> and hard work.
+（成功需要高度的投入與努力。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">4</span> <span class="vocab-word">obvious</span> <span class="kk">[ˈɑbvɪəs]</span> (adj.) <span class="pos">中文：顯而易見的、明顯的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">obviously (adv.) 顯然地</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a fairly obvious mistake 相當明顯的錯誤</div></div>
+<div class="tag-container tag-confuse"><div class="tag-label">容易混淆</div><div class="tag-val">obvious vs. apparent (前者強調事實明顯，後者帶有表象之意)</div></div>
+</div>
+<div class="example-box">
+His dedication was <strong>obvious</strong> to everyone who knew him.
+（認識他的每個人都看得出他的投入。）<br>
+There is no <strong>obvious</strong> solution to this complex problem.
+（對於這個複雜的問題，目前沒有顯而易見的解決方案。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">5</span> <span class="vocab-word">impossible</span> <span class="kk">[ɪmˈpɑsəbḷ]</span> (adj.) <span class="pos">中文：不可能的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">possibility (n.) 可能性</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a virtually impossible task 幾乎不可能的任務</div></div>
+<div class="tag-container tag-root"><div class="tag-label">字根</div><div class="tag-val">pos- (能夠) 如: potent (強效的)</div></div>
+</div>
+<div class="example-box">
+Knowing everything about everything is an <strong>impossible</strong> task.
+（要無所不知是一項不可能的任務。）<br>
+It is <strong>impossible</strong> to predict the future with absolute certainty.
+（要絕對肯定地預測未來是不可能的。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">6</span> <span class="vocab-word">consequently</span> <span class="kk">[ˈkɑnsəkwɛntli]</span> (adv.) <span class="pos">中文：結果、因此</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">consequence (n.) 結果</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">consequently leading results 因此導致的結果</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">as a consequence 作為結果</div></div>
+</div>
+<div class="example-box">
+<strong>Consequently</strong>, his texts are filled with wild inaccuracies.
+（因此，他的文本中充斥著離奇的錯誤。）<br>
+He didn't study for the exam; <strong>consequently</strong>, he failed.
+（他沒有為考試讀書；結果，他沒及格。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">7</span> <span class="vocab-word">inaccuracy</span> <span class="kk">[ɪnˈækjərəsi]</span> (n.) <span class="pos">中文：不準確、錯誤</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">accurate (adj.) 準確的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a significant historical inaccuracy 顯著的歷史錯誤</div></div>
+<div class="tag-container tag-confuse"><div class="tag-label">容易混淆</div><div class="tag-val">inaccuracy vs. error (前者強調精確度不足，後者為一般錯誤)</div></div>
+</div>
+<div class="example-box">
+Pliny's early encyclopedias contained many <strong>inaccuracies</strong>.
+（普林尼早期的百科全書包含許多錯誤。）<br>
+The report was criticized for its many factual <strong>inaccuracies</strong>.
+（這份報告因其許多事實上的不準確而受到批評。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">8</span> <span class="vocab-word">circulate</span> <span class="kk">[ˈsɝkjəˌlet]</span> (v.) <span class="pos">中文：傳播、循環、流通</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">circulation (n.) 循環；發行量</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">widely circulated news 廣為傳傳的消息</div></div>
+<div class="tag-container tag-root"><div class="tag-label">字根</div><div class="tag-val">circ- (圓/環) 如: circuit (電路)</div></div>
+</div>
+<div class="example-box">
+The printing press made it possible to <strong>circulate</strong> information further.
+（印刷機使得資訊的傳播能夠更遠。）<br>
+Blood <strong>circulates</strong> through the body to deliver oxygen to cells.
+（血液在體內循環，將氧氣輸送到細胞。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">9</span> <span class="vocab-word">intended</span> <span class="kk">[ɪnˈtɛndɪd]</span> (adj.) <span class="pos">中文：預期的、打算的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">intention (n.) 意圖</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">the intended main audience 預期的主要受眾</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">be intended for ... 為...而設計/打算</div></div>
+</div>
+<div class="example-box">
+The work was <strong>intended</strong> to bring knowledge to ordinary people.
+（這部作品旨在為普通人帶來知識。）<br>
+The new law is <strong>intended</strong> to protect the rights of consumers.
+（這項新法律旨在保護消費者的權利。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">10</span> <span class="vocab-word">ordinary</span> <span class="kk">[ˈɔrdnˌɛri]</span> (adj.) <span class="pos">中文：普通的、平凡的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">extraordinary (adj.) 非凡的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a perfectly ordinary day 完全平凡的一天</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">ordinary citizens 普通公民</div></div>
+</div>
+<div class="example-box">
+Encyclopedias were created to bring knowledge to <strong>ordinary</strong> people.
+（百科全書是為了將知識帶給普通人而創立的。）<br>
+It was just an <strong>ordinary</strong> day until the surprise guest arrived.
+（那只是平凡的一天，直到那位驚喜嘉賓到來。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">11</span> <span class="vocab-word">valuable</span> <span class="kk">[ˈvæljuəbḷ]</span> (adj.) <span class="pos">中文：有價值的、寶貴的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">value (n./v.) 價值；重視</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">extremely valuable advice 極其寶貴的建議</div></div>
+<div class="tag-container tag-confuse"><div class="tag-label">容易混淆</div><div class="tag-val">valuable vs. invaluable (後者指價值高到無法估量)</div></div>
+</div>
+<div class="example-box">
+The work brought <strong>valuable</strong> knowledge to the public.
+（這部作品為大眾帶來了寶貴的知識。）<br>
+Experience is a <strong>valuable</strong> asset in any professional field.
+（經驗在任何專業領域都是一筆寶貴的資產。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">12</span> <span class="vocab-word">reliable</span> <span class="kk">[rɪˈlaɪəbḷ]</span> (adj.) <span class="pos">中文：可靠的、可信賴的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">rely (v.) 依賴</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a highly reliable source 高度可靠的來源</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">reliable information 可靠的資訊</div></div>
+</div>
+<div class="example-box">
+Encyclopedia Britannica is known for its <strong>reliable</strong> articles.
+（大英百科全書以其可靠的文章聞名。）<br>
+He is a very <strong>reliable</strong> person who always keeps his promises.
+（他是一個非常可靠的人，總是信守承諾。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">13</span> <span class="vocab-word">outdated</span> <span class="kk">[aʊtˈdetɪd]</span> (adj.) <span class="pos">中文：過時的、老舊的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">date (n./v.) 日期；過時</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">completely outdated methods 完全過時的方法</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">become outdated 變得過時</div></div>
+</div>
+<div class="example-box">
+Paper encyclopedias sometimes became <strong>outdated</strong> quickly.
+（紙本百科全書有時很快就過時了。）<br>
+The software is <strong>outdated</strong> and needs to be upgraded immediately.
+（這個軟體已經過時了，需要立即升級。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">14</span> <span class="vocab-word">arrival</span> <span class="kk">[əˈraɪvḷ]</span> (n.) <span class="pos">中文：到來、抵達</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">arrive (v.) 抵達</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">the long-awaited arrival 長久期待的到來</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">arrival of spring 春天的到來</div></div>
+</div>
+<div class="example-box">
+The way we access information changed with the <strong>arrival</strong> of Wikipedia.
+（隨著維基百科的到來，我們獲取資訊的方式改變了。）<br>
+The hotel staff greeted the guests upon their <strong>arrival</strong>.
+（飯店員工在客抵達時迎接他們。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">15</span> <span class="vocab-word">contribute</span> <span class="kk">[kənˈtrɪbjut]</span> (v.) <span class="pos">中文：貢獻、投稿、促成</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">contribution (n.) 貢獻</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">generously contribute funds 慷慨貢獻資金</div></div>
+<div class="tag-container tag-prep"><div class="tag-label">常用介系詞</div><div class="tag-val">contribute to ... 貢獻於；促成</div></div>
+</div>
+<div class="example-box">
+Wikipedia allows anyone to <strong>contribute</strong> and edit articles.
+（維基百科允許任何人貢獻和編輯文章。）<br>
+Everyone is encouraged to <strong>contribute</strong> their ideas to the project.
+（鼓勵大家為這個專案貢獻自己的想法。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">16</span> <span class="vocab-word">incredibly</span> <span class="kk">[ɪnˈkrɛdəbli]</span> (adv.) <span class="pos">中文：難以置信地、非常地</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">incredible (adj.) 難以置信的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">an incredibly complex system 非常複雜的系統</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">incredibly successful 非常成功</div></div>
+</div>
+<div class="example-box">
+Wikipedia has been <strong>incredibly</strong> successful worldwide.
+（維基百科在全球取得了令人難以置信的成功。）<br>
+The view from the top of the mountain is <strong>incredibly</strong> beautiful.
+（山頂的景色非常美麗。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">17</span> <span class="vocab-word">accurate</span> <span class="kk">[ˈækjərɪt]</span> (adj.) <span class="pos">中文：準確的、精確的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">accuracy (n.) 準確性</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">highly accurate measurements 高度準確的測量</div></div>
+<div class="tag-container tag-confuse"><div class="tag-label">容易混淆</div><div class="tag-val">accurate vs. precise (前者強調正確無誤，後者強調極度精細)</div></div>
+</div>
+<div class="example-box">
+Not all information on the Internet is <strong>accurate</strong>.
+（網路上的資訊並非全部準確。）<br>
+Scientists need to provide <strong>accurate</strong> data for their research.
+（科學家需要為他們的研究提供準確的數據。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">18</span> <span class="vocab-word">collaborative</span> <span class="kk">[kəˈlæbəˌretɪv]</span> (adj.) <span class="pos">中文：協作的、合作的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">collaborate (v.) 合作</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a successful collaborative effort 成功的協作努力</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">collaborative platform 協作平台</div></div>
+</div>
+<div class="example-box">
+Wikipedia is a <strong>collaborative</strong> platform built by users.
+（維基百科是一個由使用者建立的協作平台。）<br>
+The project was a <strong>collaborative</strong> effort between several companies.
+（這個專案是幾家公司之間的協作成果。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">19</span> <span class="vocab-word">transform</span> <span class="kk">[trænsˈfɔrm]</span> (v.) <span class="pos">中文：轉換、改變、變形</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">transformation (n.) 轉變</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">completely transform one's life 完全改變某人的生活</div></div>
+<div class="tag-container tag-root"><div class="tag-label">字根</div><div class="tag-val">form- (形狀) 如: reform (改革)</div></div>
+</div>
+<div class="example-box">
+Encyclopedias have <strong>transformed</strong> from paper to digital formats.
+（百科全書已從紙本轉向數位形式。）<br>
+Technology has <strong>transformed</strong> the way we work and live.
+（科技改變了我們工作和生活的方式。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">20</span> <span class="vocab-word">dramatically</span> <span class="kk">[drəˈmætɪkḷi]</span> (adv.) <span class="pos">中文：劇烈地、戲劇性地、顯著地</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">dramatic (adj.) 戲劇性的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a dramatically increased price 劇烈上漲的價格</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">change dramatically 劇烈變化</div></div>
+</div>
+<div class="example-box">
+The landscape of knowledge sharing has changed <strong>dramatically</strong>.
+（知識分享的版圖已經發生了劇烈的變化。）<br>
+The number of internet users has increased <strong>dramatically</strong> over the years.
+（網路使用者數量多年來顯著增加。）
+</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 區塊四：文法解析 ========== -->
+<section>
+<h2>【區塊四】文法解析</h2>
+<div class="section-card">
+<div class="section-head deep-purple-bg">【文法解析 Grammar Analysis】</div>
+<div class="section-body bg-purple">
+
+<div class="grammar-point">
+<h3>【文法名稱】虛受詞 it 的句型：make it adj. + to V</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">"Centuries later, the invention of the printing press made it possible to circulate information even further."</blockquote>
+<p><strong>【句型】</strong></p>
+<p><em><strong>S + make / find / think / feel + it + adj. / N + to V / that 子句</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>當動詞後面的受詞（不定詞片語或名詞子句）太長時，英文習慣使用虛受詞 <em>it</em> 代替真正的受詞，將真受詞往後挪。這能避免句子顯得頭重腳輕，讓受詞補語（形容詞）緊跟在動詞之後。</p>
+<p><strong>【使用規則】</strong></p>
+<ul>
+<li>① 常見動詞包括 make (使得)、find (發現)、think (認為)、feel (覺得)。</li>
+<li>② it 為虛受詞，不需翻譯。</li>
+<li>③ 形容詞補語緊接在 it 之後。</li>
+<li>④ 真正受詞通常由 <em>to V</em> 或 <em>that</em> 引導的子句組成。</li>
+</ul>
+<p><strong>【主題例句】</strong></p>
+<p>Wikipedia made it easier for ordinary people to access knowledge.（維基百科使得普通人獲取知識變得更容易。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>這種句型中，絕不能省略 it，也不能直接用 to V 放在形容詞前面。例如：<s>made possible to circulate</s> 是錯誤的。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<div class="error-box">
+✗ I found possible to finish the work in one day.<br>
+✓ I found <strong>it</strong> possible to finish the work in one day.<br>
+說明：必須加上虛受詞 it。
+</div>
+<p>選擇題：The new technology makes ________ convenient to shop online. (A) this (B) that (C) it (D) which</p>
+<p>答案：C。說明：固定句型 make it adj. to V。</p>
+</div>
+
+<div class="grammar-point">
+<h3>【文法名稱】過去分詞當形容詞片語 (p.p. modifier)</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">"Unlike traditional encyclopedias written by experts, Wikipedia allows anyone to contribute and edit articles."</blockquote>
+<p><strong>【句型】</strong></p>
+<p><em><strong>N + p.p. (過去分詞) ...</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>過去分詞 (p.p.) 可以放在名詞後面，用來修飾該名詞，表示「被動」或「完成」的狀態。這通常是形容詞子句（N + who/which + be + p.p.）省略了關係代名詞和 be 動詞後的簡化形式。</p>
+<p><strong>【使用規則】</strong></p>
+<ul>
+<li>① 修飾的名詞與分詞之間具備被動關係。</li>
+<li>② 常見於「被……所撰寫」、「被……所製造」等情境。</li>
+<li>③ p.p. 片語後面常伴隨 <em>by</em> 指出行為者。</li>
+</ul>
+<p><strong>【主題例句】</strong></p>
+<p>Articles written by AI assistants are now appearing online.（由 AI 助手撰寫的文章現在正出現在網路上。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>判斷要用 V-ing 或 p.p. 時，看它修飾的名詞。百科全書是被撰寫 (written)，所以用過去分詞。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<div class="error-box">
+✗ The house building many years ago is still strong.<br>
+✓ The house <strong>built</strong> many years ago is still strong.<br>
+說明：房子是被建造，應使用 p.p.。
+</div>
+<p>選擇題：This is a book ________ by a famous author. (A) wrote (B) writing (C) written (D) write</p>
+<p>答案：C。說明：書是被撰寫，選 p.p.。</p>
+</div>
+
+<div class="grammar-point">
+<h3>【文法名稱】So too + 倒裝句：表示「也一樣」</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">"When we look to the future, the format will likely continue to change, and so too will the facts."</blockquote>
+<p><strong>【句型】</strong></p>
+<p><em><strong>..., and so too + be/助動詞 + S</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>這是一種強調語氣的倒裝句型，用來表示第二個主詞也具備與前方提到的相同情況。其功能類似於 "S + too" 或 "so + be/助動詞 + S"，但語氣較為正式且強烈。</p>
+<p><strong>【使用規則】</strong></p>
+<ul>
+<li>① 必須先有一個肯定句。</li>
+<li>② 倒裝部分的助動詞（如 will, can）或 be 動詞需與前句時態一致。</li>
+<li>③ so too 放句首，動詞（助動詞）放在主詞前面。</li>
+</ul>
+<p><strong>【主題例句】</strong></p>
+<p>As technology evolves, the way we learn changes, and so too does the world.（隨著科技進化，我們學習的方式改變，世界也同樣改變。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>注意動詞的一致性。如果前句是 will change，後句就用 will；如果是 changes，後句則用 does。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<div class="error-box">
+✗ He is happy, and so too I am.<br>
+✓ He is happy, and <strong>so too am I</strong>.<br>
+說明：主詞與動詞需倒裝。
+</div>
+<p>選擇題：Knowledge is expanding, and so too ________ our tools. (A) are (B) do (C) have (D) will</p>
+<p>答案：A。說明：前句使用 is (be動詞)，後句對應複數主詞 tools 應選 are。</p>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 底部折疊區塊 ========== -->
+<section>
+<details>
+<summary>折疊一：常見字首整理 (50 個) <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<div class="prefix-item"><span class="pf">ab-</span> 離開、相反 — abnormal（異常的）</div>
+<div class="prefix-item"><span class="pf">ad-</span> 向、加 — advance（前進）</div>
+<div class="prefix-item"><span class="pf">ambi-</span> 雙方、兩面 — ambiguous（模稜兩可的）</div>
+<div class="prefix-item"><span class="pf">anti-</span> 反對、抗 — antibiotic（抗生素）</div>
+<div class="prefix-item"><span class="pf">arch-</span> 主要、首要 — archenemy（死敵）</div>
+<div class="prefix-item"><span class="pf">auto-</span> 自動、自我 — autograph（親筆簽名）</div>
+<div class="prefix-item"><span class="pf">bene-</span> 好的、善 — benefit（好處）</div>
+<div class="prefix-item"><span class="pf">bi-</span> 二、雙 — bilingual（雙語的）</div>
+<div class="prefix-item"><span class="pf">circum-</span> 環繞、周圍 — circumstance（情況）</div>
+<div class="prefix-item"><span class="pf">co-/con-/com-</span> 一起、共同 — cooperate（合作）</div>
+<div class="prefix-item"><span class="pf">contra-</span> 相反、對抗 — contradict（反駁）</div>
+<div class="prefix-item"><span class="pf">de-</span> 去除、下降 — decode（解碼）</div>
+<div class="prefix-item"><span class="pf">dia-</span> 穿過、透過 — dialogue（對話）</div>
+<div class="prefix-item"><span class="pf">dis-</span> 否定、分離 — disagree（不同意）</div>
+<div class="prefix-item"><span class="pf">en-/em-</span> 使成為 — enable（使能夠）</div>
+<div class="prefix-item"><span class="pf">epi-</span> 在上、在外 — epidemic（流行病）</div>
+<div class="prefix-item"><span class="pf">ex-</span> 外、前任 — export（出口）</div>
+<div class="prefix-item"><span class="pf">extra-</span> 額外、外部 — extraordinary（非凡的）</div>
+<div class="prefix-item"><span class="pf">hetero-</span> 不同 — heterogeneous（異質的）</div>
+<div class="prefix-item"><span class="pf">homo-</span> 相同 — homogeneous（同質的）</div>
+<div class="prefix-item"><span class="pf">hyper-</span> 過度、超 — hyperactive（過動的）</div>
+<div class="prefix-item"><span class="pf">hypo-</span> 低於、不足 — hypodermic（皮下的）</div>
+<div class="prefix-item"><span class="pf">in-/im-</span> 否定、進入 — invisible（看不見的）</div>
+<div class="prefix-item"><span class="pf">inter-</span> 在…之間 — international（國際的）</div>
+<div class="prefix-item"><span class="pf">iso-</span> 相等、相同 — isolate（隔離）</div>
+<div class="prefix-item"><span class="pf">mal-</span> 壞、不良 — malfunction（故障）</div>
+<div class="prefix-item"><span class="pf">micro-</span> 微小 — microscope（顯微鏡）</div>
+<div class="prefix-item"><span class="pf">mis-</span> 錯誤 — misunderstand（誤解）</div>
+<div class="prefix-item"><span class="pf">mono-</span> 單一 — monologue（獨白）</div>
+<div class="prefix-item"><span class="pf">multi-</span> 多 — multicultural（多元文化的）</div>
+<div class="prefix-item"><span class="pf">neo-</span> 新的 — neonatal（新生的）</div>
+<div class="prefix-item"><span class="pf">non-</span> 非、沒有 — nonsense（無意義）</div>
+<div class="prefix-item"><span class="pf">pan-</span> 全部 — pandemic（大流行病）</div>
+<div class="prefix-item"><span class="pf">peri-</span> 周圍 — perimeter（周長）</div>
+<div class="prefix-item"><span class="pf">poly-</span> 多 — polygon（多邊形）</div>
+<div class="prefix-item"><span class="pf">post-</span> 之後 — postwar（戰後的）</div>
+<div class="prefix-item"><span class="pf">pre-</span> 之前 — preview（預覽）</div>
+<div class="prefix-item"><span class="pf">pro-</span> 向前、支持 — progress（進步）</div>
+<div class="prefix-item"><span class="pf">pseudo-</span> 假的 — pseudonym（筆名）</div>
+<div class="prefix-item"><span class="pf">re-</span> 再、回 — review（複習）</div>
+<div class="prefix-item"><span class="pf">semi-</span> 一半、部分 — semicircle（半圓）</div>
+<div class="prefix-item"><span class="pf">sub-</span> 在下、次級 — subway（地鐵）</div>
+<div class="prefix-item"><span class="pf">super-</span> 超越、在上 — superstar（超級明星）</div>
+<div class="prefix-item"><span class="pf">syn-/sym-</span> 一起、共同 — synchronize（同步）</div>
+<div class="prefix-item"><span class="pf">tele-</span> 遠距 — telephone（電話）</div>
+<div class="prefix-item"><span class="pf">trans-</span> 穿越、轉變 — transport（運輸）</div>
+<div class="prefix-item"><span class="pf">tri-</span> 三 — triangle（三角形）</div>
+<div class="prefix-item"><span class="pf">un-</span> 否定、不 — unhappy（不快樂的）</div>
+<div class="prefix-item"><span class="pf">vice-</span> 副、代替 — vice-president（副總統）</div>
+</div>
+</details>
+
+<details>
+<summary>折疊二：常見英文字尾整理 (約 30 個) <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<h3>名詞字尾</h3>
+<div class="suffix-item">-tion/-sion/-ation — education（教育）、decision（決定）、dedication（投入）</div>
+<div class="suffix-item">-ment — agreement（協議）、development（發展）</div>
+<div class="suffix-item">-ness — happiness（快樂）、darkness（黑暗）</div>
+<div class="suffix-item">-ity/-ty — ability（能力）、curiosity（好奇心）</div>
+<div class="suffix-item">-er/-or — teacher（老師）、actor（演員）</div>
+<div class="suffix-item">-ist — artist（藝術家）、scientist（科學家）</div>
+<div class="suffix-item">-ship — friendship（友誼）、leadership（領導）</div>
+<div class="suffix-item">-hood — childhood（童年）、neighborhood（鄰里）</div>
+<h3>形容詞字尾</h3>
+<div class="suffix-item">-able/-ible — readable（可讀的）、valuable（有價值的）、reliable（可靠的）</div>
+<div class="suffix-item">-ous — dangerous（危險的）、famous（著名的）、obvious（明顯的）</div>
+<div class="suffix-item">-ful — hopeful（充滿希望的）、beautiful（美麗的）</div>
+<div class="suffix-item">-less — hopeless（絕望的）、powerless（無力的）、timeless（永恆的）</div>
+<div class="suffix-item">-al/-ic — natural（自然的）、poetic（詩意的）、collaborative（協作的）</div>
+<h3>動詞字尾</h3>
+<div class="suffix-item">-ize/-ise — realize（實現）、industrialize（工業化）</div>
+<div class="suffix-item">-ify — beautify（美化）、clarify（澄清）</div>
+<div class="suffix-item">-ate — dominate（支配）、circulate（傳播）</div>
+<div class="suffix-item">-en — strengthen（加強）、soften（使柔軟）</div>
+<h3>副詞字尾</h3>
+<div class="suffix-item">-ly — quickly（快速地）、carefully（仔細地）、dramatically（劇烈地）</div>
+<div class="suffix-item">-ward(s) — upwards（向上）、homeward（回家）</div>
+<div class="suffix-item">-wise — clockwise（順時針方向）</div>
+</div>
+</details>
+
+<details>
+<summary>折疊三：30 個常用單字與衍生詞 <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<ol>
+<li>preserve [prɪˈzɝv] (v. 保存) — preservation [ˌprɛzɚˈveʃən] (n. 保存)</li>
+<li>curiosity [ˌkjʊrɪˈɑsəti] (n. 好奇心) — curious [ˈkjʊrɪəs] (adj. 好奇的)</li>
+<li>dedication [ˌdɛdəˈkeʃən] (n. 奉獻) — dedicate [ˈdɛdəˌket] (v. 奉獻)</li>
+<li>obvious [ˈɑbvɪəs] (adj. 明顯的) — obviously [ˈɑbvɪəsli] (adv. 顯然地)</li>
+<li>impossible [ɪmˈpɑsəbḷ] (adj. 不可能的) — possibility [ˌpɑsəˈbɪləti] (n. 可能性)</li>
+<li>consequently [ˈkɑnsəkwɛntli] (adv. 因此) — consequence [ˈkɑnsəkwɛns] (n. 結果)</li>
+<li>inaccuracy [ɪnˈækjərəsi] (n. 不準確) — accurate [ˈækjərɪt] (adj. 準確的)</li>
+<li>circulate [ˈsɝkjəˌlet] (v. 傳播) — circulation [ˌsɝkjəˈleʃən] (n. 循環)</li>
+<li>intended [ɪnˈtɛndɪd] (adj. 預期的) — intention [ɪnˈtɛnʃən] (n. 意圖)</li>
+<li>ordinary [ˈɔrdnˌɛri] (adj. 普通的) — extra [ˈɛkstrə] (adj. 額外的)</li>
+<li>valuable [ˈvæljuəbḷ] (adj. 有價值的) — value [ˈvælju] (n. 價值)</li>
+<li>reliable [rɪˈlaɪəbḷ] (adj. 可靠的) — rely [rɪˈlaɪ] (v. 依賴)</li>
+<li>outdated [aʊtˈdetɪd] (adj. 過時的) — date [det] (n. 日期)</li>
+<li>arrival [əˈraɪvḷ] (n. 到來) — arrive [əˈraɪv] (v. 抵達)</li>
+<li>contribute [kənˈtrɪbjut] (v. 貢獻) — contribution [ˌkɑntrəˈbjuʃən] (n. 貢獻)</li>
+<li>incredibly [ɪnˈkrɛdəbli] (adv. 非常地) — incredible [ɪnˈkrɛdəbḷ] (adj. 難以置信的)</li>
+<li>accurate [ˈækjərɪt] (adj. 準確的) — accuracy [ˈækjərəsi] (n. 準確性)</li>
+<li>collaborative [kəˈlæbəˌretɪv] (adj. 協作的) — collaborate [kəˈlæbəˌret] (v. 合作)</li>
+<li>transform [trænsˈfɔrm] (v. 轉換) — transformation [ˌtrænsfɚˈmeʃən] (n. 轉變)</li>
+<li>dramatically [drəˈmætɪkḷi] (adv. 劇烈地) — dramatic [drəˈmætɪk] (adj. 戲劇性的)</li>
+<li>challenge [ˈtʃæləndʒ] (n./v. 挑戰) — challenging [ˈtʃæləndʒɪŋ] (adj. 具挑戰性的)</li>
+<li>knowledge [ˈnɑlɪdʒ] (n. 知識) — knowledgeable [ˈnɑlɪdʒəbḷ] (adj. 博學的)</li>
+<li>distant [ˈdɪstənt] (adj. 遙遠的) — distance [ˈdɪstəns] (n. 距離)</li>
+<li>invention [ɪnˈvɛntʃən] (n. 發明) — invent [ɪnˈvɛnt] (v. 發明)</li>
+<li>possible [ˈpɑsəbḷ] (adj. 可能的) — possibly [ˈpɑsəbli] (adv. 可能地)</li>
+<li>traditional [trəˈdɪʃənḷ] (adj. 傳統的) — tradition [trəˈdɪʃən] (n. 傳統)</li>
+<li>expert [ˈɛkspɝt] (n. 專家) — expertise [ˌɛkspɚˈtiz] (n. 專業知識)</li>
+<li>success [səkˈsɛs] (n. 成功) — successful [səkˈsɛsfəl] (adj. 成功的)</li>
+<li>useful [ˈjusfəl] (adj. 有用的) — useless [ˈjuslɪs] (adj. 無用的)</li>
+<li>future [ˈfjutʃɚ] (n. 未來) — futuristic [ˌfjutʃəˈrɪstɪk] (adj. 未來的/超前的)</li>
+</ol>
+<p><strong>文章相關常用片語 5 個：</strong></p>
+<ul>
+<li>• fit into (符合/裝進)</li>
+<li>• keep pace (保持同步/跟上步伐)</li>
+<li>• late to the party (晚了一步)</li>
+<li>• thanks to (由於/多虧)</li>
+<li>• look to (指望/展望)</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>折疊四：練文筆食材 <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<div class="prefix-item">
+① <strong>fit everything ... into one place</strong>（將所有事物整合於一處）<br>
+→ 適用：描述整理大量資訊或資源時。<br>
+例：The library fits centuries of history into one place.
+</div>
+<div class="prefix-item">
+② <strong>turning curiosity into ...</strong>（將好奇心轉化為……）<br>
+→ 適用：描述將抽象想法變為具體成果時。<br>
+例：She succeeded by turning curiosity into innovation.
+</div>
+<div class="prefix-item">
+③ <strong>knowing everything about everything is an impossible task</strong>（無所不知是不可能的任務）<br>
+→ 適用：強調個人能力的限制或謙遜時。<br>
+例：Modern science shows that knowing everything about everything is an impossible task.
+</div>
+<div class="prefix-item">
+④ <strong>made it possible to ...</strong>（使得……成為可能）<br>
+→ 適用：描述某項發明或條件帶來的進步。<br>
+例：New technology made it possible to work from anywhere.
+</div>
+<div class="prefix-item">
+⑤ <strong>keep pace with ...</strong>（與……保持同步）<br>
+→ 適用：描述在快速變化的環境中不落後。<br>
+例：Education must keep pace with the rapid changes in society.
+</div>
+<div class="prefix-item">
+⑥ <strong>late to the party</strong>（姍姍來遲 / 晚了一步）<br>
+→ 適用：描述某個趨勢或機會被錯過時。<br>
+例：Many traditional companies were late to the party of online shopping.
+</div>
+<div class="prefix-item">
+⑦ <strong>thanks to the arrival of ...</strong>（多虧了……的到來）<br>
+→ 適用：正面描述某事物的出現帶來的影響。<br>
+例：Life became easier thanks to the arrival of smartphones.
+</div>
+<div class="prefix-item">
+⑧ <strong>allows anyone to contribute</strong>（允許任何人做出貢獻）<br>
+→ 適用：描述民主化或開放式的協作系統。<br>
+例：The open-source project allows anyone to contribute to the code.
+</div>
+<div class="prefix-item">
+⑨ <strong>promises to be closer to the truth</strong>（承諾將更接近真相）<br>
+→ 適用：描述某種新方法或工具的優勢。<br>
+例：The new investigation promises to be closer to the truth than the previous one.
+</div>
+<div class="prefix-item">
+⑩ <strong>humanity's hunger for knowledge</strong>（人類對知識的渴求）<br>
+→ 適用：描述人類進步的原始動力。<br>
+例：Humanity's hunger for knowledge drives us to explore space.
+</div>
+</div>
+</details>
+</section>
+
+<nav class="course-links" aria-label="七月課程與聯絡資訊">
+  <a class="course-link echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">錯中學 ECHO 計劃</span>
+    <span class="link-desc">用錯誤回饋整理盲點，建立更穩的英文輸出能力。</span>
+  </a>
+  <a class="course-link analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">學生分析</span>
+    <span class="link-desc">從學習表現看出強弱項，安排更精準的複習方向。</span>
+  </a>
+  <a class="course-link line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="link-kicker">個人 Line</span>
+    <span class="link-title">linwayet</span>
+    <span class="link-desc">課程詢問、學習規劃與英文問題都可以直接聯絡。</span>
+  </a>
+</nav>
+
+</main>
+</body></html>

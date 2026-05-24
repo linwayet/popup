@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>為何我們對三麗鷗愛不釋手</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFF8F0;--ink:#1A0F00;--bg:#F8F4ED;--main:#C0392B;--sub:#1565C0;--soft:#2E7D32;--line:#C4A06A;--navy:#0D47A1;--green:#1B5E20;--green-bg:#F1F8F2;--blue:#1565C0;--blue-bg:#E3F2FD;--purple:#4A148C;--purple-bg:#F9F0FF;--orange:#E65100;--orange-bg:#FEF0E7;--gold:#FFF3EF;--rose:#C0392B;--deep-blue:#0D47A1}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:'BIZ UDPGothic',sans-serif;font-size:22px;line-height:1.85;padding:28px 14px 64px;background:var(--paper)}
+.page{max-width:900px;margin:0 auto}
+.hero,.section-card{background:#fff;border:2px solid var(--line);border-radius:18px;box-shadow:0 14px 34px rgba(80,60,35,0.07);overflow:hidden;margin-bottom:30px}
+.hero{border-top:12px solid var(--rose);padding:40px;text-align:center}
+h1{margin:16px 0 10px;color:var(--rose);font-size:3.5rem;line-height:1.2;font-weight:700;border:4px solid var(--rose);padding:20px;display:inline-block;border-radius:15px}
+.subtitle{font-size:2.2rem;color:var(--sub);margin:15px 0;font-weight:700}
+.credit{font-size:2rem;color:var(--sub);font-family:'Lobster', 'Pacifico', cursive;margin:10px 0}
+h2{margin:42px 0 14px;font-size:2.2rem;line-height:1.3;color:var(--sub);font-weight:700}
+h3{margin:0 0 10px;font-size:1.6rem;line-height:1.35;color:var(--soft);font-weight:700}
+p{margin:15px 0}
+.section-head{padding:20px 24px;color:#fff;font-size:1.8rem;font-weight:700}
+.navy-bg{background:var(--navy)}.orange-red-bg{background:#BF360C}.forest-green-bg{background:var(--green)}.deep-purple-bg{background:var(--purple)}.brown-bg{background:#4A3728}
+.section-body{padding:30px 32px}
+.bg-green{background:var(--green-bg)}.bg-blue{background:var(--blue-bg)}.bg-purple{background:var(--purple-bg)}.bg-orange{background:var(--orange-bg)}
+.analysis-block,.vocab-item,.grammar-item{margin-top:25px;padding-top:25px;border-top:2px solid rgba(31,27,22,0.12)}
+.analysis-block:first-child,.vocab-item:first-child,.grammar-item:first-child{margin-top:0;padding-top:0;border-top:none}
+.quote{padding:15px 20px;background:var(--gold);border-radius:12px;font-weight:700;font-style:italic;border-left:8px solid var(--orange)}
+.subbox{margin-top:12px;padding:15px 18px;border-radius:12px;background:rgba(255,255,255,0.85);box-shadow:inset 0 2px 4px rgba(0,0,0,0.05)}
+.num-circle{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;border-radius:50%;background:var(--rose);color:#fff;font-weight:700;font-size:22px;margin-right:12px;flex-shrink:0}
+.vocab-top{display:flex;gap:18px;flex-wrap:wrap;align-items:baseline}
+.vocab-num{min-width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;font-weight:700;font-size:18px}
+.vocab-word{font-size:30px;color:var(--green);font-weight:700}
+.kk{color:var(--rose);font-size:20px}
+.vocab-line{margin:12px 0}
+.tag-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.tag-container{display:flex;align-items:stretch;border-radius:8px;overflow:hidden;box-shadow:2px 2px 5px rgba(0,0,0,0.1)}
+.tag-label{padding:4px 12px;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center}
+.tag-val{padding:4px 14px;font-size:16px;background:#fff;color:var(--ink);display:flex;align-items:center;border:1px solid #ddd;border-left:none}
+.tag-deriv .tag-label{background:#C0392B}.tag-root .tag-label{background:#1565C0}.tag-phrase .tag-label{background:#2E7D32}.tag-idiom .tag-label{background:#D68910}.tag-confuse .tag-label{background:#6A1B9A}.tag-prep .tag-label{background:#E65100}
+.bold-blue{color:var(--deep-blue);font-weight:700}
+.example-box{border-left:4px solid var(--line);padding-left:16px;margin:12px 0}
+.grammar-point{margin-bottom:40px}
+.grammar-point h3{color:var(--purple);font-size:1.8rem}
+.error-box{background:#FFEBEE;padding:15px;border-radius:10px;border:2px solid #D32F2F;margin-top:15px}
+details{margin-top:20px;border:3px solid var(--line);border-radius:18px;overflow:hidden}
+summary{padding:20px 24px;background:#4A3728;color:#fff;font-size:24px;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:72px}
+summary::-webkit-details-marker{display:none}
+summary .arrow{transition:transform 0.3s ease;font-size:28px}
+details[open] .arrow{transform:rotate(180deg)}
+details .detail-body{padding:25px 32px;background:var(--paper)}
+.pill{display:inline-block;padding:4px 12px;background:var(--blue-bg);color:var(--blue);border-radius:20px;font-size:18px;font-weight:700;margin-right:8px}
+@media(max-width:900px){.page{width:100%}}
+
+/* Warm mobile-friendly wrapper added for course links and centered reading. */
+html{background:#fff2df}
+body{
+  background:
+    radial-gradient(circle at top left, rgba(255,183,77,.35), transparent 34rem),
+    radial-gradient(circle at bottom right, rgba(244,143,177,.26), transparent 30rem),
+    linear-gradient(180deg,#fff7e8 0%,#ffeeda 52%,#fff8ef 100%) !important;
+  padding:18px 12px 54px !important;
+}
+.page{max-width:960px;margin-left:auto;margin-right:auto}
+.course-links{
+  max-width:960px;
+  margin:0 auto 26px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.course-links:last-child{margin-top:36px;margin-bottom:0}
+.course-link{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-height:150px;
+  padding:18px 18px 20px;
+  color:#2a1608;
+  text-decoration:none;
+  border:2px solid rgba(117,63,15,.18);
+  border-radius:22px;
+  box-shadow:0 14px 28px rgba(118,62,20,.14);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.course-link:hover,
+.course-link:focus-visible{
+  transform:translateY(-3px);
+  box-shadow:0 18px 34px rgba(118,62,20,.2);
+  border-color:rgba(117,63,15,.38);
+  outline:none;
+}
+.course-link.echo{background:linear-gradient(135deg,#ffe0b2 0%,#ffcc80 48%,#ffd7c2 100%)}
+.course-link.analysis{background:linear-gradient(135deg,#ffe8a3 0%,#ffb74d 50%,#ffcdd2 100%)}
+.course-link.line{background:linear-gradient(135deg,#dcedc8 0%,#a5d6a7 48%,#fff3c4 100%)}
+.link-kicker{
+  width:max-content;
+  max-width:100%;
+  padding:4px 10px;
+  border-radius:999px;
+  color:#fff;
+  background:#b84b1d;
+  font-size:15px;
+  line-height:1.3;
+  font-weight:700;
+}
+.line .link-kicker{background:#1b7f35}
+.link-title{font-size:24px;line-height:1.25;font-weight:800;color:#6d2e0e}
+.line .link-title{color:#145a28}
+.link-desc{font-size:17px;line-height:1.55;color:#4c2b17}
+.hero,.section-card{border-radius:22px;box-shadow:0 16px 34px rgba(118,62,20,.12)}
+.hero{background:linear-gradient(180deg,#fffaf2 0%,#fff4e0 100%) !important}
+@media(max-width:760px){
+  body{font-size:19px !important;padding:12px 10px 42px !important}
+  .course-links{grid-template-columns:1fr;gap:12px;margin-bottom:18px}
+  .course-link{min-height:auto;padding:16px;border-radius:18px}
+  .link-title{font-size:22px}
+  .link-desc{font-size:16px}
+  .hero{padding:24px 16px !important;border-radius:18px}
+  h1{font-size:2.05rem !important;padding:14px !important;max-width:100%}
+  .subtitle{font-size:1.35rem !important}
+  .credit{font-size:1.25rem !important}
+  h2{font-size:1.55rem !important}
+  .section-head{font-size:1.35rem !important;padding:16px 18px !important}
+  .section-body,details .detail-body{padding:20px 16px !important}
+  summary{font-size:20px !important;padding:16px !important}
+  .vocab-word{font-size:25px !important}
+  .tag-container{width:100%}
+  .tag-label{min-width:78px;justify-content:center}
+  .tag-val{flex:1}
+}
+
+</style></head><body>
+<main class="page">
+
+<nav class="course-links" aria-label="七月課程與聯絡資訊">
+  <a class="course-link echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">錯中學 ECHO 計劃</span>
+    <span class="link-desc">用錯誤回饋整理盲點，建立更穩的英文輸出能力。</span>
+  </a>
+  <a class="course-link analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">學生分析</span>
+    <span class="link-desc">從學習表現看出強弱項，安排更精準的複習方向。</span>
+  </a>
+  <a class="course-link line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="link-kicker">個人 Line</span>
+    <span class="link-title">linwayet</span>
+    <span class="link-desc">課程詢問、學習規劃與英文問題都可以直接聯絡。</span>
+  </a>
+</nav>
+
+<section class="hero">
+<h1>為何我們對三麗鷗愛不釋手</h1>
+<p class="subtitle">Why We Can't Stop Loving Sanrio</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<!-- ========== 區塊一：文章原文 ========== -->
+<section>
+<h2>【區塊一】英文文章原文</h2>
+<div class="section-card">
+<div class="section-head navy-bg">【原文 Original Article】</div>
+<div class="section-body">
+<p>Sanrio characters can be found everywhere, from school supplies to fashion items. Founded in Japan in 1960, the company didn't <span class="bold-blue">introduce</span> its <span class="bold-blue">adorable</span> characters until the 1970s. Since then, Sanrio has created over 450 characters, each with its own name and <span class="bold-blue">personality</span>. While many brands <span class="bold-blue">fade</span> away after a few years, Sanrio has stayed popular for <span class="bold-blue">decades</span>.</p>
+<p>What makes Sanrio characters so <span class="bold-blue">timeless</span>? Their secret stems from their simple <span class="bold-blue">appearances</span>. With soft colors, round shapes, and <span class="bold-blue">minimal</span> details, these characters feel warm and friendly. Take Hello Kitty, for example. She has no <span class="bold-blue">visible</span> mouth. Therefore, fans can imagine her <span class="bold-blue">conveying</span> any <span class="bold-blue">emotion</span> they feel. Happy, sad, or excited, she can be whatever you need.</p>
+<p>And she can connect with <span class="bold-blue">diverse</span> <span class="bold-blue">audiences</span>. Sanrio characters also offer comfort during difficult times. Their world is peaceful and kind, focusing on friendship and everyday joys rather than drama or <span class="bold-blue">conflict</span>. What's more, the brand <span class="bold-blue">appeals</span> to people of all ages. Fans rarely <span class="bold-blue">outgrow</span> Sanrio. Instead, they discover new favorites as their tastes and interests develop. A child might love the energetic Kuropi, while a teenager could relate to the <span class="bold-blue">rebellious</span> Kuropi.</p>
+<p>Every character <span class="bold-blue">possesses</span> a personality that can match a person's individual style.</p>
+<p>Aside from their cute appearances and personalities, many Sanrio characters have surprisingly detailed stories that deepen fans' connections to them. For example, Hello Kitty, whose real name is Kitty White, is described as a cheerful girl from London who loves baking cookies and making friends. Her gentle image has helped her become a global <span class="bold-blue">symbol</span> of Sanrio. Then there is Cinema Roll, a white puppy born on a cloud.</p>
+<p>His long ears work like wings and allow him to fly. One day, he came down from the sky and landed near Cafe Cinnamon, where the owner discovered him and took him in. Today, he spends his time having adventures with his friends. Pom Pom Purin, a laid-back golden retriever, <span class="bold-blue">represents</span> a different lifestyle entirely. This pudding-loving pup enjoys long naps and wears a brown beret everywhere.</p>
+<p>This pudding presents the relaxed, calm life many people dream of having. Sanrio keeps these characters fresh through regular updates. Seasonal merchandise brings characters into holidays and current trends, while social media accounts let fans <span class="bold-blue">interact</span> with them daily. The annual character ranking, in which millions of fans vote for their favorites, creates excitement and community, keeping them relevant and loved worldwide.</p>
+</div></div>
+</section>
+
+<!-- ========== 區塊二：八句精讀 ========== -->
+<section>
+<h2>【區塊二】八句精讀</h2>
+<div class="section-card">
+<div class="section-head orange-red-bg">【八句精讀 8 Key Sentence Analyses】</div>
+<div class="section-body bg-orange">
+
+<div class="analysis-block">
+<h3><span class="num-circle">1</span> 句 1</h3>
+<div class="quote">Founded in Japan in 1960, the company didn't introduce its adorable characters until the 1970s.</div>
+<div class="subbox">這家公司於 1960 年在日本創立，直到 1970 年代才推出其討人喜歡的角色。</div>
+<div class="subbox"><strong>文法解析：</strong>句首 <em>Founded in...</em> 為過去分詞構句，表被動，相當於 <em>Because it was founded...</em>。主要子句使用了 <em>not ... until ...</em> 的句型，表示「直到……才……」。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">not ... until ... 直到...才</span> <span class="pill">introduce 推出</span> <span class="pill">adorable 討人喜歡的</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">2</span> 句 2</h3>
+<div class="quote">While many brands fade away after a few years, Sanrio has stayed popular for decades.</div>
+<div class="subbox">雖然許多品牌在幾年後便逐漸沒落，三麗鷗卻能數十年來保持受歡迎。</div>
+<div class="subbox"><strong>文法解析：</strong>連接詞 <em>While</em> 在此表「雖然／然而」，用以對比前後兩件事的不同。<em>stay</em> 作為連綴動詞，後接形容詞 popular 表持續的狀態；<em>has stayed</em> 為現在完成式。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">fade away 逐漸消失</span> <span class="pill">stay popular 保持受歡迎</span> <span class="pill">for decades 數十年來</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">3</span> 句 3</h3>
+<div class="quote">What makes Sanrio characters so timeless?</div>
+<div class="subbox">是什麼讓三麗鷗角色如此歷久彌新？</div>
+<div class="subbox"><strong>文法解析：</strong><em>What</em> 為疑問代名詞當主詞。<em>make + 受詞 + 形容詞 (OC)</em> 是一種不完全及物動詞的用法，表示「使……變得……」。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">timeless 歷久彌新的/永恆的</span> <span class="pill">character 角色</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">4</span> 句 4</h3>
+<div class="quote">Their world is peaceful and kind, focusing on friendship and everyday joys rather than drama or conflict.</div>
+<div class="subbox">他們的世界和平且友善，專注於友誼和日常的喜悅，而不是戲劇化的事件或衝突。</div>
+<div class="subbox"><strong>文法解析：</strong>逗號後的 <em>focusing on...</em> 為現在分詞構句，表伴隨狀態或補充說明。<em>rather than</em> 作為對等連接詞，連接前後兩個對等的概念（此處為名詞片語）。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">focus on 專注於</span> <span class="pill">rather than 而不是</span> <span class="pill">conflict 衝突</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">5</span> 句 5</h3>
+<div class="quote">A child might love the energetic Kuropi, while a teenager could relate to the rebellious Kuropi.</div>
+<div class="subbox">一個孩子可能會喜歡充滿活力的酷企鵝，而一個青少年則可能對叛逆的酷企鵝產生共鳴。</div>
+<div class="subbox"><strong>文法解析：</strong>連接詞 <em>while</em> 再次用來表達兩者的對比。<em>relate to</em> 是一個重要的動詞片語，表示「對……產生共鳴 / 理解」。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">energetic 充滿活力的</span> <span class="pill">relate to 產生共鳴</span> <span class="pill">rebellious 叛逆的</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">6</span> 句 6</h3>
+<div class="quote">For example, Hello Kitty, whose real name is Kitty White, is described as a cheerful girl from London who loves baking cookies and making friends.</div>
+<div class="subbox">舉例來說，Hello Kitty（她的本名是 Kitty White）被描述為一個來自倫敦、喜歡烤餅乾和交朋友的開朗女孩。</div>
+<div class="subbox"><strong>文法解析：</strong><em>whose real name is Kitty White</em> 為關係代名詞所有格引導的非限定形容詞子句，補充說明 Hello Kitty。<em>is described as</em> 為被動語態，意為「被描述為」。句尾 <em>who loves...</em> 則是限定形容詞子句修飾 girl。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">describe as 描述為</span> <span class="pill">cheerful 開朗的</span> <span class="pill">bake cookies 烤餅乾</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">7</span> 句 7</h3>
+<div class="quote">His long ears work like wings and allow him to fly.</div>
+<div class="subbox">他長長的耳朵作用像翅膀一樣，並使他能夠飛行。</div>
+<div class="subbox"><strong>文法解析：</strong><em>allow + 受詞 + to V</em> 表「允許 / 使某人能夠做某事」。這是一個常見的動詞用法，to 為不定詞。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">work like 作用像...</span> <span class="pill">allow ... to ... 使...能夠</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">8</span> 句 8</h3>
+<div class="quote">Sanrio keeps these characters fresh through regular updates.</div>
+<div class="subbox">三麗鷗透過定期的更新，讓這些角色保持新鮮感。</div>
+<div class="subbox"><strong>文法解析：</strong><em>keep + 受詞 + 形容詞 (OC)</em> 表「使……保持某種狀態」。此處 keep 為不完全及物動詞，fresh 為受詞補語。介系詞 <em>through</em> 表示「透過……方法 / 手段」。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">keep fresh 保持新鮮感</span> <span class="pill">through 透過</span> <span class="pill">regular updates 定期更新</span></div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 區塊三：18–20個單字整理 ========== -->
+<section>
+<h2>【區塊三】20 個單字整理</h2>
+<div class="section-card">
+<div class="section-head forest-green-bg">【單字表 Vocabulary List】</div>
+<div class="section-body bg-green">
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">1</span> <span class="vocab-word">introduce</span> <span class="kk">[ˌɪntrəˈdjus]</span> (v.) <span class="pos">中文：介紹、引進、推出</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">introduction (n.) 介紹；引進</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a formally introduced policy 正式推出的政策</div></div>
+<div class="tag-container tag-prep"><div class="tag-label">常用介系詞</div><div class="tag-val">introduce A to B 把A介紹給B</div></div>
+</div>
+<div class="example-box">
+The company didn't <strong>introduce</strong> its adorable characters until the 1970s.
+（這家公司直到1970年代才推出其討人喜歡的角色。）<br>
+Let me <strong>introduce</strong> my best friend to you.
+（讓我把最好的朋友介紹給你。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">2</span> <span class="vocab-word">adorable</span> <span class="kk">[əˈdɔrəbḷ]</span> (adj.) <span class="pos">中文：可愛的、討人喜歡的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">adore (v.) 喜愛；敬重</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">an absolutely adorable puppy 絕對可愛的小狗</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">adorable characters 討喜的角色</div></div>
+</div>
+<div class="example-box">
+Sanrio is famous for its <strong>adorable</strong> characters.
+（三麗鷗以其討喜的角色而聞名。）<br>
+The little girl looked so <strong>adorable</strong> in her new dress.
+（那個小女孩穿著新洋裝看起來真可愛。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">3</span> <span class="vocab-word">personality</span> <span class="kk">[ˌpɝsnˈæləti]</span> (n.) <span class="pos">中文：個性、人格</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">personal (adj.) 個人的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">an outgoing personality 外向的個性</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">personality traits 性格特質</div></div>
+</div>
+<div class="example-box">
+Each character has its own name and <strong>personality</strong>.
+（每個角色都有自己的名字和個性。）<br>
+She has a very friendly and warm <strong>personality</strong>.
+（她有一個非常友善且溫暖的個性。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">4</span> <span class="vocab-word">fade</span> <span class="kk">[fed]</span> (v.) <span class="pos">中文：褪色、逐漸消失</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">fadeless (adj.) 不褪色的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a quickly fading memory 迅速消退的記憶</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">fade away 逐漸消失</div></div>
+</div>
+<div class="example-box">
+Many brands <strong>fade</strong> away after a few years.
+（許多品牌在幾年後便逐漸沒落。）<br>
+The colors on the old painting have begun to <strong>fade</strong>.
+（那幅古畫上的顏色已經開始褪色了。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">5</span> <span class="vocab-word">decade</span> <span class="kk">[ˈdɛked]</span> (n.) <span class="pos">中文：十年</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-root"><div class="tag-label">字根</div><div class="tag-val">dec- (十) 如: decimal (十進位的)</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">the past decade 過去十年</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">for decades 數十年來</div></div>
+</div>
+<div class="example-box">
+Sanrio has stayed popular for <strong>decades</strong>.
+（三麗鷗已經受歡迎好幾十年了。）<br>
+The country's economy has grown rapidly over the last <strong>decade</strong>.
+（在過去十年裡，該國的經濟快速成長。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">6</span> <span class="vocab-word">timeless</span> <span class="kk">[ˈtaɪmlɪs]</span> (adj.) <span class="pos">中文：永恆的、不受時間影響的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">time (n.) 時間</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a truly timeless classic 真正永恆的經典</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">timeless beauty 永恆之美</div></div>
+</div>
+<div class="example-box">
+What makes Sanrio characters so <strong>timeless</strong>?
+（是什麼讓三麗鷗角色如此歷久彌新？）<br>
+Mozart's music has a <strong>timeless</strong> appeal to people of all ages.
+（莫札特的音樂對各個年齡層的人都有永恆的吸引力。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">7</span> <span class="vocab-word">appearance</span> <span class="kk">[əˈpɪrəns]</span> (n.) <span class="pos">中文：外表、外觀、出現</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">appear (v.) 出現；似乎</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a striking physical appearance 驚豔的外貌</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">judge by appearance 以貌取人</div></div>
+</div>
+<div class="example-box">
+Their secret stems from their simple <strong>appearances</strong>.
+（他們的祕密源自於他們簡單的外觀。）<br>
+You should not judge a person only by their physical <strong>appearance</strong>.
+（你不應該只憑一個人的外表來評斷他。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">8</span> <span class="vocab-word">minimal</span> <span class="kk">[ˈmɪnəmḷ]</span> (adj.) <span class="pos">中文：最少的、極微的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">minimize (v.) 使減到最少</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a minimal amount 極少的數量</div></div>
+<div class="tag-container tag-root"><div class="tag-label">字根</div><div class="tag-val">mini- (小) 如: minimum (最小值)</div></div>
+</div>
+<div class="example-box">
+With soft colors, round shapes, and <strong>minimal</strong> details, they feel friendly.
+（憑藉著柔和的色彩、圓潤的形狀與極少的細節，他們給人友善的感覺。）<br>
+The damage to the car was <strong>minimal</strong> after the accident.
+（那場車禍後，車子的損壞微乎其微。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">9</span> <span class="vocab-word">visible</span> <span class="kk">[ˈvɪzəbḷ]</span> (adj.) <span class="pos">中文：看得見的、明顯的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">visibility (n.) 能見度</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">highly visible changes 極為明顯的改變</div></div>
+<div class="tag-container tag-root"><div class="tag-label">字根</div><div class="tag-val">vis- (看) 如: vision (視力)</div></div>
+</div>
+<div class="example-box">
+She has no <strong>visible</strong> mouth.
+（她沒有看得見的嘴巴。）<br>
+The stars are clearly <strong>visible</strong> in the night sky.
+（夜晚天空中的星星清晰可見。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">10</span> <span class="vocab-word">convey</span> <span class="kk">[kənˈve]</span> (v.) <span class="pos">中文：傳達、表達、運送</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">conveyance (n.) 運輸；傳達</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a effectively conveyed message 有效傳達的訊息</div></div>
+<div class="tag-container tag-prep"><div class="tag-label">常用介系詞</div><div class="tag-val">convey sth to sb 向某人傳達某事</div></div>
+</div>
+<div class="example-box">
+Fans can imagine her <strong>conveying</strong> any emotion they feel.
+（粉絲可以想像她傳達他們所感受到的任何情感。）<br>
+Colors are often used to <strong>convey</strong> different moods in paintings.
+（顏色常被用來在畫作中傳達不同的情緒。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">11</span> <span class="vocab-word">emotion</span> <span class="kk">[ɪˈmoʃən]</span> (n.) <span class="pos">中文：情感、情緒</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">emotional (adj.) 情感上的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">deeply felt emotion 深切感受到的情感</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">mixed emotions 錯綜複雜的情感</div></div>
+</div>
+<div class="example-box">
+She can be whatever you need to match your <strong>emotion</strong>.
+（她能成為你所需要的樣子來搭配你的情感。）<br>
+He found it hard to hide his <strong>emotions</strong> when he heard the bad news.
+（當他聽到這個壞消息時，他發現很難隱藏自己的情緒。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">12</span> <span class="vocab-word">diverse</span> <span class="kk">[daɪˈvɝs]</span> (adj.) <span class="pos">中文：多元的、不同的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">diversity (n.) 多樣性</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a culturally diverse society 文化多元的社會</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">diverse backgrounds 不同的背景</div></div>
+</div>
+<div class="example-box">
+She can connect with <strong>diverse</strong> audiences.
+（她能夠與多元的受眾建立連結。）<br>
+New York is a city with a very <strong>diverse</strong> population.
+（紐約是一個擁有非常多元人口的城市。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">13</span> <span class="vocab-word">audience</span> <span class="kk">[ˈɔdɪəns]</span> (n.) <span class="pos">中文：觀眾、聽眾、受眾</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-root"><div class="tag-label">字根</div><div class="tag-val">audi- (聽) 如: audio (音頻的)</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a captivated live audience 著迷的現場觀眾</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">target audience 目標客群</div></div>
+</div>
+<div class="example-box">
+The brand appeals to a wide <strong>audience</strong> globally.
+（這個品牌吸引了全球廣大的受眾。）<br>
+The <strong>audience</strong> cheered loudly when the band finished their final song.
+（當樂團表演完最後一首歌時，觀眾大聲歡呼。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">14</span> <span class="vocab-word">conflict</span> <span class="kk">[ˈkɑnflɪkt]</span> (n.) <span class="pos">中文：衝突、爭執</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">conflicting (adj.) 衝突的；矛盾的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">an unresolved internal conflict 未解決的內心衝突</div></div>
+<div class="tag-container tag-prep"><div class="tag-label">常用介系詞</div><div class="tag-val">in conflict with 與...起衝突</div></div>
+</div>
+<div class="example-box">
+Their world focuses on friendship rather than drama or <strong>conflict</strong>.
+（他們的世界專注於友誼，而不是戲劇化的事件或衝突。）<br>
+The two neighbors finally resolved their <strong>conflict</strong> over the fence.
+（這兩位鄰居終於解決了他們關於柵欄的爭執。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">15</span> <span class="vocab-word">appeal</span> <span class="kk">[əˈpil]</span> (v./n.) <span class="pos">中文：吸引、迎合；呼籲</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">appealing (adj.) 吸引人的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a universal mass appeal 普遍的大眾吸引力</div></div>
+<div class="tag-container tag-prep"><div class="tag-label">常用介系詞</div><div class="tag-val">appeal to 吸引(某人)；向...呼籲</div></div>
+</div>
+<div class="example-box">
+What's more, the brand <strong>appeals</strong> to people of all ages.
+（更重要的是，這個品牌吸引了所有年齡層的人。）<br>
+The idea of working from home <strong>appeals</strong> to many young employees.
+（在家工作的想法對許多年輕員工很有吸引力。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">16</span> <span class="vocab-word">outgrow</span> <span class="kk">[aʊtˈɡro]</span> (v.) <span class="pos">中文：長大而不再喜歡、因長大而穿不下</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">grow (v.) 成長</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">rapidly outgrow clothes 迅速長大而穿不下衣服</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">outgrow a habit 長大後戒除某習慣</div></div>
+</div>
+<div class="example-box">
+Fans rarely <strong>outgrow</strong> Sanrio.
+（粉絲們很少會因為長大而不再喜歡三麗鷗。）<br>
+My little brother <strong>outgrew</strong> his shoes in just three months.
+（我弟弟短短三個月就長大穿不下他的鞋子了。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">17</span> <span class="vocab-word">rebellious</span> <span class="kk">[rɪˈbɛljəs]</span> (adj.) <span class="pos">中文：叛逆的、造反的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">rebel (n./v.) 叛逆者；反叛</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a highly rebellious teenager 極度叛逆的青少年</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">rebellious phase 叛逆期</div></div>
+</div>
+<div class="example-box">
+A teenager could relate to the <strong>rebellious</strong> Kuropi.
+（一個青少年可能會對叛逆的酷企鵝產生共鳴。）<br>
+During his high school years, he was quite <strong>rebellious</strong> against rules.
+（在他高中的時期，他對規定相當叛逆。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">18</span> <span class="vocab-word">possess</span> <span class="kk">[pəˈzɛs]</span> (v.) <span class="pos">中文：擁有、具備</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">possession (n.) 擁有；財產</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">illegally possess weapons 非法擁有武器</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">possess a talent 具備某項天賦</div></div>
+</div>
+<div class="example-box">
+Every character <strong>possesses</strong> a personality that can match a person's style.
+（每個角色都擁有能與個人風格相匹配的個性。）<br>
+She <strong>possesses</strong> the ability to remain calm in an emergency.
+（她具備在緊急情況下保持冷靜的能力。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">19</span> <span class="vocab-word">represent</span> <span class="kk">[ˌrɛprɪˈzɛnt]</span> (v.) <span class="pos">中文：代表、象徵</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">representation (n.) 代表；象徵</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">accurately represent facts 準確地呈現事實</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">represent someone as 把某人描繪成...</div></div>
+</div>
+<div class="example-box">
+Pom Pom Purin <strong>represents</strong> a different lifestyle entirely.
+（布丁狗完全代表了一種不同的生活方式。）<br>
+The dove is often used to <strong>represent</strong> peace.
+（鴿子常被用來代表和平。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">20</span> <span class="vocab-word">interact</span> <span class="kk">[ˌɪntɚˈækt]</span> (v.) <span class="pos">中文：互動、交流</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">interaction (n.) 互動</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">positively interact with others 積極與他人互動</div></div>
+<div class="tag-container tag-prep"><div class="tag-label">常用介系詞</div><div class="tag-val">interact with 與...互動</div></div>
+</div>
+<div class="example-box">
+Social media accounts let fans <strong>interact</strong> with them daily.
+（社群媒體帳號讓粉絲能每天與他們互動。）<br>
+Teachers encourage students to <strong>interact</strong> with each other in class.
+（老師鼓勵學生在課堂上互相交流。）
+</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 區塊四：文法解析 ========== -->
+<section>
+<h2>【區塊四】文法解析</h2>
+<div class="section-card">
+<div class="section-head deep-purple-bg">【文法解析 Grammar Analysis】</div>
+<div class="section-body bg-purple">
+
+<div class="grammar-point">
+<h3>【文法名稱】分詞構句：表被動的過去分詞構句</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">"Founded in Japan in 1960, the company didn't introduce its adorable characters until the 1970s."</blockquote>
+<p><strong>【句型】</strong></p>
+<p><em><strong>p.p. ..., S + V ...</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>分詞構句用來簡化帶有從屬連接詞的副詞子句。當子句的主詞與主要子句的主詞相同，且動詞為被動語態 (be + p.p.) 時，可以省略連接詞與主詞，並將 be 動詞改為 being 後省略，只留下過去分詞 (p.p.) 置於句首。原句為：Because it (the company) was founded in Japan...</p>
+<p><strong>【使用規則】</strong></p>
+<ul>
+<li>① 簡化後的過去分詞 (p.p.) 與主要子句的主詞具「被動」關係。</li>
+<li>② 主要子句的主詞必須能夠合理接受該動作。</li>
+<li>③ 逗號分隔分詞構句與主要子句。</li>
+</ul>
+<p><strong>【主題例句】</strong></p>
+<p>Created by a talented designer, Hello Kitty soon became a worldwide hit.（由一位才華洋溢的設計師所創造，Hello Kitty 很快成為全球的熱門角色。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>判斷要用 V-ing 或 p.p. 時，找主要子句的主詞。公司是被創立 (was founded)，所以用 Founded 起首，不能用 Founding。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<div class="error-box">
+✗ Founding in 1960, the company grew rapidly.<br>
+✓ Founded in 1960, the company grew rapidly.<br>
+說明：公司是「被」創立，必須用過去分詞。
+</div>
+<p>選擇題：________ in a small town, he knew everyone in his neighborhood. (A) Raising (B) To raise (C) Raised (D) Raises</p>
+<p>答案：C。說明：他是被撫養長大，所以用被動的過去分詞 Raised (相當於 Because he was raised)。</p>
+</div>
+
+<div class="grammar-point">
+<h3>【文法名稱】關係代名詞：所有格 whose</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">"Hello Kitty, whose real name is Kitty White, is described as a cheerful girl from London..."</blockquote>
+<p><strong>【句型】</strong></p>
+<p><em><strong>先行詞 (N) + whose + 名詞 + V ...</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>關係代名詞 whose 用來代替所有格 (如 his, her, its, their)，連接兩個句子。它引導的形容詞子句會修飾前面的先行詞。本文中，whose 代替了 her，連接了 "Hello Kitty is described as..." 和 "Her real name is Kitty White"。</p>
+<p><strong>【使用規則】</strong></p>
+<ul>
+<li>① whose 後面必須緊接一個名詞（它所修飾的物品或特徵）。</li>
+<li>② whose 可用於指人或指物。</li>
+<li>③ 若先行詞為獨一無二的專有名詞（如 Hello Kitty），關係子句前後須加逗號（非限定用法）。</li>
+</ul>
+<p><strong>【主題例句】</strong></p>
+<p>I met a designer whose work is loved by millions of children.（我遇到了一位設計師，他的作品受到數百萬兒童的喜愛。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>測試 whose 用法是否正確的方法，是把它換回「所有格 + 名詞」放回原句看是否通順。例如：Hello Kitty's real name is Kitty White，完全合理。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<div class="error-box">
+✗ That is the dog who tail is very long.<br>
+✓ That is the dog whose tail is very long.<br>
+說明：表示「牠的尾巴」，必須用所有格 whose。
+</div>
+<p>選擇題：The student ________ painting won the first prize is my classmate. (A) who (B) which (C) whom (D) whose</p>
+<p>答案：D。說明：空格後有名詞 painting，表示「他的畫」，需用 whose。</p>
+</div>
+
+<div class="grammar-point">
+<h3>【文法名稱】不完全及物動詞：keep + O + OC</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">"Sanrio keeps these characters fresh through regular updates."</blockquote>
+<p><strong>【句型】</strong></p>
+<p><em><strong>keep + O (受詞) + adj. / V-ing / p.p. (受詞補語)</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>動詞 keep 作為不完全及物動詞時，意為「使……保持某種狀態」。因為光有受詞語意不完整，後面需要加上「受詞補語 (OC)」來補充說明受詞的狀態。本文中 fresh (新鮮的) 即為補充說明 characters 狀態的形容詞補語。</p>
+<p><strong>【使用規則】</strong></p>
+<ul>
+<li>① 若要保持的狀態是形容詞，直接接形容詞。</li>
+<li>② 若受詞與補語為主動關係，補語用現在分詞 (V-ing)。</li>
+<li>③ 若受詞與補語為被動關係，補語用過去分詞 (p.p.)。</li>
+</ul>
+<p><strong>【主題例句】</strong></p>
+<p>The heater keeps the room warm during winter.（暖氣機讓房間在冬天保持溫暖。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>常見需要受詞補語的動詞除了 keep，還有 make, find, leave 等。例如文中另一個句子 "What makes Sanrio characters so timeless?" 也是一樣的句型。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<div class="error-box">
+✗ Please keep the door close.<br>
+✓ Please keep the door closed.<br>
+說明：門是「被」關上的，所以要用過去分詞 closed 作為補語。
+</div>
+<p>選擇題：We should exercise regularly to keep our bodies ________. (A) health (B) healthy (C) healthily (D) heavily</p>
+<p>答案：B。說明：keep + 受詞 (our bodies) + 形容詞補語 (healthy)。不可填副詞。</p>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 底部折疊區塊 ========== -->
+<section>
+<details>
+<summary>折疊一：常見字首整理 (50 個) <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<div class="prefix-item"><span class="pf">ab-</span> 離開、相反 — abnormal（異常的）</div>
+<div class="prefix-item"><span class="pf">ad-</span> 向、加 — advance（前進）</div>
+<div class="prefix-item"><span class="pf">ambi-</span> 雙方、兩面 — ambiguous（模稜兩可的）</div>
+<div class="prefix-item"><span class="pf">anti-</span> 反對、抗 — antibiotic（抗生素）</div>
+<div class="prefix-item"><span class="pf">arch-</span> 主要、首要 — archenemy（死敵）</div>
+<div class="prefix-item"><span class="pf">auto-</span> 自動、自我 — autograph（親筆簽名）</div>
+<div class="prefix-item"><span class="pf">bene-</span> 好的、善 — benefit（好處）</div>
+<div class="prefix-item"><span class="pf">bi-</span> 二、雙 — bilingual（雙語的）</div>
+<div class="prefix-item"><span class="pf">circum-</span> 環繞、周圍 — circumstance（情況）</div>
+<div class="prefix-item"><span class="pf">co-/con-/com-</span> 一起、共同 — cooperate（合作）</div>
+<div class="prefix-item"><span class="pf">contra-</span> 相反、對抗 — contradict（反駁）</div>
+<div class="prefix-item"><span class="pf">de-</span> 去除、下降 — decode（解碼）</div>
+<div class="prefix-item"><span class="pf">dia-</span> 穿過、透過 — dialogue（對話）</div>
+<div class="prefix-item"><span class="pf">dis-</span> 否定、分離 — disagree（不同意）</div>
+<div class="prefix-item"><span class="pf">en-/em-</span> 使成為 — enable（使能夠）</div>
+<div class="prefix-item"><span class="pf">epi-</span> 在上、在外 — epidemic（流行病）</div>
+<div class="prefix-item"><span class="pf">ex-</span> 外、前任 — export（出口）</div>
+<div class="prefix-item"><span class="pf">extra-</span> 額外、外部 — extraordinary（非凡的）</div>
+<div class="prefix-item"><span class="pf">hetero-</span> 不同 — heterogeneous（異質的）</div>
+<div class="prefix-item"><span class="pf">homo-</span> 相同 — homogeneous（同質的）</div>
+<div class="prefix-item"><span class="pf">hyper-</span> 過度、超 — hyperactive（過動的）</div>
+<div class="prefix-item"><span class="pf">hypo-</span> 低於、不足 — hypodermic（皮下的）</div>
+<div class="prefix-item"><span class="pf">in-/im-</span> 否定、進入 — invisible（看不見的）</div>
+<div class="prefix-item"><span class="pf">inter-</span> 在…之間 — international（國際的）</div>
+<div class="prefix-item"><span class="pf">iso-</span> 相等、相同 — isolate（隔離）</div>
+<div class="prefix-item"><span class="pf">mal-</span> 壞、不良 — malfunction（故障）</div>
+<div class="prefix-item"><span class="pf">micro-</span> 微小 — microscope（顯微鏡）</div>
+<div class="prefix-item"><span class="pf">mis-</span> 錯誤 — misunderstand（誤解）</div>
+<div class="prefix-item"><span class="pf">mono-</span> 單一 — monologue（獨白）</div>
+<div class="prefix-item"><span class="pf">multi-</span> 多 — multicultural（多元文化的）</div>
+<div class="prefix-item"><span class="pf">neo-</span> 新的 — neonatal（新生的）</div>
+<div class="prefix-item"><span class="pf">non-</span> 非、沒有 — nonsense（無意義）</div>
+<div class="prefix-item"><span class="pf">pan-</span> 全部 — pandemic（大流行病）</div>
+<div class="prefix-item"><span class="pf">peri-</span> 周圍 — perimeter（周長）</div>
+<div class="prefix-item"><span class="pf">poly-</span> 多 — polygon（多邊形）</div>
+<div class="prefix-item"><span class="pf">post-</span> 之後 — postwar（戰後的）</div>
+<div class="prefix-item"><span class="pf">pre-</span> 之前 — preview（預覽）</div>
+<div class="prefix-item"><span class="pf">pro-</span> 向前、支持 — progress（進步）</div>
+<div class="prefix-item"><span class="pf">pseudo-</span> 假的 — pseudonym（筆名）</div>
+<div class="prefix-item"><span class="pf">re-</span> 再、回 — review（複習）</div>
+<div class="prefix-item"><span class="pf">semi-</span> 一半、部分 — semicircle（半圓）</div>
+<div class="prefix-item"><span class="pf">sub-</span> 在下、次級 — subway（地鐵）</div>
+<div class="prefix-item"><span class="pf">super-</span> 超越、在上 — superstar（超級明星）</div>
+<div class="prefix-item"><span class="pf">syn-/sym-</span> 一起、共同 — synchronize（同步）</div>
+<div class="prefix-item"><span class="pf">tele-</span> 遠距 — telephone（電話）</div>
+<div class="prefix-item"><span class="pf">trans-</span> 穿越、轉變 — transport（運輸）</div>
+<div class="prefix-item"><span class="pf">tri-</span> 三 — triangle（三角形）</div>
+<div class="prefix-item"><span class="pf">un-</span> 否定、不 — unhappy（不快樂的）</div>
+<div class="prefix-item"><span class="pf">vice-</span> 副、代替 — vice-president（副總統）</div>
+<div class="prefix-item"><span class="pf">uni-</span> 單一 — unique（獨特的）</div>
+</div>
+</details>
+
+<details>
+<summary>折疊二：常見英文字尾整理 (約 30 個) <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<h3>名詞字尾</h3>
+<div class="suffix-item">-tion/-sion — education（教育）、emotion（情感）</div>
+<div class="suffix-item">-ment — agreement（協議）、development（發展）</div>
+<div class="suffix-item">-ness — happiness（快樂）、darkness（黑暗）</div>
+<div class="suffix-item">-ity/-ty — ability（能力）、personality（個性）</div>
+<div class="suffix-item">-er/-or — teacher（老師）、creator（創造者）</div>
+<div class="suffix-item">-ist — artist（藝術家）、scientist（科學家）</div>
+<div class="suffix-item">-ship — friendship（友誼）、leadership（領導）</div>
+<div class="suffix-item">-hood — childhood（童年）、neighborhood（鄰里）</div>
+<h3>形容詞字尾</h3>
+<div class="suffix-item">-able/-ible — adorable（討喜的）、visible（看得見的）</div>
+<div class="suffix-item">-ous — rebellious（叛逆的）、famous（著名的）</div>
+<div class="suffix-item">-ful — peaceful（和平的）、cheerful（開朗的）</div>
+<div class="suffix-item">-less — timeless（永恆的）、powerless（無力的）</div>
+<div class="suffix-item">-al/-ic — minimal（極微的）、energetic（有活力的）</div>
+<div class="suffix-item">-ive — active（活躍的）、creative（有創意的）</div>
+<h3>動詞字尾</h3>
+<div class="suffix-item">-ize/-ise — realize（實現）、industrialize（工業化）</div>
+<div class="suffix-item">-ify — beautify（美化）、clarify（澄清）</div>
+<div class="suffix-item">-ate — dominate（支配）、interact（互動）</div>
+<div class="suffix-item">-en — strengthen（加強）、deepen（加深）</div>
+<h3>副詞字尾</h3>
+<div class="suffix-item">-ly — exactly（精確地）、entirely（完全地）</div>
+<div class="suffix-item">-ward(s) — upwards（向上）、homeward（回家）</div>
+<div class="suffix-item">-wise — clockwise（順時針方向）</div>
+</div>
+</details>
+
+<details>
+<summary>折疊三：30 個常用單字與衍生詞 <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<ol>
+<li>introduce [ˌɪntrəˈdjus] (v. 介紹) — introduction [ˌɪntrəˈdʌkʃən] (n. 介紹)</li>
+<li>adorable [əˈdɔrəbḷ] (adj. 討喜的) — adore [əˈdɔr] (v. 熱愛)</li>
+<li>personality [ˌpɝsnˈæləti] (n. 個性) — personal [ˈpɝsnḷ] (adj. 個人的)</li>
+<li>fade [fed] (v. 褪色) — fadeless [ˈfedlɪs] (adj. 不褪色的)</li>
+<li>decade [ˈdɛked] (n. 十年) — decadal [ˈdɛkədḷ] (adj. 十年的)</li>
+<li>timeless [ˈtaɪmlɪs] (adj. 永恆的) — time [taɪm] (n. 時間)</li>
+<li>appearance [əˈpɪrəns] (n. 外觀) — appear [əˈpɪr] (v. 出現)</li>
+<li>minimal [ˈmɪnəmḷ] (adj. 最少的) — minimize [ˈmɪnəˌmaɪz] (v. 減到最少)</li>
+<li>visible [ˈvɪzəbḷ] (adj. 可見的) — visibility [ˌvɪzəˈbɪləti] (n. 能見度)</li>
+<li>convey [kənˈve] (v. 傳達) — conveyance [kənˈveəns] (n. 運輸)</li>
+<li>emotion [ɪˈmoʃən] (n. 情感) — emotional [ɪˈmoʃənḷ] (adj. 情感的)</li>
+<li>diverse [daɪˈvɝs] (adj. 多元的) — diversity [daɪˈvɝsəti] (n. 多樣性)</li>
+<li>audience [ˈɔdɪəns] (n. 觀眾) — auditory [ˈɔdəˌtɔri] (adj. 聽覺的)</li>
+<li>conflict [ˈkɑnflɪkt] (n. 衝突) — conflicting [kənˈflɪktɪŋ] (adj. 矛盾的)</li>
+<li>appeal [əˈpil] (v. 吸引) — appealing [əˈpilɪŋ] (adj. 吸引人的)</li>
+<li>outgrow [aʊtˈɡro] (v. 長大而不穿) — grow [ɡro] (v. 成長)</li>
+<li>rebellious [rɪˈbɛljəs] (adj. 叛逆的) — rebel [ˈrɛbḷ] (n. 叛逆者)</li>
+<li>possess [pəˈzɛs] (v. 擁有) — possession [pəˈzɛʃən] (n. 財產)</li>
+<li>represent [ˌrɛprɪˈzɛnt] (v. 代表) — representation [ˌrɛprɪzɛnˈteʃən] (n. 象徵)</li>
+<li>interact [ˌɪntɚˈækt] (v. 互動) — interaction [ˌɪntɚˈækʃən] (n. 互動)</li>
+<li>company [ˈkʌmpəni] (n. 公司) — companion [kəmˈpænjən] (n. 同伴)</li>
+<li>brand [brænd] (n. 品牌) — branding [ˈbrændɪŋ] (n. 品牌塑造)</li>
+<li>secret [ˈsikrɪt] (n. 秘密) — secretly [ˈsikrɪtli] (adv. 秘密地)</li>
+<li>simple [ˈsɪmpḷ] (adj. 簡單的) — simplify [ˈsɪmpləˌfaɪ] (v. 簡化)</li>
+<li>peaceful [ˈpisfəl] (adj. 和平的) — peace [pis] (n. 和平)</li>
+<li>friendship [ˈfrɛndʃɪp] (n. 友誼) — friendly [ˈfrɛndli] (adj. 友善的)</li>
+<li>teenager [ˈtinˌedʒɚ] (n. 青少年) — teen [tin] (n. 十幾歲)</li>
+<li>relate [rɪˈlet] (v. 產生共鳴/關聯) — relation [rɪˈleʃən] (n. 關係)</li>
+<li>style [staɪl] (n. 風格) — stylish [ˈstaɪlɪʃ] (adj. 時髦的)</li>
+<li>global [ˈɡlobḷ] (adj. 全球的) — globe [ɡlob] (n. 地球)</li>
+</ol>
+<p><strong>文章相關常用片語 5 個：</strong></p>
+<ul>
+<li>• stem from (源自於)</li>
+<li>• fade away (逐漸消失)</li>
+<li>• take in (收留)</li>
+<li>• focus on (專注於)</li>
+<li>• interact with (與...互動)</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>折疊四：練文筆食材 <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<div class="prefix-item">
+① <strong>not ... until ...</strong>（直到……才……）<br>
+→ 適用：強調某個動作發生的時間點偏晚。<br>
+例：The company didn't introduce its adorable characters until the 1970s.
+</div>
+<div class="prefix-item">
+② <strong>While S + V ..., S + V ...</strong>（雖然……，但…… / 當……的時候）<br>
+→ 適用：表達強烈的對比或轉折。<br>
+例：While many brands fade away after a few years, Sanrio has stayed popular for decades.
+</div>
+<div class="prefix-item">
+③ <strong>What makes ... so ...?</strong>（是什麼讓……如此……？）<br>
+→ 適用：拋出疑問引導讀者思考，名詞子句當主詞。<br>
+例：What makes Sanrio characters so timeless?
+</div>
+<div class="prefix-item">
+④ <strong>Take ... for example.</strong>（以……為例）<br>
+→ 適用：在段落中舉出具體實例來佐證論點。<br>
+例：Take Hello Kitty, for example.
+</div>
+<div class="prefix-item">
+⑤ <strong>rather than</strong>（而不是……）<br>
+→ 適用：並列兩個選項，強調取前者捨後者。<br>
+例：Their world is peaceful, focusing on friendship rather than drama or conflict.
+</div>
+<div class="prefix-item">
+⑥ <strong>relate to</strong>（對……產生共鳴 / 能夠理解）<br>
+→ 適用：表達人與人或人與事物之間的情感連結。<br>
+例：A teenager could relate to the rebellious Kuropi.
+</div>
+<div class="prefix-item">
+⑦ <strong>Aside from ...</strong>（除了……之外）<br>
+→ 適用：補充說明更多的特點或理由。<br>
+例：Aside from their cute appearances, many characters have detailed stories.
+</div>
+<div class="prefix-item">
+⑧ <strong>whose + N</strong>（……的……）<br>
+→ 適用：關係代名詞所有格，補充說明所屬關係。<br>
+例：Hello Kitty, whose real name is Kitty White, is described as a cheerful girl.
+</div>
+<div class="prefix-item">
+⑨ <strong>allow + O + to V</strong>（允許 / 使……能夠……）<br>
+→ 適用：說明某個條件或能力帶來的結果。<br>
+例：His long ears work like wings and allow him to fly.
+</div>
+<div class="prefix-item">
+⑩ <strong>through + N / V-ing</strong>（透過……方式）<br>
+→ 適用：解釋達成某個目標的方法或手段。<br>
+例：Sanrio keeps these characters fresh through regular updates.
+</div>
+</div>
+</details>
+</section>
+
+<nav class="course-links" aria-label="七月課程與聯絡資訊">
+  <a class="course-link echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">錯中學 ECHO 計劃</span>
+    <span class="link-desc">用錯誤回饋整理盲點，建立更穩的英文輸出能力。</span>
+  </a>
+  <a class="course-link analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">學生分析</span>
+    <span class="link-desc">從學習表現看出強弱項，安排更精準的複習方向。</span>
+  </a>
+  <a class="course-link line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="link-kicker">個人 Line</span>
+    <span class="link-title">linwayet</span>
+    <span class="link-desc">課程詢問、學習規劃與英文問題都可以直接聯絡。</span>
+  </a>
+</nav>
+
+</main>
+</body></html>

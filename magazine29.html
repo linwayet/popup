@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聲音也能整形？聲音變換的科學</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFF8F0;--ink:#1A0F00;--bg:#F8F4ED;--main:#C0392B;--sub:#1565C0;--soft:#2E7D32;--line:#C4A06A;--navy:#0D47A1;--green:#1B5E20;--green-bg:#F1F8F2;--blue:#1565C0;--blue-bg:#E3F2FD;--purple:#4A148C;--purple-bg:#F9F0FF;--orange:#E65100;--orange-bg:#FEF0E7;--gold:#FFF3EF;--rose:#C0392B;--deep-blue:#0D47A1}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:'BIZ UDPGothic',sans-serif;font-size:22px;line-height:1.85;padding:28px 14px 64px;background:var(--paper)}
+.page{max-width:900px;margin:0 auto}
+.hero,.section-card{background:#fff;border:2px solid var(--line);border-radius:18px;box-shadow:0 14px 34px rgba(80,60,35,0.07);overflow:hidden;margin-bottom:30px}
+.hero{border-top:12px solid var(--rose);padding:40px;text-align:center}
+h1{margin:16px 0 10px;color:var(--rose);font-size:3.5rem;line-height:1.2;font-weight:700;border:4px solid var(--rose);padding:20px;display:inline-block;border-radius:15px}
+.subtitle{font-size:2.2rem;color:var(--sub);margin:15px 0;font-weight:700}
+.credit{font-size:2rem;color:var(--sub);font-family:'Lobster', 'Pacifico', cursive;margin:10px 0}
+h2{margin:42px 0 14px;font-size:2.2rem;line-height:1.3;color:var(--sub);font-weight:700}
+h3{margin:0 0 10px;font-size:1.6rem;line-height:1.35;color:var(--soft);font-weight:700}
+p{margin:15px 0}
+.section-head{padding:20px 24px;color:#fff;font-size:1.8rem;font-weight:700}
+.navy-bg{background:var(--navy)}.orange-red-bg{background:#BF360C}.forest-green-bg{background:var(--green)}.deep-purple-bg{background:var(--purple)}.brown-bg{background:#4A3728}
+.section-body{padding:30px 32px}
+.bg-green{background:var(--green-bg)}.bg-blue{background:var(--blue-bg)}.bg-purple{background:var(--purple-bg)}.bg-orange{background:var(--orange-bg)}
+.analysis-block,.vocab-item,.grammar-item{margin-top:25px;padding-top:25px;border-top:2px solid rgba(31,27,22,0.12)}
+.analysis-block:first-child,.vocab-item:first-child,.grammar-item:first-child{margin-top:0;padding-top:0;border-top:none}
+.quote{padding:15px 20px;background:var(--gold);border-radius:12px;font-weight:700;font-style:italic;border-left:8px solid var(--orange)}
+.subbox{margin-top:12px;padding:15px 18px;border-radius:12px;background:rgba(255,255,255,0.85);box-shadow:inset 0 2px 4px rgba(0,0,0,0.05)}
+.num-circle{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;border-radius:50%;background:var(--rose);color:#fff;font-weight:700;font-size:22px;margin-right:12px;flex-shrink:0}
+.vocab-top{display:flex;gap:18px;flex-wrap:wrap;align-items:baseline}
+.vocab-num{min-width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--green);color:#fff;font-weight:700;font-size:18px}
+.vocab-word{font-size:30px;color:var(--green);font-weight:700}
+.kk{color:var(--rose);font-size:20px}
+.vocab-line{margin:12px 0}
+.tag-row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.tag-container{display:flex;align-items:stretch;border-radius:8px;overflow:hidden;box-shadow:2px 2px 5px rgba(0,0,0,0.1)}
+.tag-label{padding:4px 12px;font-size:16px;font-weight:700;color:#fff;display:flex;align-items:center}
+.tag-val{padding:4px 14px;font-size:16px;background:#fff;color:var(--ink);display:flex;align-items:center;border:1px solid #ddd;border-left:none}
+.tag-deriv .tag-label{background:#C0392B}.tag-root .tag-label{background:#1565C0}.tag-phrase .tag-label{background:#2E7D32}.tag-idiom .tag-label{background:#D68910}.tag-confuse .tag-label{background:#6A1B9A}.tag-prep .tag-label{background:#E65100}
+.bold-blue{color:var(--deep-blue);font-weight:700}
+.example-box{border-left:4px solid var(--line);padding-left:16px;margin:12px 0}
+.grammar-point{margin-bottom:40px}
+.grammar-point h3{color:var(--purple);font-size:1.8rem}
+.error-box{background:#FFEBEE;padding:15px;border-radius:10px;border:2px solid #D32F2F;margin-top:15px}
+details{margin-top:20px;border:3px solid var(--line);border-radius:18px;overflow:hidden}
+summary{padding:20px 24px;background:#4A3728;color:#fff;font-size:24px;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:72px}
+summary::-webkit-details-marker{display:none}
+summary .arrow{transition:transform 0.3s ease;font-size:28px}
+details[open] .arrow{transform:rotate(180deg)}
+details .detail-body{padding:25px 32px;background:var(--paper)}
+.pill{display:inline-block;padding:4px 12px;background:var(--blue-bg);color:var(--blue);border-radius:20px;font-size:18px;font-weight:700;margin-right:8px}
+@media(max-width:900px){.page{width:100%}}
+
+/* Warm mobile-friendly wrapper added for course links and centered reading. */
+html{background:#fff2df}
+body{
+  background:
+    radial-gradient(circle at top left, rgba(255,183,77,.35), transparent 34rem),
+    radial-gradient(circle at bottom right, rgba(244,143,177,.26), transparent 30rem),
+    linear-gradient(180deg,#fff7e8 0%,#ffeeda 52%,#fff8ef 100%) !important;
+  padding:18px 12px 54px !important;
+}
+.page{max-width:960px;margin-left:auto;margin-right:auto}
+.course-links{
+  max-width:960px;
+  margin:0 auto 26px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.course-links:last-child{margin-top:36px;margin-bottom:0}
+.course-link{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  min-height:150px;
+  padding:18px 18px 20px;
+  color:#2a1608;
+  text-decoration:none;
+  border:2px solid rgba(117,63,15,.18);
+  border-radius:22px;
+  box-shadow:0 14px 28px rgba(118,62,20,.14);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.course-link:hover,
+.course-link:focus-visible{
+  transform:translateY(-3px);
+  box-shadow:0 18px 34px rgba(118,62,20,.2);
+  border-color:rgba(117,63,15,.38);
+  outline:none;
+}
+.course-link.echo{background:linear-gradient(135deg,#ffe0b2 0%,#ffcc80 48%,#ffd7c2 100%)}
+.course-link.analysis{background:linear-gradient(135deg,#ffe8a3 0%,#ffb74d 50%,#ffcdd2 100%)}
+.course-link.line{background:linear-gradient(135deg,#dcedc8 0%,#a5d6a7 48%,#fff3c4 100%)}
+.link-kicker{
+  width:max-content;
+  max-width:100%;
+  padding:4px 10px;
+  border-radius:999px;
+  color:#fff;
+  background:#b84b1d;
+  font-size:15px;
+  line-height:1.3;
+  font-weight:700;
+}
+.line .link-kicker{background:#1b7f35}
+.link-title{font-size:24px;line-height:1.25;font-weight:800;color:#6d2e0e}
+.line .link-title{color:#145a28}
+.link-desc{font-size:17px;line-height:1.55;color:#4c2b17}
+.hero,.section-card{border-radius:22px;box-shadow:0 16px 34px rgba(118,62,20,.12)}
+.hero{background:linear-gradient(180deg,#fffaf2 0%,#fff4e0 100%) !important}
+@media(max-width:760px){
+  body{font-size:19px !important;padding:12px 10px 42px !important}
+  .course-links{grid-template-columns:1fr;gap:12px;margin-bottom:18px}
+  .course-link{min-height:auto;padding:16px;border-radius:18px}
+  .link-title{font-size:22px}
+  .link-desc{font-size:16px}
+  .hero{padding:24px 16px !important;border-radius:18px}
+  h1{font-size:2.05rem !important;padding:14px !important;max-width:100%}
+  .subtitle{font-size:1.35rem !important}
+  .credit{font-size:1.25rem !important}
+  h2{font-size:1.55rem !important}
+  .section-head{font-size:1.35rem !important;padding:16px 18px !important}
+  .section-body,details .detail-body{padding:20px 16px !important}
+  summary{font-size:20px !important;padding:16px !important}
+  .vocab-word{font-size:25px !important}
+  .tag-container{width:100%}
+  .tag-label{min-width:78px;justify-content:center}
+  .tag-val{flex:1}
+}
+
+</style></head><body>
+<main class="page">
+
+<nav class="course-links" aria-label="七月課程與聯絡資訊">
+  <a class="course-link echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">錯中學 ECHO 計劃</span>
+    <span class="link-desc">用錯誤回饋整理盲點，建立更穩的英文輸出能力。</span>
+  </a>
+  <a class="course-link analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">學生分析</span>
+    <span class="link-desc">從學習表現看出強弱項，安排更精準的複習方向。</span>
+  </a>
+  <a class="course-link line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="link-kicker">個人 Line</span>
+    <span class="link-title">linwayet</span>
+    <span class="link-desc">課程詢問、學習規劃與英文問題都可以直接聯絡。</span>
+  </a>
+</nav>
+
+<section class="hero">
+<h1>聲音也能整形？聲音變換的科學</h1>
+<p class="subtitle">How Do I Sound like That? The Science of Voice Transformation</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<!-- ========== 區塊一：文章原文 ========== -->
+<section>
+<h2>【區塊一】英文文章原文</h2>
+<div class="section-card">
+<div class="section-head navy-bg">【原文 Original Article】</div>
+<div class="section-body">
+<p>Have you ever tried to <span class="bold-blue">imitate</span> a friend's voice, <span class="bold-blue">mimic</span> a famous singer, or wondered why your recorded voice sounds so different from what you hear in your own head? Voice is one of the most personal and powerful tools humans have—and science has been working hard to understand, <span class="bold-blue">replicate</span>, and transform it.</p>
+<p>Every voice is <span class="bold-blue">unique</span>. The sounds we produce are shaped by the size and <span class="bold-blue">tension</span> of our vocal cords, the shape of our throat, mouth, and nasal passages, and even our posture. When we speak, air from the lungs causes the vocal cords to <span class="bold-blue">vibrate</span>, producing sound waves. These waves are then shaped by our vocal tract into the specific pitches and tones that make up our individual voice. Small differences in <span class="bold-blue">anatomy</span> mean that no two voices are exactly alike.</p>
+<p>Voice <span class="bold-blue">transformation</span> refers to the process of altering how a voice sounds—either slightly or <span class="bold-blue">dramatically</span>. This can happen through natural means, such as when a person trains to sing in a different range, or through technology. Voice <span class="bold-blue">modulators</span>—devices or software that shift pitch, add effects, or alter the character of a voice—have been used for decades in music production, radio broadcasting, and film.</p>
+<p>In recent years, artificial intelligence has <span class="bold-blue">revolutionized</span> voice transformation. AI voice models can now analyze a recording of someone's voice and learn to imitate it with remarkable <span class="bold-blue">accuracy</span>. This technology is used in <span class="bold-blue">entertainment</span> (dubbing films into other languages while preserving the actor's original tone), <span class="bold-blue">accessibility</span> tools (helping people who have lost their voice to speak again using a <span class="bold-blue">synthesized</span> version of their own), and even personalized voice assistants.</p>
+<p>However, AI voice transformation also raises <span class="bold-blue">ethical</span> questions. If a computer can perfectly replicate anyone's voice, how do we verify that a voice recording is <span class="bold-blue">authentic</span>? Concerns about deepfakes—fake audio or video created using AI—have grown in response to these developments.</p>
+<p>Understanding the science behind voice transformation helps us appreciate both its <span class="bold-blue">potential</span> and its risks. A voice carries <span class="bold-blue">identity</span>, emotion, and trust. As technology gives us more power over sound, the <span class="bold-blue">responsibility</span> to use it wisely grows just as loudly.</p>
+</div></div>
+</section>
+
+<!-- ========== 區塊二：八句精讀 ========== -->
+<section>
+<h2>【區塊二】八句精讀</h2>
+<div class="section-card">
+<div class="section-head orange-red-bg">【八句精讀 8 Key Sentence Analyses】</div>
+<div class="section-body bg-orange">
+
+<div class="analysis-block">
+<h3><span class="num-circle">1</span> 句 1</h3>
+<div class="quote">Have you ever tried to imitate a friend's voice, mimic a famous singer, or wondered why your recorded voice sounds so different from what you hear in your own head?</div>
+<div class="subbox">你是否曾經嘗試模仿朋友的聲音、模仿名歌手，或者想過為什麼你的錄音聽起來與你在自己腦中聽到的如此不同？</div>
+<div class="subbox"><strong>文法解析：</strong>本句使用「現在完成式」(Have you ever tried...) 詢問過去至今的經驗。句末 <em>what you hear...</em> 為名詞子句，作為介系詞 from 的受詞。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">imitate 模仿</span> <span class="pill">mimic 模仿</span> <span class="pill">recorded voice 錄下的聲音</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">2</span> 句 2</h3>
+<div class="quote">Voice is one of the most personal and powerful tools humans have—and science has been working hard to understand, replicate, and transform it.</div>
+<div class="subbox">聲音是人類擁有的最個人化且最強大的工具之一，而科學界一直努力研發以理解、複製並轉換它。</div>
+<div class="subbox"><strong>文法解析：</strong><em>one of the + 最高級形容詞 + 複數名詞</em> 表「最……的……之一」。<em>humans have</em> 為形容詞子句省略關係代名詞，修飾 tools。破折號後使用「現在完成進行式」(has been working) 強調持續不斷的努力。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">personal 個人的</span> <span class="pill">replicate 複製</span> <span class="pill">work hard to 努力去做...</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">3</span> 句 3</h3>
+<div class="quote">The sounds we produce are shaped by the size and tension of our vocal cords, the shape of our throat, mouth, and nasal passages, and even our posture.</div>
+<div class="subbox">我們所發出的聲音是由聲帶的大小與張力、喉嚨、口腔與鼻道的形狀，甚至我們的姿勢所塑造的。</div>
+<div class="subbox"><strong>文法解析：</strong>本句主詞 <em>The sounds</em> 後接省略關係代名詞的形容詞子句 <em>we produce</em>。主要動詞為 <em>are shaped by</em> (被動語態)，說明聲音形成的物理因素。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">vocal cords 聲帶</span> <span class="pill">tension 張力</span> <span class="pill">nasal passage 鼻道</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">4</span> 句 4</h3>
+<div class="quote">When we speak, air from the lungs causes the vocal cords to vibrate, producing sound waves.</div>
+<div class="subbox">當我們說話時，來自肺部的空氣促使聲帶振動，進而產生聲波。</div>
+<div class="subbox"><strong>文法解析：</strong><em>causes + 受詞 + to V</em> 表「促使……去做……」。句尾 <em>producing sound waves</em> 為分詞構句 (V-ing)，表隨之發生的結果或伴隨動作。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">vibrate 振動</span> <span class="pill">sound waves 聲波</span> <span class="pill">lungs 肺</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">5</span> 句 5</h3>
+<div class="quote">Small differences in anatomy mean that no two voices are exactly alike.</div>
+<div class="subbox">解剖學上的微小差異意味著沒有哪兩個人的聲音是完全相同的。</div>
+<div class="subbox"><strong>文法解析：</strong><em>mean that...</em> 中的 that 引導名詞子句作為動詞 mean 的受詞。<em>alike</em> 是敘述形容詞，不可放在名詞前修飾。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">anatomy 解剖構造</span> <span class="pill">exactly alike 完全相同</span> <span class="pill">no two 沒有兩個</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">6</span> 句 6</h3>
+<div class="quote">This technology is used in entertainment (dubbing films into other languages while preserving the actor's original tone), accessibility tools...</div>
+<div class="subbox">這項技術被應用於娛樂業（將電影配音成其他語言，同時保留演員原始的音調）、輔助工具……</div>
+<div class="subbox"><strong>文法解析：</strong><em>is used in</em> 為被動語態。括號中的 <em>while preserving...</em> 是連接詞 while 引導的分詞構句，省略了相同的主詞與 be 動詞 (while AI is preserving...)。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">entertainment 娛樂</span> <span class="pill">dubbing 配音</span> <span class="pill">accessibility 輔助性/無障礙</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">7</span> 句 7</h3>
+<div class="quote">If a computer can perfectly replicate anyone's voice, how do we verify that a voice recording is authentic?</div>
+<div class="subbox">如果電腦可以完美地複製任何人的聲音，我們該如何驗證錄音是否真實？</div>
+<div class="subbox"><strong>文法解析：</strong>此為第一類條件句 (If + 現在式, 現在/未來式)，討論具體可能發生的情況。<em>verify that...</em> 為名詞子句作為受詞。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">verify 驗證</span> <span class="pill">authentic 真實的</span> <span class="pill">perfectly 完美地</span></div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">8</span> 句 8</h3>
+<div class="quote">As technology gives us more power over sound, the responsibility to use it wisely grows just as loudly.</div>
+<div class="subbox">隨著科技帶給我們更多主宰聲音的力量，明智使用它的責任也同樣日益重大。</div>
+<div class="subbox"><strong>文法解析：</strong><em>As</em> 引導時間副詞子句，譯作「隨著」。<em>to use it wisely</em> 為不定詞修飾前面的名詞 responsibility。</div>
+<div class="subbox"><strong>亮點詞彙／片語：</strong><span class="pill">power over 對...的掌控力</span> <span class="pill">responsibility 責任</span> <span class="pill">wisely 明智地</span></div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 區塊三：18–20個單字整理 ========== -->
+<section>
+<h2>【區塊三】18–20 個單字整理</h2>
+<div class="section-card">
+<div class="section-head forest-green-bg">【單字表 Vocabulary List】</div>
+<div class="section-body bg-green">
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">1</span> <span class="vocab-word">imitate</span> <span class="kk">[ˈɪmətˌet]</span> (v.) <span class="pos">中文：模仿</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">imitation (n.) 模仿；仿製品</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a poorly imitated accent 模仿得極差的口音</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">imitate one's style 模仿某人的風格</div></div>
+</div>
+<div class="example-box">
+Have you ever tried to <strong>imitate</strong> a friend's voice?
+（你是否曾經嘗試模仿朋友的聲音？）<br>
+Children often <strong>imitate</strong> their parents' behaviors and speech patterns.
+（孩子們經常模仿父母的行為與說話模式。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">2</span> <span class="vocab-word">mimic</span> <span class="kk">[ˈmɪmɪk]</span> (v.) <span class="pos">中文：模仿、學步</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">mimicry (n.) 模仿；(生物)擬態</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a cleverly mimicked sound 模仿得極其巧妙的聲音</div></div>
+<div class="tag-container tag-confuse"><div class="tag-label">容易混淆</div><div class="tag-val">imitate (中性) vs. mimic (常帶有嘲笑或極度神似之意)</div></div>
+</div>
+<div class="example-box">
+He can <strong>mimic</strong> a famous singer perfectly.
+（他可以完美地模仿一位名歌手。）<br>
+The parrot can <strong>mimic</strong> the sound of a ringing phone.
+（這隻鸚鵡能模仿電話響鈴的聲音。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">3</span> <span class="vocab-word">replicate</span> <span class="kk">[ˈrɛpləˌket]</span> (v.) <span class="pos">中文：複製、重複</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">replication (n.) 複製</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a precisely replicated model 精確複製的模型</div></div>
+<div class="tag-container tag-root"><div class="tag-label">字根</div><div class="tag-val">plic- (疊, fold) 如: duplicate (二倍/副本)</div></div>
+</div>
+<div class="example-box">
+Science has been working hard to <strong>replicate</strong> human voice.
+（科學界一直努力研發以複製人類的聲音。）<br>
+Researchers tried to <strong>replicate</strong> the original experiment to verify the results.
+（研究人員試圖重複原來的實驗以驗證結果。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">4</span> <span class="vocab-word">unique</span> <span class="kk">[juˈnik]</span> (adj.) <span class="pos">中文：獨特的、唯一的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a truly unique experience 真正獨特的體驗</div></div>
+<div class="tag-container tag-prep"><div class="tag-label">常用介系詞</div><div class="tag-val">unique to ... 為某地/某人所獨有</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">a unique opportunity 獨有的機會</div></div>
+</div>
+<div class="example-box">
+Every voice is <strong>unique</strong>.
+（每個聲音都是獨一無二的。）<br>
+The fingerprints of every individual are <strong>unique</strong> to them.
+（每個人的指紋對他們來說都是獨特的。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">5</span> <span class="vocab-word">tension</span> <span class="kk">[ˈtɛnʃən]</span> (n.) <span class="pos">中文：張力、緊張</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">tense (adj.) 緊張的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">mounting social tension 日益增加的社會緊張</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">ease/relieve tension 舒緩緊張</div></div>
+</div>
+<div class="example-box">
+Sounds are shaped by the size and <strong>tension</strong> of our vocal cords.
+（聲音是由聲帶的大小與張力所塑造的。）<br>
+Yoga can help reduce muscle <strong>tension</strong> after a long day at work.
+（在漫長的工作日之後，瑜伽可以幫助減輕肌肉張力。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">6</span> <span class="vocab-word">vibrate</span> <span class="kk">[ˈvaɪbret]</span> (v.) <span class="pos">中文：振動、震動</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">vibration (n.) 振動</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a constantly vibrating phone 不斷震動的電話</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">vibrate with excitement 興奮得發抖</div></div>
+</div>
+<div class="example-box">
+Air from the lungs causes the vocal cords to <strong>vibrate</strong>.
+（來自肺部的空氣促使聲帶振動。）<br>
+My phone began to <strong>vibrate</strong> during the meeting.
+（開會時我的手機開始振動。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">7</span> <span class="vocab-word">anatomy</span> <span class="kk">[əˈnætəmi]</span> (n.) <span class="pos">中文：解剖、解剖構造</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">anatomical (adj.) 解剖的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">complex human anatomy 複雜的人體解剖構造</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">study of anatomy 解剖學研究</div></div>
+</div>
+<div class="example-box">
+Small differences in <strong>anatomy</strong> mean that no two voices are alike.
+（解剖構造上的微小差異意味著沒有哪兩個人的聲音是相同的。）<br>
+Medical students must spend many hours studying human <strong>anatomy</strong>.
+（醫學生必須花很多小時學習人體解剖學。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">8</span> <span class="vocab-word">transformation</span> <span class="kk">[ˌtrænsfɚˈmeʃən]</span> (n.) <span class="pos">中文：變換、轉型</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">transform (v.) 轉換</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a radical social transformation 徹底的社會變革</div></div>
+<div class="tag-container tag-root"><div class="tag-label">字根</div><div class="tag-val">form- (形狀, shape)</div></div>
+</div>
+<div class="example-box">
+Voice <strong>transformation</strong> refers to the process of altering how a voice sounds.
+（聲音變換指的是改變聲音聽起來如何的過程。）<br>
+The caterpillar undergoes a complete <strong>transformation</strong> to become a butterfly.
+（毛毛蟲經歷了完全的變態轉換而變成蝴蝶。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">9</span> <span class="vocab-word">dramatically</span> <span class="kk">[drəˈmætɪkḷi]</span> (adv.) <span class="pos">中文：劇烈地、顯著地</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">dramatic (adj.) 戲劇性的；劇烈的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a dramatically improved performance 顯著提升的表現</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">change dramatically 劇烈變化</div></div>
+</div>
+<div class="example-box">
+This can happen either slightly or <strong>dramatically</strong>.
+（這可能發生得很輕微或非常顯著。）<br>
+Prices have fallen <strong>dramatically</strong> since the beginning of the year.
+（自今年年初以來，價格已劇烈下降。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">10</span> <span class="vocab-word">modulator</span> <span class="kk">[ˈmɑdʒəˌletɚ]</span> (n.) <span class="pos">中文：調節器、調變器</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">modulate (v.) 調節；調整音調</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">an electronic voice modulator 電子聲音調節器</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">frequency modulator 頻率調變器</div></div>
+</div>
+<div class="example-box">
+Voice <strong>modulators</strong> shift pitch or add effects to a voice.
+（聲音調節器能移動音高或為聲音增加效果。）<br>
+The radio station uses a frequency <strong>modulator</strong> to transmit signals.
+（廣播電台使用頻率調變器來傳輸訊號。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">11</span> <span class="vocab-word">revolutionized</span> <span class="kk">[ˌrɛvəˈluʃəˌnaɪzd]</span> (v.) <span class="pos">中文：使革命化、徹底改革</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">revolution (n.) 革命</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a revolutionized educational system 徹底改革的教育體系</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">revolutionize the industry 徹底改變該產業</div></div>
+</div>
+<div class="example-box">
+Artificial intelligence has <strong>revolutionized</strong> voice transformation.
+（人工智慧徹底改革了聲音變換技術。）<br>
+The Internet has <strong>revolutionized</strong> the way we communicate with each other.
+（網際網路徹底改變了我們彼此溝通的方式。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">12</span> <span class="vocab-word">accuracy</span> <span class="kk">[ˈækjərəsi]</span> (n.) <span class="pos">中文：準確性、精確度</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">accurate (adj.) 準確的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">pinpoint historical accuracy 極其精確的歷史準確度</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">with remarkable accuracy 以驚人的準確度</div></div>
+</div>
+<div class="example-box">
+AI can learn to imitate a voice with remarkable <strong>accuracy</strong>.
+（人工智慧能學會以驚人的準確度模仿某人的聲音。）<br>
+The weather forecast's <strong>accuracy</strong> has improved over the years.
+（氣象預報的準確度多年來已有所提升。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">13</span> <span class="vocab-word">entertainment</span> <span class="kk">[ˌɛntɚˈtenmənt]</span> (n.) <span class="pos">中文：娛樂</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">entertain (v.) 娛樂；招待</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">wholesome family entertainment 適合全家的健康娛樂</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">entertainment industry 娛樂產業</div></div>
+</div>
+<div class="example-box">
+This technology is used in <strong>entertainment</strong>, such as dubbing films.
+（這項技術被應用於娛樂業，例如電影配音。）<br>
+Movies and video games are popular forms of <strong>entertainment</strong>.
+（電影與電玩是受歡迎的娛樂形式。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">14</span> <span class="vocab-word">accessibility</span> <span class="kk">[ækˌsɛsəˈbɪləti]</span> (n.) <span class="pos">中文：輔助性、易接近性</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">accessible (adj.) 可接近的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">improved public accessibility 改善的大眾便利性</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">accessibility tools 輔助工具</div></div>
+</div>
+<div class="example-box">
+AI is used in <strong>accessibility</strong> tools to help people speak again.
+（AI 被應用於輔助工具中以幫助人們再次說話。）<br>
+New buildings must follow rules to improve <strong>accessibility</strong> for disabled people.
+（新建築必須遵守規定以改善殘疾人士的出入便利性。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">15</span> <span class="vocab-word">synthesized</span> <span class="kk">[ˈsɪnθəˌsaɪzd]</span> (v./adj.) <span class="pos">中文：綜合的、合成的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">synthesis (n.) 合成</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a synthesized drug 合成的藥物</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">synthesized voice 合成的聲音</div></div>
+</div>
+<div class="example-box">
+They can speak again using a <strong>synthesized</strong> version of their own voice.
+（他們可以使用自己聲音的合成版本再次說話。）<br>
+Scientists have <strong>synthesized</strong> a new drug to treat the disease.
+（科學家們合成了一種新藥來治療這種疾病。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">16</span> <span class="vocab-word">ethical</span> <span class="kk">[ˈɛθɪkḷ]</span> (adj.) <span class="pos">中文：倫理的、道德的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">ethics (n.) 倫理學；道德標準</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">a highly ethical businessman 具有高度道德感的商人</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">ethical issues 倫理問題</div></div>
+</div>
+<div class="example-box">
+AI voice transformation also raises <strong>ethical</strong> questions.
+（AI 聲音變換也引發了倫理問題。）<br>
+Is it <strong>ethical</strong> to experiment on animals for medical research?
+（為了醫學研究在動物身上做實驗是符合道德的嗎？）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">17</span> <span class="vocab-word">authentic</span> <span class="kk">[ɔˈθɛntɪk]</span> (adj.) <span class="pos">中文：真實的、道地的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">authenticity (n.) 真實性</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">an authentic signature 真實的簽名</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">authentic Italian food 道地的義大利菜</div></div>
+</div>
+<div class="example-box">
+How do we verify that a voice recording is <strong>authentic</strong>?
+（我們該如何驗證錄音是否真實？）<br>
+The restaurant serves <strong>authentic</strong> Italian food.
+（這家餐廳供應道地的義大利菜。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">18</span> <span class="vocab-word">potential</span> <span class="kk">[pəˈtɛnʃəl]</span> (n./adj.) <span class="pos">中文：潛力、潛在的</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">tremendous economic potential 巨大的經濟潛力</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">potential risks 潛在風險</div></div>
+<div class="tag-container tag-prep"><div class="tag-label">常用介系詞</div><div class="tag-val">potential for ... 的潛力</div></div>
+</div>
+<div class="example-box">
+Understanding the science helps us appreciate its <strong>potential</strong>.
+（理解這門科學有助於我們欣賞它的潛力。）<br>
+The new product has the <strong>potential</strong> to become a best-seller.
+（這款新產品有潛力成為暢銷貨。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">19</span> <span class="vocab-word">identity</span> <span class="kk">[aɪˈdɛntəti]</span> (n.) <span class="pos">中文：身分、認同</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">identify (v.) 識別</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">mistaken identity 身分誤認</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">identity theft 身分盜用</div></div>
+</div>
+<div class="example-box">
+A voice carries <strong>identity</strong>, emotion, and trust.
+（聲音承載著身分、情感與信任。）<br>
+The witness was asked to confirm the <strong>identity</strong> of the suspect.
+（證人被要求確認嫌疑犯的身分。）
+</div>
+</div>
+
+<div class="vocab-item">
+<div class="vocab-top">
+<span class="vocab-num">20</span> <span class="vocab-word">responsibility</span> <span class="kk">[rɪˌspɑnsəˈbɪləti]</span> (n.) <span class="pos">中文：責任</span>
+</div>
+<div class="tag-row">
+<div class="tag-container tag-deriv"><div class="tag-label">衍生詞</div><div class="tag-val">responsible (adj.) 負責的</div></div>
+<div class="tag-container tag-idiom"><div class="tag-label">慣用語</div><div class="tag-val">heavy personal responsibility 沉重的個人責任</div></div>
+<div class="tag-container tag-phrase"><div class="tag-label">片語</div><div class="tag-val">take responsibility for ... 對...負責</div></div>
+</div>
+<div class="example-box">
+The <strong>responsibility</strong> to use it wisely grows just as loudly.
+（明智使用它的責任也同樣日益重大。）<br>
+It is our <strong>responsibility</strong> to protect the environment for future generations.
+（為子孫後代保護環境是我們的責任。）
+</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 區塊四：文法解析 ========== -->
+<section>
+<h2>【區塊四】文法解析</h2>
+<div class="section-card">
+<div class="section-head deep-purple-bg">【文法解析 Grammar Analysis】</div>
+<div class="section-body bg-purple">
+
+<div class="grammar-point">
+<h3>【文法名稱】現在完成式：經驗用法 (Have you ever tried...)</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">"Have you ever tried to imitate a friend's voice, mimic a famous singer, or wondered why your recorded voice sounds so different...?"</blockquote>
+<p><strong>【句型】</strong></p>
+<p><em><strong>Have / Has + S + (ever) + p.p. ...?</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>現在完成式用於表達「從過去某個時間點到現在為止」所發生的動作或狀態。在本文開頭，作者使用完成式詢問讀者的「經驗」，這種用法常搭配 ever (曾經)、never (從未)、before (以前) 等詞。</p>
+<p><strong>【使用規則】</strong></p>
+<ul>
+<li>① 詢問經驗時，ever 置於主詞與過去分詞 (p.p.) 之間。</li>
+<li>② 此時態不與「明確的過去時間」(如 yesterday, last week) 連用。</li>
+<li>③ 回答時，肯定用 "Yes, I have."，否定用 "No, I haven't."。</li>
+</ul>
+<p><strong>【主題例句】</strong></p>
+<p>Have you ever wondered how technology can change your voice?（你是否曾經想過科技如何改變你的聲音？）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>注意 try to V (努力嘗試) 與 try V-ing (試試看/實驗) 的區別。文中 tried to imitate 強調努力模仿的行為。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<div class="error-box">
+✗ Have you ever tried to mimic someone last year?<br>
+✓ Have you ever tried to mimic someone?<br>
+說明：現在完成式不能搭配 last year 等明確過去時間。
+</div>
+<p>選擇題：________ you ever seen a voice modulator in real life? (A) Did (B) Do (C) Have (D) Are</p>
+<p>答案：C。說明：由 ever 及 p.p. (seen) 判斷需用現在完成式。</p>
+</div>
+
+<div class="grammar-point">
+<h3>【文法名稱】被動語態 (are shaped by...)</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">"The sounds we produce are shaped by the size and tension of our vocal cords..."</blockquote>
+<p><strong>【句型】</strong></p>
+<p><em><strong>S + be 動詞 + p.p. (+ by ...)</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>當動作的接受者（聲音）比動作執行者（物理因素）更重要，或是執行者不明確時，我們會使用被動語態。文中強調聲音是被聲帶的大小與張力所「塑造」的。</p>
+<p><strong>【使用規則】</strong></p>
+<ul>
+<li>① be 動詞需隨主詞單複數與時態變化。</li>
+<li>② 動作執行者若有列出，則置於介系詞 by 之後。</li>
+<li>③ 只有及物動詞 (VT) 才能改為被動語態。</li>
+</ul>
+<p><strong>【主題例句】</strong></p>
+<p>New AI models are trained on thousands of voice recordings.（新的 AI 模型是用成千上萬的錄音檔訓練出來的。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>看到 be + p.p. 結構時，應先確認動作是否「被施加」於主詞上。例如聲音不會自己塑造 (shape)，而是被塑造 (be shaped)。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<div class="error-box">
+✗ This technology is use in many industries.<br>
+✓ This technology is used in many industries.<br>
+說明：被動語態必須使用過去分詞 (p.p.)，不能用原形動詞。
+</div>
+<p>選擇題：The actor's voice ________ into three different languages. (A) was dubbed (B) is dubbing (C) dubs (D) had dubbed</p>
+<p>答案：A。說明：聲音是被配音，需用被動語態。</p>
+</div>
+
+<div class="grammar-point">
+<h3>【文法名稱】分詞構句：表伴隨或結果 (..., producing...)</h3>
+<p><strong>【引句 Quote】</strong></p>
+<blockquote class="quote">"When we speak, air from the lungs causes the vocal cords to vibrate, producing sound waves."</blockquote>
+<p><strong>【句型】</strong></p>
+<p><em><strong>S + V ..., V-ing / p.p. ...</strong></em></p>
+<p><strong>【核心說明】</strong></p>
+<p>分詞構句用於簡化兩個主詞相同的子句。在本句中，主要的動作是聲帶振動，其隨之產生的「結果」是產生聲波。使用 V-ing 表主動或伴隨結果。</p>
+<p><strong>【使用規則】</strong></p>
+<ul>
+<li>① 簡化後的 V-ing 與主句主詞具主動關係。</li>
+<li>② 放在句尾時，常用於表示「隨之發生的結果」或「伴隨的動作」。</li>
+<li>③ 若表被動關係，則使用過去分詞 (p.p.)。</li>
+</ul>
+<p><strong>【主題例句】</strong></p>
+<p>The computer analyzed the voice, creating a perfect digital model.（電腦分析了聲音，進而建立了一個完美的數位模型。）</p>
+<p><strong>【學習提醒】</strong></p>
+<p>判斷要用 V-ing 或 p.p. 時，要看分詞與主句主詞（或前述整件事）的關係。聲帶振動（主動）產生聲波，故用 producing。</p>
+<p><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong></p>
+<div class="error-box">
+✗ He walked away, produced no sound.<br>
+✓ He walked away, producing no sound.<br>
+說明：分詞構句應使用分詞而非動詞。
+</div>
+<p>選擇題：The machine worked all night, ________ a lot of heat. (A) generating (B) generated (C) to generate (D) generates</p>
+<p>答案：A。說明：表伴隨產生的結果，主動關係用 V-ing。</p>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 底部折疊區塊 ========== -->
+<section>
+<details>
+<summary>折疊一：常見字首整理 (50 個) <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<div class="prefix-item"><span class="pf">ab-</span> 離開、相反 — abnormal（異常的）</div>
+<div class="prefix-item"><span class="pf">ad-</span> 向、加 — advance（前進）</div>
+<div class="prefix-item"><span class="pf">ambi-</span> 雙方、兩面 — ambiguous（模稜兩可的）</div>
+<div class="prefix-item"><span class="pf">anti-</span> 反對、抗 — antibiotic（抗生素）</div>
+<div class="prefix-item"><span class="pf">arch-</span> 主要、首要 — archenemy（死敵）</div>
+<div class="prefix-item"><span class="pf">auto-</span> 自動、自我 — autograph（親筆簽名）</div>
+<div class="prefix-item"><span class="pf">bene-</span> 好的、善 — benefit（好處）</div>
+<div class="prefix-item"><span class="pf">bi-</span> 二、雙 — bilingual（雙語的）</div>
+<div class="prefix-item"><span class="pf">circum-</span> 環繞、周圍 — circumstance（情況）</div>
+<div class="prefix-item"><span class="pf">co-/con-/com-</span> 一起、共同 — cooperate（合作）</div>
+<div class="prefix-item"><span class="pf">contra-</span> 相反、對抗 — contradict（反駁）</div>
+<div class="prefix-item"><span class="pf">de-</span> 去除、下降 — decode（解碼）</div>
+<div class="prefix-item"><span class="pf">dia-</span> 穿過、透過 — dialogue（對話）</div>
+<div class="prefix-item"><span class="pf">dis-</span> 否定、分離 — disagree（不同意）</div>
+<div class="prefix-item"><span class="pf">en-/em-</span> 使成為 — enable（使能夠）</div>
+<div class="prefix-item"><span class="pf">epi-</span> 在上、在外 — epidemic（流行病）</div>
+<div class="prefix-item"><span class="pf">ex-</span> 外、前任 — export（出口）</div>
+<div class="prefix-item"><span class="pf">extra-</span> 額外、外部 — extraordinary（非凡的）</div>
+<div class="prefix-item"><span class="pf">hetero-</span> 不同 — heterogeneous（異質的）</div>
+<div class="prefix-item"><span class="pf">homo-</span> 相同 — homogeneous（同質的）</div>
+<div class="prefix-item"><span class="pf">hyper-</span> 過度、超 — hyperactive（過動的）</div>
+<div class="prefix-item"><span class="pf">hypo-</span> 低於、不足 — hypodermic（皮下的）</div>
+<div class="prefix-item"><span class="pf">in-/im-</span> 否定、進入 — invisible（看不見的）</div>
+<div class="prefix-item"><span class="pf">inter-</span> 在…之間 — international（國際的）</div>
+<div class="prefix-item"><span class="pf">iso-</span> 相等、相同 — isolate（隔離）</div>
+<div class="prefix-item"><span class="pf">mal-</span> 壞、不良 — malfunction（故障）</div>
+<div class="prefix-item"><span class="pf">micro-</span> 微小 — microscope（顯微鏡）</div>
+<div class="prefix-item"><span class="pf">mis-</span> 錯誤 — misunderstand（誤解）</div>
+<div class="prefix-item"><span class="pf">mono-</span> 單一 — monologue（獨白）</div>
+<div class="prefix-item"><span class="pf">multi-</span> 多 — multicultural（多元文化的）</div>
+<div class="prefix-item"><span class="pf">neo-</span> 新的 — neonatal（新生的）</div>
+<div class="prefix-item"><span class="pf">non-</span> 非、沒有 — nonsense（無意義）</div>
+<div class="prefix-item"><span class="pf">pan-</span> 全部 — pandemic（大流行病）</div>
+<div class="prefix-item"><span class="pf">peri-</span> 周圍 — perimeter（周長）</div>
+<div class="prefix-item"><span class="pf">poly-</span> 多 — polygon（多邊形）</div>
+<div class="prefix-item"><span class="pf">post-</span> 之後 — postwar（戰後的）</div>
+<div class="prefix-item"><span class="pf">pre-</span> 之前 — preview（預覽）</div>
+<div class="prefix-item"><span class="pf">pro-</span> 向前、支持 — progress（進步）</div>
+<div class="prefix-item"><span class="pf">pseudo-</span> 假的 — pseudonym（筆名）</div>
+<div class="prefix-item"><span class="pf">re-</span> 再、回 — review（複習）</div>
+<div class="prefix-item"><span class="pf">semi-</span> 一半、部分 — semicircle（半圓）</div>
+<div class="prefix-item"><span class="pf">sub-</span> 在下、次級 — subway（地鐵）</div>
+<div class="prefix-item"><span class="pf">super-</span> 超越、在上 — superstar（超級明星）</div>
+<div class="prefix-item"><span class="pf">syn-/sym-</span> 一起、共同 — synchronize（同步）</div>
+<div class="prefix-item"><span class="pf">tele-</span> 遠距 — telephone（電話）</div>
+<div class="prefix-item"><span class="pf">trans-</span> 穿越、轉變 — transport（運輸）</div>
+<div class="prefix-item"><span class="pf">tri-</span> 三 — triangle（三角形）</div>
+<div class="prefix-item"><span class="pf">un-</span> 否定、不 — unhappy（不快樂的）</div>
+<div class="prefix-item"><span class="pf">vice-</span> 副、代替 — vice-president（副總統）</div>
+<div class="prefix-item"><span class="pf">uni-</span> 單一 — unique（獨特的）</div>
+</div>
+</details>
+
+<details>
+<summary>折疊二：常見英文字尾整理 (約 30 個) <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<h3>名詞字尾</h3>
+<div class="suffix-item">-tion/-sion — education（教育）、transformation（變換）</div>
+<div class="suffix-item">-ment — agreement（協議）、entertainment（娛樂）</div>
+<div class="suffix-item">-ness — happiness（快樂）、darkness（黑暗）</div>
+<div class="suffix-item">-ity/-ty — ability（能力）、identity（身分）</div>
+<div class="suffix-item">-er/-or — teacher（老師）、modulator（調節器）</div>
+<div class="suffix-item">-ist — artist（藝術家）、scientist（科學家）</div>
+<div class="suffix-item">-ship — friendship（友誼）、leadership（領導）</div>
+<div class="suffix-item">-hood — childhood（童年）、neighborhood（鄰里）</div>
+<h3>形容詞字尾</h3>
+<div class="suffix-item">-able/-ible — readable（可讀的）、accessible（可接近的）</div>
+<div class="suffix-item">-ous — dangerous（危險的）、famous（著名的）</div>
+<div class="suffix-item">-ful — hopeful（充滿希望的）、powerful（強大的）</div>
+<div class="suffix-item">-less — hopeless（絕望的）、powerless（無力的）</div>
+<div class="suffix-item">-al/-ic — natural（自然的）、ethical（倫理的）</div>
+<div class="suffix-item">-ive — active（活躍的）、creative（有創意的）</div>
+<h3>動詞字尾</h3>
+<div class="suffix-item">-ize/-ise — realize（實現）、revolutionize（使革命化）</div>
+<div class="suffix-item">-ify — beautify（美化）、clarify（澄清）</div>
+<div class="suffix-item">-ate — dominate（支配）、vibrate（振動）</div>
+<div class="suffix-item">-en — strengthen（加強）、soften（使柔軟）</div>
+<h3>副詞字尾</h3>
+<div class="suffix-item">-ly — quickly（快速地）、dramatically（劇烈地）</div>
+<div class="suffix-item">-ward(s) — upwards（向上）、homeward（回家）</div>
+<div class="suffix-item">-wise — clockwise（順時針方向）</div>
+</div>
+</details>
+
+<details>
+<summary>折疊三：30 個常用單字與衍生詞 <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<ol>
+<li>voice [vɔɪs] (n. 聲音) — vocal [ˈvokl] (adj. 聲音的)</li>
+<li>imitate [ˈɪmətˌet] (v. 模仿) — imitation [ˌɪməˈteʃən] (n. 模仿)</li>
+<li>mimic [ˈmɪmɪk] (v. 模仿) — mimicry [ˈmɪmɪkri] (n. 擬態)</li>
+<li>science [ˈsaɪəns] (n. 科學) — scientific [ˌsaɪənˈtɪfɪk] (adj. 科學的)</li>
+<li>replicate [ˈrɛpləˌket] (v. 複製) — replication [ˌrɛpləˈkeʃən] (n. 複製)</li>
+<li>unique [juˈnik] (adj. 獨特的) — uniqueness [juˈniknɪs] (n. 獨特性)</li>
+<li>tension [ˈtɛnʃən] (n. 張力) — tense [tɛns] (adj. 緊張的)</li>
+<li>vibrate [ˈvaɪbret] (v. 振動) — vibration [vaɪˈbreʃən] (n. 振動)</li>
+<li>anatomy [əˈnætəmi] (n. 解剖) — anatomical [ˌænəˈtɑmɪkḷ] (adj. 解剖的)</li>
+<li>transformation [ˌtrænsfɚˈmeʃən] (n. 變換) — transform [trænsˈfɔrm] (v. 轉換)</li>
+<li>dramatically [drəˈmætɪkḷi] (adv. 劇烈地) — drama [ˈdrɑmə] (n. 戲劇)</li>
+<li>modulator [ˈmɑdʒəˌletɚ] (n. 調節器) — modulate [ˈmɑdʒəˌlet] (v. 調節)</li>
+<li>accuracy [ˈækjərəsi] (n. 準確性) — accurate [ˈækjərɪt] (adj. 準確的)</li>
+<li>entertainment [ˌɛntɚˈtenmənt] (n. 娛樂) — entertain [ˌɛntɚˈten] (v. 娛樂)</li>
+<li>accessibility [ækˌsɛsəˈbɪləti] (n. 輔助性) — access [ˈæksɛs] (n. 管道/通道)</li>
+<li>synthesized [ˈsɪnθəˌsaɪzd] (v. 合成) — synthetic [sɪnˈθɛtɪk] (adj. 人造的)</li>
+<li>ethical [ˈɛθɪkḷ] (adj. 倫理的) — ethics [ˈɛθɪks] (n. 倫理道德)</li>
+<li>authentic [ɔˈθɛntɪk] (adj. 真實的) — authenticity [ˌɔθɛnˈtɪsəti] (n. 真實性)</li>
+<li>potential [pəˈtɛnʃəl] (n. 潛力) — potent [ˈpotnt] (adj. 強效的)</li>
+<li>identity [aɪˈdɛntəti] (n. 身分) — identify [aɪˈdɛntəˌfaɪ] (v. 識別)</li>
+<li>responsibility [rɪˌspɑnsəˈbɪləti] (n. 責任) — responsible [rɪˈspɑnsəbḷ] (adj. 負責的)</li>
+<li>person [ˈpɝsn] (n. 人) — personal [ˈpɝsnḷ] (adj. 個人的)</li>
+<li>power [ˈpaʊɚ] (n. 力量) — powerful [ˈpaʊɚfəl] (adj. 強大的)</li>
+<li>analyze [ˈænḷˌaɪz] (v. 分析) — analysis [əˈnæləsɪs] (n. 分析)</li>
+<li>recording [rɪˈkɔrdɪŋ] (n. 錄音) — record [rɪˈkɔrd] (v. 紀錄/錄音)</li>
+<li>remarkable [rɪˈmɑrkəbḷ] (adj. 顯著的) — remark [rɪˈmɑrk] (v. 評論/注意到)</li>
+<li>preserve [prɪˈzɝv] (v. 保存) — preservation [ˌprɛzɚˈveʃən] (n. 維護)</li>
+<li>original [əˈrɪdʒənḷ] (adj. 原始的) — origin [ˈɔrədʒɪn] (n. 起源)</li>
+<li>verify [ˈvɛrəˌfaɪ] (v. 驗證) — verification [ˌvɛrəfəˈkeʃən] (n. 驗證)</li>
+<li>wisdom [ˈwɪzdəm] (n. 智慧) — wise [waɪz] (adj. 明智的)</li>
+</ol>
+<p><strong>文章相關常用片語 5 個：</strong></p>
+<ul>
+<li>• make up (組成)</li>
+<li>• refer to (意指/參考)</li>
+<li>• grow loudly (在此指變得更強烈/急迫)</li>
+<li>• power over (對...的主宰力)</li>
+<li>• according to (根據)</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary>折疊四：練文筆食材 <span class="arrow">▼</span></summary>
+<div class="detail-body">
+<div class="prefix-item">
+① <strong>one of the most [adj.] [N-pl] ...</strong>（最……的……之一）<br>
+→ 適用：強調某事物在特定領域的重要性。<br>
+例：Voice is one of the most powerful tools humans have.
+</div>
+<div class="prefix-item">
+② <strong>be shaped by ...</strong>（由……所塑造/決定）<br>
+→ 適用：說明事物的成因或組成因素。<br>
+例：Our characters are shaped by our environments and experiences.
+</div>
+<div class="prefix-item">
+③ <strong>Small differences in ... mean that ...</strong>（……的微小差異意味著……）<br>
+→ 適用：解釋細微變化如何導致顯著不同的結果。<br>
+例：Small differences in training mean that some athletes perform better.
+</div>
+<div class="prefix-item">
+④ <strong>either ... or ...</strong>（不是……就是…… / 無論是……或是……）<br>
+→ 適用：列舉兩種可能性或手段。<br>
+例：The process can be done either manually or through technology.
+</div>
+<div class="prefix-item">
+⑤ <strong>In recent years, ... has revolutionized ...</strong>（近年來，……徹底改革了……）<br>
+→ 適用：描述科技或趨勢帶來的重大轉變。<br>
+例：In recent years, AI has revolutionized the way we work.
+</div>
+<div class="prefix-item">
+⑥ <strong>while preserving ...</strong>（在……的同時保留……）<br>
+→ 適用：描述新技術在改變某物時仍維持核心特質。<br>
+例：We should advance technology while preserving our cultural heritage.
+</div>
+<div class="prefix-item">
+⑦ <strong>raises ethical questions</strong>（引發倫理問題）<br>
+→ 適用：討論新科技或社會議題的道德層面。<br>
+例：The use of facial recognition raises serious ethical questions.
+</div>
+<div class="prefix-item">
+⑧ <strong>In response to ...</strong>（因應…… / 回應……）<br>
+→ 適用：說明某種行動或趨勢的背景起因。<br>
+例：New laws were passed in response to growing security concerns.
+</div>
+<div class="prefix-item">
+⑨ <strong>appreciate both its potential and its risks</strong>（理解並欣賞其潛力與風險）<br>
+→ 適用：對某項事物進行全面且客觀的評價。<br>
+例：We must appreciate both the potential and the risks of social media.
+</div>
+<div class="prefix-item">
+⑩ <strong>As technology gives us more power over ..., the responsibility to ... grows ...</strong>（隨著科技給予我們更多力量，……的責任也隨之增長）<br>
+→ 適用：結尾昇華，強調權力伴隨責任。<br>
+例：As science gives us more power over genes, the responsibility to use it safely grows.
+</div>
+</div>
+</details>
+</section>
+
+<nav class="course-links" aria-label="七月課程與聯絡資訊">
+  <a class="course-link echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">錯中學 ECHO 計劃</span>
+    <span class="link-desc">用錯誤回饋整理盲點，建立更穩的英文輸出能力。</span>
+  </a>
+  <a class="course-link analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+    <span class="link-kicker">七月開課</span>
+    <span class="link-title">學生分析</span>
+    <span class="link-desc">從學習表現看出強弱項，安排更精準的複習方向。</span>
+  </a>
+  <a class="course-link line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+    <span class="link-kicker">個人 Line</span>
+    <span class="link-title">linwayet</span>
+    <span class="link-desc">課程詢問、學習規劃與英文問題都可以直接聯絡。</span>
+  </a>
+</nav>
+
+</main>
+</body></html>
