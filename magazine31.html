@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Doorway Effect: Why Your Brain Resets When You Enter a Room</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FFF8F0;--ink:#1A0F00;--bg:#FFF8F0;--main:#C0392B;--sub:#1565C0;--soft:#2E7D32;--line:#dacdbf;--navy:#0D47A1;--green:#2E7D32;--green-bg:#F1F8F2;--blue:#1565C0;--blue-bg:#F3F8FF;--purple:#6A1B9A;--purple-bg:#F9F0FF;--orange:#E65100;--orange-bg:#FFF3EF;--gold:#f4e3bf;--rose:#C0392B;--deep-blue:#0D47A1}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:'BIZ UDPGothic',sans-serif;font-size:22px;line-height:1.85;padding:28px 14px 64px;background:var(--bg)}
+.page{max-width:900px;margin:0 auto}
+.hero,.section-card{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 14px 34px rgba(80,60,35,0.07);overflow:hidden;margin-bottom:40px}
+.hero{border: 4px solid var(--main);padding:40px;text-align:center}
+h1{margin:16px 0 10px;color:var(--main);font-size:3.5rem;line-height:1.2;font-weight:700;border: 5px solid var(--main);padding: 20px;display: inline-block}
+.subtitle{font-size:2.5rem;color:var(--sub);margin:10px 0;font-weight:700}
+.credit{font-size:22px;color:#1565c0;font-weight:700;font-family: 'Lobster', 'Pacifico', cursive;margin-top:20px}
+h2{margin:42px 0 14px;font-size:2.2rem;line-height:1.3;color:var(--sub)}
+h3{margin:0 0 10px;font-size:1.8rem;line-height:1.35;color:var(--soft)}
+p{margin:15px 0}
+.section-head{padding:20px 24px;color:#fff;font-size:26px;font-weight:700}
+.navy-bg{background:var(--navy)}.green-bg{background:var(--main)}.blue-bg-h{background:var(--green)}.purple-bg-h{background:var(--purple)}.orange-bg-h{background:var(--orange)}
+.section-body{padding:30px 32px}
+.bg-green{background:var(--orange-bg)}.bg-blue{background:var(--blue-bg)}.bg-purple{background:var(--purple-bg)}.bg-orange{background:var(--orange-bg)}
+.analysis-block,.vocab-item,.phrase-item,.grammar-item{margin-top:24px;padding-top:24px;border-top:2px solid rgba(31,27,22,0.1)}
+.analysis-block:first-child,.vocab-item:first-child,.phrase-item:first-child,.grammar-item:first-child{margin-top:0;padding-top:0;border-top:none}
+.quote{padding:16px 20px;background:var(--gold);border-radius:12px;font-weight:700;font-style:italic}
+.subbox{margin-top:12px;padding:15px 18px;border-radius:12px;background:rgba(255,255,255,0.8)}
+.num-circle{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;border-radius:50%;background:var(--main);color:#fff;font-weight:700;font-size:22px;margin-right:12px;flex-shrink:0}
+.vocab-top{display:flex;gap:20px;flex-wrap:wrap;align-items:baseline}
+.vocab-num{min-width:38px;height:38px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--sub);color:#fff;font-weight:700;font-size:18px}
+.vocab-word{font-size:30px;color:var(--sub);font-weight:700}
+.kk{color:var(--rose);font-size:20px}
+.vocab-line{margin:12px 0}
+ul{margin:12px 0 0 28px}li{margin:12px 0}
+.tag{display:inline-block;padding:6px 16px;border-radius:20px 0 0 20px;font-size:17px;font-weight:700;color:#fff;margin:6px 6px 6px 0;vertical-align:middle}
+.tag-deriv{background:#C0392B}.tag-root{background:#1565C0}.tag-idiom{background:#D68910}.tag-syn{background:#1565C0}.tag-pattern{background:#E65100}.tag-confuse{background:#6A1B9A}.tag-prep{background:#E65100}
+.tag-content{display:inline;vertical-align:middle;font-weight:500}
+.bold-word{color:var(--deep-blue);font-weight:700}
+details{margin-top:24px;border:3px solid #C4A06A;border-radius:16px;overflow:hidden}
+summary{padding:20px 24px;background:#4A3728;color:#fff;font-size:24px;font-weight:700;cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;min-height:80px}
+summary::-webkit-details-marker{display:none}
+summary .arrow{transition:transform 0.3s ease;font-size:28px}
+details[open] .arrow{transform:rotate(180deg)}
+details .detail-body{padding:24px 28px;background:#FAF6F0}
+.prefix-item,.suffix-item{padding:10px 0;border-bottom:1px solid var(--line)}
+.pf{color:#4A3728;font-weight:700;font-size:22px}
+.formula{font-size:19px;font-weight:700;color:var(--soft)}
+.course-links{margin:0 auto 34px;padding:22px;border-radius:22px;background:linear-gradient(135deg,#FFE8C7 0%,#FFD6B5 46%,#FFEFD8 100%);border:3px solid #F4A261;box-shadow:0 18px 36px rgba(154,91,35,0.16)}
+.course-links.bottom-links{margin:44px auto 0}
+.course-title{margin:0 0 8px;text-align:center;color:#9A3412;font-size:1.65rem;line-height:1.3;font-weight:700}
+.course-note{max-width:720px;margin:0 auto 18px;text-align:center;color:#5C2E12;font-size:21px;line-height:1.65}
+.link-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.link-card{display:flex;flex-direction:column;justify-content:space-between;min-height:190px;padding:20px;border-radius:16px;text-decoration:none;color:#301404;background:#FFFDF8;border:2px solid rgba(192,89,37,0.22);box-shadow:0 10px 22px rgba(127,74,35,0.12);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.link-card:hover{transform:translateY(-3px);box-shadow:0 16px 28px rgba(127,74,35,0.2);border-color:#E76F51}
+.link-card.course-a{background:linear-gradient(180deg,#FFF7E8 0%,#FFE3BA 100%)}
+.link-card.course-b{background:linear-gradient(180deg,#FFF0E8 0%,#FFD1BE 100%)}
+.link-card.line-card{background:linear-gradient(180deg,#EFFFF1 0%,#CFF5D7 100%);border-color:rgba(46,125,50,0.25)}
+.link-label{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;min-height:34px;padding:5px 12px;border-radius:999px;background:#C0392B;color:#fff;font-size:16px;font-weight:700}
+.line-card .link-label{background:#2E7D32}
+.link-card strong{display:block;margin:14px 0 8px;color:#8A2D12;font-size:1.35rem;line-height:1.25}
+.line-card strong{color:#1B5E20}
+.link-card span{display:block;color:#4A2714;font-size:18px;line-height:1.55}
+.link-action{margin-top:16px;color:#B33B17;font-weight:700}
+.line-card .link-action{color:#1B7F36}
+@media(max-width:900px){body{font-size:20px;padding:18px 10px 42px}.page{width:96%}.hero{padding:28px 18px;border-radius:16px}h1{font-size:2.25rem;padding:14px}h2{font-size:1.8rem}.subtitle{font-size:1.55rem}.section-body{padding:22px 18px}.link-grid{grid-template-columns:1fr}.course-links{padding:18px 14px}.course-title{font-size:1.45rem}.course-note{font-size:18px}.link-card{min-height:auto}.vocab-word{font-size:26px}summary{font-size:20px;padding:16px}}
+@media(max-width:520px){h1{font-size:1.85rem}.section-head{font-size:22px;padding:16px 18px}.quote{padding:14px 15px}.num-circle{min-width:36px;height:36px;font-size:19px}.link-card strong{font-size:1.2rem}.link-card span{font-size:17px}}
+</style></head><body>
+<main class="page">
+
+<section class="course-links top-links" aria-label="七月課程與聯絡連結">
+<h2 class="course-title">七月課程與學習資源</h2>
+<p class="course-note">七月份開課資訊與學生學習分析工具放在這裡；需要課程諮詢，也可以直接加林威老師的 Line。</p>
+<div class="link-grid">
+<a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="link-label">七月開課</span>
+<strong>錯中學 ECHO 計劃</strong>
+<span>用錯誤分析、回音式複習與即時回饋，幫學生把常錯題轉成穩定得分能力。</span>
+<span class="link-action">前往課程介紹</span>
+</a>
+<a class="link-card course-b" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="link-label">七月開課</span>
+<strong>學生分析</strong>
+<span>整理學生作答表現與學習狀況，協助掌握弱點、規劃複習方向與後續練習。</span>
+<span class="link-action">查看學生分析</span>
+</a>
+<a class="link-card line-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="link-label">Line 聯絡</span>
+<strong>林威老師 Line：linwayet</strong>
+<span>課程詢問、上課安排與學習建議，可透過個人 Line 帳號聯繫。</span>
+<span class="link-action">加入 Line</span>
+</a>
+</div>
+</section>
+
+<section class="hero">
+<h1>The Doorway Effect</h1>
+<p class="subtitle">為什麼一進房間就忘了要幹嘛？</p>
+<p class="credit">林威老師與 AI agent 團隊製作</p>
+</section>
+
+<!-- ========== 區塊一：文章原文 ========== -->
+<section>
+<h2>【區塊一】英文文章原文</h2>
+<div class="section-card">
+<div class="section-head navy-bg">【原文 Original Article】</div>
+<div class="section-body">
+<p>That moment you forget why you walked in. Have you ever walked into a room with a clear <strong class="bold-word">purpose</strong> only to pause and wonder why you went there in the first place? This isn't just a random <strong class="bold-word">lapse</strong> in focus. It's a <strong class="bold-word">psychological</strong> <strong class="bold-word">phenomenon</strong> known as the doorway effect. It happens to almost everyone, whether they're moving between rooms at home or entering a store. And it tends to <strong class="bold-word">occur</strong> more <strong class="bold-word">frequently</strong> as we get older. The reason our brain suddenly resets involves event boundaries, the <strong class="bold-word">mental</strong> chapters that mark <strong class="bold-word">transitions</strong> between moments. Think of your mind as a digital organizer that treats every new space as a fresh chapter and creates a mental bookmark the moment you pass through a doorway. While this helps <strong class="bold-word">categorize</strong> your day into before and after <strong class="bold-word">segments</strong>, it can also <strong class="bold-word">accidentally</strong> clear your short-term memory.</p>
+<p>When you enter a new <strong class="bold-word">environment</strong>, your brain immediately shifts focus to new sights and sounds. Unless you keep <strong class="bold-word">mentally</strong> repeating the task, the <strong class="bold-word">original</strong> thought can quickly <strong class="bold-word">vanish</strong>. Fortunately, you can use a few simple <strong class="bold-word">strategies</strong> to stay on track. When you draw a blank, try <strong class="bold-word">revisiting</strong> your previous actions or <strong class="bold-word">physically</strong> walking back to the last room to jog your memory.</p>
+<p>Another <strong class="bold-word">practical</strong> tip is the pink post-it trick, which involves placing sticky notes on door frames as visual reminders. To avoid misplacing everyday items like your phone, keys, or glasses, create <strong class="bold-word">intentional</strong> <strong class="bold-word">habits</strong> by always placing them in the same spot. Remember, your memory isn't failing. Your brain is simply doing its job by handling the change from one moment to the next.</p>
+</div></div>
+</section>
+
+<!-- ========== 區塊二：八句精讀 ========== -->
+<section>
+<h2>【區塊二】八句精讀</h2>
+<div class="section-card">
+<div class="section-head green-bg">【八句精讀 8 Key Sentence Analyses】</div>
+<div class="section-body bg-green">
+
+<div class="analysis-block">
+<h3><span class="num-circle">1</span> 句 1</h3>
+<div class="quote">Have you ever walked into a room with a clear purpose only to pause and wonder why you went there in the first place?</div>
+<div class="subbox">你是否曾帶著明確的目的走進房間，結果卻停下來思考當初為何要去那裡？</div>
+<div class="subbox"><strong>文法解析：</strong><em>only to + V</em> 是不定詞的結果用法，表示「結果卻……」，通常帶有出乎意料或令人失望的語氣。<em>why you went there</em> 是疑問詞引導的名詞子句，作為 <em>wonder</em> 的受詞。</div>
+<div class="subbox"><span class="tag tag-pattern">亮點</span> <em>in the first place</em> 當初；<em>only to V</em> 結果卻。</div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">2</span> 句 2</h3>
+<div class="quote">It's a psychological phenomenon known as the doorway effect.</div>
+<div class="subbox">這是一種被稱為「門框效應」的心理現象。</div>
+<div class="subbox"><strong>文法解析：</strong><em>known as ...</em> 是過去分詞片語，修飾前面的 <em>phenomenon</em>，相當於形容詞子句 <em>which is known as ...</em> 的簡化。<em>known as</em> 後接身分、名稱或稱號。</div>
+<div class="subbox"><span class="tag tag-pattern">亮點</span> <em>psychological</em> 心理的；<em>phenomenon</em> 現象（複數為 phenomena）。</div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">3</span> 句 3</h3>
+<div class="quote">While this helps categorize your day into before and after segments, it can also accidentally clear your short-term memory.</div>
+<div class="subbox">雖然這有助於將你的一天分類為「之前」和「之後」的片段，但它也可能意外地清除你的短期記憶。</div>
+<div class="subbox"><strong>文法解析：</strong><em>While</em> 引導讓步副詞子句，表示「雖然」。<em>help (to) categorize</em> 為使役動詞用法，help 後的 to 常省略。<em>categorize ... into ...</em> 表示「將……分類為……」。</div>
+<div class="subbox"><span class="tag tag-pattern">亮點</span> <em>accidentally</em> 意外地；<em>short-term memory</em> 短期記憶。</div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">4</span> 句 4</h3>
+<div class="quote">When you enter a new environment, your brain immediately shifts focus to new sights and sounds.</div>
+<div class="subbox">當你進入一個新環境時，你的大腦會立即將焦點轉移到新的視覺和聽覺訊息上。</div>
+<div class="subbox"><strong>文法解析：</strong><em>When</em> 引導時間副詞子句。<em>shift focus to ...</em> 表示「將焦點轉移到……」。這裡的 <em>to</em> 是介系詞，後面接名詞。</div>
+<div class="subbox"><span class="tag tag-pattern">亮點</span> <em>environment</em> 環境；<em>immediately</em> 立即地；<em>shift</em> 轉移。</div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">5</span> 句 5</h3>
+<div class="quote">Unless you keep mentally repeating the task, the original thought can quickly vanish.</div>
+<div class="subbox">除非你在心裡不斷重複這項任務，否則原本的想法會很快消失。</div>
+<div class="subbox"><strong>文法解析：</strong><em>Unless</em> 引導條件副詞子句，相當於 <em>If ... not</em>。<em>keep + V-ing</em> 表示「持續做某事」。這裡的 <em>mentally</em> 是副詞，修飾動名詞 <em>repeating</em>。</div>
+<div class="subbox"><span class="tag tag-pattern">亮點</span> <em>mentally</em> 心裡地；<em>original</em> 原本的；<em>vanish</em> 消失。</div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">6</span> 句 6</h3>
+<div class="quote">When you draw a blank, try mentally revisiting your previous actions or physically walking back to the last room to jog your memory.</div>
+<div class="subbox">當你腦袋一片空白時，試著在心裡回想之前的動作，或是身體力行地走回上一個房間來喚醒記憶。</div>
+<div class="subbox"><strong>文法解析：</strong><em>try + V-ing</em> 表示「嘗試看看某方法」；<em>to jog your memory</em> 是不定詞表目的。<em>mentally</em> 與 <em>physically</em> 形成副詞的對比。</div>
+<div class="subbox"><span class="tag tag-pattern">亮點</span> <em>draw a blank</em> 腦袋空白；<em>jog one's memory</em> 喚醒記憶。</div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">7</span> 句 7</h3>
+<div class="quote">Another practical tip is the pink post-it trick, which involves placing sticky notes on door frames as visual reminders.</div>
+<div class="subbox">另一個實用的技巧是粉紅貼紙法，這涉及在門框上貼上便利貼作為視覺提醒。</div>
+<div class="subbox"><strong>文法解析：</strong><em>which</em> 引導非限定形容詞子句，補充說明前面的 <em>trick</em>。<em>involve + V-ing</em> 表示「涉及/包含某動作」。<em>as</em> 為介系詞，表示「作為」。</div>
+<div class="subbox"><span class="tag tag-pattern">亮點</span> <em>practical</em> 實用的；<em>reminder</em> 提醒物。</div>
+</div>
+
+<div class="analysis-block">
+<h3><span class="num-circle">8</span> 句 8</h3>
+<div class="quote">Your brain is simply doing its job by handling the change from one moment to the next.</div>
+<div class="subbox">你的大腦只是在履行其職責，處理從一個時刻到下一個時刻的變化。</div>
+<div class="subbox"><strong>文法解析：</strong><em>by + V-ing</em> 表示「透過……方式」。<em>from one ... to the next</em> 是常見片語，表示「從一個……到下一個……」。</div>
+<div class="subbox"><span class="tag tag-pattern">亮點</span> <em>simply</em> 僅僅；<em>handle</em> 處理。</div>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 區塊三：20個單字 ========== -->
+<section>
+<h2>【區塊三】20 個關鍵單字整理</h2>
+<div class="section-card">
+<div class="section-head blue-bg-h">【單字表 Vocabulary List】</div>
+<div class="section-body bg-blue">
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">1</span><span class="vocab-word">purpose</span><span class="kk">[ˈpɝpəs]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>n. 目的；意圖</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">purposeful (adj. 有目的的); purposely (adv. 故意地)</span></p>
+<p class="vocab-line"><span class="tag tag-root">字根</span> <span class="tag-content">pose「放置」：compose 組成; propose 提議; expose 暴露</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">on purpose 故意地; serve a purpose 有用處; for the purpose of 為了...的目的</span></p>
+<ul><li>Have you ever walked into a room with a clear purpose?<br>（你是否曾帶著明確的目的走進房間？）</li>
+<li>The main purpose of this meeting is to discuss the new project.<br>（這次會議的主要目的是討論新計畫。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">2</span><span class="vocab-word">lapse</span><span class="kk">[læps]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>n. 失誤；（時間）流逝</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">relapse (v. 復發); collapse (v. 倒塌)</span></p>
+<p class="vocab-line"><span class="tag tag-root">字根</span> <span class="tag-content">laps「滑」：elapse 流逝; relapse 復發; collapse 崩潰</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">a lapse of memory 斷片/一時想不起; a lapse in concentration 精神不集中</span></p>
+<ul><li>This isn't just a random lapse in focus.<br>（這不僅僅是隨機的注意力失誤。）</li>
+<li>After a lapse of several years, they met again in London.<br>（隔了幾年之後，他們在倫敦再次相遇。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">3</span><span class="vocab-word">psychological</span><span class="kk">[ˌsaɪkəˈlɑdʒɪkl]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>adj. 心理的；心理學的</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">psychology (n. 心理學); psychologist (n. 心理學家)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">psychological barrier 心理障礙; psychological health 心理健康</span></p>
+<ul><li>It's a psychological phenomenon known as the doorway effect.<br>（這是一種被稱為「門框效應」的心理現象。）</li>
+<li>The doctor studied the psychological effects of long-term stress.<br>（醫生研究了長期壓力對心理的影響。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">4</span><span class="vocab-word">phenomenon</span><span class="kk">[fəˈnɑməˌnɑn]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>n. 現象</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">phenomenal (adj. 非凡的; 驚人的)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">a natural phenomenon 自然現象; a global phenomenon 全球現象</span></p>
+<ul><li>The doorway effect is a psychological phenomenon.<br>（門框效應是一種心理現象。）</li>
+<li>Climate change is a complex global phenomenon.<br>（氣候變遷是一個複雜的全球現象。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">5</span><span class="vocab-word">frequently</span><span class="kk">[ˈfrikwəntlɪ]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>adv. 頻繁地</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">frequent (adj. 頻繁的); frequency (n. 頻率)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">frequently asked questions (FAQ) 常見問題</span></p>
+<ul><li>It tends to occur more frequently as we get older.<br>（隨著我們變老，這往往會更頻繁地發生。）</li>
+<li>I frequently see him at the local library.<br>（我經常在當地圖書館見到他。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">6</span><span class="vocab-word">occur</span><span class="kk">[əˈkɝ]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>v. 發生；想到</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">occurrence (n. 發生; 事件)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">occur to someone 某人想到; commonly occur 常發生</span></p>
+<p class="vocab-line"><span class="tag tag-pattern">句型</span> <span class="tag-content">It occurs to someone that...（某人突然想到……）</span></p>
+<ul><li>Forgetfulness tends to occur more frequently in old age.<br>（健忘在老年時期往往發生得更頻繁。）</li>
+<li>It never occurred to me that I had left the keys in the car.<br>（我從未想到我把鑰匙留在車裡了。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">7</span><span class="vocab-word">transition</span><span class="kk">[trænˈzɪʃən]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>n. 轉變；過渡</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">transit (v./n. 運輸; 通過); transitory (adj. 短暫的)</span></p>
+<p class="vocab-line"><span class="tag tag-root">字根</span> <span class="tag-content">trans「穿越」：transport 運輸; transform 轉變; translate 翻譯</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">a smooth transition 平穩過渡; transition period 過渡期</span></p>
+<ul><li>Mental chapters mark transitions between moments.<br>（心理章節標記了時刻之間的轉變。）</li>
+<li>The transition from school to work can be difficult for some students.<br>（對某些學生來說，從學校到工作的過渡可能很困難。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">8</span><span class="vocab-word">mental</span><span class="kk">[ˈmɛntl]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>adj. 心理的；精神的</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">mentally (adv. 心智上地); mentality (n. 心態)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">mental health 心理健康; mental state 心理狀態; mental exercise 腦力練習</span></p>
+<ul><li>The brain creates a mental bookmark when you pass through a doorway.<br>（當你穿過門口時，大腦會建立一個心理書籤。）</li>
+<li>Mental exercises like puzzles can help keep your brain active.<br>（像拼圖這樣的腦力練習有助於保持大腦活躍。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">9</span><span class="vocab-word">categorize</span><span class="kk">[ˈkætəɡəˌraɪz]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>v. 將...分類</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">category (n. 類別); categorical (adj. 絕對的)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">categorize ... by ... 依照...分類; fall into a category 屬於某類別</span></p>
+<ul><li>This helps categorize your day into different segments.<br>（這有助於將你的一天分類為不同的片段。）</li>
+<li>The books are categorized by subject in the library.<br>（在圖書館裡，書是按主題分類的。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">10</span><span class="vocab-word">segment</span><span class="kk">[ˈsɛɡmənt]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>n. 部分；片段</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">segmentation (n. 分割)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">a market segment 市場區隔; segment of the population 人口的一部分</span></p>
+<ul><li>Your brain divides your day into before and after segments.<br>（你的大腦將你的一天分為之前和之後的片段。）</li>
+<li>The TV show is divided into three segments.<br>（這部電視節目分為三個部分。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">11</span><span class="vocab-word">accidentally</span><span class="kk">[ˌæksəˈdɛntəlɪ]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>adv. 意外地；偶然地</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">accident (n. 意外); accidental (adj. 偶然的)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">accidentally deleted 意外刪除; accidentally meet 偶遇</span></p>
+<ul><li>It can also accidentally clear your short-term memory.<br>（它也可能意外地清除你的短期記憶。）</li>
+<li>I accidentally dropped my phone on the floor.<br>（我不小心把手機掉在地板上了。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">12</span><span class="vocab-word">environment</span><span class="kk">[ɪnˈvaɪrənmənt]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>n. 環境</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">environmental (adj. 環境的); environmentally (adv. 在環境方面)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">natural environment 自然環境; work environment 工作環境; protect the environment 保護環境</span></p>
+<ul><li>When you enter a new environment, your brain shifts focus.<br>（當你進入一個新環境時，你的大腦會轉移焦點。）</li>
+<li>We must do more to protect the environment for future generations.<br>（我們必須做更多事情來為後代保護環境。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">13</span><span class="vocab-word">mentally</span><span class="kk">[ˈmɛntəlɪ]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>adv. 心理上地；心智上地</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">mental (adj. 心理的); mentality (n. 心態)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">mentally ill 精神有問題的; mentally exhausted 身心俱疲的</span></p>
+<ul><li>Try mentally repeating the task to stay on track.<br>（試著在心裡重複這項任務以保持專注。）</li>
+<li>She was mentally prepared for the difficult challenge ahead.<br>（她已經為面前的艱難挑戰做好了心理準備。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">14</span><span class="vocab-word">vanish</span><span class="kk">[ˈvænɪʃ]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>v. 消失</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">vanishing (adj. 正在消失的)</span></p>
+<p class="vocab-line"><span class="tag tag-root">字根</span> <span class="tag-content">va「空」：vacuum 真空; vacant 空缺的; vanity 虛榮</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">vanish into thin air 憑空消失; vanish without a trace 消失得無影無蹤</span></p>
+<ul><li>The original thought can quickly vanish.<br>（原本的想法會很快消失。）</li>
+<li>The magician made the rabbit vanish into thin air.<br>（魔術師讓兔子憑空消失了。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">15</span><span class="vocab-word">strategy</span><span class="kk">[ˈstrætədʒɪ]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>n. 策略</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">strategic (adj. 策略性的); strategist (n. 戰略家)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">business strategy 商業策略; effective strategy 有效的策略; survival strategy 生存策略</span></p>
+<ul><li>You can use a few simple strategies to stay on track.<br>（你可以使用一些簡單的策略來保持在軌道上。）</li>
+<li>The coach developed a new strategy to win the game.<br>（教練開發了一種贏得比賽的新策略。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">16</span><span class="vocab-word">revisit</span><span class="kk">[riˈvɪzɪt]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>v. 重新造訪；再次探討</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">visit (v./n. 拜訪); visitor (n. 訪客)</span></p>
+<p class="vocab-line"><span class="tag tag-root">字根</span> <span class="tag-content">vis「看」：visible 可見的; vision 視力; revise 修訂; supervise 監督</span></p>
+<ul><li>Try mentally revisiting your previous actions.<br>（試著在心裡回想你之前的動作。）</li>
+<li>We need to revisit this issue at our next meeting.<br>（我們需要在下次會議上再次探討這個議題。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">17</span><span class="vocab-word">physically</span><span class="kk">[ˈfɪzɪklɪ]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>adv. 身體上地；物理上地</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">physical (adj. 身體的); physics (n. 物理學)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">physically demanding 體力要求高的; physically active 體力活躍的</span></p>
+<ul><li>Try physically walking back to the last room.<br>（試著實際走回上一個房間。）</li>
+<li>He is physically strong because he exercises every day.<br>（他身體強壯，因為他每天運動。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">18</span><span class="vocab-word">practical</span><span class="kk">[ˈpræktɪkl]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>adj. 實際的；實用的</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">practice (n./v. 練習); practically (adv. 幾乎; 實際上)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">practical experience 實際經驗; practical advice 實用的建議</span></p>
+<ul><li>Another practical tip is the pink post-it trick.<br>（另一個實用的技巧是粉紅貼紙法。）</li>
+<li>This course provides practical skills that are useful in real life.<br>（這門課程提供了在現實生活中很有用的實用技能。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">19</span><span class="vocab-word">intentional</span><span class="kk">[ɪnˈtɛnʃənl]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>adj. 有意的；故意的</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">intention (n. 意圖); intend (v. 打算)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">intentional damage 故意破壞; intentional mistake 故意的錯誤</span></p>
+<ul><li>Create intentional habits by always placing items in the same spot.<br>（透過總是將物品放在同一個位置來建立有意的習慣。）</li>
+<li>His comment was intentional, aimed at making her feel better.<br>（他的評論是有意的，目的是讓她感覺好一點。）</li></ul></div>
+
+<div class="vocab-item"><div class="vocab-top"><span class="vocab-num">20</span><span class="vocab-word">original</span><span class="kk">[əˈrɪdʒənl]</span></div>
+<p class="vocab-line"><strong>詞性／中文：</strong>adj. 原本的；獨創的</p>
+<p class="vocab-line"><span class="tag tag-deriv">衍生詞</span> <span class="tag-content">origin (n. 起源); originate (v. 發源)</span></p>
+<p class="vocab-line"><span class="tag tag-idiom">慣用語</span> <span class="tag-content">original idea 創意想法; original document 原件</span></p>
+<ul><li>The original thought can quickly vanish.<br>（原本的想法會很快消失。）</li>
+<li>This is an original painting by a famous artist.<br>（這是由一位著名藝術家創作的原畫。）</li></ul></div>
+
+</div></div>
+</section>
+
+<!-- ========== 區塊四：文法解析 ========== -->
+<section>
+<h2>【區塊四】文法解析</h2>
+<div class="section-card">
+<div class="section-head orange-bg-h">【文法解析 Grammar Analysis】</div>
+<div class="section-body bg-orange">
+
+<div class="grammar-item">
+<h3>1. 不定詞：結果用法（only to + V）</h3>
+<div class="quote">Have you ever walked into a room with a clear purpose only to pause and wonder why you went there in the first place?</div>
+<p><strong>句型：</strong><em>S + V ... only to + V ...</em>（……結果卻……）</p>
+<p><strong>核心說明：</strong>不定詞 <em>to V</em> 除了表示目的外，還可以用來表示「結果」。當 <em>to V</em> 前面加上 <em>only</em> 時，通常用來描述一個「令人驚訝、失望或不愉快」的結果。</p>
+<p><strong>使用規則：</strong></p>
+<ul>
+<li>表達非預期的結果。He rushed to the station only to find the train had left.（他趕到車站結果發現火車已經開了。）</li>
+<li>語氣帶有「徒勞無功」的感覺。They worked all night only to fail the test.（他們工作了一整晚結果考試還是不及格。）</li>
+<li>常用於敘事，連接兩個前後發生的動作。</li>
+</ul>
+<p><strong>主題例句：</strong></p>
+<ul>
+<li>I entered the kitchen only to forget what I wanted to eat.（我進了廚房結果忘了我想吃什麼。）</li>
+<li>She searched for her keys everywhere only to realize they were in her hand.（她到處找鑰匙結果發現就在她手裡。）</li>
+</ul>
+<p><strong>學習提醒：</strong><em>only to V</em> 表示結果，而 <em>to V</em>（不加 only）通常表示目的。區別在於結果是否出乎意料。</p>
+<p><strong>⚠️ 常見錯誤：</strong></p>
+<p>✗ He studied hard only to passing the exam.</p>
+<p>✓ He studied hard only to pass the exam.（表示結果時仍使用原形動詞）</p>
+<p><strong>🎯 精選試題：</strong></p>
+<p>The hikers reached the summit ________ (only to / in order to) find that the view was blocked by thick fog.<br>答案：only to　說明：表示令人失望的結果。</p>
+</div>
+
+<div class="grammar-item">
+<h3>2. 相關連接詞：whether ... or ...（無論是……還是……）</h3>
+<div class="quote">It happens to almost everyone, whether they're moving between rooms at home or entering a store.</div>
+<p><strong>句型：</strong><em>whether A or B</em>（無論是 A 還是 B）</p>
+<p><strong>核心說明：</strong><em>whether ... or ...</em> 可以引導副詞子句或名詞子句。在本文中，它引導一個「讓步副詞子句」，表示「不論情況是 A 還是 B，結果都一樣」。</p>
+<p><strong>使用規則：</strong></p>
+<ul>
+<li>用於二選一的情況。Whether you like it or not, you must do it.（不論你喜不喜歡，你都得做。）</li>
+<li>當副詞子句時，後面可接子句或片語。</li>
+<li>與 <em>if ... or not</em> 的區別：<em>whether</em> 較正式，且引導名詞子句當主詞時只能用 <em>whether</em>。</li>
+</ul>
+<p><strong>主題例句：</strong></p>
+<ul>
+<li>Whether you are at home or at work, the doorway effect can occur.（不論你是在家還是在工作，門框效應都可能發生。）</li>
+<li>The brain resets whether the doorway is large or small.（不論門口是大是小，大腦都會重置。）</li>
+</ul>
+<p><strong>學習提醒：</strong>當 <em>whether ... or ...</em> 引導副詞子句時，意思與 <em>no matter whether ... or ...</em> 相同。</p>
+<p><strong>⚠️ 常見錯誤：</strong></p>
+<p>✗ No matter whether he is rich or poor, he is unhappy.</p>
+<p>✓ Whether he is rich or poor, he is unhappy.（<em>Whether</em> 本身已含「不論」之意）</p>
+<p><strong>🎯 精選試題：</strong></p>
+<p>________ you win or lose, you should be proud of your effort.<br>答案：Whether　說明：引導讓步副詞子句，表示「不論……」。</p>
+</div>
+
+<div class="grammar-item">
+<h3>3. 副詞子句：除非（Unless）</h3>
+<div class="quote">Unless you keep mentally repeating the task, the original thought can quickly vanish.</div>
+<p><strong>句型：</strong><em>Unless + S + V ..., S + V ...</em>（除非……否則……）</p>
+<p><strong>核心說明：</strong><em>Unless</em> 引導條件副詞子句，語意等於 <em>If ... not</em>。它用來表達一個「排除條件」，只有在該條件不成立時，主句的情況才會發生。</p>
+<p><strong>使用規則：</strong></p>
+<ul>
+<li>引導的子句使用現在式代替未來式。Unless it rains tomorrow, we will go hiking.（除非明天下雨，否則我們會去健行。）</li>
+<li>後面通常接肯定的動詞，因為 <em>unless</em> 本身已含否定意。</li>
+<li>常用於警告或表達唯一的解決方案。</li>
+</ul>
+<p><strong>主題例句：</strong></p>
+<ul>
+<li>Unless you focus on the task, you might forget it when you walk through a door.（除非你專注於任務，否則穿過門時你可能會忘記。）</li>
+<li>The memory will vanish unless you revisit the previous room.（除非你回到上一個房間，否則記憶會消失。）</li>
+</ul>
+<p><strong>學習提醒：</strong>不要在 <em>unless</em> 引導的子句中使用 <em>will</em> 或 <em>not</em>，以免造成語法錯誤或雙重否定。</p>
+<p><strong>⚠️ 常見錯誤：</strong></p>
+<p>✗ Unless you don't hurry, you will be late.</p>
+<p>✓ Unless you hurry, you will be late.（除非你趕快，否則會遲到）</p>
+<p><strong>🎯 精選試題：</strong></p>
+<p>________ (Unless / If) you practice every day, you won't improve your English.<br>答案：Unless　說明：語意為「如果你不練習……」。</p>
+</div>
+
+</div></div>
+</section>
+
+<!-- ========== 底部折疊區塊 ========== -->
+<section>
+<details>
+<summary><span>📘 常見字首整理（50 個）</span><span class="arrow">▼</span></summary>
+<div class="detail-body">
+<div class="prefix-item"><span class="pf">ab-</span>：離開、相反（abnormal 異常的）</div>
+<div class="prefix-item"><span class="pf">ad-</span>：向、加（advance 前進）</div>
+<div class="prefix-item"><span class="pf">ambi-</span>：雙方、兩面（ambiguous 模稜兩可的）</div>
+<div class="prefix-item"><span class="pf">anti-</span>：反對、抗（antibiotic 抗生素）</div>
+<div class="prefix-item"><span class="pf">arch-</span>：主要、首要（archenemy 死敵）</div>
+<div class="prefix-item"><span class="pf">auto-</span>：自動、自我（autograph 親筆簽名）</div>
+<div class="prefix-item"><span class="pf">bene-</span>：好的、善（benefit 好處）</div>
+<div class="prefix-item"><span class="pf">bi-</span>：二、雙（bilingual 雙語的）</div>
+<div class="prefix-item"><span class="pf">circum-</span>：環繞、周圍（circumstance 情況）</div>
+<div class="prefix-item"><span class="pf">co-/con-/com-</span>：一起、共同（cooperate 合作）</div>
+<div class="prefix-item"><span class="pf">contra-</span>：相反、對抗（contradict 反駁）</div>
+<div class="prefix-item"><span class="pf">de-</span>：去除、下降（decode 解碼）</div>
+<div class="prefix-item"><span class="pf">dia-</span>：穿過、透過（dialogue 對話）</div>
+<div class="prefix-item"><span class="pf">dis-</span>：否定、分離（disagree 不同意）</div>
+<div class="prefix-item"><span class="pf">en-/em-</span>：使成為（enable 使能夠）</div>
+<div class="prefix-item"><span class="pf">epi-</span>：在上、在外（epidemic 流行病）</div>
+<div class="prefix-item"><span class="pf">ex-</span>：外、前任（export 出口；ex-president 前總統）</div>
+<div class="prefix-item"><span class="pf">extra-</span>：額外、外部（extraordinary 非凡的）</div>
+<div class="prefix-item"><span class="pf">hetero-</span>：不同（heterogeneous 異質的）</div>
+<div class="prefix-item"><span class="pf">homo-</span>：相同（homogeneous 同質的）</div>
+<div class="prefix-item"><span class="pf">hyper-</span>：過度、超（hyperactive 過動的）</div>
+<div class="prefix-item"><span class="pf">hypo-</span>：低於、不足（hypodermic 皮下的）</div>
+<div class="prefix-item"><span class="pf">in-/im-</span>：否定、進入（invisible 看不見的；import 輸入）</div>
+<div class="prefix-item"><span class="pf">inter-</span>：在…之間（international 國際的）</div>
+<div class="prefix-item"><span class="pf">iso-</span>：相等、相同（isolate 隔離）</div>
+<div class="prefix-item"><span class="pf">mal-</span>：壞、不良（malfunction 故障）</div>
+<div class="prefix-item"><span class="pf">micro-</span>：微小（microscope 顯微鏡）</div>
+<div class="prefix-item"><span class="pf">mis-</span>：錯誤（misunderstand 誤解）</div>
+<div class="prefix-item"><span class="pf">mono-</span>：單一（monologue 獨白）</div>
+<div class="prefix-item"><span class="pf">multi-</span>：多（multicultural 多元文化的）</div>
+<div class="prefix-item"><span class="pf">neo-</span>：新的（neonatal 新生的）</div>
+<div class="prefix-item"><span class="pf">non-</span>：非、沒有（nonsense 無意義）</div>
+<div class="prefix-item"><span class="pf">pan-</span>：全部（pandemic 大流行病）</div>
+<div class="prefix-item"><span class="pf">peri-</span>：周圍（perimeter 周長）</div>
+<div class="prefix-item"><span class="pf">poly-</span>：多（polygon 多邊形）</div>
+<div class="prefix-item"><span class="pf">post-</span>：之後（postwar 戰後的）</div>
+<div class="prefix-item"><span class="pf">pre-</span>：之前（preview 預覽）</div>
+<div class="prefix-item"><span class="pf">pro-</span>：向前、支持（progress 進步；pro-democracy 支持民主的）</div>
+<div class="prefix-item"><span class="pf">pseudo-</span>：假的（pseudonym 筆名）</div>
+<div class="prefix-item"><span class="pf">re-</span>：再、回（review 複習）</div>
+<div class="prefix-item"><span class="pf">semi-</span>：一半、部分（semicircle 半圓）</div>
+<div class="prefix-item"><span class="pf">sub-</span>：在下、次級（subway 地鐵）</div>
+<div class="prefix-item"><span class="pf">super-</span>：超越、在上（superstar 超級明星）</div>
+<div class="prefix-item"><span class="pf">syn-/sym-</span>：一起、共同（synchronize 同步）</div>
+<div class="prefix-item"><span class="pf">tele-</span>：遠距（telephone 電話）</div>
+<div class="prefix-item"><span class="pf">trans-</span>：穿越、轉變（transport 運輸）</div>
+<div class="prefix-item"><span class="pf">tri-</span>：三（triangle 三角形）</div>
+<div class="prefix-item"><span class="pf">un-</span>：否定、不（unhappy 不快樂的）</div>
+<div class="prefix-item"><span class="pf">vice-</span>：副、代替（vice-president 副總統）</div>
+</div>
+</details>
+
+<details>
+<summary><span>📗 常見英文字尾整理（30 個）</span><span class="arrow">▼</span></summary>
+<div class="detail-body">
+<h3 style="color:var(--main);margin-top:0">名詞字尾</h3>
+<div class="suffix-item"><span class="pf">-tion / -sion</span>：education（教育）、decision（決定）</div>
+<div class="suffix-item"><span class="pf">-ment</span>：agreement（協議）、development（發展）</div>
+<div class="suffix-item"><span class="pf">-ness</span>：happiness（快樂）、darkness（黑暗）</div>
+<div class="suffix-item"><span class="pf">-ity / -ty</span>：ability（能力）、cruelty（殘酷）</div>
+<div class="suffix-item"><span class="pf">-er / -or</span>：teacher（老師）、actor（演員）</div>
+<div class="suffix-item"><span class="pf">-ist</span>：artist（藝術家）、scientist（科學家）</div>
+<div class="suffix-item"><span class="pf">-ship</span>：friendship（友誼）、leadership（領導）</div>
+<div class="suffix-item"><span class="pf">-hood</span>：childhood（童年）、neighborhood（鄰里）</div>
+<h3 style="color:var(--main)">形容詞字尾</h3>
+<div class="suffix-item"><span class="pf">-able / -ible</span>：readable（可讀的）、credible（可信的）</div>
+<div class="suffix-item"><span class="pf">-ous</span>：dangerous（危險的）、famous（著名的）</div>
+<div class="suffix-item"><span class="pf">-ful</span>：hopeful（充滿希望的）、beautiful（美麗的）</div>
+<div class="suffix-item"><span class="pf">-less</span>：hopeless（絕望的）、powerless（無力的）</div>
+<div class="suffix-item"><span class="pf">-al / -ic</span>：natural（自然的）、poetic（詩意的）</div>
+<h3 style="color:var(--main)">動詞字尾</h3>
+<div class="suffix-item"><span class="pf">-ize / -ise</span>：realize（實現）、industrialize（工業化）</div>
+<div class="suffix-item"><span class="pf">-ify</span>：beautify（美化）、clarify（澄清）</div>
+<div class="suffix-item"><span class="pf">-ate</span>：dominate（支配）、activate（啟動）</div>
+<div class="suffix-item"><span class="pf">-en</span>：strengthen（加強）、soften（使柔軟）</div>
+<h3 style="color:var(--main)">副詞字尾</h3>
+<div class="suffix-item"><span class="pf">-ly</span>：quickly（快速地）、carefully（仔細地）</div>
+<div class="suffix-item"><span class="pf">-ward(s)</span>：upwards（向上）、homeward（回家）</div>
+<div class="suffix-item"><span class="pf">-wise</span>：clockwise（順時針方向）</div>
+</div>
+</details>
+
+<details>
+<summary><span>📙 30 個常用單字與衍生詞</span><span class="arrow">▼</span></summary>
+<div class="detail-body">
+<div class="suffix-item">1. purpose [ˈpɝpəs] (n. 目的) — purposeful (adj. 有目的的)</div>
+<div class="suffix-item">2. lapse [læps] (n. 失誤) — relapse (v. 復發)</div>
+<div class="suffix-item">3. phenomenon [fəˈnɑməˌnɑn] (n. 現象) — phenomenal (adj. 非凡的)</div>
+<div class="suffix-item">4. frequently [ˈfrikwəntlɪ] (adv. 頻繁地) — frequency (n. 頻率)</div>
+<div class="suffix-item">5. mental [ˈmɛntl] (adj. 心理的) — mentality (n. 心態)</div>
+<div class="suffix-item">6. transition [trænˈzɪʃən] (n. 轉變) — transitory (adj. 短暫的)</div>
+<div class="suffix-item">7. categorize [ˈkætəɡəˌraɪz] (v. 分類) — category (n. 類別)</div>
+<div class="suffix-item">8. environment [ɪnˈvaɪrənmənt] (n. 環境) — environmental (adj. 環境的)</div>
+<div class="suffix-item">9. vanish [ˈvænɪʃ] (v. 消失) — disappearance (n. 消失)</div>
+<div class="suffix-item">10. strategy [ˈstrætədʒɪ] (n. 策略) — strategic (adj. 策略性的)</div>
+<div class="suffix-item">11. revisit [riˈvɪzɪt] (v. 再次探討) — visitor (n. 訪客)</div>
+<div class="suffix-item">12. physically [ˈfɪzɪklɪ] (adv. 身體上地) — physical (adj. 身體的)</div>
+<div class="suffix-item">13. intentional [ɪnˈtɛnʃənl] (adj. 有意的) — intention (n. 意圖)</div>
+<div class="suffix-item">14. habit [ˈhæbɪt] (n. 習慣) — habitual (adj. 習慣性的)</div>
+<div class="suffix-item">15. occur [əˈkɝ] (v. 發生) — occurrence (n. 事件)</div>
+<div class="suffix-item">16. psychological [ˌsaɪkəˈlɑdʒɪkl] (adj. 心理的) — psychology (n. 心理學)</div>
+<div class="suffix-item">17. practical [ˈpræktɪkl] (adj. 實用的) — practice (v. 練習)</div>
+<div class="suffix-item">18. original [əˈrɪdʒənl] (adj. 原本的) — origin (n. 起源)</div>
+<div class="suffix-item">19. segment [ˈsɛɡmənt] (n. 片段) — segmentation (n. 分割)</div>
+<div class="suffix-item">20. accidentally [ˌæksəˈdɛntəlɪ] (adv. 意外地) — accident (n. 意外)</div>
+<div class="suffix-item">21. boundary [ˈbaʊndrɪ] (n. 邊界) — bound (v. 限制)</div>
+<div class="suffix-item">22. reset [ˌriˈsɛt] (v. 重置) — setting (n. 設定)</div>
+<div class="suffix-item">23. bookmark [ˈbʊkˌmɑrk] (n. 書籤) — marker (n. 標記)</div>
+<div class="suffix-item">24. memory [ˈmɛmərɪ] (n. 記憶) — memorize (v. 記住)</div>
+<div class="suffix-item">25. sight [saɪt] (n. 視覺) — sighted (adj. 有視力的)</div>
+<div class="suffix-item">26. sound [saʊnd] (n. 聲音) — sounding (adj. 聽起來)</div>
+<div class="suffix-item">27. simple [ˈsɪmpl] (adj. 簡單的) — simplify (v. 簡化)</div>
+<div class="suffix-item">28. track [træk] (n. 軌道) — tracker (n. 追蹤者)</div>
+<div class="suffix-item">29. blank [blæŋk] (n. 空白) — blankly (adv. 茫然地)</div>
+<div class="suffix-item">30. visual [ˈvɪʒʊəl] (adj. 視覺的) — visualize (v. 想像)</div>
+<p>文章相關常用片語 5 個：</p>
+<ul>
+<li>in the first place (當初；首先)</li>
+<li>known as (被稱為……)</li>
+<li>short-term memory (短期記憶)</li>
+<li>on track (在軌道上；按計畫進行)</li>
+<li>draw a blank (腦袋一片空白)</li>
+</ul>
+</div>
+</details>
+
+<details>
+<summary><span>✍️ 練文筆食材</span><span class="arrow">▼</span></summary>
+<div class="detail-body">
+<div class="suffix-item">① <strong>only to + V</strong>（結果卻……）<br>→ 適用：強調令人驚訝或失望的後果。<br>例：I rushed to the store only to find it was closed.</div>
+<div class="suffix-item">② <strong>whether ... or ...</strong>（不論是……還是……）<br>→ 適用：討論多種情況下的共同結果。<br>例：Whether it is sunny or rainy, I will go for a run.</div>
+<div class="suffix-item">③ <strong>Unless + S + V</strong>（除非……）<br>→ 適用：強調唯一的先決條件。<br>例：Unless you study harder, you won't pass the exam.</div>
+<div class="suffix-item">④ <strong>keep + V-ing</strong>（持續……）<br>→ 適用：描述不間斷的動作。<br>例：If you keep practicing, you will become an expert.</div>
+<div class="suffix-item">⑤ <strong>shift focus to ...</strong>（將焦點轉移到……）<br>→ 適用：描述注意力的改變。<br>例：We need to shift our focus to long-term goals.</div>
+<div class="suffix-item">⑥ <strong>jog one's memory</strong>（喚醒記憶）<br>→ 適用：描述設法想起某事。<br>例：Looking at old photos helped jog his memory.</div>
+<div class="suffix-item">⑦ <strong>involve + V-ing</strong>（涉及……）<br>→ 適用：說明某事包含的具體內容。<br>例：The job involves traveling to different countries.</div>
+<div class="suffix-item">⑧ <strong>from one ... to the next</strong>（從一個……到下一個……）<br>→ 適用：描述連續的變化或過程。<br>例：The fashion changes from one year to the next.</div>
+<div class="suffix-item">⑨ <strong>draw a blank</strong>（腦袋空白）<br>→ 適用：描述突然想不起來某事。<br>例：I tried to remember his name but I drew a blank.</div>
+<div class="suffix-item">⑩ <strong>by + V-ing</strong>（透過……方式）<br>→ 適用：說明達成目的手段。<br>例：You can improve your health by eating more vegetables.</div>
+</div>
+</details>
+</section>
+
+<section class="course-links bottom-links" aria-label="七月課程與聯絡連結">
+<h2 class="course-title">七月課程與學習資源</h2>
+<p class="course-note">七月份開課資訊與學生學習分析工具放在這裡；需要課程諮詢，也可以直接加林威老師的 Line。</p>
+<div class="link-grid">
+<a class="link-card course-a" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+<span class="link-label">七月開課</span>
+<strong>錯中學 ECHO 計劃</strong>
+<span>用錯誤分析、回音式複習與即時回饋，幫學生把常錯題轉成穩定得分能力。</span>
+<span class="link-action">前往課程介紹</span>
+</a>
+<a class="link-card course-b" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+<span class="link-label">七月開課</span>
+<strong>學生分析</strong>
+<span>整理學生作答表現與學習狀況，協助掌握弱點、規劃複習方向與後續練習。</span>
+<span class="link-action">查看學生分析</span>
+</a>
+<a class="link-card line-card" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+<span class="link-label">Line 聯絡</span>
+<strong>林威老師 Line：linwayet</strong>
+<span>課程詢問、上課安排與學習建議，可透過個人 Line 帳號聯繫。</span>
+<span class="link-action">加入 Line</span>
+</a>
+</div>
+</section>
+
+</main></body></html>
