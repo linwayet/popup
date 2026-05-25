@@ -506,13 +506,68 @@
     }
 
     /* ── Responsive ── */
-    @media (max-width: 1200px) {
-      .right-sidebar {
-        display: none;
+    @media (max-width: 1440px) {
+      .main-wrapper {
+        flex-direction: column; /* 改成垂直排列 */
       }
       
       .main-content {
-        margin-right: 0;
+        margin-right: 0; /* 移除右側預留空間 */
+      }
+      
+      .right-sidebar {
+        position: static; /* 取消固定定位 */
+        width: 100%; /* 全寬 */
+        height: auto; /* 自動高度 */
+        border-left: none; /* 移除左邊框 */
+        border-top: 2px solid var(--border); /* 改成上邊框 */
+        max-width: var(--max-w); /* 限制最大寬度 */
+        margin: 32px auto 0; /* 置中並加上間距 */
+        padding: 28px 20px; /* 調整內距 */
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .sidebar-header {
+        font-size: 20px;
+        text-align: center;
+        justify-content: center;
+        margin-bottom: 8px;
+      }
+      
+      /* 小螢幕時用 grid 排列側邊欄項目 */
+      .right-sidebar > a.sidebar-item {
+        display: inline-flex;
+      }
+      
+      .right-sidebar::after {
+        content: '';
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+        width: 100%;
+      }
+    }
+    
+    /* 在小螢幕時將所有 sidebar-item 改成 grid 佈局 */
+    @media (max-width: 1440px) {
+      .right-sidebar {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+        align-items: start;
+      }
+      
+      .sidebar-header {
+        grid-column: 1 / -1; /* 標題佔滿整行 */
+      }
+      
+      .sidebar-item {
+        font-size: 15px;
+        padding: 12px 10px;
+        justify-content: center;
+        text-align: center;
       }
     }
 
@@ -535,11 +590,34 @@
       .profile-card {
         padding: 22px 18px 20px;
       }
+      
+      .right-sidebar {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding: 24px 16px;
+      }
+      
+      .sidebar-item {
+        font-size: 13px;
+        padding: 10px 6px;
+        flex-direction: column;
+        gap: 4px;
+      }
+      
+      .sidebar-item .num {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+      }
     }
 
     @media (max-width: 360px) {
       .quiz-grid,
       .exam-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .right-sidebar {
         grid-template-columns: repeat(2, 1fr);
       }
     }
