@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 5 - Meet Splash: An Otter in Training for Underwater Search</title>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #FFF8F0;
+      --main-text: #1A0F00;
+      --h1-color: #C0392B;
+      --h2-color: #1565C0;
+      --h3-color: #2E7D32;
+      --accent-a: #E65100;
+      --accent-b: #6A1B9A;
+      --keyword-color: #0D47A1;
+      
+      /* Card Colors */
+      --card-1-bg: #F3F8FF; --card-1-border: #90CAF9; --card-1-header: #0D47A1;
+      --card-2-bg: #FFF3EF; --card-2-border: #FFAB91; --card-2-header: #BF360C;
+      --card-3-bg: #F1F8F2; --card-3-border: #81C784; --card-3-header: #1B5E20;
+      --card-4-bg: #F9F0FF; --card-4-border: #CE93D8; --card-4-header: #4A148C;
+      --card-5-bg: #FAF6F0; --card-5-border: #C4A06A; --card-5-header: #4A3728;
+      
+      /* Tag Colors */
+      --tag-deri-bg: #FDEDEC; --tag-deri-text: #C0392B;
+      --tag-root-bg: #EBF5FB; --tag-root-text: #1565C0;
+      --tag-phra-bg: #EAFAF1; --tag-phra-text: #2E7D32;
+      --tag-idio-bg: #FEF9E7; --tag-idio-text: #D68910;
+      --tag-conf-bg: #F5EEF8; --tag-conf-text: #6A1B9A;
+      --tag-prep-bg: #E8F5E9; --tag-prep-text: #2E7D32;
+      --tag-emph-bg: #FEF0E7; --tag-emph-text: #E65100;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'BIZ UDPGothic', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--main-text);
+      line-height: 1.85;
+      font-size: 22px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      padding: 40px 20px 80px;
+    }
+
+    /* ========== IMAGE MIMIC TOP SECTION STYLING ========== */
+    .img-mimic-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto 28px auto;
+      box-sizing: border-box;
+    }
+    .img-mimic-outer-card {
+      background-color: #FFF5EB;
+      border: 2px solid #FFD9B3;
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 6px 18px rgba(230, 115, 0, 0.05);
+      margin-bottom: 28px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .img-mimic-outer-title {
+      color: #8A4F1D;
+      font-size: 26px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 22px;
+      letter-spacing: 0.05em;
+    }
+    .img-mimic-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+    }
+    .img-mimic-sub-card {
+      flex: 1 1 250px;
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      padding: 22px 20px;
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+      box-sizing: border-box;
+    }
+    .img-mimic-sub-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+    .img-mimic-sub-card.card-echo { border: 2.5px solid #F4845F; }
+    .img-mimic-sub-card.card-analysis { border: 2.5px solid #4CAF50; }
+    .img-mimic-sub-card.card-line { border: 2.5px solid #2196F3; }
+
+    .img-mimic-tag {
+      font-size: 14px;
+      font-weight: 700;
+      color: #9C27B0;
+      margin-bottom: 8px;
+    }
+    .img-mimic-card-title {
+      font-size: 21px;
+      font-weight: 700;
+      color: #1A0F00;
+      margin-top: 0;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+    .img-mimic-card-body {
+      font-size: 15px;
+      color: #555555;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .img-mimic-header-card {
+      background-color: #FFFDFB;
+      border: 3.5px solid #C0392B;
+      border-radius: 24px;
+      padding: 38px 28px;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(192, 57, 43, 0.06);
+      box-sizing: border-box;
+      margin-bottom: 28px;
+    }
+    .img-mimic-header-title {
+      color: #C0392B;
+      font-size: clamp(28px, 5.5vw, 44px) !important;
+      font-weight: 800 !important;
+      line-height: 1.25 !important;
+      margin: 0 0 18px 0 !important;
+      letter-spacing: -0.01em !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      padding: 0 !important;
+    }
+    .img-mimic-header-subtitle {
+      color: #1565C0 !important;
+      font-size: clamp(20px, 4vw, 26px) !important;
+      font-weight: 700 !important;
+      margin: 0 0 14px 0 !important;
+      line-height: 1.35 !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      padding: 0 !important;
+    }
+    .img-mimic-header-author {
+      color: #1565C0 !important;
+      font-size: clamp(16px, 3.5vw, 20px) !important;
+      font-weight: 700 !important;
+      margin: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      padding: 0 !important;
+    }
+    .img-mimic-header-author span.agent {
+      font-family: 'Times New Roman', Georgia, serif;
+      font-style: italic;
+      font-weight: bold;
+      font-size: 1.15em;
+    }
+
+    /* Sections */
+    h2 {
+      color: var(--h2-color);
+      font-size: 2.2rem;
+      margin: 40px 0 16px 0;
+      font-weight: 700;
+    }
+    
+    .card {
+      border-radius: 16px;
+      margin-bottom: 40px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(26, 15, 0, 0.06);
+      border: 3px solid;
+      background: #fff;
+    }
+    .card-header {
+      padding: 16px 24px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.6rem;
+    }
+    .card-content {
+      padding: 24px;
+    }
+
+    /* Keyword highlighting in article */
+    .keyword {
+      color: var(--keyword-color);
+      font-weight: 700;
+    }
+
+    /* Section specific card styles */
+    .card-1 { border-color: var(--card-1-border); background: var(--card-1-bg); }
+    .card-1 .card-header { background: var(--card-1-header); }
+    
+    .card-2 { border-color: var(--card-2-border); background: var(--card-2-bg); }
+    .card-2 .card-header { background: var(--card-2-header); }
+    
+    .card-3 { border-color: var(--card-3-border); background: var(--card-3-bg); }
+    .card-3 .card-header { background: var(--card-3-header); }
+    
+    .card-4 { border-color: var(--card-4-border); background: var(--card-4-bg); }
+    .card-4 .card-header { background: var(--card-4-header); }
+    
+    .card-5 { border-color: var(--card-5-border); background: var(--card-5-bg); }
+    .card-5 .card-header { background: var(--card-5-header); }
+
+    /* Circular number badges */
+    .badge-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--h2-color);
+      color: #fff;
+      font-weight: 700;
+      font-size: 18px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .close-reading-item {
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1.5px dashed rgba(26, 15, 0, 0.12);
+    }
+    .close-reading-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .close-reading-item h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      color: var(--h3-color);
+    }
+    .quote-box {
+      background: #FFFFFF;
+      padding: 16px 20px;
+      border-radius: 12px;
+      border-left: 6px solid var(--h2-color);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .sub-box {
+      margin-top: 10px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.65);
+    }
+
+    /* Vocabulary Items styling */
+    .vocab-item {
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 1.5px dashed rgba(26, 15, 0, 0.12);
+    }
+    .vocab-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .vocab-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .vocab-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--keyword-color);
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .vocab-word {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--keyword-color);
+    }
+    .vocab-kk {
+      font-size: 1.1rem;
+      color: var(--h1-color);
+    }
+    .vocab-pos {
+      font-size: 1.1rem;
+      color: var(--main-text);
+      font-weight: 700;
+    }
+    .vocab-meaning {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+    .vocab-line {
+      margin: 10px 0;
+    }
+    
+    /* Pills labels */
+    .pill {
+      display: inline-block;
+      padding: 4px 14px;
+      border-radius: 20px 0 0 20px;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .pill-deriv { background-color: var(--h1-color); }
+    .pill-root { background-color: var(--h2-color); }
+    .pill-phra { background-color: var(--h3-color); }
+    .pill-idio { background-color: #D68910; }
+    .pill-conf { background-color: var(--accent-b); }
+    .pill-prep { background-color: #00695C; }
+    .pill-pattern { background-color: #C62828; }
+
+    /* Example sentences font size consistency */
+    .vocab-item p, .vocab-item li, .tag-content {
+      font-size: 22px !important;
+      font-family: 'BIZ UDPGothic', sans-serif !important;
+      font-weight: 400 !important;
+      color: var(--main-text) !important;
+      line-height: 1.85 !important;
+    }
+    .vocab-item ul {
+      margin: 12px 0 0 24px;
+      padding-left: 0;
+    }
+    .vocab-item li {
+      margin: 8px 0;
+      list-style-type: square;
+    }
+
+    /* Grammar Point styles */
+    .grammar-item {
+      margin-bottom: 38px;
+      padding-bottom: 28px;
+      border-bottom: 1.5px dashed rgba(26, 15, 0, 0.12);
+    }
+    .grammar-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+    .grammar-item h3 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--accent-b);
+      margin: 0 0 16px 0;
+    }
+    .grammar-segment {
+      margin-top: 14px;
+    }
+    .grammar-segment strong {
+      color: var(--accent-b);
+    }
+    .grammar-item ul {
+      margin: 8px 0 0 24px;
+    }
+    .grammar-item li {
+      margin: 6px 0;
+    }
+
+    /* Native Details/Summary collapse */
+    details {
+      margin-top: 24px;
+      border: 3px solid var(--card-5-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(26, 15, 0, 0.05);
+      background: #fff;
+    }
+    summary {
+      padding: 20px 24px;
+      background: var(--card-5-header);
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 700;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      user-select: none;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    summary .arrow {
+      transition: transform 0.3s ease;
+      font-size: 24px;
+    }
+    details[open] .arrow {
+      transform: rotate(180deg);
+    }
+    details .detail-body {
+      padding: 24px;
+      background: var(--card-5-bg);
+    }
+
+    /* Fold list styles */
+    .prefix-item, .suffix-item {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--card-5-border);
+      font-size: 1.05rem;
+    }
+    .prefix-item:last-child, .suffix-item:last-child {
+      border-bottom: none;
+    }
+    .pf {
+      color: var(--card-5-header);
+      font-weight: 700;
+    }
+
+    @media (max-width: 720px) {
+      body {
+        font-size: 20px;
+      }
+      .img-mimic-outer-card { padding: 20px 16px; }
+      .img-mimic-header-card { padding: 28px 18px; }
+      .img-mimic-outer-title { font-size: 22px; margin-bottom: 16px; }
+      .img-mimic-card-title { font-size: 18px; }
+      .img-mimic-card-body { font-size: 13.5px; }
+      .card-header { font-size: 1.3rem; }
+      h2 { font-size: 1.7rem; }
+      .vocab-word { font-size: 1.5rem; }
+      .vocab-item p, .vocab-item li, .tag-content {
+        font-size: 20px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    
+    <!-- ===== TOP NAVIGATION & PAGE HEADER (MIMICKED) ===== -->
+    <div class="img-mimic-container">
+      <div class="img-mimic-outer-card">
+        <div class="img-mimic-outer-title">七月開課與聯絡資訊</div>
+        <div class="img-mimic-flex">
+          <a class="img-mimic-sub-card card-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+            <div class="img-mimic-tag">七月課程介紹</div>
+            <div class="img-mimic-card-title">錯中學 ECHO 計劃</div>
+            <div class="img-mimic-card-body">用錯題分析建立個人化學習路徑，適合暑期想補強英文閱讀與文法的同學。</div>
+          </a>
+          <a class="img-mimic-sub-card card-analysis" href="https://linwayet.github.io/popup/index" target="_blank">
+            <div class="img-mimic-tag">七月課程介紹</div>
+            <div class="img-mimic-card-title">學生分析</div>
+            <div class="img-mimic-card-body">查看學習狀況與弱點整理，協助安排更精準的複習方向。</div>
+          </a>
+          <a class="img-mimic-sub-card card-line" href="https://line.me/ti/p/linwayet" target="_blank">
+            <div class="img-mimic-tag">個人 Line 帳號</div>
+            <div class="img-mimic-card-title">linwayet</div>
+            <div class="img-mimic-card-body">課程詢問、教材使用與暑期規劃，可直接透過 Line 聯絡。</div>
+          </a>
+        </div>
+      </div>
+      <div class="img-mimic-header-card">
+        <h1 class="img-mimic-header-title">Unit 5 - Meet Splash</h1>
+        <div class="img-mimic-header-subtitle">An Otter in Training for Underwater Search</div>
+        <div class="img-mimic-header-author">林威老師與 <span class="agent">AI agent</span> 團隊製作</div>
+      </div>
+    </div>
+
+    <!-- ========== 區塊一：英文文章原文 ========== -->
+    <section>
+      <h2>【區塊一】英文文章原文</h2>
+      <div class="card card-1">
+        <div class="card-header">英文文章原文 Original Article</div>
+        <div class="card-content">
+          <p>Please meet a brave and <strong class="keyword">athletic</strong> member of a search and <strong class="keyword">rescue</strong> team. ...</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 區塊二：8句精讀 ========== -->
+    <section>
+      <h2>【區塊二】8句精讀</h2>
+      <div class="card card-2">
+        <div class="card-header">8句精讀 8 Key Sentence Analyses</div>
+        <div class="card-content">
+          
+          <div class="close-reading-item">
+            <h3><span class="badge-circle">①</span> 句 1</h3>
+            <div class="quote-box">Please meet a brave and athletic member of a search and rescue team.</div>
+            <div class="sub-box">請見見搜救隊中一位勇敢且擅長運動的成員。</div>
+            <div class="sub-box"><strong>文法解析：</strong>本句為祈使句。以動詞原形 <em>meet</em> 開頭，省略了主詞 <em>you</em>。<em>a brave and athletic member...</em> 為受詞名詞片語，其中兩個形容詞由 <em>and</em> 連接，共同修飾單數名詞 <em>member</em>。</div>
+            <div class="sub-box">
+              <span class="pill pill-phra">亮點詞彙</span><span class="tag-content"><strong>athletic</strong>（擅長運動的）；<strong>rescue</strong>（救援）</span>
+            </div>
+          </div>
+
+          <div class="close-reading-item">
+            <h3><span class="badge-circle">②</span> 句 2</h3>
+            <div class="quote-box">With trainer Wayne Farris and the team at Pacific Marine Mammal Center, a sea otter named Splash has become one of the most unique animals working alongside humans.</div>
+            <div class="sub-box">在訓練員韋恩·法里斯以及太平洋海洋哺乳動物中心團隊的協助下，一隻名叫 Splash 的海獺已成為與人類並肩工作最獨特的動物之一。</div>
+            <div class="sub-box"><strong>文法解析：</strong>句型結構為過去分詞與現在分詞作後置修飾。<em>named Splash</em> 是過去分詞片語，後置修飾主詞 <em>a sea otter</em>；句尾的 <em>working alongside humans</em> 是現在分詞片語，後置修飾 <em>animals</em>，表示主動關係，說明這些動物目前的工作狀態。</div>
+            <div class="sub-box">
+              <span class="pill pill-phra">亮點片語</span><span class="tag-content"><strong>named</strong>（被命名為……的）；<strong>working alongside</strong>（與……並肩工作）；<strong>mammal</strong>（哺乳動物）</span>
+            </div>
+          </div>
+
+          <div class="close-reading-item">
+            <h3><span class="badge-circle">③</span> 句 3</h3>
+            <div class="quote-box">During training sessions, each task is paired with a reward—usually seafood like shrimp or clams.</div>
+            <div class="sub-box">在訓練期間，每一項任務都會配有獎勵——通常是像蝦或蛤蜊之類的海鮮。</div>
+            <div class="sub-box"><strong>文法解析：</strong>句型結構為被動語態與同位語。<em>is paired with</em> 呈現現在簡單式的被動語態，表示「被與……配對」。破折號後面的 <em>usually seafood like...</em> 作為 <em>reward</em> 的同位語，用來補充說明獎勵的具體內容。</div>
+            <div class="sub-box">
+              <span class="pill pill-phra">亮點詞彙</span><span class="tag-content"><strong>pair with</strong>（與……配對/結合）；<strong>reward</strong>（獎勵）</span>
+            </div>
+          </div>
+
+          <div class="close-reading-item">
+            <h3><span class="badge-circle">④</span> 句 4</h3>
+            <div class="quote-box">Otters are natural divers, able to hold their breath for several minutes and navigate easily below the surface.</div>
+            <div class="sub-box">海獺是天生的潛水員，能夠屏住呼吸數分鐘，並在水面下輕鬆導航。</div>
+            <div class="sub-box"><strong>文法解析：</strong>句型結構為形容詞片語後置修飾。<em>able to hold... and navigate...</em> 是形容詞片語，用以修飾先行名詞 <em>divers</em>，其功能相當於一個省略了關係代名詞和 be 動詞的非限定形容詞子句（who are able to...）。</div>
+            <div class="sub-box">
+              <span class="pill pill-phra">亮點片語</span><span class="tag-content"><strong>hold one's breath</strong>（屏息）；<strong>navigate</strong>（導航，航行）</span>
+            </div>
+          </div>
+
+          <div class="close-reading-item">
+            <h3><span class="badge-circle">⑤</span> 句 5</h3>
+            <div class="quote-box">The program works by slowly introducing Splash to more challenging tasks.</div>
+            <div class="sub-box">該計畫透過逐漸向 Splash 引入更具挑戰性的任務來運作。</div>
+            <div class="sub-box"><strong>文法解析：</strong>句型結構為介係詞後接動名詞表示方式。<em>by slowly introducing...</em> 為介係詞片語充當方式狀語，其中 <em>introducing</em> 為動名詞，後接 <em>introduce A to B</em> 結構（將 A 介紹/引導至 B）。</div>
+            <div class="sub-box">
+              <span class="pill pill-phra">亮點片語</span><span class="tag-content"><strong>introduce ... to ...</strong>（將……引導至……）；<strong>challenging</strong>（具挑戰性的）</span>
+            </div>
+          </div>
+
+          <div class="close-reading-item">
+            <h3><span class="badge-circle">⑥</span> 句 6</h3>
+            <div class="quote-box">At first, trainers place objects in shallow water for the otter to retrieve.</div>
+            <div class="sub-box">起初，訓練員會將物體放在淺水中讓海獺取回。</div>
+            <div class="sub-box"><strong>文法解析：</strong>句型結構為不定詞作形容詞修飾與邏輯主詞。<em>for the otter to retrieve</em> 是不定詞片語作形容詞修飾 <em>objects</em>，其中 <em>for the otter</em> 是該不定詞動作 <em>to retrieve</em> 的邏輯主詞。</div>
+            <div class="sub-box">
+              <span class="pill pill-phra">亮點詞彙</span><span class="tag-content"><strong>shallow</strong>（淺的）；<strong>retrieve</strong>（找回，取回）</span>
+            </div>
+          </div>
+
+          <div class="close-reading-item">
+            <h3><span class="badge-circle">⑦</span> 句 7</h3>
+            <div class="quote-box">The goal of the program is not only to train one otter, but also to better understand how sea otters can support human teams in the future.</div>
+            <div class="sub-box">該計畫的目標不僅是訓練一隻海獺，更是為了更好地理解海獺未來如何支持人類團隊。</div>
+            <div class="sub-box"><strong>文法解析：</strong>對等關聯連接詞與賓語子句。句中使用 <em>not only ... but also ...</em> 連接兩個作主詞補語的不定詞片語（to train ... and to understand ...）。在第二個不定詞短語中，<em>how sea otters can...</em> 是關係副詞引導的名詞子句，作動詞 <em>understand</em> 的受詞。</div>
+            <div class="sub-box">
+              <span class="pill pill-phra">亮點片語</span><span class="tag-content"><strong>not only ... but also ...</strong>（不僅……而且……）；<strong>support</strong>（支持）</span>
+            </div>
+          </div>
+
+          <div class="close-reading-item">
+            <h3><span class="badge-circle">⑧</span> 句 8</h3>
+            <div class="quote-box">In situations where visibility is poor or the environment is too dangerous for divers, an animal like Splash could play a key role.</div>
+            <div class="sub-box">在能見度差或環境對潛水員來說太危險的情況下，像 Splash 這樣的動物可以發揮關鍵作用。</div>
+            <div class="sub-box"><strong>文法解析：</strong>關係副詞引導形容詞子句。關係副詞 <em>where</em> 引導形容詞子句，修飾先行詞 <em>situations</em>。子句中包含兩個由對等連接詞 <em>or</em> 連接的簡單句。主句主詞為 <em>an animal</em>，助動詞 <em>could</em> 表示可能性。</div>
+            <div class="sub-box">
+              <span class="pill pill-phra">亮點片語</span><span class="tag-content"><strong>play a key role</strong>（扮演關鍵角色）；<strong>visibility</strong>（能見度）</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 區塊三：20個單字整理 ========== -->
+    <section>
+      <h2>【區塊三】20 個關鍵單字整理</h2>
+      <div class="card card-3">
+        <div class="card-header">單字表 Vocabulary List</div>
+        <div class="card-content">
+          
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">1</span>
+              <span class="vocab-word">athletic</span>
+              <span class="vocab-kk">[æθˈlɛtɪk]</span>
+              <span class="vocab-pos">(adj.)</span>
+              <span class="vocab-meaning">健壯的，擅長運動的，體育的</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">athlete [ˈæθlit] (n. 運動員)；athletics [æθˈlɛtɪks] (n. 體育運動)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">athletic prowess (高超的運動技能)；athletic training (體育訓練)</span></p>
+            <ul>
+              <li>Please meet a brave and athletic member of a search and rescue team.<br>（請見見搜救隊中一位勇敢且健壯的成員。）</li>
+              <li>He has always been very athletic, playing soccer and basketball since childhood.<br>（他一直非常有運動天賦，從小就踢足球和打籃球。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">2</span>
+              <span class="vocab-word">rescue</span>
+              <span class="vocab-kk">[ˈrɛskju]</span>
+              <span class="vocab-pos">(n./v.)</span>
+              <span class="vocab-meaning">救援，營救</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">rescuer [ˈrɛskjuɚ] (n. 救援者，救助者)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">search and rescue (搜救)；come to the rescue (前來營救)</span></p>
+            <ul>
+              <li>This sea otter is a brave member of the search and rescue team.<br>（這隻海獺是搜救隊中一位勇敢的成員。）</li>
+              <li>Firefighters managed to rescue the cat that was stuck in the tall tree.<br>（消防員成功營救了那隻困在高樹上的貓。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">3</span>
+              <span class="vocab-word">marine</span>
+              <span class="vocab-kk">[məˈrin]</span>
+              <span class="vocab-pos">(adj.)</span>
+              <span class="vocab-meaning">海洋的，海生的，海事的</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">mariner [ˈmærənɚ] (n. 水手，船員)；maritime [ˈmærəˌtaɪm] (adj. 海事的)</span></p>
+            <p class="vocab-line"><span class="pill pill-root">字根</span><span class="tag-content">mari「海」：marine 海中的；submarine 潛水艇；mermaid 美人魚</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">marine mammal (海洋哺乳動物)；marine biology (海洋生物學)</span></p>
+            <ul>
+              <li>Splash was trained at the Pacific Marine Mammal Center.<br>（Splash 是在太平洋海洋哺乳動物中心接受訓練的。）</li>
+              <li>Pollution in the ocean poses a severe threat to all marine life.<br>（海洋污染對所有海洋生物造成了嚴重的威脅。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">4</span>
+              <span class="vocab-word">mammal</span>
+              <span class="vocab-kk">[ˈmæməl]</span>
+              <span class="vocab-pos">(n.)</span>
+              <span class="vocab-meaning">哺乳動物</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">mammalian [mæˈmelɪən] (adj. 哺乳動物的)；mammalia [mæˈmelɪə] (n. 哺乳綱)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">aquatic mammals (水生哺乳動物)；terrestrial mammals (陸生哺乳動物)</span></p>
+            <ul>
+              <li>The center helps sick and injured marine mammals recover.<br>（該中心幫助生病和受傷的海洋哺乳動物康復。）</li>
+              <li>Whales are mammals, which means they give birth to live young and breathe air.<br>（鯨魚是哺乳動物，這意味著牠們胎生並用肺呼吸空氣。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">5</span>
+              <span class="vocab-word">unique</span>
+              <span class="vocab-kk">[juˈnik]</span>
+              <span class="vocab-pos">(adj.)</span>
+              <span class="vocab-meaning">獨一無二的，獨特的</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">uniquely [juˈniklɪ] (adv. 獨特地)；uniqueness [juˈniknɪs] (n. 獨特性)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">uniquely qualified (具有獨特資格的)；a unique feature (一個獨特的特徵)</span></p>
+            <ul>
+              <li>Splash has become one of the most unique animals working alongside humans.<br>（Splash 已成為與人類並肩工作最獨特的動物之一。）</li>
+              <li>Every snowflake is unique, with its own complex and beautiful pattern.<br>（每一片雪花都是獨一無二的，有其自己複雜而美麗的圖案。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">6</span>
+              <span class="vocab-word">reward</span>
+              <span class="vocab-kk">[rɪˈwɔrd]</span>
+              <span class="vocab-pos">(n./v.)</span>
+              <span class="vocab-meaning">獎勵，回報，報酬</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">rewarding [rɪˈwɔrdɪŋ] (adj. 有回報的，值得做的)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">receive a reward (得到獎勵)；financial reward (金錢回報)</span></p>
+            <ul>
+              <li>During training sessions, each task is paired with a reward.<br>（在訓練期間，每一項任務都會配有獎勵。）</li>
+              <li>The company will reward employee performance with a generous year-end bonus.<br>（公司將用豐厚的年終獎金來獎勵員工的表現。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">7</span>
+              <span class="vocab-word">reinforcement</span>
+              <span class="vocab-kk">[ˌriɪnˈforsmənt]</span>
+              <span class="vocab-pos">(n.)</span>
+              <span class="vocab-meaning">加強，強化，增援部隊</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">reinforce [ˌriɪnˈfors] (v. 加強；增援)；enforce [ɪnˈfors] (v. 強制執行)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">positive reinforcement (正增強)；send reinforcements (派出增援部隊)</span></p>
+            <ul>
+              <li>Pairing each task with seafood like shrimp or clams is called positive reinforcement.<br>（將每項任務與蝦或蛤蜊等海鮮配對被稱為正增強。）</li>
+              <li>The beams were added to the building's ceiling for structural reinforcement.<br>（天花板上增加了大樑，用於結構加固。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">8</span>
+              <span class="vocab-word">recognize</span>
+              <span class="vocab-kk">[ˈrɛkəɡˌnaɪz]</span>
+              <span class="vocab-pos">(v.)</span>
+              <span class="vocab-meaning">認出，識別，認可</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">recognition [ˌrɛkəɡˈnɪʃən] (n. 識別；認可)；recognizable [ˈrɛkəɡˌnaɪzəbl] (adj. 可辨認的)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">recognize the need to VR (認同做某事的需要，to為不定詞)；beyond recognition (無法辨認)</span></p>
+            <ul>
+              <li>Over time, Splash has learned to recognize specific objects underwater.<br>（隨著時間的推移，Splash 已經學會了識別水下的特定物體。）</li>
+              <li>I was so surprised to recognize my elementary school teacher at the airport.<br>（在機場認出我的國小老師讓我感到非常驚訝。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">9</span>
+              <span class="vocab-word">navigate</span>
+              <span class="vocab-kk">[ˈnævəˌɡet]</span>
+              <span class="vocab-pos">(v.)</span>
+              <span class="vocab-meaning">導航，辨識方向，尋找路徑，航行</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">navigation [ˌnævəˈeʃən] (n. 導航)；navigator [ˈnævəˌɡetɚ] (n. 領航員)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">navigate the web (瀏覽網路)；navigate difficult situations (處理困難情況)</span></p>
+            <ul>
+              <li>Otters are natural divers, able to navigate easily below the surface.<br>（海獺是天生的潛水員，能夠在水面下輕鬆辨別方向。）</li>
+              <li>Sailors used to look at the stars at night to navigate their ships across the ocean.<br>（船員們過去常在夜間看星星，以引導船隻穿過海洋。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">10</span>
+              <span class="vocab-word">instinct</span>
+              <span class="vocab-kk">[ˈinstɪŋkt]</span>
+              <span class="vocab-pos">(n.)</span>
+              <span class="vocab-meaning">本能，天性，直覺</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">instinctive [ɪnˈstɪŋktɪv] (adj. 本能的，直覺的)；instinctively [ɪnˈstɪŋktɪvlɪ] (adv. 本能地)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">survival instinct (生存本能)；follow one's instincts (跟隨某人的直覺)</span></p>
+            <ul>
+              <li>Splash uses these same instincts during training exercises.<br>（Splash 在訓練演習中利用了這些相同的本能。）</li>
+              <li>A mother bird has a natural instinct to protect her nest from danger.<br>（母鳥有一種天然的本能去保護牠的巢穴免受危險。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">11</span>
+              <span class="vocab-word">mimic</span>
+              <span class="vocab-kk">[ˈmɪmɪk]</span>
+              <span class="vocab-pos">(v./n.)</span>
+              <span class="vocab-meaning">模仿，模擬；模仿者</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">mimicry [ˈmɪmɪkrɪ] (n. 模仿，擬態)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">mimic real-life events (模擬真實生活事件)</span></p>
+            <ul>
+              <li>Splash uses instincts during training exercises that mimic real search scenarios.<br>（Splash 在模擬真實搜尋場景的訓練演習中利用了本能。）</li>
+              <li>The parrot can mimic the human voice with incredible accuracy.<br>（這隻鸚鵡能以令人難以置信的準確度模仿人類的聲音。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">12</span>
+              <span class="vocab-word">scenario</span>
+              <span class="vocab-kk">[səˈnɛrɪˌo]</span>
+              <span class="vocab-pos">(n.)</span>
+              <span class="vocab-meaning">場景，可能發生的情況，情節</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">scenery [ˈsinərɪ] (n. 風景，景色)；scene [sin] (n. 現場；場景)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">worst-case scenario (最壞的情況)；best-case scenario (最好的情況)</span></p>
+            <ul>
+              <li>The team designed exercises that mimic real search scenarios.<br>（該團隊設計了模擬真實搜救場景的演習。）</li>
+              <li>In the worst-case scenario, the flight will be canceled due to the typhoon.<br>（在最壞的情況下，班機將因颱風而取消。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">13</span>
+              <span class="vocab-word">retrieve</span>
+              <span class="vocab-kk">[rɪˈtriv]</span>
+              <span class="vocab-pos">(v.)</span>
+              <span class="vocab-meaning">收回，找回，重新獲得，檢索</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">retrieval [rɪˈtrivəl] (n. 收回，檢索)；irretrievable [ˌɪrɪˈtrivəbl] (adj. 無法挽回的)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">retrieve lost data (救回遺失的數據)；retrieve information (檢索資訊)</span></p>
+            <ul>
+              <li>Trainers place objects in shallow water for the otter to retrieve.<br>（訓練員將物體放在淺水中讓海獺取回。）</li>
+              <li>The dog jumped into the lake to retrieve the wooden stick for its owner.<br>（那隻狗跳進湖裡，幫主人取回木棍。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">14</span>
+              <span class="vocab-word">locate</span>
+              <span class="vocab-kk">[ˈloket]</span>
+              <span class="vocab-pos">(v.)</span>
+              <span class="vocab-meaning">找到……的位置，設置於，定位</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">location [loˈkeʃən] (n. 位置，地點)；allocated [ˈæləˌketɪd] (adj. 分配好的)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">locate the source of (找到……的源頭)；be located in/at (位於……)</span></p>
+            <ul>
+              <li>Splash locates the target using touch and sight, then surfaces with the object.<br>（Splash 利用觸覺和視覺找到目標，然後帶著物體浮上水面。）</li>
+              <li>Rescue workers used radar to locate the survivors of the earthquake under the rubble.<br>（救援人員使用雷達來定位瓦礫堆下的地震倖存者。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">15</span>
+              <span class="vocab-word">visibility</span>
+              <span class="vocab-kk">[ˌvɪzəˈbɪlətɪ]</span>
+              <span class="vocab-pos">(n.)</span>
+              <span class="vocab-meaning">能見度，可見度</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">visible [ˈvɪzəbl] (adj. 可見的)；vision [ˈvɪʒən] (n. 視力，視野)</span></p>
+            <p class="vocab-line"><span class="pill pill-root">字根</span><span class="tag-content">vis「見」：visible 可見的；invisible 看不見的；supervise 監督；vision 視覺</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">poor visibility (能見度低)；zero visibility (能見度為零)</span></p>
+            <ul>
+              <li>In situations where visibility is poor, Splash could play a key role.<br>（在能見度低的情況下，Splash 可以發揮關鍵作用。）</li>
+              <li>The thick fog reduced visibility to less than ten meters on the highway.<br>（濃霧使高速公路上的能見度降低到不足十公尺。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">16</span>
+              <span class="vocab-word">cognition</span>
+              <span class="vocab-kk">[kɑɡˈnɪʃən]</span>
+              <span class="vocab-pos">(n.)</span>
+              <span class="vocab-meaning">認知，感知能力</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">cognitive [ˈkɑɡnətɪv] (adj. 認知的)；cognizant [ˈkɑɡnɪzənt] (adj. 認知的，知曉的)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">animal cognition (動物認知)；social cognition (社會認知)</span></p>
+            <ul>
+              <li>The research helps scientists learn more about otter cognition and memory.<br>（這項研究有助於科學家進一步了解海獺的認知與記憶。）</li>
+              <li>Healthy habits and regular reading can prevent the decline of human cognition.<br>（健康習慣和規律閱讀可以防止人類認知能力的下降。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">17</span>
+              <span class="vocab-word">patience</span>
+              <span class="vocab-kk">[ˈpeʃəns]</span>
+              <span class="vocab-pos">(n.)</span>
+              <span class="vocab-meaning">耐心，忍耐力</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">patient [ˈpeʃənt] (adj. 有耐心的；n. 病人)；patiently [ˈpeʃəntlɪ] (adv. 耐心地)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">test one's patience (考驗某人的耐心)；have patience with (對……有耐心)</span></p>
+            <ul>
+              <li>Splash shows that with patience and trust, unexpected teammates can succeed.<br>（Splash 表明，有了耐心與信任，意想不到的隊友也能取得成功。）</li>
+              <li>Teaching young children requires a great deal of patience and understanding.<br>（教導幼兒需要極大的耐心與理解。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">18</span>
+              <span class="vocab-word">unexpected</span>
+              <span class="vocab-kk">[ˌʌnɪkˈspɛktɪd]</span>
+              <span class="vocab-pos">(adj.)</span>
+              <span class="vocab-meaning">意料之外的，突如其來的</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">expect [ɪkˈspɛkt] (v. 期待，預計)；expectation [ˌɛkspɛkˈteʃən] (n. 期望)</span></p>
+            <p class="vocab-line"><span class="pill pill-root">字根</span><span class="tag-content">spect「看」：inspect 檢查；respect 尊敬；expect 期待；suspect 懷疑</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">unexpected visitor (不速之客)；unexpected results (意想不到的結果)</span></p>
+            <ul>
+              <li>With plenty of snacks, even the unexpected teammates can rise to the challenge.<br>（有了足夠的零食，即使是意想不到的隊友也能迎接挑戰。）</li>
+              <li>An unexpected storm forced the travelers to seek shelter in a small cave.<br>（一場突如其來的暴風雨迫使旅行者在一處小山洞中尋求庇護。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">19</span>
+              <span class="vocab-word">challenge</span>
+              <span class="vocab-kk">[ˈtʃælɪndʒ]</span>
+              <span class="vocab-pos">(n./v.)</span>
+              <span class="vocab-meaning">挑戰，質疑</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">challenging [ˈtʃælɪndʒɪŋ] (adj. 具挑戰性的)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">rise to the challenge (迎難而上，迎接挑戰)；face a challenge (面對挑戰)</span></p>
+            <ul>
+              <li>Unexpected teammates can rise to the challenge and complete the task.<br>（意想不到的隊友也可以迎接挑戰並完成任務。）</li>
+              <li>Completing the marathon was the greatest physical challenge of her life.<br>（完成馬拉松是她一生中最大的體能挑戰。）</li>
+            </ul>
+          </div>
+
+          <div class="vocab-item">
+            <div class="vocab-header">
+              <span class="vocab-num">20</span>
+              <span class="vocab-word">shallow</span>
+              <span class="vocab-kk">[ˈʃælo]</span>
+              <span class="vocab-pos">(adj.)</span>
+              <span class="vocab-meaning">淺的，膚淺的</span>
+            </div>
+            <p class="vocab-line"><span class="pill pill-deriv">衍生詞</span><span class="tag-content">shallowness [ˈʃælonɪs] (n. 淺，膚淺)</span></p>
+            <p class="vocab-line"><span class="pill pill-idio">慣用語</span><span class="tag-content">shallow water (淺水區)；shallow argument (膚淺的論點)</span></p>
+            <ul>
+              <li>At first, trainers place objects in shallow water for the otter.<br>（起初，訓練員會把物體放在淺水中讓海獺練習。）</li>
+              <li>Young kids should swim in the shallow end of the pool under parental supervision.<br>（幼童應在父母的監督下在泳池的淺水區游泳。）</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 區塊四：文法解析 ========== -->
+    <section>
+      <h2>【區塊四】文法解析</h2>
+      <div class="card card-4">
+        <div class="card-header">文法解析 Grammar Analysis</div>
+        <div class="card-content">
+          
+          <div class="grammar-item">
+            <h3>1. 現在分詞片語作後置修飾（Present Participle Phrase as Post-modifier）</h3>
+            <div class="grammar-segment"><strong>【引句 Quote】</strong><div class="quote-box"><em>Splash has become one of the most unique animals working alongside humans.</em></div></div>
+            <div class="grammar-segment"><strong>【句型】</strong><div class="quote-box"><em><strong>N + V-ing ...</strong></em></div></div>
+            <div class="grammar-segment"><strong>【核心說明】</strong>
+              現在分詞片語（V-ing ...）可以用來修飾前面的名詞（先行詞），其邏輯是修飾語與被修飾詞之間具有「主動」或「正在進行」的關係。這種結構本質上是由「關係代名詞 + 主動動詞」所引導的形容詞子句簡化而來（例如將 <em>who work</em> 或 <em>which are working</em> 簡化為 <em>working</em>）。
+            </div>
+            <div class="grammar-segment"><strong>【使用規則】</strong>
+              <ul>
+                <li>規則一：必須確保修飾語（V-ing）與先行詞具有邏輯上的主動關係。如果是被動關係，則應使用過去分詞（V-ed）。</li>
+                <li>規則二：現在分詞片語後置修飾時，通常可以直接還原成形容詞子句。例如：<em>the boy running in the park</em> = <em>the boy who is running in the park</em>。</li>
+                <li>規則三：此結構常出現在「one of + 複數名詞 + V-ing」的句型中，用來精簡句子長度，使文章節奏更為明快。</li>
+              </ul>
+            </div>
+            <div class="grammar-segment"><strong>【主題例句】</strong>
+              <ul>
+                <li>We observed several sea otters swimming near the harbor.<br>（我們觀察到幾隻在港口附近游泳的海獺。）</li>
+                <li>The scientists studying marine cognition published their findings yesterday.<br>（研究海洋認知的科學家昨天發表了他們的研究結果。）</li>
+              </ul>
+            </div>
+            <div class="grammar-segment"><strong>【學習提醒】</strong>
+              不要將作後置修飾的現在分詞片語誤認為是句子的主要動詞。它在句中扮演的是形容詞的角色，主要動詞會在其它的位置。
+            </div>
+            <div class="grammar-segment"><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong>
+              <div class="sub-box">
+                ✗ The team working alongside Farris are very professional.<br>
+                ✓ The team working alongside Farris is very professional.<br>
+                <strong>說明：</strong><em>working alongside Farris</em> 為分詞片語，修飾單數主詞 <em>The team</em>，因此主要動詞應使用單數 <em>is</em> 而非複數 <em>are</em>。
+              </div>
+              <p>精選試題：The dolphin ________ (jump) through the hoop received a fish from its trainer.</p>
+              <p>答案：<strong>jumping</strong> 說明：此處需要現在分詞片語作後置修飾，與 dolphin 是主動關係，故用 jumping。</p>
+            </div>
+          </div>
+
+          <div class="grammar-item">
+            <h3>2. 介係詞後接動名詞表示方式或手段（By + V-ing）</h3>
+            <div class="grammar-segment"><strong>【引句 Quote】</strong><div class="quote-box"><em>The program works by slowly introducing Splash to more challenging tasks.</em></div></div>
+            <div class="grammar-segment"><strong>【句型】</strong><div class="quote-box"><em><strong>S + V + by + V-ing ...</strong></em></div></div>
+            <div class="grammar-segment"><strong>【核心說明】</strong>
+              介係詞 <em>by</em> 後接動名詞（V-ing）是英文中表達「藉由某種方式」或「透過某種手段」來達成某個動作的極常見句型。<em>by</em> 後的動名詞片語充當方式狀語。
+            </div>
+            <div class="grammar-segment"><strong>【使用規則】</strong>
+              <ul>
+                <li>規則一：介係詞 <em>by</em> 之後若要接動詞，必須將動詞轉化為動名詞（V-ing），絕對不可接原形動詞。</li>
+                <li>規則二：<em>by V-ing</em> 回答的是「How（如何辦到）」的問題，常用於說明方法、手段、或科學製程。</li>
+                <li>規則三：注意 <em>by V-ing</em> 與 <em>through + N</em> 的混用，當接動詞性概念時，<em>by</em> 為首選。</li>
+              </ul>
+            </div>
+            <div class="grammar-segment"><strong>【主題例句】</strong>
+              <ul>
+                <li>Splash locates the target by using touch and sight.<br>（Splash 透過使用觸覺和視覺來定位目標。）</li>
+                <li>You can support marine conservation by reducing your use of single-use plastics.<br>（你可以藉由減少使用一次性塑膠來支持海洋保育。）</li>
+              </ul>
+            </div>
+            <div class="grammar-segment"><strong>【學習提醒】</strong>
+              要注意不要與 <em>by the time</em>（到……時候）或表示被動語態中行為者的 <em>by + agent</em>（被……）混淆。
+            </div>
+            <div class="grammar-segment"><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong>
+              <div class="sub-box">
+                ✗ The trainers train the otter by give it seafood.<br>
+                ✓ The trainers train the otter by giving it seafood.<br>
+                <strong>說明：</strong>介係詞 <em>by</em> 後應接動名詞 <em>giving</em>，而非原形動詞 <em>give</em>。
+              </div>
+              <p>精選試題：Splash learned to hold its breath for minutes ________ (practice) daily.</p>
+              <p>答案：<strong>by practicing</strong> 說明：表達「透過每日練習」的方式，應使用 by + 動名詞。</p>
+            </div>
+          </div>
+
+          <div class="grammar-item">
+            <h3>3. 對等關聯連接詞 Not only... but also... 的平行對等用法</h3>
+            <div class="grammar-segment"><strong>【引句 Quote】</strong><div class="quote-box"><em>The goal of the program is not only to train one otter, but also to better understand how sea otters can support human teams...</em></div></div>
+            <div class="grammar-segment"><strong>【句型】</strong><div class="quote-box"><em><strong>not only A ... but also B ...</strong></em></div></div>
+            <div class="grammar-segment"><strong>【核心說明】</strong>
+              <em>not only ... but also ...</em> 意為「不僅……而且……」，用來並列兩個在句中語意及文法結構上對等（平行）的元素。A 與 B 的詞性、結構必須高度一致，例如同為名詞、形容詞、動詞、不定詞或子句。
+            </div>
+            <div class="grammar-segment"><strong>【使用規則】</strong>
+              <ul>
+                <li>規則一：平行對等原則。如果 A 是不定詞（to train），B 也必須是不定詞（to understand）。</li>
+                <li>規則二：<em>also</em> 常可省略，或者將 <em>as well</em> 放在句尾替代 <em>but also</em> 中的 <em>also</em>。</li>
+                <li>規則三：當 <em>Not only</em> 置於句首時，其引導的第一個子句必須實施「主動詞倒裝」（Inversion），而第二個子句則維持正常語序。</li>
+              </ul>
+            </div>
+            <div class="grammar-segment"><strong>【主題例句】</strong>
+              <ul>
+                <li>Splash is not only intelligent but also highly athletic.<br>（Splash 不僅聰明，而且運動細胞極佳。）</li>
+                <li>The research not only helps scientists understand otters but also improves training methods.<br>（這項研究不僅幫助科學家理解海獺，也改善了訓練方法。）</li>
+              </ul>
+            </div>
+            <div class="grammar-segment"><strong>【學習提醒】</strong>
+              注意主謂一致：當 <em>not only A but also B</em> 連接兩個不同單複數的主詞時，主要動詞的單複數須與「最接近的主詞（即 B）」一致（鄰近原則）。
+            </div>
+            <div class="grammar-segment"><strong>【⚠️ 常見錯誤 / 🎯 精選試題】</strong>
+              <div class="sub-box">
+                ✗ Not only the trainers but also Splash like seafood.<br>
+                ✓ Not only the trainers but also Splash likes seafood.<br>
+                <strong>說明：</strong>主要動詞應與最接近的主詞 <em>Splash</em>（單數）一致，故應使用單數動詞 <em>likes</em>。
+              </div>
+              <p>精選試題：Not only ________ (Splash / be) smart, but he also has great swimming skills. (將 Not only 置於句首倒裝)</p>
+              <p>答案：<strong>is Splash</strong> 說明：Not only 置於句首時，第一個子句要倒裝，因此 be 動詞 is 要提到主詞 Splash 之前。</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== 底部折疊區塊 ========== -->
+    <section>
+      <h2>【學習資料庫】</h2>
+      
+      <!-- Fold 1 -->
+      <details>
+        <summary><span>📘 折疊一：常見字首整理（50 個）</span><span class="arrow">▼</span></summary>
+        <div class="detail-body">
+          <div class="prefix-item"><span class="pf">ab-</span> 離開、相反 — abnormal（異常的）</div>
+          <div class="prefix-item"><span class="pf">ad-</span> 向、加 — advance（前進）</div>
+          <div class="prefix-item"><span class="pf">ambi-</span> 雙方、兩面 — ambiguous（模稜兩可的）</div>
+          <div class="prefix-item"><span class="pf">anti-</span> 反對、抗 — antibiotic（抗生素）</div>
+          <div class="prefix-item"><span class="pf">arch-</span> 主要、首要 — archenemy（死敵）</div>
+          <div class="prefix-item"><span class="pf">auto-</span> 自動、自我 — autograph（親筆簽名）</div>
+          <div class="prefix-item"><span class="pf">bene-</span> 好的、善 — benefit（好處）</div>
+          <div class="prefix-item"><span class="pf">bi-</span> 二、雙 — bilingual（雙語的）</div>
+          <div class="prefix-item"><span class="pf">circum-</span> 環繞、周圍 — circumstance（情況）</div>
+          <div class="prefix-item"><span class="pf">co-/con-/com-</span> 一起、共同 — cooperate（合作）</div>
+          <div class="prefix-item"><span class="pf">contra-</span> 相反、對抗 — contradict（反駁）</div>
+          <div class="prefix-item"><span class="pf">de-</span> 去除、下降 — decode（解碼）</div>
+          <div class="prefix-item"><span class="pf">dia-</span> 穿過、透過 — dialogue（對話）</div>
+          <div class="prefix-item"><span class="pf">dis-</span> 否定、分離 — disagree（不同意）</div>
+          <div class="prefix-item"><span class="pf">en-/em-</span> 使成為 — enable（使能夠）</div>
+          <div class="prefix-item"><span class="pf">epi-</span> 在上、在外 — epidemic（流行病）</div>
+          <div class="prefix-item"><span class="pf">ex-</span> 外、前任 — export（出口）；ex-president（前總統）</div>
+          <div class="prefix-item"><span class="pf">extra-</span> 額外、外部 — extraordinary（非凡的）</div>
+          <div class="prefix-item"><span class="pf">hetero-</span> 不同 — heterogeneous（異質的）</div>
+          <div class="prefix-item"><span class="pf">homo-</span> 相同 — homogeneous（同質的）</div>
+          <div class="prefix-item"><span class="pf">hyper-</span> 過度、超 — hyperactive（過動的）</div>
+          <div class="prefix-item"><span class="pf">hypo-</span> 低於、不足 — hypodermic（皮下的）</div>
+          <div class="prefix-item"><span class="pf">in-/im-</span> 否定、進入 — invisible（看不見的）；import（輸入）</div>
+          <div class="prefix-item"><span class="pf">inter-</span> 在…之間 — international（國際的）</div>
+          <div class="prefix-item"><span class="pf">iso-</span> 相等、相同 — isolate（隔離）</div>
+          <div class="prefix-item"><span class="pf">mal-</span> 壞、不良 — malfunction（故障）</div>
+          <div class="prefix-item"><span class="pf">micro-</span> 微小 — microscope（顯微鏡）</div>
+          <div class="prefix-item"><span class="pf">mis-</span> 錯誤 — misunderstand（誤解）</div>
+          <div class="prefix-item"><span class="pf">mono-</span> 單一 — monologue（獨白）</div>
+          <div class="prefix-item"><span class="pf">multi-</span> 多 — multicultural（多元文化的）</div>
+          <div class="prefix-item"><span class="pf">neo-</span> 新的 — neonatal（新生的）</div>
+          <div class="prefix-item"><span class="pf">non-</span> 非、沒有 — nonsense（無意義）</div>
+          <div class="prefix-item"><span class="pf">pan-</span> 全部 — pandemic（大流行病）</div>
+          <div class="prefix-item"><span class="pf">peri-</span> 周圍 — perimeter（周長）</div>
+          <div class="prefix-item"><span class="pf">poly-</span> 多 — polygon（多邊形）</div>
+          <div class="prefix-item"><span class="pf">post-</span> 之後 — postwar（戰後的）</div>
+          <div class="prefix-item"><span class="pf">pre-</span> 之前 — preview（預覽）</div>
+          <div class="prefix-item"><span class="pf">pro-</span> 向前、支持 — progress（進步）；pro-democracy（支持民主的）</div>
+          <div class="prefix-item"><span class="pf">pseudo-</span> 假的 — pseudonym（筆名）</div>
+          <div class="prefix-item"><span class="pf">re-</span> 再、回 — review（複習）</div>
+          <div class="prefix-item"><span class="pf">semi-</span> 一半、部分 — semicircle（半圓）</div>
+          <div class="prefix-item"><span class="pf">sub-</span> 在上、次級 — subway（地鐵）</div>
+          <div class="prefix-item"><span class="pf">super-</span> 超越、在上 — superstar（超級明星）</div>
+          <div class="prefix-item"><span class="pf">syn-/sym-</span> 一起、共同 — synchronize（同步）</div>
+          <div class="prefix-item"><span class="pf">tele-</span> 遠距 — telephone（電話）</div>
+          <div class="prefix-item"><span class="pf">trans-</span> 穿越、轉變 — transport（運輸）</div>
+          <div class="prefix-item"><span class="pf">tri-</span> 三 — triangle（三角形）</div>
+          <div class="prefix-item"><span class="pf">un-</span> 否定、不 — unhappy（不快樂的）</div>
+          <div class="prefix-item"><span class="pf">vice-</span> 副、代替 — vice-president（副總統）</div>
+        </div>
+      </details>
+
+      <!-- Fold 2 -->
+      <details>
+        <summary><span>📙 折疊二：常見英文字尾整理（約 30 個）</span><span class="arrow">▼</span></summary>
+        <div class="detail-body">
+          <div class="suffix-item"><strong>名詞字尾</strong></div>
+          <div class="suffix-item">-tion/-sion/-ation 動作、過程或結果 — education（教育）、decision（決定）</div>
+          <div class="suffix-item">-ment 行為或結果 — agreement（協議）、development（發展）</div>
+          <div class="suffix-item">-ness 狀態或性質 — happiness（快樂）、darkness（黑暗）</div>
+          <div class="suffix-item">-ity/-ty 抽象概念或狀態 — ability（能力）、cruelty（殘酷）</div>
+          <div class="suffix-item">-er/-or 執行某動作的人或物 — teacher（老師）、actor（演員）</div>
+          <div class="suffix-item">-ist 信仰或專業的人 — artist（藝術家）、scientist（科學家）</div>
+          <div class="suffix-item">-ship 身分或關係 — friendship（友誼）、leadership（領導）</div>
+          <div class="suffix-item">-hood 階段或狀態 — childhood（童年）、neighborhood（鄰里）</div>
+          
+          <div class="suffix-item" style="margin-top: 14px;"><strong>形容詞字尾</strong></div>
+          <div class="suffix-item">-able/-ible 能夠…的 — readable（可讀的）、credible（可信的）</div>
+          <div class="suffix-item">-ous 充滿…的 — dangerous（危險的）、famous（著名的）</div>
+          <div class="suffix-item">-ful 具有…的 — hopeful（充滿希望的）、beautiful（美麗的）</div>
+          <div class="suffix-item">-less 缺乏…的 — hopeless（絕望的）、powerless（無力的）</div>
+          <div class="suffix-item">-al/-ic 與…相關的 — natural（自然的）、poetic（詩意的）</div>
+          
+          <div class="suffix-item" style="margin-top: 14px;"><strong>動詞字尾</strong></div>
+          <div class="suffix-item">-ize/-ise 使成為… — realize（實現）、industrialize（工業化）</div>
+          <div class="suffix-item">-ify 使成為… — beautify（美化）、clarify（澄清）</div>
+          <div class="suffix-item">-ate 形成動詞 — dominate（支配）、activate（啟動）</div>
+          <div class="suffix-item">-en 使變成… — strengthen（加強）、soften（使柔軟）</div>
+          
+          <div class="suffix-item" style="margin-top: 14px;"><strong>副詞字尾</strong></div>
+          <div class="suffix-item">-ly 形容詞轉副詞 — quickly（快速地）、carefully（仔細地）</div>
+          <div class="suffix-item">-ward(s) 表示方向 — upwards（向上）、homeward（回家）</div>
+          <div class="suffix-item">-wise 表示方式或角度 — clockwise（順時針方向）</div>
+        </div>
+      </details>
+
+      <!-- Fold 3 -->
+      <details>
+        <summary><span>📗 折疊三：30個常用單字與衍生詞</span><span class="arrow">▼</span></summary>
+        <div class="detail-body compact-p">
+          <p>1. <strong>brave</strong> [brev] (adj. 勇敢的) — <strong>bravery</strong> [ˈbrevərɪ] (n. 勇敢)</p>
+          <p>2. <strong>athletic</strong> [æθˈlɛtɪk] (adj. 健壯的) — <strong>athlete</strong> [ˈæθlit] (n. 運動員)</p>
+          <p>3. <strong>search</strong> [sɝtʃ] (v./n. 搜尋) — <strong>searchlight</strong> [ˈsɝtʃˌlaɪt] (n. 探照燈)</p>
+          <p>4. <strong>rescue</strong> [ˈrɛskju] (v./n. 救援) — <strong>rescuer</strong> [ˈrɛskjuɚ] (n. 救援人員)</p>
+          <p>5. <strong>excellent</strong> [ˈɛksələnt] (adj. 優秀的) — <strong>excellence</strong> [ˈɛksələns] (n. 優秀)</p>
+          <p>6. <strong>dive</strong> [daɪv] (v./n. 潛水) — <strong>diver</strong> [ˈdaɪvɚ] (n. 潛水員)</p>
+          <p>7. <strong>object</strong> [ˈɑbdʒɪkt] (n. 物體) — <strong>objective</strong> [əbˈdʒɛktɪv] (adj. 客觀的；n. 目標)</p>
+          <p>8. <strong>marine</strong> [məˈrin] (adj. 海洋的) — <strong>submarine</strong> [ˌsʌbməˈrin] (n. 潛水艇)</p>
+          <p>9. <strong>mammal</strong> [ˈmæməl] (n. 哺乳動物) — <strong>mammalian</strong> [mæˈmelɪən] (adj. 哺乳動物的)</p>
+          <p>10. <strong>unique</strong> [juˈnik] (adj. 獨特的) — <strong>uniquely</strong> [juˈniklɪ] (adv. 獨特地)</p>
+          <p>11. <strong>reward</strong> [rɪˈwɔrd] (n./v. 獎勵) — <strong>rewarding</strong> [rɪˈwɔrdɪŋ] (adj. 有回報的，值得的)</p>
+          <p>12. <strong>seafood</strong> [ˈsiˌfud] (n. 海鮮) — <strong>fish</strong> [fɪʃ] (n. 魚)</p>
+          <p>13. <strong>reinforcement</strong> [ˌriɪnˈforsmənt] (n. 強化) — <strong>reinforce</strong> [ˌriɪnˈfors] (v. 加強)</p>
+          <p>14. <strong>recognize</strong> [ˈrɛkəɡˌnaɪz] (v. 認出) — <strong>recognition</strong> [ˌrɛkəɡˈnɪʃən] (n. 識別，認可)</p>
+          <p>15. <strong>specific</strong> [spɪˈsɪfɪk] (adj. 特定的) — <strong>specifically</strong> [spɪˈsɪfɪklɪ] (adv. 特別地，明確地)</p>
+          <p>16. <strong>surface</strong> [ˈsɝfɪs] (n. 表面) — <strong>surf</strong> [sɝf] (v. 衝浪)</p>
+          <p>17. <strong>navigate</strong> [ˈnævəˌɡet] (v. 導航) — <strong>navigation</strong> [ˌnævəˈgori] (n. 導航)</p>
+          <p>18. <strong>instinct</strong> [ˈɪnstɪŋkt] (n. 本能) — <strong>instinctive</strong> [ɪnˈstɪŋktɪv] (adj. 本能的)</p>
+          <p>19. <strong>mimic</strong> [ˈmɪmɪk] (v. 模仿) — <strong>mimicry</strong> [ˈmɪmɪkrɪ] (n. 模仿)</p>
+          <p>20. <strong>scenario</strong> [səˈnɛrɪˌo] (n. 場景) — <strong>scenery</strong> [ˈsinərɪ] (n. 風景)</p>
+          <p>21. <strong>challenge</strong> [ˈtʃælɪndʒ] (n./v. 挑戰) — <strong>challenging</strong> [ˈtʃælɪndʒɪŋ] (adj. 具挑戰性的)</p>
+          <p>22. <strong>shallow</strong> [ˈʃælo] (adj. 淺的) — <strong>shallowly</strong> [ˈʃælolɪ] (adv. 膚淺地)</p>
+          <p>23. <strong>retrieve</strong> [rɪˈtriv] (v. 尋回) — <strong>retrieval</strong> [rɪˈtrivəl] (n. 尋回，檢索)</p>
+          <p>24. <strong>improve</strong> [ɪmˈpruv] (v. 改善) — <strong>improvement</strong> [ɪmˈpruvmənt] (n. 改善)</p>
+          <p>25. <strong>locate</strong> [ˈloket] (v. 找到) — <strong>location</strong> [loˈkeʃən] (n. 位置)</p>
+          <p>26. <strong>visibility</strong> [ˌvɪzəˈbɪlətɪ] (n. 能見度) — <strong>visible</strong> [ˈvɪzəbl] (adj. 可見的)</p>
+          <p>27. <strong>dangerous</strong> [ˈdendʒərəs] (adj. 危險的) — <strong>danger</strong> [ˈdendʒɚ] (n. 危險)</p>
+          <p>28. <strong>cognition</strong> [kɑɡˈnɪʃən] (n. 認知) — <strong>cognitive</strong> [ˈkɑɡnətɪv] (adj. 認知的)</p>
+          <p>29. <strong>memory</strong> [ˈmɛmərɪ] (n. 記憶) — <strong>memorize</strong> [ˈmɛməˌraɪz] (v. 記住)</p>
+          <p>30. <strong>patience</strong> [ˈpeʃəns] (n. 耐心) — <strong>patient</strong> [ˈpeʃənt] (adj. 有耐心的；n. 病人)</p>
+          
+          <hr style="border: 0; border-top: 1px dashed rgba(26,15,0,0.1); margin: 16px 0;">
+          <p><strong>文章相關常用片語 5 個（不需例句）：</strong></p>
+          <p>• <strong>be excellent at</strong>（擅長於……）</p>
+          <p>• <strong>work alongside</strong>（與……並肩工作）</p>
+          <p>• <strong>pair with</strong>（與……配對）</p>
+          <p>• <strong>hold one's breath</strong>（屏住呼吸）</p>
+          <p>• <strong>play a key role</strong>（扮演關鍵角色）</p>
+        </div>
+      </details>
+
+      <!-- Fold 4 -->
+      <details>
+        <summary><span>💜 折疊四：練文筆食材</span><span class="arrow">▼</span></summary>
+        <div class="detail-body compact-p">
+          <p>① <strong>be excellent at...</strong>（擅長於...）<br>
+          → 適用：描述人或動物的特點與擅長技能。<br>
+          例：<i>She is excellent at solving complex math equations quickly.</i></p>
+          
+          <p>② <strong>work alongside sb.</strong>（與某人並肩工作）<br>
+          → 適用：強調合作、共同奮鬥或跨物種的協同合作。<br>
+          例：<i>Nurses work alongside doctors to provide the best care for patients.</i></p>
+          
+          <p>③ <strong>be paired with...</strong>（與...配對/結合）<br>
+          → 適用：描述兩個元素被結合成一對、互相搭配的情況。<br>
+          例：<i>Each guest was paired with a local guide to explore the city.</i></p>
+          
+          <p>④ <strong>hold one's breath</strong>（屏息，憋氣）<br>
+          → 適用：描述生理上的憋氣，或抽象中緊張期待的狀態。<br>
+          例：<i>The audience held their breath as the acrobat performed the stunt.</i></p>
+          
+          <p>⑤ <strong>mimic real scenarios</strong>（模擬真實場景）<br>
+          → 適用：說明訓練、實驗或教學中對現實情況的重現。<br>
+          例：<i>The training software is designed to mimic real flight scenarios.</i></p>
+          
+          <p>⑥ <strong>by V-ing...</strong>（藉由...）<br>
+          → 適用：詳細說明達到某種狀態或目的所採取的手段。<br>
+          例：<i>You can learn a new language by practicing speaking it every day.</i></p>
+          
+          <p>⑦ <strong>at first ... as skills improve ...</strong>（起初...隨著技能提升...）<br>
+          → 適用：描述一個技能或任務從簡單到複雜的演進過程。<br>
+          例：<i>At first, he practiced on easy routes, but as skills improved, he climbed higher mountains.</i></p>
+          
+          <p>⑧ <strong>not only... but also...</strong>（不只...而且...）<br>
+          → 適用：並列雙重特徵，起強調效果。<br>
+          例：<i>The library is not only a place to read but also a community center.</i></p>
+          
+          <p>⑨ <strong>play a key role in...</strong>（在...中扮演關鍵角色）<br>
+          → 適用：說明某人或某物在特定計畫、事件中的重要影響。<br>
+          例：<i>Education plays a key role in reducing poverty around the world.</i></p>
+          
+          <p>⑩ <strong>rise to the challenge</strong>（迎接挑戰，克服困難）<br>
+          → 適用：勉勵或描述人們在面對困難時展現勇氣與決心。<br>
+          例：<i>We are confident that our team will rise to the challenge.</i></p>
+        </div>
+      </details>
+
+    </section>
+
+    <!-- ===== BOTTOM NAV BAR ===== -->
+    <nav class="nav-bar" style="margin-top: 40px; border-radius: 16px; overflow: hidden; background: linear-gradient(90deg, #E8612C 0%, #F4845F 50%, #F5A623 100%); padding: 0.8rem 1rem; text-align: center; width: 100%;">
+      <div class="nav-inner" style="max-width: 700px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; align-items: center;">
+        <div class="nav-label" style="font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 500; width: 100%; margin-bottom: 2px; letter-spacing: 0.04em;">✨ 林威老師課程 &amp; 聯絡資訊</div>
+        <a class="nav-link" href="https://linwayet.github.io/4ulive/index.html" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.22); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; padding: 7px 15px; border-radius: 24px; border: 1.5px solid rgba(255,255,255,0.45); transition: background 0.2s, transform 0.15s; white-space: nowrap;">
+          <span class="icon">🔥</span> 錯中學 ECHO 計劃｜七月開課
+        </a>
+        <a class="nav-link" href="https://linwayet.github.io/popup/index" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.22); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; padding: 7px 15px; border-radius: 24px; border: 1.5px solid rgba(255,255,255,0.45); transition: background 0.2s, transform 0.15s; white-space: nowrap;">
+          <span class="icon">📊</span> 學生學習分析
+        </a>
+        <a class="nav-link line-link" href="https://line.me/ti/p/linwayet" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(0,196,0,0.35); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; padding: 7px 15px; border-radius: 24px; border: 1.5px solid rgba(100,255,100,0.5); transition: background 0.2s, transform 0.15s; white-space: nowrap;">
+          <span class="icon">💬</span> LINE：linwayet
+        </a>
+      </div>
+    </nav>
+
+  </div>
+  
+</body>
+</html>
