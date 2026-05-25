@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fight or Flight: Two Survival Styles of Baleen Whales</title>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #FFF8F0;
+            --text-color: #1A0F00;
+            --h1-color: #C0392B;
+            --h2-color: #1565C0;
+            --h3-color: #2E7D32;
+            --accent-orange: #E65100;
+            --accent-purple: #6A1B9A;
+            --deep-blue: #0D47A1;
+            
+            /* Section Colors */
+            --sec1-bg: #0D47A1; --sec1-border: #90CAF9; --sec1-inner: #F3F8FF;
+            --sec2-bg: #BF360C; --sec2-border: #FFAB91; --sec2-inner: #FFF3EF;
+            --sec3-bg: #1B5E20; --sec3-border: #81C784; --sec3-inner: #F1F8F2;
+            --sec4-bg: #4A148C; --sec4-border: #CE93D8; --sec4-inner: #F9F0FF;
+            --sec5-bg: #4A3728; --sec5-border: #C4A06A; --sec5-inner: #FAF6F0;
+        }
+
+        body {
+            font-family: 'BIZ UDPGothic', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.85;
+            font-size: 22px;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* Header Styling */
+        .main-title-box {
+            border: 5px solid var(--h1-color);
+            padding: 20px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--h1-color);
+            font-size: 3rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: var(--h2-color);
+            font-size: 2.2rem;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .creator-info {
+            color: var(--h2-color);
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'BIZ UDPGothic', cursive;
+        }
+
+        /* Block Styling */
+        .block {
+            margin-bottom: 60px;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .block-header {
+            padding: 15px 25px;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .block-content {
+            padding: 30px;
+            background-color: white;
+        }
+
+        /* Section 1: Original Text */
+        .sec-original .block-header { background-color: var(--sec1-bg); }
+        .sec-original .block-content { background-color: var(--sec1-inner); border: 2px solid var(--sec1-border); }
+        .highlight { color: var(--deep-blue); font-weight: 700; }
+
+        /* Section 2: 8 Sentences */
+        .sec-sentences .block-header { background-color: var(--sec2-bg); }
+        .sec-sentences .block-content { background-color: var(--sec2-inner); border: 2px solid var(--sec2-border); }
+        .sentence-item { margin-bottom: 40px; border-bottom: 1px dashed var(--sec2-border); padding-bottom: 20px; }
+        .circle-num {
+            background-color: var(--sec2-bg);
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 10px;
+            font-weight: 700;
+        }
+        .orig-sent { font-style: italic; font-weight: 700; margin-bottom: 10px; }
+        .trans-sent { margin-bottom: 15px; color: #444; }
+        .grammar-note { font-size: 1rem; border-left: 4px solid var(--sec2-bg); padding-left: 15px; margin: 15px 0; }
+        .pills { display: flex; flex-wrap: wrap; gap: 10px; }
+        .pill {
+            background-color: #EEE;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #333;
+            border: 1px solid #CCC;
+        }
+
+        /* Section 3: Vocabulary */
+        .sec-vocab .block-header { background-color: var(--sec3-bg); }
+        .sec-vocab .block-content { background-color: var(--sec3-inner); border: 2px solid var(--sec3-border); }
+        .vocab-item { margin-bottom: 50px; }
+        .vocab-head { font-size: 1.6rem; font-weight: 700; color: var(--sec3-bg); border-bottom: 2px solid var(--sec3-bg); padding-bottom: 5px; margin-bottom: 15px; }
+        .label-row { display: flex; margin-bottom: 10px; }
+        .label-tag {
+            min-width: 120px;
+            padding: 5px 10px;
+            border-radius: 8px 0 0 8px;
+            font-weight: 700;
+            text-align: center;
+            color: white;
+        }
+        .label-content {
+            background-color: white;
+            padding: 5px 15px;
+            border-radius: 0 8px 8px 0;
+            flex-grow: 1;
+            border: 1px solid #DDD;
+        }
+        .tag-deriv { background-color: #C0392B; }
+        .tag-root { background-color: #1565C0; }
+        .tag-phrase { background-color: #2E7D32; }
+        .tag-idiom { background-color: #D68910; }
+        .tag-confuse { background-color: #6A1B9A; }
+        .tag-grammar { background-color: #E65100; }
+        .example-sent { margin: 10px 0; padding-left: 20px; border-left: 3px solid #DDD; }
+
+        /* Section 4: Grammar */
+        .sec-grammar .block-header { background-color: var(--sec4-bg); }
+        .sec-grammar .block-content { background-color: var(--sec4-inner); border: 2px solid var(--sec4-border); }
+        .grammar-point { margin-bottom: 60px; }
+        .grammar-title { font-size: 1.8rem; color: var(--sec4-bg); font-weight: 700; margin-bottom: 20px; border-left: 8px solid var(--sec4-bg); padding-left: 15px; }
+        .g-sec { margin-bottom: 20px; }
+        .g-label { font-weight: 700; color: var(--sec4-bg); margin-bottom: 5px; }
+        .g-quote { font-style: italic; color: #555; }
+        .g-rule { font-weight: 700; font-style: italic; font-size: 1.3rem; }
+        .g-test-wrong { color: #C0392B; }
+        .g-test-right { color: #2E7D32; font-weight: 700; }
+
+        /* Footer Accordions */
+        .sec-footer .block-header { background-color: var(--sec5-bg); }
+        .sec-footer .block-content { background-color: var(--sec5-inner); border: 2px solid var(--sec5-border); padding: 0; }
+        details { border-bottom: 1px solid var(--sec5-border); }
+        summary {
+            padding: 20px 30px;
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+        }
+        summary::after { content: '▼'; font-size: 0.8rem; transition: transform 0.3s; }
+        details[open] summary::after { transform: rotate(180deg); }
+        .details-content { padding: 30px; background-color: var(--sec5-inner); }
+
+        /* Mobile / Touch Targets */
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.6rem; }
+            body { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <div class="main-title-box">
+        <h1>Fight or Flight: Two Survival Styles of Baleen Whales</h1>
+    </div>
+    <h2>鬚鯨的兩大生存策略：戰鬥或逃亡</h2>
+    <div class="creator-info">林威老師與 AI agent 團隊製作</div>
+
+    <!-- Block 1: Original Text -->
+    <div class="block sec-original">
+        <div class="block-header">【區塊一】英文文章原文 Original Article</div>
+        <div class="block-content">
+            <p>The blue whale, a member of the <strong class="highlight">baleen</strong> whale family, is the largest animal ever to live on Earth. However, even these <strong class="highlight">giants</strong> face danger from the ocean's top <strong class="highlight">predator</strong>, the killer whale or orca. Interestingly, scientists have noticed that not all baleen whales respond to this life-or-death threat in the same way. Many species seem to follow one of two main survival <strong class="highlight">strategies</strong>: fight or flight.</p>
+            <p>Right whales, bowhead whales, humpback whales and gray whales belong to the fight group of baleen whales. They are generally slower swimmers, but their bodies are thick and powerful. Some even have skin covered in <strong class="highlight">barnacles</strong> that acts as <strong class="highlight">protection</strong>, making it difficult for predators to land a successful bite. When <strong class="highlight">threatened</strong> by danger, adults from these species often work together, forming circles around their calves to protect them. They also move through <strong class="highlight">shallow</strong> coastal waters, where it's harder for orcas to attack from below.</p>
+            <p>Since orcas use sound to track down other animals, many whales try to stay quiet to avoid being found. However, many of the calls from the fight group fall within <strong class="highlight">frequency</strong> ranges that killer whales can hear. This suggests these whales seem to <strong class="highlight">announce</strong> their <strong class="highlight">presence</strong> and trust their physical and <strong class="highlight">social</strong> <strong class="highlight">defenses</strong> to keep them safe.</p>
+            <p>Other baleen whales take the opposite approach. Whales in the flight group avoid <strong class="highlight">confrontation</strong> altogether. Blue whales, fin whales, sei whales and minke whales are all part of this group. Their bodies are long and <strong class="highlight">streamlined</strong>, built for speed and long-distance swimming. When orcas chase flight species, the <strong class="highlight">pursuit</strong> may cover long distances. Hardly can orcas keep up with the <strong class="highlight">pace</strong> for so long, thus they sometimes give up.</p>
+            <p>However, fleeing requires a great deal of the flight whale's <strong class="highlight">energy</strong>. Moreover, if the whale is caught, it has fewer ways to defend itself. Due to this risk, flight species rely more heavily on staying hidden. One important way they do this is by producing very low frequency calls. Since these sounds fall outside a killer whale's hearing range, a flight whale may go unnoticed even within a <strong class="highlight">mere</strong> kilometer of its predator. By keeping their voices hidden in the ocean's deepest tones, these flight whales <strong class="highlight">communicate</strong> softly, sending secret warnings that their predators cannot hear.</p>
+            <p>Together, these fight and flight strategies show how baleen whales have <strong class="highlight">adapted</strong> to the same threat in different ways. Whether standing together to defend or speeding away, each species has found the approach that works best for their own bodies.</p>
+        </div>
+    </div>
+
+    <!-- Block 2: 8 Sentences -->
+    <div class="block sec-sentences">
+        <div class="block-header">【區塊二】8句精讀 Key Sentence Analysis</div>
+        <div class="block-content">
+            <div class="sentence-item">
+                <span class="circle-num">1</span>
+                <div class="orig-sent">"The blue whale, a member of the baleen whale family, is the largest animal ever to live on Earth."</div>
+                <div class="trans-sent">藍鯨，鬚鯨家族的一員，是地球上有史以來最大的動物。</div>
+                <div class="grammar-note">
+                    <strong>句型結構：名詞同位語 (Appositive)</strong><br>
+                    使用「, a member of... family,」作為同位語，補充說明主詞 The blue whale 的類別。ever to live 為不定詞片語修飾最高級名詞 largest animal。
+                </div>
+                <div class="pills">
+                    <span class="pill">baleen 鬚</span>
+                    <span class="pill">ever to live 有史以來</span>
+                    <span class="pill">member 成員</span>
+                </div>
+            </div>
+
+            <div class="sentence-item">
+                <span class="circle-num">2</span>
+                <div class="orig-sent">"However, even these giants face danger from the ocean's top predator, the killer whale or orca."</div>
+                <div class="trans-sent">然而，即使這些巨獸也面臨來自海洋頂級掠食者——虎鯨或殺人鯨——的危險。</div>
+                <div class="grammar-note">
+                    <strong>句型結構：對比連接與同位語</strong><br>
+                    Even 放在 these giants 之前，強調對比與讓步；「the killer whale or orca」為同位語，補充說明該掠食者的名稱。
+                </div>
+                <div class="pills">
+                    <span class="pill">predator 掠食者</span>
+                    <span class="pill">face danger 面臨危險</span>
+                    <span class="pill">even 即使</span>
+                </div>
+            </div>
+
+            <div class="sentence-item">
+                <span class="circle-num">3</span>
+                <div class="orig-sent">"When threatened by danger, adults from these species often work together, forming circles around their calves to protect them."</div>
+                <div class="trans-sent">當受到危險威脅時，這些物種的成年鯨魚經常通力合作，在幼鯨周圍圍成圓圈以保護牠們。</div>
+                <div class="grammar-note">
+                    <strong>句型結構：時間副詞子句化簡與分詞構句</strong><br>
+                    When threatened 為 When they are threatened 的化簡；forming circles 為伴隨動作的分詞構句。
+                </div>
+                <div class="pills">
+                    <span class="pill">threaten 威脅</span>
+                    <span class="pill">calf 幼鯨</span>
+                    <span class="pill">work together 合作</span>
+                </div>
+            </div>
+
+            <div class="sentence-item">
+                <span class="circle-num">4</span>
+                <div class="orig-sent">"Since orcas use sound to track down other animals, many whales try to stay quiet to avoid being found."</div>
+                <div class="trans-sent">由於虎鯨利用聲音來追蹤其他動物，許多鯨魚試圖保持安靜以避免被發現。</div>
+                <div class="grammar-note">
+                    <strong>句型結構：原因連接詞與動名詞被動</strong><br>
+                    Since 表原因（因為）；avoid 後方接動名詞，這裡使用被動語態 being found，強調逃避被發現。
+                </div>
+                <div class="pills">
+                    <span class="pill">track down 追蹤</span>
+                    <span class="pill">stay quiet 保持安靜</span>
+                    <span class="pill">avoid being found 避免被發現</span>
+                </div>
+            </div>
+
+            <div class="sentence-item">
+                <span class="circle-num">5</span>
+                <div class="orig-sent">"Hardly can orcas keep up with the pace for so long, thus they sometimes give up."</div>
+                <div class="trans-sent">虎鯨幾乎無法長時間跟上這種速度，因此牠們有時會選擇放棄。</div>
+                <div class="grammar-note">
+                    <strong>句型結構：否定副詞倒裝 (Inversion)</strong><br>
+                    否定副詞 Hardly 移至句首以強調幾乎不可能，助動詞 can 移至主詞 orcas 之前形成倒裝語序。
+                </div>
+                <div class="pills">
+                    <span class="pill">hardly 幾乎不</span>
+                    <span class="pill">keep up with 跟上</span>
+                    <span class="pill">pace 速度/步調</span>
+                </div>
+            </div>
+
+            <div class="sentence-item">
+                <span class="circle-num">6</span>
+                <div class="orig-sent">"Due to this risk, flight species rely more heavily on staying hidden."</div>
+                <div class="trans-sent">由於這個風險，逃亡型物種更加依賴於保持隱蔽。</div>
+                <div class="grammar-note">
+                    <strong>句型結構：介係詞片語表原因</strong><br>
+                    Due to 為介係詞片語；rely on 為固定用法搭配，on 為介係詞，後接動名詞片語 staying hidden。
+                </div>
+                <div class="pills">
+                    <span class="pill">due to 由於</span>
+                    <span class="pill">rely on 依賴</span>
+                    <span class="pill">hidden 隱蔽的</span>
+                </div>
+            </div>
+
+            <div class="sentence-item">
+                <span class="circle-num">7</span>
+                <div class="orig-sent">"By keeping their voices hidden in the ocean's deepest tones, these flight whales communicate softly, sending secret warnings that their predators cannot hear."</div>
+                <div class="trans-sent">藉由將聲音隱藏在海洋最深沉的音調中，這些逃亡型鯨魚能柔和地交流，發送掠食者聽不見的秘密警告。</div>
+                <div class="grammar-note">
+                    <strong>句型結構：方法狀語與分詞構句</strong><br>
+                    By keeping... 為方式狀語，採介系詞加動名詞；sending... 為伴隨主句行動的分詞構句；that 引導關係子句修飾 warnings。
+                </div>
+                <div class="pills">
+                    <span class="pill">tone 音調/頻率</span>
+                    <span class="pill">communicate 交流</span>
+                    <span class="pill">secret warning 秘密警告</span>
+                </div>
+            </div>
+            
+             <div class="sentence-item">
+                <span class="circle-num">8</span>
+                <div class="orig-sent">"Together, these fight and flight strategies show how baleen whales have adapted to the same threat in different ways."</div>
+                <div class="trans-sent">總的來說，這些戰鬥和逃跑策略顯示了鬚鯨如何以不同方式適應相同的威脅。</div>
+                <div class="grammar-note">
+                    <strong>句型結構：名詞子句當受詞</strong><br>
+                    how baleen whales have adapted to... 作為動詞 show 的受詞，且時態採用現在完成式表達持續至今的適應結果。
+                </div>
+                <div class="pills">
+                    <span class="pill">strategy 策略</span>
+                    <span class="pill">adapt to 適應</span>
+                    <span class="pill">threat 威脅</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Block 3: Vocabulary -->
+    <div class="block sec-vocab">
+        <div class="block-header">【區塊三】18–20個單字整理 Vocabulary Table</div>
+        <div class="block-content">
+            
+            <div class="vocab-item">
+                <div class="vocab-head">1. baleen [bəˈlin] (n. 鬚、濾食鯨鬚)</div>
+                <div class="label-row"><div class="label-tag tag-idiom">慣用語</div><div class="label-content">a baleen whale (鬚鯨)</div></div>
+                <div class="example-sent">The blue whale, a member of the baleen whale family, is the largest animal ever to live on Earth.<br>（藍鯨，鬚鯨家族的一員，是地球上有史以來最大的動物。）</div>
+                <div class="example-sent">Baleen is made of keratin, the same material as human fingernails.<br>（鯨鬚是由角蛋白組成的，與人類指甲的材質相同。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">2. predator [ˈprɛdətɚ] (n. 掠食者)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">predatory (adj. 掠食性的)</div></div>
+                <div class="label-row"><div class="label-tag tag-idiom">慣用語</div><div class="label-content">a top predator (頂級掠食者)</div></div>
+                <div class="example-sent">However, even these giants face danger from the ocean's top predator, the killer whale or orca.<br>（然而，即使這些巨獸也面臨來自海洋頂級掠食者——虎鯨或殺人鯨——的危險。）</div>
+                <div class="example-sent">Owls are nocturnal predators that hunt at night.<br>（貓頭鷹是夜間獵食的夜行性掠食者。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">3. strategy [ˈstrætədʒi] (n. 策略)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">strategic (adj. 戰略上的)</div></div>
+                <div class="label-row"><div class="label-tag tag-phrase">片語</div><div class="label-content">a survival strategy (生存策略)</div></div>
+                <div class="example-sent">Many species seem to follow one of two main survival strategies: fight or flight.<br>（許多物種似乎遵循兩種主要的生存策略之一：戰鬥或逃亡。）</div>
+                <div class="example-sent">The coach discussed a new strategy for the upcoming game.<br>（教練討論了即將到來之比賽的新策略。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">4. giant [ˈdʒaɪənt] (n. 巨獸、巨人 adj. 巨大的)</div>
+                <div class="example-sent">However, even these giants face danger from the ocean's top predator.<br>（然而，即使這些巨獸也面臨來自海洋頂級掠食者的危險。）</div>
+                <div class="example-sent">The company is a global giant in the technology industry.<br>（這間公司是科技產業的全球巨頭。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">5. barnacle [ˈbɑrnəkəl] (n. 藤壺)</div>
+                <div class="example-sent">Some even have skin covered in barnacles that acts as protection.<br>（有些鯨魚甚至有覆蓋著藤壺的皮膚作為保護。）</div>
+                <div class="example-sent">Barnacles can be found attached to rocks along the coast.<br>（在沿岸的岩石上可以發現附著的藤壺。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">6. protection [prəˈtɛkʃən] (n. 保護)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">protect (v. 保護)；protective (adj. 保護性的)</div></div>
+                <div class="example-sent">Some even have skin covered in barnacles that acts as protection.<br>（有些鯨魚甚至有覆蓋著藤壺的皮膚作為保護。）</div>
+                <div class="example-sent">You should wear sunscreen for protection from UV rays.<br>（你應該擦防曬乳以保護皮膚免受紫外線傷害。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">7. threaten [ˈθrɛtn] (v. 威脅)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">threat (n. 威脅)</div></div>
+                <div class="example-sent">When threatened by danger, adults from these species often work together.<br>（當受到危險威脅時，這些物種的成年鯨魚經常通力合作。）</div>
+                <div class="example-sent">The dark clouds threaten rain for our picnic.<br>（烏雲威脅著我們的野餐可能會下雨。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">8. shallow [ˈʃælo] (adj. 淺的)</div>
+                <div class="example-sent">They also move through shallow coastal waters, where it's harder for orcas to attack.<br>（牠們也會游過淺層的海岸水域，在那裡虎鯨比較難發動攻擊。）</div>
+                <div class="example-sent">Kids usually swim in the shallow end of the pool.<br>（小孩通常在泳池較淺的一端游泳。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">9. frequency [ˈfrikwənsi] (n. 頻率)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">frequent (adj. 頻繁的)</div></div>
+                <div class="label-row"><div class="label-tag tag-idiom">慣用語</div><div class="label-content">low-frequency calls (低頻呼叫)</div></div>
+                <div class="example-sent">However, many of the calls from the fight group fall within frequency ranges that killer whales can hear.<br>（然而，來自戰鬥族群的許多呼叫聲，落在虎鯨能聽見的頻率範圍內。）</div>
+                <div class="example-sent">The frequency of buses increases during rush hour.<br>（公車的班次頻率在尖峰時段會增加。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">10. presence [ˈprɛzns] (n. 存在、出現)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">present (adj. 出席的/現在的)</div></div>
+                <div class="example-sent">This suggests these whales seem to announce their presence.<br>（這顯示這些鯨魚似乎在宣告牠們的存在。）</div>
+                <div class="example-sent">The speaker's calm presence comforted the crowd.<br>（演講者冷靜的氣場安撫了群眾。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">11. social [ˈsoʃl] (adj. 社交的、群體的)</div>
+                <div class="label-row"><div class="label-tag tag-phrase">片語</div><div class="label-content">social defense (社交/群體防禦)</div></div>
+                <div class="example-sent">They trust their physical and social defenses to keep them safe.<br>（牠們信任自身的物理與群體防禦機制以保持安全。）</div>
+                <div class="example-sent">Elephants are highly social animals that live in herds.<br>（大象是高度群居的動物，成群生活。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">12. defense [dɪˈfɛns] (n. 防禦)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">defend (v. 防禦)</div></div>
+                <div class="label-row"><div class="label-tag tag-root">字根</div><div class="label-content">fend (擊退) - defend (防禦), offend (冒犯)</div></div>
+                <div class="example-sent">They trust their physical and social defenses to keep them safe.<br>（牠們信任自身的物理與群體防禦機制以保持安全。）</div>
+                <div class="example-sent">The city built a wall as a defense against invaders.<br>（這座城市建了一道牆來抵禦入侵者。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">13. confrontation [ˌkɑnfrənˈteʃən] (n. 對峙)</div>
+                <div class="label-row"><div class="label-tag tag-phrase">片語</div><div class="label-content">avoid confrontation (避免對峙)</div></div>
+                <div class="example-sent">Whales in the flight group avoid confrontation altogether.<br>（逃亡族群的鯨魚完全避免對峙。）</div>
+                <div class="example-sent">The protest ended without any violent confrontation.<br>（抗議活動在沒有任何暴力衝突的情況下結束。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">14. streamlined [ˈstrimˌlaɪnd] (adj. 流線型的)</div>
+                <div class="example-sent">Their bodies are long and streamlined, built for speed and long-distance swimming.<br>（牠們的身體長且呈流線型，是為了速度和長距離游泳而生。）</div>
+                <div class="example-sent">The new car has a streamlined design to reduce drag.<br>（這款新車採用流線型設計以減少阻力。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">15. pursuit [pɚˈsut] (n. 追捕)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">pursue (v. 追捕、追求)</div></div>
+                <div class="example-sent">When orcas chase flight species, the pursuit may cover long distances.<br>（當虎鯨追逐逃亡型物種時，這場追捕可能會涵蓋很長一段距離。）</div>
+                <div class="example-sent">She moved to New York in pursuit of a music career.<br>（她為了追求音樂事業而搬到了紐約。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">16. pace [pes] (n. 步調、速度)</div>
+                <div class="label-row"><div class="label-tag tag-phrase">片語</div><div class="label-content">keep up with the pace (跟上步調)</div></div>
+                <div class="example-sent">Hardly can orcas keep up with the pace for so long.<br>（虎鯨幾乎無法長時間跟上這種速度。）</div>
+                <div class="example-sent">It's hard to maintain this fast pace of life.<br>（很難維持這種快速的生活步調。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">17. energy [ˈɛnɚdʒi] (n. 能量、精力)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">energetic (adj. 精力充沛的)</div></div>
+                <div class="example-sent">However, fleeing requires a great deal of the flight whale's energy.<br>（然而，逃跑需要消耗逃亡型鯨魚大量的能量。）</div>
+                <div class="example-sent">Solar power is a form of renewable energy.<br>（太陽能是再生能源的一種。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">18. mere [mɪr] (adj. 僅僅的、區區的)</div>
+                <div class="example-sent">A flight whale may go unnoticed even within a mere kilometer of its predator.<br>（即使在區區一公里內，逃亡型鯨魚也可能不會被掠食者察覺。）</div>
+                <div class="example-sent">The solution is not a mere dream; it's possible.<br>（這個解決方案不單只是夢想；它是可行的。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">19. communicate [kəˈmjunəˌket] (v. 溝通/交流)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">communication (n. 溝通)</div></div>
+                <div class="example-sent">These flight whales communicate softly, sending secret warnings.<br>（這些逃亡型鯨魚會柔和地交流，發送秘密警告。）</div>
+                <div class="example-sent">Social media has changed the way we communicate.<br>（社群媒體改變了我們溝通的方式。）</div>
+            </div>
+
+            <div class="vocab-item">
+                <div class="vocab-head">20. adapt [əˈdæpt] (v. 適應)</div>
+                <div class="label-row"><div class="label-tag tag-deriv">衍生詞</div><div class="label-content">adaptation (n. 適應/改編)</div></div>
+                <div class="label-row"><div class="label-tag tag-phrase">片語</div><div class="label-content">adapt to (適應於)</div></div>
+                <div class="example-sent">Together, these fight and flight strategies show how baleen whales have adapted to the same threat.<br>（總的來說，這些戰鬥和逃跑策略顯示了鬚鯨如何適應相同的威脅。）</div>
+                <div class="example-sent">The animal has a thick coat to adapt to cold weather.<br>（這種動物有厚毛以適應寒冷的天氣。）</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Block 4: Grammar -->
+    <div class="block sec-grammar">
+        <div class="block-header">【區塊四】文法解析 Grammar Essentials</div>
+        <div class="block-content">
+            
+            <div class="grammar-point">
+                <div class="grammar-title">1. 同位語 (Appositives)</div>
+                <div class="g-sec"><div class="g-label">【引句 Quote】</div><div class="g-quote">The blue whale, <i>a member of the baleen whale family</i>, is the largest animal ever to live on Earth.</div></div>
+                <div class="g-sec"><div class="g-label">【句型】</div><div class="g-rule"><i>S, (a/an) N/NP, V...</i></div></div>
+                <div class="g-sec"><div class="g-label">【核心說明】</div><div>同位語是用來補充說明前面的名詞。當同位語是名詞或名詞片語時，通常放在被說明的名詞後面，並用逗號隔開，提供關於該名詞更詳細的資訊。</div></div>
+                <div class="g-sec"><div class="g-label">【使用規則】</div>
+                    <ul>
+                        <li>非限定用法：若主詞是專有名詞或獨一無二的對象，同位語僅提供額外資訊，必須加上逗號與主句隔開。</li>
+                        <li>限定用法：若主詞範圍過廣，必須用同位語限定具體對象時，則不加逗號。</li>
+                        <li>同位語可以放在句首、句中或句尾。</li>
+                    </ul>
+                </div>
+                <div class="g-sec"><div class="g-label">【主題例句】</div><div>The orca, a fierce predator, hunts in groups. (虎鯨，一種兇猛的掠食者，成群獵食。)</div></div>
+                <div class="g-sec"><div class="g-label">【學習提醒】</div><div>同位語必須在文法屬性上與其修飾語對等，通常直接移除同位語後，主要子句的文法結構與句意仍然完整無缺。</div></div>
+                <div class="g-sec"><div class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+                    <div class="g-test-wrong">✗ Taipei the capital of Taiwan is a busy city.</div>
+                    <div class="g-test-right">✓ Taipei, the capital of Taiwan, is a busy city. (非限定用法需加逗號)</div>
+                </div>
+            </div>
+
+            <div class="grammar-point">
+                <div class="grammar-title">2. 分詞構句：副詞子句化簡 (Participial Construction)</div>
+                <div class="g-sec"><div class="g-label">【引句 Quote】</div><div class="g-quote"><i>When threatened by danger</i>, adults from these species often work together, <i>forming circles</i> around their calves to protect them.</div></div>
+                <div class="g-sec"><div class="g-label">【句型】</div><div class="g-rule"><i>Conj. + V-ing / p.p., S + V... (或 S + V..., V-ing / p.p.)</i></div></div>
+                <div class="g-sec"><div class="g-label">【核心說明】</div><div>當副詞子句的主詞與主要子句的主詞相同時，可以刪除副詞子句的主詞，並將動詞改為分詞形式，使句子結構更加簡潔。</div></div>
+                <div class="g-sec"><div class="g-label">【使用規則】</div>
+                    <ul>
+                        <li>刪除副詞子句的主詞。</li>
+                        <li>主動語態：動詞改為現在分詞 (V-ing)。</li>
+                        <li>被動語態：動詞改為過去分詞 (p.p.)，前面的 being 通常會省略。</li>
+                        <li>連接詞 (如 when, while, if, although 等) 可視情況保留或省略以明確語意。</li>
+                    </ul>
+                </div>
+                <div class="g-sec"><div class="g-label">【主題例句】</div><div>When (they are) attacked by orcas, the whales swim away quickly. (當受到虎鯨攻擊時，鯨魚會迅速游走。)</div></div>
+                <div class="g-sec"><div class="g-label">【學習提醒】</div><div>化簡的首要條件是「兩個子句的主詞必須相同」，若主詞不同則不能輕易化簡，否則會造成語意混淆。</div></div>
+                <div class="g-sec"><div class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+                    <div class="g-test-wrong">✗ Because tired, he made several mistakes. (連接詞 Because 不保留)</div>
+                    <div class="g-test-right">✓ Being tired, he made several mistakes. (因為疲倦，他犯了幾個錯。)</div>
+                </div>
+            </div>
+
+            <div class="grammar-point">
+                <div class="grammar-title">3. 否定副詞倒裝 (Negative Inversion)</div>
+                <div class="g-sec"><div class="g-label">【引句 Quote】</div><div class="g-quote"><i>Hardly can orcas keep up</i> with the pace for so long, thus they sometimes give up.</div></div>
+                <div class="g-sec"><div class="g-label">【句型】</div><div class="g-rule"><i>Negative Adv. + Aux/Be + S + V...</i></div></div>
+                <div class="g-sec"><div class="g-label">【核心說明】</div><div>為了強調否定或限制的語氣，可以將具有否定意味的副詞移到句首。這時，主句必須進行倒裝，也就是將助動詞或 be 動詞移到主詞前面。</div></div>
+                <div class="g-sec"><div class="g-label">【使用規則】</div>
+                    <ul>
+                        <li>常見的否定副詞：hardly, scarcely, barely, rarely, seldom, never, little。</li>
+                        <li>句首放了這些字後，後面的結構必須像疑問句一樣：助動詞 (do/does/did/can/will 等) + 主詞 + 原形動詞。</li>
+                        <li>若原本沒有助動詞，需依時態與人稱補上 do, does, 或 did。</li>
+                    </ul>
+                </div>
+                <div class="g-sec"><div class="g-label">【主題例句】</div><div>Rarely do we see such massive animals swimming at such high speeds. (我們很少看到如此巨大的動物以這麼高的速度游泳。)</div></div>
+                <div class="g-sec"><div class="g-label">【學習提醒】</div><div>倒裝句多用於較正式的文章或文學作品中，以增強語氣。注意只有當否定詞修飾整個動詞或句子時才倒裝，若僅修飾主詞 (如 Not a single person...) 則不倒裝。</div></div>
+                <div class="g-sec"><div class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+                    <div class="g-test-wrong">✗ Never I have heard such a low frequency call.</div>
+                    <div class="g-test-right">✓ Never have I heard such a low frequency call. (我從未聽過頻率這麼低的呼叫聲。)</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bottom Accordions -->
+    <div class="block sec-footer">
+        <div class="block-header">【延伸學習】Supplementary Learning</div>
+        <div class="block-content">
+            <details>
+                <summary>常見字首整理 Prefix Review</summary>
+                <div class="details-content">
+                    ab-　離開、相反　—　abnormal（異常的）<br>
+                    ad-　向、加　—　advance（前進）<br>
+                    anti-　反對、抗　—　antibiotic（抗生素）<br>
+                    auto-　自動、自我　—　autograph（親筆簽名）<br>
+                    bi-　二、雙　—　bilingual（雙語的）<br>
+                    co-/con-　一起、共同　—　confrontation（對峙）<br>
+                    dis-　否定、分離　—　disagree（不同意）<br>
+                    ex-　外、前任　—　export（出口）<br>
+                    inter-　在…之間　—　international（國際的）<br>
+                    pre-　之前　—　predator（掠食者）<br>
+                    re-　再、回　—　rely（依賴）、review（複習）<br>
+                    sub-　在下、次級　—　submarine（潛水艇）<br>
+                    trans-　穿越、轉變　—　transport（運輸）<br>
+                    un-　否定、不　—　unnoticed（不被察覺的）
+                </div>
+            </details>
+            <details>
+                <summary>常見字尾整理 Suffix Review</summary>
+                <div class="details-content">
+                    -tion/-sion　名詞（動作/結果）　—　protection, confrontation<br>
+                    -ment　名詞（行為/結果）　—　movement<br>
+                    -er/-or　執行者　—　predator, swimmer<br>
+                    -al　形容詞/名詞　—　survival, coastal<br>
+                    -ous　充滿…的　—　dangerous<br>
+                    -able/-ible　可以…的　—　noticeable<br>
+                    -ize/-ise　使成為…　—　realize<br>
+                    -ly　副詞　—　softly, heavily
+                </div>
+            </details>
+            <details>
+                <summary>30個常用單字與衍生詞 Vocabulary Expansion</summary>
+                <div class="details-content">
+                    1. baleen [bəˈlin] (n. 鬚) — baleen whale (鬚鯨)<br>
+                    2. giant [ˈdʒaɪənt] (n. 巨獸) — giant squid (大王烏賊)<br>
+                    3. predator [ˈprɛdətɚ] (n. 掠食者) — predatory (adj. 掠食性的)<br>
+                    4. threat [θrɛt] (n. 威脅) — threaten [ˈθrɛtn] (v. 威脅)<br>
+                    5. survival [sɚˈvaɪvl] (n. 生存) — survive [sɚˈvaɪv] (v. 生存)<br>
+                    6. species [ˈspiʃiz] (n. 物種) — endangered species (瀕危物種)<br>
+                    7. strategy [ˈstrætədʒi] (n. 策略) — strategic (adj. 戰略上的)<br>
+                    8. swimmer [ˈswɪmɚ] (n. 游泳者) — competitive swimmer (競賽型泳手)<br>
+                    9. powerful [ˈpaʊɚfl] (adj. 強大的) — power (n. 力量)<br>
+                    10. protection [prəˈtɛkʃən] (n. 保護) — protective gear (保護裝具)<br>
+                    11. successful [səkˈsɛsfl] (adj. 成功的) — success (n. 成功)<br>
+                    12. coastal [ˈkostl] (adj. 海岸的) — coastline (n. 海岸線)<br>
+                    13. attack [əˈtæk] (n./v. 攻擊) — counter-attack (反擊)<br>
+                    14. track [træk] (v. 追蹤) — track down (尋獲)<br>
+                    15. presence [ˈprɛzns] (n. 存在) — present (adj. 出席的)<br>
+                    16. defense [dɪˈfɛns] (n. 防禦) — defensive (adj. 防禦性的)<br>
+                    17. opposite [ˈɑpəzɪt] (adj. 相反的) — oppose (v. 反對)<br>
+                    18. approach [əˈprotʃ] (n. 方式) — a systematic approach (系統性的方法)<br>
+                    19. avoid [əˈvɔɪd] (v. 避免) — avoidance (n. 避免)<br>
+                    20. altogether [ˌɔltəˈɡɛðɚ] (adv. 完全地) — total (adj. 總共的)<br>
+                    21. streamlined [ˈstrimˌlaɪnd] (adj. 流線型的) — streamline (v. 簡化/效率化)<br>
+                    22. distance [ˈdɪstəns] (n. 距離) — distant (adj. 遙遠的)<br>
+                    23. pursuit [pɚˈsut] (n. 追捕) — pursue (v. 追求)<br>
+                    24. energy [ˈɛnɚdʒi] (n. 能量) — energetic (adj. 精力充沛的)<br>
+                    25. hidden [ˈhɪdn] (adj. 隱藏的) — hide (v. 藏起來)<br>
+                    26. unnoticed [ˌʌnˈnotɪst] (adj. 不被察覺的) — notice (v. 注意)<br>
+                    27. tone [ton] (n. 音調) — monotone (單調)<br>
+                    28. communicate [kəˈmjunəˌket] (v. 溝通) — communication (n. 溝通)<br>
+                    29. adapted [əˈdæptɪd] (adj. 適應的) — adapt to (適應於)<br>
+                    30. whether [ˈwɛðɚ] (conj. 是否/無論) — regardless of (不管)<br><br>
+                    <strong>文章相關常用片語：</strong><br>
+                    • keep up with (跟上)<br>
+                    • rely on (依賴)<br>
+                    • work together (合作)<br>
+                    • stay quiet (保持安靜)<br>
+                    • give up (放棄)
+                </div>
+            </details>
+            <details>
+                <summary>練文筆食材 Writing Ingredients</summary>
+                <div class="details-content">
+                    ① <strong>respond to... in different ways</strong> (以不同方式回應...)<br>
+                    → 適用：描述面對同一問題但有不同對策時。<br>
+                    例：People respond to stress in different ways.<br><br>
+                    ② <strong>acts as...</strong> (起...的作用 / 作為...)<br>
+                    → 適用：說明某物的功能或角色。<br>
+                    例：This old barn now acts as a community center.<br><br>
+                    ③ <strong>Due to this risk, ...</strong> (由於這個風險，...)<br>
+                    → 適用：引出因應風險而採取的行動。<br>
+                    例：Due to this risk, the government decided to close the bridge.<br><br>
+                    ④ <strong>By keeping..., ...</strong> (藉由保持...，...)<br>
+                    → 適用：描述達成某種狀態或方法。<br>
+                    例：By keeping the secret, he protected his family.<br><br>
+                    ⑤ <strong>Whether ... or ..., ...</strong> (無論是...還是...，...)<br>
+                    → 適用：總結兩種情況下都會發生的結果或選擇。<br>
+                    例：Whether it rains or shines, the match will proceed.
+                </div>
+            </details>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
