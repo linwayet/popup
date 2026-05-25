@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Pebble a Day Makes Penguins Hooray: Penguin Pebble-Swallowing Habit</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root {
+      --bg-color: #FFF8F0;
+      --main-text: #1A0F00;
+      --h1-color: #C0392B;
+      --h2-color: #1565C0;
+      --h3-color: #2E7D32;
+      --accent-a: #E65100;
+      --accent-b: #6A1B9A;
+      --keyword-color: #0D47A1;
+      
+      /* Card Colors */
+      --card-1-bg: #F3F8FF; --card-1-border: #90CAF9; --card-1-header: #0D47A1;
+      --card-2-bg: #FFF3EF; --card-2-border: #FFAB91; --card-2-header: #BF360C;
+      --card-3-bg: #F1F8F2; --card-3-border: #81C784; --card-3-header: #1B5E20;
+      --card-4-bg: #F9F0FF; --card-4-border: #CE93D8; --card-4-header: #4A148C;
+      --card-5-bg: #FAF6F0; --card-5-border: #C4A06A; --card-5-header: #4A3728;
+      
+      /* Tag Colors */
+      --tag-deri-bg: #FDEDEC; --tag-deri-text: #C0392B;
+      --tag-root-bg: #EBF5FB; --tag-root-text: #1565C0;
+      --tag-phra-bg: #EAFAF1; --tag-phra-text: #2E7D32;
+      --tag-idio-bg: #FEF9E7; --tag-idio-text: #D68910;
+      --tag-conf-bg: #F5EEF8; --tag-conf-text: #6A1B9A;
+      --tag-prep-bg: #E8F5E9; --tag-prep-text: #2E7D32;
+      --tag-emph-bg: #FEF0E7; --tag-emph-text: #E65100;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'BIZ UDPGothic', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--main-text);
+      line-height: 1.85;
+      font-size: 22px;
+      margin: 0;
+      padding: 40px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    /* Page Header */
+    .title-box {
+      border: 6px double var(--h1-color);
+      padding: 24px;
+      margin-bottom: 12px;
+      border-radius: 12px;
+      background: #FFFFFF;
+      box-shadow: 6px 6px 0px rgba(192, 57, 43, 0.15);
+      text-align: center;
+    }
+    h1 {
+      color: var(--h1-color);
+      font-size: 3.2rem;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      line-height: 1.2;
+    }
+    .subtitle {
+      color: var(--h2-color);
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+      line-height: 1.3;
+    }
+    .author-line {
+      color: #1565C0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+      font-style: italic;
+    }
+
+    /* Sections */
+    h2 {
+      color: var(--h2-color);
+      font-size: 2.2rem;
+      margin: 40px 0 16px 0;
+      font-weight: 700;
+    }
+    
+    .card {
+      border-radius: 16px;
+      margin-bottom: 40px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(26, 15, 0, 0.06);
+      border: 3px solid;
+      background-color: #FFFFFF;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(26, 15, 0, 0.1);
+    }
+    
+    .card-header {
+      padding: 16px 24px;
+      color: #FFFFFF;
+      font-size: 1.6rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+    .card-content {
+      padding: 28px;
+    }
+
+    /* Section 1 */
+    .section-1 { border-color: var(--card-1-border); background-color: var(--card-1-bg); }
+    .section-1 .card-header { background-color: var(--card-1-header); }
+    .section-1 .card-content { background-color: var(--card-1-bg); }
+    strong.keyword { color: var(--keyword-color); font-weight: 700; text-decoration: none; }
+
+    /* Section 2 */
+    .section-2 { border-color: var(--card-2-border); background-color: var(--card-2-bg); }
+    .section-2 .card-header { background-color: var(--card-2-header); }
+    .section-2 .card-content { background-color: var(--card-2-bg); }
+    .sentence-item {
+      border-top: 2px solid rgba(26, 15, 0, 0.08);
+      padding: 24px 0;
+    }
+    .sentence-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+    .circle-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: var(--card-2-header);
+      color: #FFFFFF;
+      border-radius: 50%;
+      margin-right: 12px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      vertical-align: middle;
+    }
+    .sentence-text {
+      font-style: italic;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 12px;
+      border-left: 6px solid var(--accent-a);
+      padding-left: 14px;
+      background: #FFFFFF;
+      padding: 10px 14px;
+      border-radius: 4px;
+    }
+    .translation-box {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #4A2700;
+    }
+    .grammar-box {
+      background: #FFFFFF;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid rgba(26, 15, 0, 0.1);
+      margin-top: 12px;
+      font-size: 1.05rem;
+    }
+    .grammar-title {
+      font-weight: 700;
+      color: var(--h3-color);
+      margin-bottom: 6px;
+    }
+    
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: var(--tag-emph-bg);
+      color: var(--tag-emph-text);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: 1px solid rgba(230, 81, 0, 0.15);
+    }
+
+    /* Section 3 */
+    .section-3 { border-color: var(--card-3-border); background-color: var(--card-3-bg); }
+    .section-3 .card-header { background-color: var(--card-3-header); }
+    .section-3 .card-content { background-color: var(--card-3-bg); }
+    .vocab-item {
+      margin-bottom: 34px;
+      background: #FFFFFF;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid rgba(26, 15, 0, 0.08);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+    .vocab-item:last-child {
+      margin-bottom: 0;
+    }
+    .vocab-head {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--h2-color);
+      margin-bottom: 12px;
+      border-bottom: 2px solid rgba(21, 101, 192, 0.15);
+      padding-bottom: 8px;
+    }
+    .vocab-num {
+      color: var(--h1-color);
+      margin-right: 8px;
+    }
+    .tag-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 12px;
+      margin: 10px 0;
+      align-items: start;
+    }
+    .tag-label {
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-weight: 700;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .tag-content {
+      font-size: 1.05rem;
+      color: var(--main-text);
+    }
+    .der { background: var(--tag-deri-bg); color: var(--tag-deri-text); }
+    .root { background: var(--tag-root-bg); color: var(--tag-root-text); }
+    .phrase { background: var(--tag-phra-bg); color: var(--tag-phra-text); }
+    .idiom { background: var(--tag-idio-bg); color: var(--tag-idio-text); }
+    .confuse { background: var(--tag-conf-bg); color: var(--tag-conf-text); }
+    .pattern { background: var(--tag-emph-bg); color: var(--tag-emph-text); }
+    
+    .example-box {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed rgba(26, 15, 0, 0.1);
+    }
+    .example-en {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 4px;
+      color: var(--main-text);
+    }
+    .example-zh {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: var(--main-text);
+      margin-bottom: 12px;
+    }
+    .example-zh:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Section 4 */
+    .section-4 { border-color: var(--card-4-border); background-color: var(--card-4-bg); }
+    .section-4 .card-header { background-color: var(--card-4-header); }
+    .section-4 .card-content { background-color: var(--card-4-bg); }
+    .grammar-point {
+      margin-bottom: 34px;
+      background: #FFFFFF;
+      padding: 24px;
+      border-radius: 12px;
+      border: 1px solid rgba(26, 15, 0, 0.08);
+    }
+    .grammar-point:last-child {
+      margin-bottom: 0;
+    }
+    .grammar-point-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-b);
+      margin: 0 0 16px 0;
+      border-bottom: 2px solid rgba(106, 27, 154, 0.15);
+      padding-bottom: 8px;
+    }
+    .g-section {
+      margin-bottom: 16px;
+    }
+    .g-section:last-child {
+      margin-bottom: 0;
+    }
+    .g-label {
+      font-weight: 700;
+      color: var(--main-text);
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+    }
+    .g-quote-box {
+      font-style: italic;
+      background: var(--tag-emph-bg);
+      border-left: 6px solid var(--accent-a);
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .g-pattern-box {
+      font-family: monospace, serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.2rem;
+      background: #FAF3E6;
+      padding: 8px 14px;
+      border-radius: 4px;
+      border: 1px solid rgba(26, 15, 0, 0.08);
+      display: inline-block;
+    }
+    .g-list {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+    .g-list li {
+      margin-bottom: 6px;
+    }
+    .wrong-sentence { color: #D32F2F; font-weight: 700; }
+    .correct-sentence { color: #388E3C; font-weight: 700; }
+
+    /* Collapsible Sections */
+    details {
+      margin-bottom: 20px;
+      border: 3px solid var(--card-5-border);
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #FFFFFF;
+      box-shadow: 0 4px 10px rgba(26,15,0,0.04);
+      transition: transform 0.2s ease;
+    }
+    details:hover {
+      transform: translateY(-1px);
+    }
+    summary {
+      min-height: 72px;
+      padding: 18px 24px;
+      background-color: var(--card-5-header);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 1.35rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      user-select: none;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .arrow {
+      transition: transform 0.3s ease;
+      font-size: 1.2rem;
+    }
+    details[open] .arrow {
+      transform: rotate(180deg);
+    }
+    .details-body {
+      padding: 24px;
+      background-color: var(--card-5-bg);
+      border-top: 1px solid var(--card-5-border);
+    }
+    
+    .compact-p p {
+      margin: 0 0 10px 0;
+      font-size: 1.05rem;
+    }
+    .compact-p p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      body {
+        font-size: 20px;
+        padding: 20px 10px 60px;
+      }
+      h1 { font-size: 2.2rem; }
+      .subtitle { font-size: 1.7rem; }
+      .card-content { padding: 18px; }
+      .tag-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+      .tag-label {
+        text-align: left;
+        display: inline-block;
+        padding: 4px 10px;
+      }
+    }
+  
+  /* ========== NAV LINKS ========== */
+  .nav-bar {
+    background: linear-gradient(90deg, #E8612C 0%, #F4845F 50%, #F5A623 100%);
+    padding: 0.8rem 1rem;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .nav-bar .nav-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    width: 100%;
+    margin-bottom: 2px;
+    letter-spacing: 0.04em;
+  }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.22);
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 15px;
+    border-radius: 24px;
+    border: 1.5px solid rgba(255,255,255,0.45);
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .nav-link:hover {
+    background: rgba(255,255,255,0.38);
+    transform: translateY(-2px);
+  }
+  .nav-link .icon { font-size: 16px; }
+  .nav-link.line-link { background: rgba(0,196,0,0.35); border-color: rgba(100,255,100,0.5); }
+  .nav-link.line-link:hover { background: rgba(0,196,0,0.55); }
+
+  /* ========== IMAGE MIMIC TOP SECTION STYLING ========== */
+  .img-mimic-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto 28px auto;
+    box-sizing: border-box;
+  }
+  .img-mimic-outer-card {
+    background-color: #FFF5EB;
+    border: 2px solid #FFD9B3;
+    border-radius: 24px;
+    padding: 28px 24px;
+    box-shadow: 0 6px 18px rgba(230, 115, 0, 0.05);
+    margin-bottom: 28px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .img-mimic-outer-title {
+    color: #8A4F1D;
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 22px;
+    letter-spacing: 0.05em;
+  }
+  .img-mimic-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+  }
+  .img-mimic-sub-card {
+    flex: 1 1 250px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 22px 20px;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+  }
+  .img-mimic-sub-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  .img-mimic-sub-card.card-echo { border: 2.5px solid #F4845F; }
+  .img-mimic-sub-card.card-analysis { border: 2.5px solid #4CAF50; }
+  .img-mimic-sub-card.card-line { border: 2.5px solid #2196F3; }
+
+  .img-mimic-tag {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9C27B0;
+    margin-bottom: 8px;
+  }
+  .img-mimic-card-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1A0F00;
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+  .img-mimic-card-body {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .img-mimic-header-card {
+    background-color: #FFFDFB;
+    border: 3.5px solid #C0392B;
+    border-radius: 24px;
+    padding: 38px 28px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.06);
+    box-sizing: border-box;
+    margin-bottom: 28px;
+  }
+  .img-mimic-header-title {
+    color: #C0392B;
+    font-size: clamp(28px, 5.5vw, 44px) !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    margin: 0 0 18px 0 !important;
+    letter-spacing: -0.01em !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  .img-mimic-header-subtitle {
+    color: #1565C0 !important;
+    font-size: clamp(20px, 4vw, 26px) !important;
+    font-weight: 700 !important;
+    margin: 0 0 14px 0 !important;
+    line-height: 1.35 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  .img-mimic-header-author {
+    color: #1565C0 !important;
+    font-size: clamp(16px, 3.5vw, 20px) !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  .img-mimic-header-author span.agent {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.15em;
+  }
+
+  @media (max-width: 720px) {
+    .img-mimic-outer-card { padding: 20px 16px; }
+    .img-mimic-header-card { padding: 28px 18px; }
+    .img-mimic-outer-title { font-size: 22px; margin-bottom: 16px; }
+    .img-mimic-card-title { font-size: 18px; }
+    .img-mimic-card-body { font-size: 13.5px; }
+  }
+</style>
+</head>
+<body>
+<!-- ===== TOP NAV ===== -->
+
+<div class="container">
+<!-- Page Header -->
+
+<div class="img-mimic-container">
+<div class="img-mimic-outer-card">
+<div class="img-mimic-outer-title">七月開課與聯絡資訊</div>
+<div class="img-mimic-flex">
+<a class="img-mimic-sub-card card-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+<div class="img-mimic-tag">七月課程介紹</div>
+<div class="img-mimic-card-title">錯中學 ECHO 計劃</div>
+<div class="img-mimic-card-body">用錯題分析建立個人化學習路徑，適合暑期想補強英文閱讀與文法的同學。</div>
+</a>
+<a class="img-mimic-sub-card card-analysis" href="https://linwayet.github.io/popup/index" target="_blank">
+<div class="img-mimic-tag">七月課程介紹</div>
+<div class="img-mimic-card-title">學生分析</div>
+<div class="img-mimic-card-body">查看學習狀況與弱點整理，協助安排更精準的複習方向。</div>
+</a>
+<a class="img-mimic-sub-card card-line" href="https://line.me/ti/p/linwayet" target="_blank">
+<div class="img-mimic-tag">個人 Line 帳號</div>
+<div class="img-mimic-card-title">linwayet</div>
+<div class="img-mimic-card-body">課程詢問、教材使用與暑期規劃，可直接透過 Line 聯絡。</div>
+</a>
+</div>
+</div>
+<div class="img-mimic-header-card">
+<h1 class="img-mimic-header-title">A Pebble a Day Makes Penguins Hooray</h1>
+<div class="img-mimic-header-subtitle">企鵝吞卵石的奇特習慣與生存挑戰</div>
+<div class="img-mimic-header-author">林威老師與 <span class="agent">AI agent</span> 團隊製作</div>
+</div>
+</div>
+
+<!-- Section 1 -->
+<section>
+<h2>【區塊一】英文文章原文</h2>
+<div class="card section-1">
+<div class="card-header">英文文章原文 Original Article</div>
+<div class="card-content">
+<p>Penguins are stars of the southern <strong class="keyword">hemisphere</strong>. ...</p>
+</div>
+</div>
+</section>
+<!-- Section 2 -->
+<section>
+<h2>【區塊二】8句精讀</h2>
+<div class="card section-2">
+<div class="card-header">8句精讀 8 Key Sentence Analyses</div>
+<div class="card-content">
+<!-- Sentence 1 -->
+<div class="sentence-item">
+<span class="circle-num">①</span>
+<span class="sentence-text">While they're famous for their cute appearance and smooth swimming, these birds have a very strange habit.</span>
+<div class="translation-box">雖然牠們以可愛的外貌和流暢的游泳而聞名，但這些鳥類有一個非常奇怪的習慣。</div>
+<div class="grammar-box">
+<div class="grammar-title">文法解析：讓步副詞子句</div>
+              連接詞 <span class="en">While</span> 在本句中引導讓步副詞子句，相當於 <span class="en">Although</span> 或 <span class="en">Though</span>，表示「雖然、儘管」。副詞子句與主要子句之間用逗號隔開。主要子句的主詞是 <span class="en">these birds</span>，搭配動詞 <span class="en">have</span>。
+            </div>
+<div class="pills">
+<span class="pill">be famous for（以...而聞名）</span>
+<span class="pill">appearance（外貌、出現）</span>
+<span class="pill">habit（習慣）</span>
+</div>
+</div>
+<!-- Sentence 2 -->
+<div class="sentence-item">
+<span class="circle-num">②</span>
+<span class="sentence-text">Once swallowed, the stones move into a special part of the penguin's stomach and help grind up the food.</span>
+<div class="translation-box">一旦被吞下，這些石頭就會移動到企鵝胃部的一個特殊部分，並幫助磨碎食物。</div>
+<div class="grammar-box">
+<div class="grammar-title">文法解析：一旦引導之省略主詞與be動詞的副詞子句</div>
+<span class="en">Once swallowed</span> 是由 <span class="en">Once they are swallowed</span> 簡化而來的分詞結構。當副詞子句的主詞與主要子句主詞（<span class="en">the stones</span>）相同時，可省略副詞子句主詞與 <span class="en">be</span> 動詞，僅保留過去分詞（<span class="en">swallowed</span>）表示被動。
+            </div>
+<div class="pills">
+<span class="pill">once（一旦）</span>
+<span class="pill">stomach（胃）</span>
+<span class="pill">grind up（磨碎、研磨）</span>
+</div>
+</div>
+<!-- Sentence 3 -->
+<div class="sentence-item">
+<span class="circle-num">③</span>
+<span class="sentence-text">This makes it easier for penguins to break down their meals and get the most nutrients out of every bite.</span>
+<div class="translation-box">這使得企鵝更容易分解牠們的食物，並從每一口中獲取最多的營養。</div>
+<div class="grammar-box">
+<div class="grammar-title">文法解析：虛受詞 it 的使役用法</div>
+              動詞 <span class="en">make</span> 後方接 <span class="en">it</span> 作為「虛受詞」，真正的受詞是後方的不定詞片語 <span class="en">to break down... and get...</span>。形容詞 <span class="en">easier</span> 是受詞補語，而 <span class="en">for penguins</span> 則是該不定詞動作的邏輯主詞。
+            </div>
+<div class="pills">
+<span class="pill">make it easy for sb to V（使某人做某事變容易）</span>
+<span class="pill">break down（分解）</span>
+<span class="pill">nutrients（營養素）</span>
+</div>
+</div>
+<!-- Sentence 4 -->
+<div class="sentence-item">
+<span class="circle-num">④</span>
+<span class="sentence-text">Penguins have body fat and air trapped in their feathers.</span>
+<div class="translation-box">企鵝有體脂肪和被困在羽毛中的空氣。</div>
+<div class="grammar-box">
+<div class="grammar-title">文法解析：過去分詞作後置修飾</div>
+              過去分詞片語 <span class="en">trapped in their feathers</span> 作為後置修飾語，修飾前面的名詞 <span class="en">air</span>，表示「被困在羽毛中的空氣」，其結構相當於形容詞子句 <span class="en">which is trapped in their feathers</span> 的化簡。
+            </div>
+<div class="pills">
+<span class="pill">body fat（體脂肪）</span>
+<span class="pill">trapped in（困在...之中）</span>
+<span class="pill">feathers（羽毛）</span>
+</div>
+</div>
+<!-- Sentence 5 -->
+<div class="sentence-item">
+<span class="circle-num">⑤</span>
+<span class="sentence-text">By swallowing a few pebbles, the birds can add weight, dive faster, and stay underwater longer.</span>
+<div class="translation-box">藉由吞下一些卵石，這些鳥類可以增加重量、潛水得更快，並在水下停留更久。</div>
+<div class="grammar-box">
+<div class="grammar-title">文法解析：介係詞 By 接動名詞與三者對等並列</div>
+              介係詞 <span class="en">By</span> 後接動名詞 <span class="en">swallowing</span>，用以表達「藉由某種手段或方式」。主要子句中，助動詞 <span class="en">can</span> 後方對等並列了三個原形動詞片語：<span class="en">add weight</span>, <span class="en">dive faster</span>, 和 <span class="en">stay underwater longer</span>。
+            </div>
+<div class="pills">
+<span class="pill">by V-ing（藉由...）</span>
+<span class="pill">add weight（增加重量）</span>
+<span class="pill">stay underwater（待在水下）</span>
+</div>
+</div>
+<!-- Sentence 6 -->
+<div class="sentence-item">
+<span class="circle-num">⑥</span>
+<span class="sentence-text">These pebbles, however, do not stay in their stomachs for good.</span>
+<div class="translation-box">然而，這些卵石並不會永遠停留在牠們的胃裡。</div>
+<div class="grammar-box">
+<div class="grammar-title">文法解析：插入語 however 與時間介係詞片語</div>
+              副詞 <span class="en">however</span> 作為插入語置於主詞後方，前後以逗號隔開，用來修飾整句的語氣，表達與前文的對比轉折。片語 <span class="en">for good</span> 意為「永遠、永久地」，相當於 <span class="en">forever</span>。
+            </div>
+<div class="pills">
+<span class="pill">however（然而）</span>
+<span class="pill">stomach（胃）</span>
+<span class="pill">for good（永遠、永久）</span>
+</div>
+</div>
+<!-- Sentence 7 -->
+<div class="sentence-item">
+<span class="circle-num">⑦</span>
+<span class="sentence-text">Unfortunately, as ocean pollution gets worse, many penguins mistake plastic trash for pebbles, leading them to swallow it by accident.</span>
+<div class="translation-box">不幸的是，隨著海洋污染變得更糟，許多企鵝會將塑膠垃圾誤認為卵石，導致牠們不小心吞下。</div>
+<div class="grammar-box">
+<div class="grammar-title">文法解析：as引導比例副詞子句與現在分詞作結果</div>
+<span class="en">as</span> 在此引導表示「隨著」的時間/比例副詞子句。主句的後方使用現在分詞片語 <span class="en">leading them to...</span> 作為結果副詞（相當於 <span class="en">and this leads them to...</span>），修飾前面發生的整件事所產生的後果。
+            </div>
+<div class="pills">
+<span class="pill">as（隨著）</span>
+<span class="pill">mistake A for B（將A誤認為B）</span>
+<span class="pill">by accident（不小心、偶然地）</span>
+</div>
+</div>
+<!-- Sentence 8 -->
+<div class="sentence-item">
+<span class="circle-num">⑧</span>
+<span class="sentence-text">Keeping their habitat clean is essential for their long-term survival.</span>
+<div class="translation-box">保持牠們的棲息地乾淨對於牠們的長期生存是至關重要的。</div>
+<div class="grammar-box">
+<div class="grammar-title">文法解析：動名詞片語當主詞與不完全及物動詞的複合受詞</div>
+              動名詞片語 <span class="en">Keeping their habitat clean</span> 作為全句的主詞，動名詞當主詞視為單數，故搭配單數 be 動詞 <span class="en">is</span>。其中 <span class="en">keep</span> 為不完全及物動詞，後接受詞 <span class="en">their habitat</span> 與形容詞受詞補語 <span class="en">clean</span>。
+            </div>
+<div class="pills">
+<span class="pill">keep + O + adj（保持...的狀態）</span>
+<span class="pill">essential for（對...至關重要）</span>
+<span class="pill">survival（生存）</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3 -->
+<section>
+<h2>【區塊三】18–20個單字整理</h2>
+<div class="card section-3">
+<div class="card-header">18–20個單字整理 Vocabulary</div>
+<div class="card-content">
+<!-- Word 1 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">1</span> famous [ˈfeməs] adj. 著名的、出名的</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">fame [fem] n. 名聲、聲譽；famously [ˈfeməslɪ] adv. 著名地、極好地</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">be famous for (因...而著名)；be famous as (以...身分而著名)；world-famous (舉世聞名的)</div>
+</div>
+<div class="example-box">
+<div class="example-en">While they're famous for their cute appearance and smooth swimming, these birds have a very strange habit.</div>
+<div class="example-zh">（雖然牠們以可愛的外貌和流暢的游泳而聞名，但這些鳥類有一個非常奇怪的習慣。）</div>
+<div class="example-en">The local restaurant is famous for its delicious seafood pasta.</div>
+<div class="example-zh">（這家在地餐廳以其美味的海鮮義大利麵而聞名。）</div>
+</div>
+</div>
+<!-- Word 2 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">2</span> appearance [əˈpɪrəns] n. 外貌、外表、出現</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">appear [əˈpɪr] v. 出現、顯露；apparent [əˈpærənt] adj. 顯然的</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">physical appearance (外表、容貌)；make an appearance (露面、出席)；keep up appearances (裝門面、維持外表體面)</div>
+</div>
+<div class="example-box">
+<div class="example-en">While they're famous for their cute appearance and smooth swimming, these birds have a very strange habit.</div>
+<div class="example-zh">（雖然牠們以可愛的外貌和流暢的游泳而聞名，但這些鳥類有一個非常奇怪的習慣。）</div>
+<div class="example-en">We should not judge a person solely by their physical appearance.</div>
+<div class="example-zh">（我們不應該單憑一個人的外貌來評判他。）</div>
+</div>
+</div>
+<!-- Word 3 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">3</span> swallow [ˈswɑlo] v. 吞下、吞嚥</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">swallowable [ˈswɑloəbl] adj. 可吞嚥的</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">swallow whole (整口吞下)；swallow one's pride (放下驕傲、屈尊)；hard to swallow (難以相信、難以接受)</div>
+</div>
+<div class="example-box">
+<div class="example-en">They swallow pebbles on purpose.</div>
+<div class="example-zh">（牠們故意吞下卵石。）</div>
+<div class="example-en">Some pills are so large that they are very difficult to swallow.</div>
+<div class="example-zh">（有些藥丸太大，以致於非常難以吞嚥。）</div>
+</div>
+</div>
+<!-- Word 4 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">4</span> purpose [ˈpɝpəs] n. 目的、意圖</div>
+<div class="tag-row">
+<div class="tag-label root">🔍 字根</div>
+<div class="tag-content">pose「放置」：propose (提議)、expose (暴露)、compose (組成)、impose (強加)、oppose (反對)</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">on purpose (故意地)；serve a purpose (起作用、符合目的)；sole purpose (唯一目的)</div>
+</div>
+<div class="example-box">
+<div class="example-en">They swallow pebbles on purpose.</div>
+<div class="example-zh">（牠們故意吞下卵石。）</div>
+<div class="example-en">The sole purpose of this meeting is to discuss the new budget plan.</div>
+<div class="example-zh">（本次會議的唯一目的就是討論新的預算計劃。）</div>
+</div>
+</div>
+<!-- Word 5 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">5</span> digest [daɪˈdʒɛst] v. 消化；理解、吸收</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">digestion [daɪˈdʒɛstʃən] n. 消化、消化力；digestive [daɪˈdʒɛstɪv] adj. 消化的</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">digest food (消化食物)；digest information (吸收/消化資訊)；digestive system (消化系統)</div>
+</div>
+<div class="example-box">
+<div class="example-en">One of them is to help penguins digest food, which often contains hard bones or shells.</div>
+<div class="example-zh">（其中一個目的是幫助企鵝消化食物，這些食物通常含有堅硬的骨頭或外殼。）</div>
+<div class="example-en">Take some time to digest the lessons you learned today.</div>
+<div class="example-zh">（花點時間消化你今天學到的課程。）</div>
+</div>
+</div>
+<!-- Word 6 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">6</span> grind [ɡraɪnd] v. 磨碎、研磨、磨牙</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">grinder [ˈɡraɪndɚ] n. 研磨機、磨牙</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">grind up (磨碎)；grind coffee beans (研磨咖啡豆)；grind one's teeth (磨牙)</div>
+</div>
+<div class="example-box">
+<div class="example-en">Once swallowed, the stones move into a special part of the penguin's stomach and help grind up the food.</div>
+<div class="example-zh">（一旦被吞下，這些石頭就會移動到企鵝胃部的一個特殊部分，並幫助磨碎食物。）</div>
+<div class="example-en">The machine is used to grind corn into flour.</div>
+<div class="example-zh">（這部機器是用來將玉米磨成粉的。）</div>
+</div>
+</div>
+<!-- Word 7 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">7</span> nutrient [ˈnutrɪənt] n. 營養物、營養素</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">nutrition [nuˈtrɪʃən] n. 營養；nutritious [nuˈtrɪʃəs] adj. 有營養的；nutritional [nuˈtrɪʃənəl] adj. 營養的</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">essential nutrients (必需營養素)；rich in nutrients (富含營養)；absorb nutrients (吸收營養)</div>
+</div>
+<div class="example-box">
+<div class="example-en">This makes it easier for penguins to break down their meals and get the most nutrients out of every bite.</div>
+<div class="example-zh">（這使得企鵝更容易分解牠們的食物，並從每一口中獲取最多的營養。）</div>
+<div class="example-en">Vegetables provide many essential nutrients that our bodies need.</div>
+<div class="example-zh">（蔬菜提供了我們身體所需的許多必需營養素。）</div>
+</div>
+</div>
+<!-- Word 8 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">8</span> buoyancy [ˈbɔɪənsɪ] n. 浮力；輕快、樂觀</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">buoyant [ˈbɔɪənt] adj. 有浮力的、樂觀的</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">increase buoyancy (增加浮力)；lose buoyancy (失去浮力)；positive buoyancy (正浮力)</div>
+</div>
+<div class="example-box">
+<div class="example-en">These increase their buoyancy.</div>
+<div class="example-zh">（這些會增加牠們的浮力。）</div>
+<div class="example-en">The life jacket provides enough buoyancy to keep you afloat.</div>
+<div class="example-zh">（這件救生衣提供了足夠的浮力，以保持你漂浮在水面上。）</div>
+</div>
+</div>
+<!-- Word 9 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">9</span> increase [ɪnˈkris] v. 增加、增長  n. [ˈɪnkris] 增加</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">increasingly [ɪnˈkrisɪŋlɪ] adv. 漸增地；decrease [dɪˈkris] v. 減少</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">increase weight (增加重量)；increase by 10% (增加百分之十)；on the increase (在增長中)</div>
+</div>
+<div class="example-box">
+<div class="example-en">These increase their buoyancy.</div>
+<div class="example-zh">（這些會增加牠們的浮力。）</div>
+<div class="example-en">The company plans to increase its production to meet the high demand.</div>
+<div class="example-zh">（公司計劃增加產量以滿足高度需求。）</div>
+</div>
+</div>
+<!-- Word 10 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">10</span> gradually [ˈɡrædʒʊəlɪ] adv. 逐漸地</div>
+<div class="tag-row">
+<div class="tag-label root">🔍 字根</div>
+<div class="tag-content">gress/grad「前進、踏步」：progress (進步)、congress (國會)、aggressive (具侵略性的)、digress (離題)、gradual (逐漸的)</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">gradually decrease (逐漸減少)；gradually improve (逐漸改善)；gradually adapt to (逐漸適應)</div>
+</div>
+<div class="example-box">
+<div class="example-en">They gradually wear down and are passed out of the body.</div>
+<div class="example-zh">（牠們會逐漸磨損並被排出體外。）</div>
+<div class="example-en">The temperature will gradually rise as summer approaches.</div>
+<div class="example-zh">（隨著夏天臨近，溫度將會逐漸上升。）</div>
+</div>
+</div>
+<!-- Word 11 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">11</span> pollution [pəˈluʃən] n. 污染</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">pollute [pəˈlut] v. 污染；pollutant [pəˈlutənt] n. 污染物</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">ocean pollution (海洋污染)；air pollution (空氣污染)；environmental pollution (環境污染)</div>
+</div>
+<div class="example-box">
+<div class="example-en">Unfortunately, as ocean pollution gets worse, many penguins mistake plastic trash for pebbles.</div>
+<div class="example-zh">（不幸的是，隨著海洋污染變得更糟，許多企鵝會將塑膠垃圾誤認為卵石。）</div>
+<div class="example-en">Governments must take action to reduce industrial pollution in our rivers.</div>
+<div class="example-zh">（政府必須採取行動以減少我們河流中的工業污染。）</div>
+</div>
+</div>
+<!-- Word 12 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">12</span> mistake [mɪˈstek] v. 誤認、弄錯  n. 錯誤</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">mistaken [mɪˈstekən] adj. 弄錯的、誤解的；mistakenly [mɪˈstekənlɪ] adv. 錯誤地</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">mistake A for B (把 A 誤認為 B)；make a mistake (犯錯)；by mistake (錯誤地、不小心地)</div>
+</div>
+<div class="example-box">
+<div class="example-en">Unfortunately, as ocean pollution gets worse, many penguins mistake plastic trash for pebbles, leading them to swallow it by accident.</div>
+<div class="example-zh">（不幸的是，隨著海洋污染變得更糟，許多企鵝會將塑膠垃圾誤認為卵石，導致牠們不小心吞下。）</div>
+<div class="example-en">I always mistake him for his twin brother because they look so much alike.</div>
+<div class="example-zh">（我總是把他誤認為他的雙胞胎弟弟，因為他們長得實在太像了。）</div>
+</div>
+</div>
+<!-- Word 13 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">13</span> protect [prəˈtɛkt] v. 保護</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">protection [prəˈtɛkʃən] n. 保護；protective [prəˈtɛktɪv] adj. 保護的、防護的</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">protect from (保護免受...)；protect against (防範、禦)；protect environment (保護環境)</div>
+</div>
+<div class="example-box">
+<div class="example-en">To save these amazing birds, we must protect the waters they depend on.</div>
+<div class="example-zh">（為了挽救這些神奇的鳥類，我們必須保護牠們所依賴的水域。）</div>
+<div class="example-en">Sunglasses can protect your eyes from harmful UV rays.</div>
+<div class="example-zh">（太陽眼鏡可以保護你的眼睛免受有害紫外線的傷害。）</div>
+</div>
+</div>
+<!-- Word 14 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">14</span> depend [dɪˈpɛnd] v. 依靠、依賴、取決於</div>
+<div class="tag-row">
+<div class="tag-label root">🔍 字根</div>
+<div class="tag-content">pend「懸掛、衡量、垂下」：suspend (懸掛/暫停)、pending (待定的)、append (附加)、suspense (懸念)、compensate (補償)、pendulum (鐘擺)</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">depend on (取決於、依賴)；heavily depend (嚴重依賴)</div>
+</div>
+<div class="example-box">
+<div class="example-en">To save these amazing birds, we must protect the waters they depend on.</div>
+<div class="example-zh">（為了挽救這些神奇的鳥類，我們必須保護牠們所依賴的水域。）</div>
+<div class="example-en">Whether we go for a picnic tomorrow will depend on the weather.</div>
+<div class="example-zh">（我們明天是否去野餐將會取決於天氣。）</div>
+</div>
+</div>
+<!-- Word 15 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">15</span> habitat [ˈhæbəˌtæt] n. (動植物的)棲息地</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">habitation [ˌhæbəˈteʃən] n. 居住、住所；cohabit [koˈhæbɪt] v. 同居</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">natural habitat (自然棲息地)；habitat destruction (棲息地破壞)；protect habitat (保護棲息地)</div>
+</div>
+<div class="example-box">
+<div class="example-en">Keeping their habitat clean is essential for their long-term survival.</div>
+<div class="example-zh">（保持牠們的棲息地乾淨對於牠們的長期生存是至關重要的。）</div>
+<div class="example-en">The tropical rainforest is the natural habitat of thousands of unique species.</div>
+<div class="example-zh">（熱帶雨林是成千上萬種獨特物種的自然棲息地。）</div>
+</div>
+</div>
+<!-- Word 16 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">16</span> essential [ɪˈsɛnʃəl] adj. 必要的、不可或缺的  n. 要素、必需品</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">essentially [ɪˈsɛnʃəlɪ] adv. 本質上、基本上；essence [ˈɛsns] n. 本質、精髓</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">be essential for (對...是不可或缺的)；essential difference (本質的區別)；daily essentials (生活必需品)</div>
+</div>
+<div class="example-box">
+<div class="example-en">Keeping their habitat clean is essential for their long-term survival.</div>
+<div class="example-zh">（保持牠們的棲息地乾淨對於牠們的長期生存是至關重要的。）</div>
+<div class="example-en">Water is essential for all living things to survive on Earth.</div>
+<div class="example-zh">（水是地球上所有生物生存所不可或缺的。）</div>
+</div>
+</div>
+<!-- Word 17 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">17</span> survival [sərˈvaɪv!] n. 生存、倖存、殘存物</div>
+<div class="tag-row">
+<div class="tag-label root">🔍 字根</div>
+<div class="tag-content">viv「生命、活的」：survive (生存/倖存)、revive (復甦/使甦醒)、vivid (生動的)、vital (充滿活力的)、vivacious (活潑的)</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">survival rate (生存率)；survival skills (生存技能)；long-term survival (長期生存)</div>
+</div>
+<div class="example-box">
+<div class="example-en">Keeping their habitat clean is essential for their long-term survival.</div>
+<div class="example-zh">（保持牠們的棲息地乾淨對於牠們的長期生存是至關重要的。）</div>
+<div class="example-en">The wilderness training focuses on teaching basic survival skills.</div>
+<div class="example-zh">（荒野訓練著重於教授基本的生存技能。）</div>
+</div>
+</div>
+<!-- Word 18 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">18</span> stomach [ˈstʌmək] n. 胃、腹部</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">stomachache [ˈstʌməkˌek] n. 胃痛、腹痛</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">empty stomach (空腹)；stomach ulcer (胃潰瘍)；settle one's stomach (使胃舒服)</div>
+</div>
+<div class="example-box">
+<div class="example-en">Once swallowed, the stones move into a special part of the penguin's stomach and help grind up the food.</div>
+<div class="example-zh">（一旦被吞下，這些石頭就會移動到企鵝胃部的一個特殊部分，並幫助磨碎食物。）</div>
+<div class="example-en">You should not take this medicine on an empty stomach.</div>
+<div class="example-zh">（你不應該在空腹時服用這種藥物。）</div>
+</div>
+</div>
+<!-- Word 19 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">19</span> dive [daɪv] v. n. 潛水、跳水、急劇下降</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">diver [ˈdaɪvɚ] n. 潛水員、跳水運動員</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">deep dive (深潛、深入探討)；sky dive (高空跳傘)；dive into (潛入、投入於)</div>
+</div>
+<div class="example-box">
+<div class="example-en">Pebbles may also help penguins dive.</div>
+<div class="example-zh">（卵石也可能幫助企鵝潛水。）</div>
+<div class="example-en">She decided to dive into the cold pool water despite the chilly weather.</div>
+<div class="example-zh">（儘管天氣寒冷，她還是決定跳進冰冷的泳池水中。）</div>
+</div>
+</div>
+<!-- Word 20 -->
+<div class="vocab-item">
+<div class="vocab-head"><span class="vocab-num">20</span> hemisphere [ˈhɛməsˌfɪr] n. (地球的)半球；腦半球</div>
+<div class="tag-row">
+<div class="tag-label der">📚 衍生詞</div>
+<div class="tag-content">hemispherical [ˌhɛməˈsfɪrɪkəl] adj. 半球的</div>
+</div>
+<div class="tag-row">
+<div class="tag-label idiom">💬 慣用語</div>
+<div class="tag-content">southern hemisphere (南半球)；northern hemisphere (北半球)；left hemisphere (左腦半球)</div>
+</div>
+<div class="example-box">
+<div class="example-en">Penguins are stars of the southern hemisphere.</div>
+<div class="example-zh">（企鵝是南半球之星。）</div>
+<div class="example-en">Taiwan is located in the northern hemisphere.</div>
+<div class="example-zh">（台灣位於北半球。）</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4 -->
+<section>
+<h2>【區塊四】文法解析</h2>
+<div class="card section-4">
+<div class="card-header">文法解析 Grammar</div>
+<div class="card-content">
+<!-- Point 1 -->
+<div class="grammar-point">
+<div class="grammar-point-title">【文法一】Make + it (虛受詞) + Adj (受詞補語) + for sb. + to V (真受詞)</div>
+<div class="g-section">
+<span class="g-label">【引句 Quote】</span>
+<div class="g-quote-box">This makes it easier for penguins to break down their meals and get the most nutrients out of every bite.</div>
+</div>
+<div class="g-section">
+<span class="g-label">【句型】</span>
+<div class="g-pattern-box">S + make/find/think/consider + it + adj. + (for sb.) + to V ...</div>
+</div>
+<div class="g-section">
+<span class="g-label">【核心說明】</span>
+              在英文中，當動詞後方的受詞是不定詞片語（<span class="en">to V</span>）且後方有受詞補語（形容詞）時，為避免句子結構「頭重腳輕」，通常會使用代名詞 <span class="en">it</span> 作為<b>虛受詞</b>佔位，而將真正的受詞（不定詞片語）移至句尾。常見搭配此結構的動詞包括 <span class="en">make</span>（使得）、<span class="en">find</span>（發現）、<span class="en">think</span>（認為）、<span class="en">consider</span>（考慮/認為）。
+            </div>
+<div class="g-section">
+<span class="g-label">【使用規則】</span>
+<ul class="g-list">
+<li>① 虛受詞一律用單數代名詞 <span class="en">it</span>，不可使用 <span class="en">this</span> 或 <span class="en">that</span>。</li>
+<li>② 緊接在虛受詞 <span class="en">it</span> 後方的是形容詞，作為受詞補語。</li>
+<li>③ 如果不定詞動作有明確的發出者，可在不定詞前加上「<span class="en">for + 邏輯主詞</span>」。</li>
+<li>④ 真正的受詞必須是 <span class="en">to V</span>（不定詞）或 <span class="en">that 賓語子句</span>，不可使用動名詞（V-ing）。</li>
+</ul>
+</div>
+<div class="g-section">
+<span class="g-label">【主題例句】</span>
+<ul class="g-list">
+<li>Swallowing pebbles makes it easier for penguins to grind up hard shells.（吞下卵石使得企鵝更容易磨碎堅硬的外殼。）</li>
+<li>Climate change makes it difficult for these birds to find enough food in summer.（氣候變遷使得這些鳥類在夏天很難找到足夠的食物。）</li>
+</ul>
+</div>
+<div class="g-section">
+<span class="g-label">【學習提醒】</span>
+              此句型為學測與指考的高頻考點，作答時需注意「虛受詞 it」與「受詞補語（形容詞）」的順序，且要避免漏掉 `it`。
+            </div>
+<div class="g-section">
+<span class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+<div class="wrong-sentence">✗ Thick feathers make easier for penguins to stay warm.</div>
+<div class="correct-sentence">✓ Thick feathers make it easier for penguins to stay warm.</div>
+<p>說明：應在使役動詞 make 後加上虛受詞 it，接形容詞補語 easier，再接真受詞 to stay warm。</p>
+<p><strong>精選試題：</strong><br/>
+              Choose the correct sentence:<br/>
+              (A) The ice melt makes this hard for polar bears to hunt seals.<br/>
+              (B) Ocean pollution makes it dangerous for sea creatures to swim.<br/>
+              (C) We find that important to protect wild animal habitats.<br/>
+              (D) Swallowing stones makes easier to digest hard bones.<br/>
+<strong>答案：B</strong>。說明：A 應將 this 改為 it；C 應在 find 後加上 it，即 find it important；D 應在 makes 後加上 it 成為 makes it easier。</p>
+</div>
+</div>
+<!-- Point 2 -->
+<div class="grammar-point">
+<div class="grammar-point-title">【文法二】As + Adverbial Clause of Proportion / Time (隨著比例/時間發展的副詞子句)</div>
+<div class="g-section">
+<span class="g-label">【引句 Quote】</span>
+<div class="g-quote-box">Unfortunately, as ocean pollution gets worse, many penguins mistake plastic trash for pebbles, leading them to swallow it by accident.</div>
+</div>
+<div class="g-section">
+<span class="g-label">【句型】</span>
+<div class="g-pattern-box">As + S + V (increasing/getting...), S + V ...</div>
+</div>
+<div class="g-section">
+<span class="g-label">【核心說明】</span>
+              連接詞 <span class="en">as</span> 可用來引導表示「隨著」的時間或比例副詞子句。這種子句通常描述一個動態的、持續變化的過程（如變好、變壞、增長、流逝等），主要子句則描述伴隨該變化而發生的相應變化。子句中常搭配比較級、漸進動詞（如 <span class="en">get</span>, <span class="en">become</span>, <span class="en">grow</span>）。
+            </div>
+<div class="g-section">
+<span class="g-label">【使用規則】</span>
+<ul class="g-list">
+<li>① <span class="en">as</span> 子句通常放在句首，與主要子句之間用逗號隔開。</li>
+<li>② 子句中的動詞多與「變化」相關，且常使用進行式或搭配比較級（如 <i>gets worse</i>）。</li>
+<li>③ 這種用法不能與 <i>although</i> 或 <i>because</i> 的 as 混淆，其核心意義是「時間的推移與比例上的對應變化」。</li>
+</ul>
+</div>
+<div class="g-section">
+<span class="g-label">【主題例句】</span>
+<ul class="g-list">
+<li>As the water temperature rises, penguins have to dive deeper to catch fish.（隨著水溫上升，企鵝必須潛得更深去捕魚。）</li>
+<li>As their habitats shrink, these birds face an increasing threat of extinction.（隨著牠們的棲息地萎縮，這些鳥類面臨日益增加的滅絕威脅。）</li>
+</ul>
+</div>
+<div class="g-section">
+<span class="g-label">【學習提醒】</span>
+<span class="en">as</span> 的用法極多（包含當「因為」、「雖然」、「當...之時」、「如同」）。辨識「隨著」用法的關鍵在於子句中是否有「漸進式變化」的動詞或比較級結構。
+            </div>
+<div class="g-section">
+<span class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+<div class="wrong-sentence">✗ With ocean pollution gets worse, penguins face more threats.</div>
+<div class="correct-sentence">✓ As ocean pollution gets worse, penguins face more threats.</div>
+<p>說明：With 是介係詞，後方不可直接加有動詞 gets worse 的完整子句。應使用連接詞 As 引導副詞子句。</p>
+<p><strong>精選試題：</strong><br/>
+              Fill in the blank:<br/>
+              ________ people pay more attention to environmental protection, the ocean will become cleaner.<br/>
+              (A) Although (B) As (C) During (D) Despite<br/>
+<strong>答案：B</strong>。說明：句意表示「隨著人們更加關注環保，海洋會變得更乾淨」，呈現前後變化的對應關係，故選 As。</p>
+</div>
+</div>
+<!-- Point 3 -->
+<div class="grammar-point">
+<div class="grammar-point-title">【文法三】V-ing (現在分詞) as Resultative Participle Phrase (分詞片語作結果副詞)</div>
+<div class="g-section">
+<span class="g-label">【引句 Quote】</span>
+<div class="g-quote-box">Unfortunately, as ocean pollution gets worse, many penguins mistake plastic trash for pebbles, leading them to swallow it by accident.</div>
+</div>
+<div class="g-section">
+<span class="g-label">【句型】</span>
+<div class="g-pattern-box">S + V ..., V-ing ...</div>
+</div>
+<div class="g-section">
+<span class="g-label"> 【核心說明】</span>
+              分詞構句中，置於主要子句後方的現在分詞片語（<span class="en">V-ing</span>）可以用來表示「<b>結果</b>」，即後半段的動作是前半段事件所直接導致的必然或自然結果。此時分詞片語相當於一個由對等連接詞 <span class="en">and</span> 連接的並列子句（如 <span class="en">and this leads them to...</span>），簡化後保留現在分詞。
+            </div>
+<div class="g-section">
+<span class="g-label">【使用規則】</span>
+<ul class="g-list">
+<li>① 此分詞片語前面通常會有逗號隔開。</li>
+<li>② 分詞動作的邏輯主詞是前半句的整件事，而非前半句的主要主詞。</li>
+<li>③ 必須是主動關係（前半句事件「導致、造成」了某結果），故一律使用現在分詞 <span class="en">V-ing</span>，常見動詞有 <i>leading to</i>, <i>causing</i>, <i>resulting in</i>, <i>making</i>。</li>
+</ul>
+</div>
+<div class="g-section">
+<span class="g-label">【主題例句】</span>
+<ul class="g-list">
+<li>Many people throw plastic bags into the sea, causing marine animals to choke on trash.（許多人將塑膠袋丟入海中，導致海洋動物被垃圾噎到。）</li>
+<li>The temperature of the earth keeps rising, forcing penguins to migrate to colder regions.（地球的溫度持續上升，迫使企鵝遷徙到更冷的地方。）</li>
+</ul>
+</div>
+<div class="g-section">
+<span class="g-label">【學習提醒】</span>
+              表示結果的分詞構句與表示伴隨狀況的分詞構句不同，後者的動作主詞是句子的主詞，而前者（表示結果）的邏輯主詞則是「前面的整個事件或狀況」。
+            </div>
+<div class="g-section">
+<span class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+<div class="wrong-sentence">✗ Trash accumulates in the oceans, caused death among marine life.</div>
+<div class="correct-sentence">✓ Trash accumulates in the oceans, causing death among marine life.</div>
+<p>說明：前半句事件主動導致了後半句的結果，應使用現在分詞 causing，不可使用過去分詞 caused。</p>
+<p><strong>精選試題：</strong><br/>
+              Choose the correct sentence:<br/>
+              (A) The sea level rises, result in coastal flooding.<br/>
+              (B) Overfishing destroys the food chain, leads to a decline in penguins.<br/>
+              (C) Glaciers melt rapidly, making it harder for penguins to breed.<br/>
+              (D) People pollute the environment, caused diseases to spread.<br/>
+<strong>答案：C</strong>。說明：A 應將 result in 改為 resulting in；B 應將 leads to 改為 leading to；D 應將 caused 改為 causing。</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Collapsible Sections (details/summary) -->
+<section>
+<h2>【底部折疊區塊】</h2>
+<!-- Fold 1 -->
+<details>
+<summary>折疊一：常見字首整理（50 個）<span class="arrow">▼</span></summary>
+<div class="details-body compact-p">
+<p>ab-　離開、相反　—　abnormal（異常的）</p>
+<p>ad-　向、加　—　advance（前進）</p>
+<p>ambi-　雙方、兩面　—　ambiguous（模稜兩可的）</p>
+<p>anti-　反對、抗　—　antibiotic（抗生素）</p>
+<p>arch-　主要、首要　—　archenemy（死敵）</p>
+<p>auto-　自動、自我　—　autograph（親筆簽名）</p>
+<p>bene-　好的、善　—　benefit（好處）</p>
+<p>bi-　二、雙　—　bilingual（雙語的）</p>
+<p>circum-　環繞、周圍　—　circumstance（情況）</p>
+<p>co-/con-/com-　一起、共同　—　cooperate（合作）</p>
+<p>contra-　相反、對抗　—　contradict（反駁）</p>
+<p>de-　去除、下降　—　decode（解碼）</p>
+<p>dia-　穿過、透過　—　dialogue（對話）</p>
+<p>dis-　否定、分離　—　disagree（不同意）</p>
+<p>en-/em-　使成為　—　enable（使能夠）</p>
+<p>epi-　在上、在外　—　epidemic（流行病）</p>
+<p>ex-　外、前任　—　export（出口）；ex-president（前總統）</p>
+<p>extra-　額外、外部　—　extraordinary（非凡的）</p>
+<p>hetero-　不同　—　heterogeneous（異質的）</p>
+<p>homo-　相同　—　homogeneous（同質的）</p>
+<p>hyper-　過度、超　—　hyperactive（過動的）</p>
+<p>hypo-　低於、不足　—　hypodermic（皮下的）</p>
+<p>in-/im-　否定、進入　—　invisible（看不見的）；import（輸入）</p>
+<p>inter-　在…之間　—　international（國際的）</p>
+<p>iso-　相等、相同　—　isolate（隔離）</p>
+<p>mal-　壞、不良　—　malfunction（故障）</p>
+<p>micro-　微小　—　microscope（顯微鏡）</p>
+<p>mis-　錯誤　—　misunderstand（誤解）</p>
+<p>mono-　單一　—　monologue（獨白）</p>
+<p>multi-　多　—　multicultural（多元文化的）</p>
+<p>neo-　新的　—　neonatal（新生的）</p>
+<p>non-　非、沒有　—　nonsense（無意義）</p>
+<p>pan-　全部　—　pandemic（大流行病）</p>
+<p>peri-　周圍　—　perimeter（周長）</p>
+<p>poly-　多　—　polygon（多邊形）</p>
+<p>post-　之後　—　postwar（戰後的）</p>
+<p>pre-　之前　—　preview（預覽）</p>
+<p>pro-　向前、支持　—　progress（進步）；pro-democracy（支持民主的）</p>
+<p>pseudo-　假的　—　pseudonym（筆名）</p>
+<p>re-　再、回　—　review（複習）</p>
+<p>semi-　一半、部分　—　semicircle（半圓）</p>
+<p>sub-　在下、次級　—　subway（地鐵）</p>
+<p>super-　超越、在上　—　superstar（超級明星）</p>
+<p>syn-/sym-　一起、共同　—　synchronize（同步）</p>
+<p>tele-　遠距　—　telephone（電話）</p>
+<p>trans-　穿越、轉變　—　transport（運輸）</p>
+<p>tri-　三　—　triangle（三角形）</p>
+<p>un-　否定、不　—　unhappy（不快樂的）</p>
+<p>vice-　副、代替　—　vice-president（副總統）</p>
+</div>
+</details>
+<!-- Fold 2 -->
+<details>
+<summary>折疊二：常見英文字尾整理（約 30 個）<span class="arrow">▼</span></summary>
+<div class="details-body compact-p">
+<p><strong>名詞字尾</strong></p>
+<p>-tion/-sion/-ation　動作、過程或結果　—　education（教育）、decision（決定）</p>
+<p>-ment　行為或結果　—　agreement（協議）、development（發展）</p>
+<p>-ness　狀態或性質　—　happiness（快樂）、darkness（黑暗）</p>
+<p>-ity/-ty　抽象概念或狀態　—　ability（能力）、cruelty（殘酷）</p>
+<p>-er/-or　執行某動作的人或物　—　teacher（老師）、actor（演員）</p>
+<p>-ist　信仰或專業的人　—　artist（藝術家）、scientist（科學家）</p>
+<p>-ship　身分或關係　—　friendship（友誼）、leadership（領導）</p>
+<p>-hood　階段或狀態　—　childhood（童年）、neighborhood（鄰里）</p>
+<p><strong>形容詞字尾</strong></p>
+<p>-able/-ible　能夠…的　—　readable（可讀的）、credible（可信的）</p>
+<p>-ous　充滿…的　—　dangerous（危險的）、famous（著名的）</p>
+<p>-ful　具有…的　—　hopeful（充滿希望的）、beautiful（美麗的）</p>
+<p>-less　缺乏…的　—　hopeless（絕望的）、powerless（無力的）</p>
+<p>-al/-ic　與…相關的　—　natural（自然的）、poetic（詩意的）</p>
+<p><strong>動詞字尾</strong></p>
+<p>-ize/-ise　使成為…　—　realize（實現）、industrialize（工業化）</p>
+<p>-ify　使成為…　—　beautify（美化）、clarify（澄清）</p>
+<p>-ate　形成動詞　—　dominate（支配）、activate（啟動）</p>
+<p>-en　使變成…　—　strengthen（加強）、soften（使柔軟）</p>
+<p><strong>副詞字尾</strong></p>
+<p>-ly　形容詞轉副詞　—　quickly（快速地）、carefully（仔細地）</p>
+<p>-ward(s)　表示方向　—　upwards（向上）、homeward（回家）</p>
+<p>-wise　表示方式或角度　—　clockwise（順時針方向）</p>
+</div>
+</details>
+<!-- Fold 3 -->
+<details>
+<summary>折疊三：30個常用單字與衍生詞<span class="arrow">▼</span></summary>
+<div class="details-body compact-p">
+<p>1. <strong>penguin</strong> [ˈpɛŋɡwɪn] (n. 企鵝) — <strong>penguins</strong> (n. 複數)</p>
+<p>2. <strong>southern</strong> [ˈsʌðɚn] (adj. 南方的) — <strong>south</strong> [saʊθ] (n. 南方)</p>
+<p>3. <strong>hemisphere</strong> [ˈhɛməsˌfɪr] (n. 半球) — <strong>hemispherical</strong> [ˌhɛməˈsfɪrɪkəl] (adj. 半球的)</p>
+<p>4. <strong>famous</strong> [ˈfeməs] (adj. 著名的) — <strong>fame</strong> [fem] (n. 名聲)</p>
+<p>5. <strong>appearance</strong> [əˈpɪrəns] (n. 外表) — <strong>appear</strong> [əˈpɪr] (v. 出現)</p>
+<p>6. <strong>smooth</strong> [smuð] (adj. 流暢的、平滑的) — <strong>smoothly</strong> [ˈsmuðlɪ] (adv. 平滑地)</p>
+<p>7. <strong>strange</strong> [strendʒ] (adj. 奇怪的) — <strong>stranger</strong> [ˈstrendʒɚ] (n. 陌生人)</p>
+<p>8. <strong>habit</strong> [ˈhæbɪt] (n. 習慣) — <strong>habitual</strong> [həˈbɪtʃʊəl] (adj. 習慣性的)</p>
+<p>9. <strong>swallow</strong> [ˈswɑlo] (v. 吞下) — <strong>swallowable</strong> [ˈswɑloəbl] (adj. 可吞的)</p>
+<p>10. <strong>pebble</strong> [ˈpɛb!] (n. 卵石) — <strong>pebbly</strong> [ˈpɛblɪ] (adj. 多卵石的)</p>
+<p>11. <strong>purpose</strong> [ˈpɝpəs] (n. 目的) — <strong>purposeful</strong> [ˈpɝpəsfəl] (adj. 有目的的)</p>
+<p>12. <strong>digest</strong> [daɪˈdʒɛst] (v. 消化) — <strong>digestion</strong> [daɪˈdʒɛstʃən] (n. 消化)</p>
+<p>13. <strong>stomach</strong> [ˈstʌmək] (n. 胃) — <strong>stomachache</strong> [ˈstʌməkˌek] (n. 胃痛)</p>
+<p>14. <strong>grind</strong> [ɡraɪnd] (v. 磨碎) — <strong>grinder</strong> [ˈɡraɪndɚ] (n. 研磨機)</p>
+<p>15. <strong>break</strong> [brek] (v. 打碎、打破) — <strong>breakdown</strong> [ˈbrekˌdaʊn] (n. 分解)</p>
+<p>16. <strong>nutrient</strong> [ˈnutrɪənt] (n. 營養素) — <strong>nutrition</strong> [nuˈtrɪʃən] (n. 營養)</p>
+<p>17. <strong>dive</strong> [daɪv] (v. 潛水) — <strong>diver</strong> [ˈdaɪvɚ] (n. 潛水員)</p>
+<p>18. <strong>feather</strong> [ˈfɛðɚ] (n. 羽毛) — <strong>feathered</strong> [ˈfɛðɚd] (adj. 有羽毛的)</p>
+<p>19. <strong>increase</strong> [ɪnˈkris] (v. 增加) — <strong>increasing</strong> [ɪnˈkrisɪŋ] (adj. 漸增的)</p>
+<p>20. <strong>buoyancy</strong> [ˈbɔɪənsɪ] (n. 浮力) — <strong>buoyant</strong> [ˈbɔɪənt] (adj. 有浮力的)</p>
+<p>21. <strong>weight</strong> [wet] (n. 重量) — <strong>weigh</strong> [we] (v. 稱重)</p>
+<p>22. <strong>underwater</strong> [ˌʌndɚˈwɔtɚ] (adv. 在水下) — <strong>water</strong> [ˈwɔtɚ] (n. 水)</p>
+<p>23. <strong>stay</strong> [ste] (v. 停留) — <strong>stay</strong> [ste] (n. 停留)</p>
+<p>24. <strong>gradually</strong> [ˈɡrædʒʊəlɪ] (adv. 逐漸地) — <strong>gradual</strong> [ˈɡrædʒʊəl] (adj. 逐漸的)</p>
+<p>25. <strong>pollution</strong> [pəˈluʃən] (n. 污染) — <strong>pollute</strong> [pəˈlut] (v. 污染)</p>
+<p>26. <strong>plastic</strong> [ˈplæstɪk] (n. 塑膠) — <strong>plastic</strong> [ˈplæstɪk] (adj. 塑膠的)</p>
+<p>27. <strong>depend</strong> [dɪˈpɛnd] (v. 依靠) — <strong>dependence</strong> [dɪˈpɛndəns] (n. 依賴)</p>
+<p>28. <strong>habitat</strong> [ˈhæbəˌtæt] (n. 棲息地) — <strong>habitation</strong> [ˌhæbəˈteʃən] (n. 居住)</p>
+<p>29. <strong>essential</strong> [ɪˈsɛnʃəl] (adj. 必要的) — <strong>essentially</strong> [ɪˈsɛnʃəlɪ] (adv. 本質上)</p>
+<p>30. <strong>survival</strong> [sərˈvaɪv!] (n. 生存) — <strong>survive</strong> [sərˈvaɪv] (v. 倖存)</p>
+<hr style="border: 0; border-top: 1px dashed rgba(26,15,0,0.1); margin: 16px 0;"/>
+<p><strong>文章相關常用片語 5 個（不需例句）：</strong></p>
+<p>• <strong>rely on / depend on</strong>（依賴、依靠）</p>
+<p>• <strong>mistake A for B</strong>（將 A 誤認為 B）</p>
+<p>• <strong>by accident</strong>（不小心、偶然地）</p>
+<p>• <strong>for good</strong>（永遠）</p>
+<p>• <strong>break down</strong>（分解、打碎）</p>
+</div>
+</details>
+<!-- Fold 4 -->
+<details>
+<summary>折疊四：練文筆食材<span class="arrow">▼</span></summary>
+<div class="details-body compact-p">
+<p>① <strong>be famous for...</strong>（以...而聞名）<br/>
+          → 適用：描述某人、某地或動物的特點與名氣。<br/>
+          例：<i>The small island is famous for its crystal clear beaches.</i></p>
+<p>② <strong>on purpose</strong>（故意地）<br/>
+          → 適用：強調某個舉動並非偶然，而是有明確意圖。<br/>
+          例：<i>He left the window open on purpose to let in some fresh air.</i></p>
+<p>③ <strong>help (to) V...</strong>（幫助做某事）<br/>
+          → 適用：說明某功能或工具對人或生物起到的協助作用。<br/>
+          例：<i>Doing regular exercise helps to reduce mental stress.</i></p>
+<p>④ <strong>makes it + adj. + for sb. + to V...</strong>（使得某人做某事變的更...）<br/>
+          → 適用：探討某件事物對行動主體造成的影響，極度推薦的寫作句型。<br/>
+          例：<i>The new smartphone app makes it easier for users to order food.</i></p>
+<p>⑤ <strong>break down...</strong>（分解...）<br/>
+          → 適用：描述科學、生理上的分解，或是抽象問題的分析。<br/>
+          例：<i>It takes hundreds of years for plastic bags to break down naturally.</i></p>
+<p>⑥ <strong>by V-ing...</strong>（藉由...）<br/>
+          → 適用：詳細說明達到某種狀態或目的所採取的手段。<br/>
+          例：<i>By reading daily, you can expand your vocabulary efficiently.</i></p>
+<p>⑦ <strong>do not... for good</strong>（不會永遠...）<br/>
+          → 適用：強調某種現象或狀態只是暫時的，並非永久。<br/>
+          例：<i>Youthful beauty does not stay with us for good.</i></p>
+<p>⑧ <strong>as... gets worse</strong>（隨著...變得更糟）<br/>
+          → 適用：描述負面局勢、污染、氣候等動態惡化的過程。<br/>
+          例：<i>As global warming gets worse, extreme weather events occur more often.</i></p>
+<p>⑨ <strong>mistake A for B</strong>（將 A 誤認為 B）<br/>
+          → 適用：描述因外觀相似或訊息錯誤而導致的誤判與混淆。<br/>
+          例：<i>In the dark, I mistook the long rope for a snake.</i></p>
+<p>⑩ <strong>lead sb. to V...</strong>（導致某人做某事）<br/>
+          → 適用：追溯因果關係，特別是導致不好的後果。<br/>
+          例：<i>The heavy rain led the match to be postponed.</i></p>
+<p>⑪ <strong>by accident</strong>（不小心、偶然地）<br/>
+          → 適用：強調動作並非出於故意，與 on purpose 相反。<br/>
+          例：<i>She dropped her key into the drain by accident.</i></p>
+<p>⑫ <strong>depend on...</strong>（依靠、取決於...）<br/>
+          → 適用：說明兩者之間的直接依附或因果關聯。<br/>
+          例：<i>Success depends on your efforts and attitude.</i></p>
+<p>⑬ <strong>be essential for...</strong>（對...是不可或缺的）<br/>
+          → 適用：強調某個條件或元素在某個環境/生命中的絕對重要性。<br/>
+          例：<i>Good communication is essential for a happy family life.</i></p>
+</div>
+</details>
+</section>
+</div>
+<!-- ===== BOTTOM NAV ===== -->
+<nav class="nav-bar">
+<div class="nav-inner">
+<div class="nav-label">✨ 林威老師課程 &amp; 聯絡資訊</div>
+<a class="nav-link" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+<span class="icon">🔥</span> 錯中學 ECHO 計劃｜七月開課
+    </a>
+<a class="nav-link" href="https://linwayet.github.io/popup/index" target="_blank">
+<span class="icon">📊</span> 學生學習分析
+    </a>
+<a class="nav-link line-link" href="https://line.me/ti/p/linwayet" target="_blank">
+<span class="icon">💬</span> LINE：linwayet
+    </a>
+</div>
+</nav>
+</body>
+</html>

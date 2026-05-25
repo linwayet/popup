@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pantone's 2026 Color</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap');
+    :root {
+      --bg: #FFF8F0;
+      --text: #1A0F00;
+      --red: #C0392B;
+      --blue: #1565C0;
+      --green: #2E7D32;
+      --orange: #E65100;
+      --purple: #6A1B9A;
+      --keyword: #0D47A1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "BIZ UDPGothic", "PingFang TC", "Noto Sans TC", "Heiti TC", sans-serif;
+      font-size: 22px;
+      line-height: 1.9;
+      font-weight: 400;
+    }
+    .page {
+      width: min(900px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 28px 0 56px;
+    }
+    header { text-align: center; margin-bottom: 34px; }
+    h1 {
+      margin: 0 auto 18px;
+      padding: 26px 18px;
+      color: var(--red);
+      font-size: clamp(3rem, 8vw, 4.65rem);
+      line-height: 1.18;
+      border: 6px solid var(--red);
+      border-radius: 18px;
+      background: #FFFDF8;
+      box-shadow: 0 10px 0 #F3C7B8;
+      font-weight: 700;
+    }
+    .subtitle {
+      margin: 0 0 14px;
+      color: var(--blue);
+      font-size: clamp(2.2rem, 6vw, 3.05rem);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    .maker {
+      display: inline-block;
+      color: #0D47A1;
+      font-size: clamp(1.45rem, 4.5vw, 2rem);
+      font-weight: 700;
+      padding: 12px 20px;
+      border: 3px solid #90CAF9;
+      border-radius: 999px;
+      background: #F3F8FF;
+      letter-spacing: 0;
+    }
+    section {
+      margin: 34px 0;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 4px solid;
+      background: #fff;
+    }
+    h2 {
+      margin: 0;
+      padding: 18px 22px;
+      color: #fff;
+      font-size: clamp(2.2rem, 6vw, 3rem);
+      line-height: 1.25;
+      font-weight: 700;
+    }
+    h3 {
+      margin: 22px 0 12px;
+      color: var(--green);
+      font-size: 1.65rem;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+    .content { padding: 24px; }
+    .article { border-color: #90CAF9; background: #F3F8FF; }
+    .article h2 { background: #0D47A1; }
+    .reading { border-color: #FFAB91; background: #FFF3EF; }
+    .reading h2 { background: #BF360C; }
+    .vocab { border-color: #81C784; background: #F1F8F2; }
+    .vocab h2 { background: #1B5E20; }
+    .grammar { border-color: #CE93D8; background: #F9F0FF; }
+    .grammar h2 { background: #4A148C; }
+    .disclosures { border-color: #C4A06A; background: #FAF6F0; }
+    .disclosures h2 { background: #4A3728; }
+    p { margin: 0 0 1.1em; }
+    .keyword { color: #0D47A1; font-weight: 700; text-decoration: none; }
+    .entry, .word-card, .grammar-card {
+      background: #FFFDF8;
+      border: 3px solid rgba(26, 15, 0, 0.16);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .num {
+      display: inline-flex;
+      width: 52px;
+      height: 52px;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.35rem;
+      vertical-align: middle;
+    }
+    .quote {
+      color: #3B2414;
+      font-style: italic;
+      font-weight: 700;
+    }
+    .zh { color: #4A2A13; }
+    .pill {
+      display: inline-block;
+      margin: 6px 8px 6px 0;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #FEF0E7;
+      color: #E65100;
+      font-weight: 700;
+    }
+    .word-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .word {
+      font-size: 2.2rem;
+      color: #1B5E20;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .phonics, .pos { color: #6A1B9A; font-weight: 700; }
+    .label-row {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      border: 2px solid #D7C2AE;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 10px 0;
+      background: #fff;
+    }
+    .label {
+      padding: 12px;
+      background: #EBF5FB;
+      color: #1565C0;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+    .label-content { padding: 12px 14px; font-size: 1em; line-height: 1.9; }
+    .example-box {
+      background: #FAF6F0;
+      border: 2px solid #E5CFB8;
+      border-radius: 14px;
+      padding: 16px;
+      margin-top: 14px;
+      font-size: 1em;
+      line-height: 1.9;
+    }
+    .example-box p { font-size: 1em; line-height: 1.9; }
+    details {
+      border: 3px solid #C4A06A;
+      border-radius: 14px;
+      margin: 16px 0;
+      background: #FFFDF8;
+      overflow: hidden;
+    }
+    summary {
+      min-height: 72px;
+      padding: 18px 22px;
+      cursor: pointer;
+      background: #4A3728;
+      color: #fff;
+      font-weight: 700;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    .arrow { transition: transform 300ms ease; font-size: 1.5rem; }
+    details[open] .arrow { transform: rotate(180deg); }
+    .detail-body { padding: 20px 24px; }
+    .grid-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .mini {
+      padding: 12px 14px;
+      border-left: 8px solid #1565C0;
+      background: #fff;
+      border-radius: 10px;
+    }
+    ul { padding-left: 1.3em; }
+    li { margin: 0.45em 0; }
+    @media (max-width: 680px) {
+      body { font-size: 20px; }
+      .content { padding: 18px; }
+      .label-row { grid-template-columns: 1fr; }
+      .grid-list { grid-template-columns: 1fr; }
+      h1 { font-size: 3rem; }
+    }
+  
+  /* ========== NAV LINKS ========== */
+  .nav-bar {
+    background: linear-gradient(90deg, #E8612C 0%, #F4845F 50%, #F5A623 100%);
+    padding: 0.8rem 1rem;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .nav-bar .nav-inner {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+    width: 100%;
+    margin-bottom: 2px;
+    letter-spacing: 0.04em;
+  }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.22);
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 15px;
+    border-radius: 24px;
+    border: 1.5px solid rgba(255,255,255,0.45);
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .nav-link:hover {
+    background: rgba(255,255,255,0.38);
+    transform: translateY(-2px);
+  }
+  .nav-link .icon { font-size: 16px; }
+  .nav-link.line-link { background: rgba(0,196,0,0.35); border-color: rgba(100,255,100,0.5); }
+  .nav-link.line-link:hover { background: rgba(0,196,0,0.55); }
+
+  /* ========== IMAGE MIMIC TOP SECTION STYLING ========== */
+  .img-mimic-container {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto 28px auto;
+    box-sizing: border-box;
+  }
+  .img-mimic-outer-card {
+    background-color: #FFF5EB;
+    border: 2px solid #FFD9B3;
+    border-radius: 24px;
+    padding: 28px 24px;
+    box-shadow: 0 6px 18px rgba(230, 115, 0, 0.05);
+    margin-bottom: 28px;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .img-mimic-outer-title {
+    color: #8A4F1D;
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 22px;
+    letter-spacing: 0.05em;
+  }
+  .img-mimic-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+  }
+  .img-mimic-sub-card {
+    flex: 1 1 250px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 22px 20px;
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+  }
+  .img-mimic-sub-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  }
+  .img-mimic-sub-card.card-echo { border: 2.5px solid #F4845F; }
+  .img-mimic-sub-card.card-analysis { border: 2.5px solid #4CAF50; }
+  .img-mimic-sub-card.card-line { border: 2.5px solid #2196F3; }
+
+  .img-mimic-tag {
+    font-size: 14px;
+    font-weight: 700;
+    color: #9C27B0;
+    margin-bottom: 8px;
+  }
+  .img-mimic-card-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: #1A0F00;
+    margin-top: 0;
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+  .img-mimic-card-body {
+    font-size: 15px;
+    color: #555555;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .img-mimic-header-card {
+    background-color: #FFFDFB;
+    border: 3.5px solid #C0392B;
+    border-radius: 24px;
+    padding: 38px 28px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(192, 57, 43, 0.06);
+    box-sizing: border-box;
+    margin-bottom: 28px;
+  }
+  .img-mimic-header-title {
+    color: #C0392B;
+    font-size: clamp(28px, 5.5vw, 44px) !important;
+    font-weight: 800 !important;
+    line-height: 1.25 !important;
+    margin: 0 0 18px 0 !important;
+    letter-spacing: -0.01em !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  .img-mimic-header-subtitle {
+    color: #1565C0 !important;
+    font-size: clamp(20px, 4vw, 26px) !important;
+    font-weight: 700 !important;
+    margin: 0 0 14px 0 !important;
+    line-height: 1.35 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  .img-mimic-header-author {
+    color: #1565C0 !important;
+    font-size: clamp(16px, 3.5vw, 20px) !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  .img-mimic-header-author span.agent {
+    font-family: 'Times New Roman', Georgia, serif;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 1.15em;
+  }
+
+  @media (max-width: 720px) {
+    .img-mimic-outer-card { padding: 20px 16px; }
+    .img-mimic-header-card { padding: 28px 18px; }
+    .img-mimic-outer-title { font-size: 22px; margin-bottom: 16px; }
+    .img-mimic-card-title { font-size: 18px; }
+    .img-mimic-card-body { font-size: 13.5px; }
+  }
+</style>
+</head>
+<body>
+<!-- ===== TOP NAV ===== -->
+
+<div class="page">
+
+<div class="img-mimic-container">
+<div class="img-mimic-outer-card">
+<div class="img-mimic-outer-title">七月開課與聯絡資訊</div>
+<div class="img-mimic-flex">
+<a class="img-mimic-sub-card card-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+<div class="img-mimic-tag">七月課程介紹</div>
+<div class="img-mimic-card-title">錯中學 ECHO 計劃</div>
+<div class="img-mimic-card-body">用錯題分析建立個人化學習路徑，適合暑期想補強英文閱讀與文法的同學。</div>
+</a>
+<a class="img-mimic-sub-card card-analysis" href="https://linwayet.github.io/popup/index" target="_blank">
+<div class="img-mimic-tag">七月課程介紹</div>
+<div class="img-mimic-card-title">學生分析</div>
+<div class="img-mimic-card-body">查看學習狀況與弱點整理，協助安排更精準的複習方向。</div>
+</a>
+<a class="img-mimic-sub-card card-line" href="https://line.me/ti/p/linwayet" target="_blank">
+<div class="img-mimic-tag">個人 Line 帳號</div>
+<div class="img-mimic-card-title">linwayet</div>
+<div class="img-mimic-card-body">課程詢問、教材使用與暑期規劃，可直接透過 Line 聯絡。</div>
+</a>
+</div>
+</div>
+<div class="img-mimic-header-card">
+<h1 class="img-mimic-header-title">Pantone's 2026 Color</h1>
+<div class="img-mimic-header-subtitle">A Softer White for Tired Eyes</div>
+<div class="img-mimic-header-author">林威老師與 <span class="agent">AI agent</span> 團隊製作</div>
+</div>
+</div>
+
+<section class="article">
+<h2>Section 1｜English Article Text</h2>
+<div class="content">
+<p><strong>Pantone's 2026 Color.</strong> ...</p>
+</div>
+</section>
+<section class="reading">
+<h2>Section 2｜8 句精讀 Close Reading</h2>
+<div class="content">
+<div class="entry">
+<p><span class="num">①</span><span class="quote">Pantone does not treat color merely as decoration.</span></p>
+<p class="zh">Pantone 並不只是把顏色當作裝飾。</p>
+<p><strong>文法解析：</strong>`not merely as...` 表示「不只是當作……」。這句用簡短的否定句開場，先推翻「顏色只是裝飾」的直覺想法，再引出後面顏色也能反映時代心理。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">merely 只是</span><span class="pill">decoration 裝飾</span><span class="pill">treat A as B 把 A 視為 B</span></p>
+</div>
+<div class="entry">
+<p><span class="num">②</span><span class="quote">Through ongoing research by the Pantone Color Institute, it uses color to reflect how people are feeling and what they are seeking next.</span></p>
+<p class="zh">透過 Pantone Color Institute 持續進行的研究，它使用顏色來反映人們正在感受什麼，以及接下來正在尋求什麼。</p>
+<p><strong>文法解析：</strong>`how people are feeling` 和 `what they are seeking next` 都是名詞子句，當作 reflect 的受詞內容。句首 `Through...` 表示方法，像是在說「透過哪一條路徑得到這個判斷」。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">ongoing research 持續研究</span><span class="pill">reflect 反映</span><span class="pill">seek 尋求</span></p>
+</div>
+<div class="entry">
+<p><span class="num">③</span><span class="quote">Its color of the year for 2026 is Pantone 11-4201, Cloud Dancer, a shade of white introduced in response to visual overload and constant stimulation.</span></p>
+<p class="zh">它的 2026 年度代表色是 Pantone 11-4201 Cloud Dancer，這是一種白色調，是為了回應視覺過載與持續刺激而推出的。</p>
+<p><strong>文法解析：</strong>`Cloud Dancer` 和 `a shade of white...` 都是在補充說明 Pantone 11-4201。`introduced in response to...` 是過去分詞片語，說明這個色彩被推出的背景原因。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">shade 色調</span><span class="pill">in response to 回應</span><span class="pill">visual overload 視覺過載</span></p>
+</div>
+<div class="entry">
+<p><span class="num">④</span><span class="quote">The Pantone Color Institute describes the hue as light and airy, with the emphasis on calm rather than visual impact.</span></p>
+<p class="zh">Pantone Color Institute 將這個色相描述為輕盈、通透，重點放在平靜，而不是視覺衝擊。</p>
+<p><strong>文法解析：</strong>`describe A as B` 是「把 A 描述為 B」。`rather than` 用來對比兩種選擇，這裡清楚指出 Cloud Dancer 的設計目的不是搶眼，而是安定視覺。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">hue 色相</span><span class="pill">airy 輕盈通透的</span><span class="pill">rather than 而不是</span></p>
+</div>
+<div class="entry">
+<p><span class="num">⑤</span><span class="quote">Instead of drawing the eye, Cloud Dancer is intended for spaces where attention is easily scattered.</span></p>
+<p class="zh">Cloud Dancer 不是為了吸引目光，而是為了那些注意力容易分散的空間而設計。</p>
+<p><strong>文法解析：</strong>`Instead of + V-ing` 表示「不是做……」。`where attention is easily scattered` 是關係副詞子句，修飾 spaces，說明是哪一種空間。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">draw the eye 吸引目光</span><span class="pill">be intended for 為……而設計</span><span class="pill">scattered 分散的</span></p>
+</div>
+<div class="entry">
+<p><span class="num">⑥</span><span class="quote">It carries a slight warmth that prevents it from appearing stark on walls, fabrics, or screens.</span></p>
+<p class="zh">它帶有一點溫暖感，能防止它在牆面、布料或螢幕上顯得刺眼生硬。</p>
+<p><strong>文法解析：</strong>`that prevents it from appearing...` 是關係子句，修飾 warmth。`prevent + O + from V-ing` 表示「防止某人或某物做某事」，是高頻寫作句型。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">slight warmth 微微暖意</span><span class="pill">prevent...from 防止</span><span class="pill">stark 刺眼生硬的</span></p>
+</div>
+<div class="entry">
+<p><span class="num">⑦</span><span class="quote">As a base color, it adapts well to seasonal changes and shifting tastes, Designers can pair it with muted tones for a quiet effect or introduce darker shades without losing harmony.</span></p>
+<p class="zh">作為基底色，它能很好地適應季節變化與品味轉移，設計師可以把它和柔和色調搭配，營造安靜效果，也可以加入較深色調而不失和諧。</p>
+<p><strong>文法解析：</strong>`As a base color` 表示身分或功能。後半句使用 `pair A with B` 表示「把 A 和 B 搭配」，並用 `or` 連接兩種設計選擇。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">base color 基底色</span><span class="pill">muted tones 柔和色調</span><span class="pill">harmony 和諧</span></p>
+</div>
+<div class="entry">
+<p><span class="num">⑧</span><span class="quote">Its value lies in easing visual pressure on the viewer and giving other elements room to carry meaning.</span></p>
+<p class="zh">它的價值在於減輕觀看者的視覺壓力，並讓其他元素有空間承載意義。</p>
+<p><strong>文法解析：</strong>`lie in + N/V-ing` 表示「存在於……」。這裡的兩個動名詞 `easing` 和 `giving` 平行，說明 Cloud Dancer 的兩個價值來源。</p>
+<p><strong>亮點詞彙／片語：</strong><span class="pill">lie in 在於</span><span class="pill">ease pressure 減輕壓力</span><span class="pill">carry meaning 承載意義</span></p>
+</div>
+</div>
+</section>
+<section class="vocab">
+<h2>Section 3｜20 個單字整理 Vocabulary</h2>
+<div class="content">
+<div class="word-card">
+<div class="word-title"><span class="num">1</span><span class="word">visual</span><span class="phonics">[ˈvɪʒuəl]</span><span class="pos">adj. 視覺的</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">vision [ˈvɪʒən] n. 視力；visualize [ˈvɪʒuəˌlaɪz] v. 視覺化；visually [ˈvɪʒuəlɪ] adv. 視覺上</div></div>
+<div class="label-row"><div class="label">字根</div><div class="label-content">vis / vid 表示「看」，如 vision（視覺）、evident（明顯的）。</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">visual overload（視覺過載）；visual impact（視覺衝擊）；visual pressure（視覺壓力）</div></div>
+<div class="example-box"><p>Cloud Dancer was introduced in response to visual overload and constant stimulation.（Cloud Dancer 是為了回應視覺過載與持續刺激而推出的。）</p><p>A clean layout can reduce visual stress for readers.（乾淨的版面能降低讀者的視覺壓力。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">2</span><span class="word">overload</span><span class="phonics">[ˈovɚˌlod]</span><span class="pos">n./v. 過載；使負荷過重</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">load [lod] n./v. 負載；download [ˈdaʊnˌlod] v. 下載；upload [ˈʌpˌlod] v. 上傳</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">information overload（資訊過載）；sensory overload（感官過載）；visual overload（視覺過載）</div></div>
+<div class="label-row"><div class="label">容易混淆</div><div class="label-content">overload 強調「太多而承受不了」，不只是 many 或 much。</div></div>
+<div class="example-box"><p>Cloud Dancer was introduced in response to visual overload.（Cloud Dancer 是為了回應視覺過載而推出的。）</p><p>Too many pop-up ads can overload the viewer.（太多彈出式廣告會讓觀看者負荷過重。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">3</span><span class="word">stimulation</span><span class="phonics">[ˌstɪmjəˈleʃən]</span><span class="pos">n. 刺激</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">stimulate [ˈstɪmjəˌlet] v. 刺激；stimulating [ˈstɪmjəˌletɪŋ] adj. 刺激的；有啟發性的</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">constant stimulation（持續刺激）；mental stimulation（心智刺激）；reduce stimulation（減少刺激）</div></div>
+<div class="label-row"><div class="label">慣用語</div><div class="label-content">excessive stimulation（過度刺激）；healthy stimulation（健康刺激）</div></div>
+<div class="example-box"><p>Cloud Dancer was introduced in response to visual overload and constant stimulation.（Cloud Dancer 是為了回應視覺過載與持續刺激而推出的。）</p><p>Soft lighting can lower stimulation before bedtime.（柔和燈光能在睡前降低刺激。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">4</span><span class="word">reflect</span><span class="phonics">[rɪˈflɛkt]</span><span class="pos">v. 反映；反射；思考</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">reflection [rɪˈflɛkʃən] n. 反映；倒影；reflective [rɪˈflɛktɪv] adj. 反思的；反光的</div></div>
+<div class="label-row"><div class="label">字根</div><div class="label-content">flect / flex 表示「彎曲」，reflect 原意可想成光線被「彎回來」。</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">reflect a trend（反映趨勢）；reflect feelings（反映感受）；reflect on（反思）</div></div>
+<div class="example-box"><p>It uses color to reflect how people are feeling.（它用顏色來反映人們正在感受什麼。）</p><p>The popularity of quiet design reflects modern stress.（安靜設計的流行反映了現代壓力。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">5</span><span class="word">seeking</span><span class="phonics">[ˈsikɪŋ]</span><span class="pos">v-ing 尋求；追求</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">seek [sik] v. 尋求；seeker [ˈsikɚ] n. 尋求者；sought [sɔt] v. seek 的過去式與過去分詞</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">seek balance（尋求平衡）；seek comfort（尋求舒適）；seek advice（尋求建議）</div></div>
+<div class="label-row"><div class="label">容易混淆</div><div class="label-content">seek 比 look for 正式，常見於新聞、商業、心理趨勢寫作。</div></div>
+<div class="example-box"><p>It uses color to reflect how people are feeling and what they are seeking next.（它用顏色反映人們的感受，以及接下來正在尋求什麼。）</p><p>Many users are seeking calmer digital experiences.（許多使用者正在尋求更平靜的數位體驗。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">6</span><span class="word">shade</span><span class="phonics">[ʃed]</span><span class="pos">n. 色調；陰影</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">shady [ˈʃedɪ] adj. 陰涼的；可疑的；shading [ˈʃedɪŋ] n. 陰影處理</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">a shade of white（一種白色調）；darker shades（較深色調）；soft shade（柔和色調）</div></div>
+<div class="label-row"><div class="label">容易混淆</div><div class="label-content">color 是大類顏色；shade 是同一顏色中的細微深淺差異。</div></div>
+<div class="example-box"><p>Cloud Dancer is a shade of white introduced in response to visual overload.（Cloud Dancer 是一種白色調，是為了回應視覺過載而推出的。）</p><p>This shade of green makes the room feel peaceful.（這種綠色調讓房間感覺平靜。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">7</span><span class="word">hue</span><span class="phonics">[hju]</span><span class="pos">n. 色相；色彩</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">color hue（色相）；hueless [ˈhjuləs] adj. 無色的；multi-hued [ˌmʌltɪˈhjud] adj. 多色的</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">a warm hue（暖色相）；a pale hue（淡色相）；describe the hue（描述色相）</div></div>
+<div class="label-row"><div class="label">慣用語</div><div class="label-content">a delicate hue（細緻色調）；a calming hue（令人平靜的色調）</div></div>
+<div class="example-box"><p>The Pantone Color Institute describes the hue as light and airy.（Pantone Color Institute 將這個色相描述為輕盈、通透。）</p><p>The designer chose a warm hue for the clinic wall.（設計師為診所牆面選了一個暖色相。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">8</span><span class="word">airy</span><span class="phonics">[ˈɛrɪ]</span><span class="pos">adj. 通透的；輕盈的</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">air [ɛr] n. 空氣；airiness [ˈɛrɪnɪs] n. 通透感；airily [ˈɛrəlɪ] adv. 輕快地</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">light and airy（輕盈通透的）；airy space（通透空間）；airy design（輕盈設計）</div></div>
+<div class="label-row"><div class="label">慣用語</div><div class="label-content">an airy room（通風明亮的房間）；an airy feeling（輕盈感）</div></div>
+<div class="example-box"><p>The Institute describes the hue as light and airy.（該機構將這個色相描述為輕盈、通透。）</p><p>Large windows make the classroom feel airy.（大窗戶讓教室感覺通透明亮。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">9</span><span class="word">emphasis</span><span class="phonics">[ˈɛmfəsɪs]</span><span class="pos">n. 重點；強調</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">emphasize [ˈɛmfəˌsaɪz] v. 強調；emphatic [ɪmˈfætɪk] adj. 強調的</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">with the emphasis on（重點放在）；place emphasis on（強調）；main emphasis（主要重點）</div></div>
+<div class="label-row"><div class="label">句型</div><div class="label-content">emphasis 常搭配介系詞 on，表示「把重點放在……」。</div></div>
+<div class="example-box"><p>The emphasis is on calm rather than visual impact.（重點放在平靜，而不是視覺衝擊。）</p><p>The course places emphasis on clear communication.（這門課強調清楚溝通。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">10</span><span class="word">calm</span><span class="phonics">[kɑm]</span><span class="pos">n./adj. 平靜；平靜的</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">calmly [ˈkɑmlɪ] adv. 平靜地；calmness [ˈkɑmnɪs] n. 平靜</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">a sense of calm（平靜感）；stay calm（保持冷靜）；calm design（平靜設計）</div></div>
+<div class="label-row"><div class="label">慣用語</div><div class="label-content">quiet calm（安靜的平靜感）；emotional calm（情緒平靜）</div></div>
+<div class="example-box"><p>The emphasis is on calm rather than visual impact.（重點放在平靜，而不是視覺衝擊。）</p><p>A calm color can help students focus during study time.（平靜的顏色能幫助學生在讀書時專心。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">11</span><span class="word">impact</span><span class="phonics">[ˈɪmˌpækt]</span><span class="pos">n. 影響；衝擊</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">impactful [ɪmˈpæktfəl] adj. 有影響力的；impacted [ɪmˈpæktɪd] adj. 受影響的</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">visual impact（視覺衝擊）；social impact（社會影響）；long-term impact（長期影響）</div></div>
+<div class="label-row"><div class="label">容易混淆</div><div class="label-content">impact 比 effect 語氣更強，常暗示明顯衝擊。</div></div>
+<div class="example-box"><p>The emphasis is on calm rather than visual impact.（重點放在平靜，而不是視覺衝擊。）</p><p>The new policy had a strong impact on small businesses.（新政策對小企業產生強烈影響。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">12</span><span class="word">balance</span><span class="phonics">[ˈbæləns]</span><span class="pos">n./v. 平衡；使平衡</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">balanced [ˈbælənst] adj. 平衡的；imbalance [ɪmˈbæləns] n. 失衡</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">a sense of balance（平衡感）；work-life balance（工作與生活平衡）；visual balance（視覺平衡）</div></div>
+<div class="label-row"><div class="label">慣用語</div><div class="label-content">a delicate balance（微妙平衡）；a healthy balance（健康平衡）</div></div>
+<div class="example-box"><p>This quiet sense of balance extends to how the color functions in design.（這種安靜的平衡感也延伸到這個顏色在設計中的功能方式。）</p><p>Good design balances beauty and comfort.（好的設計會平衡美感與舒適。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">13</span><span class="word">functions</span><span class="phonics">[ˈfʌŋkʃənz]</span><span class="pos">v. 發揮功能；運作</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">function [ˈfʌŋkʃən] n./v. 功能；運作；functional [ˈfʌŋkʃənəl] adj. 實用的</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">function in design（在設計中發揮功能）；function as（作為……使用）；basic function（基本功能）</div></div>
+<div class="label-row"><div class="label">容易混淆</div><div class="label-content">function 當動詞時是不及物動詞，常接 as 或 in。</div></div>
+<div class="example-box"><p>This quiet sense of balance extends to how the color functions in design.（這種安靜的平衡感也延伸到這個顏色在設計中的功能方式。）</p><p>In a hospital, color functions as part of patient care.（在醫院裡，顏色發揮病患照護的一部分功能。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">14</span><span class="word">scattered</span><span class="phonics">[ˈskætɚd]</span><span class="pos">adj. 分散的；散亂的</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">scatter [ˈskætɚ] v. 使分散；scattering [ˈskætərɪŋ] n. 散布</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">scattered attention（分散的注意力）；scattered papers（散亂的文件）；feel scattered（感到心神不定）</div></div>
+<div class="label-row"><div class="label">慣用語</div><div class="label-content">easily scattered attention（容易分散的注意力）</div></div>
+<div class="example-box"><p>Cloud Dancer is intended for spaces where attention is easily scattered.（Cloud Dancer 是為了那些注意力容易分散的空間而設計。）</p><p>After hours online, my thoughts felt scattered.（上網好幾小時後，我的思緒變得分散。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">15</span><span class="word">softness</span><span class="phonics">[ˈsɔftnɪs]</span><span class="pos">n. 柔和；柔軟</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">soft [sɔft] adj. 柔和的；soften [ˈsɔfən] v. 使柔和；softly [ˈsɔftlɪ] adv. 柔和地</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">visual softness（視覺柔和感）；emotional softness（情緒上的柔和）；a sense of softness（柔和感）</div></div>
+<div class="label-row"><div class="label">句型</div><div class="label-content">形容詞 soft 加上 -ness 形成抽象名詞 softness。</div></div>
+<div class="example-box"><p>What makes Cloud Dancer different from brighter whites is its softness.（讓 Cloud Dancer 不同於較亮白色的是它的柔和感。）</p><p>The softness of the lighting made the room relaxing.（燈光的柔和感讓房間令人放鬆。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">16</span><span class="word">stark</span><span class="phonics">[stɑrk]</span><span class="pos">adj. 刺眼的；鮮明而生硬的</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">starkly [ˈstɑrklɪ] adv. 鮮明地；starkness [ˈstɑrknɪs] n. 生硬感</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">stark contrast（強烈對比）；appear stark（顯得生硬刺眼）；stark white（刺眼的白）</div></div>
+<div class="label-row"><div class="label">容易混淆</div><div class="label-content">stark 不只是 bright，而是亮到缺乏柔和緩衝，容易顯得冷硬。</div></div>
+<div class="example-box"><p>It prevents Cloud Dancer from appearing stark on walls, fabrics, or screens.（它防止 Cloud Dancer 在牆面、布料或螢幕上顯得生硬刺眼。）</p><p>A stark white page can make long reading uncomfortable.（刺眼的白色頁面會讓長時間閱讀不舒服。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">17</span><span class="word">interior</span><span class="phonics">[ɪnˈtɪrɪɚ]</span><span class="pos">adj./n. 室內的；內部</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">internal [ɪnˈtɝnəl] adj. 內部的；interior design [ɪnˈtɪrɪɚ dɪˈzaɪn] n. 室內設計</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">interior spaces（室內空間）；interior design（室內設計）；interior wall（內牆）</div></div>
+<div class="label-row"><div class="label">慣用語</div><div class="label-content">modern interior design（現代室內設計）；warm interior spaces（溫暖室內空間）</div></div>
+<div class="example-box"><p>In interior spaces, this quality allows light to move more gently across surfaces.（在室內空間中，這種特質讓光線更柔和地流動於表面。）</p><p>Interior design affects how people feel at work.（室內設計會影響人們工作時的感受。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">18</span><span class="word">demanding</span><span class="phonics">[dɪˈmændɪŋ]</span><span class="pos">adj. 費力的；要求高的</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">demand [dɪˈmænd] n./v. 要求；需求；demandingly [dɪˈmændɪŋlɪ] adv. 高要求地</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">mentally demanding（精神上費力的）；a demanding job（要求高的工作）；demanding task（困難任務）</div></div>
+<div class="label-row"><div class="label">容易混淆</div><div class="label-content">demanding 形容事情很耗力；demanded 是被要求的意思。</div></div>
+<div class="example-box"><p>The color makes rooms feel less mentally demanding for people who spend long hours in them.（這個顏色讓長時間待在室內的人覺得房間比較不耗費心力。）</p><p>Reading on a bright screen can be mentally demanding.（在亮螢幕上閱讀可能很耗費心力。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">19</span><span class="word">practical</span><span class="phonics">[ˈpræktɪkəl]</span><span class="pos">adj. 實用的；實際的</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">practice [ˈpræktɪs] n./v. 練習；practically [ˈpræktɪkəlɪ] adv. 實際上；幾乎</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">practical choice（實用選擇）；practical use（實際用途）；practical design（實用設計）</div></div>
+<div class="label-row"><div class="label">慣用語</div><div class="label-content">a highly practical solution（非常實用的解決方案）</div></div>
+<div class="example-box"><p>Cloud Dancer is also framed as a practical choice.（Cloud Dancer 也被定位為一個實用選擇。）</p><p>A practical color should work in many different spaces.（實用的顏色應該能適用於許多不同空間。）</p></div>
+</div>
+<div class="word-card">
+<div class="word-title"><span class="num">20</span><span class="word">restraint</span><span class="phonics">[rɪˈstrent]</span><span class="pos">n. 克制；節制</span></div>
+<div class="label-row"><div class="label">衍生詞</div><div class="label-content">restrain [rɪˈstren] v. 克制；限制；restrained [rɪˈstrend] adj. 克制的；低調的</div></div>
+<div class="label-row"><div class="label">片語</div><div class="label-content">show restraint（展現克制）；visual restraint（視覺克制）；a sense of restraint（節制感）</div></div>
+<div class="label-row"><div class="label">慣用語</div><div class="label-content">quiet restraint（安靜克制）；artistic restraint（藝術上的克制）</div></div>
+<div class="example-box"><p>For many people, that restraint... Might feel timely.（對許多人來說，這種克制感……可能正合時宜。）</p><p>Good editing requires restraint, not just creativity.（好的編輯需要克制，而不只是創意。）</p></div>
+</div>
+</div>
+</section>
+<section class="grammar">
+<h2>Section 4｜Grammar Analysis</h2>
+<div class="content">
+<div class="grammar-card">
+<h3>Grammar 1｜名詞子句 how / what</h3>
+<p><strong>【引句 Quote】</strong><br/><span class="quote">It uses color to reflect how people are feeling and what they are seeking next.</span></p>
+<p><strong>【句型】</strong><br/><strong><em>S + V + how/what + S + V</em></strong></p>
+<p><strong>【核心說明】</strong><br/>`how people are feeling` 和 `what they are seeking next` 都是名詞子句，整組當作 reflect 的內容。這種句型很適合用來描述研究、調查、趨勢分析。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>how 後面接完整主詞與動詞，表示「如何、怎樣」。</li><li>what 後面接主詞與動詞，表示「什麼事物」。</li><li>名詞子句使用直述句語序，不倒裝。</li><li>可當主詞、受詞或補語。</li></ul>
+<p><strong>【主題例句】</strong><br/>Designers study what users need and how they react to color.（設計師研究使用者需要什麼，以及他們如何對顏色產生反應。）</p>
+<p><strong>【學習提醒】</strong><br/>不要把名詞子句寫成問句語序。`what are they seeking` 是問句；放在句中時要寫 `what they are seeking`。</p>
+<p><strong>【常見錯誤 / 精選試題】</strong><br/>✗ The report shows what do people want.<br/>✓ The report shows what people want. 說明：名詞子句要用直述句語序。</p>
+<p>Choose the correct answer: The article explains ___ people need softer colors. A. why do B. why C. what do<br/>答案：B</p>
+</div>
+<div class="grammar-card">
+<h3>Grammar 2｜過去分詞片語 introduced in response to...</h3>
+<p><strong>【引句 Quote】</strong><br/><span class="quote">Cloud Dancer, a shade of white introduced in response to visual overload and constant stimulation.</span></p>
+<p><strong>【句型】</strong><br/><strong><em>N + V-ed phrase</em></strong></p>
+<p><strong>【核心說明】</strong><br/>`introduced in response to...` 是過去分詞片語，用來修飾前面的 `a shade of white`。因為色彩是「被推出」，所以用 V-ed 形式，省略了 `which was introduced`。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>被動關係可用 V-ed 片語修飾名詞。</li><li>V-ed 片語通常放在名詞後面。</li><li>可還原成 `which was + V-ed`。</li><li>新聞與說明文常用這種寫法讓句子更精簡。</li></ul>
+<p><strong>【主題例句】</strong><br/>The chair, designed for long study hours, supports the lower back.（這張椅子是為長時間讀書設計的，可以支撐下背部。）</p>
+<p><strong>【學習提醒】</strong><br/>如果名詞是「主動做動作」，用 V-ing；如果名詞是「被做某事」，用 V-ed。顏色是被 introduced，所以用 introduced。</p>
+<p><strong>【常見錯誤 / 精選試題】</strong><br/>✗ The color introducing in 2026 feels soft.<br/>✓ The color introduced in 2026 feels soft. 說明：顏色是被推出，要用過去分詞。</p>
+<p>Rewrite: The product which was created for tired eyes became popular.<br/>參考：The product created for tired eyes became popular.</p>
+</div>
+<div class="grammar-card">
+<h3>Grammar 3｜分詞構句 making rooms feel...</h3>
+<p><strong>【引句 Quote】</strong><br/><span class="quote">This quality allows light to move more gently across surfaces, making rooms feel less mentally demanding.</span></p>
+<p><strong>【句型】</strong><br/><strong><em>S + V, V-ing + O + V/Adj</em></strong></p>
+<p><strong>【核心說明】</strong><br/>句尾的 `making...` 是分詞構句，用來補充前面整件事造成的結果。它像是在句尾加上一個結果說明欄：光線變柔和，結果房間也比較不耗費精神。</p>
+<p><strong>【使用規則】</strong></p>
+<ul><li>V-ing 可表示前句造成的自然結果。</li><li>`make + O + 原形動詞` 表示「使某人或某物做某事」。</li><li>`make + O + adj.` 表示「使某人或某物變得……」。</li><li>分詞構句的主詞通常要能合理連回前句。</li></ul>
+<p><strong>【主題例句】</strong><br/>The softer wall color reduces glare, making the classroom feel calmer.（較柔和的牆色減少眩光，讓教室感覺更平靜。）</p>
+<p><strong>【學習提醒】</strong><br/>`making rooms feel...` 不要逐字翻成「製造房間感覺」，要理解為「使房間感覺……」。</p>
+<p><strong>【常見錯誤 / 精選試題】</strong><br/>✗ The color reduces pressure, made viewers relax.<br/>✓ The color reduces pressure, making viewers relax. 說明：補充自然結果時可用 V-ing。</p>
+<p>Choose the best answer: Soft light spreads across the wall, ___ the room feel warmer. A. making B. made C. makes<br/>答案：A</p>
+</div>
+</div>
+</section>
+<section class="disclosures">
+<h2>Section 5｜Bottom Disclosure Blocks</h2>
+<div class="content">
+<details>
+<summary>常見字首整理（50 個）<span class="arrow">▼</span></summary>
+<div class="detail-body grid-list">
+<div class="mini">ab- 離開、相反 — abnormal（異常的）</div><div class="mini">ad- 向、加 — adapt（適應）</div>
+<div class="mini">ambi- 雙方 — ambiguous（模稜兩可的）</div><div class="mini">anti- 反對 — antibiotic（抗生素）</div>
+<div class="mini">arch- 主要 — archenemy（死敵）</div><div class="mini">auto- 自動 — automatic（自動的）</div>
+<div class="mini">bene- 好 — benefit（好處）</div><div class="mini">bi- 二 — bilingual（雙語的）</div>
+<div class="mini">circum- 周圍 — circumstance（情況）</div><div class="mini">co- 共同 — cooperate（合作）</div>
+<div class="mini">con- 共同 — constant（持續的）</div><div class="mini">com- 一起 — compete（競爭）</div>
+<div class="mini">contra- 相反 — contrast（對比）</div><div class="mini">de- 去除 — decrease（減少）</div>
+<div class="mini">dia- 穿過 — dialogue（對話）</div><div class="mini">dis- 否定 — disappear（消失）</div>
+<div class="mini">en- 使成為 — enable（使能夠）</div><div class="mini">em- 使成為 — emphasis（強調）</div>
+<div class="mini">epi- 在上 — epidemic（流行病）</div><div class="mini">ex- 外、前任 — extend（延伸）</div>
+<div class="mini">extra- 額外 — extraordinary（非凡的）</div><div class="mini">hetero- 不同 — heterogeneous（異質的）</div>
+<div class="mini">homo- 相同 — homogeneous（同質的）</div><div class="mini">hyper- 過度 — hyperactive（過動的）</div>
+<div class="mini">hypo- 低於 — hypothesis（假設）</div><div class="mini">in- 否定、進入 — interior（內部的）</div>
+<div class="mini">im- 否定 — impact（衝擊）</div><div class="mini">inter- 之間 — international（國際的）</div>
+<div class="mini">iso- 相等 — isolate（隔離）</div><div class="mini">mal- 壞 — malfunction（故障）</div>
+<div class="mini">micro- 微小 — microscope（顯微鏡）</div><div class="mini">mis- 錯誤 — misunderstand（誤解）</div>
+<div class="mini">mono- 單一 — monochrome（單色的）</div><div class="mini">multi- 多 — multimedia（多媒體）</div>
+<div class="mini">neo- 新 — neonatal（新生的）</div><div class="mini">non- 非 — nonprofit（非營利的）</div>
+<div class="mini">pan- 全部 — pandemic（大流行）</div><div class="mini">peri- 周圍 — perimeter（周長）</div>
+<div class="mini">poly- 多 — polygon（多邊形）</div><div class="mini">post- 之後 — postwar（戰後的）</div>
+<div class="mini">pre- 之前 — prevent（防止）</div><div class="mini">pro- 向前、支持 — progress（進步）</div>
+<div class="mini">pseudo- 假 — pseudonym（筆名）</div><div class="mini">re- 再、回 — rethink（重新思考）</div>
+<div class="mini">semi- 半 — semicircle（半圓）</div><div class="mini">sub- 在下 — subconscious（潛意識的）</div>
+<div class="mini">super- 超 — supermarket（超市）</div><div class="mini">syn- 一起 — synchronize（同步）</div>
+<div class="mini">tele- 遠距 — telephone（電話）</div><div class="mini">trans- 穿越、轉變 — transformation（轉變）</div>
+</div>
+</details>
+<details>
+<summary>常見英文字尾整理（約 30 個）<span class="arrow">▼</span></summary>
+<div class="detail-body">
+<p><strong>名詞字尾：</strong>-tion 動作或結果 stimulation（刺激）；-sion 結果 decision（決定）；-ation 過程 decoration（裝飾）；-ment 結果 improvement（改善）；-ness 狀態 softness（柔和）；-ity 性質 quality（品質）；-ty 性質 beauty（美）；-er 人或物 viewer（觀看者）；-or 人或物 designer（設計師）；-ist 專業者 colorist（色彩師）；-ship 關係 partnership（夥伴關係）；-hood 階段 childhood（童年）。</p>
+<p><strong>形容詞字尾：</strong>-able 能夠的 adaptable（能適應的）；-ible 能夠的 visible（看得見的）；-ous 充滿的 spacious（寬敞的）；-ful 具有的 useful（有用的）；-less 缺乏的 colorless（無色的）；-al 相關的 visual（視覺的）；-ic 相關的 artistic（藝術的）。</p>
+<p><strong>動詞字尾：</strong>-ize 使成為 visualize（視覺化）；-ise 使成為 advertise（廣告宣傳）；-ify 使成為 simplify（簡化）；-ate 形成動詞 stimulate（刺激）；-en 使變成 soften（使柔和）。</p>
+<p><strong>副詞字尾：</strong>-ly 以某方式 gently（柔和地）；-ward 方向 homeward（往家）；-wards 方向 afterwards（之後）；-wise 方式 clockwise（順時針）；-ally 以某方式 visually（視覺上）。</p>
+</div>
+</details>
+<details>
+<summary>30 個常用單字與衍生詞<span class="arrow">▼</span></summary>
+<div class="detail-body grid-list">
+<div class="mini">1. visual [ˈvɪʒuəl] (adj. 視覺的) — vision [ˈvɪʒən] (n. 視覺)</div>
+<div class="mini">2. overload [ˈovɚˌlod] (n. 過載) — load [lod] (n. 負載)</div>
+<div class="mini">3. stimulation [ˌstɪmjəˈleʃən] (n. 刺激) — stimulate [ˈstɪmjəˌlet] (v. 刺激)</div>
+<div class="mini">4. reflect [rɪˈflɛkt] (v. 反映) — reflection [rɪˈflɛkʃən] (n. 反映)</div>
+<div class="mini">5. seeking [ˈsikɪŋ] (v-ing 尋求) — seek [sik] (v. 尋求)</div>
+<div class="mini">6. shade [ʃed] (n. 色調) — shading [ˈʃedɪŋ] (n. 陰影處理)</div>
+<div class="mini">7. hue [hju] (n. 色相) — multi-hued [ˌmʌltɪˈhjud] (adj. 多色的)</div>
+<div class="mini">8. airy [ˈɛrɪ] (adj. 通透的) — airiness [ˈɛrɪnɪs] (n. 通透感)</div>
+<div class="mini">9. emphasis [ˈɛmfəsɪs] (n. 強調) — emphasize [ˈɛmfəˌsaɪz] (v. 強調)</div>
+<div class="mini">10. calm [kɑm] (adj. 平靜的) — calmness [ˈkɑmnɪs] (n. 平靜)</div>
+<div class="mini">11. impact [ˈɪmˌpækt] (n. 衝擊) — impactful [ɪmˈpæktfəl] (adj. 有影響力的)</div>
+<div class="mini">12. balance [ˈbæləns] (n. 平衡) — balanced [ˈbælənst] (adj. 平衡的)</div>
+<div class="mini">13. functions [ˈfʌŋkʃənz] (v. 運作) — functional [ˈfʌŋkʃənəl] (adj. 實用的)</div>
+<div class="mini">14. scattered [ˈskætɚd] (adj. 分散的) — scatter [ˈskætɚ] (v. 使分散)</div>
+<div class="mini">15. softness [ˈsɔftnɪs] (n. 柔和) — soften [ˈsɔfən] (v. 使柔和)</div>
+<div class="mini">16. stark [stɑrk] (adj. 刺眼的) — starkly [ˈstɑrklɪ] (adv. 鮮明地)</div>
+<div class="mini">17. interior [ɪnˈtɪrɪɚ] (adj. 室內的) — internal [ɪnˈtɝnəl] (adj. 內部的)</div>
+<div class="mini">18. demanding [dɪˈmændɪŋ] (adj. 費力的) — demand [dɪˈmænd] (n./v. 需求；要求)</div>
+<div class="mini">19. practical [ˈpræktɪkəl] (adj. 實用的) — practice [ˈpræktɪs] (n./v. 練習)</div>
+<div class="mini">20. restraint [rɪˈstrent] (n. 克制) — restrain [rɪˈstren] (v. 克制)</div>
+<div class="mini">21. merely [ˈmɪrlɪ] (adv. 僅僅) — mere [mɪr] (adj. 僅僅的)</div>
+<div class="mini">22. decoration [ˌdɛkəˈreʃən] (n. 裝飾) — decorate [ˈdɛkəˌret] (v. 裝飾)</div>
+<div class="mini">23. ongoing [ˈɑnˌɡoɪŋ] (adj. 持續的) — go on [ɡo ɑn] (phr. 持續)</div>
+<div class="mini">24. constant [ˈkɑnstənt] (adj. 持續的) — constantly [ˈkɑnstəntlɪ] (adv. 持續地)</div>
+<div class="mini">25. intended [ɪnˈtɛndɪd] (adj. 預定的) — intend [ɪnˈtɛnd] (v. 打算)</div>
+<div class="mini">26. fabrics [ˈfæbrɪks] (n. 布料) — fabric [ˈfæbrɪk] (n. 布料)</div>
+<div class="mini">27. surfaces [ˈsɝfəsɪz] (n. 表面) — surface [ˈsɝfəs] (n. 表面)</div>
+<div class="mini">28. contrast [ˈkɑnˌtræst] (n. 對比) — contrasting [kənˈtræstɪŋ] (adj. 對比的)</div>
+<div class="mini">29. structural [ˈstrʌktʃərəl] (adj. 結構性的) — structure [ˈstrʌktʃɚ] (n. 結構)</div>
+<div class="mini">30. transformation [ˌtrænsfɚˈmeʃən] (n. 轉變) — transform [trænsˈfɔrm] (v. 轉變)</div>
+</div>
+<div class="detail-body">
+<p><strong>5 個文章片語：</strong>in response to（回應）；rather than（而不是）；draw the eye（吸引目光）；as opposed to（而不是；相對於）；lies in（在於）。</p>
+</div>
+</details>
+<details>
+<summary>練文筆食材<span class="arrow">▼</span></summary>
+<div class="detail-body">
+<p>① treat A as B（把 A 視為 B）<br/>→ 適用：分析人們如何看待某事。<br/>例：Many people treat color as decoration, not communication.</p>
+<p>② use A to V（使用 A 來做某事）<br/>→ 適用：說明工具與目的。<br/>例：Designers use light to create comfort.</p>
+<p>③ how S + V / what S + V（名詞子句）<br/>→ 適用：描述研究發現。<br/>例：The survey shows what users are seeking.</p>
+<p>④ in response to + N（回應……）<br/>→ 適用：說明推出原因。<br/>例：The product was created in response to digital fatigue.</p>
+<p>⑤ describe A as B（把 A 描述為 B）<br/>→ 適用：介紹特色。<br/>例：The designer described the room as calm and airy.</p>
+<p>⑥ rather than + N/V-ing（而不是……）<br/>→ 適用：對比兩種方向。<br/>例：The design focuses on comfort rather than impact.</p>
+<p>⑦ Instead of + V-ing（不是……而是……）<br/>→ 適用：開頭轉折。<br/>例：Instead of drawing attention, the color supports focus.</p>
+<p>⑧ be intended for + N（為……而設計）<br/>→ 適用：說明目標使用情境。<br/>例：The app is intended for tired readers.</p>
+<p>⑨ What makes A different is B（讓 A 不同的是 B）<br/>→ 適用：比較特色。<br/>例：What makes this design different is its restraint.</p>
+<p>⑩ prevent + O + from V-ing（防止……做某事）<br/>→ 適用：說明保護效果。<br/>例：Soft colors prevent the room from feeling cold.</p>
+<p>⑪ allow + O + to V（讓……能夠……）<br/>→ 適用：說明功能。<br/>例：The layout allows readers to focus longer.</p>
+<p>⑫ making + O + adj.（使……變得……）<br/>→ 適用：說明結果。<br/>例：The softer light reduces glare, making the space calmer.</p>
+<p>⑬ adapt to + N（適應……）<br/>→ 適用：談彈性與變化。<br/>例：A good base color adapts to seasonal changes.</p>
+<p>⑭ as opposed to + N/V-ing（相對於……）<br/>→ 適用：正式對比。<br/>例：Quiet design stays in the background as opposed to competing for attention.</p>
+<p>⑮ lie in + N/V-ing（在於……）<br/>→ 適用：指出真正價值。<br/>例：The value of the color lies in easing visual pressure.</p>
+</div>
+</details>
+</div>
+</section>
+</div>
+<!-- ===== BOTTOM NAV ===== -->
+<nav class="nav-bar">
+<div class="nav-inner">
+<div class="nav-label">✨ 林威老師課程 &amp; 聯絡資訊</div>
+<a class="nav-link" href="https://linwayet.github.io/4ulive/index.html" target="_blank">
+<span class="icon">🔥</span> 錯中學 ECHO 計劃｜七月開課
+    </a>
+<a class="nav-link" href="https://linwayet.github.io/popup/index" target="_blank">
+<span class="icon">📊</span> 學生學習分析
+    </a>
+<a class="nav-link line-link" href="https://line.me/ti/p/linwayet" target="_blank">
+<span class="icon">💬</span> LINE：linwayet
+    </a>
+</div>
+</nav>
+</body>
+</html>
