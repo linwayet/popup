@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantone's 2026 Color of the Year: Cloud Dancer</title>
+    <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #FFFFFF;
+            --bg: #FFF8F0;
+            --text-main: #1A0F00;
+            --h1-color: #C0392B;
+            --h2-color: #1565C0;
+            --h3-color: #2E7D32;
+            --b1-head: #0D47A1;
+            --b1-border: #90CAF9;
+            --b1-bg: #F3F8FF;
+            --b2-head: #BF360C;
+            --b2-border: #FFAB91;
+            --b2-bg: #FFF3EF;
+            --b3-head: #1B5E20;
+            --b3-border: #81C784;
+            --b3-bg: #F1F8F2;
+            --b4-head: #4A148C;
+            --b4-border: #CE93D8;
+            --b4-bg: #F9F0FF;
+            --folder-head: #4A3728;
+            --folder-border: #C4A06A;
+            --folder-bg: #FAF6F0;
+        }
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'BIZ UDPGothic', sans-serif;
+            font-size: 24px;
+            line-height: 1.85;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .content-wrapper { width: 100%; max-width: 900px; }
+        .hero { text-align: center; margin-bottom: 60px; }
+        h1 {
+            color: var(--h1-color);
+            font-size: 3rem;
+            font-weight: 700;
+            border: 6px double var(--h1-color);
+            padding: 20px;
+            display: inline-block;
+            margin: 0 0 15px 0;
+            border-radius: 4px;
+        }
+        .subtitle {
+            color: var(--h2-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+        }
+        .credit {
+            color: var(--h2-color);
+            font-size: 1.8rem;
+            font-family: 'Pacifico', cursive;
+            margin: 0;
+        }
+        h2 {
+            color: var(--h2-color);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin: 45px 0 20px 0;
+        }
+        .section-card {
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .section-card.b1 { border: 2px solid var(--b1-border); background-color: var(--b1-bg); }
+        .section-card.b2 { border: 2px solid var(--b2-border); background-color: var(--b2-bg); }
+        .section-card.b3 { border: 2px solid var(--b3-border); background-color: var(--b3-bg); }
+        .section-card.b4 { border: 2px solid var(--b4-border); background-color: var(--b4-bg); }
+        .section-head { padding: 18px 25px; color: #FFF; font-size: 1.8rem; font-weight: 700; }
+        .b1 .section-head { background-color: var(--b1-head); }
+        .b2 .section-head { background-color: var(--b2-head); }
+        .b3 .section-head { background-color: var(--b3-head); }
+        .b4 .section-head { background-color: var(--b4-head); }
+        .section-body { padding: 30px; }
+        strong.kw { color: #0D47A1; font-weight: 700; }
+        .circle-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--b2-head);
+            color: #FFF;
+            border-radius: 50%;
+            font-size: 22px;
+            font-weight: 700;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        .analysis-block { margin-bottom: 35px; border-bottom: 1px dashed #FFAB91; padding-bottom: 25px; }
+        .analysis-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .quote { font-style: italic; font-weight: 700; background-color: #FFF; padding: 15px; border-left: 5px solid var(--b2-head); border-radius: 8px; margin-bottom: 15px; }
+        .trans { color: var(--text-main); margin-bottom: 15px; font-weight: 400; }
+        .grammar-detail { font-size: 20px; background-color: rgba(255,255,255,0.6); padding: 12px; border-radius: 8px; margin-bottom: 15px; }
+        .pill-row { display: flex; flex-wrap: wrap; gap: 10px; }
+        .pill { background-color: #FFEDEA; color: #BF360C; padding: 4px 14px; border-radius: 20px; font-size: 18px; font-weight: 700; border: 1px solid #FFAB91; }
+        .vocab-item { margin-bottom: 40px; border-bottom: 1px solid #C8E6C9; padding-bottom: 30px; }
+        .vocab-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .v-top { display: flex; align-items: baseline; gap: 15px; margin-bottom: 15px; }
+        .v-num { font-weight: 700; color: var(--b3-head); }
+        .v-word { font-size: 32px; font-weight: 700; color: var(--b3-head); }
+        .v-kk { color: #C0392B; font-size: 20px; }
+        .v-tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+        .v-tag { display: flex; align-items: center; border-radius: 8px; overflow: hidden; font-size: 18px; }
+        .tag-label { padding: 4px 10px; color: #FFF; font-weight: 700; }
+        .tag-text { padding: 4px 12px; font-weight: 400; }
+        .tag-deriv .tag-label { background-color: #C0392B; } .tag-deriv { background-color: #FDEDEC; color: #C0392B; }
+        .tag-root .tag-label { background-color: #1565C0; } .tag-root { background-color: #EBF5FB; color: #1565C0; }
+        .tag-idiom .tag-label { background-color: #D68910; } .tag-idiom { background-color: #FEF9E7; color: #D68910; }
+        .tag-phrase .tag-label { background-color: #2E7D32; } .tag-phrase { background-color: #EAFAF1; color: #2E7D32; }
+        .tag-prep .tag-label { background-color: #E65100; } .tag-prep { background-color: #FEF0E7; color: #E65100; }
+        .v-example-box { background-color: #FFF; padding: 15px; border-radius: 10px; margin-top: 10px; border: 1px solid #81C784; }
+        .g-item { margin-bottom: 45px; }
+        .g-item h3 { color: var(--b4-head); border-bottom: 2px solid var(--b4-head); display: inline-block; margin-bottom: 20px; }
+        .g-box { background-color: #FFF; padding: 25px; border-radius: 12px; border-left: 8px solid var(--b4-head); }
+        .g-segment { margin-bottom: 20px; }
+        .g-label { font-weight: 700; color: var(--b4-head); display: block; margin-bottom: 5px; }
+        details { border: 2px solid var(--folder-border); border-radius: 15px; overflow: hidden; margin-bottom: 25px; background-color: var(--folder-bg); }
+        summary { background-color: var(--folder-head); color: #FFF; padding: 20px 30px; font-size: 1.6rem; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+        .arrow { font-size: 24px; transition: 0.3s; }
+        details[open] .arrow { transform: rotate(180deg); }
+        .detail-body { padding: 30px; }
+        @media (max-width: 768px) {
+            body { font-size: 20px; padding: 20px 10px; }
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1.6rem; }
+            .section-head { font-size: 1.4rem; }
+            .v-word { font-size: 26px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header class="hero">
+            <h1>Pantone's 2026 Color of the Year: Cloud Dancer</h1>
+            <p class="subtitle">2026年度代表色：雲舞白</p>
+            <p class="credit">林威老師與 AI agent 團隊製作</p>
+        </header>
+
+        <!-- 區塊一：英文文章原文 -->
+        <section class="section-card b1">
+            <div class="section-head">【區塊一】英文文章原文 Original Article</div>
+            <div class="section-body">
+                <p>Every year, the Pantone Color Institute <strong class="kw">announces</strong> a Color of the Year — not simply to set a fashion trend, but to <strong class="kw">reflect</strong> the mood and needs of people around the world. For 2026, Pantone selected PANTONE 11-4201 Cloud Dancer, a soft, <strong class="kw">billowy</strong> white described as "a whisper of calm and peace in a noisy world". This marks the first time in Pantone's history that a white tone has been chosen as the <strong class="kw">defining</strong> color of the year.</p>
+                <p>The choice of Cloud Dancer speaks directly to the <strong class="kw">emotional</strong> state of modern society. Leatrice Eiseman, <strong class="kw">executive</strong> director of the Pantone Color Institute, explained that "the <strong class="kw">cacophony</strong> that surrounds us has become <strong class="kw">overwhelming</strong>," making it harder for people to focus or connect with their inner thoughts. In an age of <strong class="kw">constant</strong> <strong class="kw">digital</strong> <strong class="kw">stimulation</strong>, Cloud Dancer acts as a visual <strong class="kw">antidote</strong> — a quiet, open space that encourages <strong class="kw">reflection</strong>, and <strong class="kw">simplification</strong>. Pantone vice president Laurie Pressman added that people are simply "looking for <strong class="kw">respite</strong>" and want to "step back" from the noise of daily life.</p>
+                <p>Beyond fashion and design, Cloud Dancer carries a deeper <strong class="kw">symbolic</strong> meaning. Like a blank canvas, it represents the human desire for a fresh start and new possibilities. It reminds us that <strong class="kw">clarity</strong> does not come from adding more to our lives, but from removing what is <strong class="kw">unnecessary</strong>. At a time when the world feels fast, loud, and uncertain, a softer white offers something surprisingly powerful: the promise of <strong class="kw">stillness</strong>, <strong class="kw">renewal</strong>, and hope.</p>
+            </div>
+        </section>
+
+        <!-- 區塊二：八句精讀 -->
+        <section class="section-card b2">
+            <div class="section-head">【區塊二】八句精讀 8 Key Sentence Analyses</div>
+            <div class="section-body">
+                <div class="analysis-block">
+                    <div style="display: flex; align-items: flex-start;">
+                        <span class="circle-num">1</span>
+                        <div class="quote">Every year, the Pantone Color Institute announces a Color of the Year — not simply to set a fashion trend, but to reflect the mood and needs of people around the world.</div>
+                    </div>
+                    <p class="trans">每年，彩通色彩研究所都會宣布年度代表色——這不單單是為了設定時尚趨勢，而是為了反映全球人們的情緒與需求。</p>
+                    <div class="grammar-detail"><strong>文法解析：</strong>不定詞表目的 (to + V)。句中的 <em>to set</em> 和 <em>to reflect</em> 都是用來表達目的。搭配 <em>not simply... but (also)...</em>（不只是……而是……）的對等結構。</div>
+                    <div class="pill-row">
+                        <span class="pill">announce (宣布)</span><span class="pill">set a trend (設定趨勢)</span><span class="pill">reflect (反映)</span>
+                    </div>
+                </div>
+
+                <div class="analysis-block">
+                    <div style="display: flex; align-items: flex-start;">
+                        <span class="circle-num">2</span>
+                        <div class="quote">For 2026, Pantone selected PANTONE 11-4201 Cloud Dancer, a soft, billowy white described as "a whisper of calm and peace in a noisy world".</div>
+                    </div>
+                    <p class="trans">針對 2026 年，彩通選擇了「雲舞白」，這是一種柔軟、如波浪般蓬鬆的白色，被形容為「喧囂世界中平靜與和平的低語」。</p>
+                    <div class="grammar-detail"><strong>文法解析：</strong>過去分詞片語 <em>described as...</em> 修飾前面的 <em>a soft, billowy white</em>。同位語結構則進一步補充說明 Cloud Dancer 的物理特質。</div>
+                    <div class="pill-row">
+                        <span class="pill">billowy (蓬鬆的)</span><span class="pill">whisper (低語)</span><span class="pill">calm and peace (平靜與和平)</span>
+                    </div>
+                </div>
+
+                <div class="analysis-block">
+                    <div style="display: flex; align-items: flex-start;">
+                        <span class="circle-num">3</span>
+                        <div class="quote">This marks the first time in Pantone's history that a white tone has been chosen as the defining color of the year.</div>
+                    </div>
+                    <p class="trans">這是彩通歷史上首次選擇白色調作為年度最具代表性的定義色彩。</p>
+                    <div class="grammar-detail"><strong>文法解析：</strong><em>that...</em> 引導的形容詞子句修飾 <em>the first time</em>。句中使用了現在完成式的被動語態 <em>has been chosen</em>。</div>
+                    <div class="pill-row">
+                        <span class="pill">mark (標誌著)</span><span class="pill">tone (色調)</span><span class="pill">defining (典型的)</span>
+                    </div>
+                </div>
+
+                <div class="analysis-block">
+                    <div style="display: flex; align-items: flex-start;">
+                        <span class="circle-num">4</span>
+                        <div class="quote">The choice of Cloud Dancer speaks directly to the emotional state of modern society.</div>
+                    </div>
+                    <p class="trans">選擇「雲舞白」直接呼應了現代社會的情緒狀態。</p>
+                    <div class="grammar-detail"><strong>文法解析：</strong>動詞片語 <em>speak to</em> 表示「引起共鳴」或「觸及」。主詞為 <em>The choice</em>，修飾語為介系詞片語 <em>of Cloud Dancer</em>。</div>
+                    <div class="pill-row">
+                        <span class="pill">speak to (呼應)</span><span class="pill">emotional state (情緒狀態)</span><span class="pill">modern society (現代社會)</span>
+                    </div>
+                </div>
+
+                <div class="analysis-block">
+                    <div style="display: flex; align-items: flex-start;">
+                        <span class="circle-num">5</span>
+                        <div class="quote">Leatrice Eiseman explained that "the cacophony that surrounds us has become overwhelming," making it harder for people to focus.</div>
+                    </div>
+                    <p class="trans">莉雅翠絲·艾斯曼解釋道：「圍繞著我們的嘈雜聲已經變得令人無法喘息，」這讓人們更難以集中注意力。</p>
+                    <div class="grammar-detail"><strong>文法解析：</strong>結果分詞構句 <em>making it harder...</em> 修飾前面整件事。<em>it</em> 為虛受詞，真正的受詞是 <em>to focus</em>。</div>
+                    <div class="pill-row">
+                        <span class="pill">cacophony (嘈雜聲)</span><span class="pill">overwhelming (壓倒性的)</span><span class="pill">focus (集中)</span>
+                    </div>
+                </div>
+
+                <div class="analysis-block">
+                    <div style="display: flex; align-items: flex-start;">
+                        <span class="circle-num">6</span>
+                        <div class="quote">In an age of constant digital stimulation, Cloud Dancer acts as a visual antidote — a quiet, open space that encourages rest, reflection, and simplification.</div>
+                    </div>
+                    <p class="trans">在充滿持續數位刺激的時代，「雲舞白」發揮了視覺解毒劑的作用——一個鼓勵休息、反思與簡化的開放空間。</p>
+                    <div class="grammar-detail"><strong>文法解析：</strong><em>that encourages...</em> 為關係代名詞引導的形容詞子句，修飾 <em>space</em>。破折號後為 <em>visual antidote</em> 的同位語。</div>
+                    <div class="pill-row">
+                        <span class="pill">constant (持續的)</span><span class="pill">stimulation (刺激)</span><span class="pill">antidote (解毒劑)</span>
+                    </div>
+                </div>
+
+                <div class="analysis-block">
+                    <div style="display: flex; align-items: flex-start;">
+                        <span class="circle-num">7</span>
+                        <div class="quote">Beyond fashion and design, Cloud Dancer carries a deeper symbolic meaning.</div>
+                    </div>
+                    <p class="trans">超越了時尚與設計的範疇，「雲舞白」蘊含著更深層的象徵意義。</p>
+                    <div class="grammar-detail"><strong>文法解析：</strong>介系詞 <em>Beyond</em> 放在句首表示「除了……之外（還有更進一步的）」。動詞 <em>carries</em> 搭配 <em>meaning</em> 表示「具有」某種意義。</div>
+                    <div class="pill-row">
+                        <span class="pill">beyond (超越)</span><span class="pill">carry a meaning (蘊含意義)</span><span class="pill">symbolic (象徵性)</span>
+                    </div>
+                </div>
+
+                <div class="analysis-block">
+                    <div style="display: flex; align-items: flex-start;">
+                        <span class="circle-num">8</span>
+                        <div class="quote">It reminds us that clarity does not come from adding more to our lives, but from removing what is unnecessary.</div>
+                    </div>
+                    <p class="trans">它提醒了我們，清晰並非來自於在生活中添加更多東西，而是來自於移除不必要的事物。</p>
+                    <div class="grammar-detail"><strong>文法解析：</strong><em>that...</em> 引導的名詞子句作 <em>remind</em> 的受詞。使用了 <em>not from A, but from B</em> 的結構來形成強烈對比。</div>
+                    <div class="pill-row">
+                        <span class="pill">clarity (清晰)</span><span class="pill">remove (移除)</span><span class="pill">unnecessary (不必要)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 區塊三：單字整理 -->
+        <section class="section-card b3">
+            <div class="section-head">【區塊三】18–20個單字整理 Vocabulary</div>
+            <div class="section-body">
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">1.</span> <span class="v-word">announce</span> <span class="v-kk">[əˈnaʊns]</span> <span class="v-pos">(v.)</span> <span>宣布；宣告</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">announcement (n. 公告)</span></div>
+                        <div class="v-tag tag-root"><span class="tag-label">字根</span><span class="tag-text">nounce (告知) — pronounce (發音)</span></div>
+                        <div class="v-tag tag-phrase"><span class="tag-label">片語</span><span class="tag-text">announce the winner (宣布贏家)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>The Pantone Color Institute announces a Color of the Year every year.</p>
+                        <p>（彩通色彩研究所每年都會宣布一個年度代表色。）</p>
+                        <p>The company announced its plan to launch a new product next month.</p>
+                        <p>（公司宣布了下個月推出新產品的計畫。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">2.</span> <span class="v-word">reflect</span> <span class="v-kk">[rɪˈflɛkt]</span> <span class="v-pos">(v.)</span> <span>反映；反射；深思</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">reflection (n. 反映；沉思)</span></div>
+                        <div class="v-tag tag-root"><span class="tag-label">字根</span><span class="tag-text">flect (彎曲) — flexible (易彎曲的)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">reflect on past mistakes (反省過去的錯誤)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>The color aims to reflect the mood and needs of people around the world.</p>
+                        <p>（這個顏色旨在反映全球人們的情緒與需求。）</p>
+                        <p>The calm lake reflected the beautiful mountains like a mirror.</p>
+                        <p>（平靜的湖泊像鏡子一樣倒映著美麗的山脈。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">3.</span> <span class="v-word">billowy</span> <span class="v-kk">[ˈbɪloɪ]</span> <span class="v-pos">(adj.)</span> <span>蓬鬆的；如波浪起伏的</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">billow (v. 翻騰；膨脹)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">billowy white clouds (蓬鬆的白雲)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>Pantone selected a soft, billowy white for the year 2026.</p>
+                        <p>（彩通為 2026 年選擇了一種柔軟、蓬鬆的白色。）</p>
+                        <p>The curtains were billowy in the gentle afternoon breeze.</p>
+                        <p>（窗簾在柔和的午後微風中輕輕飄動。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">4.</span> <span class="v-word">defining</span> <span class="v-kk">[dɪˈfaɪnɪŋ]</span> <span class="v-pos">(adj.)</span> <span>典型的；決定性的</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">define (v. 定義) / definition (n. 定義)</span></div>
+                        <div class="v-tag tag-root"><span class="tag-label">字根</span><span class="tag-text">fin (終) — finish (結束)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">a defining moment (決定性的時刻)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>This is the first time a white tone is the defining color of the year.</p>
+                        <p>（這是首次以白色調作為年度的定義色彩。）</p>
+                        <p>His courage during the crisis was a defining feature of his leadership.</p>
+                        <p>（他在危機中的勇氣是他領導力的一個典型特徵。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">5.</span> <span class="v-word">emotional</span> <span class="v-kk">[ɪˈmoʃənl]</span> <span class="v-pos">(adj.)</span> <span>情緒的；情感的</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">emotion (n. 情感)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">emotional support (情感支持)</span></div>
+                        <div class="v-tag tag-phrase"><span class="tag-label">片語</span><span class="tag-text">emotional state (情緒狀態)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>Cloud Dancer speaks directly to the emotional state of modern society.</p>
+                        <p>（雲舞白直接呼應了現代社會的情緒狀態。）</p>
+                        <p>Children need a lot of emotional stability as they grow up.</p>
+                        <p>（孩子在成長過程中需要大量的情感穩定。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">6.</span> <span class="v-word">executive</span> <span class="v-kk">[ɪɡˈzɛkjətɪv]</span> <span class="v-pos">(n.)</span> <span>執行長；高階主管</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">execute (v. 執行) / execution (n. 執行)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">a senior executive (高階主管)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>Leatrice Eiseman is the executive director of the Pantone Color Institute.</p>
+                        <p>（莉雅翠絲·艾斯曼是彩通色彩研究所的執行長。）</p>
+                        <p>The marketing executive presented a new plan to increase sales.</p>
+                        <p>（行銷主管提出了一個增加銷售額的新計畫。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">7.</span> <span class="v-word">cacophony</span> <span class="v-kk">[kəˈkɑfəni]</span> <span class="v-pos">(n.)</span> <span>嘈雜聲；刺耳聲</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">cacophonous (adj. 嘈雜的)</span></div>
+                        <div class="v-tag tag-phrase"><span class="tag-label">片語</span><span class="tag-text">a cacophony of voices (嘈雜的人聲)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>The cacophony that surrounds us has become overwhelming.</p>
+                        <p>（圍繞著我們的嘈雜聲已經變得令人難以承受。）</p>
+                        <p>The classroom was a cacophony of shouting children.</p>
+                        <p>（教室裡到處都是孩子們吵鬧的嘈雜聲。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">8.</span> <span class="v-word">overwhelming</span> <span class="v-kk">[ˌovɚˈhwɛlmɪŋ]</span> <span class="v-pos">(adj.)</span> <span>壓倒性的；無法抵抗的</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">overwhelm (v. 壓倒；淹沒)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">an overwhelming majority (壓倒性的多數)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>The noise of daily life has become overwhelming for many people.</p>
+                        <p>（對許多人來說，日常生活的噪音已變得令人難以承受。）</p>
+                        <p>The response to the new charity campaign was overwhelming.</p>
+                        <p>（對這項新慈善活動的反應非常熱烈且令人驚喜。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">9.</span> <span class="v-word">digital</span> <span class="v-kk">[ˈdɪdʒɪtl]</span> <span class="v-pos">(adj.)</span> <span>數位的</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">digit (n. 數字)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">a digital footprint (數位足跡)</span></div>
+                        <div class="v-tag tag-phrase"><span class="tag-label">片語</span><span class="tag-text">digital devices (數位裝置)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>We live in an age of constant digital stimulation.</p>
+                        <p>（我們生活在一個充滿持續數位刺激的時代。）</p>
+                        <p>The library is converting its old books into digital formats.</p>
+                        <p>（圖書館正將其舊書轉換成數位格式。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">10.</span> <span class="v-word">stimulation</span> <span class="v-kk">[ˌstɪmjəˈleʃən]</span> <span class="v-pos">(n.)</span> <span>刺激；激勵</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">stimulate (v. 刺激；促進)</span></div>
+                        <div class="v-tag tag-phrase"><span class="tag-label">片語</span><span class="tag-text">mental stimulation (大腦刺激)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>Constant stimulation makes it harder for people to focus.</p>
+                        <p>（持續的刺激讓人們更難以集中注意力。）</p>
+                        <p>Toys can provide important sensory stimulation for babies.</p>
+                        <p>（玩具可以為嬰兒提供重要的感官刺激。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">11.</span> <span class="v-word">antidote</span> <span class="v-kk">[ˈæntɪˌdot]</span> <span class="v-pos">(n.)</span> <span>解毒劑；對抗手段</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-prep"><span class="tag-label">常用介系詞</span><span class="tag-text">antidote to (對...的解毒劑/緩解法)</span></div>
+                        <div class="v-tag tag-phrase"><span class="tag-label">片語</span><span class="tag-text">a visual antidote (視覺上的解毒劑)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>Cloud Dancer acts as a visual antidote to our noisy world.</p>
+                        <p>（雲舞白發揮了對抗喧囂世界的視覺解毒劑作用。）</p>
+                        <p>Traveling is often a good antidote to boredom.</p>
+                        <p>（旅行通常是對抗無聊的良藥。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">12.</span> <span class="v-word">reflection</span> <span class="v-kk">[rɪˈflɛkʃən]</span> <span class="v-pos">(n.)</span> <span>反映；沉思；反射</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">reflect (v. 反射；深思)</span></div>
+                        <div class="v-tag tag-root"><span class="tag-label">字根</span><span class="tag-text">flect (彎曲)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">upon deep reflection (經深思後)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>The quiet space encourages rest, reflection, and simplification.</p>
+                        <p>（安靜的空間鼓勵休息、反思與簡化。）</p>
+                        <p>He saw his own reflection in the shop window.</p>
+                        <p>（他在商店櫥窗中看到了自己的倒影。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">13.</span> <span class="v-word">simplification</span> <span class="v-kk">[ˌsɪmpləfɪˈkeʃən]</span> <span class="v-pos">(n.)</span> <span>簡化</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">simplify (v. 簡化) / simple (adj. 簡單的)</span></div>
+                        <div class="v-tag tag-phrase"><span class="tag-label">片語</span><span class="tag-text">simplification of rules (規則的簡化)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>Cloud Dancer encourages rest, reflection, and simplification.</p>
+                        <p>（雲舞白鼓勵休息、反思與生活的簡化。）</p>
+                        <p>The simplification of the process saved the company a lot of money.</p>
+                        <p>（流程的簡化為公司省下了大量金錢。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">14.</span> <span class="v-word">respite</span> <span class="v-kk">[ˈrɛspɪt]</span> <span class="v-pos">(n.)</span> <span>喘息；暫緩</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-phrase"><span class="tag-label">片語</span><span class="tag-text">look for respite (尋求喘息)</span></div>
+                        <div class="v-tag tag-prep"><span class="tag-label">常用介系詞</span><span class="tag-text">respite from (從...中獲得喘息)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>People are simply looking for respite from the noise of daily life.</p>
+                        <p>（人們只是在尋求從日常生活的噪音中獲得一絲喘息。）</p>
+                        <p>The vacation provided a much-needed respite from work stress.</p>
+                        <p>（這次假期為工作壓力提供了急需的緩解與喘息。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">15.</span> <span class="v-word">symbolic</span> <span class="v-kk">[sɪmˈbɑlɪk]</span> <span class="v-pos">(adj.)</span> <span>象徵性的</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">symbol (n. 象徵) / symbolize (v. 象徵)</span></div>
+                        <div class="v-tag tag-prep"><span class="tag-label">常用介系詞</span><span class="tag-text">be symbolic of (象徵著...)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>Beyond fashion, Cloud Dancer carries a deeper symbolic meaning.</p>
+                        <p>（超越時尚之外，雲舞白蘊含著更深層的象徵意義。）</p>
+                        <p>The lighting of the torch is highly symbolic of the start of the Games.</p>
+                        <p>（點燃火炬高度象徵著運動會的開始。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">16.</span> <span class="v-word">clarity</span> <span class="v-kk">[ˈklærəti]</span> <span class="v-pos">(n.)</span> <span>清晰；明晰</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">clear (adj. 清晰的) / clarify (v. 澄清)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">absolute clarity (絕對的清晰度)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>Clarity does not come from adding more to our lives.</p>
+                        <p>（清晰並非來自於在生活中添加更多東西。）</p>
+                        <p>The speaker's clarity of thought impressed everyone in the audience.</p>
+                        <p>（演講者清晰的思維給全場聽眾留下了深刻印象。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">17.</span> <span class="v-word">unnecessary</span> <span class="v-kk">[ʌnˈnɛsəˌsɛri]</span> <span class="v-pos">(adj.)</span> <span>不必要的；多餘的</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">necessary (adj. 必要的)</span></div>
+                        <div class="v-tag tag-phrase"><span class="tag-label">片語</span><span class="tag-text">avoid unnecessary risks (避免不必要的風險)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>Clarity comes from removing what is unnecessary from our lives.</p>
+                        <p>（清晰來自於從我們的生活中移除不必要的事物。）</p>
+                        <p>Please delete any unnecessary files to save space on the computer.</p>
+                        <p>（請刪除任何不必要的檔案，以節省電腦空間。）</p>
+                    </div>
+                </div>
+
+                <div class="vocab-item">
+                    <div class="v-top"><span class="v-num">18.</span> <span class="v-word">constant</span> <span class="v-kk">[ˈkɑnstənt]</span> <span class="v-pos">(adj.)</span> <span>持續的；不斷的</span></div>
+                    <div class="v-tag-container">
+                        <div class="v-tag tag-deriv"><span class="tag-label">衍生詞</span><span class="tag-text">constantly (adv. 不斷地)</span></div>
+                        <div class="v-tag tag-root"><span class="tag-label">字根</span><span class="tag-text">sta / st (站立) — stable (穩定的)</span></div>
+                        <div class="v-tag tag-idiom"><span class="tag-label">慣用語</span><span class="tag-text">a constant stream of (源源不斷的)</span></div>
+                    </div>
+                    <div class="v-example-box">
+                        <p>In an age of constant digital stimulation, we need some peace.</p>
+                        <p>（在持續數位刺激的時代，我們需要一些平靜。）</p>
+                        <p>The machines require constant monitoring to ensure they work properly.</p>
+                        <p>（這些機器需要持續監控，以確保它們運作正常。）</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 區塊四：文法解析 -->
+        <section class="section-card b4">
+            <div class="section-head">【區塊四】文法解析 Grammar</div>
+            <div class="section-body">
+                <div class="g-item">
+                    <h3>【文法名稱】Relative Clause 形容詞子句：who / which / that</h3>
+                    <div class="g-box">
+                        <div class="g-segment"><span class="g-label">【引句 Quote】</span><div class="quote">"...a quiet, open space that encourages rest, reflection, and simplification."</div></div>
+                        <div class="g-segment"><span class="g-label">【句型】</span><strong>N + that/which/who + V ...</strong></div>
+                        <div class="g-segment"><span class="g-label">【核心說明】</span>形容詞子句用來修飾前面的名詞（先行詞），提供更多資訊或限制其範圍。本句中的 <em>that encourages...</em> 修飾 <em>space</em>，說明該空間的功能。</div>
+                        <div class="g-segment"><span class="g-label">【使用規則】</span>
+                            <ul>
+                                <li><strong>who：</strong>指人。</li>
+                                <li><strong>which：</strong>指物。</li>
+                                <li><strong>that：</strong>指人或物，主要用於限定用法。</li>
+                                <li>that 不用於非限定用法（逗號之後）。</li>
+                            </ul>
+                        </div>
+                        <div class="g-segment"><span class="g-label">【主題例句】</span>The designer chose a color that represents hope.（設計師選擇了一種代表希望的顏色。）</div>
+                        <div class="g-segment"><span class="g-label">【學習提醒】</span>看到 <em>which</em> 前面有逗號時，它可能修飾前面的整個句子。</div>
+                        <div class="g-segment"><span class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                            <p>✗ The color, that is very soft, is white.</p>
+                            <p>✓ The color, <strong>which</strong> is very soft, is white.（非限定子句不可用 that）</p>
+                            <p><strong>試題：</strong>The students ______ finish the task will get a prize. (A) who (B) which (C) whose (D) whom</p>
+                            <p>答案：(A)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="g-item">
+                    <h3>【文法名稱】Noun Clause 名詞子句：that 子句作受詞</h3>
+                    <div class="g-box">
+                        <div class="g-segment"><span class="g-label">【引句 Quote】</span><div class="quote">"Leatrice Eiseman explained that 'the cacophony that surrounds us has become overwhelming'."</div></div>
+                        <div class="g-segment"><span class="g-label">【句型】</span><strong>S + V + that + S + V ...</strong></div>
+                        <div class="g-segment"><span class="g-label">【核心說明】</span><em>that</em> 引導的名詞子句接在動詞後作為受詞，表達所知、所感或所說的內容。<em>that</em> 在此無意義，僅為連接作用。</div>
+                        <div class="g-segment"><span class="g-label">【使用規則】</span>
+                            <ul>
+                                <li>常接 <em>that</em> 子句的動詞：know, believe, think, say, explain, hope。</li>
+                                <li>在口語中 <em>that</em> 常可省略。</li>
+                                <li>若主句動詞為過去式，子句通常也要改為過去式（時態一致）。</li>
+                            </ul>
+                        </div>
+                        <div class="g-segment"><span class="g-label">【主題例句】</span>Experts say that white can reduce stress.（專家說白色可以減輕壓力。）</div>
+                        <div class="g-segment"><span class="g-label">【學習提醒】</span>不要把 <em>that</em> 引導的名詞子句與修飾名詞的形容詞子句混淆。</div>
+                        <div class="g-segment"><span class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                            <p>✗ I hope that you will happy.</p>
+                            <p>✓ I hope that you will <strong>be</strong> happy.（that 子句內必須是完整句子）</p>
+                            <p><strong>試題：</strong>She realized ______ she had made a mistake. (A) what (B) that (C) which (D) whose</p>
+                            <p>答案：(B)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="g-item">
+                    <h3>【文法名稱】Infinitive 不定詞：表目的 (to / in order to)</h3>
+                    <div class="g-box">
+                        <div class="g-segment"><span class="g-label">【引句 Quote】</span><div class="quote">"...not simply to set a fashion trend, but to reflect the mood and needs..."</div></div>
+                        <div class="g-segment"><span class="g-label">【句型】</span><strong>to + VR / in order to + VR / so as to + VR</strong></div>
+                        <div class="g-segment"><span class="g-label">【核心說明】</span>不定詞可用來表達動作的目的，翻譯為「為了……」。在句中作為副詞修飾動詞。</div>
+                        <div class="g-segment"><span class="g-label">【使用規則】</span>
+                            <ul>
+                                <li><em>to + V</em>：最常用，口語簡潔。</li>
+                                <li><em>in order to + V</em>：較正式，放在句首更具強調效果。</li>
+                                <li>否定目的：必須用 <em>in order not to</em> 或 <em>so as not to</em>。</li>
+                            </ul>
+                        </div>
+                        <div class="g-segment"><span class="g-label">【主題例句】</span>She bought the book to learn about color theory.（她買這本書是為了學習色彩理論。）</div>
+                        <div class="g-segment"><span class="g-label">【學習提醒】</span>不可單獨使用 <em>not to</em> 表否定目的，會造成語意不清。</div>
+                        <div class="g-segment"><span class="g-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                            <p>✗ He ran fast not to be late.</p>
+                            <p>✓ He ran fast <strong>in order not to</strong> be late.（否定目的之固定用法）</p>
+                            <p><strong>試題：</strong>The artist used soft colors ______ create a sense of peace. (A) to (B) for (C) because (D) resulting in</p>
+                            <p>答案：(A)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部折疊區塊 -->
+        <section>
+            <details>
+                <summary>常見字首整理 (50個) <span class="arrow">▼</span></summary>
+                <div class="detail-body">
+                    <p>ab- 離開/相反 — abnormal (異常的) | ad- 向/加 — advance (前進) | ambi- 雙方 — ambiguous (模稜兩可) | anti- 反對 — antibiotic (抗生素) | arch- 主要 — archenemy (死敵) | auto- 自動 — autograph (親筆簽名) | bene- 好的 — benefit (好處) | bi- 二 — bilingual (雙語) | circum- 環繞 — circumstance (情況) | co-/con- 一起 — cooperate (合作) | contra- 相反 — contradict (反駁) | de- 去除 — decode (解碼) | dia- 穿過 — dialogue (對話) | dis- 否定 — disagree (不同意) | en-/em- 使成為 — enable (使能夠) | epi- 在外 — epidemic (流行病) | ex- 外 — export (出口) | extra- 額外 — extraordinary (非凡) | hetero- 不同 — heterogeneous (異質) | homo- 相同 — homogeneous (同質) | hyper- 過度 — hyperactive (過動) | hypo- 低於 — hypodermic (皮下) | in-/im- 否定 — invisible (看不見) | inter- 之間 — international (國際) | iso- 相同 — isolate (隔離) | mal- 壞 — malfunction (故障) | micro- 微小 — microscope (顯微鏡) | mis- 錯誤 — misunderstand (誤解) | mono- 單一 — monologue (獨白) | multi- 多 — multicultural (多元文化) | neo- 新的 — neonatal (新生) | non- 非 — nonsense (無意義) | pan- 全部 — pandemic (大流行) | peri- 周圍 — perimeter (周長) | poly- 多 — polygon (多邊形) | post- 之後 — postwar (戰後) | pre- 之前 — preview (預覽) | pro- 向前 — progress (進步) | pseudo- 假的 — pseudonym (筆名) | re- 再 — review (複習) | semi- 一半 — semicircle (半圓) | sub- 在下 — subway (地鐵) | super- 超越 — superstar (超級明星) | syn- 一起 — synchronize (同步) | tele- 遠距 — telephone (電話) | trans- 穿過 — transport (運輸) | tri- 三 — triangle (三角形) | un- 否定 — unhappy (不快樂) | vice- 副 — vice-president (副總裁)</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>常見字尾整理 (30個) <span class="arrow">▼</span></summary>
+                <div class="detail-body">
+                    <p><strong>名詞：</strong>-tion (education), -ment (agreement), -ness (happiness), -ity (ability), -er/-or (teacher), -ist (artist), -ship (friendship), -hood (childhood), -ance/-ence (importance)<br>
+                    <strong>形容詞：</strong>-able/-ible (readable), -ous (famous), -ful (hopeful), -less (hopeless), -al (natural), -ic (poetic), -ive (creative), -y (windy), -ish (childish)<br>
+                    <strong>動詞：</strong>-ize/-ise (realize), -ify (beautify), -ate (activate), -en (strengthen)<br>
+                    <strong>副詞：</strong>-ly (quickly), -ward(s) (upwards), -wise (clockwise)</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>30個常用單字與衍生詞 <span class="arrow">▼</span></summary>
+                <div class="detail-body">
+                    <ol style="font-size: 20px;">
+                        <li>institute [ˈɪnstəˌtut] (n. 研究所) — institution [ˌɪnstəˈtuʃən] (n. 機構)</li>
+                        <li>fashion [ˈfæʃən] (n. 時尚) — fashionable [ˈfæʃənəbl] (adj. 時髦的)</li>
+                        <li>trend [trɛnd] (n. 趨勢) — trendy [ˈtrɛndi] (adj. 流行的)</li>
+                        <li>mood [mud] (n. 情緒) — moody [ˈmudi] (adj. 喜怒無常的)</li>
+                        <li>history [ˈhɪstəri] (n. 歷史) — historic [hɪˈstɔrɪk] (adj. 有歷史意義的)</li>
+                        <li>society [səˈsaɪəti] (n. 社會) — social [ˈsoʃəl] (adj. 社會的)</li>
+                        <li>modern [ˈmɑdɚn] (adj. 現代的) — modernize [ˈmɑdɚˌnaɪz] (v. 使現代化)</li>
+                        <li>director [dəˈrɛktɚ] (n. 主管/導演) — direction [dəˈrɛkʃən] (n. 方向/指導)</li>
+                        <li>surround [səˈraʊnd] (v. 圍繞) — surrounding [səˈraʊndɪŋ] (adj. 周圍的)</li>
+                        <li>harder [ˈhɑrdɚ] (adj. 更難的) — hardship [ˈhɑrdˌʃɪp] (n. 艱難)</li>
+                        <li>focus [ˈfokəs] (v./n. 焦點) — focused [ˈfokəst] (adj. 專注的)</li>
+                        <li>connect [kəˈnɛkt] (v. 連結) — connection [kəˈnɛkʃən] (n. 連結)</li>
+                        <li>inner [ˈɪnɚ] (adj. 內部的) — innermost [ˈɪnɚˌmost] (adj. 最深處的)</li>
+                        <li>thought [θɔt] (n. 想法) — thoughtful [ˈθɔtfəl] (adj. 體貼的)</li>
+                        <li>visual [ˈvɪʒuəl] (adj. 視覺的) — visualize [ˈvɪʒuəˌlaɪz] (v. 想像)</li>
+                        <li>space [spes] (n. 空間) — spacious [ˈspeʃəs] (adj. 寬敞的)</li>
+                        <li>daily [ˈdeli] (adj. 每日的) — daytime [ˈdetaɪm] (n. 白天)</li>
+                        <li>canvas [ˈkænvəs] (n. 畫布)</li>
+                        <li>desire [dɪˈzaɪr] (n./v. 慾望/渴望) — desirable [dɪˈzaɪrəbl] (adj. 值得嚮往的)</li>
+                        <li>fresh [frɛʃ] (adj. 新鮮的) — refresh [rɪˈfrɛʃ] (v. 使恢復精力)</li>
+                        <li>possibility [ˌpɑsəˈbɪləti] (n. 可能性) — possible [ˈpɑsəbl] (adj. 可能的)</li>
+                        <li>uncertain [ʌnˈsɝtn] (adj. 不確定的) — uncertainty [ʌnˈsɝtnti] (n. 不確定性)</li>
+                        <li>surprisingly [sɚˈpraɪzɪŋli] (adv. 意外地) — surprising [sɚˈpraɪzɪŋ] (adj. 令人驚訝的)</li>
+                        <li>powerful [ˈpaʊɚfəl] (adj. 強大的) — power [ˈpaʊɚ] (n. 力量)</li>
+                        <li>promise [ˈprɑmɪs] (n./v. 承諾/前途) — promising [ˈprɑmɪsɪŋ] (adj. 有前途的)</li>
+                        <li>remove [rɪˈmuv] (v. 移除) — removal [rɪˈmuvəl] (n. 移除)</li>
+                        <li>simply [ˈsɪmpli] (adv. 僅僅) — simplicity [sɪmˈplɪsəti] (n. 簡單)</li>
+                        <li>adding [ˈædɪŋ] (n. 添加) — additional [əˈdɪʃənl] (adj. 額外的)</li>
+                        <li>life [laɪf] (n. 生活) — lifeless [ˈlaɪflɪs] (adj. 無生命的)</li>
+                        <li>hope [hop] (n./v. 希望) — hopeful [ˈhopfəl] (adj. 充滿希望的)</li>
+                    </ol>
+                    <p><strong>文章相關片語：</strong></p>
+                    <ul>
+                        <li>act as (扮演...角色/發揮...作用)</li>
+                        <li>speak to (呼應/探討)</li>
+                        <li>step back (抽身/退後一步)</li>
+                        <li>derive from (源自於)</li>
+                        <li>focus on (專注於)</li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>練文筆食材 <span class="arrow">▼</span></summary>
+                <div class="detail-body">
+                    <p>① <strong>not simply to... but to...</strong> (不只是為了...而是為了...)<br>→ 適用：強調動作背後更深層、更重要的目的。</p>
+                    <p>② <strong>speak directly to...</strong> (直接呼應/觸及...)<br>→ 適用：描述某物如何引起特定族群的心理共鳴。</p>
+                    <p>③ <strong>the cacophony that surrounds us</strong> (圍繞我們的嘈雜喧囂)<br>→ 適用：作文開頭描述現代社會繁雜混亂的背景。</p>
+                    <p>④ <strong>act as a visual antidote</strong> (發揮視覺解毒劑的作用)<br>→ 適用：隱喻某種事物能緩解現代人的精神壓力。</p>
+                    <p>⑤ <strong>Clarity does not come from adding more... but from removing...</strong> (清晰並非來自於增加，而是來自於移除...)<br>→ 適用：寫作總結，表達「簡約」或「減法生活」的核心價值。</p>
+                </div>
+            </details>
+        </section>
+    </div>
+</body>
+</html>
