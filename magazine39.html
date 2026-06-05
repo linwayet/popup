@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sport Seen Around the World</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
+<style>
+:root {
+    --bg-color: #FFF4E8;
+    --text-color: #1A0F00;
+    --h1-color: #C0392B;
+    --h2-color: #1565C0;
+    --h3-color: #2E7D32;
+    --accent-a: #E65100;
+    --accent-b: #6A1B9A;
+    --keyword-color: #0D47A1;
+    --card-bg: #FFFFFF;
+    
+    --q1-head: #0D47A1; --q1-border: #90CAF9; --q1-body: #F3F8FF;
+    --q2-head: #BF360C; --q2-border: #FFAB91; --q2-body: #FFF3EF;
+    --q3-head: #1B5E20; --q3-border: #81C784; --q3-body: #F1F8F2;
+    --q4-head: #4A148C; --q4-border: #CE93D8; --q4-body: #F9F0FF;
+    --q-foot-head: #4A3728; --q-foot-border: #C4A06A; --q-foot-body: #FAF6F0;
+    --warm-panel: #FFFDF8;
+    --warm-line: #F4B183;
+    --warm-shadow: rgba(142, 68, 0, 0.14);
+}
+
+* { box-sizing: border-box; }
+body {
+    background:
+        radial-gradient(circle at top left, rgba(255, 204, 128, 0.35), transparent 36vw),
+        linear-gradient(135deg, #FFF4E8 0%, #FFE6D6 48%, #FFF8ED 100%);
+    color: var(--text-color);
+    font-family: 'BIZ UDPGothic', sans-serif;
+    font-size: 22px;
+    line-height: 1.85;
+    margin: 0;
+    padding: 28px 18px;
+}
+
+.container {
+    width: min(100%, 960px);
+    margin: 0 auto;
+    background: rgba(255, 253, 248, 0.82);
+    border: 1px solid rgba(244, 177, 131, 0.55);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 24px 70px var(--warm-shadow);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+h1 {
+    color: var(--h1-color);
+    font-size: 3.5rem;
+    font-weight: 700;
+    border: 5px solid var(--h1-color);
+    padding: 15px 30px;
+    display: inline-block;
+    margin-bottom: 10px;
+    background: #fff;
+    box-shadow: 8px 8px 0px var(--h1-color);
+}
+
+.resource-strip {
+    margin: 0 0 34px;
+    padding: 22px;
+    border: 3px solid var(--warm-line);
+    border-radius: 20px;
+    background:
+        linear-gradient(135deg, rgba(255, 246, 224, 0.96), rgba(255, 231, 211, 0.96)),
+        var(--warm-panel);
+    box-shadow: 0 12px 28px rgba(230, 81, 0, 0.13);
+}
+
+.resource-strip.bottom {
+    margin: 46px 0 0;
+}
+
+.resource-title {
+    margin: 0 0 16px;
+    color: #9C3D10;
+    font-size: 1.35rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.resource-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.resource-link {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 154px;
+    padding: 18px;
+    border-radius: 18px;
+    color: #2B1405;
+    text-decoration: none;
+    border: 2px solid rgba(255, 255, 255, 0.72);
+    box-shadow: 0 10px 20px rgba(126, 52, 9, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resource-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 26px rgba(126, 52, 9, 0.18);
+}
+
+.resource-link.course-echo {
+    background: linear-gradient(135deg, #FFD166, #FF9F6E);
+}
+
+.resource-link.student-analysis {
+    background: linear-gradient(135deg, #FFB4A2, #F28482);
+}
+
+.resource-link.line-account {
+    background: linear-gradient(135deg, #BDECB6, #5ED47A);
+}
+
+.resource-kicker {
+    font-size: 0.9rem;
+    line-height: 1.25;
+    color: rgba(43, 20, 5, 0.78);
+    font-weight: 700;
+}
+
+.resource-name {
+    font-size: 1.22rem;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.resource-desc {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.subtitle {
+    color: var(--h2-color);
+    font-size: 2.2rem;
+    margin: 10px 0;
+    font-weight: 700;
+}
+
+.credit {
+    font-family: 'Lobster', cursive;
+    color: var(--h2-color);
+    font-size: 1.8rem;
+    margin-top: 10px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 2.2rem;
+    color: var(--h2-color);
+    border-left: 10px solid var(--h2-color);
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    background: var(--card-bg);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    padding: 15px 25px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.card-body {
+    padding: 25px;
+}
+
+/* Section Colors */
+.q1 .card-header { background-color: var(--q1-head); }
+.q1 .card { border-color: var(--q1-border); background-color: var(--q1-body); }
+
+.q2 .card-header { background-color: var(--q2-head); }
+.q2 .card { border-color: var(--q2-border); background-color: var(--q2-body); }
+
+.q3 .card-header { background-color: var(--q3-head); }
+.q3 .card { border-color: var(--q3-border); background-color: var(--q3-body); }
+
+.q4 .card-header { background-color: var(--q4-head); }
+.q4 .card { border-color: var(--q4-border); background-color: var(--q4-body); }
+
+.footer-section .card-header { background-color: var(--q-foot-head); }
+.footer-section .card { border-color: var(--q-foot-border); background-color: var(--q-foot-body); }
+
+/* Typography */
+.keyword { color: var(--keyword-color); font-weight: 700; }
+.sentence-item { margin-bottom: 30px; border-bottom: 1px dashed #ccc; padding-bottom: 20px; }
+.sentence-item:last-child { border-bottom: none; }
+.quote-box { background: #fff; border-left: 5px solid var(--accent-a); padding: 15px; margin: 10px 0; font-style: italic; }
+.translation { margin-top: 10px; font-weight: 500; }
+.grammar-note { background: #f9f9f9; padding: 10px 15px; border-radius: 8px; margin-top: 10px; font-size: 1.1rem; }
+.highlight-pills { margin-top: 10px; }
+.pill { display: inline-block; background: var(--accent-b); color: #fff; padding: 2px 12px; border-radius: 20px; font-size: 0.9rem; margin-right: 8px; }
+
+.num-label {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: var(--q2-head);
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    font-weight: 700;
+}
+
+/* Vocabulary Tags */
+.vocab-item { margin-bottom: 40px; }
+.vocab-head { display: flex; align-items: baseline; border-bottom: 3px solid var(--q3-head); padding-bottom: 5px; margin-bottom: 15px; }
+.vocab-num { background: var(--h2-color); color: #fff; width: 35px; height: 35px; text-align: center; line-height: 35px; border-radius: 50%; margin-right: 10px; font-size: 1.2rem; }
+.vocab-word { font-size: 1.8rem; font-weight: 700; color: var(--h2-color); margin-right: 15px; }
+.vocab-kk { color: var(--h1-color); font-size: 1.2rem; margin-right: 15px; }
+.vocab-pos { font-style: italic; color: #555; margin-right: 15px; }
+.vocab-def { font-weight: 700; color: var(--text-color); }
+
+.tag-row { display: flex; margin-bottom: 10px; align-items: flex-start; }
+.tag-label { 
+    min-width: 100px; 
+    padding: 2px 10px; 
+    border-radius: 10px 0 0 10px; 
+    text-align: center; 
+    font-size: 0.9rem; 
+    font-weight: 700; 
+    color: #fff;
+    margin-right: 10px;
+}
+.tag-content { background: #fff; padding: 2px 15px; border-radius: 0 10px 10px 0; flex-grow: 1; font-size: 1.1rem; border: 1px solid #ddd; }
+
+.t-deriv { background-color: #C0392B; }
+.t-root { background-color: #1565C0; }
+.t-phrase { background-color: #2E7D32; }
+.t-idiom { background-color: #D68910; }
+.t-confuse { background-color: #6A1B9A; }
+.t-prep { background-color: #E65100; }
+
+.example-box { margin-top: 15px; }
+.example-en { border-left: 4px solid var(--q3-head); padding-left: 15px; margin-bottom: 5px; }
+.example-zh { color: #555; padding-left: 19px; font-size: 1.1rem; }
+
+/* Grammar */
+.grammar-point { margin-bottom: 50px; }
+.grammar-point h3 { background: var(--q4-head); color: #fff; padding: 10px 20px; border-radius: 10px; }
+.grammar-section { margin-top: 15px; }
+.grammar-label { font-weight: 700; color: var(--q4-head); display: block; margin-bottom: 5px; }
+
+/* Details */
+details { background: #fff; border: 2px solid var(--q-foot-border); border-radius: 10px; margin-bottom: 15px; }
+summary { padding: 20px; font-weight: 700; cursor: pointer; background: var(--q-foot-head); color: #fff; display: flex; justify-content: space-between; align-items: center; min-height: 72px; }
+summary:hover { opacity: 0.9; }
+.arrow { transition: transform 0.3s; }
+details[open] .arrow { transform: rotate(180deg); }
+.details-content { padding: 20px; }
+
+@media (max-width: 600px) {
+    body { font-size: 20px; padding: 12px; }
+    .container { padding: 16px; border-radius: 18px; }
+    h1 { font-size: 2.05rem; padding: 12px 14px; box-shadow: 5px 5px 0px var(--h1-color); }
+    h2 { font-size: 1.55rem; padding-left: 12px; border-left-width: 7px; }
+    .subtitle { font-size: 1.6rem; }
+    .card-body { padding: 18px; }
+    .resource-strip { padding: 16px; margin-bottom: 28px; }
+    .resource-title { font-size: 1.15rem; }
+    .resource-grid { grid-template-columns: 1fr; }
+    .resource-link { min-height: auto; padding: 16px; border-radius: 15px; }
+    .vocab-head { flex-wrap: wrap; gap: 6px; }
+    .tag-row { flex-direction: column; gap: 0; }
+    .tag-label { min-width: 0; width: fit-content; border-radius: 10px 10px 0 0; }
+    .tag-content { width: 100%; border-radius: 0 10px 10px 10px; }
+    summary { align-items: flex-start; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <nav class="resource-strip" aria-label="課程與聯絡連結">
+        <p class="resource-title">七月課程與聯絡資訊</p>
+        <div class="resource-grid">
+            <a class="resource-link course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+                <span class="resource-kicker">七月開課</span>
+                <span class="resource-name">錯中學 ECHO 計劃</span>
+                <span class="resource-desc">用錯誤分析帶出英文理解與表達能力，適合想穩定累積閱讀、文法與寫作基礎的學生。</span>
+            </a>
+            <a class="resource-link student-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+                <span class="resource-kicker">七月開課</span>
+                <span class="resource-name">學生分析</span>
+                <span class="resource-desc">協助學生看見學習狀態與弱點，安排更明確的複習方向與進步路線。</span>
+            </a>
+            <a class="resource-link line-account" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+                <span class="resource-kicker">聯絡老師</span>
+                <span class="resource-name">Line：linwayet</span>
+                <span class="resource-desc">課程詢問、學習建議與報名細節，可加入 Line 與老師聯繫。</span>
+            </a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>The Sport Seen Around the World</h1>
+        <div class="subtitle">舉世矚目的運動：世界盃足球賽</div>
+        <div class="credit">林威老師與 AI agent 團隊製作</div>
+    </header>
+
+    <!-- 區塊一：英文文章原文 -->
+    <section class="q1">
+        <h2>【區塊一】英文文章原文</h2>
+        <div class="card">
+            <div class="card-header">原文 Original Article</div>
+            <div class="card-body">
+                <p>The 2022 FIFA World Cup final between Argentina and France drew an <span class="keyword">audience</span> of nearly 1.5 billion, with the upcoming 2026 edition expected to <span class="keyword">surpass</span> that number. Compare this with the 2025 Super Bowl, which had about 190 million viewers worldwide.</p>
+                <p>Winning the World Cup is considered the ultimate honor of a player’s <span class="keyword">career</span>. Pelé in 1958, Maradona in 1986, and Messi in 2022 are just a few of the players who have achieved historic <span class="keyword">fame</span> and <span class="keyword">recognition</span> through the competition.</p>
+                <p>The World Cup returns to North America for the first time since the United States hosted it in 1994, when it set records for the highest total <span class="keyword">attendance</span> and average attendance per match. This time around, the competition has already made history. It is the first edition to <span class="keyword">feature</span> 48 teams, the first to be cohosted by three countries, and the first to include more than 100 matches. The Tunisia vs. Japan fixture, scheduled for June 20 in Monterrey, Mexico, will be the 1,000th match in World Cup history. The tournament also <span class="keyword">coincides</span> with the United States’ 250th-<span class="keyword">anniversary</span> celebrations.</p>
+                <p>There is plenty of drama surrounding the event, both on and off the field. Italy, a four-time champion, has failed to qualify for a third straight time, making it the only former winner not to be part of the 2026 World Cup. Iran’s <span class="keyword">participation</span> has been called into question amid <span class="keyword">tensions</span> with the U.S., while <span class="keyword">diplomatic</span> <span class="keyword">disputes</span>, ticket pricing, and <span class="keyword">security</span> concerns add to the <span class="keyword">controversies</span> surrounding the tournament.</p>
+                <p>On the field, <span class="keyword">legendary</span> players such as Lionel Messi and Cristiano Ronaldo are playing in what is likely to be their last World Cup; exciting stars such as Kylian Mbappé and Lamine Yamal are set to become <span class="keyword">headliners</span>; and the expanded roster increases the <span class="keyword">likelihood</span> of dark horses and upsets.</p>
+                <p>Whether you're a <span class="keyword">passionate</span> football fan or are simply curious about the world's biggest sporting event, The Pitch will give you the historical <span class="keyword">perspective</span> and cultural context you need to truly understand what's at stake this summer!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊二：8句精讀 -->
+    <section class="q2">
+        <h2>【區塊二】8 句精讀</h2>
+        <div class="card">
+            <div class="card-header">精讀與分析 8 Key Sentence Analyses</div>
+            <div class="card-body">
+                <div class="sentence-item">
+                    <span class="num-label">1</span>
+                    <div class="quote-box">The 2022 FIFA World Cup final between Argentina and France drew an audience of nearly 1.5 billion, with the upcoming 2026 edition expected to surpass that number.</div>
+                    <div class="translation">2022年阿根廷與法國之間的世界盃決賽吸引了近 15 億觀眾，而即將到來的 2026 年屆次預計將超過這一數字。</div>
+                    <div class="grammar-note">
+                        <strong>文法解析：</strong>本句使用了「with + 受詞 + 受詞補語」的結構。<em>with the upcoming 2026 edition expected to surpass ...</em> 用來補充說明前句的情況，其中 expected 是過去分詞，表示「被預期」。
+                    </div>
+                    <div class="highlight-pills">
+                        <span class="pill">draw an audience 吸引觀眾</span>
+                        <span class="pill">surpass 超過</span>
+                        <span class="pill">upcoming 即將到來的</span>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-label">2</span>
+                    <div class="quote-box">Winning the World Cup is considered the ultimate honor of a player’s career.</div>
+                    <div class="translation">贏得世界盃被視為一名球員職業生涯的終極榮譽。</div>
+                    <div class="grammar-note">
+                        <strong>文法解析：</strong><em>Winning the World Cup</em> 是動名詞片語當主詞，視為單數。<em>is considered</em> 為被動語態，後接名詞 <em>the ultimate honor</em> 作為主詞補語。
+                    </div>
+                    <div class="highlight-pills">
+                        <span class="pill">ultimate 終極的</span>
+                        <span class="pill">career 職業生涯</span>
+                        <span class="pill">consider A B 將A視為B</span>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-label">3</span>
+                    <div class="quote-box">The World Cup returns to North America for the first time since the United States hosted it in 1994, when it set records for the highest total attendance and average attendance per match.</div>
+                    <div class="translation">這是自美國 1994 年舉辦世界盃以來，世界盃首次重返北美，當時創下了最高總入場人數和每場平均入場人數的紀錄。</div>
+                    <div class="grammar-note">
+                        <strong>文法解析：</strong><em>when it set records ...</em> 是非限定形容詞子句（關係副詞用法），補充說明 1994 年發生的事情。
+                    </div>
+                    <div class="highlight-pills">
+                        <span class="pill">set records 創下紀錄</span>
+                        <span class="pill">attendance 入場人數</span>
+                        <span class="pill">for the first time 首次</span>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-label">4</span>
+                    <div class="quote-box">It is the first edition to feature 48 teams, the first to be cohosted by three countries, and the first to include more than 100 matches.</div>
+                    <div class="translation">這是首屆擁有 48 支球隊參加、首屆由三個國家共同舉辦、以及首屆包含超過 100 場比賽的屆次。</div>
+                    <div class="grammar-note">
+                        <strong>文法解析：</strong>本句使用了平行結構 <em>the first to + V</em>。不定詞 <em>to feature</em>, <em>to be cohosted</em>, <em>to include</em> 皆作為形容詞用法，修飾前面的代名詞 <em>first (edition)</em>。
+                    </div>
+                    <div class="highlight-pills">
+                        <span class="pill">feature 以...為特色</span>
+                        <span class="pill">cohost 共同舉辦</span>
+                        <span class="pill">edition 版本/屆次</span>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-label">5</span>
+                    <div class="quote-box">Italy, a four-time champion, has failed to qualify for a third straight time, making it the only former winner not to be part of the 2026 World Cup.</div>
+                    <div class="translation">四屆冠軍義大利已連續第三次未能晉級，使其成為唯一未能參加 2026 年世界盃的前冠軍隊。</div>
+                    <div class="grammar-note">
+                        <strong>文法解析：</strong>逗號後的 <em>making it ...</em> 是分詞構句，表示前面整件事帶來的「附帶結果」。<em>not to be part of</em> 為不定詞的否定，修飾 <em>winner</em>。
+                    </div>
+                    <div class="highlight-pills">
+                        <span class="pill">fail to 未能...</span>
+                        <span class="pill">qualify 取得資格/晉級</span>
+                        <span class="pill">straight 連續的</span>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-label">6</span>
+                    <div class="quote-box">Iran’s participation has been called into question amid tensions with the U.S., while diplomatic disputes, ticket pricing, and security concerns add to the controversies surrounding the tournament.</div>
+                    <div class="translation">由於與美國的緊張關係，伊朗的參與受到了質疑，而外交爭端、門票定價和安全疑慮也增加了圍繞該賽事的爭議。</div>
+                    <div class="grammar-note">
+                        <strong>文法解析：</strong><em>while</em> 在此表示「對比」或「同時存在的情況」。<em>call ... into question</em> 是一個常見片語，表示「對...產生質疑」。
+                    </div>
+                    <div class="highlight-pills">
+                        <span class="pill">amid 在...之中</span>
+                        <span class="pill">dispute 爭端</span>
+                        <span class="pill">controversy 爭議</span>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-label">7</span>
+                    <div class="quote-box">On the field, legendary players such as Lionel Messi and Cristiano Ronaldo are playing in what is likely to be their last World Cup.</div>
+                    <div class="translation">在場上，如梅西和羅納度等傳奇球員正參加可能是他們最後一屆的世界盃。</div>
+                    <div class="grammar-note">
+                        <strong>文法解析：</strong><em>what is likely to be ...</em> 是一個由 <em>what</em> 引導的名詞子句，作為介系詞 <em>in</em> 的受詞。<em>be likely to</em> 表示「很可能」。
+                    </div>
+                    <div class="highlight-pills">
+                        <span class="pill">legendary 傳奇的</span>
+                        <span class="pill">be likely to 很可能</span>
+                        <span class="pill">what is ... ...的事物</span>
+                    </div>
+                </div>
+
+                <div class="sentence-item">
+                    <span class="num-label">8</span>
+                    <div class="quote-box">Whether you're a passionate football fan or are simply curious about the world's biggest sporting event, The Pitch will give you the historical perspective and cultural context you need.</div>
+                    <div class="translation">無論你是熱情的足球迷，還是單純對全球最大的體育盛事感到好奇，《The Pitch》都將為你提供所需的歷史觀點和文化背景。</div>
+                    <div class="grammar-note">
+                        <strong>文法解析：</strong><em>Whether you're ... or are ...</em> 是 <em>Whether ... or ...</em> 引導的名詞子句，在此作為副詞用法，表示「無論是...還是...」。
+                    </div>
+                    <div class="highlight-pills">
+                        <span class="pill">passionate 熱情的</span>
+                        <span class="pill">perspective 觀點</span>
+                        <span class="pill">context 背景/語境</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊三：18-20個單字整理 -->
+    <section class="q3">
+        <h2>【區塊三】18–20 個單字整理</h2>
+        <div class="card">
+            <div class="card-header">核心單字表 Vocabulary Study</div>
+            <div class="card-body">
+
+                <!-- 1 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">1</span>
+                        <span class="vocab-word">audience</span>
+                        <span class="vocab-kk">[ˈɔdɪəns]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">觀眾；聽眾</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-root">字根</div>
+                        <div class="tag-content">aud (聽)：audio (音訊), auditorium (禮堂), audible (可聽見的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">a vast audience 龐大的觀眾群；target audience 目標受眾</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">The World Cup final drew an <strong>audience</strong> of nearly 1.5 billion.</div>
+                        <div class="example-zh">（世界盃決賽吸引了近 15 億觀眾。）</div>
+                        <div class="example-en">The singer performed in front of a live <strong>audience</strong> at the stadium.</div>
+                        <div class="example-zh">（歌手在體育場現場觀眾面前演出。）</div>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">2</span>
+                        <span class="vocab-word">surpass</span>
+                        <span class="vocab-kk">[sɚˈpæs]</span>
+                        <span class="vocab-pos">v.</span>
+                        <span class="vocab-def">超過；超越</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-phrase">片語</div>
+                        <div class="tag-content">surpass expectations 超過預期；surpass one's limits 超越極限</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">easily surpass 輕鬆超越；hardly surpass 難以超越</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">The 2026 edition is expected to <strong>surpass</strong> the previous attendance numbers.</div>
+                        <div class="example-zh">（2026 年屆次預計將超過之前的入場人數。）</div>
+                        <div class="example-en">Her performance in the exam <strong>surpassed</strong> everyone's expectations.</div>
+                        <div class="example-zh">（她的考試表現超出了所有人的預期。）</div>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">3</span>
+                        <span class="vocab-word">career</span>
+                        <span class="vocab-kk">[kəˈrɪr]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">職業生涯；事業</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">a professional career 職業生涯；career path 職涯路徑</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">Winning the World Cup is the ultimate honor of a player’s <strong>career</strong>.</div>
+                        <div class="example-zh">（贏得世界盃是球員職業生涯的終極榮譽。）</div>
+                        <div class="example-en">She decided to change her <strong>career</strong> and become a software engineer.</div>
+                        <div class="example-zh">（她決定更換職涯，成為一名軟體工程師。）</div>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">4</span>
+                        <span class="vocab-word">recognition</span>
+                        <span class="vocab-kk">[ˌrɛkəɡˈnɪʃən]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">認可；承認；識別</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">recognize (v. 認可/識別), recognizable (adj. 可辨認的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">gain international recognition 獲得國際認可；face recognition 臉部識別</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">Many players have achieved historic fame and <strong>recognition</strong> through the competition.</div>
+                        <div class="example-zh">（許多球員透過這項賽事獲得了歷史性的名聲與認可。）</div>
+                        <div class="example-en">The company received <strong>recognition</strong> for its contribution to environmental protection.</div>
+                        <div class="example-zh">（這間公司因其對環保的貢獻而獲得表彰。）</div>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">5</span>
+                        <span class="vocab-word">attendance</span>
+                        <span class="vocab-kk">[əˈtɛndəns]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">出席人數；出席</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">attend (v. 出席/參加), attendant (n. 服務員)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">average attendance 平均出席人數；poor attendance 出席率不佳</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">The tournament set records for the highest total <strong>attendance</strong>.</div>
+                        <div class="example-zh">（這項賽事創下了最高總入場人數的紀錄。）</div>
+                        <div class="example-en">The teacher takes <strong>attendance</strong> at the beginning of every class.</div>
+                        <div class="example-zh">（老師在每節課開始時都會點名。）</div>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">6</span>
+                        <span class="vocab-word">feature</span>
+                        <span class="vocab-kk">[ˈfitʃɚ]</span>
+                        <span class="vocab-pos">v. / n.</span>
+                        <span class="vocab-def">以...為特色；功能</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">a special feature 特色；feature in ... 在...中擔任要角</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">It is the first edition to <strong>feature</strong> 48 teams.</div>
+                        <div class="example-zh">（這是首屆以 48 支球隊為特色的屆次。）</div>
+                        <div class="example-en">The new smartphone <strong>features</strong> a high-quality camera and long battery life.</div>
+                        <div class="example-zh">（這款新智慧型手機以高品質相機和長效電池為特色。）</div>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">7</span>
+                        <span class="vocab-word">coincide</span>
+                        <span class="vocab-kk">[ˌkoɪnˈsaɪd]</span>
+                        <span class="vocab-pos">v.</span>
+                        <span class="vocab-def">同時發生；相符</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">coincidence (n. 巧合)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-prep">常用介系詞</div>
+                        <div class="tag-content">coincide with (與...同時發生)</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">The tournament <strong>coincides</strong> with the United States’ 250th-anniversary celebrations.</div>
+                        <div class="example-zh">（這項賽事與美國 250 週年慶典同時發生。）</div>
+                        <div class="example-en">The release of the movie <strong>coincided</strong> with the start of the summer vacation.</div>
+                        <div class="example-zh">（這部電影的上映正好趕上暑假的開始。）</div>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">8</span>
+                        <span class="vocab-word">participation</span>
+                        <span class="vocab-kk">[pɑrˌtɪsəˈpeʃən]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">參與</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">participate (v. 參與), participant (n. 參與者)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">active participation 積極參與；full participation 全面參與</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">Iran’s <strong>participation</strong> has been called into question.</div>
+                        <div class="example-zh">（伊朗的參與受到了質疑。）</div>
+                        <div class="example-en">Students are encouraged to increase their <strong>participation</strong> in school activities.</div>
+                        <div class="example-zh">（鼓勵學生增加對學校活動的參與。）</div>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">9</span>
+                        <span class="vocab-word">tension</span>
+                        <span class="vocab-kk">[ˈtɛnʃən]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">緊張局勢；壓力</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">tense (adj. 緊張的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">rising tensions 緊張局勢升溫；ease tensions 緩解緊張局勢</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">The event was held amid <strong>tensions</strong> between the two countries.</div>
+                        <div class="example-zh">（該活動是在兩國緊張局勢中舉辦的。）</div>
+                        <div class="example-en">The <strong>tension</strong> in the room was palpable during the negotiation.</div>
+                        <div class="example-zh">（談判期間，房間裡的緊張氣氛顯而易見。）</div>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">10</span>
+                        <span class="vocab-word">diplomatic</span>
+                        <span class="vocab-kk">[ˌdɪpləˈmætɪk]</span>
+                        <span class="vocab-pos">adj.</span>
+                        <span class="vocab-def">外交的</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">diplomacy (n. 外交), diplomat (n. 外交官)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">diplomatic relations 外交關係；diplomatic immunity 外交豁免權</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en"><strong>Diplomatic</strong> disputes have added to the controversies surrounding the event.</div>
+                        <div class="example-zh">（外交爭端增加了圍繞該事件的爭議。）</div>
+                        <div class="example-en">The two nations agreed to restore <strong>diplomatic</strong> ties after years of silence.</div>
+                        <div class="example-zh">（在多年的沉默之後，兩國同意恢復外交關係。）</div>
+                    </div>
+                </div>
+
+                <!-- 11 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">11</span>
+                        <span class="vocab-word">dispute</span>
+                        <span class="vocab-kk">[dɪˈspjut]</span>
+                        <span class="vocab-pos">n. / v.</span>
+                        <span class="vocab-def">爭端；爭議</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">a legal dispute 法律爭端；settle a dispute 解決爭議</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">Diplomatic <strong>disputes</strong> may affect the upcoming tournament.</div>
+                        <div class="example-zh">（外交爭端可能會影響即將到來的賽事。）</div>
+                        <div class="example-en">The neighbors are in a bitter <strong>dispute</strong> over the property line.</div>
+                        <div class="example-zh">（鄰居們正因地界線問題陷入激烈的爭執。）</div>
+                    </div>
+                </div>
+
+                <!-- 12 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">12</span>
+                        <span class="vocab-word">security</span>
+                        <span class="vocab-kk">[sɪˈkjʊrətɪ]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">安全；保障</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">secure (adj. 安全的/牢固的), insecure (adj. 不安全的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">security concerns 安全疑慮；national security 國家安全；security check 安檢</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en"><strong>Security</strong> concerns are a major issue for such a big event.</div>
+                        <div class="example-zh">（對於如此重大的活動，安全疑慮是一個主要問題。）</div>
+                        <div class="example-en">The airport has tightened <strong>security</strong> after the recent incident.</div>
+                        <div class="example-zh">（最近的事件發生後，機場加強了安檢。）</div>
+                    </div>
+                </div>
+
+                <!-- 13 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">13</span>
+                        <span class="vocab-word">controversy</span>
+                        <span class="vocab-kk">[ˈkɑntrəˌvɝsɪ]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">爭議</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">controversial (adj. 有爭議的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">cause controversy 引起爭議；widespread controversy 廣泛的爭議</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">These issues add to the <strong>controversies</strong> surrounding the tournament.</div>
+                        <div class="example-zh">（這些問題增加了圍繞該賽事的爭議。）</div>
+                        <div class="example-en">The director's new film has sparked a great deal of <strong>controversy</strong>.</div>
+                        <div class="example-zh">（導演的新片引起了極大的爭議。）</div>
+                    </div>
+                </div>
+
+                <!-- 14 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">14</span>
+                        <span class="vocab-word">legendary</span>
+                        <span class="vocab-kk">[ˈlɛdʒənˌdɛrɪ]</span>
+                        <span class="vocab-pos">adj.</span>
+                        <span class="vocab-def">傳奇性的</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">legend (n. 傳奇/傳說)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">a legendary figure 傳奇人物；legendary status 傳奇地位</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en"><strong>Legendary</strong> players such as Messi are playing in their last World Cup.</div>
+                        <div class="example-zh">（如梅西等傳奇球員正參加他們最後一屆的世界盃。）</div>
+                        <div class="example-en">The <strong>legendary</strong> musician performed his greatest hits for the fans.</div>
+                        <div class="example-zh">（這位傳奇音樂家為歌迷演唱了他的經典曲目。）</div>
+                    </div>
+                </div>
+
+                <!-- 15 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">15</span>
+                        <span class="vocab-word">headliner</span>
+                        <span class="vocab-kk">[ˈhɛdˌlaɪnɚ]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">主角；頭號人物</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-phrase">片語</div>
+                        <div class="tag-content">become a headliner 成為主角</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">festival headliner 節慶主秀</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">Exciting stars are set to become <strong>headliners</strong> in the next tournament.</div>
+                        <div class="example-zh">（令人興奮的新星即將在下一屆賽事中成為主角。）</div>
+                        <div class="example-en">The world-famous band will be the <strong>headliner</strong> for the summer concert.</div>
+                        <div class="example-zh">（這支世界知名的樂隊將成為夏季音樂會的主角。）</div>
+                    </div>
+                </div>
+
+                <!-- 16 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">16</span>
+                        <span class="vocab-word">likelihood</span>
+                        <span class="vocab-kk">[ˈlaɪklɪˌhʊd]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">可能性</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">likely (adj. 可能的), unlikely (adj. 不可能的)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">increase the likelihood 增加可能性；in all likelihood 很有可能</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">The expanded roster increases the <strong>likelihood</strong> of upsets.</div>
+                        <div class="example-zh">（擴大的名單增加了爆冷門的可能性。）</div>
+                        <div class="example-en">There is little <strong>likelihood</strong> that the weather will improve today.</div>
+                        <div class="example-zh">（今天天氣好轉的可能性微乎其微。）</div>
+                    </div>
+                </div>
+
+                <!-- 17 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">17</span>
+                        <span class="vocab-word">passionate</span>
+                        <span class="vocab-kk">[ˈpæʃənət]</span>
+                        <span class="vocab-pos">adj.</span>
+                        <span class="vocab-def">熱情的</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-deriv">衍生詞</div>
+                        <div class="tag-content">passion (n. 熱情), passionately (adv. 熱情地)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">be passionate about ... 對...充滿熱情；a passionate speech 熱情的演說</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">Whether you're a <strong>passionate</strong> football fan or just curious, this event matters.</div>
+                        <div class="example-zh">（無論你是一個熱情的足球迷還是只是感到好奇，這項賽事都很重要。）</div>
+                        <div class="example-en">He is extremely <strong>passionate</strong> about classical music and plays the piano every day.</div>
+                        <div class="example-zh">（他對古典音樂極其熱情，每天都彈鋼琴。）</div>
+                    </div>
+                </div>
+
+                <!-- 18 -->
+                <div class="vocab-item">
+                    <div class="vocab-head">
+                        <span class="vocab-num">18</span>
+                        <span class="vocab-word">perspective</span>
+                        <span class="vocab-kk">[pɚˈspɛktɪv]</span>
+                        <span class="vocab-pos">n.</span>
+                        <span class="vocab-def">觀點；視角</span>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-root">字根</div>
+                        <div class="tag-content">spect (看)：inspect (檢查), respect (尊敬), expect (期待), prospect (前景)</div>
+                    </div>
+                    <div class="tag-row">
+                        <div class="tag-label t-idiom">慣用語</div>
+                        <div class="tag-content">historical perspective 歷史觀點；from my perspective 在我看來</div>
+                    </div>
+                    <div class="example-box">
+                        <div class="example-en">The Pitch will give you the historical <strong>perspective</strong> you need.</div>
+                        <div class="example-zh">（《The Pitch》將為你提供所需的歷史觀點。）</div>
+                        <div class="example-en">Traveling abroad can help you gain a broader <strong>perspective</strong> on life.</div>
+                        <div class="example-zh">（出國旅行能幫助你獲得更寬廣的人生視角。）</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 區塊四：文法解析 -->
+    <section class="q4">
+        <h2>【區塊四】文法解析</h2>
+        <div class="card">
+            <div class="card-header">文法重點整理 Grammar Focus</div>
+            <div class="card-body">
+
+                <!-- Grammar 1 -->
+                <div class="grammar-point">
+                    <h3>【文法名稱】形容詞子句：where / when / why（關係副詞）</h3>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【引句 Quote】</span>
+                        <div class="quote-box">The World Cup returns to North America ... in 1994, <strong>when</strong> it set records for the highest total attendance...</div>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【句型】</span>
+                        <strong><em>Time/Place + when/where + S + V ...</em></strong>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【核心說明】</span>
+                        關係副詞 when、where、why 用來引導形容詞子句，分別修飾表示時間、地點或原因的先行詞。它們在子句中充當副詞的功能，可替換為「介系詞 + which」。
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【使用規則】</span>
+                        <ul>
+                            <li><strong>when：</strong>修飾時間（如 year, day, time）。</li>
+                            <li><strong>where：</strong>修飾地點（如 country, city, place）。</li>
+                            <li><strong>why：</strong>修飾原因（如 reason）。</li>
+                            <li>非限定用法（加逗號）：僅用於補充說明，拿掉後主句依然完整。</li>
+                        </ul>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【主題例句】</span>
+                        I remember the year <strong>when</strong> France won their second World Cup title.（我記得法國贏得第二個世界盃冠軍的那一年。）
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【學習提醒】</span>
+                        注意 when/where 後面接完整子句，而 which/that 後面可能接不完整子句（欠缺主詞或受詞）。
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                        ✗ This is the stadium <strong>which</strong> the final match was held.<br>
+                        ✓ This is the stadium <strong>where</strong> the final match was held.<br>
+                        說明：held 是及物動詞的被動，子句完整，修飾地點應用 where 或 in which。<br><br>
+                        選擇題：I'll never forget the day ________ we first watched a World Cup match together.<br>
+                        (A) which (B) when (C) where (D) who<br>
+                        答案：B。
+                    </div>
+                </div>
+
+                <!-- Grammar 2 -->
+                <div class="grammar-point">
+                    <h3>【文法名稱】名詞子句：whether / if</h3>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【引句 Quote】</span>
+                        <div class="quote-box"><strong>Whether</strong> you're a passionate football fan or are simply curious...</div>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【句型】</span>
+                        <strong><em>Whether ... or ... + S + V</em></strong>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【核心說明】</span>
+                        whether 引導的名詞子句表示「是否」，用於表達不確定或二選一的情況。在本課引句中，它作為副詞用法，表示「無論是...還是...」。
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【使用規則】</span>
+                        <ul>
+                            <li>whether ... or not：常用來強調「無論是否」。</li>
+                            <li>與 if 的差異：if 不能放在句首當主詞，也不能直接放在介系詞後面，而 whether 可以。</li>
+                            <li>whether to V：whether 後可接不定詞片語，if 則不行。</li>
+                        </ul>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【主題例句】</span>
+                        <strong>Whether</strong> Messi plays in the next World Cup is still a secret.（梅西是否會參加下一屆世界盃仍然是個秘密。）
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【學習提醒】</span>
+                        當 whether 子句放在句首時，通常翻譯為「無論...」，此時具有副詞子句的功能。
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                        ✗ <strong>If</strong> he comes or not doesn't matter.<br>
+                        ✓ <strong>Whether</strong> he comes or not doesn't matter.<br>
+                        說明：if 引導的名詞子句不可放在句首當主詞。<br><br>
+                        改錯題：I'm not sure if or not they will win the game. (修正 if 為 whether)
+                    </div>
+                </div>
+
+                <!-- Grammar 3 -->
+                <div class="grammar-point">
+                    <h3>【文法名稱】分詞構句：表附帶結果</h3>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【引句 Quote】</span>
+                        <div class="quote-box">Italy ... has failed to qualify ..., <strong>making</strong> it the only former winner not to be part of the 2026 World Cup.</div>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【句型】</span>
+                        <strong><em>S + V ..., V-ing ...</em></strong>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【核心說明】</span>
+                        當副詞子句的主詞與主要子句主詞相同時，可以化簡為分詞構句。逗號後的 V-ing 常用來表示「附帶發生的結果」或「同時發生的動作」。
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【使用規則】</span>
+                        <ul>
+                            <li>主動關係用 V-ing。</li>
+                            <li>被動關係用 p.p.（通常省略 being）。</li>
+                            <li>表示結果時，通常放在主要子句之後。</li>
+                        </ul>
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【主題例句】</span>
+                        The team won the championship, <strong>surprising</strong> fans all over the world.（球隊贏得了冠軍，令全世界的球迷感到驚訝。）
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【學習提醒】</span>
+                        使用分詞構句時，要確保主要子句的主詞就是該分詞動作的執行者，否則會產生「懸空分詞」的錯誤。
+                    </div>
+                    <div class="grammar-section">
+                        <span class="grammar-label">【⚠️ 常見錯誤 / 🎯 精選試題】</span>
+                        ✗ The rain was heavy, <strong>caused</strong> many delays.<br>
+                        ✓ The rain was heavy, <strong>causing</strong> many delays.<br>
+                        說明：下雨主動導致延誤，應使用 V-ing。<br><br>
+                        合併句子：The expansion increased the number of teams. It made the competition more exciting. (使用分詞構句)<br>
+                        答案：The expansion increased the number of teams, <strong>making</strong> the competition more exciting.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部折疊區塊 -->
+    <section class="footer-section">
+        <details>
+            <summary>常見字首整理 (Prefixes)<span class="arrow">▼</span></summary>
+            <div class="details-content">
+                <div class="formula">ab- 離開 (abnormal); ad- 向 (advance); anti- 反對 (antibiotic); auto- 自動 (autograph); co- 一起 (cooperate); de- 去除 (decode); dis- 否定 (disagree); ex- 外 (export); inter- 之間 (international); mis- 錯誤 (misunderstand); non- 非 (nonsense); pre- 之前 (preview); re- 再/回 (review); sub- 在下 (subway); trans- 穿越 (transport); un- 不 (unhappy).</div>
+            </div>
+        </details>
+
+        <details>
+            <summary>常見英文字尾整理 (Suffixes)<span class="arrow">▼</span></summary>
+            <div class="details-content">
+                <div class="formula"><strong>名詞：</strong>-tion (education), -ment (agreement), -ness (happiness), -ity (ability), -ship (friendship).<br>
+                <strong>形容詞：</strong>-able (readable), -ous (dangerous), -ful (hopeful), -less (hopeless), -al (natural), -ive (active).<br>
+                <strong>動詞：</strong>-ize (realize), -ify (beautify), -en (strengthen).</div>
+            </div>
+        </details>
+
+        <details>
+            <summary>30個常用單字與衍生詞 (30 Vocabulary Words)<span class="arrow">▼</span></summary>
+            <div class="details-content">
+                <ol style="font-size: 1.1rem;">
+                    <li>final [ˈfaɪnl] (n. 決賽) — finalist [ˈfaɪnəlɪst] (n. 決賽選手)</li>
+                    <li>expect [ɪkˈspɛkt] (v. 期待) — expectation [ˌɛkspɛkˈteʃən] (n. 期望)</li>
+                    <li>history [ˈhɪstərɪ] (n. 歷史) — historic [hɪˈstɔrɪk] (adj. 具歷史意義的)</li>
+                    <li>record [ˈrɛkɚd] (n. 紀錄) — recorder [rɪˈkɔrdɚ] (n. 記錄器)</li>
+                    <li>total [ˈtotl] (adj. 總共的) — totally [ˈtotəlɪ] (adv. 完全地)</li>
+                    <li>average [ˈævərɪdʒ] (adj. 平均的) — averagely [ˈævərɪdʒlɪ] (adv. 平均地)</li>
+                    <li>include [ɪnˈklud] (v. 包含) — inclusive [ɪnˈklusɪv] (adj. 包含的)</li>
+                    <li>celebration [ˌsɛləˈbreʃən] (n. 慶祝) — celebrate [ˈsɛləˌbret] (v. 慶祝)</li>
+                    <li>drama [ˈdrɑmə] (n. 戲劇) — dramatic [drəˈmætɪk] (adj. 戲劇性的)</li>
+                    <li>straight [stret] (adj. 連續的/直的) — straighten [ˈstretn] (v. 弄直)</li>
+                    <li>former [ˈfɔrmɚ] (adj. 前任的) — formerly [ˈfɔrmɚlɪ] (adv. 以前)</li>
+                    <li>amid [əˈmɪd] (prep. 在...之中)</li>
+                    <li>surround [səˈraʊnd] (v. 圍繞) — surrounding [səˈraʊndɪŋ] (adj. 周圍的)</li>
+                    <li>likely [ˈlaɪklɪ] (adj. 可能的) — likelihood [ˈlaɪklɪˌhʊd] (n. 可能性)</li>
+                    <li>excite [ɪkˈsaɪt] (v. 使興奮) — exciting [ɪkˈsaɪtɪŋ] (adj. 令人興奮的)</li>
+                    <li>roster [ˈrɑstɚ] (n. 名單)</li>
+                    <li>curious [ˈkjʊrɪəs] (adj. 好奇的) — curiosity [ˌkjʊrɪˈɑsətɪ] (n. 好奇心)</li>
+                    <li>stake [stek] (n. 賭注/利害關係) — at stake (在危急存亡之秋)</li>
+                    <li>passionate [ˈpæʃənət] (adj. 熱情的) — passion [ˈpæʃən] (n. 熱情)</li>
+                    <li>context [ˈkɑntɛkst] (n. 背景/語境) — contextual [kənˈtɛkstʃʊəl] (adj. 上下文的)</li>
+                    <li>host [host] (v. 舉辦/主辦) — hospitality [ˌhɑspɪˈtælətɪ] (n. 款待)</li>
+                    <li>straight [stret] (adj. 直的/連續的)</li>
+                    <li>amid [əˈmɪd] (prep. 在...中)</li>
+                    <li>amidst [əˈmɪdst] (prep. 在...中)</li>
+                    <li>qualify [ˈkwɑləˌfaɪ] (v. 取得資格) — qualification [ˌkwɑləfəˈkeʃən] (n. 資格)</li>
+                    <li>security [sɪˈkjʊrətɪ] (n. 安全) — secure [sɪˈkjʊr] (v. 獲得/弄牢)</li>
+                    <li>cultural [ˈkʌltʃərəl] (adj. 文化的) — culture [ˈkʌltʃɚ] (n. 文化)</li>
+                    <li>understanding [ˌʌndɚˈstændɪŋ] (n. 理解) — understand [ˌʌndɚˈstænd] (v. 理解)</li>
+                    <li>historical [hɪˈstɔrɪkəl] (adj. 歷史的)</li>
+                    <li>edition [ɪˈdɪʃən] (n. 版本) — edit [ˈɛdɪt] (v. 編輯)</li>
+                </ol>
+                <ul style="color: var(--h3-color); font-weight: 700;">
+                    <li>• draw an audience (吸引觀眾)</li>
+                    <li>• set a record (創下紀錄)</li>
+                    <li>• call into question (對...產生質疑)</li>
+                    <li>• be likely to (很可能)</li>
+                    <li>• dark horse (黑馬)</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>練文筆食材 (Writing Expressions)<span class="arrow">▼</span></summary>
+            <div class="details-content">
+                <div class="sentence-item">
+                    <strong>① ... draw an audience of ...（吸引了...觀眾）</strong><br>
+                    → 適用：描述活動規模或受歡迎程度。<br>
+                    例：The concert drew an audience of thousands.
+                </div>
+                <div class="sentence-item">
+                    <strong>② ... be expected to surpass ...（預計將超過...）</strong><br>
+                    → 適用：進行預測或比較時。<br>
+                    例：The new sales figures are expected to surpass last year's records.
+                </div>
+                <div class="sentence-item">
+                    <strong>③ ... be considered the ultimate honor of ...（被視為...的終極榮譽）</strong><br>
+                    → 適用：強調某事物的重要性或地位。<br>
+                    例：Winning a Nobel Prize is considered the ultimate honor of a scientist's career.
+                </div>
+                <div class="sentence-item">
+                    <strong>④ ... set records for ...（創下了...的紀錄）</strong><br>
+                    → 適用：描述突破性的成就。<br>
+                    例：The movie set records for the highest opening weekend earnings.
+                </div>
+                <div class="sentence-item">
+                    <strong>⑤ ... be called into question ...（受到了質疑）</strong><br>
+                    → 適用：討論爭議或不確定的情況。<br>
+                    例：The accuracy of the report has been called into question by experts.
+                </div>
+            </div>
+        </details>
+    </section>
+
+    <nav class="resource-strip bottom" aria-label="課程與聯絡連結">
+        <p class="resource-title">七月課程與聯絡資訊</p>
+        <div class="resource-grid">
+            <a class="resource-link course-echo" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener">
+                <span class="resource-kicker">七月開課</span>
+                <span class="resource-name">錯中學 ECHO 計劃</span>
+                <span class="resource-desc">用錯誤分析帶出英文理解與表達能力，適合想穩定累積閱讀、文法與寫作基礎的學生。</span>
+            </a>
+            <a class="resource-link student-analysis" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener">
+                <span class="resource-kicker">七月開課</span>
+                <span class="resource-name">學生分析</span>
+                <span class="resource-desc">協助學生看見學習狀態與弱點，安排更明確的複習方向與進步路線。</span>
+            </a>
+            <a class="resource-link line-account" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener">
+                <span class="resource-kicker">聯絡老師</span>
+                <span class="resource-name">Line：linwayet</span>
+                <span class="resource-desc">課程詢問、學習建議與報名細節，可加入 Line 與老師聯繫。</span>
+            </a>
+        </div>
+    </nav>
+
+</div>
+
+</body>
+</html>
