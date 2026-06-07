@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>國三升高一 暑假銜接英文七天課程｜林威英文</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #FFF8F0;
+    color: #1A0F00;
+    font-family: "BIZ UDPGothic", "Noto Sans TC", sans-serif;
+    font-size: 22px;
+    line-height: 1.9;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 24px 18px 64px; }
+
+  /* 標題 */
+  .title-box {
+    border: 4px solid #C0392B;
+    border-radius: 18px;
+    padding: 24px 20px;
+    text-align: center;
+    background: #FFFFFF;
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 2.4rem; color: #C0392B; margin: 0 0 10px; line-height: 1.4; }
+  .subtitle { font-size: 1.5rem; color: #1565C0; font-weight: 700; margin: 0 0 8px; }
+  .maker { font-size: 1.25rem; color: #1565C0; margin: 0; letter-spacing: 1px; }
+
+  /* 連結卡 */
+  .link-cards { display: flex; flex-direction: column; gap: 16px; margin: 18px 0; }
+  .link-cards a {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 72px; padding: 12px 18px;
+    border-radius: 14px; text-decoration: none; color: #FFFFFF;
+    font-size: 1.15rem; font-weight: 700; text-align: center;
+  }
+  .lc1 { background: #2E7D32; }
+  .lc2 { background: #1565C0; }
+  .lc3 { background: #06C755; }
+
+  /* 單元地圖 */
+  #unit-map { background: #FFFFFF; border: 3px solid #D4A574; border-radius: 16px; padding: 18px; margin: 22px 0; }
+  #unit-map h2 { font-size: 1.6rem; color: #4A3728; margin: 0 0 14px; text-align: center; }
+  .map-grid { display: flex; flex-direction: column; gap: 14px; }
+  .map-grid a {
+    display: flex; align-items: center; min-height: 72px; padding: 10px 18px;
+    border-radius: 12px; color: #FFFFFF; text-decoration: none;
+    font-size: 1.1rem; font-weight: 700;
+  }
+
+  /* 區塊 */
+  section { margin: 30px 0; border-radius: 16px; overflow: hidden; border: 2px solid #C4A06A; background: #FFFFFF; }
+  .day-head { padding: 18px 20px; color: #FFFFFF; }
+  .day-head h2 { margin: 0; font-size: 1.85rem; line-height: 1.4; }
+  .day-head .en { display: block; font-size: 1.2rem; font-weight: 400; margin-top: 4px; opacity: 0.95; }
+  .day-body { padding: 8px 20px 22px; }
+
+  h3 {
+    font-size: 1.4rem; color: #4A148C; margin: 26px 0 12px;
+    padding: 8px 14px; background: #F9F0FF; border-left: 8px solid #6A1B9A; border-radius: 6px;
+  }
+  h3.part1 { color: #0D47A1; background: #F3F8FF; border-left-color: #0D47A1; }
+  h3.part2 { color: #1B5E20; background: #F1F8F2; border-left-color: #2E7D32; }
+  h3.part3 { color: #4A148C; background: #F9F0FF; border-left-color: #6A1B9A; }
+  h3.part4 { color: #BF360C; background: #FFF3EF; border-left-color: #BF360C; }
+
+  .story { background: #F3F8FF; border: 2px solid #90CAF9; border-radius: 12px; padding: 16px 18px; font-size: 1.2rem; line-height: 2.0; }
+  .story .wc { display: block; text-align: right; color: #1565C0; font-size: 1rem; font-weight: 700; margin-top: 8px; }
+
+  /* 單字 */
+  .word { border: 2px solid #81C784; border-radius: 12px; padding: 14px 16px; margin: 14px 0; background: #F1F8F2; }
+  .word .head { font-size: 1.25rem; font-weight: 700; color: #1B5E20; }
+  .word .kk { color: #E65100; font-weight: 400; }
+  .word .deriv { display: inline-block; margin: 8px 0; padding: 4px 12px; border-radius: 20px; background: #FDEDEC; color: #C0392B; font-size: 1.05rem; font-weight: 700; }
+  .word .ex { margin: 6px 0 0; line-height: 1.85; }
+  .word .ex .cn { color: #4A3728; }
+
+  /* 文法 */
+  .gram { border: 2px solid #CE93D8; border-radius: 12px; padding: 14px 16px; margin: 14px 0; background: #F9F0FF; }
+  .gram .gt { font-size: 1.2rem; font-weight: 700; color: #4A148C; margin-bottom: 6px; }
+  .gram .quote { font-style: italic; color: #0D47A1; }
+  .hl { color: #C0392B; font-weight: 700; }
+
+  /* 練習 */
+  .ex-block { border: 2px solid #FFAB91; border-radius: 12px; padding: 14px 16px; margin: 14px 0; background: #FFF3EF; }
+  .ex-block .qlabel { font-weight: 700; color: #BF360C; font-size: 1.2rem; margin: 4px 0 10px; }
+  .q { margin: 14px 0; }
+  .q .opts { margin-top: 4px; }
+  .blank { color: #BF360C; font-weight: 700; }
+
+  details { margin: 12px 0 4px; border: 2px solid #C4A06A; border-radius: 12px; background: #FAF6F0; }
+  summary { cursor: pointer; padding: 16px 18px; font-size: 1.2rem; font-weight: 700; color: #4A3728; min-height: 56px; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  summary .arrow { float: right; transition: transform 0.25s; }
+  details[open] summary .arrow { transform: rotate(180deg); }
+  .answer { padding: 4px 18px 18px; font-size: 1.15rem; color: #1B5E20; font-weight: 700; }
+
+  .back-to-map {
+    display: block; text-align: center; max-width: 320px; margin: 24px auto 4px;
+    min-height: 64px; line-height: 64px; border-radius: 14px;
+    background: #4A3728; color: #FFFFFF; text-decoration: none; font-size: 1.1rem; font-weight: 700;
+  }
+
+  .grammar-table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 1.05rem; }
+  .grammar-table th, .grammar-table td { border: 2px solid #C4A06A; padding: 10px 8px; text-align: center; }
+  .grammar-table th { background: #4A3728; color: #FFFFFF; }
+  .grammar-table td { background: #FAF6F0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="title-box">
+    <h1>暑假銜接英文 · 七天連貫故事課</h1>
+    <p class="subtitle">國三升高一　Leo 的英語營冒險</p>
+    <p class="maker">林威老師與 AI agent 團隊製作</p>
+  </div>
+
+  <!-- 連結卡 上 -->
+  <div class="link-cards">
+    <a class="lc1" href="https://linwayet.github.io/4ulive/index.html">📚 錯中學 ECHO 計劃</a>
+    <a class="lc2" href="https://linwayet.github.io/popup/index">📊 學生分析系統</a>
+    <a class="lc3" href="https://line.me/ti/p/~linwayet">💬 加 LINE 好友（ID：linwayet）</a>
+  </div>
+
+  <!-- 單元地圖 -->
+  <nav id="unit-map">
+    <h2>📖 單元地圖</h2>
+    <div class="map-grid">
+      <a href="#day1" style="background:#C0392B;">Day 1　全新的冒險（過去式 / 順序副詞）</a>
+      <a href="#day2" style="background:#BF360C;">Day 2　第一週（現在完成式 / for·since）</a>
+      <a href="#day3" style="background:#E65100;">Day 3　新朋友與活動（比較級 / 最高級）</a>
+      <a href="#day4" style="background:#2E7D32;">Day 4　特別的朋友與地方（關係子句）</a>
+      <a href="#day5" style="background:#1565C0;">Day 5　準備成果發表（will / be going to）</a>
+      <a href="#day6" style="background:#6A1B9A;">Day 6　突發狀況（條件句 if / because·so）</a>
+      <a href="#day7" style="background:#4A3728;">Day 7　最棒的夏天（被動 / 動名詞·不定詞）</a>
+    </div>
+  </nav>
+
+  <!-- ============ DAY 1 ============ -->
+  <section id="day1">
+    <div class="day-head" style="background:#C0392B;">
+      <h2>Day 1　全新的冒險<span class="en">A Brand-New Adventure</span></h2>
+    </div>
+    <div class="day-body">
+
+      <h3 class="part1">第一部分　課文</h3>
+      <div class="story">
+        Last week, Leo finished junior high school. At first, he felt a little lost about the long summer. Then he made a simple plan. First, he wanted to improve his English. After that, he hoped to make new friends. Finally, he decided to join a summer English camp. That night, he packed his bag and smiled. A brand-new adventure was about to begin.
+        <span class="wc">63 words</span>
+      </div>
+
+      <h3 class="part2">第二部分　單字介紹</h3>
+      <div class="word"><div class="head">1. improve <span class="kk">[ɪmˈpruv]</span> v. 改善、進步</div>
+        <span class="deriv">衍生詞　improvement n. 改善、進步</span>
+        <p class="ex">① I want to improve my English this summer.<br><span class="cn">我想在這個暑假改善英文。</span></p>
+        <p class="ex">② She has made great improvement in math.<br><span class="cn">她的數學進步很多。</span></p>
+      </div>
+      <div class="word"><div class="head">2. decide <span class="kk">[dɪˈsaɪd]</span> v. 決定</div>
+        <span class="deriv">衍生詞　decision n. 決定</span>
+        <p class="ex">① He decided to join the camp.<br><span class="cn">他決定參加營隊。</span></p>
+        <p class="ex">② It was a hard decision to make.<br><span class="cn">那是個難下的決定。</span></p>
+      </div>
+      <div class="word"><div class="head">3. adventure <span class="kk">[ədˈvɛntʃɚ]</span> n. 冒險</div>
+        <span class="deriv">衍生詞　adventurous adj. 愛冒險的</span>
+        <p class="ex">① A new adventure was about to begin.<br><span class="cn">一場新冒險即將展開。</span></p>
+        <p class="ex">② My brother is adventurous and loves hiking.<br><span class="cn">我哥哥愛冒險，喜歡健行。</span></p>
+      </div>
+      <div class="word"><div class="head">4. simple <span class="kk">[ˈsɪmpl̩]</span> adj. 簡單的</div>
+        <span class="deriv">衍生詞　simply adv. 簡單地、僅僅</span>
+        <p class="ex">① Leo made a simple plan for his summer.<br><span class="cn">里歐為暑假做了個簡單的計畫。</span></p>
+        <p class="ex">② I simply forgot to call you.<br><span class="cn">我只是忘了打電話給你。</span></p>
+      </div>
+      <div class="word"><div class="head">5. finally <span class="kk">[ˈfaɪnl̩ɪ]</span> adv. 最後、終於</div>
+        <span class="deriv">衍生詞　final adj. 最後的；n. 期末考 / 決賽</span>
+        <p class="ex">① Finally, he decided to join a camp.<br><span class="cn">最後，他決定參加營隊。</span></p>
+        <p class="ex">② We will take the final exam next week.<br><span class="cn">我們下週考期末考。</span></p>
+      </div>
+
+      <h3 class="part3">第三部分　文法講解</h3>
+      <div class="gram"><div class="gt">文法一：簡單過去式（Simple Past Tense）</div>
+        表示「過去已經完成的動作」。規則動詞加 -ed（finish → finished、want → wanted、decide → decided）；不規則動詞需個別記憶（make → made、feel → felt）。<br>
+        <span class="quote">課文例：He <span class="hl">made</span> a simple plan. ／ He <span class="hl">decided</span> to join a camp.</span>
+      </div>
+      <div class="gram"><div class="gt">文法二：順序副詞（Sequence Adverbs）</div>
+        用來把事件依先後順序串起來：first（首先）→ then（接著）→ after that（之後）→ finally（最後）。多放句首，後面常加逗號。<br>
+        <span class="quote">課文例：<span class="hl">First</span>, he wanted to improve his English. <span class="hl">Finally</span>, he decided to join a camp.</span>
+      </div>
+
+      <h3 class="part4">第四部分　練習</h3>
+      <div class="ex-block">
+        <div class="qlabel">A. 單字選擇</div>
+        <div class="q">1. Leo wanted to <span class="blank">＿＿＿</span> his English during the summer.
+          <div class="opts">(A) improve　(B) improvement　(C) simple　(D) finally</div></div>
+        <div class="q">2. After a lot of thinking, he finally made a big <span class="blank">＿＿＿</span>.
+          <div class="opts">(A) decide　(B) decision　(C) decided　(D) adventure</div></div>
+      </div>
+      <div class="ex-block">
+        <div class="qlabel">B. 填充翻譯（每題 3 個空格）</div>
+        <div class="q">1. 最後，他決定參加一個暑期英語營。<br>
+          <span class="blank">＿＿＿</span>, he <span class="blank">＿＿＿</span> to <span class="blank">＿＿＿</span> a summer English camp.</div>
+        <div class="q">2. 我想在這個夏天改善英文並交新朋友。<br>
+          I want to <span class="blank">＿＿＿</span> my English and <span class="blank">＿＿＿</span> new <span class="blank">＿＿＿</span> this summer.</div>
+      </div>
+      <details><summary>📝 點此看解答 <span class="arrow">▼</span></summary>
+        <div class="answer">A：1.(A)　2.(B)<br>B：1. Finally / decided / join　2. improve / make / friends</div>
+      </details>
+
+      <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+    </div>
+  </section>
+
+  <!-- ============ DAY 2 ============ -->
+  <section id="day2">
+    <div class="day-head" style="background:#BF360C;">
+      <h2>Day 2　第一週<span class="en">My First Week</span></h2>
+    </div>
+    <div class="day-body">
+
+      <h3 class="part1">第一部分　課文</h3>
+      <div class="story">
+        Leo has been at the English camp for one week now. Since the first day, he has learned many new things. He has already made two good friends. The teachers have been kind and patient. Leo has never felt so excited about studying English. He has practiced speaking every single day. So far, this summer has truly been wonderful. He cannot wait for tomorrow.
+        <span class="wc">64 words</span>
+      </div>
+
+      <h3 class="part2">第二部分　單字介紹</h3>
+      <div class="word"><div class="head">1. learn <span class="kk">[lɝn]</span> v. 學習</div>
+        <span class="deriv">衍生詞　learner n. 學習者</span>
+        <p class="ex">① He has learned many new things.<br><span class="cn">他學到很多新事物。</span></p>
+        <p class="ex">② A good learner asks many questions.<br><span class="cn">好的學習者會問很多問題。</span></p>
+      </div>
+      <div class="word"><div class="head">2. patient <span class="kk">[ˈpeʃənt]</span> adj. 有耐心的</div>
+        <span class="deriv">衍生詞　patience n. 耐心</span>
+        <p class="ex">① The teachers have been very patient.<br><span class="cn">老師們很有耐心。</span></p>
+        <p class="ex">② Learning a language needs patience.<br><span class="cn">學語言需要耐心。</span></p>
+      </div>
+      <div class="word"><div class="head">3. excited <span class="kk">[ɪkˈsaɪtɪd]</span> adj. 興奮的</div>
+        <span class="deriv">衍生詞　excitement n. 興奮、刺激</span>
+        <p class="ex">① Leo has never felt so excited.<br><span class="cn">里歐從沒這麼興奮過。</span></p>
+        <p class="ex">② The camp was full of excitement.<br><span class="cn">營隊充滿刺激與興奮。</span></p>
+      </div>
+      <div class="word"><div class="head">4. kind <span class="kk">[kaɪnd]</span> adj. 親切的</div>
+        <span class="deriv">衍生詞　kindness n. 善意、親切</span>
+        <p class="ex">① The teachers have been kind.<br><span class="cn">老師們很親切。</span></p>
+        <p class="ex">② I will never forget your kindness.<br><span class="cn">我永遠不會忘記你的善意。</span></p>
+      </div>
+      <div class="word"><div class="head">5. wonderful <span class="kk">[ˈwʌndɚfəl]</span> adj. 美好的</div>
+        <span class="deriv">衍生詞　wonder v./n. 想知道；驚奇</span>
+        <p class="ex">① This summer has been wonderful.<br><span class="cn">這個夏天很美好。</span></p>
+        <p class="ex">② I wonder where he is now.<br><span class="cn">我想知道他現在在哪裡。</span></p>
+      </div>
+
+      <h3 class="part3">第三部分　文法講解</h3>
+      <div class="gram"><div class="gt">文法一：現在完成式（Present Perfect Tense）</div>
+        結構為「have / has + 過去分詞」，表示「過去發生、延續到現在」或「到目前為止的經驗」。第三人稱單數用 has。<br>
+        <span class="quote">課文例：He <span class="hl">has learned</span> many new things. ／ Leo <span class="hl">has never felt</span> so excited.</span>
+      </div>
+      <div class="gram"><div class="gt">文法二：for 與 since</div>
+        兩者都搭配現在完成式。for 後接「一段時間」（for one week）；since 後接「過去的某個時間點」（since the first day）。<br>
+        <span class="quote">課文例：Leo has been here <span class="hl">for one week</span>. ／ <span class="hl">Since</span> the first day, he has learned a lot.</span>
+      </div>
+
+      <h3 class="part4">第四部分　練習</h3>
+      <div class="ex-block">
+        <div class="qlabel">A. 單字選擇</div>
+        <div class="q">1. The teachers showed great <span class="blank">＿＿＿</span> when we made mistakes.
+          <div class="opts">(A) patient　(B) patience　(C) excited　(D) kind</div></div>
+        <div class="q">2. Leo was full of <span class="blank">＿＿＿</span> before the first class.
+          <div class="opts">(A) excite　(B) excited　(C) excitement　(D) exciting</div></div>
+      </div>
+      <div class="ex-block">
+        <div class="qlabel">B. 填充翻譯（每題 3 個空格）</div>
+        <div class="q">1. 他在這個營隊已經待了一週了。<br>
+          He <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> at the camp <span class="blank">＿＿＿</span> one week.</div>
+        <div class="q">2. 從第一天起，里歐就學到很多新事物。<br>
+          <span class="blank">＿＿＿</span> the first day, Leo has <span class="blank">＿＿＿</span> many new <span class="blank">＿＿＿</span>.</div>
+      </div>
+      <details><summary>📝 點此看解答 <span class="arrow">▼</span></summary>
+        <div class="answer">A：1.(B)　2.(C)<br>B：1. has / been / for　2. Since / learned / things</div>
+      </details>
+
+      <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+    </div>
+  </section>
+
+  <!-- ============ DAY 3 ============ -->
+  <section id="day3">
+    <div class="day-head" style="background:#E65100;">
+      <h2>Day 3　新朋友與活動<span class="en">New Friends, New Activities</span></h2>
+    </div>
+    <div class="day-body">
+
+      <h3 class="part1">第一部分　課文</h3>
+      <div class="story">
+        At the camp, Leo joined many activities. The drama class was more fun than the writing class. But the speech contest was the most exciting of all. His new friend Mia spoke English more fluently than anyone. Leo thought she was the best speaker in their group. Day by day, the activities became harder, yet Leo grew more confident than before.
+        <span class="wc">61 words</span>
+      </div>
+
+      <h3 class="part2">第二部分　單字介紹</h3>
+      <div class="word"><div class="head">1. activity <span class="kk">[ækˈtɪvətɪ]</span> n. 活動</div>
+        <span class="deriv">衍生詞　active adj. 活躍的、主動的</span>
+        <p class="ex">① Leo joined many activities.<br><span class="cn">里歐參加很多活動。</span></p>
+        <p class="ex">② She is active in class discussions.<br><span class="cn">她在課堂討論中很主動。</span></p>
+      </div>
+      <div class="word"><div class="head">2. contest <span class="kk">[ˈkɑntɛst]</span> n. 比賽</div>
+        <span class="deriv">衍生詞　contestant n. 參賽者</span>
+        <p class="ex">① The speech contest was exciting.<br><span class="cn">演講比賽很刺激。</span></p>
+        <p class="ex">② Each contestant gave a short talk.<br><span class="cn">每位參賽者做了簡短演說。</span></p>
+      </div>
+      <div class="word"><div class="head">3. fluently <span class="kk">[ˈfluəntlɪ]</span> adv. 流利地</div>
+        <span class="deriv">衍生詞　fluent adj. 流利的</span>
+        <p class="ex">① Mia spoke English fluently.<br><span class="cn">米雅英文說得流利。</span></p>
+        <p class="ex">② He is fluent in three languages.<br><span class="cn">他能流利使用三種語言。</span></p>
+      </div>
+      <div class="word"><div class="head">4. confident <span class="kk">[ˈkɑnfədənt]</span> adj. 有自信的</div>
+        <span class="deriv">衍生詞　confidence n. 自信</span>
+        <p class="ex">① Leo grew more confident.<br><span class="cn">里歐變得更有自信。</span></p>
+        <p class="ex">② Speaking in public builds confidence.<br><span class="cn">公開演說能建立自信。</span></p>
+      </div>
+      <div class="word"><div class="head">5. speaker <span class="kk">[ˈspikɚ]</span> n. 演說者</div>
+        <span class="deriv">衍生詞　speak v. 說、講</span>
+        <p class="ex">① She was the best speaker in the group.<br><span class="cn">她是組內最棒的演說者。</span></p>
+        <p class="ex">② Please speak more slowly.<br><span class="cn">請說慢一點。</span></p>
+      </div>
+
+      <h3 class="part3">第三部分　文法講解</h3>
+      <div class="gram"><div class="gt">文法一：比較級（Comparatives）</div>
+        比較「兩者」。短形容詞加 -er（hard → harder）；長形容詞前加 more（more fun、more confident），後面常接 than。<br>
+        <span class="quote">課文例：more fun <span class="hl">than</span> the writing class ／ more confident <span class="hl">than</span> before.</span>
+      </div>
+      <div class="gram"><div class="gt">文法二：最高級（Superlatives）</div>
+        比較「三者以上」，表示「最…」。短形容詞加 -est 並冠 the（the best）；長形容詞用 the most（the most exciting）。<br>
+        <span class="quote">課文例：the <span class="hl">most exciting</span> of all ／ the <span class="hl">best</span> speaker in their group.</span>
+      </div>
+
+      <h3 class="part4">第四部分　練習</h3>
+      <div class="ex-block">
+        <div class="qlabel">A. 單字選擇</div>
+        <div class="q">1. Mia spoke English <span class="blank">＿＿＿</span> than the other students.
+          <div class="opts">(A) fluent　(B) more fluently　(C) most fluent　(D) fluently</div></div>
+        <div class="q">2. Winning the contest gave Leo a lot of <span class="blank">＿＿＿</span>.
+          <div class="opts">(A) confident　(B) confidence　(C) active　(D) fluent</div></div>
+      </div>
+      <div class="ex-block">
+        <div class="qlabel">B. 填充翻譯（每題 3 個空格）</div>
+        <div class="q">1. 戲劇課比寫作課更有趣。<br>
+          The drama class was <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> the writing class.</div>
+        <div class="q">2. 米雅是組內最棒的演說者。<br>
+          Mia was the <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> in <span class="blank">＿＿＿</span> group.</div>
+      </div>
+      <details><summary>📝 點此看解答 <span class="arrow">▼</span></summary>
+        <div class="answer">A：1.(B)　2.(B)<br>B：1. more / fun / than　2. best / speaker / their</div>
+      </details>
+
+      <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+    </div>
+  </section>
+
+  <!-- ============ DAY 4 ============ -->
+  <section id="day4">
+    <div class="day-head" style="background:#2E7D32;">
+      <h2>Day 4　特別的朋友與地方<span class="en">A Special Friend and Place</span></h2>
+    </div>
+    <div class="day-body">
+
+      <h3 class="part1">第一部分　課文</h3>
+      <div class="story">
+        Mia was a girl who came from the south. She had a warm smile that made everyone relax. The classroom which they shared became their favorite place. It had a big window that faced a green garden. Leo met many people who shared his dream. He kept a notebook which recorded every happy moment. Those were days he would never forget.
+        <span class="wc">64 words</span>
+      </div>
+
+      <h3 class="part2">第二部分　單字介紹</h3>
+      <div class="word"><div class="head">1. warm <span class="kk">[wɔrm]</span> adj. 溫暖的</div>
+        <span class="deriv">衍生詞　warmth n. 溫暖</span>
+        <p class="ex">① She had a warm smile.<br><span class="cn">她有著溫暖的笑容。</span></p>
+        <p class="ex">② I felt the warmth of their welcome.<br><span class="cn">我感受到他們歡迎的溫暖。</span></p>
+      </div>
+      <div class="word"><div class="head">2. relax <span class="kk">[rɪˈlæks]</span> v. 放鬆</div>
+        <span class="deriv">衍生詞　relaxed adj. 放鬆的</span>
+        <p class="ex">① Her smile made everyone relax.<br><span class="cn">她的笑容讓大家放鬆。</span></p>
+        <p class="ex">② Leo felt relaxed in the new class.<br><span class="cn">里歐在新班級裡感到放鬆。</span></p>
+      </div>
+      <div class="word"><div class="head">3. favorite <span class="kk">[ˈfevərɪt]</span> adj. 最喜愛的</div>
+        <span class="deriv">衍生詞　favor n./v. 恩惠、幫忙</span>
+        <p class="ex">① The classroom was their favorite place.<br><span class="cn">那間教室是他們最愛的地方。</span></p>
+        <p class="ex">② Could you do me a favor?<br><span class="cn">你能幫我一個忙嗎？</span></p>
+      </div>
+      <div class="word"><div class="head">4. record <span class="kk">[rɪˈkɔrd]</span> v. 記錄</div>
+        <span class="deriv">衍生詞　recorder n. 記錄器、錄音機</span>
+        <p class="ex">① He recorded every happy moment.<br><span class="cn">他記錄下每個快樂時刻。</span></p>
+        <p class="ex">② She turned on the recorder.<br><span class="cn">她打開了錄音機。</span></p>
+      </div>
+      <div class="word"><div class="head">5. dream <span class="kk">[drim]</span> n./v. 夢想</div>
+        <span class="deriv">衍生詞　dreamer n. 夢想家</span>
+        <p class="ex">① Many people shared his dream.<br><span class="cn">很多人和他有共同的夢想。</span></p>
+        <p class="ex">② He is a dreamer with big plans.<br><span class="cn">他是個有遠大計畫的夢想家。</span></p>
+      </div>
+
+      <h3 class="part3">第三部分　文法講解</h3>
+      <div class="gram"><div class="gt">文法一：關係子句──who（指人）</div>
+        who 用來代替「人」，引導形容詞子句去修飾前面的名詞（先行詞）。<br>
+        <span class="quote">課文例：a girl <span class="hl">who</span> came from the south ／ many people <span class="hl">who</span> shared his dream.</span>
+      </div>
+      <div class="gram"><div class="gt">文法二：關係子句──which / that（指物）</div>
+        which 與 that 用來代替「物」。指物時兩者常可互換；先行詞為物時，that 也很常用。<br>
+        <span class="quote">課文例：a smile <span class="hl">that</span> made everyone relax ／ the classroom <span class="hl">which</span> they shared.</span>
+      </div>
+
+      <h3 class="part4">第四部分　練習</h3>
+      <div class="ex-block">
+        <div class="qlabel">A. 單字選擇</div>
+        <div class="q">1. Mia was a friend <span class="blank">＿＿＿</span> always helped others.
+          <div class="opts">(A) which　(B) who　(C) what　(D) where</div></div>
+        <div class="q">2. He kept a notebook <span class="blank">＿＿＿</span> recorded happy moments.
+          <div class="opts">(A) who　(B) whom　(C) which　(D) whose</div></div>
+      </div>
+      <div class="ex-block">
+        <div class="qlabel">B. 填充翻譯（每題 3 個空格）</div>
+        <div class="q">1. 她有著讓大家放鬆的溫暖笑容。<br>
+          She had a <span class="blank">＿＿＿</span> smile <span class="blank">＿＿＿</span> made everyone <span class="blank">＿＿＿</span>.</div>
+        <div class="q">2. 里歐遇到很多和他有共同夢想的人。<br>
+          Leo met many <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> his dream.</div>
+      </div>
+      <details><summary>📝 點此看解答 <span class="arrow">▼</span></summary>
+        <div class="answer">A：1.(B)　2.(C)<br>B：1. warm / that / relax　2. people / who / shared</div>
+      </details>
+
+      <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+    </div>
+  </section>
+
+  <!-- ============ DAY 5 ============ -->
+  <section id="day5">
+    <div class="day-head" style="background:#1565C0;">
+      <h2>Day 5　準備成果發表<span class="en">Getting Ready for the Show</span></h2>
+    </div>
+    <div class="day-body">
+
+      <h3 class="part1">第一部分　課文</h3>
+      <div class="story">
+        The camp was going to hold a big show on the last day. Each group was going to perform a short play. Leo's team decided that he would be the main actor. "I will do my best," Leo promised. They were going to practice every afternoon. Mia said she would help him remember his lines. Leo believed the show would be a great success.
+        <span class="wc">64 words</span>
+      </div>
+
+      <h3 class="part2">第二部分　單字介紹</h3>
+      <div class="word"><div class="head">1. perform <span class="kk">[pɚˈfɔrm]</span> v. 表演</div>
+        <span class="deriv">衍生詞　performance n. 表演、演出</span>
+        <p class="ex">① Each group will perform a short play.<br><span class="cn">每組都會表演一齣短劇。</span></p>
+        <p class="ex">② Their performance won first prize.<br><span class="cn">他們的演出贏得首獎。</span></p>
+      </div>
+      <div class="word"><div class="head">2. actor <span class="kk">[ˈæktɚ]</span> n. 演員</div>
+        <span class="deriv">衍生詞　act v./n. 演出；行動</span>
+        <p class="ex">① Leo would be the main actor.<br><span class="cn">里歐將擔任主角。</span></p>
+        <p class="ex">② She acts in many school plays.<br><span class="cn">她演出許多校園戲劇。</span></p>
+      </div>
+      <div class="word"><div class="head">3. promise <span class="kk">[ˈprɑmɪs]</span> v./n. 承諾</div>
+        <span class="deriv">衍生詞　promising adj. 有前途的</span>
+        <p class="ex">① Leo promised to do his best.<br><span class="cn">里歐承諾全力以赴。</span></p>
+        <p class="ex">② He is a promising young actor.<br><span class="cn">他是個有前途的年輕演員。</span></p>
+      </div>
+      <div class="word"><div class="head">4. success <span class="kk">[səkˈsɛs]</span> n. 成功</div>
+        <span class="deriv">衍生詞　successful adj. 成功的</span>
+        <p class="ex">① The show would be a great success.<br><span class="cn">這場表演會非常成功。</span></p>
+        <p class="ex">② She is a successful writer.<br><span class="cn">她是位成功的作家。</span></p>
+      </div>
+      <div class="word"><div class="head">5. believe <span class="kk">[bɪˈliv]</span> v. 相信</div>
+        <span class="deriv">衍生詞　belief n. 信念</span>
+        <p class="ex">① Leo believed in his team.<br><span class="cn">里歐相信他的隊伍。</span></p>
+        <p class="ex">② He never gave up his belief.<br><span class="cn">他從不放棄自己的信念。</span></p>
+      </div>
+
+      <h3 class="part3">第三部分　文法講解</h3>
+      <div class="gram"><div class="gt">文法一：will（未來式）</div>
+        will + 原形動詞，表示「當下決定、承諾、預測」。<br>
+        <span class="quote">課文例：I <span class="hl">will do</span> my best. ／ Leo believed the show <span class="hl">would be</span>（will 的過去式）a success.</span>
+      </div>
+      <div class="gram"><div class="gt">文法二：be going to（計畫性未來）</div>
+        be going to + 原形動詞，表示「事先已有的計畫或安排」。<br>
+        <span class="quote">課文例：The camp <span class="hl">was going to hold</span> a show. ／ Each group <span class="hl">was going to perform</span> a play.</span>
+      </div>
+
+      <h3 class="part4">第四部分　練習</h3>
+      <div class="ex-block">
+        <div class="qlabel">A. 單字選擇</div>
+        <div class="q">1. After months of practice, their <span class="blank">＿＿＿</span> was wonderful.
+          <div class="opts">(A) perform　(B) performance　(C) actor　(D) promise</div></div>
+        <div class="q">2. Leo is a hard-working and <span class="blank">＿＿＿</span> young actor.
+          <div class="opts">(A) promise　(B) promised　(C) promising　(D) success</div></div>
+      </div>
+      <div class="ex-block">
+        <div class="qlabel">B. 填充翻譯（每題 3 個空格）</div>
+        <div class="q">1. 每一組都將表演一齣短劇。<br>
+          Each group <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> to <span class="blank">＿＿＿</span> a short play.</div>
+        <div class="q">2. 里歐相信這場表演會非常成功，他會全力以赴。<br>
+          Leo <span class="blank">＿＿＿</span> the show would be a great <span class="blank">＿＿＿</span>; he <span class="blank">＿＿＿</span> do his best.</div>
+      </div>
+      <details><summary>📝 點此看解答 <span class="arrow">▼</span></summary>
+        <div class="answer">A：1.(B)　2.(C)<br>B：1. was / going / perform　2. believed / success / would</div>
+      </details>
+
+      <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+    </div>
+  </section>
+
+  <!-- ============ DAY 6 ============ -->
+  <section id="day6">
+    <div class="day-head" style="background:#6A1B9A;">
+      <h2>Day 6　突發狀況<span class="en">A Sudden Problem</span></h2>
+    </div>
+    <div class="day-body">
+
+      <h3 class="part1">第一部分　課文</h3>
+      <div class="story">
+        On the morning of the show, Mia got sick, so the team was worried. "If she cannot come, who will play her part?" Leo asked. Because everyone was nervous, they almost gave up. But Leo said, "If we work together, we can still succeed." So the team practiced harder. If you believe in yourself, you will find a way. Their courage came back because of Leo's words.
+        <span class="wc">67 words</span>
+      </div>
+
+      <h3 class="part2">第二部分　單字介紹</h3>
+      <div class="word"><div class="head">1. worried <span class="kk">[ˈwɝɪd]</span> adj. 擔心的</div>
+        <span class="deriv">衍生詞　worry v./n. 擔心</span>
+        <p class="ex">① The team was worried about the show.<br><span class="cn">隊伍擔心這場表演。</span></p>
+        <p class="ex">② Don't worry; we can fix it.<br><span class="cn">別擔心，我們能解決。</span></p>
+      </div>
+      <div class="word"><div class="head">2. nervous <span class="kk">[ˈnɝvəs]</span> adj. 緊張的</div>
+        <span class="deriv">衍生詞　nervously adv. 緊張地</span>
+        <p class="ex">① Everyone was nervous before the show.<br><span class="cn">表演前大家都很緊張。</span></p>
+        <p class="ex">② She waited nervously outside the room.<br><span class="cn">她在房外緊張地等待。</span></p>
+      </div>
+      <div class="word"><div class="head">3. courage <span class="kk">[ˈkɝɪdʒ]</span> n. 勇氣</div>
+        <span class="deriv">衍生詞　encourage v. 鼓勵</span>
+        <p class="ex">① Leo's words gave them courage.<br><span class="cn">里歐的話給了他們勇氣。</span></p>
+        <p class="ex">② The teacher encouraged us to try.<br><span class="cn">老師鼓勵我們去嘗試。</span></p>
+      </div>
+      <div class="word"><div class="head">4. sick <span class="kk">[sɪk]</span> adj. 生病的</div>
+        <span class="deriv">衍生詞　sickness n. 疾病</span>
+        <p class="ex">① Mia got sick that morning.<br><span class="cn">米雅那天早上生病了。</span></p>
+        <p class="ex">② He stayed home because of his sickness.<br><span class="cn">他因為生病待在家。</span></p>
+      </div>
+      <div class="word"><div class="head">5. succeed <span class="kk">[səkˈsid]</span> v. 成功</div>
+        <span class="deriv">衍生詞　successfully adv. 成功地</span>
+        <p class="ex">① If we work hard, we can succeed.<br><span class="cn">只要努力，我們就能成功。</span></p>
+        <p class="ex">② They finished the show successfully.<br><span class="cn">他們成功完成了表演。</span></p>
+      </div>
+
+      <h3 class="part3">第三部分　文法講解</h3>
+      <div class="gram"><div class="gt">文法一：條件句 if（第一類條件句）</div>
+        表示「未來可能發生」的假設。結構為「If + 主詞 + 現在式, 主詞 + will / can + 原形」。<br>
+        <span class="quote">課文例：<span class="hl">If</span> we work together, we <span class="hl">can</span> still succeed. ／ <span class="hl">If</span> you believe in yourself, you <span class="hl">will</span> find a way.</span>
+      </div>
+      <div class="gram"><div class="gt">文法二：連接詞 because 與 so</div>
+        because 引導「原因」（because + 原因）；so 引導「結果」（…, so + 結果）。同一句通常只用其中一個。<br>
+        <span class="quote">課文例：<span class="hl">Because</span> everyone was nervous, they almost gave up. ／ Mia got sick, <span class="hl">so</span> the team was worried.</span>
+      </div>
+
+      <h3 class="part4">第四部分　練習</h3>
+      <div class="ex-block">
+        <div class="qlabel">A. 單字選擇</div>
+        <div class="q">1. The kind teacher always <span class="blank">＿＿＿</span> us to keep trying.
+          <div class="opts">(A) courage　(B) encourages　(C) nervous　(D) worry</div></div>
+        <div class="q">2. She looked at the stage <span class="blank">＿＿＿</span> before her speech.
+          <div class="opts">(A) nervous　(B) nervously　(C) nerve　(D) worried</div></div>
+      </div>
+      <div class="ex-block">
+        <div class="qlabel">B. 填充翻譯（每題 3 個空格）</div>
+        <div class="q">1. 因為大家都很緊張，他們差點放棄。<br>
+          <span class="blank">＿＿＿</span> everyone was nervous, they <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> up.</div>
+        <div class="q">2. 如果我們合作，就還能成功，沒有什麼能阻止我們。<br>
+          <span class="blank">＿＿＿</span> we work together, we can still <span class="blank">＿＿＿</span>; nothing can <span class="blank">＿＿＿</span> us.</div>
+      </div>
+      <details><summary>📝 點此看解答 <span class="arrow">▼</span></summary>
+        <div class="answer">A：1.(B)　2.(B)<br>B：1. Because / almost / gave　2. If / succeed / stop</div>
+      </details>
+
+      <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+    </div>
+  </section>
+
+  <!-- ============ DAY 7 ============ -->
+  <section id="day7">
+    <div class="day-head" style="background:#4A3728;">
+      <h2>Day 7　最棒的夏天<span class="en">The Best Summer</span></h2>
+    </div>
+    <div class="day-body">
+
+      <h3 class="part1">第一部分　課文</h3>
+      <div class="story">
+        On the last day, the show was watched by many parents. Leo's play was loved by everyone. After the show, prizes were given to the best teams. Leo enjoyed performing on the stage. He felt proud and hoped to join the camp again next year. Learning English became his favorite hobby. This summer was remembered as the best time of his life.
+        <span class="wc">64 words</span>
+      </div>
+
+      <h3 class="part2">第二部分　單字介紹</h3>
+      <div class="word"><div class="head">1. enjoy <span class="kk">[ɪnˈdʒɔɪ]</span> v. 享受、喜歡</div>
+        <span class="deriv">衍生詞　enjoyable adj. 令人愉快的</span>
+        <p class="ex">① Leo enjoyed performing on the stage.<br><span class="cn">里歐享受在舞台上演出。</span></p>
+        <p class="ex">② It was a very enjoyable summer.<br><span class="cn">那是個非常愉快的夏天。</span></p>
+      </div>
+      <div class="word"><div class="head">2. love <span class="kk">[lʌv]</span> v. 喜愛</div>
+        <span class="deriv">衍生詞　lovely adj. 可愛的、美好的</span>
+        <p class="ex">① His play was loved by everyone.<br><span class="cn">他的戲劇深受大家喜愛。</span></p>
+        <p class="ex">② We had a lovely time together.<br><span class="cn">我們度過了美好的時光。</span></p>
+      </div>
+      <div class="word"><div class="head">3. proud <span class="kk">[praʊd]</span> adj. 驕傲的</div>
+        <span class="deriv">衍生詞　pride n. 驕傲、自豪</span>
+        <p class="ex">① Leo felt proud of his team.<br><span class="cn">里歐為他的隊伍感到驕傲。</span></p>
+        <p class="ex">② She looked at the prize with pride.<br><span class="cn">她驕傲地看著獎品。</span></p>
+      </div>
+      <div class="word"><div class="head">4. hope <span class="kk">[hop]</span> v./n. 希望</div>
+        <span class="deriv">衍生詞　hopeful adj. 充滿希望的</span>
+        <p class="ex">① He hoped to join the camp again.<br><span class="cn">他希望明年再參加營隊。</span></p>
+        <p class="ex">② They felt hopeful about the future.<br><span class="cn">他們對未來充滿希望。</span></p>
+      </div>
+      <div class="word"><div class="head">5. life <span class="kk">[laɪf]</span> n. 生活、人生</div>
+        <span class="deriv">衍生詞　lively adj. 有活力的</span>
+        <p class="ex">① It was the best time of his life.<br><span class="cn">那是他人生中最棒的時光。</span></p>
+        <p class="ex">② The classroom was full of lively students.<br><span class="cn">教室裡滿是充滿活力的學生。</span></p>
+      </div>
+
+      <h3 class="part3">第三部分　文法講解</h3>
+      <div class="gram"><div class="gt">文法一：被動語態（Passive Voice）</div>
+        強調「動作的接受者」。結構為「be 動詞 + 過去分詞」，動作者可用 by 帶出。<br>
+        <span class="quote">課文例：The show <span class="hl">was watched by</span> many parents. ／ Prizes <span class="hl">were given</span> to the best teams.</span>
+      </div>
+      <div class="gram"><div class="gt">文法二：動名詞 vs 不定詞（V-ing / to V）</div>
+        有些動詞後接動名詞（enjoy + V-ing），有些後接不定詞（hope + to V）；動名詞也可當主詞。<br>
+        <span class="quote">課文例：Leo <span class="hl">enjoyed performing</span>. ／ He <span class="hl">hoped to join</span> the camp. ／ <span class="hl">Learning</span> English became his hobby.</span>
+      </div>
+
+      <h3 class="part4">第四部分　練習</h3>
+      <div class="ex-block">
+        <div class="qlabel">A. 單字選擇</div>
+        <div class="q">1. The whole camp was an <span class="blank">＿＿＿</span> experience for Leo.
+          <div class="opts">(A) enjoy　(B) enjoyed　(C) enjoyable　(D) enjoyment</div></div>
+        <div class="q">2. Leo's parents looked at him with <span class="blank">＿＿＿</span>.
+          <div class="opts">(A) proud　(B) pride　(C) lovely　(D) hopeful</div></div>
+      </div>
+      <div class="ex-block">
+        <div class="qlabel">B. 填充翻譯（每題 3 個空格）</div>
+        <div class="q">1. 這場表演被許多家長觀看。<br>
+          The show <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span> many parents.</div>
+        <div class="q">2. 里歐享受演出，也希望明年再參加。<br>
+          Leo <span class="blank">＿＿＿</span> <span class="blank">＿＿＿</span>, and he hoped <span class="blank">＿＿＿</span> join again.</div>
+      </div>
+      <details><summary>📝 點此看解答 <span class="arrow">▼</span></summary>
+        <div class="answer">A：1.(C)　2.(B)<br>B：1. was / watched / by　2. enjoyed / performing / to</div>
+      </details>
+
+      <a class="back-to-map" href="#unit-map">⬆ 回到單元地圖</a>
+    </div>
+  </section>
+
+  <!-- 七天文法總覽 -->
+  <details style="margin-top:30px;">
+    <summary>🗂 七天文法螺旋總覽 <span class="arrow">▼</span></summary>
+    <div style="padding:6px 18px 18px;">
+      <table class="grammar-table">
+        <tr><th>Day</th><th>文法一</th><th>文法二</th></tr>
+        <tr><td>1</td><td>簡單過去式</td><td>順序副詞</td></tr>
+        <tr><td>2</td><td>現在完成式</td><td>for / since</td></tr>
+        <tr><td>3</td><td>比較級</td><td>最高級</td></tr>
+        <tr><td>4</td><td>關係子句 who</td><td>關係子句 which / that</td></tr>
+        <tr><td>5</td><td>will 未來式</td><td>be going to</td></tr>
+        <tr><td>6</td><td>條件句 if</td><td>because / so</td></tr>
+        <tr><td>7</td><td>被動語態</td><td>動名詞 vs 不定詞</td></tr>
+      </table>
+    </div>
+  </details>
+
+  <!-- 連結卡 下 -->
+  <div class="link-cards" style="margin-top:30px;">
+    <a class="lc1" href="https://linwayet.github.io/4ulive/index.html">📚 錯中學 ECHO 計劃</a>
+    <a class="lc2" href="https://linwayet.github.io/popup/index">📊 學生分析系統</a>
+    <a class="lc3" href="https://line.me/ti/p/~linwayet">💬 加 LINE 好友（ID：linwayet）</a>
+  </div>
+
+</div>
+</body>
+</html>
