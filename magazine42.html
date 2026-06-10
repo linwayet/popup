@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>林威英文句型分析 · respect</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+* { box-sizing:border-box; }
+body {
+  margin:0; padding:0;
+  background: linear-gradient(135deg, #FBE8D3 0%, #F5ECD7 50%, #F8D9B5 100%);
+  font-family:'Noto Sans TC','PingFang TC',sans-serif;
+  min-height:100vh;
+  color:#2D2A26;
+}
+
+/* ── LINE warning ── */
+.line-warning {
+  display: none; background: #FFF4E5; border: 2px solid #FF9500;
+  color: #B84A00; padding: 12px 16px; margin: 12px auto;
+  max-width: 960px; border-radius: 10px; font-size: 13px;
+}
+.line-warning.show { display: block; }
+.line-warning button {
+  background: #B84A00; color: #fff; border: none;
+  padding: 6px 14px; border-radius: 16px; font-size: 12px; font-weight: 700;
+  margin-left:8px; cursor:pointer;
+}
+
+/* ── Link bar ── */
+.link-bar {
+  background: linear-gradient(135deg, #B84A00 0%, #D85A30 50%, #E8743D 100%);
+  padding: 14px 16px;
+}
+.link-bar-inner { max-width:1000px; margin:0 auto; display:flex; flex-wrap:wrap; gap:10px; justify-content:center; }
+.link-card {
+  flex:1 1 280px; background:rgba(255,255,255,0.95); border-radius:14px;
+  padding:14px 18px; text-decoration:none; color:#2D2A26;
+  display:flex; align-items:center; gap:12px;
+  -webkit-tap-highlight-color: rgba(184,74,0,0.1);
+  cursor:pointer; transition:all 0.25s;
+  box-shadow:0 2px 6px rgba(120,60,0,0.15);
+}
+.link-card:hover { transform:translateY(-2px); box-shadow:0 6px 14px rgba(120,60,0,0.25); }
+.link-card .icon { font-size:28px; width:50px; height:50px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+.link-card.course1 .icon { background:linear-gradient(135deg,#FFE5D0,#FFB077); color:#B84A00; }
+.link-card.course2 .icon { background:linear-gradient(135deg,#D8EFE0,#7FCBA0); color:#0F6E56; }
+.link-card.line .icon { background:linear-gradient(135deg,#C6E8C6,#06C755); color:#fff; }
+.link-card .title { font-size:15px; font-weight:700; }
+.link-card .desc { font-size:12px; color:#8A7B6A; margin-top:2px; }
+
+/* ── Video section ── */
+.video-section {
+  max-width:1000px; margin:18px auto 0; padding:0 18px;
+}
+.video-box {
+  background:#FFFDF8; border:2px solid #E8C79A; border-radius:14px;
+  padding:18px 20px; box-shadow:0 2px 8px rgba(160,100,30,0.10);
+}
+.video-title {
+  font-family:'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif;
+  font-size:19px; font-weight:900; color:#B84A00; letter-spacing:1px; margin-bottom:8px;
+}
+.video-summary {
+  font-size:15px; line-height:1.75; color:#5C5142; margin-bottom:14px;
+}
+.video-summary b { color:#B84A00; }
+.video-frame-wrap {
+  position:relative; width:100%; padding-bottom:56.25%; /* 16:9 */
+  border-radius:12px; overflow:hidden; background:#000;
+  box-shadow:0 3px 10px rgba(60,40,10,0.25);
+}
+.video-frame-wrap iframe {
+  position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+}
+.video-fallback {
+  text-align:center; margin-top:10px; font-size:13px; color:#8A7B6A;
+}
+.video-fallback a {
+  color:#B84A00; font-weight:700; text-decoration:none;
+  border-bottom:1.5px dashed #D85A30;
+}
+
+/* ── Main ── */
+.main-wrap { max-width:1000px; margin:0 auto; padding:24px 18px 40px; }
+.page-title {
+  font-family:'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif;
+  font-size:34px; font-weight:900; color:#B84A00; text-align:center;
+  letter-spacing:6px; margin:18px 0 4px;
+}
+.page-sub {
+  text-align:center; font-size:15px; font-weight:700; color:#D85A30;
+  letter-spacing:3px; margin-bottom:22px;
+}
+
+.original-box {
+  background:#FFFDF8; border:2px solid #E8C79A; border-radius:14px;
+  padding:20px 24px; margin-bottom:22px;
+  box-shadow:0 2px 8px rgba(160,100,30,0.10);
+}
+.original-label { font-size:13px; font-weight:700; color:#B84A00; letter-spacing:2px; margin-bottom:8px; }
+.original-text {
+  font-family:'Caveat',cursive; font-size:30px; font-weight:600; color:#2D2A26; line-height:1.5;
+}
+
+.svg-card {
+  background:#FFF8EE; border-radius:14px; overflow:hidden;
+  border:2px solid #E8C79A; box-shadow:0 3px 10px rgba(160,100,30,0.12);
+  margin-bottom:14px;
+}
+
+.download-area { text-align:center; margin:6px 0 28px; }
+.download-btn {
+  background:linear-gradient(135deg,#B84A00,#E8743D); color:#fff; border:none;
+  font-size:16px; font-weight:700; padding:14px 30px; border-radius:30px;
+  cursor:pointer; letter-spacing:1px;
+  box-shadow:0 4px 12px rgba(184,74,0,0.35);
+  font-family:'Noto Sans TC',sans-serif;
+}
+.download-btn:disabled { opacity:0.6; cursor:wait; }
+.download-hint { font-size:12.5px; color:#8A7B6A; margin-top:10px; line-height:1.6; }
+
+/* ── Grammar panel ── */
+.grammar-panel {
+  background:#FFFDF8; border-radius:14px; padding:22px 24px; margin-bottom:22px;
+  border:2px solid #E8C79A; box-shadow:0 2px 8px rgba(160,100,30,0.10);
+}
+.panel-title {
+  font-family:'Source Han Sans','Noto Sans TC',sans-serif;
+  font-size:20px; font-weight:900; color:#B84A00; letter-spacing:2px; margin-bottom:16px;
+}
+.grammar-item { display:flex; gap:12px; align-items:flex-start; margin-bottom:16px; font-size:16px; line-height:1.7; }
+.grammar-dot { width:14px; height:14px; border-radius:50%; flex-shrink:0; margin-top:7px; }
+.grammar-title { font-weight:700; }
+.grammar-body { color:#2D2A26; }
+.grammar-sub { font-size:13.5px; color:#8A7B6A; }
+.grammar-en { font-family:'Caveat',cursive; font-size:21px; }
+
+/* ── Translation ── */
+.translation-box {
+  background:linear-gradient(135deg,#FEF0D8 0%,#FCE6BD 100%);
+  border-radius:10px; padding:18px 20px;
+  border-left:6px solid #D85A30; margin-bottom:26px;
+}
+.translation-label { font-size:14px; font-weight:700; color:#B84A00; letter-spacing:2px; margin-bottom:8px; }
+.translation-text { font-size:18px; font-weight:500; line-height:1.8; }
+
+/* ── Vocab cards ── */
+.vocab-section-title {
+  font-family:'Source Han Sans','Noto Sans TC',sans-serif;
+  font-size:20px; font-weight:900; color:#B84A00; letter-spacing:2px; margin:0 0 14px;
+}
+.vocab-grid { display:flex; flex-direction:column; gap:16px; margin-bottom:10px; }
+.vocab-card { border-radius:14px; padding:18px 20px; border:2px solid transparent; box-shadow:0 2px 8px rgba(120,80,30,0.10); }
+.vocab-head { display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:6px; }
+.vocab-word { font-family:'Caveat',cursive; font-size:30px; font-weight:700; }
+.vocab-kk { font-size:15px; color:#6B5E4F; }
+.vocab-pos { font-size:15.5px; font-weight:700; }
+.vocab-deriv { border-radius:10px; padding:10px 14px; font-size:14.5px; line-height:1.8; margin:10px 0; }
+.vocab-deriv b { font-family:'Caveat',cursive; font-size:19px; font-weight:700; }
+.vocab-examples { font-size:15.5px; line-height:1.75; }
+.vocab-examples .en { font-family:'Caveat',cursive; font-size:21px; font-weight:600; }
+.vocab-examples .zh { color:#5C5142; margin-bottom:8px; }
+
+.card-blue   { background:linear-gradient(135deg,#F0F7FF,#E0EFFD); border-color:#185FA5; }
+.card-blue   .vocab-word, .card-blue .vocab-pos { color:#185FA5; }
+.card-blue   .vocab-deriv { background:#E6F1FB; }
+.card-green  { background:linear-gradient(135deg,#F5FFF8,#DDF5E6); border-color:#1D9E75; }
+.card-green  .vocab-word, .card-green .vocab-pos { color:#1D9E75; }
+.card-green  .vocab-deriv { background:#E1F5EE; }
+.card-orange { background:linear-gradient(135deg,#FFF8F0,#FCE8D8); border-color:#D85A30; }
+.card-orange .vocab-word, .card-orange .vocab-pos { color:#D85A30; }
+.card-orange .vocab-deriv { background:#FAECE7; }
+.card-purple { background:linear-gradient(135deg,#F5F4FF,#E5E2FE); border-color:#534AB7; }
+.card-purple .vocab-word, .card-purple .vocab-pos { color:#534AB7; }
+.card-purple .vocab-deriv { background:#EEEDFE; }
+.card-teal   { background:linear-gradient(135deg,#F0FBF7,#D8F0E3); border-color:#0F6E56; }
+.card-teal   .vocab-word, .card-teal .vocab-pos { color:#0F6E56; }
+.card-teal   .vocab-deriv { background:#E1F5EE; }
+
+/* ── iOS modal ── */
+.ios-modal {
+  display:none; position:fixed; inset:0; z-index:9999;
+  background:rgba(30,20,10,0.92); padding:20px; overflow:auto;
+  text-align:center;
+}
+.ios-modal.show { display:block; }
+.ios-modal .close { text-align:right; max-width:960px; margin:0 auto 8px; }
+.ios-modal .close button {
+  background:#fff; color:#B84A00; border:none; font-size:15px; font-weight:700;
+  padding:8px 18px; border-radius:20px; cursor:pointer;
+}
+.ios-modal .hint { color:#FFD9B0; font-size:15px; font-weight:700; margin:10px 0; }
+.ios-modal img { max-width:100%; border-radius:10px; box-shadow:0 4px 20px rgba(0,0,0,0.5); }
+.ios-modal .footer-hint { color:#C8B49A; font-size:12px; margin-top:10px; }
+
+@media (max-width: 640px) {
+  .page-title { font-size: 26px; letter-spacing: 2px; }
+  .original-text { font-size: 24px; }
+  .link-card { flex: 1 1 100%; }
+  .link-card .icon { width: 44px; height: 44px; font-size: 24px; }
+  .link-card .title { font-size: 13px; }
+  .link-card .desc { font-size: 11px; }
+  .main-wrap { padding: 16px 12px; }
+  .grammar-panel { padding: 18px 16px; }
+  .vocab-card { padding: 14px; }
+  .vocab-word { font-size: 24px; }
+  .vocab-examples { font-size: 15px; }
+  .grammar-item { font-size: 15px; }
+  .download-btn { font-size: 14px; padding: 12px 22px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LINE in-app browser warning -->
+<div id="line-warning" class="line-warning">
+  ⚠️ 您正在 <strong>LINE 內建瀏覽器</strong>中瀏覽，部分功能可能受限。
+  <button onclick="openInBrowser()">在瀏覽器中開啟</button>
+  <br><span style="font-size:12px;color:#888;">或點右上角「⋯」→「在瀏覽器中開啟」</span>
+</div>
+
+<!-- ── Top link bar ── -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ── 教學影片（置頂） ── -->
+<div class="video-section">
+  <div class="video-box">
+    <div class="video-title">🎬 高中英文雜誌教學 5：respect 字族完全解析</div>
+    <div class="video-summary">
+      林威老師親自講解 <b>respect</b> 一字多用：名詞與動詞「尊敬；尊重」的句型差異、
+      三個長得很像的形容詞 <b>respectful</b>（有禮貌的）／<b>respectable</b>（值得尊重的）／<b>respective</b>（各自的）怎麼分、
+      以及 <b>pay one's respects to</b>（向…致意）的固定用法。建議先看影片，再搭配下方句型分析圖與單字卡複習，效果加倍。
+    </div>
+    <div class="video-frame-wrap">
+      <iframe src="https://www.youtube.com/embed/JCw2uA1z_3c"
+        title="高中英文雜誌教學5 respect"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="origin"></iframe>
+    </div>
+    <div class="video-fallback">
+      影片無法播放？<a id="yt-direct-link" href="https://youtu.be/JCw2uA1z_3c" target="_blank" rel="noopener noreferrer">點此直接前往 YouTube 觀看 ▶</a>
+    </div>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <div class="page-title">林威英文句型分析</div>
+  <div class="page-sub">國三升高一 · 銜接課程 · 主題單字：respect</div>
+
+  <!-- ── Original sentence ── -->
+  <div class="original-box">
+    <div class="original-label">📌 本課句子 ORIGINAL SENTENCE</div>
+    <div class="original-text">Students who treat their teachers with respect will gradually become respectable people, earning trust from everyone around them.</div>
+  </div>
+
+  <!-- ── SVG diagram ── -->
+  <div class="svg-card">
+    <svg id="grammar-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"
+      style="width:100%;height:auto;display:block;background:#FFF8EE;">
+      <defs>
+        <marker id="svg-arr-down" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M2 2L5 9L8 2" fill="none" stroke="#2D2A26" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+        <marker id="arr1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M1 1 L 7 5 L 1 9" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        </marker>
+        <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFF8EE"/>
+          <stop offset="100%" stop-color="#FEF0D8"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#bg-grad)"/>
+
+      <!-- Header -->
+      <text x="960" y="78" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="60" font-weight="900" fill="#B84A00" letter-spacing="8">林威英文句型分析</text>
+      <text x="960" y="128" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="32" font-weight="700" fill="#D85A30" letter-spacing="4">林威老師設計</text>
+      <line x1="540" y1="156" x2="1380" y2="156" stroke="#D4A96A" stroke-width="2.5"/>
+
+      <!-- ═══ Row 1: Subject + relative clause ═══ -->
+      <text x="490" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="42" font-weight="700" fill="#185FA5">S.</text>
+      <text x="1080" y="200" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="42" font-weight="700" fill="#C0392B">關係子句</text>
+
+      <text x="490" y="268" text-anchor="middle" font-family="'Caveat',cursive"
+        font-size="60" font-weight="700" fill="#185FA5">Students</text>
+      <text x="910" y="268" text-anchor="middle" font-family="'Caveat',cursive"
+        font-size="60" font-weight="700" fill="#C0392B">who treat their teachers</text>
+      <text x="1380" y="268" text-anchor="middle" font-family="'Caveat',cursive"
+        font-size="60" font-weight="700" fill="#0F6E56">with respect</text>
+
+      <!-- underlines -->
+      <line x1="385" y1="284" x2="595" y2="284" stroke="#185FA5" stroke-width="6"/>
+      <line x1="615" y1="284" x2="1555" y2="284" stroke="#C0392B" stroke-width="5.5" stroke-dasharray="9 6"/>
+      <!-- circle around prepositional phrase -->
+      <rect x="1205" y="210" width="350" height="84" rx="42" ry="42" fill="none" stroke="#5DCAA5" stroke-width="5"/>
+
+      <!-- curved arrow: clause points back to Students -->
+      <path d="M 660 230 C 620 188 560 188 520 222" fill="none" stroke="#1A1A1A" stroke-width="1.6"
+        stroke-dasharray="8 5" stroke-linecap="round" marker-end="url(#arr1)"/>
+
+      <!-- annotations -->
+      <text x="900" y="346" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="34" fill="#C0392B">↑ 形容詞子句修飾主詞 Students</text>
+      <text x="1430" y="346" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="34" fill="#0F6E56">↑ 介系詞片語</text>
+
+      <!-- divider -->
+      <line x1="160" y1="408" x2="1760" y2="408" stroke="#D4A96A" stroke-width="2" stroke-dasharray="10 7"/>
+
+      <!-- ═══ Row 2: Verb + complement ═══ -->
+      <text x="725" y="486" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="42" font-weight="700" fill="#1D9E75">V.</text>
+      <text x="1235" y="486" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="42" font-weight="700" fill="#534AB7">C.</text>
+
+      <text x="725" y="554" text-anchor="middle" font-family="'Caveat',cursive"
+        font-size="60" font-weight="700" fill="#1D9E75">will gradually become</text>
+      <text x="1235" y="554" text-anchor="middle" font-family="'Caveat',cursive"
+        font-size="60" font-weight="700" fill="#534AB7">respectable people,</text>
+
+      <line x1="470" y1="570" x2="980" y2="570" stroke="#1D9E75" stroke-width="6"/>
+      <line x1="1010" y1="570" x2="1465" y2="570" stroke="#534AB7" stroke-width="6"/>
+
+      <text x="725" y="632" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="34" fill="#1D9E75">↑ 助動詞＋副詞＋連綴動詞</text>
+      <text x="1235" y="632" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="34" fill="#534AB7">↑ 主詞補語（adj.＋n.）</text>
+
+      <!-- ═══ Row 3: Participle phrase ═══ -->
+      <text x="960" y="714" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="32" fill="#2D2A26">逗點之後，句尾再接一個分詞片語，補充說明結果</text>
+      <text x="960" y="758" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="36" font-weight="700" fill="#1D9E75">↓ 現在分詞片語（V-ing，表示結果）</text>
+
+      <rect x="455" y="774" width="1010" height="100" rx="48" ry="48" fill="none" stroke="#0F6E56" stroke-width="5"/>
+      <text x="960" y="840" text-anchor="middle" font-family="'Caveat',cursive"
+        font-size="54" font-weight="700" fill="#0F6E56">earning trust from everyone around them.</text>
+
+      <text x="960" y="924" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="34" fill="#534AB7">＝ and they will earn trust from everyone around them</text>
+      <text x="960" y="964" text-anchor="middle" font-family="'Patrick Hand',cursive"
+        font-size="28" fill="#888">分詞片語意義上的主詞 ＝ 主句主詞 Students</text>
+
+      <!-- Footer -->
+      <line x1="660" y1="1010" x2="1260" y2="1010" stroke="#D4A96A" stroke-width="1.8"/>
+      <text x="960" y="1050" text-anchor="middle"
+        font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+        font-size="28" font-weight="500" fill="#A89070">林威英文句型分析 · SVG 向量版　|　LINE ID: linwayet</text>
+    </svg>
+  </div>
+
+  <!-- ── Download button ── -->
+  <div class="download-area">
+    <button id="download-btn" class="download-btn" onclick="prepareAndDownloadJpg()">
+      📥 下載句型分析圖（JPG · 1920×1080）
+    </button>
+    <div class="download-hint">📱 手機：點按後圖片直接顯示，<strong>長按圖片儲存到相簿</strong> · 💻 電腦自動下載</div>
+  </div>
+
+  <!-- ── Grammar points ── -->
+  <div class="grammar-panel">
+    <div class="panel-title">✏️ 文法重點</div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#185FA5;"></span>
+      <div>
+        <span class="grammar-title" style="color:#185FA5;">① 主詞＋關係子句</span>
+        <span class="grammar-body"> — 主詞 <span class="grammar-en">Students</span> 後面接 <span class="grammar-en">who</span> 引導的形容詞子句，說明「哪一種學生」。</span><br>
+        <span class="grammar-sub">先行詞是「人」用 who；整個子句「who treat their teachers with respect」當形容詞用，真正的動詞是後面的 will become。</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#1D9E75;"></span>
+      <div>
+        <span class="grammar-title" style="color:#1D9E75;">② will＋副詞＋become</span>
+        <span class="grammar-body"> — 副詞 <span class="grammar-en">gradually</span>（逐漸地）插在助動詞 will 與連綴動詞 become 之間。</span><br>
+        <span class="grammar-sub">become 是連綴動詞（＝變成），後面不接受詞，而是接「補語」說明主詞變成什麼。</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#C0392B;"></span>
+      <div>
+        <span class="grammar-title" style="color:#C0392B;">③ treat A with respect</span>
+        <span class="grammar-body"> — 「以尊重的態度對待 A」。<span class="grammar-en">with＋抽象名詞</span> 是常見的介系詞片語，相當於副詞。</span><br>
+        <span class="grammar-sub">with respect ＝ respectfully；類似用法：with care ＝ carefully、with confidence ＝ confidently。</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#534AB7;"></span>
+      <div>
+        <span class="grammar-title" style="color:#534AB7;">④ 主詞補語 respectable people</span>
+        <span class="grammar-body"> — 形容詞 <span class="grammar-en">respectable</span>（值得尊重的）修飾名詞 <span class="grammar-en">people</span>，整個名詞片語當 become 的補語。</span><br>
+        <span class="grammar-sub">注意分辨：respectful 有禮貌的（主動表現尊重）／respectable 值得尊重的（被人尊重）。</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#0F6E56;"></span>
+      <div>
+        <span class="grammar-title" style="color:#0F6E56;">⑤ 分詞構句表「結果」</span>
+        <span class="grammar-body"> — 逗點後的 <span class="grammar-en">earning trust...</span> 是現在分詞片語，補充說明前句帶來的結果。</span><br>
+        <span class="grammar-sub">還原成完整句子：..., and they will earn trust from everyone around them.（分詞的意義上主詞＝主句主詞 Students，所以用主動的 V-ing。）</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Translation ── -->
+  <div class="translation-box">
+    <div class="translation-label">📖 全句中文翻譯</div>
+    <div class="translation-text">以尊重的態度對待老師的學生，將會逐漸成為值得尊重的人，並贏得身邊每一個人的信任。</div>
+  </div>
+
+  <!-- ── Vocab cards ── -->
+  <div class="vocab-section-title">🃏 高中核心單字卡</div>
+  <div class="vocab-grid">
+
+    <div class="vocab-card card-blue">
+      <div class="vocab-head">
+        <span class="vocab-word">respect</span>
+        <span class="vocab-kk">/rɪˈspɛkt/</span>
+        <span class="vocab-pos">n. / v. 尊敬；尊重</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 衍生詞與用法：<b>respectful</b> adj. 有禮貌的、恭敬的 ▸ <b>respectable</b> adj. 值得尊重的 ▸ <b>respective</b> adj. 各自的 ▸ <b>pay one's respects to</b> 向…致意（respects 複數＝敬意、問候）
+      </div>
+      <div class="vocab-examples">
+        <div class="en">I have great respect for my grandfather.</div>
+        <div class="zh">我非常尊敬我的爺爺。</div>
+        <div class="en">We should respect other people's opinions.</div>
+        <div class="zh">我們應該尊重別人的意見。</div>
+      </div>
+    </div>
+
+    <div class="vocab-card card-green">
+      <div class="vocab-head">
+        <span class="vocab-word">respectful</span>
+        <span class="vocab-kk">/rɪˈspɛktfəl/</span>
+        <span class="vocab-pos">adj. 有禮貌的；恭敬的</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 衍生詞：<b>respectfully</b> adv. 恭敬地 ▸ 常用搭配：<b>be respectful to/of sb</b> 對某人有禮貌
+      </div>
+      <div class="vocab-examples">
+        <div class="en">Be respectful to the elderly on the bus.</div>
+        <div class="zh">在公車上要對長輩有禮貌。</div>
+        <div class="en">She listened to the teacher in a respectful way.</div>
+        <div class="zh">她以恭敬的態度聆聽老師說話。</div>
+      </div>
+    </div>
+
+    <div class="vocab-card card-orange">
+      <div class="vocab-head">
+        <span class="vocab-word">respectable</span>
+        <span class="vocab-kk">/rɪˈspɛktəbḷ/</span>
+        <span class="vocab-pos">adj. 值得尊重的；體面的</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 比較：<b>respectful</b>「主動表現尊重」（人有禮貌）↔ <b>respectable</b>「被動受到尊重」（人或事值得尊重）
+      </div>
+      <div class="vocab-examples">
+        <div class="en">He comes from a respectable family.</div>
+        <div class="zh">他來自一個受人尊敬的家庭。</div>
+        <div class="en">Getting 80 points is a respectable score.</div>
+        <div class="zh">考八十分是相當不錯（拿得出手）的成績。</div>
+      </div>
+    </div>
+
+    <div class="vocab-card card-purple">
+      <div class="vocab-head">
+        <span class="vocab-word">respective</span>
+        <span class="vocab-kk">/rɪˈspɛktɪv/</span>
+        <span class="vocab-pos">adj. 各自的；分別的</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 衍生詞：<b>respectively</b> adv. 分別地（依序對應）▸ 小心！respective 和「尊敬」意思無關，是拼字陷阱
+      </div>
+      <div class="vocab-examples">
+        <div class="en">After the game, the players returned to their respective schools.</div>
+        <div class="zh">比賽結束後，球員們各自回到自己的學校。</div>
+        <div class="en">Tom and Mary are 16 and 15 years old respectively.</div>
+        <div class="zh">湯姆和瑪麗分別是十六歲和十五歲。</div>
+      </div>
+    </div>
+
+    <div class="vocab-card card-teal">
+      <div class="vocab-head">
+        <span class="vocab-word">treat</span>
+        <span class="vocab-kk">/trit/</span>
+        <span class="vocab-pos">v. 對待；治療；請客　n. 樂事；招待</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 常用搭配：<b>treat A with respect</b> 以尊重對待 A ▸ <b>treat A as B</b> 把 A 當作 B ▸ <b>treatment</b> n. 對待；治療
+      </div>
+      <div class="vocab-examples">
+        <div class="en">Please treat the new student with kindness.</div>
+        <div class="zh">請以友善的態度對待新同學。</div>
+        <div class="en">My dad treated us to ice cream after dinner.</div>
+        <div class="zh">晚餐後爸爸請我們吃冰淇淋。</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── Bottom link bar ── -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- ── iOS preview modal ── -->
+<div id="ios-modal" class="ios-modal">
+  <div class="close"><button onclick="closeIosModal()">✕ 關閉</button></div>
+  <p class="hint">📱 長按下方圖片 → 「儲存圖像」</p>
+  <img id="ios-modal-img" alt="林威英文句型分析">
+  <p class="footer-hint">林威英文句型分析 · 1920×1080 JPG</p>
+</div>
+
+<script>
+const ua = navigator.userAgent || '';
+const isLineBrowser = /Line\//i.test(ua);
+const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+if (isLineBrowser) {
+  document.getElementById('line-warning').classList.add('show');
+}
+
+function openInBrowser() {
+  const sep = window.location.href.includes('?') ? '&' : '?';
+  window.location.href = window.location.href + sep + 'openExternalBrowser=1';
+}
+
+// LINE in-app browser: force external browser for external links
+document.querySelectorAll('.link-card, #yt-direct-link').forEach(card => {
+  card.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href) return;
+    if (isLineBrowser) {
+      e.preventDefault();
+      if (href.includes('line.me')) {
+        window.location.href = href;
+      } else {
+        const sep = href.includes('?') ? '&' : '?';
+        window.location.href = href + sep + 'openExternalBrowser=1';
+      }
+    }
+  });
+});
+
+// ═══ FONT EMBEDDING (key technique for correct JPG fonts) ═══
+const FONT_FACES = [
+  { name: 'Caveat', css: 'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap' },
+  { name: 'Patrick Hand', css: 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap' },
+  { name: 'Noto Sans TC', css: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap' }
+];
+let embeddedFontCss = null;
+
+async function fetchFontAsBase64(url) {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function buildEmbeddedFontCss() {
+  if (embeddedFontCss) return embeddedFontCss;
+  const allCss = [];
+  for (const fontDef of FONT_FACES) {
+    try {
+      const cssResp = await fetch(fontDef.css);
+      let cssText = await cssResp.text();
+      const urlRegex = /url\((https:\/\/[^)]+\.woff2)\)/g;
+      const urls = [...cssText.matchAll(urlRegex)].map(m => m[1]);
+      const uniqueUrls = [...new Set(urls)];
+      for (const url of uniqueUrls) {
+        try {
+          const dataUri = await fetchFontAsBase64(url);
+          const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          cssText = cssText.replace(new RegExp(escapedUrl, 'g'), dataUri);
+        } catch (err) { console.warn('Failed to embed font URL:', url); }
+      }
+      allCss.push(cssText);
+    } catch (err) { console.warn('Failed to fetch font CSS for', fontDef.name); }
+  }
+  embeddedFontCss = allCss.join('\n');
+  return embeddedFontCss;
+}
+
+async function prepareAndDownloadJpg() {
+  const btn = document.getElementById('download-btn');
+  const origLabel = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 字型載入中，請稍候…';
+
+  try {
+    const fontCss = await buildEmbeddedFontCss();
+    const originalSvg = document.getElementById('grammar-svg');
+    const svgClone = originalSvg.cloneNode(true);
+    svgClone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+    const defs = svgClone.querySelector('defs');
+    const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('type', 'text/css');
+    styleEl.textContent = fontCss;
+    defs.insertBefore(styleEl, defs.firstChild);
+
+    const svgData = new XMLSerializer().serializeToString(svgClone);
+
+    const width = 1920, height = 1080;
+    const canvas = document.createElement('canvas');
+    canvas.width = width; canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FFF8EE';
+    ctx.fillRect(0, 0, width, height);
+
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+
+    btn.innerHTML = '⏳ 產生圖片中…';
+
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, width, height);
+        URL.revokeObjectURL(url);
+        resolve();
+      };
+      img.onerror = function() { URL.revokeObjectURL(url); reject(new Error('Image load failed')); };
+      img.src = url;
+    });
+
+    await new Promise((resolve, reject) => {
+      canvas.toBlob(function(blob) {
+        if (!blob) { reject(new Error('toBlob failed')); return; }
+        const downloadUrl = URL.createObjectURL(blob);
+        const filename = '林威英文句型分析_' + new Date().toISOString().slice(0,10) + '.jpg';
+
+        if (isIOS || isLineBrowser) {
+          // iOS Safari & LINE: in-page modal (avoids popup blocker)
+          const modal = document.getElementById('ios-modal');
+          const modalImg = document.getElementById('ios-modal-img');
+          modalImg.src = downloadUrl;
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        } else {
+          // Android / Desktop: direct download
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 300000);
+        resolve();
+      }, 'image/jpeg', 0.95);
+    });
+  } catch (err) {
+    console.error(err);
+    alert('產生圖片失敗：' + err.message + '\n請改用截圖方式儲存。');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origLabel;
+  }
+}
+
+function closeIosModal() {
+  document.getElementById('ios-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>
