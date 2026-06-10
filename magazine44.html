@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>林威英文句型分析 — Beyblade 戰鬥陀螺</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Noto+Sans+TC:wght@400;500;700;900&display=swap');
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  background: linear-gradient(135deg, #FBE8D3 0%, #F5ECD7 50%, #F8D9B5 100%);
+  font-family: 'Noto Sans TC','PingFang TC',sans-serif;
+  min-height: 100vh;
+  color: #2D2A26;
+}
+
+/* ── LINE warning ── */
+.line-warning {
+  display: none; background: #FFF4E5; border: 2px solid #FF9500;
+  color: #B84A00; padding: 12px 16px; margin: 12px auto;
+  max-width: 960px; border-radius: 10px; font-size: 13px;
+  text-align: center;
+}
+.line-warning.show { display: block; }
+.line-warning button {
+  background: #B84A00; color: #fff; border: none;
+  padding: 6px 14px; border-radius: 16px; font-size: 12px;
+  font-weight: 700; margin-left: 6px; cursor: pointer;
+}
+
+/* ── Link bar ── */
+.link-bar {
+  background: linear-gradient(135deg, #B84A00 0%, #D85A30 50%, #E8743D 100%);
+  padding: 14px 16px;
+}
+.link-bar-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+}
+.link-card {
+  flex: 1 1 280px; background: rgba(255,255,255,0.95); border-radius: 14px;
+  padding: 14px 18px; text-decoration: none; color: #2D2A26;
+  display: flex; align-items: center; gap: 12px;
+  -webkit-tap-highlight-color: rgba(184,74,0,0.1);
+  cursor: pointer; transition: all 0.25s;
+}
+.link-card:active { transform: scale(0.97); }
+.link-card .icon {
+  font-size: 28px; width: 50px; height: 50px; border-radius: 50%;
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+}
+.link-card.course1 .icon { background: linear-gradient(135deg,#FFE5D0,#FFB077); color: #B84A00; }
+.link-card.course2 .icon { background: linear-gradient(135deg,#D8EFE0,#7FCBA0); color: #0F6E56; }
+.link-card.line .icon { background: linear-gradient(135deg,#C6E8C6,#06C755); color: #fff; }
+.link-card .title { font-size: 15px; font-weight: 700; line-height: 1.3; }
+.link-card .desc { font-size: 12px; color: #6B5D4F; margin-top: 2px; line-height: 1.4; }
+
+/* ── Main wrap ── */
+.main-wrap { max-width: 1100px; margin: 0 auto; padding: 28px 24px; }
+.page-title {
+  text-align: center;
+  font-family: 'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif;
+  font-size: 36px; font-weight: 900; color: #B84A00;
+  letter-spacing: 4px; margin: 18px 0 8px;
+}
+.page-subtitle {
+  text-align: center; font-size: 16px; color: #D85A30;
+  letter-spacing: 2px; margin-bottom: 24px;
+}
+
+/* ── Original text box ── */
+.original-box {
+  background: linear-gradient(135deg, #FFFCF5 0%, #FEF4E0 100%);
+  border-radius: 16px; padding: 24px 28px; margin: 20px 0;
+  border: 2px solid #E8B774;
+  box-shadow: 0 4px 14px rgba(184,74,0,0.08);
+}
+.original-label {
+  font-size: 14px; font-weight: 700; color: #B84A00;
+  letter-spacing: 2px; margin-bottom: 14px;
+}
+.original-text {
+  font-family: 'Caveat', cursive;
+  font-size: 26px; color: #2D2A26;
+  line-height: 1.6;
+}
+.original-text .num {
+  display: inline-block; background: #B84A00; color: #fff;
+  width: 26px; height: 26px; border-radius: 50%;
+  font-family: 'Noto Sans TC', sans-serif; font-size: 14px;
+  text-align: center; line-height: 26px; margin-right: 10px; font-weight: 700;
+}
+
+/* ── SVG container ── */
+.svg-wrap {
+  background: #FFF8EE; border-radius: 16px; padding: 14px;
+  margin: 20px 0; box-shadow: 0 4px 14px rgba(184,74,0,0.1);
+  overflow: hidden;
+}
+
+/* ── Download button ── */
+.download-area { text-align: center; margin: 20px 0 30px; }
+.download-btn {
+  background: linear-gradient(135deg, #B84A00 0%, #D85A30 100%);
+  color: #fff; border: none; border-radius: 30px;
+  padding: 16px 36px; font-size: 17px; font-weight: 700;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(184,74,0,0.3);
+  transition: all 0.25s;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+.download-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(184,74,0,0.4); }
+.download-btn:disabled { opacity: 0.7; cursor: wait; }
+.download-hint {
+  font-size: 13px; color: #6B5D4F; margin-top: 10px; line-height: 1.5;
+}
+
+/* ── Grammar panel ── */
+.grammar-panel {
+  background: rgba(255,255,255,0.85); border-radius: 16px;
+  padding: 24px 26px; margin: 20px 0;
+  box-shadow: 0 4px 14px rgba(184,74,0,0.08);
+}
+.grammar-heading {
+  font-size: 22px; font-weight: 900; color: #B84A00;
+  margin-bottom: 18px; letter-spacing: 2px;
+}
+.grammar-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 16px; line-height: 1.7; margin-bottom: 16px;
+  padding-bottom: 16px; border-bottom: 1px dashed #E8B774;
+}
+.grammar-item:last-child { border-bottom: none; padding-bottom: 0; }
+.grammar-dot {
+  width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0;
+  margin-top: 8px;
+}
+.grammar-title { font-weight: 700; font-size: 17px; }
+.grammar-body { color: #2D2A26; }
+.grammar-sub {
+  display: block; color: #888; font-size: 14px; margin-top: 4px;
+  line-height: 1.6;
+}
+
+/* ── Translation box ── */
+.translation-box {
+  background: linear-gradient(135deg,#FEF0D8 0%,#FCE6BD 100%);
+  border-radius: 12px; padding: 20px 24px; margin: 20px 0;
+  border-left: 6px solid #D85A30;
+}
+.translation-label {
+  font-size: 15px; font-weight: 700; color: #B84A00;
+  margin-bottom: 10px; letter-spacing: 2px;
+}
+.translation-text { font-size: 17px; line-height: 1.8; color: #2D2A26; }
+
+/* ── Vocab cards ── */
+.vocab-section { margin: 28px 0; }
+.vocab-heading {
+  font-size: 22px; font-weight: 900; color: #B84A00;
+  margin-bottom: 18px; letter-spacing: 2px; text-align: center;
+}
+.vocab-card {
+  border-radius: 14px; padding: 18px 22px; margin-bottom: 16px;
+  box-shadow: 0 3px 10px rgba(184,74,0,0.06);
+}
+.vocab-card.c1 { background: linear-gradient(135deg,#F0F7FF,#E0EFFD); border-left: 5px solid #185FA5; }
+.vocab-card.c2 { background: linear-gradient(135deg,#F5FFF8,#DDF5E6); border-left: 5px solid #1D9E75; }
+.vocab-card.c3 { background: linear-gradient(135deg,#FFF8F0,#FCE8D8); border-left: 5px solid #D85A30; }
+.vocab-card.c4 { background: linear-gradient(135deg,#F5F4FF,#E5E2FE); border-left: 5px solid #534AB7; }
+.vocab-card.c5 { background: linear-gradient(135deg,#F0FBF7,#D8F0E3); border-left: 5px solid #0F6E56; }
+.vocab-head {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px;
+  margin-bottom: 10px;
+}
+.vocab-word {
+  font-family: 'Caveat', cursive; font-size: 30px; font-weight: 700;
+}
+.vocab-card.c1 .vocab-word { color: #185FA5; }
+.vocab-card.c2 .vocab-word { color: #1D9E75; }
+.vocab-card.c3 .vocab-word { color: #D85A30; }
+.vocab-card.c4 .vocab-word { color: #534AB7; }
+.vocab-card.c5 .vocab-word { color: #0F6E56; }
+.vocab-kk { font-size: 14px; color: #6B5D4F; font-style: italic; }
+.vocab-meaning { font-size: 15px; color: #2D2A26; }
+.vocab-deriv {
+  background: rgba(255,255,255,0.6); padding: 8px 12px; border-radius: 8px;
+  margin: 8px 0 10px; font-size: 13px; color: #2D2A26; line-height: 1.6;
+}
+.vocab-card.c1 .vocab-deriv { background: #E6F1FB; }
+.vocab-card.c2 .vocab-deriv { background: #E1F5EE; }
+.vocab-card.c3 .vocab-deriv { background: #FAECE7; }
+.vocab-card.c4 .vocab-deriv { background: #EEEDFE; }
+.vocab-card.c5 .vocab-deriv { background: #E1F5EE; }
+.vocab-deriv b { font-weight: 700; }
+.vocab-examples { font-size: 15px; line-height: 1.8; }
+.vocab-examples .en { color: #2D2A26; font-weight: 500; }
+.vocab-examples .zh { color: #6B5D4F; font-size: 14px; display: block; padding-left: 14px; }
+
+/* ── iOS modal ── */
+.ios-modal {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.92); z-index: 9999; overflow-y: auto;
+  padding: 20px; text-align: center;
+}
+.ios-modal.show { display: block; }
+.ios-modal .close { text-align: right; margin-bottom: 12px; }
+.ios-modal .close button {
+  background: #fff; border: none; border-radius: 20px;
+  padding: 8px 18px; font-size: 14px; font-weight: 700; cursor: pointer;
+}
+.ios-modal .hint { color: #FFE5D0; font-size: 16px; font-weight: 700; margin: 12px 0; }
+.ios-modal img { max-width: 100%; height: auto; border-radius: 8px; }
+.ios-modal .footer-hint { color: #ccc; font-size: 13px; margin-top: 12px; }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .page-title { font-size: 26px; letter-spacing: 2px; }
+  .page-subtitle { font-size: 13px; }
+  .original-text { font-size: 19px; }
+  .link-card { flex: 1 1 100%; }
+  .link-card .icon { width: 44px; height: 44px; font-size: 24px; }
+  .link-card .title { font-size: 13px; }
+  .link-card .desc { font-size: 11px; }
+  .main-wrap { padding: 16px 12px; }
+  .grammar-panel { padding: 18px 16px; }
+  .grammar-heading, .vocab-heading { font-size: 19px; }
+  .vocab-card { padding: 14px; }
+  .vocab-word { font-size: 24px; }
+  .vocab-examples { font-size: 14px; }
+  .vocab-examples .zh { font-size: 13px; }
+  .grammar-item { font-size: 14px; }
+  .grammar-title { font-size: 15px; }
+  .grammar-sub { font-size: 12px; }
+  .translation-text { font-size: 15px; }
+  .download-btn { font-size: 14px; padding: 12px 22px; }
+  .download-hint { font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LINE warning banner -->
+<div id="line-warning" class="line-warning">
+  ⚠️ 您正在 <strong>LINE 內建瀏覽器</strong>中瀏覽，部分功能可能受限。
+  <button onclick="openInBrowser()">在瀏覽器中開啟</button>
+  <br><span style="font-size:12px;color:#888;">或點右上角「⋯」→「在瀏覽器中開啟」</span>
+</div>
+
+<!-- Top link bar -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="main-wrap">
+
+  <h1 class="page-title">林威英文句型分析</h1>
+  <div class="page-subtitle">主題：Beyblade 戰鬥陀螺 · 學測難度</div>
+
+  <!-- Original sentences -->
+  <div class="original-box">
+    <div class="original-label">📖 原句 ORIGINAL SENTENCES</div>
+    <div class="original-text">
+      <div style="margin-bottom:10px;">What makes Beyblade a global phenomenon is the thrill of fierce battles.</div>
+      <div>Originally launched in Japan, Beyblade is loved by fans worldwide.</div>
+    </div>
+  </div>
+
+  <!-- SVG Analysis Diagram -->
+  <div class="svg-wrap">
+    <svg id="grammar-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"
+         style="width:100%;height:auto;display:block;background:#FFF8EE;">
+      <defs>
+        <marker id="arr-down" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M2 2 L 5 9 L 8 2" fill="none" stroke="#2D2A26" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </marker>
+        <marker id="arr1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M1 1 L 7 5 L 1 9" fill="none" stroke="#1A1A1A" stroke-width="1.2" stroke-linecap="round"/>
+        </marker>
+        <linearGradient id="bg-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFF8EE"/>
+          <stop offset="100%" stop-color="#FEF0D8"/>
+        </linearGradient>
+      </defs>
+      <rect x="0" y="0" width="1920" height="1080" fill="url(#bg-grad)"/>
+
+      <!-- Header -->
+      <text x="960" y="78" text-anchor="middle"
+            font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+            font-size="60" font-weight="900" fill="#B84A00" letter-spacing="8">林威英文句型分析</text>
+      <text x="960" y="128" text-anchor="middle"
+            font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+            font-size="32" font-weight="700" fill="#D85A30" letter-spacing="4">林威老師設計</text>
+      <line x1="540" y1="156" x2="1380" y2="156" stroke="#D4A96A" stroke-width="2.5"/>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- SENTENCE 1: What makes Beyblade a global phenomenon is the thrill of fierce battles. -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+
+      <!-- S./V./C. labels (y=192) -->
+      <text x="610" y="192" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#185FA5">S. (名詞子句)</text>
+      <text x="1120" y="192" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#1D9E75">V.</text>
+      <text x="1440" y="192" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#534AB7">C. (主詞補語)</text>
+
+      <!-- Sentence 1 text (y=261) -->
+      <text y="261" font-family="'Caveat',cursive" font-size="56" font-weight="700" text-anchor="middle">
+        <tspan x="155" fill="#185FA5">What</tspan>
+        <tspan x="280" fill="#185FA5">makes</tspan>
+        <tspan x="440" fill="#185FA5">Beyblade</tspan>
+        <tspan x="595" fill="#185FA5">a</tspan>
+        <tspan x="680" fill="#185FA5">global</tspan>
+        <tspan x="870" fill="#185FA5">phenomenon</tspan>
+        <tspan x="1120" fill="#1D9E75">is</tspan>
+        <tspan x="1230" fill="#534AB7">the</tspan>
+        <tspan x="1335" fill="#534AB7">thrill</tspan>
+        <tspan x="1445" fill="#534AB7">of</tspan>
+        <tspan x="1560" fill="#534AB7">fierce</tspan>
+        <tspan x="1720" fill="#534AB7">battles.</tspan>
+      </text>
+
+      <!-- Underlines (y=290) -->
+      <!-- S underline: under "What makes Beyblade a global phenomenon" -->
+      <line x1="95" y1="290" x2="1060" y2="290" stroke="#185FA5" stroke-width="6"/>
+      <!-- V underline: under "is" -->
+      <line x1="1095" y1="290" x2="1150" y2="290" stroke="#1D9E75" stroke-width="6"/>
+      <!-- C underline: under "the thrill of fierce battles" -->
+      <line x1="1190" y1="290" x2="1820" y2="290" stroke="#534AB7" stroke-width="6"/>
+
+      <!-- Annotations under sentence 1 (y=345) -->
+      <text x="555" y="345" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="34" fill="#185FA5">↑ What 引導的名詞子句當主詞 (= The thing that ...)</text>
+
+      <!-- make + O + OC structure (V + O + OC pattern) -->
+      <text x="280" y="380" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#888">V</text>
+      <path d="M 320 365 C 360 350 400 350 440 350" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-linecap="round" marker-end="url(#arr1)"/>
+      <text x="440" y="380" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#888">O</text>
+      <path d="M 490 365 C 600 350 730 350 870 350" fill="none" stroke="#1A1A1A" stroke-width="1" stroke-linecap="round" marker-end="url(#arr1)"/>
+      <text x="870" y="380" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#888">OC (名詞片語)</text>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- Section divider -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <line x1="120" y1="430" x2="1800" y2="430" stroke="#D4A96A" stroke-width="2" stroke-dasharray="10 7"/>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- SENTENCE 2: Originally launched in Japan, Beyblade is loved by fans worldwide. -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+
+      <!-- S./V. labels (y=500) -->
+      <text x="975" y="500" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#185FA5">S.</text>
+      <text x="1180" y="500" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="42" font-weight="700" fill="#1D9E75">V. (被動)</text>
+
+      <!-- Sentence 2 text (y=575) -->
+      <text y="575" font-family="'Caveat',cursive" font-size="60" font-weight="700" text-anchor="middle">
+        <tspan x="220" fill="#C0392B">Originally</tspan>
+        <tspan x="450" fill="#C0392B">launched</tspan>
+        <tspan x="625" fill="#C0392B">in</tspan>
+        <tspan x="745" fill="#C0392B">Japan,</tspan>
+        <tspan x="975" fill="#185FA5">Beyblade</tspan>
+        <tspan x="1180" fill="#1D9E75">is loved</tspan>
+        <tspan x="1380" fill="#2D2A26">by</tspan>
+        <tspan x="1490" fill="#2D2A26">fans</tspan>
+        <tspan x="1660" fill="#2D2A26">worldwide.</tspan>
+      </text>
+
+      <!-- Underlines (y=605) -->
+      <!-- Past participle phrase dashed underline -->
+      <line x1="105" y1="605" x2="855" y2="605" stroke="#C0392B" stroke-width="5.5" stroke-dasharray="9 6"/>
+      <!-- S underline: under "Beyblade" -->
+      <line x1="885" y1="605" x2="1070" y2="605" stroke="#185FA5" stroke-width="6"/>
+      <!-- V underline: under "is loved" -->
+      <line x1="1090" y1="605" x2="1270" y2="605" stroke="#1D9E75" stroke-width="6"/>
+
+      <!-- Annotation under sentence 2 (y=660) -->
+      <text x="480" y="660" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="34" fill="#C0392B">↑ 過去分詞片語當分詞構句（修飾主詞 Beyblade）</text>
+
+      <!-- Arrow from "is loved" pointing down to expansion -->
+      <text x="1180" y="660" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="32" fill="#1D9E75">be + p.p. 被動語態</text>
+
+      <!-- ─── Participial phrase expansion below ─── -->
+      <text x="960" y="745" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="36" font-weight="700" fill="#1D9E75">↓ 分詞構句還原 (Restored to a full clause)</text>
+
+      <!-- Green box for the restored clause -->
+      <rect x="320" y="775" width="1280" height="100" rx="48" ry="48" fill="none" stroke="#5DCAA5" stroke-width="5"/>
+      <text x="960" y="840" text-anchor="middle" font-family="'Caveat',cursive" font-size="54" font-weight="700" fill="#0F6E56">After Beyblade was originally launched in Japan, ...</text>
+
+      <!-- Equal sign explanation -->
+      <text x="960" y="925" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="34" fill="#534AB7">＝ 連接詞 (After) ＋ 主詞 (Beyblade) ＋ be 動詞 (was) ＋ 過去分詞 (launched)</text>
+
+      <!-- Supplementary explanation -->
+      <text x="960" y="970" text-anchor="middle" font-family="'Patrick Hand',cursive" font-size="28" fill="#888">分詞構句主動關係用 V-ing；被動關係用 p.p.（過去分詞）</text>
+
+      <!-- Footer -->
+      <line x1="660" y1="1010" x2="1260" y2="1010" stroke="#D4A96A" stroke-width="1.8"/>
+      <text x="960" y="1050" text-anchor="middle"
+            font-family="'Source Han Sans','Noto Sans TC','PingFang TC',sans-serif"
+            font-size="28" font-weight="500" fill="#A89070">林威英文句型分析 · SVG 向量版　|　LINE ID: linwayet</text>
+    </svg>
+  </div>
+
+  <!-- Download button -->
+  <div class="download-area">
+    <button id="download-btn" class="download-btn" onclick="prepareAndDownloadJpg()">
+      📥 下載句型分析圖（JPG · 1920×1080）
+    </button>
+    <div class="download-hint">📱 手機：點按後圖片直接顯示，<strong>長按圖片儲存到相簿</strong> · 💻 電腦自動下載</div>
+  </div>
+
+  <!-- Grammar panel -->
+  <div class="grammar-panel">
+    <div class="grammar-heading">🎯 文法重點 GRAMMAR FOCUS</div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#185FA5;"></span>
+      <div>
+        <span class="grammar-title" style="color:#185FA5;">① 名詞子句當主詞 (What 引導)</span>
+        <span class="grammar-body"> — 「What makes Beyblade a global phenomenon」整個子句當作整句主詞。What 是「複合關係代名詞」(= the thing that)，本身包含先行詞，後面接動詞 makes 構成完整子句。</span>
+        <span class="grammar-sub">學測常考改寫：The thing that makes Beyblade a global phenomenon is... ／ Why Beyblade is a global phenomenon lies in...</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#1D9E75;"></span>
+      <div>
+        <span class="grammar-title" style="color:#1D9E75;">② make ＋ 受詞 ＋ 受詞補語 (V + O + OC)</span>
+        <span class="grammar-body"> — 「makes Beyblade a global phenomenon」中，make 為「不完全及物動詞」，後接「受詞 (Beyblade) ＋ 名詞片語當受詞補語 (a global phenomenon)」，表「使...成為...」。</span>
+        <span class="grammar-sub">OC 可為「形容詞」(make me happy)、「名詞」(make him a leader)、「原形動詞」(make sb. do)、或「過去分詞」(make myself understood)。同類動詞：consider、call、name、elect、find。</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#C0392B;"></span>
+      <div>
+        <span class="grammar-title" style="color:#C0392B;">③ 分詞構句（過去分詞片語）</span>
+        <span class="grammar-body"> — 「Originally launched in Japan」為分詞構句，還原後 = 「After Beyblade was originally launched in Japan」。因主動詞 launch 與主句主詞 Beyblade 為「被動」關係，故用過去分詞 (p.p.)。</span>
+        <span class="grammar-sub">判斷口訣：主動關係 → V-ing；被動關係 → p.p.（過去分詞）。分詞構句省略「連接詞 ＋ 主詞 ＋ be 動詞」。</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#534AB7;"></span>
+      <div>
+        <span class="grammar-title" style="color:#534AB7;">④ 被動語態 be ＋ p.p.</span>
+        <span class="grammar-body"> — 「is loved by fans」為被動語態結構：be 動詞 (is) ＋ 過去分詞 (loved)。動作的「接收者」(Beyblade) 當主詞，by ＋「動作執行者」(fans) 在後。</span>
+        <span class="grammar-sub">時態變化：現在被動 is/are p.p.｜過去被動 was/were p.p.｜現在完成被動 has/have been p.p.｜未來被動 will be p.p.</span>
+      </div>
+    </div>
+
+    <div class="grammar-item">
+      <span class="grammar-dot" style="background:#0F6E56;"></span>
+      <div>
+        <span class="grammar-title" style="color:#0F6E56;">⑤ 介系詞片語 of 修飾名詞</span>
+        <span class="grammar-body"> — 「of fierce battles」為介系詞片語，後位修飾名詞 thrill (= the thrill which is brought by fierce battles)。介系詞片語可後位修飾名詞，相當於形容詞子句的簡化。</span>
+        <span class="grammar-sub">類似結構：the importance of education／the joy of reading／the fear of failure。學測常考：of + N 表「來自...的、關於...的」。</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Translation -->
+  <div class="translation-box">
+    <div class="translation-label">📖 全句中文翻譯</div>
+    <div class="translation-text">
+      讓戰鬥陀螺成為全球風靡現象的原因，正是激烈對戰所帶來的刺激感。<br>
+      戰鬥陀螺最初於日本問世，如今受到全世界粉絲的喜愛。
+    </div>
+  </div>
+
+  <!-- Vocabulary -->
+  <div class="vocab-section">
+    <div class="vocab-heading">📘 學測核心單字 5 個 KEY VOCABULARY</div>
+
+    <!-- 1. phenomenon (blue) -->
+    <div class="vocab-card c1">
+      <div class="vocab-head">
+        <span class="vocab-word">phenomenon</span>
+        <span class="vocab-kk">[fəˋnɑmə͵nɑn]</span>
+        <span class="vocab-meaning">(n.) 現象；非凡的人事物（複數 phenomena）</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 <b>衍生詞</b>：phenomenal (adj.) 非凡的、驚人的 ｜ phenomenally (adv.) 驚人地
+      </div>
+      <div class="vocab-examples">
+        <span class="en">• The Beyblade craze has become a global phenomenon among children.</span>
+        <span class="zh">戰鬥陀螺的熱潮已成為兒童間的全球現象。</span>
+        <span class="en">• Climate change is one of the most pressing phenomena of our time.</span>
+        <span class="zh">氣候變遷是我們這個時代最迫切的現象之一。</span>
+      </div>
+    </div>
+
+    <!-- 2. launch (green) -->
+    <div class="vocab-card c2">
+      <div class="vocab-head">
+        <span class="vocab-word">launch</span>
+        <span class="vocab-kk">[lɔntʃ]</span>
+        <span class="vocab-meaning">(v.) 推出、發行；發射 (n.) 發行；發射</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 <b>衍生詞</b>：launcher (n.) 發射器 ｜ re-launch (v.) 重新推出 ｜ launchpad (n.) 發射台
+      </div>
+      <div class="vocab-examples">
+        <span class="en">• The toy company plans to launch a new line of Beyblades next summer.</span>
+        <span class="zh">這家玩具公司計畫明年夏天推出新一系列的戰鬥陀螺。</span>
+        <span class="en">• NASA successfully launched the satellite into orbit yesterday.</span>
+        <span class="zh">NASA 昨天成功將衛星發射到軌道上。</span>
+      </div>
+    </div>
+
+    <!-- 3. thrill (orange) -->
+    <div class="vocab-card c3">
+      <div class="vocab-head">
+        <span class="vocab-word">thrill</span>
+        <span class="vocab-kk">[θrɪl]</span>
+        <span class="vocab-meaning">(n.) 興奮感、刺激 (v.) 使興奮、使激動</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 <b>衍生詞</b>：thrilling (adj.) 令人激動的 ｜ thrilled (adj.) 興奮的 ｜ thriller (n.) 驚悚片
+      </div>
+      <div class="vocab-examples">
+        <span class="en">• Kids love the thrill of watching their spinning tops collide in the arena.</span>
+        <span class="zh">孩子們喜歡看自己的陀螺在競技場中碰撞的刺激感。</span>
+        <span class="en">• Bungee jumping gave me the biggest thrill of my life.</span>
+        <span class="zh">高空彈跳帶給我這輩子最大的刺激。</span>
+      </div>
+    </div>
+
+    <!-- 4. fierce (purple) -->
+    <div class="vocab-card c4">
+      <div class="vocab-head">
+        <span class="vocab-word">fierce</span>
+        <span class="vocab-kk">[fɪrs]</span>
+        <span class="vocab-meaning">(adj.) 激烈的；兇猛的；強烈的</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 <b>衍生詞</b>：fiercely (adv.) 激烈地、猛烈地 ｜ fierceness (n.) 兇猛、激烈
+      </div>
+      <div class="vocab-examples">
+        <span class="en">• The final Beyblade battle between the two champions was incredibly fierce.</span>
+        <span class="zh">兩位冠軍之間的最後一場戰鬥陀螺對決異常激烈。</span>
+        <span class="en">• Competition for top universities is becoming fiercer every year.</span>
+        <span class="zh">頂尖大學的競爭一年比一年激烈。</span>
+      </div>
+    </div>
+
+    <!-- 5. worldwide (teal) -->
+    <div class="vocab-card c5">
+      <div class="vocab-head">
+        <span class="vocab-word">worldwide</span>
+        <span class="vocab-kk">[ˋwɝldˋwaɪd]</span>
+        <span class="vocab-meaning">(adv.) 在全世界 (adj.) 全世界的、遍及全球的</span>
+      </div>
+      <div class="vocab-deriv">
+        🔗 <b>衍生詞</b>：worldview (n.) 世界觀 ｜ worldly (adj.) 世俗的 ｜ globally (adv.) 同義
+      </div>
+      <div class="vocab-examples">
+        <span class="en">• Beyblade tournaments are now held worldwide every year.</span>
+        <span class="zh">戰鬥陀螺錦標賽現在每年都在全球舉行。</span>
+        <span class="en">• The pop song became a worldwide hit within just one week.</span>
+        <span class="zh">這首流行歌曲在短短一週內就成為全球熱門金曲。</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bottom link bar (same as top) -->
+<div class="link-bar">
+  <div class="link-bar-inner">
+    <a class="link-card course1" href="https://linwayet.github.io/4ulive/index.html" target="_blank" rel="noopener noreferrer">
+      <div class="icon">📚</div>
+      <div class="text">
+        <div class="title">錯中學 ECHO 計劃</div>
+        <div class="desc">七月開課 · AI 輔助學測 200 天</div>
+      </div>
+    </a>
+    <a class="link-card course2" href="https://linwayet.github.io/popup/index" target="_blank" rel="noopener noreferrer">
+      <div class="icon">🎯</div>
+      <div class="text">
+        <div class="title">學生分析系統</div>
+        <div class="desc">七月開課 · 個人化學習診斷</div>
+      </div>
+    </a>
+    <a class="link-card line" href="https://line.me/ti/p/~linwayet" target="_blank" rel="noopener noreferrer">
+      <div class="icon">💬</div>
+      <div class="text">
+        <div class="title">林威老師 LINE</div>
+        <div class="desc">ID: linwayet · 課程諮詢</div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<!-- iOS image preview modal -->
+<div id="ios-modal" class="ios-modal">
+  <div class="close"><button onclick="closeIosModal()">✕ 關閉</button></div>
+  <p class="hint">📱 長按下方圖片 → 「儲存圖像」</p>
+  <img id="ios-modal-img" alt="林威英文句型分析">
+  <p class="footer-hint">林威英文句型分析 · 1920×1080 JPG</p>
+</div>
+
+<script>
+const ua = navigator.userAgent || '';
+const isLineBrowser = /Line\//i.test(ua);
+const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+if (isLineBrowser) {
+  document.getElementById('line-warning').classList.add('show');
+}
+
+function openInBrowser() {
+  const sep = window.location.href.includes('?') ? '&' : '?';
+  window.location.href = window.location.href + sep + 'openExternalBrowser=1';
+}
+
+// LINE in-app browser: force external browser for external links
+document.querySelectorAll('.link-card').forEach(card => {
+  card.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (!href) return;
+    if (isLineBrowser) {
+      e.preventDefault();
+      if (href.includes('line.me')) {
+        window.location.href = href;
+      } else {
+        const sep = href.includes('?') ? '&' : '?';
+        window.location.href = href + sep + 'openExternalBrowser=1';
+      }
+    }
+  });
+});
+
+// ═══ FONT EMBEDDING (key technique for correct JPG fonts) ═══
+const FONT_FACES = [
+  { name: 'Caveat', css: 'https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&display=swap' },
+  { name: 'Patrick Hand', css: 'https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap' },
+  { name: 'Noto Sans TC', css: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap' }
+];
+let embeddedFontCss = null;
+
+async function fetchFontAsBase64(url) {
+  const response = await fetch(url);
+  const blob = await response.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function buildEmbeddedFontCss() {
+  if (embeddedFontCss) return embeddedFontCss;
+  const allCss = [];
+  for (const fontDef of FONT_FACES) {
+    try {
+      const cssResp = await fetch(fontDef.css);
+      let cssText = await cssResp.text();
+      const urlRegex = /url\((https:\/\/[^)]+\.woff2)\)/g;
+      const urls = [...cssText.matchAll(urlRegex)].map(m => m[1]);
+      const uniqueUrls = [...new Set(urls)];
+      for (const url of uniqueUrls) {
+        try {
+          const dataUri = await fetchFontAsBase64(url);
+          const escapedUrl = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+          cssText = cssText.replace(new RegExp(escapedUrl, 'g'), dataUri);
+        } catch (err) { console.warn('Failed to embed font URL:', url); }
+      }
+      allCss.push(cssText);
+    } catch (err) { console.warn('Failed to fetch font CSS for', fontDef.name); }
+  }
+  embeddedFontCss = allCss.join('\n');
+  return embeddedFontCss;
+}
+
+async function prepareAndDownloadJpg() {
+  const btn = document.getElementById('download-btn');
+  const origLabel = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 字型載入中，請稍候…';
+
+  try {
+    const fontCss = await buildEmbeddedFontCss();
+    const originalSvg = document.getElementById('grammar-svg');
+    const svgClone = originalSvg.cloneNode(true);
+    svgClone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+
+    let defs = svgClone.querySelector('defs');
+    if (!defs) {
+      defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+      svgClone.insertBefore(defs, svgClone.firstChild);
+    }
+    const styleEl = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+    styleEl.setAttribute('type', 'text/css');
+    styleEl.textContent = fontCss;
+    defs.insertBefore(styleEl, defs.firstChild);
+
+    const svgData = new XMLSerializer().serializeToString(svgClone);
+    const width = 1920, height = 1080;
+    const canvas = document.createElement('canvas');
+    canvas.width = width; canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#FFF8EE';
+    ctx.fillRect(0, 0, width, height);
+
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+
+    btn.innerHTML = '⏳ 產生圖片中…';
+
+    await new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, width, height);
+        URL.revokeObjectURL(url);
+        resolve();
+      };
+      img.onerror = function() { URL.revokeObjectURL(url); reject(new Error('Image load failed')); };
+      img.src = url;
+    });
+
+    await new Promise((resolve, reject) => {
+      canvas.toBlob(function(blob) {
+        if (!blob) { reject(new Error('toBlob failed')); return; }
+        const downloadUrl = URL.createObjectURL(blob);
+        const filename = '林威英文句型分析_Beyblade_' + new Date().toISOString().slice(0,10) + '.jpg';
+
+        if (isIOS || isLineBrowser) {
+          const modal = document.getElementById('ios-modal');
+          const modalImg = document.getElementById('ios-modal-img');
+          modalImg.src = downloadUrl;
+          modal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        } else {
+          const link = document.createElement('a');
+          link.href = downloadUrl;
+          link.download = filename;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 300000);
+        resolve();
+      }, 'image/jpeg', 0.95);
+    });
+  } catch (err) {
+    console.error(err);
+    alert('產生圖片失敗：' + err.message + '\n請改用截圖方式儲存。');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = origLabel;
+  }
+}
+
+function closeIosModal() {
+  document.getElementById('ios-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+</script>
+
+</body>
+</html>
