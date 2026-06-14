@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>字族翻卡練習 · consider / succeed / depend / excite</title>
+<style>body{ margin:0; background:#F8F4ED; padding:24px 16px; }</style>
+</head>
+<body>
+
+<div class="wg4-pagetitle">
+  <h1>🃏 字族翻卡練習 · 為什麼要學衍生詞</h1>
+  <p>林威英文 · 點卡片翻面看解釋，再看下方學測導讀</p>
+</div>
+
+<!-- ============================================================= -->
+<!-- WORDGRID BLOCK START · 樣式與腳本全頁共用一份                  -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap');
+
+.wg4-wrap{
+  --wg-bg:#F8F4ED; --wg-ink:#2D2A26; --wg-card:#FFFDF8; --wg-line:#E7DECB;
+  --wg-v:#B5532E; --wg-n:#2F6E4F; --wg-adj:#9A6A1E; --wg-adv:#2C6E72; --wg-other:#7A5C3E;
+  font-family:'BIZ UDPGothic','Noto Sans TC',system-ui,-apple-system,sans-serif;
+  color:var(--wg-ink); max-width:720px; margin:24px auto; box-sizing:border-box;
+  -webkit-text-size-adjust:100%;
+}
+.wg4-wrap *{ box-sizing:border-box; }
+
+.wg4-head{ display:flex; align-items:baseline; flex-wrap:wrap; gap:10px 14px; margin:0 4px 16px; }
+.wg4-root{ font-size:30px; font-weight:700; letter-spacing:.5px; }
+.wg4-sub{ font-size:16px; color:#7A6F5E; }
+.wg4-flipall{
+  margin-left:auto; font-family:inherit; font-size:16px; font-weight:700;
+  color:#fff; background:linear-gradient(135deg,#C2703A,#A2542B);
+  border:none; border-radius:999px; padding:9px 18px; cursor:pointer;
+  min-height:44px; box-shadow:0 2px 6px rgba(120,70,30,.25);
+}
+.wg4-flipall:active{ transform:translateY(1px); }
+
+.wg4-grid{ display:grid; gap:14px; grid-template-columns:repeat(2,1fr); }
+.wg4-grid.cols-6{ grid-template-columns:repeat(2,1fr); }
+@media(min-width:620px){ .wg4-grid.cols-6{ grid-template-columns:repeat(3,1fr); } }
+
+.wg4-card{
+  perspective:1200px; cursor:pointer; min-height:200px;
+  border:none; background:none; padding:0; font-family:inherit;
+}
+.wg4-inner{
+  position:relative; width:100%; height:100%; min-height:200px;
+  transition:transform .28s ease;
+  transform-style:preserve-3d; -webkit-transform-style:preserve-3d;
+}
+.wg4-card.flipped .wg4-inner{ transform:rotateY(180deg); }
+
+.wg4-face{
+  position:absolute; inset:0; border-radius:16px;
+  background:var(--wg-card); border:1.5px solid var(--wg-line);
+  box-shadow:0 2px 8px rgba(90,70,40,.08);
+  backface-visibility:hidden; -webkit-backface-visibility:hidden;
+  display:flex; flex-direction:column; padding:16px 16px 14px;
+}
+.wg4-face::before{ /* 詞性色塊頂線 */
+  content:""; position:absolute; top:0; left:18px; right:18px; height:5px;
+  border-radius:0 0 4px 4px; background:var(--accent,var(--wg-other));
+}
+.wg4-back{ transform:rotateY(180deg); }
+
+/* 詞性配色（暖色為主，避開藍灰＋紅紫衝突） */
+.pos-v   { --accent:var(--wg-v);   --suf:#C2410C; --suf-bg:#FBE2D2; }
+.pos-n   { --accent:var(--wg-n);   --suf:#15803D; --suf-bg:#D6F0DE; }
+.pos-adj { --accent:var(--wg-adj); --suf:#B45309; --suf-bg:#FBE8C6; }
+.pos-adv { --accent:var(--wg-adv); --suf:#0E7490; --suf-bg:#D0ECF1; }
+
+/* ---- 正面 ---- */
+.wg4-front{ align-items:center; justify-content:center; text-align:center; }
+.wg4-pos{
+  font-size:15px; font-weight:700; color:var(--accent);
+  border:1.5px solid var(--accent); border-radius:999px; padding:2px 12px; margin-bottom:10px;
+}
+.wg4-word{ font-size:29px; font-weight:700; line-height:1.2; word-break:break-word; }
+.wg4-stem{ color:var(--wg-ink); }
+.wg4-suf{
+  color:var(--suf); background:var(--suf-bg);
+  border-radius:6px; padding:.02em .16em; margin-left:.02em;
+  -webkit-box-decoration-break:clone; box-decoration-break:clone;
+}
+.wg4-kk{ font-size:18px; color:#6B5F4E; margin-top:8px; letter-spacing:.3px; }
+.wg4-hint{ position:absolute; bottom:9px; right:13px; font-size:12px; color:#B7A98F; }
+
+/* ---- 背面 ---- */
+.wg4-back{ text-align:left; }
+.wg4-word-sm{ font-size:18px; font-weight:700; color:var(--accent); margin-bottom:6px; }
+.wg4-en{ font-size:16px; line-height:1.5; color:#4A4238; }
+.wg4-zh{ font-size:19px; font-weight:700; line-height:1.6; margin-top:7px; }
+.wg4-ex{ font-size:14.5px; line-height:1.6; color:#5A5142; margin-top:auto; padding-top:10px;
+         border-top:1px dashed var(--wg-line); }
+.wg4-ex i{ font-style:normal; color:#8A7C66; display:block; }
+
+@media(max-width:430px){
+  .wg4-grid,.wg4-grid.cols-6{ grid-template-columns:1fr; }
+  .wg4-root{ font-size:26px; }
+}
+@media print{
+  .wg4-flipall,.wg4-hint{ display:none !important; }
+  .wg4-inner{ transform:none !important; }
+  .wg4-back{ position:relative; transform:none; margin-top:10px; }
+}
+
+.wg4-pagetitle{ font-family:'BIZ UDPGothic','Noto Sans TC',system-ui,sans-serif; max-width:720px; margin:6px auto 4px; color:#2D2A26; text-align:center; }
+.wg4-pagetitle h1{ font-size:27px; margin:8px 0 4px; }
+.wg4-pagetitle p{ color:#7A6F5E; font-size:15px; margin:0 0 6px; }
+.wg4-essay{ font-family:'BIZ UDPGothic','Noto Sans TC',system-ui,sans-serif; max-width:720px; margin:30px auto; color:#2D2A26;
+  background:#FFFDF8; border:1.5px solid #E7DECB; border-radius:16px; padding:26px 22px; line-height:1.85; font-size:17px; }
+.wg4-essay h2{ font-size:23px; margin:0 0 8px; color:#A2542B; }
+.wg4-essay h3{ font-size:18px; margin:22px 0 6px; color:#2F6E4F; }
+.wg4-essay p{ margin:10px 0; }
+.wg4-essay ol{ margin:8px 0 8px 1.1em; padding:0; }
+.wg4-essay li{ margin:9px 0; }
+.wg4-essay .tag{ font-weight:700; color:#B5532E; }
+.wg4-essay .q{ background:#F3ECDD; border-left:4px solid #C2703A; padding:13px 15px; border-radius:8px; margin:14px 0; font-size:16.5px; }
+.wg4-essay .blank{ font-weight:700; letter-spacing:1px; }
+.wg4-essay .hl-ed{ background:#FBE2D2; color:#C2410C; border-radius:5px; padding:0 .18em; font-weight:700; }
+.wg4-essay .hl-ing{ background:#FBE8C6; color:#B45309; border-radius:5px; padding:0 .18em; font-weight:700; }
+.wg4-essay .note{ font-size:14.5px; color:#7A6F5E; border-top:1px dashed #E7DECB; padding-top:12px; margin-top:18px; }
+</style>
+
+<div class="wg4-wrap">
+  <div class="wg4-head">
+    <span class="wg4-root">consider</span>
+    <span class="wg4-sub">字族 · 點卡片翻面看解釋</span>
+    <button class="wg4-flipall" onclick="wg4FlipAll(this)">🔄 全部翻面看解釋</button>
+  </div>
+  <div class="wg4-grid">
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-v">
+          <span class="wg4-pos">v. 動詞</span>
+          <span class="wg4-word"><span class="wg4-stem">consider</span></span>
+          <span class="wg4-kk">[ kən`sɪdɚ ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-v">
+          <span class="wg4-word-sm"><span class="wg4-stem">consider</span> (v.)</span>
+          <span class="wg4-en">to think carefully about something before deciding</span>
+          <span class="wg4-zh">考慮；認為；視為</span>
+          <span class="wg4-ex">We should consider all the options.<i>我們應該考慮所有的選項。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-adj">
+          <span class="wg4-pos">adj. 形容詞</span>
+          <span class="wg4-word"><span class="wg4-stem">consider</span><span class="wg4-suf">ate</span></span>
+          <span class="wg4-kk">[ kən`sɪdərɪt ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-adj">
+          <span class="wg4-word-sm"><span class="wg4-stem">consider</span><span class="wg4-suf">ate</span> (adj.)</span>
+          <span class="wg4-en">caring about other people's feelings; thoughtful</span>
+          <span class="wg4-zh">體貼的；為他人著想的</span>
+          <span class="wg4-ex">It was considerate of you to call.<i>你打電話來真是體貼。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-adj">
+          <span class="wg4-pos">adj. 形容詞</span>
+          <span class="wg4-word"><span class="wg4-stem">consider</span><span class="wg4-suf">able</span></span>
+          <span class="wg4-kk">[ kən`sɪdərəbḷ ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-adj">
+          <span class="wg4-word-sm"><span class="wg4-stem">consider</span><span class="wg4-suf">able</span> (adj.)</span>
+          <span class="wg4-en">large in amount, size, or degree</span>
+          <span class="wg4-zh">相當大的；可觀的</span>
+          <span class="wg4-ex">She has considerable influence in the company.<i>她在公司裡有相當大的影響力。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-n">
+          <span class="wg4-pos">n. 名詞</span>
+          <span class="wg4-word"><span class="wg4-stem">consider</span><span class="wg4-suf">ation</span></span>
+          <span class="wg4-kk">[ kənˌsɪdə`reʃən ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-n">
+          <span class="wg4-word-sm"><span class="wg4-stem">consider</span><span class="wg4-suf">ation</span> (n.)</span>
+          <span class="wg4-en">careful thought; a factor to think about</span>
+          <span class="wg4-zh">考慮；體貼；須考量的因素</span>
+          <span class="wg4-ex">After careful consideration, we agreed.<i>經過仔細考慮，我們同意了。</i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wg4-wrap">
+  <div class="wg4-head">
+    <span class="wg4-root">succeed</span>
+    <span class="wg4-sub">字族 · success / -ful / -fully</span>
+    <button class="wg4-flipall" onclick="wg4FlipAll(this)">🔄 全部翻面看解釋</button>
+  </div>
+  <div class="wg4-grid">
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-v">
+          <span class="wg4-pos">v. 動詞</span>
+          <span class="wg4-word"><span class="wg4-stem">succeed</span></span>
+          <span class="wg4-kk">[ sək`sid ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-v">
+          <span class="wg4-word-sm"><span class="wg4-stem">succeed</span> (v.)</span>
+          <span class="wg4-en">to achieve what you have been trying to do</span>
+          <span class="wg4-zh">成功；達成；接續</span>
+          <span class="wg4-ex">She worked hard and finally succeeded.<i>她努力工作，終於成功了。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-n">
+          <span class="wg4-pos">n. 名詞</span>
+          <span class="wg4-word"><span class="wg4-stem">success</span></span>
+          <span class="wg4-kk">[ sək`sɛs ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-n">
+          <span class="wg4-word-sm"><span class="wg4-stem">success</span> (n.)</span>
+          <span class="wg4-en">the achievement of an aim or goal</span>
+          <span class="wg4-zh">成功；成就</span>
+          <span class="wg4-ex">The new product was a big success.<i>這個新產品非常成功。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-adj">
+          <span class="wg4-pos">adj. 形容詞</span>
+          <span class="wg4-word"><span class="wg4-stem">success</span><span class="wg4-suf">ful</span></span>
+          <span class="wg4-kk">[ sək`sɛsfəl ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-adj">
+          <span class="wg4-word-sm"><span class="wg4-stem">success</span><span class="wg4-suf">ful</span> (adj.)</span>
+          <span class="wg4-en">achieving the results that you wanted</span>
+          <span class="wg4-zh">成功的</span>
+          <span class="wg4-ex">He is a successful entrepreneur.<i>他是一位成功的企業家。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-adv">
+          <span class="wg4-pos">adv. 副詞</span>
+          <span class="wg4-word"><span class="wg4-stem">success</span><span class="wg4-suf">fully</span></span>
+          <span class="wg4-kk">[ sək`sɛsfəlɪ ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-adv">
+          <span class="wg4-word-sm"><span class="wg4-stem">success</span><span class="wg4-suf">fully</span> (adv.)</span>
+          <span class="wg4-en">in a way that achieves the goal</span>
+          <span class="wg4-zh">成功地</span>
+          <span class="wg4-ex">They successfully completed the mission.<i>他們成功地完成了任務。</i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wg4-wrap">
+  <div class="wg4-head">
+    <span class="wg4-root">depend</span>
+    <span class="wg4-sub">字族 · -ent / -ence / -ently</span>
+    <button class="wg4-flipall" onclick="wg4FlipAll(this)">🔄 全部翻面看解釋</button>
+  </div>
+  <div class="wg4-grid">
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-v">
+          <span class="wg4-pos">v. 動詞</span>
+          <span class="wg4-word"><span class="wg4-stem">depend</span></span>
+          <span class="wg4-kk">[ dɪ`pɛnd ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-v">
+          <span class="wg4-word-sm"><span class="wg4-stem">depend</span> (v.)</span>
+          <span class="wg4-en">to be decided by something; to rely on</span>
+          <span class="wg4-zh">取決於；依賴</span>
+          <span class="wg4-ex">Our plan depends on the weather.<i>我們的計畫取決於天氣。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-adj">
+          <span class="wg4-pos">adj. 形容詞</span>
+          <span class="wg4-word"><span class="wg4-stem">depend</span><span class="wg4-suf">ent</span></span>
+          <span class="wg4-kk">[ dɪ`pɛndənt ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-adj">
+          <span class="wg4-word-sm"><span class="wg4-stem">depend</span><span class="wg4-suf">ent</span> (adj.)</span>
+          <span class="wg4-en">needing someone or something for support</span>
+          <span class="wg4-zh">依賴的；取決於⋯的</span>
+          <span class="wg4-ex">A newborn baby is dependent on its parents.<i>新生兒依賴父母。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-n">
+          <span class="wg4-pos">n. 名詞</span>
+          <span class="wg4-word"><span class="wg4-stem">depend</span><span class="wg4-suf">ence</span></span>
+          <span class="wg4-kk">[ dɪ`pɛndəns ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-n">
+          <span class="wg4-word-sm"><span class="wg4-stem">depend</span><span class="wg4-suf">ence</span> (n.)</span>
+          <span class="wg4-en">the state of relying on someone or something</span>
+          <span class="wg4-zh">依賴；依靠</span>
+          <span class="wg4-ex">The country's dependence on oil is risky.<i>這個國家對石油的依賴很危險。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-adv">
+          <span class="wg4-pos">adv. 副詞</span>
+          <span class="wg4-word"><span class="wg4-stem">depend</span><span class="wg4-suf">ently</span></span>
+          <span class="wg4-kk">[ dɪ`pɛndəntlɪ ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-adv">
+          <span class="wg4-word-sm"><span class="wg4-stem">depend</span><span class="wg4-suf">ently</span> (adv.)</span>
+          <span class="wg4-en">in a way that relies on something else</span>
+          <span class="wg4-zh">依賴地；相互關連地</span>
+          <span class="wg4-ex">The two results change dependently, not on their own.<i>這兩個結果相互關連地變化，並非各自獨立。</i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wg4-wrap">
+  <div class="wg4-head">
+    <span class="wg4-root">excite</span>
+    <span class="wg4-sub">字族 · 注意 -ed vs -ing！</span>
+    <button class="wg4-flipall" onclick="wg4FlipAll(this)">🔄 全部翻面看解釋</button>
+  </div>
+  <div class="wg4-grid">
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-v">
+          <span class="wg4-pos">v. 動詞</span>
+          <span class="wg4-word"><span class="wg4-stem">excite</span></span>
+          <span class="wg4-kk">[ ɪk`saɪt ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-v">
+          <span class="wg4-word-sm"><span class="wg4-stem">excite</span> (v.)</span>
+          <span class="wg4-en">to make someone feel very happy or eager</span>
+          <span class="wg4-zh">使興奮；激起</span>
+          <span class="wg4-ex">The good news excited the whole class.<i>這個好消息讓全班都很興奮。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-adj">
+          <span class="wg4-pos">adj. 形容詞</span>
+          <span class="wg4-word"><span class="wg4-stem">excit</span><span class="wg4-suf">ed</span></span>
+          <span class="wg4-kk">[ ɪk`saɪtɪd ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-adj">
+          <span class="wg4-word-sm"><span class="wg4-stem">excit</span><span class="wg4-suf">ed</span> (adj.)</span>
+          <span class="wg4-en">feeling very happy and eager about something</span>
+          <span class="wg4-zh">感到興奮的〔人的感受〕</span>
+          <span class="wg4-ex">The children were excited about the trip.<i>孩子們對這趟旅行感到興奮。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-n">
+          <span class="wg4-pos">n. 名詞</span>
+          <span class="wg4-word"><span class="wg4-stem">excite</span><span class="wg4-suf">ment</span></span>
+          <span class="wg4-kk">[ ɪk`saɪtmənt ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-n">
+          <span class="wg4-word-sm"><span class="wg4-stem">excite</span><span class="wg4-suf">ment</span> (n.)</span>
+          <span class="wg4-en">the feeling of being excited</span>
+          <span class="wg4-zh">興奮；激動</span>
+          <span class="wg4-ex">The fans screamed with excitement.<i>粉絲們興奮地尖叫。</i></span>
+        </div>
+      </div>
+    </div>
+    <div class="wg4-card" onclick="this.classList.toggle('flipped')">
+      <div class="wg4-inner">
+        <div class="wg4-face wg4-front pos-adj">
+          <span class="wg4-pos">adj. 形容詞</span>
+          <span class="wg4-word"><span class="wg4-stem">excit</span><span class="wg4-suf">ing</span></span>
+          <span class="wg4-kk">[ ɪk`saɪtɪŋ ]</span>
+          <span class="wg4-hint">點我翻面 ›</span>
+        </div>
+        <div class="wg4-face wg4-back pos-adj">
+          <span class="wg4-word-sm"><span class="wg4-stem">excit</span><span class="wg4-suf">ing</span> (adj.)</span>
+          <span class="wg4-en">causing strong feelings of interest and eagerness</span>
+          <span class="wg4-zh">令人興奮的〔事物的性質〕</span>
+          <span class="wg4-ex">It was an exciting and close game.<i>那是一場刺激又接近的比賽。</i></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wg4-essay">
+  <h2>為什麼一定要學「衍生詞」？——從學測題型看懂</h2>
+  <p>很多同學以為背一個 <b>consider</b> 就夠了。但學測真正考的，是你能不能<b>「在正確的位置，用正確的詞性」</b>。同一個字根，換個字尾就換了詞性，意思與用法也跟著變——上面四組翻卡就是在練這件事：<span class="tag">字根（深墨）不變，字尾（彩色）一換，詞性就換</span>。</p>
+
+  <h3>學測這樣考衍生詞</h3>
+  <ol>
+    <li><span class="tag">綜合測驗（克漏字）／詞彙題：</span>空格前後的文法會「鎖定詞性」。<code>a / the + ___ + 名詞</code> 要形容詞；<code>動詞 + ___</code> 常要副詞；<code>介系詞 + ___</code> 要名詞。只認得 succeed、卻不會 success（n.）、successful（adj.）、successfully（adv.），就算讀懂句意也會選錯。</li>
+    <li><span class="tag">誘答選項（distractors）：</span>選項常故意擺「同字根、不同詞性」的四個字（consider / considerate / considerable / consideration），只有一個詞性塞得進空格。這時「字族＋詞性」就是你判斷的依據。</li>
+    <li><span class="tag">中譯英／作文：</span>你得自己「生出」正確詞形。要寫「他成功地完成任務」，<b>successfully</b> 拼字對、詞性對，分數才到手。</li>
+    <li><span class="tag">陷阱題：-ed 形容詞 vs -ing 形容詞</span>——學測超愛考。<span class="hl-ed">-ed</span> 講「人的感受」：<i>I was&nbsp;<span class="hl-ed">excited</span>.</i>（我覺得興奮）；<span class="hl-ing">-ing</span> 講「事物的性質」：<i>The game was&nbsp;<span class="hl-ing">exciting</span>.</i>（比賽很刺激）。記反了，意思整個跑掉。</li>
+  </ol>
+
+  <h3>迷你示範：用「文法定位」秒選答案</h3>
+  <div class="q">After careful&nbsp;<span class="blank">______</span>, the board approved the plan.<br>
+  （A）consider （B）considerate （C）considerable （D）consideration</div>
+  <p>空格在形容詞 <b>careful</b> 後面、當介系詞 after 的受詞 → 需要一個<b>名詞</b> → 從 consider 字族選 <b>consideration</b>（D）。只要掌握「字族＋詞性」，這種題用文法就能定位，不必硬背整句。</p>
+
+  <p>所以背單字別只背一個形。<b>背一個字根，順手把它的「動詞／名詞／形容詞／副詞」一起記起來</b>——學測的詞彙題、克漏字、翻譯、作文會一起變強。</p>
+
+  <p class="note">小提醒：dependently 其實較少單獨使用，日常與考試更常見的是它的反義詞 <b>independently</b>（獨立地）；但「字根＋字尾→詞性」的邏輯完全一樣，會推一個就會推一整族。</p>
+</div>
+
+<script>
+/* 防止多個區塊重複定義；整個講義只要有一份就夠 */
+if(!window.wg4FlipAll){
+  window.wg4FlipAll=function(btn){
+    var wrap=btn.closest('.wg4-wrap');
+    var cards=wrap.querySelectorAll('.wg4-card');
+    var anyFront=Array.prototype.some.call(cards,function(c){return !c.classList.contains('flipped');});
+    Array.prototype.forEach.call(cards,function(c){ c.classList.toggle('flipped',anyFront); });
+    btn.textContent=anyFront?'🔄 全部翻回正面':'🔄 全部翻面看解釋';
+  };
+}
+</script>
+<!-- WORDGRID BLOCK END                                            -->
+<!-- ============================================================= -->
+
+</body>
+</html>
