@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>硬幣的秘密生活｜The Secret Life of Coins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F8F4ED; --card:#FFFDF8; --ink:#3A2E22;
+    --h1:#C0392B; --h2:#1565C0; --h3:#2E7D32;
+    --accentA:#E65100; --accentB:#6A1B9A;
+    --sumBg:#FBF3E7; --sumBorder:#E0A96D; --gloBg:#F3EEE4;
+    --line:#06C755;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:"BIZ UDPGothic","Inter",system-ui,sans-serif;
+    font-size:22px; line-height:1.9; font-weight:400;
+  }
+  main{max-width:820px; margin:0 auto; padding:24px 18px 60px;}
+  /* ===== Header ===== */
+  header{text-align:center; margin:18px 0 8px;}
+  .title{
+    display:inline-block; font-size:2.7rem; font-weight:700; color:var(--h1);
+    border:4px solid var(--h1); border-radius:18px; padding:14px 26px;
+    background:var(--card); box-shadow:0 4px 14px rgba(192,57,43,.15);
+    line-height:1.3;
+  }
+  .subtitle{font-size:1.95rem; color:var(--h2); font-weight:700; margin:18px 0 6px;}
+  .byline{
+    font-size:1.25rem; color:var(--h2); font-weight:700; letter-spacing:.5px;
+    font-style:normal; opacity:.92;
+  }
+  /* ===== Link cards ===== */
+  .links{display:flex; flex-direction:column; gap:16px; margin:26px 0;}
+  .lc{
+    display:block; text-decoration:none; color:#fff; border-radius:16px;
+    padding:18px 22px; min-height:72px; box-shadow:0 4px 12px rgba(0,0,0,.12);
+  }
+  .lc .lc-t{font-size:1.35rem; font-weight:700; line-height:1.4;}
+  .lc .lc-d{font-size:1.05rem; opacity:.96; margin-top:4px; line-height:1.6;}
+  .lc1{background:var(--h1);}
+  .lc2{background:var(--h2);}
+  .lc3{background:var(--line);}
+  @media(min-width:680px){.links{flex-direction:row;} .lc{flex:1;}}
+  /* ===== Unit map ===== */
+  #unit-map{
+    background:var(--card); border-radius:16px; padding:22px;
+    box-shadow:0 3px 10px rgba(0,0,0,.07); margin:26px 0;
+  }
+  #unit-map h2{font-size:1.6rem; color:var(--accentB); margin:0 0 14px;}
+  .map-grid{display:flex; flex-direction:column; gap:14px;}
+  .map-grid a{
+    display:flex; align-items:center; min-height:64px; padding:12px 20px;
+    border-radius:999px; color:#fff; text-decoration:none; font-weight:700;
+    font-size:1.18rem; line-height:1.35;
+  }
+  .m1{background:var(--h1);} .m2{background:var(--h2);} .m3{background:var(--h3);}
+  .m4{background:var(--accentA);} .m5{background:var(--accentB);}
+  .m6{background:#00838F;} .mg{background:#8D6E63;}
+  /* ===== Sections ===== */
+  section{
+    background:var(--card); border-radius:16px; padding:28px 24px;
+    margin:24px 0; box-shadow:0 3px 12px rgba(0,0,0,.07);
+    border-top:8px solid var(--h2);
+  }
+  section.s1{border-top-color:var(--h1);}
+  section.s2{border-top-color:var(--h2);}
+  section.s3{border-top-color:var(--h3);}
+  section.s4{border-top-color:var(--accentA);}
+  section.s5{border-top-color:var(--accentB);}
+  section.s6{border-top-color:#00838F;}
+  section.sg{border-top-color:#8D6E63; background:var(--gloBg);}
+  section h2{font-size:1.95rem; color:var(--h2); margin:0 0 16px; line-height:1.4;}
+  section.s1 h2{color:var(--h1);} section.s3 h2{color:var(--h3);}
+  section.s4 h2{color:var(--accentA);} section.s5 h2{color:var(--accentB);}
+  section.s6 h2{color:#00695C;} section.sg h2{color:#5D4037;}
+  section p{margin:14px 0;}
+  .kw{color:var(--accentA); font-weight:700;}
+  .en{font-family:"Inter",sans-serif; font-style:italic;}
+  /* English summary */
+  .sum{
+    background:var(--sumBg); border-left:8px solid var(--sumBorder);
+    border-radius:10px; padding:18px 20px; margin:22px 0 10px;
+    font-family:"Inter",sans-serif; font-size:1.05rem; line-height:1.75; color:#5A4632;
+  }
+  .sum .sum-h{font-weight:700; color:var(--accentA); display:block; margin-bottom:8px; font-size:1.15rem;}
+  /* back to map */
+  .back-to-map{
+    display:inline-block; margin-top:10px; padding:12px 22px; min-height:56px;
+    background:#8D6E63; color:#fff; text-decoration:none; border-radius:999px;
+    font-weight:700; font-size:1.05rem;
+  }
+  /* glossary */
+  .glo{margin:14px 0; padding:14px 18px; background:var(--card); border-radius:10px;}
+  .glo b{color:var(--accentB);}
+  .glo .kk{color:#777; font-family:"Inter",sans-serif; font-size:.95rem;}
+  /* ===== YouTube video block ===== */
+  .video-block{
+    background:var(--card); border-radius:16px; padding:22px;
+    margin:26px 0; box-shadow:0 3px 12px rgba(0,0,0,.08);
+    border-top:8px solid #CC0000;
+  }
+  .video-title{font-size:1.5rem; font-weight:700; color:#CC0000; line-height:1.4;}
+  .video-sub{font-size:1.1rem; color:var(--ink); margin:6px 0 16px; line-height:1.6; opacity:.9;}
+  .video-frame{
+    position:relative; width:100%; padding-bottom:56.25%; height:0;
+    border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,.15);
+  }
+  .video-frame iframe{
+    position:absolute; top:0; left:0; width:100%; height:100%; border:0;
+  }
+  .video-open{
+    display:inline-block; margin-top:16px; padding:14px 26px; min-height:60px;
+    background:#CC0000; color:#fff; text-decoration:none; border-radius:999px;
+    font-weight:700; font-size:1.15rem; line-height:1.4;
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <header>
+    <div class="title">硬幣的秘密生活</div>
+    <div class="subtitle">小小改變，藏著大歷史：The Secret Life of Coins</div>
+    <div class="byline">林威老師與 AI agent 團隊製作</div>
+  </header>
+
+  <!-- 頂部三連結卡 -->
+  <div class="links">
+    <a class="lc lc1" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="lc-t">七月課程・錯中學 ECHO 計劃</span>
+      <span class="lc-d">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="lc lc2" href="https://linwayet.github.io/popup/index">
+      <span class="lc-t">七月課程・學生分析</span>
+      <span class="lc-d">個人化學習診斷與規劃</span>
+    </a>
+    <a class="lc lc3" href="https://line.me/ti/p/~linwayet">
+      <span class="lc-t">加我的 LINE：linwayet</span>
+      <span class="lc-d">直接聯絡林威老師</span>
+    </a>
+  </div>
+
+  <!-- YouTube 講解影片（內嵌播放器） -->
+  <div class="video-block">
+    <div class="video-title">▶ 高中英文雜誌 Live-4U 講解 #7</div>
+    <div class="video-sub">Small Change Big Facts — The Secret Life of Coins｜零錢大知識．硬幣的秘密生活</div>
+    <div class="video-frame">
+      <iframe src="https://www.youtube.com/embed/2ammq1g7wXg"
+              title="高中英文雜誌 Live-4U 講解 #7"
+              frameborder="0"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen></iframe>
+    </div>
+    <a class="video-open" href="https://youtu.be/2ammq1g7wXg">▶ 在 YouTube 開啟觀看</a>
+  </div>
+
+  <!-- 單元地圖 -->
+  <nav id="unit-map">
+    <h2>🗺️ 單元地圖</h2>
+    <div class="map-grid">
+      <a class="m1" href="#unit1">單元一　硬幣的隱藏歷史與圓形起源</a>
+      <a class="m2" href="#unit2">單元二　防偽設計：夾剪與鋸齒</a>
+      <a class="m3" href="#unit3">單元三　不只是圓形：奇特的硬幣形狀</a>
+      <a class="m4" href="#unit4">單元四　硬幣與決策：從凱撒到機率</a>
+      <a class="m5" href="#unit5">單元五　現代創意硬幣</a>
+      <a class="m6" href="#unit6">單元六　硬幣的未來</a>
+      <a class="mg" href="#glossary">📖 術語表 Glossary</a>
+    </div>
+  </nav>
+
+  <!-- 單元一 -->
+  <section id="unit1" class="s1">
+    <h2>單元一　硬幣的隱藏歷史與圓形起源</h2>
+    <p>我們每天使用的這些小金屬圓片（metal <span class="kw">disks</span>），其實藏著豐富的歷史與巧妙的設計。你或許曾好奇：為什麼許多硬幣的邊緣摸起來凹凸不平（<span class="kw">bumpy</span> edges）？為什麼有些硬幣中間有洞？這些看似平凡的東西，背後都有道理。</p>
+    <p>多數硬幣是圓形的，原因其實很單純。早期鑄造貨幣（early <span class="kw">currency</span>）的方式，是把金屬放在兩塊鐵板之間敲打（<span class="kw">hammering</span>），這種加工方式自然就會壓出接近圓形的硬幣（circular coins）。換句話說，圓形不是刻意選擇的「設計」，而是製程下最自然的結果。</p>
+    <div class="sum">
+      <span class="sum-h">📝 English Summary</span>
+      The small metal disks we use every day are full of history and clever design. Most coins are round for a simple reason: early currency was made by hammering metal between two plates, which naturally produced circular shapes. The round form was therefore a result of the manufacturing process rather than a deliberate decision.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元二 -->
+  <section id="unit2" class="s2">
+    <h2>單元二　防偽設計：夾剪與鋸齒</h2>
+    <p>圓形硬幣還有另一個好處，與防止犯罪有關。過去硬幣含有真正的黃金與白銀，有些不法之徒（<span class="kw">criminals</span>）會從邊緣削下小塊金屬去變賣，這種行為稱為「剪邊」（<span class="kw">clipping</span>）。由於圓形有固定的弧度，一旦被剪掉一角就很容易被察覺（easier to <span class="kw">detect</span>），這讓圓形在防偽上佔了優勢。</p>
+    <p>鑄幣者還加上另一個巧思——在邊緣刻上一圈鋸齒紋路（<span class="kw">ridges</span>）。如果有人偷偷把金屬磨掉（<span class="kw">shaved</span> off），缺少的鋸齒就會立刻露出馬腳。今天我們手上硬幣邊緣的細紋，正是這項古老防偽智慧的遺跡。</p>
+    <div class="sum">
+      <span class="sum-h">📝 English Summary</span>
+      When coins contained real gold and silver, criminals would clip off small pieces to sell. Round shapes made such clipping easier to detect. Coin makers also added ridges around the edge, so that any shaved metal would immediately become obvious. The fine lines on modern coin edges are a legacy of this anti-counterfeiting trick.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元三 -->
+  <section id="unit3" class="s3">
+    <h2>單元三　不只是圓形：奇特的硬幣形狀</h2>
+    <p>不過，並非每一枚硬幣都是圓的。庫克群島（the Cook Islands）有一枚三角形（<span class="kw">triangular</span>）的二美元硬幣；英國則有七邊形（<span class="kw">seven-sided</span>）的硬幣。此外還能找到四邊、八邊、九邊、十邊，甚至十二邊的硬幣。</p>
+    <p>有些日本硬幣中間還被打了一個洞（holes <span class="kw">punched</span> through the middle）。這種設計過去在亞洲許多地方相當常見，因為人們會用繩子把硬幣串（<span class="kw">thread</span>）在一起，方便攜帶與計數。</p>
+    <div class="sum">
+      <span class="sum-h">📝 English Summary</span>
+      Not every coin is round. The Cook Islands has a triangular two-dollar coin, while the UK uses seven-sided coins, and others come with 4, 8, 9, 10, or 12 sides. Some Japanese coins have holes punched through the middle. This design was once common across Asia because people threaded coins together on strings.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元四 -->
+  <section id="unit4" class="s4">
+    <h2>單元四　硬幣與決策：從凱撒到機率</h2>
+    <p>硬幣不只用來買東西。自古羅馬時代起，它們也被用來幫人做決定。這種用法在西元前 44 年（44 BCE）之後變得更普遍——當時凱撒（Julius Caesar）把自己的肖像（<span class="kw">portrait</span>）放上了硬幣。迷信的羅馬人（<span class="kw">superstitious</span> Romans）相信，若擲出的硬幣（a <span class="kw">flipped</span> coin）正面朝上，就代表凱撒同意這件事。</p>
+    <p>有趣的是，科學家發現擲硬幣其實並非完美的五五波。研究指出，開始翻擲時朝上的那一面，有略高一點的機率再次落地朝上，大約是 51% 的時間，呈現一種微小的偏向（a small <span class="kw">tendency</span>）。</p>
+    <div class="sum">
+      <span class="sum-h">📝 English Summary</span>
+      Since ancient Roman times, coins have also helped people make decisions. This became more common after 44 BCE, when Julius Caesar placed his portrait on coins, and superstitious Romans treated a heads-up flip as his approval. Scientists have found that a coin flip is not a perfect 50-50 split: the side facing up at the start has a small tendency to land up again, about 51% of the time.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元五 -->
+  <section id="unit5" class="s5">
+    <h2>單元五　現代創意硬幣</h2>
+    <p>現代硬幣變得出乎意料地有創意。小島國紐埃（Niue）發行了內含真正隕石碎片（real <span class="kw">meteorite</span> pieces）的硬幣，這些碎片來自從太空墜落地球的隕石。加拿大則推出夜光恐龍硬幣（glow-in-the-dark dinosaur coins），在黑暗中會浮現發光的恐龍骨架（glowing <span class="kw">skeletons</span>），深受收藏家（<span class="kw">collectors</span>）喜愛。</p>
+    <p>而最不尋常的，或許是帛琉（Palau）的香味硬幣（<span class="kw">scented</span> coins），聞起來帶有椰子或海洋的氣味。這些設計顯示，硬幣早已不只是交易工具，也成了承載故事與收藏價值的小物件。</p>
+    <div class="sum">
+      <span class="sum-h">📝 English Summary</span>
+      Modern coins have become surprisingly creative. Niue produces coins containing real meteorite pieces that fell to Earth, and Canada makes glow-in-the-dark dinosaur coins whose glowing skeletons appeal to collectors. Perhaps the most unusual are Palau's scented coins, which smell like coconuts or the ocean. Coins have clearly become more than just tools for buying things.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 單元六 -->
+  <section id="unit6" class="s6">
+    <h2>單元六　硬幣的未來</h2>
+    <p>儘管硬幣有這麼多精彩的故事，它們的未來卻仍不明朗（remains <span class="kw">uncertain</span>）。金屬成本上升，意味著鑄造某些硬幣的花費，已經超過它們的面額（<span class="kw">face value</span>）。加拿大就在 2012 年因為這個原因停止生產一分錢硬幣（pennies）。</p>
+    <p>隨著數位支付平台（digital <span class="kw">payment platforms</span>）越來越普及，許多國家的硬幣產量正在放緩，不過仍有部分國家持續鑄造硬幣。同時，也有一些國家正立法保障消費者使用實體現金（physical <span class="kw">cash</span>）的權利，讓硬幣的命運仍充滿變數。</p>
+    <div class="sum">
+      <span class="sum-h">📝 English Summary</span>
+      Despite their amazing stories, the future of coins remains uncertain. Rising metal costs mean some coins now cost more to produce than their face value, which is why Canada stopped making pennies in 2012. As digital payment platforms grow, coin production is slowing in many countries, though some still mint coins and a few are passing laws to protect people's right to use physical cash.
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- Glossary -->
+  <section id="glossary" class="sg">
+    <h2>📖 術語表 Glossary</h2>
+    <div class="glo"><b>disk</b> <span class="kk">/dɪsk/</span> — 圓片、圓盤；文中指硬幣這種扁平的金屬圓片。</div>
+    <div class="glo"><b>bumpy</b> <span class="kk">/ˈbʌmpi/</span> — 凹凸不平的；形容硬幣邊緣有顆粒或紋路的觸感。</div>
+    <div class="glo"><b>currency</b> <span class="kk">/ˈkɝːənsi/</span> — 貨幣、通貨；一個國家流通使用的錢。</div>
+    <div class="glo"><b>hammer (v.)</b> <span class="kk">/ˈhæmɚ/</span> — 用鎚子敲打；早期鑄幣的金屬加工方式。</div>
+    <div class="glo"><b>circular</b> <span class="kk">/ˈsɝːkjəlɚ/</span> — 圓形的；與 round 同義，較正式。</div>
+    <div class="glo"><b>criminal</b> <span class="kk">/ˈkrɪmənl/</span> — 罪犯、不法之徒。</div>
+    <div class="glo"><b>clip off</b> <span class="kk">/klɪp/</span> — 剪下、削下（一小塊）；指從金幣邊緣剪取金屬的犯罪行為。</div>
+    <div class="glo"><b>detect</b> <span class="kk">/dɪˈtɛkt/</span> — 察覺、偵測；發現原本不易看見的東西。</div>
+    <div class="glo"><b>ridge</b> <span class="kk">/rɪdʒ/</span> — 突起的稜線、紋路；硬幣邊緣的一圈鋸齒。</div>
+    <div class="glo"><b>shave off</b> <span class="kk">/ʃeɪv/</span> — 削掉、磨掉（薄薄一層）。</div>
+    <div class="glo"><b>triangular</b> <span class="kk">/traɪˈæŋɡjəlɚ/</span> — 三角形的。</div>
+    <div class="glo"><b>seven-sided</b> — 七邊形的；英國的 50p、20p 即為七邊形。</div>
+    <div class="glo"><b>punch (v.)</b> <span class="kk">/pʌntʃ/</span> — 打孔、沖壓出洞。</div>
+    <div class="glo"><b>thread (v.)</b> <span class="kk">/θrɛd/</span> — 把（東西）穿起、串起；如用繩子串硬幣。</div>
+    <div class="glo"><b>portrait</b> <span class="kk">/ˈpɔːrtrət/</span> — 肖像、人像。</div>
+    <div class="glo"><b>superstitious</b> <span class="kk">/ˌsuːpɚˈstɪʃəs/</span> — 迷信的。</div>
+    <div class="glo"><b>flip (v.)</b> <span class="kk">/flɪp/</span> — 擲、彈（硬幣）使其翻轉。</div>
+    <div class="glo"><b>tendency</b> <span class="kk">/ˈtɛndənsi/</span> — 傾向、趨勢；某事較常發生的方向。</div>
+    <div class="glo"><b>meteorite</b> <span class="kk">/ˈmiːtiəraɪt/</span> — 隕石；墜落到地球表面的太空岩石。</div>
+    <div class="glo"><b>glow-in-the-dark</b> — 夜光的；在黑暗中會發光。</div>
+    <div class="glo"><b>skeleton</b> <span class="kk">/ˈskɛlətn/</span> — 骨架、骨骼。</div>
+    <div class="glo"><b>collector</b> <span class="kk">/kəˈlɛktɚ/</span> — 收藏家。</div>
+    <div class="glo"><b>scented</b> <span class="kk">/ˈsɛntɪd/</span> — 帶有香味的、加了香氣的。</div>
+    <div class="glo"><b>uncertain</b> <span class="kk">/ʌnˈsɝːtn/</span> — 不確定的、不明朗的。</div>
+    <div class="glo"><b>face value</b> — 面額、票面價值；硬幣上標示的價值。</div>
+    <div class="glo"><b>payment platform</b> — 支付平台；如行動支付、電子錢包等系統。</div>
+    <div class="glo"><b>physical cash</b> — 實體現金；相對於數位支付的紙鈔與硬幣。</div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <!-- 底部三連結卡（與頂部一致） -->
+  <div class="links">
+    <a class="lc lc1" href="https://linwayet.github.io/4ulive/index.html">
+      <span class="lc-t">七月課程・錯中學 ECHO 計劃</span>
+      <span class="lc-d">從錯誤中學習的英文進步方法</span>
+    </a>
+    <a class="lc lc2" href="https://linwayet.github.io/popup/index">
+      <span class="lc-t">七月課程・學生分析</span>
+      <span class="lc-d">個人化學習診斷與規劃</span>
+    </a>
+    <a class="lc lc3" href="https://line.me/ti/p/~linwayet">
+      <span class="lc-t">加我的 LINE：linwayet</span>
+      <span class="lc-d">直接聯絡林威老師</span>
+    </a>
+  </div>
+
+</main>
+</body>
+</html>
