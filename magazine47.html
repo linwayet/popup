@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cusco Uncovered — 林威老師英文教材</title>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  font-family: 'BIZ UDPGothic', 'Noto Sans TC', sans-serif;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.9;
+  background: #FFF8F0;
+  color: #1A0F00;
+  margin: 0;
+  padding: 0 16px 60px;
+}
+.container { max-width: 880px; margin: 0 auto; }
+
+/* ── 頂部標題 ── */
+.title-box {
+  border: 4px solid #C0392B;
+  border-radius: 12px;
+  padding: 28px 32px 18px;
+  margin: 36px 0 0;
+  text-align: center;
+  background: #FFF0EE;
+}
+.title-box h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #C0392B;
+  margin: 0 0 8px;
+  letter-spacing: 0.04em;
+}
+.title-box h2 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1565C0;
+  margin: 0 0 12px;
+}
+.title-box .credit {
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #1565C0, #0D47A1, #1976D2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.08em;
+}
+
+/* ── 單元地圖 ── */
+#unit-map {
+  margin: 28px 0;
+  padding: 22px 24px;
+  background: #FFF8F0;
+  border: 2px solid #C4A06A;
+  border-radius: 14px;
+}
+#unit-map h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #4A3728;
+  margin: 0 0 16px;
+  text-align: center;
+}
+.unit-map-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+}
+.unit-map-grid a {
+  display: flex;
+  align-items: center;
+  min-height: 72px;
+  padding: 12px 22px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  text-align: center;
+}
+.unit-map-grid a.u1 { background: #0D47A1; }
+.unit-map-grid a.u2 { background: #BF360C; }
+.unit-map-grid a.u3 { background: #1B5E20; }
+.unit-map-grid a.u4 { background: #4A148C; }
+.unit-map-grid a.u5 { background: #4A3728; }
+
+/* ── 回到單元地圖 ── */
+.back-to-map {
+  display: block;
+  text-align: center;
+  margin: 36px auto 8px;
+  padding: 14px 32px;
+  min-height: 72px;
+  line-height: 44px;
+  background: #4A3728;
+  color: #fff;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  max-width: 320px;
+}
+.back-to-map:hover { background: #6D4C2A; }
+
+/* ── 區塊標題列 ── */
+.section-header {
+  padding: 16px 24px;
+  border-radius: 10px 10px 0 0;
+  margin-top: 40px;
+}
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+.sh-blue  { background: #0D47A1; }
+.sh-red   { background: #BF360C; }
+.sh-green { background: #1B5E20; }
+.sh-purple{ background: #4A148C; }
+.sh-brown { background: #4A3728; }
+
+/* ── 卡片 ── */
+.card {
+  border: 2px solid;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  padding: 24px 28px;
+  margin-bottom: 8px;
+}
+.card-blue   { border-color: #90CAF9; background: #F3F8FF; }
+.card-red    { border-color: #FFAB91; background: #FFF3EF; }
+.card-green  { border-color: #81C784; background: #F1F8F2; }
+.card-purple { border-color: #CE93D8; background: #F9F0FF; }
+.card-brown  { border-color: #C4A06A; background: #FAF6F0; }
+
+/* ── 原文關鍵字 ── */
+.kw { color: #0D47A1; font-weight: 700; }
+
+/* ── 精讀 ── */
+.circ-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #BF360C;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+.reading-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 28px;
+  border-bottom: 1px dashed #FFAB91;
+}
+.reading-item:last-child { border-bottom: none; margin-bottom: 0; }
+.reading-body { flex: 1; }
+.reading-sentence {
+  font-style: italic;
+  color: #1A0F00;
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+.reading-trans {
+  color: #4A3728;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+.reading-grammar {
+  color: #4A148C;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+}
+.grammar-label {
+  font-weight: 700;
+  color: #4A148C;
+}
+.pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.pill {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.pill-orange { background: #FEF0E7; color: #E65100; }
+.pill-purple { background: #F5EEF8; color: #6A1B9A; }
+.pill-blue   { background: #EBF5FB; color: #1565C0; }
+.pill-green  { background: #EAFAF1; color: #2E7D32; }
+.pill-red    { background: #FDEDEC; color: #C0392B; }
+.pill-gold   { background: #FEF9E7; color: #D68910; }
+
+/* ── 單字整理 ── */
+.vocab-item {
+  border: 2px solid #81C784;
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  background: #F8FBF8;
+}
+.vocab-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.vocab-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: #1B5E20;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.vocab-word { font-size: 1.35rem; font-weight: 700; color: #1B5E20; }
+.vocab-phonetic { font-size: 1rem; color: #4A3728; }
+.vocab-pos { font-size: 0.9rem; font-weight: 700; color: #fff; background: #2E7D32; padding: 2px 10px; border-radius: 12px; }
+.vocab-def { font-size: 1.05rem; color: #1A0F00; font-weight: 700; }
+.tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0; }
+.tag {
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+.tag-deriv   { background: #FDEDEC; color: #C0392B; }
+.tag-root    { background: #EBF5FB; color: #1565C0; }
+.tag-phrase  { background: #EAFAF1; color: #2E7D32; }
+.tag-idiom   { background: #FEF9E7; color: #D68910; }
+.tag-confuse { background: #F5EEF8; color: #6A1B9A; }
+.tag-content {
+  font-size: 0.95rem;
+  margin: 2px 0 10px 0;
+  color: #1A0F00;
+  padding-left: 6px;
+  border-left: 3px solid #81C784;
+}
+.example-block {
+  background: #F1F8F2;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 8px;
+  font-size: 0.97rem;
+}
+.example-en { color: #1A0F00; font-style: italic; }
+.example-zh { color: #4A3728; font-size: 0.92rem; }
+
+/* ── 文法解析 ── */
+.grammar-item {
+  border: 2px solid #CE93D8;
+  border-radius: 10px;
+  padding: 22px 24px;
+  margin-bottom: 24px;
+  background: #FBF6FF;
+}
+.grammar-item h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4A148C;
+  margin: 0 0 14px;
+}
+.grammar-quote {
+  font-style: italic;
+  background: #F3E5FF;
+  border-left: 5px solid #7B1FA2;
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 14px;
+  font-size: 1rem;
+}
+.grammar-pattern {
+  font-style: italic;
+  font-weight: 700;
+  color: #4A148C;
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+}
+.grammar-section-title {
+  font-weight: 700;
+  color: #4A148C;
+  font-size: 0.95rem;
+  margin: 12px 0 4px;
+}
+.grammar-core { font-size: 1rem; margin-bottom: 8px; }
+.grammar-rules { margin: 0 0 8px 0; padding-left: 20px; font-size: 0.97rem; }
+.grammar-rules li { margin-bottom: 4px; }
+.error-box {
+  background: #FFF3EF;
+  border-left: 4px solid #BF360C;
+  padding: 10px 14px;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+.wrong { color: #BF360C; }
+.right { color: #1B5E20; }
+
+/* ── 折疊區塊 ── */
+details {
+  border: 2px solid #C4A06A;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  background: #FAF6F0;
+  overflow: hidden;
+}
+summary {
+  padding: 20px 24px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #fff;
+  background: #4A3728;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 72px;
+}
+summary::-webkit-details-marker { display: none; }
+.arrow {
+  display: inline-block;
+  transition: transform 0.3ms;
+  font-style: normal;
+}
+details[open] .arrow { transform: rotate(180deg); }
+.details-body { padding: 22px 26px; }
+.prefix-item, .suffix-item, .word-item {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+.prefix-key, .word-key { font-weight: 700; color: #0D47A1; }
+.suffix-key { font-weight: 700; color: #1B5E20; }
+.suffix-group-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #4A148C;
+  margin: 18px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #CE93D8;
+}
+.writing-item {
+  margin-bottom: 20px;
+  padding: 14px 18px;
+  background: #FFF8F0;
+  border-left: 4px solid #E65100;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.97rem;
+}
+.writing-num {
+  font-weight: 700;
+  color: #E65100;
+  font-size: 1rem;
+}
+.writing-use { color: #4A3728; font-size: 0.93rem; margin: 2px 0; }
+.writing-ex { font-style: italic; color: #1A0F00; font-size: 0.95rem; }
+.phrase-list { list-style: none; padding: 0; }
+.phrase-list li {
+  padding: 8px 12px;
+  border-bottom: 1px dashed #C4A06A;
+  font-size: 1rem;
+}
+.phrase-list li:last-child { border-bottom: none; }
+
+@media (max-width: 600px) {
+  body { font-size: 18px; padding: 0 10px 40px; }
+  .title-box h1 { font-size: 2rem; }
+  .title-box h2 { font-size: 1.5rem; }
+  .unit-map-grid a { font-size: 0.95rem; padding: 10px 16px; }
+  .card { padding: 16px 14px; }
+  .reading-item { flex-direction: column; }
+  .circ-num { margin-bottom: 8px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ══ 頂部標題 ══ -->
+<div class="title-box">
+  <h1>🏔️ Cusco Uncovered</h1>
+  <h2>Unit 14 ── 揭開庫斯科神秘面紗</h2>
+  <div class="credit">✦ 林威老師與 AI agent 團隊製作 ✦</div>
+</div>
+
+<!-- ══ 單元地圖 ══ -->
+<nav id="unit-map">
+  <h3>📍 單元地圖 Unit Map</h3>
+  <div class="unit-map-grid">
+    <a href="#unit1" class="u1">區塊一<br>英文文章原文</a>
+    <a href="#unit2" class="u2">區塊二<br>8 句精讀</a>
+    <a href="#unit3" class="u3">區塊三<br>單字整理</a>
+    <a href="#unit4" class="u4">區塊四<br>文法解析</a>
+    <a href="#unit5" class="u5">補充資料<br>字首／字尾／30單詞／練文筆</a>
+  </div>
+</nav>
+
+<!-- ══ 區塊一：英文文章原文 ══ -->
+<section id="unit1">
+  <div class="section-header sh-blue">
+    <h2>📖 區塊一　英文文章原文</h2>
+  </div>
+  <div class="card card-blue">
+    <p>Unit 14, <strong>Cusco Uncovered</strong></p>
+    <p>Located high in the Andes Mountains, Cusco is one of the most interesting cities in Peru. This living museum was the capital of the powerful Inca Empire, and later a major Spanish <strong class="kw">colonial</strong> city. Today, centuries after the <strong class="kw">collapse</strong> of the Inca, Cusco is still a city of great cultural <strong class="kw">significance</strong>, which makes it an essential stop for visitors to Peru.</p>
+    <p>From its heart at the Plaza de Armas, Cusco's historic district is made up of a collection of beautiful Spanish buildings. However, many of these buildings are built upon the original Inca structures that existed long before Spain's <strong class="kw">invasion</strong> of the Andes in the 16th century. One such example is the Coricancha Sun Temple, which was once the most <strong class="kw">sacred</strong> site in the Inca world. The original temple <strong class="kw">ruins</strong> are still visible, but now sit below the Inca. The Inca is also the most famous temple in the world, because it is located below the Santo Domingo Church.</p>
+    <p>Owing to its long history, Cusco is surrounded by many ancient wonders. The most famous is Sacsayhuaman, a large stone <strong class="kw">fortress</strong> <strong class="kw">overlook</strong>ing the city. The Inca built it with huge stones that fit together perfectly without any glue or <strong class="kw">mortar</strong>. Even after hundreds of years, these walls are still standing strong, thanks to this incredible <strong class="kw">engineering</strong>.</p>
+    <p>One of the best places to experience Cusco's culture for yourself is the San Pedro Market, which is filled with the colors and flavors of Peru. Among the market's many foods, two items stand out as especially <strong class="kw">distinct</strong>, cui and chicha. Cui, or guinea pig, can be found roasted and served with potatoes and spices. Chicha, on the other hand, is a drink made from corn that was once used as an <strong class="kw">offering</strong> to the gods.</p>
+    <p>Each year on June 24, the city bursts into energy for the Inti Rami Festival. This grand celebration honors the Inca sun god and marks the winter <strong class="kw">solstice</strong> in the southern <strong class="kw">hemisphere</strong>. The Inca believed this was the day when the sun began its return, which brought the promise of longer days ahead and the hope for <strong class="kw">plentiful</strong> <strong class="kw">harvest</strong>s. Today's celebrations include <strong class="kw">reenactment</strong>s of Inca <strong class="kw">ritual</strong>s, traditional music featuring drums and flutes, and dances representing animals and gods.</p>
+    <p>Cusco is <strong class="kw">evidently</strong> a place shaped by deep history and is home to ruins, markets, and festivals that keep its ancient past relevant to this day. This combination is what has made the Peruvian city so exciting and <strong class="kw">appealing</strong> to tourists from around the globe.</p>
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- ══ 區塊二：8 句精讀 ══ -->
+<section id="unit2">
+  <div class="section-header sh-red">
+    <h2>🔍 區塊二　8 句精讀</h2>
+  </div>
+  <div class="card card-red">
+
+    <!-- ① -->
+    <div class="reading-item">
+      <span class="circ-num">①</span>
+      <div class="reading-body">
+        <div class="reading-sentence">This living museum was the capital of the powerful Inca Empire, and later a major Spanish colonial city.</div>
+        <div class="reading-trans">這座活生生的博物館曾是強大印加帝國的首都，後來也成為西班牙重要的殖民城市。</div>
+        <div class="reading-grammar"><span class="grammar-label">【文法】</span>並列結構（Parallel Structure）＋同位語。本句以 <em>and</em> 連接兩個並列成分：「the capital of the powerful Inca Empire」與「a major Spanish colonial city」，兩者皆為 <em>Cusco</em>（即 This living museum）的同位語，說明它在不同歷史時期的身份。</div>
+        <div class="pill-row">
+          <span class="pill pill-orange">living museum 活生生的博物館</span>
+          <span class="pill pill-blue">colonial 殖民地的</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② -->
+    <div class="reading-item">
+      <span class="circ-num">②</span>
+      <div class="reading-body">
+        <div class="reading-sentence">Today, centuries after the collapse of the Inca, Cusco is still a city of great cultural significance, which makes it an essential stop for visitors to Peru.</div>
+        <div class="reading-trans">如今，在印加帝國崩潰數世紀之後，庫斯科仍是一座具有重要文化意義的城市，這使它成為前往秘魯的旅客必不可少的一站。</div>
+        <div class="reading-grammar"><span class="grammar-label">【文法】</span>非限定性形容詞子句（Non-restrictive Relative Clause）。逗號後的 <em>which makes it an essential stop</em> 是非限定性子句，以逗號隔開，<em>which</em> 指代前面整個主句的內容（即庫斯科具有重要文化意義這件事），補充說明結果。</div>
+        <div class="pill-row">
+          <span class="pill pill-gold">centuries after... 數世紀之後</span>
+          <span class="pill pill-orange">essential stop 必訪之地</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ -->
+    <div class="reading-item">
+      <span class="circ-num">③</span>
+      <div class="reading-body">
+        <div class="reading-sentence">However, many of these buildings are built upon the original Inca structures that existed long before Spain's invasion of the Andes in the 16th century.</div>
+        <div class="reading-trans">然而，這些建築中有許多是建立在早於西班牙十六世紀入侵安第斯山脈之前便已存在的印加原始結構之上。</div>
+        <div class="reading-grammar"><span class="grammar-label">【文法】</span>限定性形容詞子句（Restrictive Relative Clause）。<em>that existed long before Spain's invasion...</em> 修飾 <em>structures</em>，限定了特定的那些結構（早已存在的那些），<em>that</em> 為關係代名詞，子句不可省略，否則句意不完整。</div>
+        <div class="pill-row">
+          <span class="pill pill-blue">be built upon 建立在…之上</span>
+          <span class="pill pill-red">invasion 入侵</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ④ -->
+    <div class="reading-item">
+      <span class="circ-num">④</span>
+      <div class="reading-body">
+        <div class="reading-sentence">One such example is the Coricancha Sun Temple, which was once the most sacred site in the Inca world.</div>
+        <div class="reading-trans">其中一個這樣的例子是科里坎查太陽神廟，它曾是整個印加世界中最神聖的聖地。</div>
+        <div class="reading-grammar"><span class="grammar-label">【文法】</span>同位語（Appositive）＋非限定性形容詞子句。<em>the Coricancha Sun Temple</em> 是 <em>One such example</em> 的同位語，具體說明「例子」為何；其後接的 <em>which was once the most sacred site</em> 是非限定性子句，進一步描述該神廟的歷史地位。</div>
+        <div class="pill-row">
+          <span class="pill pill-orange">One such example 其中一個這樣的例子</span>
+          <span class="pill pill-gold">sacred site 聖地</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑤ -->
+    <div class="reading-item">
+      <span class="circ-num">⑤</span>
+      <div class="reading-body">
+        <div class="reading-sentence">The Inca built it with huge stones that fit together perfectly without any glue or mortar.</div>
+        <div class="reading-trans">印加人用巨大的石塊建造它，這些石塊無需任何膠水或砂漿便能完美地拼合在一起。</div>
+        <div class="reading-grammar"><span class="grammar-label">【文法】</span>限定性形容詞子句＋介係詞片語。<em>that fit together perfectly</em> 修飾 <em>stones</em>，說明石塊的特性；<em>without any glue or mortar</em> 為介係詞片語，表方式，強調不需任何黏著材料。</div>
+        <div class="pill-row">
+          <span class="pill pill-blue">fit together 緊密拼合</span>
+          <span class="pill pill-orange">without any... 不需任何…</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑥ -->
+    <div class="reading-item">
+      <span class="circ-num">⑥</span>
+      <div class="reading-body">
+        <div class="reading-sentence">Chicha, on the other hand, is a drink made from corn that was once used as an offering to the gods.</div>
+        <div class="reading-trans">另一方面，奇恰是一種由玉米製成的飲料，曾經被用作祭神的供品。</div>
+        <div class="reading-grammar"><span class="grammar-label">【文法】</span>插入語＋過去分詞片語作後置修飾＋形容詞子句。<em>on the other hand</em> 為插入語，表對比；<em>made from corn</em> 是過去分詞片語修飾 <em>drink</em>；<em>that was once used as an offering</em> 是限定性子句，進一步說明玉米飲料的歷史用途。</div>
+        <div class="pill-row">
+          <span class="pill pill-gold">on the other hand 另一方面</span>
+          <span class="pill pill-red">offering to the gods 祭品</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑦ -->
+    <div class="reading-item">
+      <span class="circ-num">⑦</span>
+      <div class="reading-body">
+        <div class="reading-sentence">The Inca believed this was the day when the sun began its return, which brought the promise of longer days ahead and the hope for plentiful harvests.</div>
+        <div class="reading-trans">印加人相信，這是太陽開始回歸的日子，象徵著漫長白晝與豐收的希望即將到來。</div>
+        <div class="reading-grammar"><span class="grammar-label">【文法】</span>名詞子句（that 省略）＋時間關係子句（when）＋非限定性子句（which）。<em>believed (that) this was the day</em> 中的 <em>that</em> 省略；<em>when the sun began its return</em> 是形容詞子句修飾 <em>day</em>；最後的 <em>which</em> 代指整個回歸事件，引出結果。</div>
+        <div class="pill-row">
+          <span class="pill pill-blue">the promise of... …的承諾</span>
+          <span class="pill pill-green">plentiful harvests 豐收</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑧ -->
+    <div class="reading-item">
+      <span class="circ-num">⑧</span>
+      <div class="reading-body">
+        <div class="reading-sentence">This combination is what has made the Peruvian city so exciting and appealing to tourists from around the globe.</div>
+        <div class="reading-trans">正是這種結合，使這座秘魯城市對來自世界各地的遊客如此令人興奮、充滿吸引力。</div>
+        <div class="reading-grammar"><span class="grammar-label">【文法】</span><em>what</em> 名詞子句作表語（Predicate Noun Clause）。<em>what has made...</em> 是名詞子句，置於連綴動詞 <em>is</em> 後面作表語。<em>what</em> 相當於 <em>the thing that</em>，含有強調語氣，意指「正是（這件事）使得…」。</div>
+        <div class="pill-row">
+          <span class="pill pill-orange">is what has made... 正是使…的原因</span>
+          <span class="pill pill-red">appealing to 對…有吸引力</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- ══ 區塊三：單字整理 ══ -->
+<section id="unit3">
+  <div class="section-header sh-green">
+    <h2>📚 區塊三　18–20 個單字整理</h2>
+  </div>
+  <div class="card card-green">
+
+    <!-- 1 significance -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">①</span>
+        <span class="vocab-word">significance</span>
+        <span class="vocab-phonetic">[sɪɡˈnɪfɪkəns]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-def">重要性；意義</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">significant (adj. 重要的)　significantly (adv. 顯著地)　signify (v. 意謂；象徵)</div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">sign- = mark（標記）→ 有意義的標誌 → 重要性</div>
+      <div class="tag-row">
+        <span class="tag tag-phrase">片語</span>
+      </div>
+      <div class="tag-content">be of great significance to（對…極為重要）</div>
+      <div class="tag-row">
+        <span class="tag tag-idiom">慣用語</span>
+      </div>
+      <div class="tag-content">a matter of great significance（極為重要的事情）</div>
+      <div class="example-block">
+        <div class="example-en">Cusco is still a city of great cultural significance.</div>
+        <div class="example-zh">（庫斯科仍是一座具有重要文化意義的城市。）</div>
+        <div class="example-en" style="margin-top:8px;">The discovery was of great significance to the history of medicine.</div>
+        <div class="example-zh">（這項發現對醫學史具有重大意義。）</div>
+      </div>
+    </div>
+
+    <!-- 2 colonial -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">②</span>
+        <span class="vocab-word">colonial</span>
+        <span class="vocab-phonetic">[kəˈloʊniəl]</span>
+        <span class="vocab-pos">adj.</span>
+        <span class="vocab-def">殖民地的；殖民時期的</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">colony (n. 殖民地)　colonize (v. 殖民)　colonialism (n. 殖民主義)　colonist (n. 殖民者)</div>
+      <div class="tag-row">
+        <span class="tag tag-phrase">片語</span>
+      </div>
+      <div class="tag-content">colonial city（殖民城市）　colonial era（殖民時代）</div>
+      <div class="example-block">
+        <div class="example-en">Cusco later became a major Spanish colonial city.</div>
+        <div class="example-zh">（庫斯科後來成為西班牙重要的殖民城市。）</div>
+        <div class="example-en" style="margin-top:8px;">Many countries gained independence from colonial rule in the 20th century.</div>
+        <div class="example-zh">（許多國家在二十世紀擺脫殖民統治、獲得獨立。）</div>
+      </div>
+    </div>
+
+    <!-- 3 collapse -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">③</span>
+        <span class="vocab-word">collapse</span>
+        <span class="vocab-phonetic">[kəˈlæps]</span>
+        <span class="vocab-pos">n. / v.</span>
+        <span class="vocab-def">崩潰；倒塌；瓦解</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">collapsible (adj. 可折疊的；可收縮的)</div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">col- (= together) + laps- (= fall) → 一起倒下 → 崩潰</div>
+      <div class="tag-row">
+        <span class="tag tag-phrase">片語</span>
+      </div>
+      <div class="tag-content">after the collapse of（在…崩潰之後）　collapse under pressure（在壓力下崩潰）</div>
+      <div class="example-block">
+        <div class="example-en">Centuries after the collapse of the Inca, Cusco remains significant.</div>
+        <div class="example-zh">（在印加帝國崩潰數世紀之後，庫斯科仍具有重要意義。）</div>
+        <div class="example-en" style="margin-top:8px;">The old bridge collapsed during the storm and had to be rebuilt.</div>
+        <div class="example-zh">（那座舊橋在暴風雨中倒塌，必須重建。）</div>
+      </div>
+    </div>
+
+    <!-- 4 invasion -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">④</span>
+        <span class="vocab-word">invasion</span>
+        <span class="vocab-phonetic">[ɪnˈveɪʒən]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-def">入侵；侵犯</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">invade (v. 入侵)　invasive (adj. 侵入性的)　invader (n. 入侵者)</div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">in- (= into) + vad- (= go) → 進入 → 入侵</div>
+      <div class="example-block">
+        <div class="example-en">Spain's invasion of the Andes took place in the 16th century.</div>
+        <div class="example-zh">（西班牙對安第斯山脈的入侵發生在十六世紀。）</div>
+        <div class="example-en" style="margin-top:8px;">The country resisted the invasion and protected its independence.</div>
+        <div class="example-zh">（該國抵抗了這次入侵，保護了自己的獨立。）</div>
+      </div>
+    </div>
+
+    <!-- 5 sacred -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑤</span>
+        <span class="vocab-word">sacred</span>
+        <span class="vocab-phonetic">[ˈsekrɪd]</span>
+        <span class="vocab-pos">adj.</span>
+        <span class="vocab-def">神聖的；宗教的</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">sacredness (n. 神聖性)　sacrifice (n./v. 犧牲；祭祀)</div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">sacr- = holy（神聖）→ sacred, sacrifice, sanctuary</div>
+      <div class="tag-row">
+        <span class="tag tag-phrase">片語</span>
+      </div>
+      <div class="tag-content">sacred site（聖地）　sacred ceremony（神聖儀式）</div>
+      <div class="tag-row">
+        <span class="tag tag-confuse">容易混淆</span>
+      </div>
+      <div class="tag-content">sacred（宗教意義上的神聖）vs. holy（泛指神聖；兩者可通用但 sacred 更常指特定場所或物件）</div>
+      <div class="example-block">
+        <div class="example-en">The Coricancha Sun Temple was once the most sacred site in the Inca world.</div>
+        <div class="example-zh">（科里坎查太陽神廟曾是整個印加世界中最神聖的聖地。）</div>
+        <div class="example-en" style="margin-top:8px;">The river was considered sacred by the local people for centuries.</div>
+        <div class="example-zh">（幾個世紀以來，那條河一直被當地人視為神聖。）</div>
+      </div>
+    </div>
+
+    <!-- 6 ruins -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑥</span>
+        <span class="vocab-word">ruins</span>
+        <span class="vocab-phonetic">[ˈruɪnz]</span>
+        <span class="vocab-pos">n. 複</span>
+        <span class="vocab-def">廢墟；遺跡</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">ruin (n. 廢墟；毀滅　v. 毀壞)　ruined (adj. 廢棄的；毀壞的)</div>
+      <div class="tag-row">
+        <span class="tag tag-phrase">片語</span>
+      </div>
+      <div class="tag-content">in ruins（成為廢墟）　ancient ruins（古代遺跡）</div>
+      <div class="example-block">
+        <div class="example-en">The original temple ruins are still visible below the Santo Domingo Church.</div>
+        <div class="example-zh">（在聖多明哥教堂下方，原始神廟的廢墟至今仍清晰可見。）</div>
+        <div class="example-en" style="margin-top:8px;">Tourists came from all over the world to see the ancient ruins of Rome.</div>
+        <div class="example-zh">（世界各地的遊客前來參觀羅馬的古代遺跡。）</div>
+      </div>
+    </div>
+
+    <!-- 7 fortress -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑦</span>
+        <span class="vocab-word">fortress</span>
+        <span class="vocab-phonetic">[ˈfɔrtrɪs]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-def">堡壘；要塞</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">fortify (v. 鞏固；加固)　fortification (n. 防禦工事)　fort (n. 小型堡壘)</div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">fort- = strong（強壯）→ fortress, fortify, effort</div>
+      <div class="tag-row">
+        <span class="tag tag-confuse">容易混淆</span>
+      </div>
+      <div class="tag-content">fortress（純軍事要塞，規模大）vs. castle（城堡，兼具居住功能）vs. fort（小型軍事據點）</div>
+      <div class="example-block">
+        <div class="example-en">Sacsayhuaman is a large stone fortress overlooking the city of Cusco.</div>
+        <div class="example-zh">（薩克薩瓦曼是一座俯瞰庫斯科城的大型石造堡壘。）</div>
+        <div class="example-en" style="margin-top:8px;">The fortress was built on a hilltop to protect the city from enemy attacks.</div>
+        <div class="example-zh">（這座要塞建於山頂上，以保護城市免受敵軍攻擊。）</div>
+      </div>
+    </div>
+
+    <!-- 8 overlook -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑧</span>
+        <span class="vocab-word">overlook</span>
+        <span class="vocab-phonetic">[ˌoʊvɚˈlʊk]</span>
+        <span class="vocab-pos">v.</span>
+        <span class="vocab-def">俯瞰；忽視；不追究</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-phrase">片語</span>
+      </div>
+      <div class="tag-content">overlook the city（俯瞰城市）　overlook a mistake（忽視錯誤）</div>
+      <div class="tag-row">
+        <span class="tag tag-confuse">容易混淆</span>
+      </div>
+      <div class="tag-content">overlook 有兩義：①從高處俯瞰 ②忽略/忽視 → 需依上下文判斷</div>
+      <div class="example-block">
+        <div class="example-en">Sacsayhuaman is a large stone fortress overlooking the city.</div>
+        <div class="example-zh">（薩克薩瓦曼是一座俯瞰城市的大型石造堡壘。）</div>
+        <div class="example-en" style="margin-top:8px;">The hotel room overlooked the beautiful mountain scenery below.</div>
+        <div class="example-zh">（飯店房間俯瞰著下方美麗的山景。）</div>
+      </div>
+    </div>
+
+    <!-- 9 mortar -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑨</span>
+        <span class="vocab-word">mortar</span>
+        <span class="vocab-phonetic">[ˈmɔrtɚ]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-def">砂漿；灰泥（建築用）；迫擊砲；研缽</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-confuse">容易混淆</span>
+      </div>
+      <div class="tag-content">mortar（砂漿，建築黏著材料）vs. cement（水泥，製作砂漿的原料）vs. concrete（混凝土，用於澆灌結構）</div>
+      <div class="example-block">
+        <div class="example-en">The Inca built the fortress without any glue or mortar.</div>
+        <div class="example-zh">（印加人建造這座堡壘時不使用任何膠水或砂漿。）</div>
+        <div class="example-en" style="margin-top:8px;">The ancient walls were held together without mortar, yet they still stand today.</div>
+        <div class="example-zh">（這些古老的石牆沒有砂漿固定，卻至今仍屹立不搖。）</div>
+      </div>
+    </div>
+
+    <!-- 10 engineering -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑩</span>
+        <span class="vocab-word">engineering</span>
+        <span class="vocab-phonetic">[ˌɛndʒɪˈnɪrɪŋ]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-def">工程；工程學</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">engineer (n. 工程師　v. 設計；策畫)　engineered (adj. 人工設計的)</div>
+      <div class="tag-row">
+        <span class="tag tag-idiom">慣用語</span>
+      </div>
+      <div class="tag-content">incredible engineering（令人嘆為觀止的工程技術）　a feat of engineering（一項工程壯舉）</div>
+      <div class="example-block">
+        <div class="example-en">These walls are still standing strong, thanks to this incredible engineering.</div>
+        <div class="example-zh">（這些石牆至今仍屹立不搖，多虧了這令人嘆服的工程技術。）</div>
+        <div class="example-en" style="margin-top:8px;">The construction of the Panama Canal was a remarkable feat of engineering.</div>
+        <div class="example-zh">（巴拿馬運河的建造是一項了不起的工程壯舉。）</div>
+      </div>
+    </div>
+
+    <!-- 11 distinct -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑪</span>
+        <span class="vocab-word">distinct</span>
+        <span class="vocab-phonetic">[dɪˈstɪŋkt]</span>
+        <span class="vocab-pos">adj.</span>
+        <span class="vocab-def">獨特的；截然不同的；清晰的</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">distinction (n. 區別；卓越)　distinctive (adj. 有特色的)　distinguish (v. 區分)　distinctly (adv. 清楚地)</div>
+      <div class="tag-row">
+        <span class="tag tag-confuse">容易混淆</span>
+      </div>
+      <div class="tag-content">distinct（不同的；明確的）vs. distinctive（有辨識度的、具特色的）— distinct 強調差異，distinctive 強調特色</div>
+      <div class="example-block">
+        <div class="example-en">Two items stand out as especially distinct: cui and chicha.</div>
+        <div class="example-zh">（兩種特別獨特的食物脫穎而出：天竺鼠肉和奇恰酒。）</div>
+        <div class="example-en" style="margin-top:8px;">The two cultures are distinct in their traditions and values.</div>
+        <div class="example-zh">（這兩種文化在傳統和價值觀上截然不同。）</div>
+      </div>
+    </div>
+
+    <!-- 12 offering -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑫</span>
+        <span class="vocab-word">offering</span>
+        <span class="vocab-phonetic">[ˈɔfərɪŋ]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-def">祭品；供品；（提供的）東西</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">offer (v. 提供；提議　n. 提議)　offered (adj.)</div>
+      <div class="tag-row">
+        <span class="tag tag-phrase">片語</span>
+      </div>
+      <div class="tag-content">as an offering to（作為…的祭品）　make an offering（獻上供品）</div>
+      <div class="example-block">
+        <div class="example-en">Chicha was once used as an offering to the gods.</div>
+        <div class="example-zh">（奇恰酒曾被用作祭神的供品。）</div>
+        <div class="example-en" style="margin-top:8px;">The priest placed flowers and fruit on the altar as an offering.</div>
+        <div class="example-zh">（祭司將鮮花和水果放在祭壇上作為供品。）</div>
+      </div>
+    </div>
+
+    <!-- 13 solstice -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑬</span>
+        <span class="vocab-word">solstice</span>
+        <span class="vocab-phonetic">[ˈsoʊlstɪs]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-def">至日（冬至或夏至）</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">sol- = sun（太陽）+ -stice / stit- = standing（靜止）→ 太陽「靜止」的日子 → 至日</div>
+      <div class="tag-row">
+        <span class="tag tag-confuse">容易混淆</span>
+      </div>
+      <div class="tag-content">solstice（至日，日照最長或最短）vs. equinox（春分/秋分，晝夜等長）</div>
+      <div class="example-block">
+        <div class="example-en">The festival marks the winter solstice in the southern hemisphere.</div>
+        <div class="example-zh">（這個節日標誌著南半球的冬至。）</div>
+        <div class="example-en" style="margin-top:8px;">People around the world celebrate the summer solstice with outdoor festivals.</div>
+        <div class="example-zh">（世界各地的人們以戶外慶典慶祝夏至。）</div>
+      </div>
+    </div>
+
+    <!-- 14 hemisphere -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑭</span>
+        <span class="vocab-word">hemisphere</span>
+        <span class="vocab-phonetic">[ˈhɛmɪˌsfɪr]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-def">半球（地球或腦的）</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">hemi- = half（一半）+ sphere = ball（球體）→ 半球</div>
+      <div class="tag-row">
+        <span class="tag tag-phrase">片語</span>
+      </div>
+      <div class="tag-content">the southern hemisphere（南半球）　the northern hemisphere（北半球）　the western hemisphere（西半球）</div>
+      <div class="example-block">
+        <div class="example-en">June 24 marks the winter solstice in the southern hemisphere.</div>
+        <div class="example-zh">（六月二十四日標誌著南半球的冬至。）</div>
+        <div class="example-en" style="margin-top:8px;">Australia is located in the southern hemisphere, so its seasons are opposite to ours.</div>
+        <div class="example-zh">（澳洲位於南半球，因此它的季節與我們相反。）</div>
+      </div>
+    </div>
+
+    <!-- 15 reenactment -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑮</span>
+        <span class="vocab-word">reenactment</span>
+        <span class="vocab-phonetic">[ˌriɪˈnæktmənt]</span>
+        <span class="vocab-pos">n.</span>
+        <span class="vocab-def">重演；再現</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">reenact (v. 重演)　enact (v. 扮演；制定法律)　enactment (n. 制定；扮演)</div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">re- = again（再次）+ en- + act（行動）→ 再次行動 → 重演</div>
+      <div class="example-block">
+        <div class="example-en">Today's celebrations include reenactments of Inca rituals.</div>
+        <div class="example-zh">（今日的慶典活動包括對印加儀式的重現演出。）</div>
+        <div class="example-en" style="margin-top:8px;">Historians organized a reenactment of the famous battle for the museum visitors.</div>
+        <div class="example-zh">（歷史學家為博物館訪客安排了那場著名戰役的重演。）</div>
+      </div>
+    </div>
+
+    <!-- 16 ritual -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑯</span>
+        <span class="vocab-word">ritual</span>
+        <span class="vocab-phonetic">[ˈrɪtʃuəl]</span>
+        <span class="vocab-pos">n. / adj.</span>
+        <span class="vocab-def">儀式；典禮；儀式的</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">ritualistic (adj. 儀式性的)　rite (n. 儀式；典禮)</div>
+      <div class="tag-row">
+        <span class="tag tag-idiom">慣用語</span>
+      </div>
+      <div class="tag-content">perform a ritual（舉行儀式）　an ancient ritual（古老儀式）　a daily ritual（每日例行之事）</div>
+      <div class="example-block">
+        <div class="example-en">Celebrations include reenactments of Inca rituals and traditional music.</div>
+        <div class="example-zh">（慶典包括印加儀式的重現以及傳統音樂表演。）</div>
+        <div class="example-en" style="margin-top:8px;">Drinking tea every morning has become a daily ritual for her.</div>
+        <div class="example-zh">（每天早上喝茶已成為她每日的例行習慣。）</div>
+      </div>
+    </div>
+
+    <!-- 17 plentiful -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑰</span>
+        <span class="vocab-word">plentiful</span>
+        <span class="vocab-phonetic">[ˈplɛntɪfəl]</span>
+        <span class="vocab-pos">adj.</span>
+        <span class="vocab-def">豐富的；大量的</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">plenty (n. 大量；充裕)　plentifully (adv. 豐富地)</div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">plen- = full（充滿）→ plentiful, plenty, replenish（補充）</div>
+      <div class="tag-row">
+        <span class="tag tag-confuse">容易混淆</span>
+      </div>
+      <div class="tag-content">plentiful (adj. 豐富的) → a plentiful supply　vs.　plenty (n.) → plenty of water（大量的水）— plenty 後接 of，不直接加名詞</div>
+      <div class="example-block">
+        <div class="example-en">The Inca hoped for plentiful harvests when the sun returned.</div>
+        <div class="example-zh">（印加人期盼在太陽回歸後迎來豐盛的收成。）</div>
+        <div class="example-en" style="margin-top:8px;">Fresh seafood is plentiful along the coastal areas of Taiwan.</div>
+        <div class="example-zh">（台灣沿海地區有豐富的新鮮海產。）</div>
+      </div>
+    </div>
+
+    <!-- 18 harvest -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑱</span>
+        <span class="vocab-word">harvest</span>
+        <span class="vocab-phonetic">[ˈhɑrvɪst]</span>
+        <span class="vocab-pos">n. / v.</span>
+        <span class="vocab-def">收穫；豐收；收割</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-idiom">慣用語</span>
+      </div>
+      <div class="tag-content">plentiful harvests（豐盛的收成）　harvest season（收穫季節）　reap a harvest（收割；獲得成果）</div>
+      <div class="example-block">
+        <div class="example-en">The Inca hoped for plentiful harvests after the winter solstice.</div>
+        <div class="example-zh">（印加人希望冬至之後帶來豐盛的收成。）</div>
+        <div class="example-en" style="margin-top:8px;">Farmers celebrated the harvest with feasts and music throughout the village.</div>
+        <div class="example-zh">（農民們以宴席和音樂在全村慶祝豐收。）</div>
+      </div>
+    </div>
+
+    <!-- 19 appealing -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑲</span>
+        <span class="vocab-word">appealing</span>
+        <span class="vocab-phonetic">[əˈpilɪŋ]</span>
+        <span class="vocab-pos">adj.</span>
+        <span class="vocab-def">吸引人的；令人動心的</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">appeal (n. 吸引力；呼籲；上訴　v. 吸引；呼籲)　appealingly (adv. 吸引人地)</div>
+      <div class="tag-row">
+        <span class="tag tag-phrase">片語</span>
+      </div>
+      <div class="tag-content">appeal to（吸引；呼籲）　find sth appealing（覺得某物有吸引力）</div>
+      <div class="example-block">
+        <div class="example-en">This combination has made Cusco so exciting and appealing to tourists from around the globe.</div>
+        <div class="example-zh">（這種結合使庫斯科對全球遊客如此令人興奮、充滿吸引力。）</div>
+        <div class="example-en" style="margin-top:8px;">The colorful decorations made the café very appealing to young customers.</div>
+        <div class="example-zh">（五彩繽紛的裝潢使這家咖啡廳對年輕顧客很有吸引力。）</div>
+      </div>
+    </div>
+
+    <!-- 20 evidently -->
+    <div class="vocab-item">
+      <div class="vocab-header">
+        <span class="vocab-num">⑳</span>
+        <span class="vocab-word">evidently</span>
+        <span class="vocab-phonetic">[ˈɛvɪdəntli]</span>
+        <span class="vocab-pos">adv.</span>
+        <span class="vocab-def">顯然地；明顯地</span>
+      </div>
+      <div class="tag-row">
+        <span class="tag tag-deriv">衍生詞</span>
+      </div>
+      <div class="tag-content">evident (adj. 明顯的；顯然的)　evidence (n. 證據；跡象)　evidential (adj. 作為證據的)</div>
+      <div class="tag-row">
+        <span class="tag tag-root">字根</span>
+      </div>
+      <div class="tag-content">e- + vid- = see（看）→ 可清楚看見的 → 明顯的</div>
+      <div class="tag-row">
+        <span class="tag tag-confuse">容易混淆</span>
+      </div>
+      <div class="tag-content">evidently（顯然，說話者根據現有跡象推斷）vs. obviously（明顯地，更直接、強烈）vs. apparently（表面上，帶有不確定語氣）</div>
+      <div class="example-block">
+        <div class="example-en">Cusco is evidently a place shaped by deep history.</div>
+        <div class="example-zh">（庫斯科顯然是一個由深厚歷史所塑造的地方。）</div>
+        <div class="example-en" style="margin-top:8px;">She had evidently worked very hard, as her project was outstanding.</div>
+        <div class="example-zh">（她顯然非常努力，因為她的專題作業表現出色。）</div>
+      </div>
+    </div>
+
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- ══ 區塊四：文法解析 ══ -->
+<section id="unit4">
+  <div class="section-header sh-purple">
+    <h2>📐 區塊四　文法解析</h2>
+  </div>
+  <div class="card card-purple">
+
+    <!-- Grammar 1 -->
+    <div class="grammar-item">
+      <h3>文法點一　非限定性形容詞子句（Non-restrictive Relative Clause）</h3>
+      <div class="grammar-quote">
+        "Cusco is still a city of great cultural significance, <em>which makes it an essential stop for visitors to Peru.</em>"
+      </div>
+      <div class="grammar-pattern">S + V + N, which + V + O</div>
+      <div class="grammar-section-title">【核心說明】</div>
+      <div class="grammar-core">
+        非限定性形容詞子句以逗號與主句隔開，用關係代名詞 <em>which</em> 引導。此類子句「補充說明」前面提到的內容，而非限定特定對象的範圍。<em>which</em> 可以指代前一個名詞，也可以代指整個前句的意思（如本句），表達「這件事使得…」。
+      </div>
+      <div class="grammar-section-title">【使用規則】</div>
+      <ul class="grammar-rules">
+        <li>逗號後接 <em>which</em>，不可改用 <em>that</em>（that 用於限定性子句，不加逗號）。</li>
+        <li>可以代指前一個名詞（人以外用 which），也可代指前整句話。</li>
+        <li>非限定性子句可以省略，不影響主句的基本語意。</li>
+        <li>若代指整句，<em>which</em> 相當於 <em>and this</em>，表結果或補充。</li>
+      </ul>
+      <div class="grammar-section-title">【主題例句】</div>
+      <div class="grammar-core">
+        Cusco hosts the Inti Raimi Festival every year, <em>which attracts thousands of visitors from around the world.</em><br>
+        （庫斯科每年舉辦印提拉米節，這吸引了來自世界各地的數千名遊客。）
+      </div>
+      <div class="grammar-section-title">【學習提醒】</div>
+      <div class="grammar-core">
+        常見錯誤：在非限定性子句中誤用 <em>that</em> 代替 <em>which</em>，或省略逗號。<em>that</em> 不可用於非限定性子句，務必用 <em>which</em> 且加逗號。
+      </div>
+      <div class="error-box">
+        <div class="wrong">✗ Cusco is a historic city, <u>that</u> attracts many tourists.</div>
+        <div class="right">✓ Cusco is a historic city, <u>which</u> attracts many tourists.</div>
+        <div style="color:#4A3728; margin-top:6px;">非限定性子句不可用 that，必須用 which，且前面要加逗號。</div>
+      </div>
+    </div>
+
+    <!-- Grammar 2 -->
+    <div class="grammar-item">
+      <h3>文法點二　過去分詞片語作後置修飾語（Past Participial Phrase as Post-modifier）</h3>
+      <div class="grammar-quote">
+        "Chicha is a drink <em>made from corn</em> that was once used as an offering to the gods."
+      </div>
+      <div class="grammar-pattern">N + <em>V-ed</em> + (prep. phrase) ...</div>
+      <div class="grammar-section-title">【核心說明】</div>
+      <div class="grammar-core">
+        過去分詞片語（V-ed + 其他成分）置於名詞後方，功能相當於形容詞子句，說明該名詞的特徵或狀態，語意帶有「被動」或「完成」的色彩。<em>made from corn</em> 相當於 <em>which is made from corn</em>，是簡化後的結果。
+      </div>
+      <div class="grammar-section-title">【使用規則】</div>
+      <ul class="grammar-rules">
+        <li>過去分詞片語 = 被動語意：被修飾的名詞是動作的「接受者」。</li>
+        <li>當分詞片語長度超過一個詞，才置於名詞後方；單獨一個分詞（如 <em>the collapsed building</em>）則置名詞前。</li>
+        <li>相當於形容詞子句的簡化：N + V-ed 片語 = N + which/that + is/was + V-ed。</li>
+        <li>make from（由…製成，強調材料）vs. make of（由…構成，材料仍可見）— 注意介係詞用法。</li>
+      </ul>
+      <div class="grammar-section-title">【主題例句】</div>
+      <div class="grammar-core">
+        The walls <em>built without mortar</em> have lasted for hundreds of years.<br>
+        （那些不用砂漿建造的石牆已屹立數百年。）
+      </div>
+      <div class="grammar-section-title">【學習提醒】</div>
+      <div class="grammar-core">
+        過去分詞（V-ed）修飾表被動；現在分詞（V-ing）修飾表主動。<em>a fortress <u>overlooking</u> the city</em>（俯瞰城市的堡壘）→ 堡壘主動俯瞰；<em>a drink <u>made</u> from corn</em>（由玉米製成的飲料）→ 飲料被製成。
+      </div>
+      <div class="error-box">
+        <div class="wrong">✗ The drink <u>making</u> from corn was sacred.</div>
+        <div class="right">✓ The drink <u>made</u> from corn was sacred.</div>
+        <div style="color:#4A3728; margin-top:6px;">飲料「被製作」，應用過去分詞 made，而非現在分詞 making。</div>
+      </div>
+    </div>
+
+    <!-- Grammar 3 -->
+    <div class="grammar-item">
+      <h3>文法點三　what 名詞子句作表語（What-clause as Subject Complement）</h3>
+      <div class="grammar-quote">
+        "This combination is <em>what has made the Peruvian city so exciting and appealing to tourists from around the globe.</em>"
+      </div>
+      <div class="grammar-pattern">S + be + <em>what + S' + V' + ...</em></div>
+      <div class="grammar-section-title">【核心說明】</div>
+      <div class="grammar-core">
+        <em>what</em> 引導名詞子句，置於連綴動詞 <em>is</em> 後作表語（predicate noun clause）。<em>what</em> 相當於 <em>the thing that</em>，帶有強調語氣：「正是（那件事）使得…」。此結構常用於結尾句，總結全文核心論點。
+      </div>
+      <div class="grammar-section-title">【使用規則】</div>
+      <ul class="grammar-rules">
+        <li><em>what</em> 在子句中兼作主詞或受詞，不可用 <em>that</em> 替換。</li>
+        <li><em>This is what I mean.</em>（這就是我的意思。）— what 作受詞。</li>
+        <li><em>This is what makes it special.</em>（這正是使它特別的原因。）— what 作主詞。</li>
+        <li>全句主詞（This combination）與連綴動詞 is 後方接 what 子句，形成「強調結構」。</li>
+        <li>注意動詞時態：本句用現在完成式 <em>has made</em>，強調持續影響。</li>
+      </ul>
+      <div class="grammar-section-title">【主題例句】</div>
+      <div class="grammar-core">
+        Its ancient history and vibrant culture are <em>what make Cusco so unforgettable.</em><br>
+        （正是其古老的歷史與充滿活力的文化，使庫斯科如此令人難忘。）
+      </div>
+      <div class="grammar-section-title">【學習提醒】</div>
+      <div class="grammar-core">
+        不可在 <em>be + what</em> 後再加 <em>that</em>：<em>This is what that I wanted</em> 為錯誤句型。<em>what</em> 本身已包含 <em>the thing that</em> 的語意，不需重複 <em>that</em>。
+      </div>
+      <div class="error-box">
+        <div class="wrong">✗ This is <u>what that</u> has made the city famous.</div>
+        <div class="right">✓ This is <u>what</u> has made the city famous.</div>
+        <div style="margin-top: 6px; color:#4A3728;">
+          🎯【精選試題】<br>
+          Cusco's unique blend of Inca and Spanish culture is _____ attracts millions of visitors each year.<br>
+          (A) that　(B) which　(C) what　(D) who<br>
+          <strong style="color:#1B5E20;">答案：(C) what</strong>　— be 動詞後接名詞子句，選 what 作「the thing that」的意思。
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+<!-- ══ 底部折疊區塊 ══ -->
+<section id="unit5">
+  <div class="section-header sh-brown" style="border-radius:10px; margin-top:40px;">
+    <h2>📦 補充資料</h2>
+  </div>
+
+  <!-- 折疊一：字首 -->
+  <details>
+    <summary>🔤 常見英文字首整理（50 個）<span class="arrow">▼</span></summary>
+    <div class="details-body">
+      <div class="prefix-item"><span class="prefix-key">ab-</span> 離開、相反 — abnormal（異常的）</div>
+      <div class="prefix-item"><span class="prefix-key">ad-</span> 向、加 — advance（前進）</div>
+      <div class="prefix-item"><span class="prefix-key">ambi-</span> 雙方、兩面 — ambiguous（模稜兩可的）</div>
+      <div class="prefix-item"><span class="prefix-key">anti-</span> 反對、抗 — antibiotic（抗生素）</div>
+      <div class="prefix-item"><span class="prefix-key">arch-</span> 主要、首要 — archenemy（死敵）</div>
+      <div class="prefix-item"><span class="prefix-key">auto-</span> 自動、自我 — autograph（親筆簽名）</div>
+      <div class="prefix-item"><span class="prefix-key">bene-</span> 好的、善 — benefit（好處）</div>
+      <div class="prefix-item"><span class="prefix-key">bi-</span> 二、雙 — bilingual（雙語的）</div>
+      <div class="prefix-item"><span class="prefix-key">circum-</span> 環繞、周圍 — circumstance（情況）</div>
+      <div class="prefix-item"><span class="prefix-key">co-/con-/com-</span> 一起、共同 — cooperate（合作）</div>
+      <div class="prefix-item"><span class="prefix-key">contra-</span> 相反、對抗 — contradict（反駁）</div>
+      <div class="prefix-item"><span class="prefix-key">de-</span> 去除、下降 — decode（解碼）</div>
+      <div class="prefix-item"><span class="prefix-key">dia-</span> 穿過、透過 — dialogue（對話）</div>
+      <div class="prefix-item"><span class="prefix-key">dis-</span> 否定、分離 — disagree（不同意）</div>
+      <div class="prefix-item"><span class="prefix-key">en-/em-</span> 使成為 — enable（使能夠）</div>
+      <div class="prefix-item"><span class="prefix-key">epi-</span> 在上、在外 — epidemic（流行病）</div>
+      <div class="prefix-item"><span class="prefix-key">ex-</span> 外、前任 — export（出口）；ex-president（前總統）</div>
+      <div class="prefix-item"><span class="prefix-key">extra-</span> 額外、外部 — extraordinary（非凡的）</div>
+      <div class="prefix-item"><span class="prefix-key">hetero-</span> 不同 — heterogeneous（異質的）</div>
+      <div class="prefix-item"><span class="prefix-key">homo-</span> 相同 — homogeneous（同質的）</div>
+      <div class="prefix-item"><span class="prefix-key">hyper-</span> 過度、超 — hyperactive（過動的）</div>
+      <div class="prefix-item"><span class="prefix-key">hypo-</span> 低於、不足 — hypodermic（皮下的）</div>
+      <div class="prefix-item"><span class="prefix-key">in-/im-</span> 否定、進入 — invisible（看不見的）；import（輸入）</div>
+      <div class="prefix-item"><span class="prefix-key">inter-</span> 在…之間 — international（國際的）</div>
+      <div class="prefix-item"><span class="prefix-key">iso-</span> 相等、相同 — isolate（隔離）</div>
+      <div class="prefix-item"><span class="prefix-key">mal-</span> 壞、不良 — malfunction（故障）</div>
+      <div class="prefix-item"><span class="prefix-key">micro-</span> 微小 — microscope（顯微鏡）</div>
+      <div class="prefix-item"><span class="prefix-key">mis-</span> 錯誤 — misunderstand（誤解）</div>
+      <div class="prefix-item"><span class="prefix-key">mono-</span> 單一 — monologue（獨白）</div>
+      <div class="prefix-item"><span class="prefix-key">multi-</span> 多 — multicultural（多元文化的）</div>
+      <div class="prefix-item"><span class="prefix-key">neo-</span> 新的 — neonatal（新生的）</div>
+      <div class="prefix-item"><span class="prefix-key">non-</span> 非、沒有 — nonsense（無意義）</div>
+      <div class="prefix-item"><span class="prefix-key">pan-</span> 全部 — pandemic（大流行病）</div>
+      <div class="prefix-item"><span class="prefix-key">peri-</span> 周圍 — perimeter（周長）</div>
+      <div class="prefix-item"><span class="prefix-key">poly-</span> 多 — polygon（多邊形）</div>
+      <div class="prefix-item"><span class="prefix-key">post-</span> 之後 — postwar（戰後的）</div>
+      <div class="prefix-item"><span class="prefix-key">pre-</span> 之前 — preview（預覽）</div>
+      <div class="prefix-item"><span class="prefix-key">pro-</span> 向前、支持 — progress（進步）；pro-democracy（支持民主的）</div>
+      <div class="prefix-item"><span class="prefix-key">pseudo-</span> 假的 — pseudonym（筆名）</div>
+      <div class="prefix-item"><span class="prefix-key">re-</span> 再、回 — review（複習）</div>
+      <div class="prefix-item"><span class="prefix-key">semi-</span> 一半、部分 — semicircle（半圓）</div>
+      <div class="prefix-item"><span class="prefix-key">sub-</span> 在下、次級 — subway（地鐵）</div>
+      <div class="prefix-item"><span class="prefix-key">super-</span> 超越、在上 — superstar（超級明星）</div>
+      <div class="prefix-item"><span class="prefix-key">syn-/sym-</span> 一起、共同 — synchronize（同步）</div>
+      <div class="prefix-item"><span class="prefix-key">tele-</span> 遠距 — telephone（電話）</div>
+      <div class="prefix-item"><span class="prefix-key">trans-</span> 穿越、轉變 — transport（運輸）</div>
+      <div class="prefix-item"><span class="prefix-key">tri-</span> 三 — triangle（三角形）</div>
+      <div class="prefix-item"><span class="prefix-key">un-</span> 否定、不 — unhappy（不快樂的）</div>
+      <div class="prefix-item"><span class="prefix-key">vice-</span> 副、代替 — vice-president（副總統）</div>
+    </div>
+  </details>
+
+  <!-- 折疊二：字尾 -->
+  <details>
+    <summary>🔡 常見英文字尾整理（約 30 個）<span class="arrow">▼</span></summary>
+    <div class="details-body">
+      <div class="suffix-group-title">名詞字尾</div>
+      <div class="suffix-item"><span class="suffix-key">-tion/-sion/-ation</span> 動作、過程或結果 — education（教育）、decision（決定）</div>
+      <div class="suffix-item"><span class="suffix-key">-ment</span> 行為或結果 — agreement（協議）、development（發展）</div>
+      <div class="suffix-item"><span class="suffix-key">-ness</span> 狀態或性質 — happiness（快樂）、darkness（黑暗）</div>
+      <div class="suffix-item"><span class="suffix-key">-ity/-ty</span> 抽象概念或狀態 — ability（能力）、cruelty（殘酷）</div>
+      <div class="suffix-item"><span class="suffix-key">-er/-or</span> 執行某動作的人或物 — teacher（老師）、actor（演員）</div>
+      <div class="suffix-item"><span class="suffix-key">-ist</span> 信仰或專業的人 — artist（藝術家）、scientist（科學家）</div>
+      <div class="suffix-item"><span class="suffix-key">-ship</span> 身分或關係 — friendship（友誼）、leadership（領導）</div>
+      <div class="suffix-item"><span class="suffix-key">-hood</span> 階段或狀態 — childhood（童年）、neighborhood（鄰里）</div>
+
+      <div class="suffix-group-title">形容詞字尾</div>
+      <div class="suffix-item"><span class="suffix-key">-able/-ible</span> 能夠…的 — readable（可讀的）、credible（可信的）</div>
+      <div class="suffix-item"><span class="suffix-key">-ous</span> 充滿…的 — dangerous（危險的）、famous（著名的）</div>
+      <div class="suffix-item"><span class="suffix-key">-ful</span> 具有…的 — hopeful（充滿希望的）、beautiful（美麗的）</div>
+      <div class="suffix-item"><span class="suffix-key">-less</span> 缺乏…的 — hopeless（絕望的）、powerless（無力的）</div>
+      <div class="suffix-item"><span class="suffix-key">-al/-ic</span> 與…相關的 — natural（自然的）、poetic（詩意的）</div>
+
+      <div class="suffix-group-title">動詞字尾</div>
+      <div class="suffix-item"><span class="suffix-key">-ize/-ise</span> 使成為… — realize（實現）、industrialize（工業化）</div>
+      <div class="suffix-item"><span class="suffix-key">-ify</span> 使成為… — beautify（美化）、clarify（澄清）</div>
+      <div class="suffix-item"><span class="suffix-key">-ate</span> 形成動詞 — dominate（支配）、activate（啟動）</div>
+      <div class="suffix-item"><span class="suffix-key">-en</span> 使變成… — strengthen（加強）、soften（使柔軟）</div>
+
+      <div class="suffix-group-title">副詞字尾</div>
+      <div class="suffix-item"><span class="suffix-key">-ly</span> 形容詞轉副詞 — quickly（快速地）、carefully（仔細地）</div>
+      <div class="suffix-item"><span class="suffix-key">-ward(s)</span> 表示方向 — upwards（向上）、homeward（回家）</div>
+      <div class="suffix-item"><span class="suffix-key">-wise</span> 表示方式或角度 — clockwise（順時針方向）</div>
+    </div>
+  </details>
+
+  <!-- 折疊三：30 單詞 -->
+  <details>
+    <summary>📋 30 個常用單字與衍生詞<span class="arrow">▼</span></summary>
+    <div class="details-body">
+      <div class="word-item">1. <span class="word-key">capital</span> [ˈkæpɪtl] (n. 首都；資本) — capitalize [ˈkæpɪtəˌlaɪz] (v. 利用機會)</div>
+      <div class="word-item">2. <span class="word-key">powerful</span> [ˈpaʊɚfəl] (adj. 強大的) — power [ˈpaʊɚ] (n. 力量；權力)</div>
+      <div class="word-item">3. <span class="word-key">collapse</span> [kəˈlæps] (n./v. 崩潰；倒塌) — collapsible [kəˈlæpsɪbl] (adj. 可折疊的)</div>
+      <div class="word-item">4. <span class="word-key">significance</span> [sɪɡˈnɪfɪkəns] (n. 重要性) — significant [sɪɡˈnɪfɪkənt] (adj. 重要的)</div>
+      <div class="word-item">5. <span class="word-key">essential</span> [ɪˈsɛnʃəl] (adj. 必要的；基本的) — essentially [ɪˈsɛnʃəli] (adv. 基本上)</div>
+      <div class="word-item">6. <span class="word-key">historic</span> [hɪˈstɔrɪk] (adj. 歷史性的) — historical [hɪˈstɔrɪkəl] (adj. 歷史的)</div>
+      <div class="word-item">7. <span class="word-key">colonial</span> [kəˈloʊniəl] (adj. 殖民地的) — colony [ˈkɑləni] (n. 殖民地)</div>
+      <div class="word-item">8. <span class="word-key">invasion</span> [ɪnˈveɪʒən] (n. 入侵) — invade [ɪnˈveɪd] (v. 入侵)</div>
+      <div class="word-item">9. <span class="word-key">sacred</span> [ˈsekrɪd] (adj. 神聖的) — sacrifice [ˈsækrɪˌfaɪs] (n./v. 犧牲；祭祀)</div>
+      <div class="word-item">10. <span class="word-key">visible</span> [ˈvɪzɪbl] (adj. 可見的) — visibility [ˌvɪzɪˈbɪlɪti] (n. 能見度)</div>
+      <div class="word-item">11. <span class="word-key">ancient</span> [ˈeɪnʃənt] (adj. 古老的；古代的) — antiquity [ænˈtɪkwɪti] (n. 古代)</div>
+      <div class="word-item">12. <span class="word-key">fortress</span> [ˈfɔrtrɪs] (n. 堡壘；要塞) — fortify [ˈfɔrtɪˌfaɪ] (v. 鞏固；加固)</div>
+      <div class="word-item">13. <span class="word-key">overlook</span> [ˌoʊvɚˈlʊk] (v. 俯瞰；忽視) — outlook [ˈaʊtˌlʊk] (n. 展望；景觀)</div>
+      <div class="word-item">14. <span class="word-key">mortar</span> [ˈmɔrtɚ] (n. 砂漿) — cement [sɪˈmɛnt] (n. 水泥) [建材相關]</div>
+      <div class="word-item">15. <span class="word-key">engineering</span> [ˌɛndʒɪˈnɪrɪŋ] (n. 工程；工程學) — engineer [ˌɛndʒɪˈnɪr] (n. 工程師)</div>
+      <div class="word-item">16. <span class="word-key">flavor</span> [ˈfleɪvɚ] (n. 風味；特色) — flavorful [ˈfleɪvɚfəl] (adj. 美味的)</div>
+      <div class="word-item">17. <span class="word-key">distinct</span> [dɪˈstɪŋkt] (adj. 獨特的；截然不同的) — distinction [dɪˈstɪŋkʃən] (n. 區別；卓越)</div>
+      <div class="word-item">18. <span class="word-key">offering</span> [ˈɔfərɪŋ] (n. 祭品；供品) — offer [ˈɔfɚ] (v. 提供；提議)</div>
+      <div class="word-item">19. <span class="word-key">celebration</span> [ˌsɛləˈbreɪʃən] (n. 慶典；慶祝) — celebrate [ˈsɛləˌbreɪt] (v. 慶祝)</div>
+      <div class="word-item">20. <span class="word-key">hemisphere</span> [ˈhɛmɪˌsfɪr] (n. 半球) — hemispheric [ˌhɛmɪˈsfɛrɪk] (adj. 半球的)</div>
+      <div class="word-item">21. <span class="word-key">solstice</span> [ˈsoʊlstɪs] (n. 至日) — equinox [ˈikwɪˌnɑks] (n. 晝夜平分點)</div>
+      <div class="word-item">22. <span class="word-key">reenactment</span> [ˌriɪˈnæktmənt] (n. 重演) — enact [ɪnˈækt] (v. 扮演；制定)</div>
+      <div class="word-item">23. <span class="word-key">ritual</span> [ˈrɪtʃuəl] (n. 儀式) — ritualistic [ˌrɪtʃuəˈlɪstɪk] (adj. 儀式性的)</div>
+      <div class="word-item">24. <span class="word-key">plentiful</span> [ˈplɛntɪfəl] (adj. 豐富的) — plenty [ˈplɛnti] (n. 大量)</div>
+      <div class="word-item">25. <span class="word-key">harvest</span> [ˈhɑrvɪst] (n. 收穫；豐收) — harvester [ˈhɑrvɪstɚ] (n. 收割機)</div>
+      <div class="word-item">26. <span class="word-key">relevant</span> [ˈrɛləvənt] (adj. 相關的；切題的) — relevance [ˈrɛləvəns] (n. 相關性)</div>
+      <div class="word-item">27. <span class="word-key">appealing</span> [əˈpilɪŋ] (adj. 吸引人的) — appeal [əˈpil] (n./v. 吸引力；呼籲)</div>
+      <div class="word-item">28. <span class="word-key">evidently</span> [ˈɛvɪdəntli] (adv. 顯然地) — evidence [ˈɛvɪdəns] (n. 證據)</div>
+      <div class="word-item">29. <span class="word-key">combination</span> [ˌkɑmbɪˈneɪʃən] (n. 結合；組合) — combine [kəmˈbaɪn] (v. 結合)</div>
+      <div class="word-item">30. <span class="word-key">significant</span> [sɪɡˈnɪfɪkənt] (adj. 重要的；顯著的) — signify [ˈsɪɡnɪˌfaɪ] (v. 意謂；象徵)</div>
+
+      <div style="margin-top:24px; font-weight:700; color:#4A3728; font-size:1.05rem; border-top: 2px solid #C4A06A; padding-top:14px;">文章相關常用片語（5 個）</div>
+      <ul class="phrase-list" style="margin-top:10px;">
+        <li>🔹 <strong>burst into energy</strong>（充滿活力；熱鬧沸騰）</li>
+        <li>🔹 <strong>stand out as</strong>（作為…脫穎而出；顯得特別）</li>
+        <li>🔹 <strong>on the other hand</strong>（另一方面）</li>
+        <li>🔹 <strong>be made up of</strong>（由…組成；構成）</li>
+        <li>🔹 <strong>be home to</strong>（是…的所在地；孕育著…）</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- 折疊四：練文筆食材 -->
+  <details>
+    <summary>✍️ 練文筆食材（寫作句型 12 組）<span class="arrow">▼</span></summary>
+    <div class="details-body">
+
+      <div class="writing-item">
+        <div class="writing-num">① centuries after + N（在…數世紀之後）</div>
+        <div class="writing-use">→ 適用：描述歷史跨度、強調時間的久遠</div>
+        <div class="writing-ex">Centuries after the fall of the Roman Empire, its influence can still be felt in modern law.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（在羅馬帝國滅亡數世紀之後，其影響力至今仍可在現代法律中感受到。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">② be made up of + N（由…組成）</div>
+        <div class="writing-use">→ 適用：描述組成結構、成員或元素</div>
+        <div class="writing-ex">The team is made up of experts from different fields, each bringing unique skills.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（這個團隊由來自不同領域的專家組成，各自帶來獨特的技能。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">③ be built upon + N（建立在…之上）</div>
+        <div class="writing-use">→ 適用：描述基礎、傳承或歷史積累</div>
+        <div class="writing-ex">Modern science is built upon centuries of research and countless experiments.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（現代科學建立在數世紀的研究與無數實驗之上。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">④ ..., which makes it + adj./N（使得它成為…）</div>
+        <div class="writing-use">→ 適用：補充說明結果，常用於文章總結句</div>
+        <div class="writing-ex">The museum houses over 5,000 artifacts, which makes it one of the richest in Asia.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（這座博物館收藏超過五千件文物，使它成為亞洲最豐富的博物館之一。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">⑤ stand out as + adj./N（顯得特別；脫穎而出）</div>
+        <div class="writing-use">→ 適用：強調某物在眾多選項中的獨特性</div>
+        <div class="writing-ex">Among all the dishes on the menu, the grilled fish stood out as especially delicious.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（在菜單上的所有菜餚中，烤魚顯得格外美味。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">⑥ on the other hand（另一方面）</div>
+        <div class="writing-use">→ 適用：對比兩個觀點或現象，引出相反或補充面向</div>
+        <div class="writing-ex">Online shopping is convenient. On the other hand, it lacks the personal touch of in-store service.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（網路購物方便。另一方面，它缺少實體店面服務的個人溫度。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">⑦ burst into + N（突然爆發出…；充滿）</div>
+        <div class="writing-use">→ 適用：描述突然的情緒爆發或活動熱鬧展開</div>
+        <div class="writing-ex">When the final score was announced, the crowd burst into cheers and applause.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（當最終比分公布時，人群爆發出歡呼聲和掌聲。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">⑧ thanks to + N（多虧了…；由於…）</div>
+        <div class="writing-use">→ 適用：說明成功或優點的原因，帶正面語氣</div>
+        <div class="writing-ex">Thanks to the hard work of the rescue team, all hikers were found safe.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（多虧救援隊的努力，所有登山客都被安全找到。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">⑨ This + N is what has made...（正是…使…）</div>
+        <div class="writing-use">→ 適用：結尾句，強調核心原因或本質</div>
+        <div class="writing-ex">This passion for learning is what has made her such an outstanding researcher.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（正是這種對學習的熱忱，使她成為如此傑出的研究者。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">⑩ keep + N + adj.（使…保持…狀態）</div>
+        <div class="writing-use">→ 適用：強調持久性、延續的影響力</div>
+        <div class="writing-ex">Local festivals keep traditional culture alive and pass it on to younger generations.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（當地節慶使傳統文化保持活力，並將其傳遞給年輕一代。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">⑪ featuring + N（以…為特色；配有…）</div>
+        <div class="writing-use">→ 適用：描述活動、作品或地點包含的特色內容</div>
+        <div class="writing-ex">The concert was a spectacular event featuring performances by artists from ten countries.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（這場音樂會是一場精彩的盛事，以來自十個國家的藝術家表演為特色。）</div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-num">⑫ be shaped by + N（被…所塑造）</div>
+        <div class="writing-use">→ 適用：描述影響因素，強調環境、歷史或文化的塑造力</div>
+        <div class="writing-ex">A person's values are often shaped by the culture and environment they grow up in.</div>
+        <div style="color:#4A3728; font-size:0.92rem;">（一個人的價值觀往往由其成長的文化和環境所塑造。）</div>
+      </div>
+
+    </div>
+  </details>
+
+  <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+</section>
+
+</div><!-- /container -->
+</body>
+</html>
