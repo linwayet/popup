@@ -1,476 +1,190 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>吳鼎濬 ｜ 115 學測英文錯題邏輯分析 ＋ 10 題複習</title>
+<title>TikTok Downloader — HD, No Watermark, MP3</title>
 <style>
   :root{
-    --c1:#1d3557; --c2:#457b9d; --c3:#a8dadc; --c4:#f1faee; --c5:#e63946;
-    --c6:#f4a261; --c7:#2a9d8f; --c8:#e76f51; --ink:#1d3557; --bg:#f1faee;
-    --card:#ffffff;
+    --cyan:#25F4EE; --pink:#FE2C55; --bg:#0e0e12; --card:#17171f;
+    --line:#2a2a35; --text:#f2f2f5; --muted:#9a9aa8;
   }
   *{box-sizing:border-box}
-  html{font-size:17px}
-  body{margin:0;padding:0;background:linear-gradient(135deg,#f1faee 0%,#a8dadc 50%,#fff5e1 100%);
-    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);line-height:1.7;}
-  header{background:linear-gradient(135deg,var(--c1),var(--c2),var(--c7));color:#fff;padding:38px 28px 30px;
-    text-align:center;position:relative;overflow:hidden;}
-  header::after{content:"📊 🔍 📝 ✏️ 💡";position:absolute;bottom:10px;right:18px;font-size:20px;opacity:.55;}
-  header h1{margin:0 0 10px;font-size:28px;letter-spacing:.5px;}
-  header .sub{font-size:15px;opacity:.95;}
-  main{max-width:1100px;margin:0 auto;padding:24px 18px 60px;}
-  section{margin:30px 0;}
-  h2.section-title{font-size:24px;margin:0 0 18px;padding:14px 20px;
-    background:linear-gradient(90deg,var(--c5),var(--c6));color:#fff;
-    border-radius:14px;box-shadow:0 5px 14px rgba(230,57,70,.25);border-left:8px solid var(--c1);}
-  h2.section-title.green{background:linear-gradient(90deg,var(--c7),var(--c3));color:#022;border-left-color:var(--c1);}
-  h2.section-title.blue{background:linear-gradient(90deg,var(--c1),var(--c2));color:#fff;border-left-color:var(--c5);}
-
-  /* Profile card */
-  .profile{background:#fff;border-radius:18px;padding:22px 26px;
-    box-shadow:0 6px 18px rgba(29,53,87,.1);border-top:8px solid var(--c2);}
-  .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px;}
-  .profile-row{padding:10px 14px;background:#f1faee;border-radius:10px;border-left:5px solid var(--c7);}
-  .profile-row b{color:var(--c1);}
-  .updated-badge{display:inline-block;background:var(--c5);color:#fff;font-size:13px;
-    padding:3px 10px;border-radius:20px;margin-left:8px;font-weight:700;}
-  @media(min-width:760px){.profile-grid{grid-template-columns:1fr 1fr 1fr;}}
-
-  /* Error pattern boxes */
-  .err-pattern{background:#fff;border-radius:18px;padding:20px 24px;margin:14px 0;
-    box-shadow:0 5px 14px rgba(0,0,0,.08);border-left:8px solid var(--c5);}
-  .err-pattern.p2{border-left-color:var(--c6);}
-  .err-pattern.p3{border-left-color:var(--c8);}
-  .err-pattern.p4{border-left-color:var(--c2);}
-  .err-pattern h3{margin:0 0 12px;font-size:19px;color:var(--c1);
-    display:flex;align-items:center;gap:10px;}
-  .err-pattern h3 .icon{background:var(--c5);color:#fff;width:36px;height:36px;
-    border-radius:50%;display:inline-flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:16px;flex-shrink:0;}
-  .err-pattern.p2 h3 .icon{background:var(--c6);}
-  .err-pattern.p3 h3 .icon{background:var(--c8);}
-  .err-pattern.p4 h3 .icon{background:var(--c2);}
-  .err-tag{display:inline-block;padding:3px 10px;background:#ffe8e8;color:var(--c5);
-    border-radius:14px;font-size:13px;margin:3px 4px 3px 0;font-weight:600;}
-  .err-pattern.p2 .err-tag{background:#fff3e0;color:var(--c6);}
-  .err-pattern.p3 .err-tag{background:#ffe5dd;color:var(--c8);}
-  .err-pattern.p4 .err-tag{background:#e3f0fa;color:var(--c2);}
-  .strategy{background:#f1faee;padding:12px 16px;border-radius:10px;margin-top:12px;
-    border-left:4px solid var(--c7);font-size:15px;}
-  .strategy b{color:var(--c7);}
-
-  /* Strategy summary */
-  .strategy-grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:14px;}
-  .strategy-card{background:#fff;border-radius:14px;padding:18px 20px;
-    border-top:6px solid var(--c7);box-shadow:0 4px 12px rgba(42,157,143,.12);}
-  .strategy-card h4{margin:0 0 8px;color:var(--c7);font-size:17px;}
-  @media(min-width:760px){.strategy-grid{grid-template-columns:1fr 1fr;}}
-
-  /* MCQ section */
-  .mcq{background:#fff;border-radius:14px;padding:18px 22px;margin:14px 0;
-    box-shadow:0 4px 12px rgba(0,0,0,.07);border-left:7px solid var(--c2);}
-  .mcq .qnum{display:inline-block;background:var(--c1);color:#fff;
-    padding:3px 12px;border-radius:14px;font-weight:700;font-size:13px;margin-bottom:8px;}
-  .mcq .q{font-weight:600;margin:8px 0 12px;color:#222;font-size:16px;line-height:1.7;}
-  .mcq .target{display:inline-block;background:#fff3cd;color:var(--c8);
-    padding:2px 8px;border-radius:8px;font-size:13px;margin-left:8px;font-weight:700;}
-  .mcq .options{margin:8px 0 0 0;padding-left:0;list-style:none;}
-  .mcq .options li{margin:7px 0;padding:8px 14px;background:#f8f9fa;border-radius:8px;
-    font-size:15.5px;border-left:4px solid #ddd;}
-  .mcq .options li b{color:var(--c2);font-weight:700;margin-right:8px;}
-
-  /* Answer details */
-  details.answer-box{margin-top:16px;border-radius:12px;overflow:hidden;
-    box-shadow:0 4px 12px rgba(29,53,87,.15);}
-  details.answer-box summary{padding:14px 18px;
-    background:linear-gradient(120deg,var(--c7),var(--c1));
-    color:#fff;font-weight:700;font-size:15px;cursor:pointer;list-style:none;
-    display:flex;align-items:center;justify-content:space-between;gap:10px;}
-  details.answer-box summary::-webkit-details-marker{display:none;}
-  details.answer-box summary::marker{content:"";}
-  details.answer-box .arrow{display:inline-block;transition:transform .25s ease;font-size:16px;}
-  details.answer-box[open] .arrow{transform:rotate(180deg);}
-  details.answer-box .answer-content{padding:14px 18px;background:#f4ffea;
-    color:#1d3557;font-size:14.5px;line-height:1.85;}
-  .answer-content .ans-label{display:inline-block;background:var(--c7);color:#fff;
-    padding:3px 12px;border-radius:14px;font-weight:700;margin-bottom:6px;font-size:13px;}
-  .answer-content .why{margin-top:10px;padding:10px 14px;background:#fff8e1;border-radius:8px;
-    border-left:4px solid var(--c6);}
-  .answer-content .trap{margin-top:10px;padding:10px 14px;background:#ffebee;border-radius:8px;
-    border-left:4px solid var(--c5);font-size:14px;}
-  .answer-content .trap b{color:var(--c5);}
-
-  footer{text-align:center;padding:24px;color:#666;font-size:13.5px;
-    border-top:2px dashed #ccc;margin-top:40px;}
+  body{
+    margin:0; min-height:100vh; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    background:radial-gradient(1200px 600px at 50% -10%,#1b1b26,var(--bg)); color:var(--text);
+    display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .wrap{width:100%; max-width:520px}
+  h1{
+    font-size:28px; text-align:center; margin:0 0 6px; letter-spacing:-.5px;
+  }
+  h1 .a{color:var(--cyan)} h1 .b{color:var(--pink)}
+  .sub{text-align:center; color:var(--muted); font-size:14px; margin:0 0 26px}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:22px; box-shadow:0 20px 50px rgba(0,0,0,.35);
+  }
+  .field{display:flex; gap:8px; margin-bottom:14px}
+  input[type=url]{
+    flex:1; background:#0c0c11; border:1px solid var(--line); border-radius:12px;
+    color:var(--text); font-size:15px; padding:14px 14px; outline:none;
+  }
+  input[type=url]:focus{border-color:var(--cyan)}
+  .paste{
+    background:#0c0c11; border:1px solid var(--line); border-radius:12px; color:var(--muted);
+    padding:0 14px; cursor:pointer; font-size:13px; white-space:nowrap;
+  }
+  .paste:hover{color:var(--text); border-color:var(--cyan)}
+  .btns{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+  button.dl{
+    border:0; border-radius:12px; padding:15px 12px; font-size:15px; font-weight:600;
+    cursor:pointer; color:#0b0b0f; display:flex; flex-direction:column; align-items:center; gap:2px;
+    transition:transform .06s ease, filter .15s ease;
+  }
+  button.dl small{font-weight:500; font-size:11px; opacity:.7}
+  button.dl:hover{filter:brightness(1.08)}
+  button.dl:active{transform:translateY(1px)}
+  button.dl:disabled{filter:grayscale(.6) brightness(.7); cursor:not-allowed}
+  .hd{background:linear-gradient(135deg,var(--cyan),#8ef7f2)}
+  .mp3{background:linear-gradient(135deg,var(--pink),#ff7a97)}
+  .preview{
+    display:none; margin-top:18px; padding-top:18px; border-top:1px solid var(--line);
+    gap:12px; align-items:center;
+  }
+  .preview.show{display:flex}
+  .preview img{width:64px; height:84px; object-fit:cover; border-radius:10px; background:#000; flex:none}
+  .preview .meta{min-width:0}
+  .preview .t{font-size:14px; font-weight:600; line-height:1.3; margin:0 0 4px;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+  .preview .u{font-size:12px; color:var(--muted); margin:0}
+  .msg{margin-top:14px; font-size:13px; text-align:center; min-height:18px}
+  .msg.err{color:#ff8095} .msg.ok{color:var(--cyan)}
+  .spin{display:inline-block; width:14px; height:14px; border:2px solid rgba(255,255,255,.3);
+    border-top-color:#fff; border-radius:50%; animation:sp .7s linear infinite; vertical-align:-2px; margin-right:6px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+  .foot{text-align:center; color:var(--muted); font-size:11px; margin-top:20px; line-height:1.6}
 </style>
 </head>
 <body>
+  <div class="wrap">
+    <h1><span class="a">TikTok</span> <span class="b">Downloader</span></h1>
+    <p class="sub">Paste a link — get HD (no watermark) or MP3.</p>
 
-<header>
-  <h1>📊 吳鼎濬 ｜ 115 學測英文錯題邏輯分析 ＋ 10 題複習</h1>
-  <div class="sub">依學生自填邏輯原因分類整理，作為下次題目設計的基準</div>
-</header>
-
-<main>
-
-<!-- ============ 學生基本資料（已修正）============ -->
-<section>
-  <h2 class="section-title blue">👤 學生基本資料 <span class="updated-badge">已更新</span></h2>
-  <div class="profile">
-    <div class="profile-grid">
-      <div class="profile-row"><b>姓名：</b>吳鼎濬</div>
-      <div class="profile-row"><b>班級：</b>高二一 <span style="color:#999;font-size:13px;">（前次資料未填）</span></div>
-      <div class="profile-row"><b>座號：</b>二一 <span style="color:#999;font-size:13px;">（前次資料「不知道」）</span></div>
-      <div class="profile-row"><b>完成日期：</b>2026-05-01</div>
-      <div class="profile-row"><b>送出時間：</b>2026/5/1 下午 12:54:35</div>
-      <div class="profile-row"><b>本次涵蓋題數：</b>15 題（含中譯英 51-52）</div>
-    </div>
-    <div style="margin-top:14px;padding:12px 16px;background:#fff8e1;border-radius:10px;border-left:4px solid var(--c6);">
-      <b style="color:var(--c5);">📌 修正項目：</b>本次基本資料已補齊「班級＝高二一」、「座號＝二一」，作為下次出題與追蹤的標準參照。
-    </div>
-  </div>
-</section>
-
-<!-- ============ 錯誤邏輯分類 ============ -->
-<section>
-  <h2 class="section-title">🔍 錯誤邏輯四大模式分析</h2>
-  <p style="color:#555;font-size:15px;text-align:center;">
-    根據學生自填的「我的補充」與 AI 視角，錯誤可歸納為以下 <b>4 種邏輯模式</b>，<b>15 題中 21 條原因 + 17 條自填補充</b>共同指向四種思考慣性。
-  </p>
-
-  <!-- Pattern 1 -->
-  <div class="err-pattern">
-    <h3><span class="icon">①</span>單字基礎不足 — <span style="color:var(--c5);">8 條（佔 47%）</span></h3>
-    <p style="color:#444;">最大問題。自填中多次出現「不知道這個單字的意思」、「我不認識這個單字」、「四個選項我都不認識」。</p>
-    <div>
-      <span class="err-tag">Q1 hasty</span>
-      <span class="err-tag">Q6 dreads</span>
-      <span class="err-tag">Q6 wanders</span>
-      <span class="err-tag">Q8 全部 4 選項</span>
-      <span class="err-tag">Q9 elbow</span>
-      <span class="err-tag">Q11 it turns out</span>
-      <span class="err-tag">Q15 responsive to</span>
-      <span class="err-tag">Q45 blip</span>
-    </div>
-    <div class="strategy">
-      <b>修正策略：</b>建立每日 20 字的主題單字本（已開始執行 Day 01-02），重點放在「同等級熟悉字 + 30% 不熟字」混合學習，建立語意網絡。
-    </div>
-  </div>
-
-  <!-- Pattern 2 -->
-  <div class="err-pattern p2">
-    <h3><span class="icon">②</span>過度延伸／過度詩意化 — <span style="color:var(--c6);">5 條（佔 29%）</span></h3>
-    <p style="color:#444;">看到關鍵字後做了「字面外的腦補」，把字義延伸到原文沒有的方向。AI 十級分視角多次提醒。</p>
-    <div>
-      <span class="err-tag">Q6 wanders 想成「思緒徘徊」</span>
-      <span class="err-tag">Q9 crash 想成「撞開人群」</span>
-      <span class="err-tag">Q15 把假糞當成被騙憤怒</span>
-      <span class="err-tag">Q36 寒冷環境≠不能用「火」比喻</span>
-      <span class="err-tag">Q42 暗 = 雙方都看不清，但防守者熟悉地形佔優</span>
-    </div>
-    <div class="strategy">
-      <b>修正策略：</b>練習「字面意義優先 → 再看上下文」的兩步驟。閱讀題練習在選之前，先用<b>原文線索</b>對照選項，避免自由聯想。
-    </div>
-  </div>
-
-  <!-- Pattern 3 -->
-  <div class="err-pattern p3">
-    <h3><span class="icon">③</span>隨機猜測／字面熟悉感最強就選 — <span style="color:var(--c8);">4 條（佔 24%）</span></h3>
-    <p style="color:#444;">遇到完全不會的題目就「亂選」、「碰運氣」，自填中出現「四個選項我都不熟悉然後就亂選了」。</p>
-    <div>
-      <span class="err-tag">Q11 all in all 字面最熟</span>
-      <span class="err-tag">Q19 四個都不熟就亂選</span>
-      <span class="err-tag">Q36 隨機選</span>
-      <span class="err-tag">Q45 blip 不知就猜</span>
-    </div>
-    <div class="strategy">
-      <b>修正策略：</b>建立「<b>三步驟刪去法</b>」：(1) 排除最不可能的 → (2) 比較剩下選項與題幹邏輯關係 → (3) 帶回原文驗證。即便不會也能提高命中率。
-    </div>
-  </div>
-
-  <!-- Pattern 4 -->
-  <div class="err-pattern p4">
-    <h3><span class="icon">④</span>文法與片語結構不熟 — <span style="color:var(--c2);">4 條（佔 24%）</span></h3>
-    <p style="color:#444;">綜合測驗、混合題、中譯英都出現「文法不認識」、「不知道哪個用法對」。</p>
-    <div>
-      <span class="err-tag">Q17 had yet to + V 雙重否定</span>
-      <span class="err-tag">Q18 be meant to be 被動不定詞</span>
-      <span class="err-tag">Q19 as such 慣用片語</span>
-      <span class="err-tag">Q51-52 中譯英 -ing/活動順序/conduct</span>
-    </div>
-    <div class="strategy">
-      <b>修正策略：</b>每日單字本附帶 3 個高頻文法點（已執行：Day 01「shatter vs assault / had yet to V / as such」、Day 02「形介搭配 / 動介搭配 / be meant to V」）。
-    </div>
-  </div>
-</section>
-
-<!-- ============ 修正後出題標準 ============ -->
-<section>
-  <h2 class="section-title green">🎯 下次出題的設計標準（修正版）</h2>
-  <div class="strategy-grid">
-    <div class="strategy-card">
-      <h4>📚 詞彙重點</h4>
-      <p style="margin:0;font-size:14.5px;">每天 20 字 = 30% 不熟（取自 41 個不熟詞）+ 70% 同等級熟悉字。<b>必含中文釋義 + 3 例句 + 衍生詞</b>。</p>
-    </div>
-    <div class="strategy-card">
-      <h4>🧩 題型重點</h4>
-      <p style="margin:0;font-size:14.5px;">優先還原本次錯題情境（Q1 schedule、Q6 shy boy、Q8 drunk driver、Q9 bus station、Q15 dominant males 等），測「同義字辨析」。</p>
-    </div>
-    <div class="strategy-card">
-      <h4>📐 文法重點</h4>
-      <p style="margin:0;font-size:14.5px;">3 大固定家族：<b>(1) be + adj + 介系詞</b>、<b>(2) 動詞 + 介系詞</b>、<b>(3) be + Vp.p. + 介系詞</b>（如 meant to be / blended with）。</p>
-    </div>
-    <div class="strategy-card">
-      <h4>📖 閱讀重點</h4>
-      <p style="margin:0;font-size:14.5px;">推論題訓練「先看題目關鍵字 → 回原文找線索 → 排除過度聯想」三步驟。中譯英練習 -ing 形式與 conduct/carry out 等動詞。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 10 題複習 MCQ ============ -->
-<section>
-  <h2 class="section-title">📝 10 題單字單選複習（115 學測風格）</h2>
-  <p style="color:#555;font-size:15px;text-align:center;">
-    每題還原一道本次錯題的考點，<b>右上角標註對應的原題</b>。建議先全部寫完，再展開答案＆解析。
-  </p>
-
-  <!-- Q1 -->
-  <div class="mcq">
-    <div class="qnum">第 1 題 ｜ 重練 Q1 type</div>
-    <div class="q">The CEO has such a ______ schedule that her assistant has to book meetings weeks in advance.<span class="target">考點：tight / hasty 辨析</span></div>
-    <ol class="options">
-      <li><b>(A)</b> hasty</li>
-      <li><b>(B)</b> tight</li>
-      <li><b>(C)</b> diligent</li>
-      <li><b>(D)</b> routine</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(B) tight</div>
-        <b>tight schedule</b> 是固定搭配，意「行程很滿、很緊湊」。
-        <div class="why"><b>句意推理：</b>「to book meetings weeks in advance」（要提前幾週預訂）→ 行程必須很「緊」。</div>
-        <div class="trap"><b>陷阱拆解：</b>(A) hasty 是「<b>倉促草率</b>」，帶負面語意，不能形容受人尊敬的 CEO 行程。<br>(C) diligent 是「勤奮的」，形容人不形容 schedule。<br>(D) routine 是「例行的」，但 routine 行程不需要提前幾週預訂。</div>
+    <div class="card">
+      <div class="field">
+        <input id="url" type="url" placeholder="https://www.tiktok.com/@user/video/…"
+               autocomplete="off" spellcheck="false">
+        <button class="paste" id="pasteBtn" title="Paste from clipboard">Paste</button>
       </div>
-    </details>
-  </div>
 
-  <!-- Q2 -->
-  <div class="mcq">
-    <div class="qnum">第 2 題 ｜ 重練 Q6 type</div>
-    <div class="q">Many introverted students ______ the moment when they have to give a presentation in front of the whole class.<span class="target">考點：dread vs wander vs escape</span></div>
-    <ol class="options">
-      <li><b>(A)</b> dread</li>
-      <li><b>(B)</b> wander</li>
-      <li><b>(C)</b> escape</li>
-      <li><b>(D)</b> witness</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(A) dread</div>
-        <b>dread</b> = 恐懼、害怕（後接 N / Ving / the thought of）。
-        <div class="why"><b>句意推理：</b>「introverted students」（內向學生）+「presentation」→ 害怕「上台時刻」。</div>
-        <div class="trap"><b>陷阱拆解：</b>(B) wander 是「漫遊；徘徊」，不是「思緒徘徊」這種詩意延伸；題目沒講思緒。<br>(C) escape 是「逃離」，後面要接逃離的「地點／東西」，不能直接接「moment」當受詞表示「害怕」。<br>(D) witness 是「目擊」，語意完全不合。</div>
+      <div class="btns">
+        <button class="dl hd" id="hdBtn" onclick="download('video')">
+          Download HD <small>No watermark</small>
+        </button>
+        <button class="dl mp3" id="mp3Btn" onclick="download('mp3')">
+          Download MP3 <small>Audio only</small>
+        </button>
       </div>
-    </details>
-  </div>
 
-  <!-- Q3 -->
-  <div class="mcq">
-    <div class="qnum">第 3 題 ｜ 重練 Q8 type</div>
-    <div class="q">The angry man broke into the store and ______ several customers before being arrested by the police.<span class="target">考點：assault vs shatter（受詞是「人」）</span></div>
-    <ol class="options">
-      <li><b>(A)</b> shattered</li>
-      <li><b>(B)</b> assaulted</li>
-      <li><b>(C)</b> condemned</li>
-      <li><b>(D)</b> overturned</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(B) assaulted</div>
-        <b>assault sb</b> = 攻擊某人（受詞是「人」）。
-        <div class="why"><b>句意推理：</b>受詞是「several customers」（人）→ 必須選能接「人」的動詞。</div>
-        <div class="trap"><b>陷阱拆解：</b>(A) shatter 受詞是「物」（玻璃、夢想），不能直接接人。<br>(C) condemn 是「<b>譴責</b>」，但譴責不會與「broke into store」連續發生。<br>(D) overturn 是「推翻」（判決、政府），語意不合。</div>
+      <div class="preview" id="preview">
+        <img id="thumb" alt="">
+        <div class="meta">
+          <p class="t" id="pTitle"></p>
+          <p class="u" id="pUser"></p>
+        </div>
       </div>
-    </details>
-  </div>
 
-  <!-- Q4 -->
-  <div class="mcq">
-    <div class="qnum">第 4 題 ｜ 重練 Q9 type</div>
-    <div class="q">The concert hall was so packed that I had to ______ my way through the crowd to find my seat.<span class="target">考點：elbow my way through</span></div>
-    <ol class="options">
-      <li><b>(A)</b> crash</li>
-      <li><b>(B)</b> tumble</li>
-      <li><b>(C)</b> elbow</li>
-      <li><b>(D)</b> wander</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(C) elbow</div>
-        <b>elbow one's way through</b> = 用手肘在人群中擠出一條路（固定片語）。
-        <div class="why"><b>句意推理：</b>「concert hall was so packed」（音樂廳擠爆了）+「my way through the crowd」→ 用手肘擠路。</div>
-        <div class="trap"><b>陷阱拆解：</b>(A) crash 是「碰撞、衝撞」，會「撞開」是過度誇張（同 Q9 學生原錯）。<br>(B) tumble 是「翻滾、跌倒」，不通。<br>(D) wander 是「漫遊」，跟「找位子」的急迫感不合。</div>
-      </div>
-    </details>
-  </div>
-
-  <!-- Q5 -->
-  <div class="mcq">
-    <div class="qnum">第 5 題 ｜ 重練 Q11 type</div>
-    <div class="q">Scientists thought octopuses were solitary animals. However, ______ that they often work together in groups when hunting.<span class="target">考點：it turns out vs all in all</span></div>
-    <ol class="options">
-      <li><b>(A)</b> what is more</li>
-      <li><b>(B)</b> it turns out</li>
-      <li><b>(C)</b> in other words</li>
-      <li><b>(D)</b> all in all</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(B) it turns out</div>
-        <b>it turns out (that) ...</b> = 結果發現（引出「意外的事實」）。
-        <div class="why"><b>句意推理：</b>前句「以為章魚是獨居動物」+ 後句「其實牠們會合作打獵」→ 結果竟然發現⋯。</div>
-        <div class="trap"><b>陷阱拆解：</b>(A) what is more 是「更甚者」，補強同向觀點，不適用「反轉」。<br>(C) in other words 是「換句話說」，前後句要同義。<br>(D) all in all 是「總結來說」，要在「整篇結論」處用，不在中段反轉用（同 Q11 學生原錯）。</div>
-      </div>
-    </details>
-  </div>
-
-  <!-- Q6 -->
-  <div class="mcq">
-    <div class="qnum">第 6 題 ｜ 重練 Q15 type</div>
-    <div class="q">Babies are particularly ______ a mother's voice; they will turn their heads as soon as they hear it.<span class="target">考點：be responsive to vs annoyed at</span></div>
-    <ol class="options">
-      <li><b>(A)</b> responsive to</li>
-      <li><b>(B)</b> annoyed at</li>
-      <li><b>(C)</b> considerate of</li>
-      <li><b>(D)</b> tolerant with</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(A) responsive to</div>
-        <b>be responsive to + N</b> = 對⋯有反應。
-        <div class="why"><b>句意推理：</b>「will turn their heads as soon as they hear it」（一聽到就轉頭）= 有反應。</div>
-        <div class="trap"><b>陷阱拆解：</b>(B) annoyed at 是「對⋯生氣」，但嬰兒不會「對母親聲音生氣」（同 Q15 學生過度延伸）。<br>(C) considerate of 是「體貼⋯」，主詞通常是有同理心的成人。<br>(D) tolerant with 是「容忍」，跟轉頭看反應無關。</div>
-      </div>
-    </details>
-  </div>
-
-  <!-- Q7 -->
-  <div class="mcq">
-    <div class="qnum">第 7 題 ｜ 重練 Q17 type</div>
-    <div class="q">By the early 1800s, the steam engine had become common, but the modern car ______, since gasoline was not yet widely used.<span class="target">考點：had yet to + V</span></div>
-    <ol class="options">
-      <li><b>(A)</b> would hardly appear</li>
-      <li><b>(B)</b> had yet to appear</li>
-      <li><b>(C)</b> was fast appearing</li>
-      <li><b>(D)</b> had almost appeared</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(B) had yet to appear</div>
-        <b>had yet to + 原形 V</b> = 還沒做⋯（雙重否定，等於 had not yet + p.p.）。
-        <div class="why"><b>句意推理：</b>「gasoline was not yet widely used」（汽油尚未普及）→ 汽車還沒出現。</div>
-        <div class="trap"><b>陷阱拆解：</b>(A) would hardly appear 是「幾乎不會出現」（推測，且時態不合）。<br>(C) was fast appearing 是「快速出現中」，但題目強調「還沒」。<br>(D) had almost appeared 是「幾乎已經出現」，與「不普及」矛盾（同 Q17 學生原錯）。</div>
-      </div>
-    </details>
-  </div>
-
-  <!-- Q8 -->
-  <div class="mcq">
-    <div class="qnum">第 8 題 ｜ 重練 Q18 type</div>
-    <div class="q">A library is ______ a quiet space for reading and thinking, not a noisy meeting room.<span class="target">考點：be meant to be</span></div>
-    <ol class="options">
-      <li><b>(A)</b> passed on to</li>
-      <li><b>(B)</b> brought up as</li>
-      <li><b>(C)</b> thought to have</li>
-      <li><b>(D)</b> meant to be</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(D) meant to be</div>
-        <b>be meant to be + N</b> = 本意是；被設計成。
-        <div class="why"><b>句意推理：</b>「a quiet space for reading」是圖書館的「本意」，後面 not 句加強對比。</div>
-        <div class="trap"><b>陷阱拆解：</b>(A) passed on to 是「傳承給」，搭配繼承。<br>(B) brought up as 是「被養育成」，主詞要是人。<br>(C) thought to have 是「被認為擁有」，後面要接名詞，但圖書館不是「擁有」一個空間，而是「就是」一個空間（同 Q18 學生原錯）。</div>
-      </div>
-    </details>
-  </div>
-
-  <!-- Q9 -->
-  <div class="mcq">
-    <div class="qnum">第 9 題 ｜ 重練 Q19 type</div>
-    <div class="q">The new policy was strict, and ______, many small businesses had no choice but to close down.<span class="target">考點：as such 因此</span></div>
-    <ol class="options">
-      <li><b>(A)</b> if so</li>
-      <li><b>(B)</b> as such</li>
-      <li><b>(C)</b> by then</li>
-      <li><b>(D)</b> in that</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(B) as such</div>
-        <b>as such</b> = 因此；就此而論（呼應前面「strict policy」這個身分／類別）。
-        <div class="why"><b>句意推理：</b>「policy was strict」+「many small businesses had no choice but to close」→ 就此而論／因此造成這結果。</div>
-        <div class="trap"><b>陷阱拆解：</b>(A) if so 是「如果這樣」（假設），但後句不是假設語氣。<br>(C) by then 是「到那時」，需要明確時間點。<br>(D) in that 是「因為；既然」，當作從屬連接詞要再接子句，無法單獨插入（同 Q19 學生猜測錯）。</div>
-      </div>
-    </details>
-  </div>
-
-  <!-- Q10 -->
-  <div class="mcq">
-    <div class="qnum">第 10 題 ｜ 重練 Q36 + Q45 type</div>
-    <div class="q">The recent drop in stock prices is just a ______; experts believe the long-term trend remains strong.<span class="target">考點：a blip 短暫小波動</span></div>
-    <ol class="options">
-      <li><b>(A)</b> a blip</li>
-      <li><b>(B)</b> an urgent need</li>
-      <li><b>(C)</b> a major collapse</li>
-      <li><b>(D)</b> a permanent change</li>
-    </ol>
-    <details class="answer-box">
-      <summary><span>👆 點此查看答案 ＆ 解析</span><span class="arrow">▼</span></summary>
-      <div class="answer-content">
-        <div class="ans-label">答案：(A) a blip</div>
-        <b>a blip</b> = 短暫的小波動（原意是雷達上一閃即逝的光點）。
-        <div class="why"><b>句意推理：</b>「the long-term trend remains strong」（長期趨勢仍強）→ 短期下跌只是「短暫的小波動」。</div>
-        <div class="trap"><b>陷阱拆解：</b>(B) an urgent need 是「迫切需求」，跟股價下跌無關（同 Q45 學生原錯）。<br>(C) a major collapse 是「重大崩盤」，跟「長期趨勢仍強」矛盾。<br>(D) a permanent change 是「永久改變」，與「短期」矛盾。</div>
-      </div>
-    </details>
-  </div>
-
-  <!-- Total Answer Key -->
-  <details class="answer-box" style="margin-top:30px;">
-    <summary><span>📋 一次看完 10 題答案總表</span><span class="arrow">▼</span></summary>
-    <div class="answer-content">
-      <table style="width:100%;border-collapse:collapse;font-size:15px;">
-        <tr style="background:#1d3557;color:#fff;"><th style="padding:8px;border:1px solid #ddd;">題號</th><th style="padding:8px;border:1px solid #ddd;">答案</th><th style="padding:8px;border:1px solid #ddd;">考點</th></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">1</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">B</td><td style="padding:6px;border:1px solid #ddd;">tight schedule 行程緊湊（vs hasty 倉促）</td></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">2</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">A</td><td style="padding:6px;border:1px solid #ddd;">dread = 害怕（vs wander 漫遊）</td></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">3</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">B</td><td style="padding:6px;border:1px solid #ddd;">assault sb 攻擊人（受詞是人）</td></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">4</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">C</td><td style="padding:6px;border:1px solid #ddd;">elbow one's way through 擠開人群</td></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">5</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">B</td><td style="padding:6px;border:1px solid #ddd;">it turns out 結果發現（用於反轉）</td></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">6</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">A</td><td style="padding:6px;border:1px solid #ddd;">be responsive to 對⋯有反應</td></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">7</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">B</td><td style="padding:6px;border:1px solid #ddd;">had yet to + V 還沒做（雙重否定）</td></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">8</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">D</td><td style="padding:6px;border:1px solid #ddd;">be meant to be 本意是；被設計成</td></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">9</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">B</td><td style="padding:6px;border:1px solid #ddd;">as such 因此；就此而論</td></tr>
-        <tr><td style="padding:6px;border:1px solid #ddd;text-align:center;">10</td><td style="padding:6px;border:1px solid #ddd;text-align:center;color:#2a9d8f;font-weight:700;">A</td><td style="padding:6px;border:1px solid #ddd;">a blip 短暫的小波動</td></tr>
-      </table>
+      <div class="msg" id="msg"></div>
     </div>
-  </details>
-</section>
 
-<footer>
-  吳鼎濬｜115 學測英文錯題邏輯分析 + 10 題複習｜2026-05-01<br>
-  資料來源：學生自填邏輯分析報告（含 AI 八級分／十級分視角）｜下次出題標準參照
-</footer>
+    <p class="foot">
+      Runs locally via yt-dlp + ffmpeg.<br>
+      Use for your own or permitted content only.
+    </p>
+  </div>
 
-</main>
+<script>
+const $ = id => document.getElementById(id);
+const urlEl = $('url'), msgEl = $('msg'), preview = $('preview');
+let busy = false, infoTimer = null;
+
+function setMsg(text, cls=''){ msgEl.className = 'msg ' + cls; msgEl.innerHTML = text; }
+function setBusy(state){
+  busy = state;
+  $('hdBtn').disabled = state; $('mp3Btn').disabled = state;
+}
+
+// Paste from clipboard
+$('pasteBtn').addEventListener('click', async () => {
+  try { urlEl.value = (await navigator.clipboard.readText()).trim(); onUrlChange(); urlEl.focus(); }
+  catch { setMsg('Clipboard blocked — paste manually (Ctrl/Cmd+V).', 'err'); }
+});
+
+// Debounced preview fetch
+urlEl.addEventListener('input', onUrlChange);
+function onUrlChange(){
+  clearTimeout(infoTimer);
+  const v = urlEl.value.trim();
+  preview.classList.remove('show');
+  if (!/tiktok\.com/i.test(v)) { setMsg(''); return; }
+  infoTimer = setTimeout(fetchInfo, 500);
+}
+
+async function fetchInfo(){
+  const url = urlEl.value.trim();
+  try {
+    const r = await fetch('/api/info', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ url })
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || 'Could not read video.');
+    $('thumb').src = d.thumbnail || '';
+    $('pTitle').textContent = d.title || 'TikTok video';
+    $('pUser').textContent = d.uploader ? '@' + d.uploader : '';
+    preview.classList.add('show');
+    setMsg('');
+  } catch(e){ /* silent — preview is optional */ }
+}
+
+async function download(type){
+  if (busy) return;
+  const url = urlEl.value.trim();
+  if (!/tiktok\.com/i.test(url)) { setMsg('Paste a valid TikTok link first.', 'err'); return; }
+
+  setBusy(true);
+  setMsg('<span class="spin"></span>' + (type==='mp3' ? 'Extracting audio…' : 'Fetching HD video…'));
+
+  try {
+    const r = await fetch(`/api/download?type=${type}&url=${encodeURIComponent(url)}`);
+    if (!r.ok) {
+      let err = 'Download failed.';
+      try { err = (await r.json()).error || err; } catch {}
+      throw new Error(err);
+    }
+    // Filename from Content-Disposition, fallback otherwise
+    let name = type==='mp3' ? 'tiktok.mp3' : 'tiktok.mp4';
+    const cd = r.headers.get('Content-Disposition') || '';
+    const m = cd.match(/filename\*?=(?:UTF-8'')?"?([^";]+)"?/i);
+    if (m) name = decodeURIComponent(m[1]);
+
+    const blob = await r.blob();
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(a.href), 4000);
+    setMsg('Saved ✓ (' + name + ')', 'ok');
+  } catch(e){
+    setMsg(e.message, 'err');
+  } finally {
+    setBusy(false);
+  }
+}
+
+// Enter key = HD download
+urlEl.addEventListener('keydown', e => { if (e.key === 'Enter') download('video'); });
+</script>
 </body>
 </html>

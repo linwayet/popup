@@ -1,0 +1,4 @@
+# TikTok now requires browser impersonation — the [curl-cffi] extra is mandatory,
+# not optional. Installing plain "yt-dlp" will make every TikTok download fail.
+yt-dlp[default,curl-cffi]>=2024.1.1
+Flask>=3.0
