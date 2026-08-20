@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TELEHEALTH｜空中英語教室 2026 September 3, 4</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap');
+:root {
+  --bg:#FFF8F0; --text:#1A0F00; --red:#C0392B; --blue:#1565C0; --green:#2E7D32;
+  --orange:#E65100; --purple:#6A1B9A; --deepblue:#0D47A1; --brown:#4A3728;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:"BIZ UDPGothic","Noto Sans TC",Arial,sans-serif;
+  font-size:23px; line-height:1.9; font-weight:400;
+}
+main{max-width:880px;margin:auto;padding:28px 20px 80px}
+.hero{
+  background:#FFFDF9;border:4px solid #E9B7A9;padding:28px 24px;margin:12px 0 26px;
+  box-shadow:0 8px 0 #F2D6C9;
+}
+h1{margin:0;color:var(--red);font-size:3.2rem;line-height:1.2;letter-spacing:.02em}
+.subtitle{font-size:2.25rem;color:var(--blue);font-weight:700;margin:.45rem 0}
+.credit{color:#0D47A1;font-size:1.25rem;font-weight:700;letter-spacing:.05em}
+.meta{margin-top:12px;color:#6D3D23;font-weight:700}
+#unit-map{background:#FFF1E6;border:3px solid #F0C7A6;padding:24px;margin:28px 0}
+#unit-map h2{margin-top:0;color:#8B4513;font-size:2rem}
+.map-grid{display:grid;gap:16px}
+.map-link,.back-to-map{
+  display:flex;align-items:center;justify-content:center;min-height:72px;padding:14px 18px;
+  color:white;text-decoration:none;font-weight:700;border:3px solid rgba(255,255,255,.55);
+}
+.map-link:nth-child(1){background:#0D47A1} .map-link:nth-child(2){background:#BF360C}
+.map-link:nth-child(3){background:#1B5E20} .map-link:nth-child(4){background:#4A148C}
+.map-link:nth-child(5){background:#4A3728}
+.back-to-map{background:#4A3728;margin:28px auto 0;max-width:420px}
+section{margin:36px 0 48px}
+.section-title{color:white;padding:18px 22px;margin:0 0 22px;font-size:2.2rem;line-height:1.35}
+.unit1{background:#0D47A1} .unit2{background:#BF360C} .unit3{background:#1B5E20}
+.unit4{background:#4A148C} .unit5{background:#4A3728}
+.original-card{background:#F3F8FF;border:3px solid #90CAF9;padding:24px}
+.original-card p{margin:0 0 1.25em} .original-card h3{color:#0D47A1}
+.keyword{color:#0D47A1;font-weight:700}
+.diagram-card{background:#FFFDF8;border:3px solid #E8C9A2;padding:22px;margin:0 0 24px}
+.diagram-title{font-size:1.6rem;color:#8B4513;font-weight:700;margin-bottom:14px}
+.diagram-card svg{width:100%;height:auto;display:block}
+.reading-card{background:#FFF3EF;border:3px solid #FFAB91;padding:22px;margin:0 0 22px}
+.reading-head{font-size:34px;color:#BF360C;font-weight:700}
+.quote{font-size:1.03em;color:#4E281B}
+.translation{font-weight:700;color:#7A270D}
+.analysis{background:#FFFDF9;padding:14px;border-left:7px solid #E65100}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.chip{background:#FEF0E7;color:#B54708;padding:5px 11px;border:1px solid #E9A675;font-size:.83em;font-weight:700}
+.relatable-card{
+  background:#FFF6CC;border:4px solid #E0A400;padding:24px;margin-bottom:28px;
+}
+.relatable-card h3{color:#8A4B00;font-size:1.8rem;margin-top:0}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.compare > div{background:white;border:2px solid #E3C26A;padding:14px}
+.vocab-card{background:#F1F8F2;border:3px solid #81C784;padding:22px;margin:0 0 22px}
+.vocab-card h3{color:#1B5E20;font-size:1.48rem;margin:0 0 14px}
+.circled{font-size:30px;font-weight:700;color:#2E7D32}
+.kk{color:#6A1B9A;font-size:.86em} .pos{color:#E65100;font-size:.86em}
+.meaning{color:#1A0F00;font-size:.9em}
+.tag-row{display:grid;grid-template-columns:128px 1fr;gap:12px;align-items:start;margin:9px 0}
+.tag{display:inline-block;padding:4px 10px;font-size:.8em;font-weight:700;text-align:center}
+.tag-red{background:#FDEDEC;color:#C0392B} .tag-blue{background:#EBF5FB;color:#1565C0}
+.tag-green{background:#EAFAF1;color:#2E7D32} .tag-yellow{background:#FEF9E7;color:#A65F00}
+.tag-purple{background:#F5EEF8;color:#6A1B9A} .tag-orange{background:#FEF0E7;color:#E65100}
+.example{background:#FFFDF8;border-left:6px solid #81C784;padding:12px 14px;margin:13px 0}
+.example span{color:#74452D}
+.grammar-card{background:#F9F0FF;border:3px solid #CE93D8;padding:22px;margin:0 0 24px}
+.grammar-card h3{color:#4A148C;font-size:1.6rem;margin-top:0}
+.glabel{color:#6A1B9A;font-weight:700;margin-top:16px}
+.pattern{background:#FFFDF9;border-left:7px solid #6A1B9A;padding:12px}
+.grammar-card li{margin:.45em 0}
+.wrong{background:#FFF0F0;border-left:7px solid #C0392B;padding:10px}
+.right{background:#F0FFF3;border-left:7px solid #2E7D32;padding:10px}
+.quiz{background:#FFF6D9;border:2px solid #E4B13E;padding:14px;font-weight:700}
+details{background:#FAF6F0;border:3px solid #C4A06A;margin:0 0 18px}
+summary{
+  min-height:72px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;
+  padding:16px 20px;font-weight:700;color:#4A3728;background:#F2E6D8;font-size:1.25rem;
+}
+.detail-body{padding:18px 24px}
+.detail-body li{margin:.45em 0}
+.arrow{display:inline-block;transition:transform .2s}
+details[open] .arrow{transform:rotate(180deg)}
+.writing-item{background:#FFFDF9;border-left:6px solid #C4A06A;padding:12px 15px;margin:12px 0}
+.small-note{font-size:.86em;color:#6C4A38}
+@media(max-width:650px){
+  body{font-size:21px}
+  main{padding:16px 12px 60px}
+  h1{font-size:2.55rem} .subtitle{font-size:1.75rem}
+  .section-title{font-size:1.85rem}
+  .compare{grid-template-columns:1fr}
+  .tag-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero">
+    <h1>TELEHEALTH</h1>
+    <div class="subtitle">Can a doctor treat you without being with you?</div>
+    <div class="credit">林威老師與 AI agent 團隊製作</div>
+    <div class="meta">空中英語教室　2026 SEPTEMBER 3, 4</div>
+  </header>
+
+  <nav id="unit-map">
+    <h2>單元地圖</h2>
+    <div class="map-grid">
+      <a class="map-link" href="#unit1">區塊一　英文文章原文</a>
+      <a class="map-link" href="#unit2">區塊二　8 句精讀</a>
+      <a class="map-link" href="#unit3">區塊三　單字整理</a>
+      <a class="map-link" href="#unit4">區塊四　文法解析</a>
+      <a class="map-link" href="#unit5">補充資料　字首／字尾／30 單詞／練文筆食材</a>
+    </div>
+  </nav>
+
+  <section id="unit1">
+    <h2 class="section-title unit1">區塊一　英文文章原文</h2>
+
+    <div class="diagram-card">
+      <div class="diagram-title">Telehealth：遠距醫療如何把病人與醫療資源連起來</div>
+      <svg viewBox="0 0 820 470" role="img" aria-label="遠距醫療流程結構圖">
+        <defs>
+          <marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L9,3 z" fill="#8B4513"/>
+          </marker>
+        </defs>
+        <rect x="35" y="175" width="180" height="110" rx="18" fill="#FDE9D8" stroke="#C0392B" stroke-width="4"/>
+        <text x="125" y="218" text-anchor="middle" font-size="26" font-weight="700" fill="#7A210F">PATIENT</text>
+        <text x="125" y="252" text-anchor="middle" font-size="21" fill="#1A0F00">病人／居家端</text>
+
+        <rect x="320" y="35" width="190" height="90" rx="16" fill="#E9F2FF" stroke="#0D47A1" stroke-width="4"/>
+        <text x="415" y="73" text-anchor="middle" font-size="23" font-weight="700" fill="#0D47A1">Video Visit</text>
+        <text x="415" y="103" text-anchor="middle" font-size="19" fill="#1A0F00">視訊會診</text>
+
+        <rect x="320" y="145" width="190" height="90" rx="16" fill="#EAF8EE" stroke="#2E7D32" stroke-width="4"/>
+        <text x="415" y="183" text-anchor="middle" font-size="23" font-weight="700" fill="#1B5E20">Messages</text>
+        <text x="415" y="213" text-anchor="middle" font-size="19" fill="#1A0F00">文字聯絡</text>
+
+        <rect x="320" y="255" width="190" height="90" rx="16" fill="#FFF2D8" stroke="#D68910" stroke-width="4"/>
+        <text x="415" y="293" text-anchor="middle" font-size="23" font-weight="700" fill="#8A5200">Sensors</text>
+        <text x="415" y="323" text-anchor="middle" font-size="19" fill="#1A0F00">居家監測</text>
+
+        <rect x="320" y="365" width="190" height="75" rx="16" fill="#F5EAFB" stroke="#6A1B9A" stroke-width="4"/>
+        <text x="415" y="397" text-anchor="middle" font-size="22" font-weight="700" fill="#6A1B9A">Remote Surgery</text>
+        <text x="415" y="425" text-anchor="middle" font-size="18" fill="#1A0F00">遠距手術</text>
+
+        <rect x="615" y="175" width="170" height="110" rx="18" fill="#E9F2FF" stroke="#1565C0" stroke-width="4"/>
+        <text x="700" y="218" text-anchor="middle" font-size="26" font-weight="700" fill="#0D47A1">DOCTOR</text>
+        <text x="700" y="252" text-anchor="middle" font-size="21" fill="#1A0F00">醫師／醫院端</text>
+
+        <line x1="215" y1="220" x2="315" y2="80" stroke="#8B4513" stroke-width="4" marker-end="url(#arr)"/>
+        <line x1="215" y1="230" x2="315" y2="190" stroke="#8B4513" stroke-width="4" marker-end="url(#arr)"/>
+        <line x1="215" y1="240" x2="315" y2="300" stroke="#8B4513" stroke-width="4" marker-end="url(#arr)"/>
+        <line x1="215" y1="250" x2="315" y2="402" stroke="#8B4513" stroke-width="4" marker-end="url(#arr)"/>
+
+        <line x1="515" y1="80" x2="610" y2="215" stroke="#8B4513" stroke-width="4" marker-end="url(#arr)"/>
+        <line x1="515" y1="190" x2="610" y2="228" stroke="#8B4513" stroke-width="4" marker-end="url(#arr)"/>
+        <line x1="515" y1="300" x2="610" y2="242" stroke="#8B4513" stroke-width="4" marker-end="url(#arr)"/>
+        <line x1="515" y1="402" x2="610" y2="255" stroke="#8B4513" stroke-width="4" marker-end="url(#arr)"/>
+      </svg>
+    </div>
+
+    <div class="original-card">
+      <p>Discussions of technical progress and its effect on the medical field often focus on new treatments for diseases. But technology can also play a role in solving a different problem: <strong class="keyword">accessibility</strong>. Sometimes people have diseases that can be cured, but they live too far from a hospital to receive treatment. Or the hospitals they are able to reach may not have a doctor who <strong class="keyword">specializes</strong> in that disease. If they could receive medical care from a distance, it might save their lives. And <strong class="keyword">telehealth</strong> offers that very possibility.</p>
+<p><strong class="keyword">Telehealth</strong> refers to medical care provided when the doctor and patient are not <strong class="keyword">physically</strong> in the same place, including video conferences with doctors that replace office visits. <strong class="keyword">Telehealth</strong> also allows patients to send text messages to doctors or nurses between visits. It can even involve patients wearing <strong class="keyword">sensors</strong> or monitors at home and this data being sent to their doctor.</p>
+<p><strong class="keyword">Telehealth</strong> has some <strong class="keyword">distinct</strong> advantages over <strong class="keyword">conventional</strong> medicine. First, it avoids the risk of patients catching <strong class="keyword">contagious</strong> diseases from other patients. Also, whoever needs medical care can meet with a doctor without making the trip to a hospital, which is especially important for people living in <strong class="keyword">remote</strong> or <strong class="keyword">rural</strong> areas. <strong class="keyword">Remote</strong> <strong class="keyword">monitoring</strong> of patients also allows doctors to gain information over an <strong class="keyword">extended</strong> time without keeping the patient hospitalized.</p>
+<p>Currently, <strong class="keyword">telehealth</strong> is mostly used for verbal <strong class="keyword">consultations</strong> and <strong class="keyword">remote</strong> <strong class="keyword">monitoring</strong> of patients. But since 2001, technology has made <strong class="keyword">remote</strong> surgery possible, which is now happening more and more often.</p>
+<p>Last year, researchers in Dundee, Scotland, removed a blood clot from a dead human body using a robot that they controlled from a hospital across the city. A few hours later, a surgeon based in the United States did the same <strong class="keyword">procedure</strong>. Even across the Atlantic Ocean, the time between the surgeon moving his <strong class="keyword">instruments</strong> and the robot doing the same was only a <strong class="keyword">fraction</strong> of a second. The doctor in Dundee commented that the <strong class="keyword">remote</strong> surgery felt just like performing a normal operation.</p>
+<p>The operation the robots were used for is used to treat stroke patients. It requires special training, and a delay of even a few minutes can be deadly. A patient who has a stroke in a small town could die before reaching a hospital with a doctor <strong class="keyword">qualified</strong> to perform the surgery. But hospitals in small towns could <strong class="keyword">adopt</strong> <strong class="keyword">remote</strong> surgery technology once it is developed and becomes <strong class="keyword">affordable</strong>, allowing surgeons in larger hospitals to perform life-saving surgery on patients who otherwise couldn’t get it.</p>
+<p><strong class="keyword">Telehealth</strong> is already making medical care more <strong class="keyword">accessible</strong> and convenient, and technical advances could open up amazing possibilities, such as <strong class="keyword">remote</strong> surgery.</p>
+<h3>How effective is telehealth?</h3>
+<p>Many studies have shown <strong class="keyword">telehealth</strong> to be as effective as in-person care for the types of care it can provide. In fact, in some areas such as mental health, <strong class="keyword">telehealth</strong> may even be more effective.</p>
+    </div>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <section id="unit2">
+    <h2 class="section-title unit2">區塊二　8 句精讀</h2>
+    
+    <article class="reading-card">
+      <div class="reading-head"><span class="circled">①</span></div>
+      <p class="quote"><em>Discussions of technical progress and its effect on the medical field often focus on new treatments for diseases.</em></p>
+      <p class="translation">談到科技進步及其對醫療領域的影響時，人們往往把焦點放在疾病的新療法上。</p>
+      <p class="analysis"><strong>文法解析：</strong>句中以 Discussions of ... 作主詞，focus on 表示「聚焦於」。its effect on the medical field 中，on 是 effect 常見的介係詞搭配。整句用現在簡單式描述一般性的討論傾向。</p>
+      <div class="chips"><span class="chip">focus on 聚焦於</span><span class="chip">effect on 對…的影響</span><span class="chip">medical field 醫療領域</span></div>
+    </article>
+    <article class="reading-card">
+      <div class="reading-head"><span class="circled">②</span></div>
+      <p class="quote"><em>Sometimes people have diseases that can be cured, but they live too far from a hospital to receive treatment.</em></p>
+      <p class="translation">有時候，人們罹患的是可以治癒的疾病，卻因為住得離醫院太遠而無法接受治療。</p>
+      <p class="analysis"><strong>文法解析：</strong>that can be cured 是限定用法的形容詞子句，修飾 diseases；can be cured 為情態動詞加被動語態。too far ... to receive 是 too ... to V 結構，表示「太…而無法…」。</p>
+      <div class="chips"><span class="chip">be cured 被治癒</span><span class="chip">too ... to V 太…而無法…</span><span class="chip">receive treatment 接受治療</span></div>
+    </article>
+    <article class="reading-card">
+      <div class="reading-head"><span class="circled">③</span></div>
+      <p class="quote"><em>If they could receive medical care from a distance, it might save their lives.</em></p>
+      <p class="translation">如果他們能夠遠距接受醫療照護，這可能就能挽救他們的生命。</p>
+      <p class="analysis"><strong>文法解析：</strong>If + 過去式 could 搭配主句 might，呈現較假設性的條件。這種寫法不是單純敘述現在事實，而是想像「若能做到」所可能產生的結果。</p>
+      <div class="chips"><span class="chip">from a distance 遠距地</span><span class="chip">save one’s life 挽救某人的生命</span><span class="chip">might 可能</span></div>
+    </article>
+    <article class="reading-card">
+      <div class="reading-head"><span class="circled">④</span></div>
+      <p class="quote"><em>Telehealth refers to medical care provided when the doctor and patient are not physically in the same place, including video conferences with doctors that replace office visits.</em></p>
+      <p class="translation">遠距醫療是指醫師與病人並未實際處在同一地點時所提供的醫療照護，其中包括以視訊會診取代到診間看診。</p>
+      <p class="analysis"><strong>文法解析：</strong>provided 是過去分詞，修飾 medical care，可還原為 medical care that is provided。including ... 為補充說明；that replace office visits 是形容詞子句，修飾 video conferences。</p>
+      <div class="chips"><span class="chip">refer to 指的是</span><span class="chip">provided 過去分詞修飾</span><span class="chip">including 包括</span></div>
+    </article>
+    <article class="reading-card">
+      <div class="reading-head"><span class="circled">⑤</span></div>
+      <p class="quote"><em>Also, whoever needs medical care can meet with a doctor without making the trip to a hospital, which is especially important for people living in remote or rural areas.</em></p>
+      <p class="translation">此外，任何需要醫療照護的人都可以不用親自跑一趟醫院就與醫師看診，這對住在偏遠或鄉村地區的人尤其重要。</p>
+      <p class="analysis"><strong>文法解析：</strong>whoever needs medical care 是複合關係代名詞 whoever 引導的名詞子句，整個子句在句中當主詞。without making ... 使用介係詞 without + V-ing。which 指前面整件事，形成非限定形容詞子句。</p>
+      <div class="chips"><span class="chip">whoever 任何…的人</span><span class="chip">without V-ing 不做…</span><span class="chip">remote or rural 偏遠或鄉村的</span></div>
+    </article>
+    <article class="reading-card">
+      <div class="reading-head"><span class="circled">⑥</span></div>
+      <p class="quote"><em>Remote monitoring of patients also allows doctors to gain information over an extended time without keeping the patient hospitalized.</em></p>
+      <p class="translation">遠端監測病患也能讓醫師在較長的一段時間內持續取得資訊，而不必讓病人一直住院。</p>
+      <p class="analysis"><strong>文法解析：</strong>allow + O + to V 表示「允許／使某人能做某事」。without keeping the patient hospitalized 中是 keep + O + OC，hospitalized 為過去分詞形容詞，說明病人的狀態。</p>
+      <div class="chips"><span class="chip">allow O to V 讓某人能…</span><span class="chip">over an extended time 長時間</span><span class="chip">keep O + OC 使…維持某狀態</span></div>
+    </article>
+    <article class="reading-card">
+      <div class="reading-head"><span class="circled">⑦</span></div>
+      <p class="quote"><em>Even across the Atlantic Ocean, the time between the surgeon moving his instruments and the robot doing the same was only a fraction of a second.</em></p>
+      <p class="translation">即使隔著大西洋，從外科醫師移動器械到機器人做出相同動作之間的時間差，也只有不到一秒的一小部分。</p>
+      <p class="analysis"><strong>文法解析：</strong>between A and B 平行結構中，A 與 B 都使用「名詞 + V-ing」：the surgeon moving ... / the robot doing ...。a fraction of 表示「…的一小部分」。</p>
+      <div class="chips"><span class="chip">between A and B 在A與B之間</span><span class="chip">a fraction of …的一小部分</span><span class="chip">do the same 做同樣的事</span></div>
+    </article>
+    <article class="reading-card">
+      <div class="reading-head"><span class="circled">⑧</span></div>
+      <p class="quote"><em>But hospitals in small towns could adopt remote surgery technology once it is developed and becomes affordable, allowing surgeons in larger hospitals to perform life-saving surgery on patients who otherwise couldn’t get it.</em></p>
+      <p class="translation">不過，一旦遠距手術技術發展成熟且價格變得可負擔，小城鎮的醫院就可能採用它，讓大醫院的外科醫師為原本無法接受這種治療的病人進行救命手術。</p>
+      <p class="analysis"><strong>文法解析：</strong>once 引導時間副詞子句；allowing ... 是現在分詞片語，補充前面採用技術所帶來的結果。allow + O + to V 再次出現；who otherwise couldn’t get it 是形容詞子句，修飾 patients。</p>
+      <div class="chips"><span class="chip">once 一旦</span><span class="chip">allowing ... 因而使…</span><span class="chip">otherwise 否則／在其他情況下</span></div>
+    </article>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <section id="unit3">
+    <h2 class="section-title unit3">區塊三　20 個核心單字整理</h2>
+
+    <article class="relatable-card">
+      <h3>指定補充字：relatable <span class="kk">[rɪˈletəbəl]</span> <span class="pos">adj.</span></h3>
+      <p><strong>中文：</strong>讓人容易產生共鳴的；讓人覺得「我也有過這種感覺」的。</p>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>relate (v. 使有關聯；理解、產生共鳴)；related (adj. 有關聯的)；relation (n. 關係)；relationship (n. 關係)；relatable (adj. 讓人有共鳴的)</div></div>
+      <div class="tag-row"><span class="tag tag-green">片語</span><div>highly relatable 非常能引起共鳴；a relatable character 讓人有共鳴的角色；a relatable experience 讓人有共鳴的經驗</div></div>
+      <div class="compare">
+        <div><strong>related</strong><br>＝「有關聯的」<br><em>The two health problems are closely related.</em><br>這兩個健康問題密切相關。</div>
+        <div><strong>relatable</strong><br>＝「讓人有共鳴的」<br><em>The story feels relatable to many teenagers.</em><br>這個故事讓許多青少年很有共鳴。</div>
+      </div>
+      <div class="example">For people who live far from hospitals, the article’s concern about access to care may feel highly relatable.<br><span>對住得離醫院很遠的人來說，文章所談的醫療可及性問題可能非常有共鳴。</span></div>
+      <div class="example">The character is relatable because she worries about the same things many students do.<br><span>這個角色很能引起共鳴，因為她擔心的事情也是許多學生會擔心的。</span></div>
+    </article>
+
+    
+    <article class="vocab-card">
+      <h3><span class="circled">①</span> accessibility <span class="kk">[əkˌsɛsəˈbɪlətɪ]</span> <span class="pos">n.</span> <span class="meaning">可及性；易取得性</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>access (n./v. 使用、取得)；accessible (adj. 可取得的、易接近的)</div></div>
+<div class="tag-row"><span class="tag tag-blue">字根</span><div>access = approach「接近」；同字族：accessible, inaccessible</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>improve accessibility 提升可及性</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>greater accessibility 更高的可及性</div></div>
+      <div class="example">Technology can play a role in solving a different problem: accessibility.<br><span>科技也能協助解決另一個問題：可及性。</span></div>
+      <div class="example">Online services can improve accessibility for students in remote communities.<br><span>線上服務可以提升偏遠社區學生取得資源的便利性。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">②</span> specialize <span class="kk">[ˈspɛʃəˌlaɪz]</span> <span class="pos">v.</span> <span class="meaning">專攻；專門從事</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>special (adj. 特別的)；specialist (n. 專家)；specialized (adj. 專門的)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>specialize in + N/V-ing 專精於…</div></div>
+<div class="tag-row"><span class="tag tag-orange">句型</span><div>S + specialize(s) in + N/V-ing；in 是介係詞，後接名詞或動名詞</div></div>
+      <div class="example">The hospital may not have a doctor who specializes in that disease.<br><span>那家醫院可能沒有專門治療該疾病的醫師。</span></div>
+      <div class="example">Dr. Chen specializes in treating sleep disorders.<br><span>陳醫師專門治療睡眠障礙。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">③</span> telehealth <span class="kk">[ˈtɛləˌhɛlθ]</span> <span class="pos">n.</span> <span class="meaning">遠距醫療；遠距健康照護</span></h3>
+      <div class="tag-row"><span class="tag tag-blue">字根</span><div>tele- = far「遠距」；同字首：telephone, television, teleconference</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>telehealth services 遠距醫療服務</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>widespread telehealth use 廣泛的遠距醫療使用</div></div>
+      <div class="example">Telehealth offers the possibility of receiving medical care from a distance.<br><span>遠距醫療提供了從遠方接受醫療照護的可能性。</span></div>
+      <div class="example">Telehealth can connect patients with specialists who work far away.<br><span>遠距醫療可以讓病人與遠方的專科醫師連線。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">④</span> physically <span class="kk">[ˈfɪzɪkəlɪ]</span> <span class="pos">adv.</span> <span class="meaning">身體上地；實際地</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>physical (adj. 身體的；實體的)；physically (adv. 身體上地；實際地)</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>physically = 實際／身體上；psychologically = 心理上</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>physically present 親自在場</div></div>
+      <div class="example">The doctor and patient are not physically in the same place.<br><span>醫師與病人實際上不在同一地點。</span></div>
+      <div class="example">You do not need to be physically present to join the online meeting.<br><span>你不必親自在場就能參加線上會議。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑤</span> sensor <span class="kk">[ˈsɛnsɚ]</span> <span class="pos">n.</span> <span class="meaning">感測器；偵測器</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>sense (n./v. 感覺；察覺)；sensitive (adj. 敏感的)</div></div>
+<div class="tag-row"><span class="tag tag-blue">字根</span><div>sens = feel「感覺」；同字根：sensation, sensitive</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>wearable sensor 穿戴式感測器</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>a highly sensitive sensor 高靈敏度感測器</div></div>
+      <div class="example">Patients may wear sensors or monitors at home.<br><span>病人可能在家佩戴感測器或監測裝置。</span></div>
+      <div class="example">The sensor can detect changes in body temperature.<br><span>這個感測器可以偵測體溫的變化。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑥</span> distinct <span class="kk">[dɪˈstɪŋkt]</span> <span class="pos">adj.</span> <span class="meaning">明顯不同的；清楚的；獨特的</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>distinction (n. 區別)；distinctive (adj. 有特色的)；distinctly (adv. 清楚地)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>a distinct advantage 明顯的優勢</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>distinct = 明確不同；distinctive = 有獨特特色的</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>clearly distinct 明顯有別的</div></div>
+      <div class="example">Telehealth has some distinct advantages over conventional medicine.<br><span>遠距醫療相較於傳統醫療具有一些明顯優勢。</span></div>
+      <div class="example">The two approaches are clearly distinct in cost and speed.<br><span>這兩種方法在成本與速度上明顯不同。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑦</span> conventional <span class="kk">[kənˈvɛnʃənəl]</span> <span class="pos">adj.</span> <span class="meaning">傳統的；依慣例的</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>convention (n. 慣例；大會)；conventionally (adv. 傳統上)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>conventional medicine 傳統醫療</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>conventional = 傳統慣用的；traditional = 長久傳承的</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>more conventional methods 較傳統的方法</div></div>
+      <div class="example">Telehealth has advantages over conventional medicine.<br><span>遠距醫療比傳統醫療具有一些優勢。</span></div>
+      <div class="example">Some patients prefer conventional face-to-face appointments.<br><span>有些病人較偏好傳統的面對面看診。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑧</span> contagious <span class="kk">[kənˈtedʒəs]</span> <span class="pos">adj.</span> <span class="meaning">會傳染的；有感染力的</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>contagion (n. 傳染；感染)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>a contagious disease 傳染病</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>highly contagious 高度傳染的</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>contagious 常指人與人可傳播；infectious 泛指由病原體造成、可感染的</div></div>
+      <div class="example">Telehealth avoids the risk of patients catching contagious diseases from other patients.<br><span>遠距醫療可避免病人從其他病患身上感染傳染病的風險。</span></div>
+      <div class="example">The virus is highly contagious in crowded indoor spaces.<br><span>這種病毒在擁擠的室內空間具有高度傳染性。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑨</span> remote <span class="kk">[rɪˈmot]</span> <span class="pos">adj.</span> <span class="meaning">偏遠的；遠端的</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>remotely (adv. 遠端地；微小程度地)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>remote area 偏遠地區；remote monitoring 遠端監測</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>geographically remote 地理位置偏遠的</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>remote 可指「偏遠」或「遠端」；rural 主要指「鄉村的」</div></div>
+      <div class="example">Telehealth is especially important for people living in remote areas.<br><span>遠距醫療對住在偏遠地區的人尤其重要。</span></div>
+      <div class="example">The company lets engineers monitor the machines remotely.<br><span>公司讓工程師遠端監控機器。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑩</span> rural <span class="kk">[ˈrʊrəl]</span> <span class="pos">adj.</span> <span class="meaning">鄉村的；農村的</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>rurality (n. 鄉村特性；偏鄉性)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>rural area 鄉村地區；rural community 鄉村社區</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>rural = 鄉村的；urban = 都市的</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>largely rural region 主要為鄉村的地區</div></div>
+      <div class="example">Telehealth is important for people living in remote or rural areas.<br><span>遠距醫療對偏遠或鄉村地區居民很重要。</span></div>
+      <div class="example">The program brings medical specialists to rural communities online.<br><span>這項計畫透過網路把專科醫療帶進鄉村社區。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑪</span> monitoring <span class="kk">[ˈmɑnətərɪŋ]</span> <span class="pos">n.</span> <span class="meaning">監測；監控</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>monitor (n./v. 螢幕；監測)；monitoring (n. 監測)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>remote monitoring 遠端監測；continuous monitoring 持續監測</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>close monitoring 密切監測</div></div>
+      <div class="example">Remote monitoring allows doctors to gain information over an extended time.<br><span>遠端監測使醫師能在較長時間內取得資訊。</span></div>
+      <div class="example">Continuous monitoring can reveal changes that a single test may miss.<br><span>持續監測可以發現單次檢查可能錯過的變化。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑫</span> extended <span class="kk">[ɪkˈstɛndɪd]</span> <span class="pos">adj.</span> <span class="meaning">延長的；長時間的；擴大的</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>extend (v. 延伸；延長)；extension (n. 延伸；延長)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>an extended period 長時間；extended time 延長的時間</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>an extended stay 長期停留</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>extended 強調被延長或較長；extensive 強調範圍廣泛</div></div>
+      <div class="example">Doctors can gain information over an extended time.<br><span>醫師可以在較長的一段時間內取得資訊。</span></div>
+      <div class="example">After an extended discussion, the team reached an agreement.<br><span>經過長時間討論後，團隊達成協議。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑬</span> consultation <span class="kk">[ˌkɑnsəlˈteʃən]</span> <span class="pos">n.</span> <span class="meaning">諮詢；會診</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>consult (v. 諮詢；請教)；consultant (n. 顧問；專科醫師)</div></div>
+<div class="tag-row"><span class="tag tag-blue">字根</span><div>consult = seek advice「尋求意見」</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>medical consultation 醫療諮詢；consultation with a doctor 與醫師會診</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>an online consultation 線上會診</div></div>
+      <div class="example">Telehealth is mostly used for verbal consultations and remote monitoring.<br><span>目前遠距醫療主要用於口頭會診與遠端監測。</span></div>
+      <div class="example">The patient arranged an online consultation with a skin specialist.<br><span>病人安排了一次與皮膚專科醫師的線上會診。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑭</span> procedure <span class="kk">[prəˈsidʒɚ]</span> <span class="pos">n.</span> <span class="meaning">程序；醫療處置；手術步驟</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>procedural (adj. 程序上的)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>medical procedure 醫療處置；surgical procedure 外科手術</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>a complex procedure 複雜的處置</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>procedure = 一套步驟／處置；process = 較廣泛的過程</div></div>
+      <div class="example">A surgeon based in the United States did the same procedure.<br><span>一位在美國的外科醫師進行了相同的處置。</span></div>
+      <div class="example">The procedure requires special training and careful preparation.<br><span>這項醫療處置需要專門訓練與仔細準備。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑮</span> instrument <span class="kk">[ˈɪnstrəmənt]</span> <span class="pos">n.</span> <span class="meaning">器械；工具；儀器</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>instrumental (adj. 有助益的；儀器的)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>surgical instrument 手術器械；medical instrument 醫療儀器</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>a precision instrument 精密儀器</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>instrument 常指較精密的器械；tool 是較廣義的工具</div></div>
+      <div class="example">The surgeon moved his instruments, and the robot did the same.<br><span>外科醫師移動手術器械，而機器人同步做出相同動作。</span></div>
+      <div class="example">Modern surgical instruments allow doctors to work with great precision.<br><span>現代手術器械讓醫師能以高度精準度操作。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑯</span> fraction <span class="kk">[ˈfrækʃən]</span> <span class="pos">n.</span> <span class="meaning">一小部分；分數</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>fractional (adj. 部分的；分數的)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>a fraction of + N …的一小部分</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>only a tiny fraction 只占極小部分</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>fraction 強調整體中的一部分；percentage 是百分比</div></div>
+      <div class="example">The delay was only a fraction of a second.<br><span>延遲只有不到一秒的一小部分。</span></div>
+      <div class="example">Only a small fraction of the students missed the deadline.<br><span>只有少部分學生錯過截止期限。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑰</span> qualified <span class="kk">[ˈkwɑləˌfaɪd]</span> <span class="pos">adj.</span> <span class="meaning">合格的；具資格的</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>qualify (v. 取得資格；使合格)；qualification (n. 資格)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>be qualified to V 有資格做…；qualified doctor 合格醫師</div></div>
+<div class="tag-row"><span class="tag tag-orange">句型</span><div>be qualified to + V；to 是不定詞標記，不是介係詞</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>highly qualified 高度合格的／資歷優良的</div></div>
+      <div class="example">A patient may not reach a hospital with a doctor qualified to perform the surgery in time.<br><span>病人可能無法及時抵達有合格醫師可執行手術的醫院。</span></div>
+      <div class="example">Only qualified technicians are allowed to operate the equipment.<br><span>只有合格技術人員可操作這項設備。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑱</span> adopt <span class="kk">[əˈdɑpt]</span> <span class="pos">v.</span> <span class="meaning">採用；收養</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>adoption (n. 採用；收養)；adoptive (adj. 收養的)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>adopt technology 採用科技；adopt an approach 採取方法</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>adopt = 採用／收養；adapt = 適應／改編</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>widely adopted 廣泛採用的</div></div>
+      <div class="example">Hospitals in small towns could adopt remote surgery technology.<br><span>小城鎮的醫院可以採用遠距手術技術。</span></div>
+      <div class="example">Many schools have adopted digital textbooks.<br><span>許多學校已採用數位教科書。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑲</span> affordable <span class="kk">[əˈfɔrdəbəl]</span> <span class="pos">adj.</span> <span class="meaning">負擔得起的；價格合理的</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>afford (v. 負擔得起)；affordability (n. 可負擔性)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>become affordable 變得可負擔；affordable care 可負擔的照護</div></div>
+<div class="tag-row"><span class="tag tag-orange">句型</span><div>can afford to + V 負擔得起做…；to 是不定詞標記</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>reasonably affordable 價格相當可負擔的</div></div>
+      <div class="example">Small hospitals could adopt the technology once it becomes affordable.<br><span>一旦價格變得可負擔，小型醫院就可能採用這項技術。</span></div>
+      <div class="example">The city is trying to provide more affordable housing.<br><span>這座城市正設法提供更多價格可負擔的住宅。</span></div>
+    </article>
+    <article class="vocab-card">
+      <h3><span class="circled">⑳</span> accessible <span class="kk">[əkˈsɛsəbəl]</span> <span class="pos">adj.</span> <span class="meaning">可取得的；容易接近的；易懂的</span></h3>
+      <div class="tag-row"><span class="tag tag-red">衍生詞</span><div>access (n./v. 使用、取得)；accessibility (n. 可及性)</div></div>
+<div class="tag-row"><span class="tag tag-green">片語</span><div>be accessible to + 人 對…而言可取得／可接近</div></div>
+<div class="tag-row"><span class="tag tag-purple">容易混淆</span><div>accessible = 可取得／可接近；available = 有提供／有空</div></div>
+<div class="tag-row"><span class="tag tag-yellow">慣用語</span><div>more widely accessible 更廣泛可取得的</div></div>
+      <div class="example">Telehealth is already making medical care more accessible and convenient.<br><span>遠距醫療已讓醫療照護變得更容易取得且更方便。</span></div>
+      <div class="example">The museum is fully accessible to visitors who use wheelchairs.<br><span>這座博物館對使用輪椅的訪客而言可以無障礙進入。</span></div>
+    </article>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <section id="unit4">
+    <h2 class="section-title unit4">區塊四　文法解析</h2>
+    
+    <article class="grammar-card">
+      <h3>文法一　If + S + could..., S + might...</h3>
+      <div class="glabel">【引句 Quote】</div><p class="quote"><em>If they could receive medical care from a distance, it might save their lives.</em></p>
+      <div class="glabel">【句型】</div><p class="pattern"><strong><em>If + S + could + V, S + might + V.</em></strong></p>
+      <div class="glabel">【核心說明】</div><p>這是帶有假設意味的條件句。could 表示「若有能力／若能做到」，might 則保留結果的不確定性。文章用它來想像遠距醫療若能解決距離問題，可能帶來的生命救援效果。</p>
+      <div class="glabel">【使用規則】</div><ul><li>if 子句用 could + 原形動詞，可表較不確定或假設性的條件。</li><li>主句可用 would / could / might + 原形動詞，依語意表結果、能力或可能性。</li><li>不要在 if 子句中直接用 would 表一般假設條件。</li><li>若只是陳述很可能發生的未來條件，通常可用 If + 現在式, will + V。</li></ul>
+      <div class="glabel">【主題例句】</div><p class="example">If remote surgery became widely available, more rural patients might receive treatment in time.<br><span>如果遠距手術變得普及，更多偏鄉病人可能可以及時接受治療。</span></p>
+      <div class="glabel">【學習提醒】</div><p>看到 could / might 不要只翻成「可以／可能」。先判斷它們是否共同建立一個「假設情境」。這會影響整句的語氣強度。</p>
+      <div class="glabel">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+      <p class="wrong">✗ If patients would receive care remotely, it might save their lives.</p>
+      <p class="right">✓ If patients could receive care remotely, it might save their lives.</p>
+      <p>一般假設條件的 if 子句不用 would；此處用 could 表「若能夠」。</p>
+      <p class="quiz">Choose the best answer: If the system became cheaper, more hospitals ___ adopt it.　(A) might　(B) must to　(C) will be　(D) had</p>
+    </article>
+    <article class="grammar-card">
+      <h3>文法二　whoever 引導名詞子句</h3>
+      <div class="glabel">【引句 Quote】</div><p class="quote"><em>Whoever needs medical care can meet with a doctor without making the trip to a hospital.</em></p>
+      <div class="glabel">【句型】</div><p class="pattern"><strong><em>Whoever + V ... + singular V ...</em></strong></p>
+      <div class="glabel">【核心說明】</div><p>whoever 可理解為 anyone who，意思是「任何…的人」。它本身同時包含先行詞與關係代名詞的功能，因此 whoever needs medical care 整體可以直接當句子的主詞。</p>
+      <div class="glabel">【使用規則】</div><ul><li>whoever = anyone who，指人。</li><li>整個 whoever 子句可作主詞、受詞或補語。</li><li>whoever 後面必須形成完整的關係子句結構。</li><li>不要在 whoever 前再加 the person，否則會重複。</li></ul>
+      <div class="glabel">【主題例句】</div><p class="example">Whoever lives far from a major hospital may benefit from telehealth.<br><span>任何住得離大型醫院很遠的人，都可能從遠距醫療受益。</span></p>
+      <div class="glabel">【學習提醒】</div><p>whoever 與 who 不同。who 常是疑問詞或關係代名詞；whoever 帶有「無論誰／任何…的人」的泛指語意。</p>
+      <div class="glabel">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+      <p class="wrong">✗ The person whoever needs help can call this number.</p>
+      <p class="right">✓ Whoever needs help can call this number.</p>
+      <p>whoever 已包含 anyone/the person 的概念，前面不再加先行詞。</p>
+      <p class="quiz">Choose the best answer: ___ needs specialist advice can request an online consultation.　(A) Whoever　(B) Which　(C) Where　(D) Whose</p>
+    </article>
+    <article class="grammar-card">
+      <h3>文法三　allow + O + to V 與分詞結果</h3>
+      <div class="glabel">【引句 Quote】</div><p class="quote"><em>Hospitals could adopt remote surgery technology ..., allowing surgeons in larger hospitals to perform life-saving surgery.</em></p>
+      <div class="glabel">【句型】</div><p class="pattern"><strong><em>S + V ..., allowing + O + to + V.</em></strong></p>
+      <div class="glabel">【核心說明】</div><p>allow + O + to V 表示「讓／允許某人做某事」。文章再把 allowing 放在逗號後，形成現在分詞片語，用來補充前面整件事帶來的結果。</p>
+      <div class="glabel">【使用規則】</div><ul><li>allow 後面先接受詞，再接 to + 原形動詞。</li><li>to 是不定詞標記，不是介係詞。</li><li>allowing 位於逗號後時，常補充前句造成的自然結果。</li><li>若要表正式被允許，可用 be allowed to + V。</li></ul>
+      <div class="glabel">【主題例句】</div><p class="example">Better networks could reduce delays, allowing specialists to guide treatment from another city.<br><span>更好的網路可以降低延遲，進而讓專科醫師從另一座城市指導治療。</span></p>
+      <div class="glabel">【學習提醒】</div><p>常見錯誤是寫成 allow someone do。英文標準用法是 allow someone to do；若換成 let，才是 let someone do。</p>
+      <div class="glabel">【⚠️ 常見錯誤 / 🎯 精選試題】</div>
+      <p class="wrong">✗ The system allows doctors monitor patients at home.</p>
+      <p class="right">✓ The system allows doctors to monitor patients at home.</p>
+      <p>allow + O 後面必須接 to V。</p>
+      <p class="quiz">Correct the sentence: Telehealth allows rural patients receiving specialist advice without long trips.</p>
+    </article>
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+
+  <section id="unit5">
+    <h2 class="section-title unit5">補充資料</h2>
+
+    <details>
+      <summary>常見字首整理 <span class="arrow">▼</span></summary>
+      <div class="detail-body"><ul><li><strong>ab-</strong> 離開、相反 — abnormal（異常的）</li><li><strong>ad-</strong> 向、加 — advance（前進）</li><li><strong>ambi-</strong> 雙方、兩面 — ambiguous（模稜兩可的）</li><li><strong>anti-</strong> 反對、抗 — antibiotic（抗生素）</li><li><strong>arch-</strong> 主要、首要 — archenemy（死敵）</li><li><strong>auto-</strong> 自動、自我 — autograph（親筆簽名）</li><li><strong>bene-</strong> 好的、善 — benefit（好處）</li><li><strong>bi-</strong> 二、雙 — bilingual（雙語的）</li><li><strong>circum-</strong> 環繞、周圍 — circumstance（情況）</li><li><strong>co-/con-/com-</strong> 一起、共同 — cooperate（合作）</li><li><strong>contra-</strong> 相反、對抗 — contradict（反駁）</li><li><strong>de-</strong> 去除、下降 — decode（解碼）</li><li><strong>dia-</strong> 穿過、透過 — dialogue（對話）</li><li><strong>dis-</strong> 否定、分離 — disagree（不同意）</li><li><strong>en-/em-</strong> 使成為 — enable（使能夠）</li><li><strong>epi-</strong> 在上、在外 — epidemic（流行病）</li><li><strong>ex-</strong> 外、前任 — export（出口）；ex-president（前總統）</li><li><strong>extra-</strong> 額外、外部 — extraordinary（非凡的）</li><li><strong>hetero-</strong> 不同 — heterogeneous（異質的）</li><li><strong>homo-</strong> 相同 — homogeneous（同質的）</li><li><strong>hyper-</strong> 過度、超 — hyperactive（過動的）</li><li><strong>hypo-</strong> 低於、不足 — hypodermic（皮下的）</li><li><strong>in-/im-</strong> 否定、進入 — invisible（看不見的）；import（輸入）</li><li><strong>inter-</strong> 在…之間 — international（國際的）</li><li><strong>iso-</strong> 相等、相同 — isolate（隔離）</li><li><strong>mal-</strong> 壞、不良 — malfunction（故障）</li><li><strong>micro-</strong> 微小 — microscope（顯微鏡）</li><li><strong>mis-</strong> 錯誤 — misunderstand（誤解）</li><li><strong>mono-</strong> 單一 — monologue（獨白）</li><li><strong>multi-</strong> 多 — multicultural（多元文化的）</li><li><strong>neo-</strong> 新的 — neonatal（新生的）</li><li><strong>non-</strong> 非、沒有 — nonsense（無意義）</li><li><strong>pan-</strong> 全部 — pandemic（大流行病）</li><li><strong>peri-</strong> 周圍 — perimeter（周長）</li><li><strong>poly-</strong> 多 — polygon（多邊形）</li><li><strong>post-</strong> 之後 — postwar（戰後的）</li><li><strong>pre-</strong> 之前 — preview（預覽）</li><li><strong>pro-</strong> 向前、支持 — progress（進步）；pro-democracy（支持民主的）</li><li><strong>pseudo-</strong> 假的 — pseudonym（筆名）</li><li><strong>re-</strong> 再、回 — review（複習）</li><li><strong>semi-</strong> 一半、部分 — semicircle（半圓）</li><li><strong>sub-</strong> 在下、次級 — subway（地鐵）</li><li><strong>super-</strong> 超越、在上 — superstar（超級明星）</li><li><strong>syn-/sym-</strong> 一起、共同 — synchronize（同步）</li><li><strong>tele-</strong> 遠距 — telephone（電話）</li><li><strong>trans-</strong> 穿越、轉變 — transport（運輸）</li><li><strong>tri-</strong> 三 — triangle（三角形）</li><li><strong>un-</strong> 否定、不 — unhappy（不快樂的）</li><li><strong>vice-</strong> 副、代替 — vice-president（副總統）</li></ul></div>
+    </details>
+
+    <details>
+      <summary>常見英文字尾整理 <span class="arrow">▼</span></summary>
+      <div class="detail-body"><h4>名詞字尾</h4><ul><li><strong>-tion/-sion/-ation</strong> 動作、過程或結果 — education（教育）、decision（決定）</li><li><strong>-ment</strong> 行為或結果 — agreement（協議）、development（發展）</li><li><strong>-ness</strong> 狀態或性質 — happiness（快樂）、darkness（黑暗）</li><li><strong>-ity/-ty</strong> 抽象概念或狀態 — ability（能力）、cruelty（殘酷）</li><li><strong>-er/-or</strong> 執行某動作的人或物 — teacher（老師）、actor（演員）</li><li><strong>-ist</strong> 信仰或專業的人 — artist（藝術家）、scientist（科學家）</li><li><strong>-ship</strong> 身分或關係 — friendship（友誼）、leadership（領導）</li><li><strong>-hood</strong> 階段或狀態 — childhood（童年）、neighborhood（鄰里）</li></ul><h4>形容詞字尾</h4><ul><li><strong>-able/-ible</strong> 能夠…的 — readable（可讀的）、credible（可信的）</li><li><strong>-ous</strong> 充滿…的 — dangerous（危險的）、famous（著名的）</li><li><strong>-ful</strong> 具有…的 — hopeful（充滿希望的）、beautiful（美麗的）</li><li><strong>-less</strong> 缺乏…的 — hopeless（絕望的）、powerless（無力的）</li><li><strong>-al/-ic</strong> 與…相關的 — natural（自然的）、poetic（詩意的）</li></ul><h4>動詞字尾</h4><ul><li><strong>-ize/-ise</strong> 使成為… — realize（實現）、industrialize（工業化）</li><li><strong>-ify</strong> 使成為… — beautify（美化）、clarify（澄清）</li><li><strong>-ate</strong> 形成動詞 — dominate（支配）、activate（啟動）</li><li><strong>-en</strong> 使變成… — strengthen（加強）、soften（使柔軟）</li></ul><h4>副詞字尾</h4><ul><li><strong>-ly</strong> 形容詞轉副詞 — quickly（快速地）、carefully（仔細地）</li><li><strong>-ward(s)</strong> 表示方向 — upwards（向上）、homeward（回家）</li><li><strong>-wise</strong> 表示方式或角度 — clockwise（順時針方向）</li></ul></div>
+    </details>
+
+    <details>
+      <summary>30 個常用單字與衍生詞 <span class="arrow">▼</span></summary>
+      <div class="detail-body">
+        <ol><li><strong>technical</strong> [ˈtɛknɪkəl] (adj. 技術的) — technically（adv. 技術上地）</li><li><strong>progress</strong> [ˈprɑɡrɛs] (n. 進步) — make progress（取得進展）</li><li><strong>medical</strong> [ˈmɛdɪkəl] (adj. 醫療的) — medicine（n. 醫學；藥物）</li><li><strong>treatment</strong> [ˈtritmənt] (n. 治療) — treat a disease（治療疾病）</li><li><strong>disease</strong> [dɪˈziz] (n. 疾病) — disease prevention（疾病預防）</li><li><strong>accessibility</strong> [əkˌsɛsəˈbɪlətɪ] (n. 可及性) — accessible（adj. 可取得的）</li><li><strong>specialize</strong> [ˈspɛʃəˌlaɪz] (v. 專攻) — specialist（n. 專家）</li><li><strong>distance</strong> [ˈdɪstəns] (n. 距離) — from a distance（從遠處）</li><li><strong>telehealth</strong> [ˈtɛləˌhɛlθ] (n. 遠距醫療) — telehealth service（遠距醫療服務）</li><li><strong>physical</strong> [ˈfɪzɪkəl] (adj. 身體的；實體的) — physically present（親自在場）</li><li><strong>conference</strong> [ˈkɑnfərəns] (n. 會議) — video conference（視訊會議）</li><li><strong>sensor</strong> [ˈsɛnsɚ] (n. 感測器) — wearable sensor（穿戴式感測器）</li><li><strong>distinct</strong> [dɪˈstɪŋkt] (adj. 明顯不同的) — distinction（n. 區別）</li><li><strong>conventional</strong> [kənˈvɛnʃənəl] (adj. 傳統的) — conventional medicine（傳統醫療）</li><li><strong>contagious</strong> [kənˈtedʒəs] (adj. 會傳染的) — highly contagious（高度傳染的）</li><li><strong>remote</strong> [rɪˈmot] (adj. 偏遠的；遠端的) — remote monitoring（遠端監測）</li><li><strong>rural</strong> [ˈrʊrəl] (adj. 鄉村的) — rural area（鄉村地區）</li><li><strong>monitor</strong> [ˈmɑnətɚ] (v. 監測) — continuous monitoring（持續監測）</li><li><strong>extended</strong> [ɪkˈstɛndɪd] (adj. 延長的) — extend（v. 延伸；延長）</li><li><strong>hospitalized</strong> [ˈhɑspɪtəˌlaɪzd] (adj. 住院的) — hospitalize（v. 使住院）</li><li><strong>consultation</strong> [ˌkɑnsəlˈteʃən] (n. 諮詢；會診) — consult a doctor（諮詢醫師）</li><li><strong>surgery</strong> [ˈsɝdʒərɪ] (n. 外科手術) — surgical（adj. 外科的）</li><li><strong>researcher</strong> [rɪˈsɝtʃɚ] (n. 研究人員) — research（n./v. 研究）</li><li><strong>surgeon</strong> [ˈsɝdʒən] (n. 外科醫師) — surgical procedure（外科手術）</li><li><strong>procedure</strong> [prəˈsidʒɚ] (n. 程序；處置) — medical procedure（醫療處置）</li><li><strong>instrument</strong> [ˈɪnstrəmənt] (n. 器械；儀器) — surgical instrument（手術器械）</li><li><strong>fraction</strong> [ˈfrækʃən] (n. 一小部分) — a fraction of（一小部分的）</li><li><strong>qualified</strong> [ˈkwɑləˌfaɪd] (adj. 合格的) — qualification（n. 資格）</li><li><strong>adopt</strong> [əˈdɑpt] (v. 採用) — adoption（n. 採用）</li><li><strong>affordable</strong> [əˈfɔrdəbəl] (adj. 負擔得起的) — affordability（n. 可負擔性）</li></ol>
+        <h4>文章相關常用片語 5 個</h4>
+        <ul><li>focus on new treatments（聚焦於新療法）</li><li>receive medical care from a distance（遠距接受醫療照護）</li><li>remote monitoring of patients（病患遠端監測）</li><li>perform life-saving surgery（進行救命手術）</li><li>as effective as in-person care（和面對面照護一樣有效）</li></ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>練文筆食材 <span class="arrow">▼</span></summary>
+      <div class="detail-body"><div class="writing-item"><strong>01. play a role in + N/V-ing</strong><br>
+    <span>適用：在某件事中扮演角色</span><br>
+    <em>Technology can play a role in improving access to health care.</em></div><div class="writing-item"><strong>02. focus on + N/V-ing</strong><br>
+    <span>適用：聚焦於…</span><br>
+    <em>Public discussion often focuses on the cost of new technology.</em></div><div class="writing-item"><strong>03. solve a different problem</strong><br>
+    <span>適用：解決另一種問題</span><br>
+    <em>The same tool may solve a different problem in rural communities.</em></div><div class="writing-item"><strong>04. from a distance</strong><br>
+    <span>適用：從遠處；遠距地</span><br>
+    <em>Doctors can offer advice from a distance.</em></div><div class="writing-item"><strong>05. refer to A as B / refer to + N</strong><br>
+    <span>適用：指的是；把A稱作B</span><br>
+    <em>Telehealth refers to medical care delivered remotely.</em></div><div class="writing-item"><strong>06. have a distinct advantage over</strong><br>
+    <span>適用：相較於…有明顯優勢</span><br>
+    <em>Online services have a distinct advantage over paper-based systems.</em></div><div class="writing-item"><strong>07. avoid the risk of + V-ing</strong><br>
+    <span>適用：避免…的風險</span><br>
+    <em>Remote visits can avoid the risk of spreading some infections.</em></div><div class="writing-item"><strong>08. without + V-ing</strong><br>
+    <span>適用：不必／沒有做…</span><br>
+    <em>Patients can speak to a doctor without traveling for hours.</em></div><div class="writing-item"><strong>09. allow + O + to V</strong><br>
+    <span>適用：使某人能做某事</span><br>
+    <em>Digital records allow doctors to review information quickly.</em></div><div class="writing-item"><strong>10. over an extended time</strong><br>
+    <span>適用：在一段較長的時間內</span><br>
+    <em>The device can collect data over an extended time.</em></div><div class="writing-item"><strong>11. a fraction of + N</strong><br>
+    <span>適用：…的一小部分</span><br>
+    <em>The delay was only a fraction of a second.</em></div><div class="writing-item"><strong>12. be qualified to + V</strong><br>
+    <span>適用：有資格做…</span><br>
+    <em>Only trained staff are qualified to operate the system.</em></div><div class="writing-item"><strong>13. once + S + V</strong><br>
+    <span>適用：一旦…</span><br>
+    <em>Once the technology becomes affordable, more hospitals may adopt it.</em></div><div class="writing-item"><strong>14. otherwise + could/would</strong><br>
+    <span>適用：否則／若非如此就…</span><br>
+    <em>The service can help patients who otherwise could not see a specialist.</em></div><div class="writing-item"><strong>15. open up possibilities</strong><br>
+    <span>適用：開啟新的可能性</span><br>
+    <em>Faster networks could open up new possibilities for remote care.</em></div></div>
+    </details>
+
+    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
+  </section>
+</main>
+</body>
+</html>
