@@ -1,301 +1,49 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>硬幣的秘密生活｜The Secret Life of Coins</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#F8F4ED; --card:#FFFDF8; --ink:#3A2E22;
-    --h1:#C0392B; --h2:#1565C0; --h3:#2E7D32;
-    --accentA:#E65100; --accentB:#6A1B9A;
-    --sumBg:#FBF3E7; --sumBorder:#E0A96D; --gloBg:#F3EEE4;
-    --line:#06C755;
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font-family:"BIZ UDPGothic","Inter",system-ui,sans-serif;
-    font-size:22px; line-height:1.9; font-weight:400;
-  }
-  main{max-width:820px; margin:0 auto; padding:24px 18px 60px;}
-  /* ===== Header ===== */
-  header{text-align:center; margin:18px 0 8px;}
-  .title{
-    display:inline-block; font-size:2.7rem; font-weight:700; color:var(--h1);
-    border:4px solid var(--h1); border-radius:18px; padding:14px 26px;
-    background:var(--card); box-shadow:0 4px 14px rgba(192,57,43,.15);
-    line-height:1.3;
-  }
-  .subtitle{font-size:1.95rem; color:var(--h2); font-weight:700; margin:18px 0 6px;}
-  .byline{
-    font-size:1.25rem; color:var(--h2); font-weight:700; letter-spacing:.5px;
-    font-style:normal; opacity:.92;
-  }
-  /* ===== Link cards ===== */
-  .links{display:flex; flex-direction:column; gap:16px; margin:26px 0;}
-  .lc{
-    display:block; text-decoration:none; color:#fff; border-radius:16px;
-    padding:18px 22px; min-height:72px; box-shadow:0 4px 12px rgba(0,0,0,.12);
-  }
-  .lc .lc-t{font-size:1.35rem; font-weight:700; line-height:1.4;}
-  .lc .lc-d{font-size:1.05rem; opacity:.96; margin-top:4px; line-height:1.6;}
-  .lc1{background:var(--h1);}
-  .lc2{background:var(--h2);}
-  .lc3{background:var(--line);}
-  @media(min-width:680px){.links{flex-direction:row;} .lc{flex:1;}}
-  /* ===== Unit map ===== */
-  #unit-map{
-    background:var(--card); border-radius:16px; padding:22px;
-    box-shadow:0 3px 10px rgba(0,0,0,.07); margin:26px 0;
-  }
-  #unit-map h2{font-size:1.6rem; color:var(--accentB); margin:0 0 14px;}
-  .map-grid{display:flex; flex-direction:column; gap:14px;}
-  .map-grid a{
-    display:flex; align-items:center; min-height:64px; padding:12px 20px;
-    border-radius:999px; color:#fff; text-decoration:none; font-weight:700;
-    font-size:1.18rem; line-height:1.35;
-  }
-  .m1{background:var(--h1);} .m2{background:var(--h2);} .m3{background:var(--h3);}
-  .m4{background:var(--accentA);} .m5{background:var(--accentB);}
-  .m6{background:#00838F;} .mg{background:#8D6E63;}
-  /* ===== Sections ===== */
-  section{
-    background:var(--card); border-radius:16px; padding:28px 24px;
-    margin:24px 0; box-shadow:0 3px 12px rgba(0,0,0,.07);
-    border-top:8px solid var(--h2);
-  }
-  section.s1{border-top-color:var(--h1);}
-  section.s2{border-top-color:var(--h2);}
-  section.s3{border-top-color:var(--h3);}
-  section.s4{border-top-color:var(--accentA);}
-  section.s5{border-top-color:var(--accentB);}
-  section.s6{border-top-color:#00838F;}
-  section.sg{border-top-color:#8D6E63; background:var(--gloBg);}
-  section h2{font-size:1.95rem; color:var(--h2); margin:0 0 16px; line-height:1.4;}
-  section.s1 h2{color:var(--h1);} section.s3 h2{color:var(--h3);}
-  section.s4 h2{color:var(--accentA);} section.s5 h2{color:var(--accentB);}
-  section.s6 h2{color:#00695C;} section.sg h2{color:#5D4037;}
-  section p{margin:14px 0;}
-  .kw{color:var(--accentA); font-weight:700;}
-  .en{font-family:"Inter",sans-serif; font-style:italic;}
-  /* English summary */
-  .sum{
-    background:var(--sumBg); border-left:8px solid var(--sumBorder);
-    border-radius:10px; padding:18px 20px; margin:22px 0 10px;
-    font-family:"Inter",sans-serif; font-size:1.05rem; line-height:1.75; color:#5A4632;
-  }
-  .sum .sum-h{font-weight:700; color:var(--accentA); display:block; margin-bottom:8px; font-size:1.15rem;}
-  /* back to map */
-  .back-to-map{
-    display:inline-block; margin-top:10px; padding:12px 22px; min-height:56px;
-    background:#8D6E63; color:#fff; text-decoration:none; border-radius:999px;
-    font-weight:700; font-size:1.05rem;
-  }
-  /* glossary */
-  .glo{margin:14px 0; padding:14px 18px; background:var(--card); border-radius:10px;}
-  .glo b{color:var(--accentB);}
-  .glo .kk{color:#777; font-family:"Inter",sans-serif; font-size:.95rem;}
-  /* ===== YouTube video block ===== */
-  .video-block{
-    background:var(--card); border-radius:16px; padding:22px;
-    margin:26px 0; box-shadow:0 3px 12px rgba(0,0,0,.08);
-    border-top:8px solid #CC0000;
-  }
-  .video-title{font-size:1.5rem; font-weight:700; color:#CC0000; line-height:1.4;}
-  .video-sub{font-size:1.1rem; color:var(--ink); margin:6px 0 16px; line-height:1.6; opacity:.9;}
-  .video-frame{
-    position:relative; width:100%; padding-bottom:56.25%; height:0;
-    border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,.15);
-  }
-  .video-frame iframe{
-    position:absolute; top:0; left:0; width:100%; height:100%; border:0;
-  }
-  .video-open{
-    display:inline-block; margin-top:16px; padding:14px 26px; min-height:60px;
-    background:#CC0000; color:#fff; text-decoration:none; border-radius:999px;
-    font-weight:700; font-size:1.15rem; line-height:1.4;
-  }
-</style>
-</head>
-<body>
-<main>
-
-  <header>
-    <div class="title">硬幣的秘密生活</div>
-    <div class="subtitle">小小改變，藏著大歷史：The Secret Life of Coins</div>
-    <div class="byline">林威老師與 AI agent 團隊製作</div>
-  </header>
-
-  <!-- 頂部三連結卡 -->
-  <div class="links">
-    <a class="lc lc1" href="https://linwayet.github.io/4ulive/index.html">
-      <span class="lc-t">七月課程・錯中學 ECHO 計劃</span>
-      <span class="lc-d">從錯誤中學習的英文進步方法</span>
-    </a>
-    <a class="lc lc2" href="https://linwayet.github.io/popup/index">
-      <span class="lc-t">七月課程・學生分析</span>
-      <span class="lc-d">個人化學習診斷與規劃</span>
-    </a>
-    <a class="lc lc3" href="https://line.me/ti/p/~linwayet">
-      <span class="lc-t">加我的 LINE：linwayet</span>
-      <span class="lc-d">直接聯絡林威老師</span>
-    </a>
-  </div>
-
-  <!-- YouTube 講解影片（內嵌播放器） -->
-  <div class="video-block">
-    <div class="video-title">▶ 高中英文雜誌 Live-4U 講解 #7</div>
-    <div class="video-sub">Small Change Big Facts — The Secret Life of Coins｜零錢大知識．硬幣的秘密生活</div>
-    <div class="video-frame">
-      <iframe src="https://www.youtube.com/embed/2ammq1g7wXg"
-              title="高中英文雜誌 Live-4U 講解 #7"
-              frameborder="0"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen></iframe>
-    </div>
-    <a class="video-open" href="https://youtu.be/2ammq1g7wXg">▶ 在 YouTube 開啟觀看</a>
-  </div>
-
-  <!-- 單元地圖 -->
-  <nav id="unit-map">
-    <h2>🗺️ 單元地圖</h2>
-    <div class="map-grid">
-      <a class="m1" href="#unit1">單元一　硬幣的隱藏歷史與圓形起源</a>
-      <a class="m2" href="#unit2">單元二　防偽設計：夾剪與鋸齒</a>
-      <a class="m3" href="#unit3">單元三　不只是圓形：奇特的硬幣形狀</a>
-      <a class="m4" href="#unit4">單元四　硬幣與決策：從凱撒到機率</a>
-      <a class="m5" href="#unit5">單元五　現代創意硬幣</a>
-      <a class="m6" href="#unit6">單元六　硬幣的未來</a>
-      <a class="mg" href="#glossary">📖 術語表 Glossary</a>
-    </div>
-  </nav>
-
-  <!-- 單元一 -->
-  <section id="unit1" class="s1">
-    <h2>單元一　硬幣的隱藏歷史與圓形起源</h2>
-    <p>我們每天使用的這些小金屬圓片（metal <span class="kw">disks</span>），其實藏著豐富的歷史與巧妙的設計。你或許曾好奇：為什麼許多硬幣的邊緣摸起來凹凸不平（<span class="kw">bumpy</span> edges）？為什麼有些硬幣中間有洞？這些看似平凡的東西，背後都有道理。</p>
-    <p>多數硬幣是圓形的，原因其實很單純。早期鑄造貨幣（early <span class="kw">currency</span>）的方式，是把金屬放在兩塊鐵板之間敲打（<span class="kw">hammering</span>），這種加工方式自然就會壓出接近圓形的硬幣（circular coins）。換句話說，圓形不是刻意選擇的「設計」，而是製程下最自然的結果。</p>
-    <div class="sum">
-      <span class="sum-h">📝 English Summary</span>
-      The small metal disks we use every day are full of history and clever design. Most coins are round for a simple reason: early currency was made by hammering metal between two plates, which naturally produced circular shapes. The round form was therefore a result of the manufacturing process rather than a deliberate decision.
-    </div>
-    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
-  </section>
-
-  <!-- 單元二 -->
-  <section id="unit2" class="s2">
-    <h2>單元二　防偽設計：夾剪與鋸齒</h2>
-    <p>圓形硬幣還有另一個好處，與防止犯罪有關。過去硬幣含有真正的黃金與白銀，有些不法之徒（<span class="kw">criminals</span>）會從邊緣削下小塊金屬去變賣，這種行為稱為「剪邊」（<span class="kw">clipping</span>）。由於圓形有固定的弧度，一旦被剪掉一角就很容易被察覺（easier to <span class="kw">detect</span>），這讓圓形在防偽上佔了優勢。</p>
-    <p>鑄幣者還加上另一個巧思——在邊緣刻上一圈鋸齒紋路（<span class="kw">ridges</span>）。如果有人偷偷把金屬磨掉（<span class="kw">shaved</span> off），缺少的鋸齒就會立刻露出馬腳。今天我們手上硬幣邊緣的細紋，正是這項古老防偽智慧的遺跡。</p>
-    <div class="sum">
-      <span class="sum-h">📝 English Summary</span>
-      When coins contained real gold and silver, criminals would clip off small pieces to sell. Round shapes made such clipping easier to detect. Coin makers also added ridges around the edge, so that any shaved metal would immediately become obvious. The fine lines on modern coin edges are a legacy of this anti-counterfeiting trick.
-    </div>
-    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
-  </section>
-
-  <!-- 單元三 -->
-  <section id="unit3" class="s3">
-    <h2>單元三　不只是圓形：奇特的硬幣形狀</h2>
-    <p>不過，並非每一枚硬幣都是圓的。庫克群島（the Cook Islands）有一枚三角形（<span class="kw">triangular</span>）的二美元硬幣；英國則有七邊形（<span class="kw">seven-sided</span>）的硬幣。此外還能找到四邊、八邊、九邊、十邊，甚至十二邊的硬幣。</p>
-    <p>有些日本硬幣中間還被打了一個洞（holes <span class="kw">punched</span> through the middle）。這種設計過去在亞洲許多地方相當常見，因為人們會用繩子把硬幣串（<span class="kw">thread</span>）在一起，方便攜帶與計數。</p>
-    <div class="sum">
-      <span class="sum-h">📝 English Summary</span>
-      Not every coin is round. The Cook Islands has a triangular two-dollar coin, while the UK uses seven-sided coins, and others come with 4, 8, 9, 10, or 12 sides. Some Japanese coins have holes punched through the middle. This design was once common across Asia because people threaded coins together on strings.
-    </div>
-    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
-  </section>
-
-  <!-- 單元四 -->
-  <section id="unit4" class="s4">
-    <h2>單元四　硬幣與決策：從凱撒到機率</h2>
-    <p>硬幣不只用來買東西。自古羅馬時代起，它們也被用來幫人做決定。這種用法在西元前 44 年（44 BCE）之後變得更普遍——當時凱撒（Julius Caesar）把自己的肖像（<span class="kw">portrait</span>）放上了硬幣。迷信的羅馬人（<span class="kw">superstitious</span> Romans）相信，若擲出的硬幣（a <span class="kw">flipped</span> coin）正面朝上，就代表凱撒同意這件事。</p>
-    <p>有趣的是，科學家發現擲硬幣其實並非完美的五五波。研究指出，開始翻擲時朝上的那一面，有略高一點的機率再次落地朝上，大約是 51% 的時間，呈現一種微小的偏向（a small <span class="kw">tendency</span>）。</p>
-    <div class="sum">
-      <span class="sum-h">📝 English Summary</span>
-      Since ancient Roman times, coins have also helped people make decisions. This became more common after 44 BCE, when Julius Caesar placed his portrait on coins, and superstitious Romans treated a heads-up flip as his approval. Scientists have found that a coin flip is not a perfect 50-50 split: the side facing up at the start has a small tendency to land up again, about 51% of the time.
-    </div>
-    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
-  </section>
-
-  <!-- 單元五 -->
-  <section id="unit5" class="s5">
-    <h2>單元五　現代創意硬幣</h2>
-    <p>現代硬幣變得出乎意料地有創意。小島國紐埃（Niue）發行了內含真正隕石碎片（real <span class="kw">meteorite</span> pieces）的硬幣，這些碎片來自從太空墜落地球的隕石。加拿大則推出夜光恐龍硬幣（glow-in-the-dark dinosaur coins），在黑暗中會浮現發光的恐龍骨架（glowing <span class="kw">skeletons</span>），深受收藏家（<span class="kw">collectors</span>）喜愛。</p>
-    <p>而最不尋常的，或許是帛琉（Palau）的香味硬幣（<span class="kw">scented</span> coins），聞起來帶有椰子或海洋的氣味。這些設計顯示，硬幣早已不只是交易工具，也成了承載故事與收藏價值的小物件。</p>
-    <div class="sum">
-      <span class="sum-h">📝 English Summary</span>
-      Modern coins have become surprisingly creative. Niue produces coins containing real meteorite pieces that fell to Earth, and Canada makes glow-in-the-dark dinosaur coins whose glowing skeletons appeal to collectors. Perhaps the most unusual are Palau's scented coins, which smell like coconuts or the ocean. Coins have clearly become more than just tools for buying things.
-    </div>
-    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
-  </section>
-
-  <!-- 單元六 -->
-  <section id="unit6" class="s6">
-    <h2>單元六　硬幣的未來</h2>
-    <p>儘管硬幣有這麼多精彩的故事，它們的未來卻仍不明朗（remains <span class="kw">uncertain</span>）。金屬成本上升，意味著鑄造某些硬幣的花費，已經超過它們的面額（<span class="kw">face value</span>）。加拿大就在 2012 年因為這個原因停止生產一分錢硬幣（pennies）。</p>
-    <p>隨著數位支付平台（digital <span class="kw">payment platforms</span>）越來越普及，許多國家的硬幣產量正在放緩，不過仍有部分國家持續鑄造硬幣。同時，也有一些國家正立法保障消費者使用實體現金（physical <span class="kw">cash</span>）的權利，讓硬幣的命運仍充滿變數。</p>
-    <div class="sum">
-      <span class="sum-h">📝 English Summary</span>
-      Despite their amazing stories, the future of coins remains uncertain. Rising metal costs mean some coins now cost more to produce than their face value, which is why Canada stopped making pennies in 2012. As digital payment platforms grow, coin production is slowing in many countries, though some still mint coins and a few are passing laws to protect people's right to use physical cash.
-    </div>
-    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
-  </section>
-
-  <!-- Glossary -->
-  <section id="glossary" class="sg">
-    <h2>📖 術語表 Glossary</h2>
-    <div class="glo"><b>disk</b> <span class="kk">/dɪsk/</span> — 圓片、圓盤；文中指硬幣這種扁平的金屬圓片。</div>
-    <div class="glo"><b>bumpy</b> <span class="kk">/ˈbʌmpi/</span> — 凹凸不平的；形容硬幣邊緣有顆粒或紋路的觸感。</div>
-    <div class="glo"><b>currency</b> <span class="kk">/ˈkɝːənsi/</span> — 貨幣、通貨；一個國家流通使用的錢。</div>
-    <div class="glo"><b>hammer (v.)</b> <span class="kk">/ˈhæmɚ/</span> — 用鎚子敲打；早期鑄幣的金屬加工方式。</div>
-    <div class="glo"><b>circular</b> <span class="kk">/ˈsɝːkjəlɚ/</span> — 圓形的；與 round 同義，較正式。</div>
-    <div class="glo"><b>criminal</b> <span class="kk">/ˈkrɪmənl/</span> — 罪犯、不法之徒。</div>
-    <div class="glo"><b>clip off</b> <span class="kk">/klɪp/</span> — 剪下、削下（一小塊）；指從金幣邊緣剪取金屬的犯罪行為。</div>
-    <div class="glo"><b>detect</b> <span class="kk">/dɪˈtɛkt/</span> — 察覺、偵測；發現原本不易看見的東西。</div>
-    <div class="glo"><b>ridge</b> <span class="kk">/rɪdʒ/</span> — 突起的稜線、紋路；硬幣邊緣的一圈鋸齒。</div>
-    <div class="glo"><b>shave off</b> <span class="kk">/ʃeɪv/</span> — 削掉、磨掉（薄薄一層）。</div>
-    <div class="glo"><b>triangular</b> <span class="kk">/traɪˈæŋɡjəlɚ/</span> — 三角形的。</div>
-    <div class="glo"><b>seven-sided</b> — 七邊形的；英國的 50p、20p 即為七邊形。</div>
-    <div class="glo"><b>punch (v.)</b> <span class="kk">/pʌntʃ/</span> — 打孔、沖壓出洞。</div>
-    <div class="glo"><b>thread (v.)</b> <span class="kk">/θrɛd/</span> — 把（東西）穿起、串起；如用繩子串硬幣。</div>
-    <div class="glo"><b>portrait</b> <span class="kk">/ˈpɔːrtrət/</span> — 肖像、人像。</div>
-    <div class="glo"><b>superstitious</b> <span class="kk">/ˌsuːpɚˈstɪʃəs/</span> — 迷信的。</div>
-    <div class="glo"><b>flip (v.)</b> <span class="kk">/flɪp/</span> — 擲、彈（硬幣）使其翻轉。</div>
-    <div class="glo"><b>tendency</b> <span class="kk">/ˈtɛndənsi/</span> — 傾向、趨勢；某事較常發生的方向。</div>
-    <div class="glo"><b>meteorite</b> <span class="kk">/ˈmiːtiəraɪt/</span> — 隕石；墜落到地球表面的太空岩石。</div>
-    <div class="glo"><b>glow-in-the-dark</b> — 夜光的；在黑暗中會發光。</div>
-    <div class="glo"><b>skeleton</b> <span class="kk">/ˈskɛlətn/</span> — 骨架、骨骼。</div>
-    <div class="glo"><b>collector</b> <span class="kk">/kəˈlɛktɚ/</span> — 收藏家。</div>
-    <div class="glo"><b>scented</b> <span class="kk">/ˈsɛntɪd/</span> — 帶有香味的、加了香氣的。</div>
-    <div class="glo"><b>uncertain</b> <span class="kk">/ʌnˈsɝːtn/</span> — 不確定的、不明朗的。</div>
-    <div class="glo"><b>face value</b> — 面額、票面價值；硬幣上標示的價值。</div>
-    <div class="glo"><b>payment platform</b> — 支付平台；如行動支付、電子錢包等系統。</div>
-    <div class="glo"><b>physical cash</b> — 實體現金；相對於數位支付的紙鈔與硬幣。</div>
-    <a href="#unit-map" class="back-to-map">⬆ 回到單元地圖</a>
-  </section>
-
-  <!-- 底部三連結卡（與頂部一致） -->
-  <div class="links">
-    <a class="lc lc1" href="https://linwayet.github.io/4ulive/index.html">
-      <span class="lc-t">七月課程・錯中學 ECHO 計劃</span>
-      <span class="lc-d">從錯誤中學習的英文進步方法</span>
-    </a>
-    <a class="lc lc2" href="https://linwayet.github.io/popup/index">
-      <span class="lc-t">七月課程・學生分析</span>
-      <span class="lc-d">個人化學習診斷與規劃</span>
-    </a>
-    <a class="lc lc3" href="https://line.me/ti/p/~linwayet">
-      <span class="lc-t">加我的 LINE：linwayet</span>
-      <span class="lc-d">直接聯絡林威老師</span>
-    </a>
-  </div>
-
-</main>
-</body>
-</html>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>戰勝學測 LEVEL 3｜Unit 1</title><style>
+:root{--paper:#fffaf2;--ink:#3d2d22;--red:#a33d2e;--orange:#d96b27;--green:#547a55;--purple:#76518f;--line:#e6cba5}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(135deg,#f8ead8,#f6f1e8 45%,#f3e3d2);color:var(--ink);font:22px/1.8 "BIZ UDPGothic","Noto Sans TC","PingFang TC",Arial,sans-serif}header,main{width:min(920px,calc(100% - 28px));margin:auto}header{padding:42px 0 24px;text-align:center}h1{margin:0;padding:22px;border:3px solid #d88b64;border-radius:24px;background:#fff8ee;color:var(--red);font-size:clamp(2.15rem,7vw,3.35rem);line-height:1.25;box-shadow:0 10px 28px #89532c20}header p{margin:18px 0 0;color:#76533d;font-size:1.15rem;font-weight:800}nav{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 28px}nav a{display:flex;align-items:center;justify-content:center;min-height:72px;padding:12px;border-radius:16px;color:#fffaf2;text-decoration:none;font-weight:800;background:var(--green)}nav a:nth-child(2){background:var(--orange)}nav a:nth-child(3){background:var(--purple)}nav a:nth-child(4){background:#9b623f}section{scroll-margin-top:18px}.card{margin:0 0 24px;padding:26px 28px 24px;border:2px solid var(--line);border-left:10px solid var(--orange);border-radius:20px;background:var(--paper);box-shadow:0 8px 22px #79512618}.card:nth-child(3n+2){border-left-color:var(--green)}.card:nth-child(3n){border-left-color:var(--purple)}h2{margin:0 0 8px;color:var(--red);font-size:1.48rem;line-height:1.45}.phonetic{color:#6c4937;font-weight:700}.pos{display:inline-block;margin-left:6px;padding:2px 10px;border-radius:9px;background:#f1dfbe;color:#68401e;font-size:.94em}.related{margin:12px 0 14px;padding:12px 16px;border-radius:13px;background:#f7ead4}.label{color:#8d3c2e;font-weight:900}.examples{margin:0;padding-left:1.55em}.examples li{margin:7px 0}.zh{display:block;color:#6c5747;font-size:.92em}.top{display:inline-flex;align-items:center;justify-content:center;min-height:58px;margin-top:16px;padding:5px 18px;border-radius:14px;background:#efe0ca;color:#684b36;text-decoration:none;font-weight:800}.note{margin:30px 0 50px;padding:18px 22px;border-radius:18px;background:#f5dfc0;border:2px dashed #cf8d4b;color:#67442c}@media(max-width:650px){body{font-size:20px}header,main{width:min(100% - 18px,920px)}header{padding-top:20px}nav{grid-template-columns:1fr 1fr}.card{padding:21px 18px}h2{font-size:1.3rem}}@media print{body{background:#fff}.card{break-inside:avoid;box-shadow:none}nav,.top{display:none}}
+</style></head><body><header id="top"><h1>戰勝學測<br>高中英語必備 LEVEL 3</h1><p>2001–3000 字｜Unit 1｜KK 音標・常用延伸・實用例句</p></header><main><nav><a href="#a">A–D</a><a href="#e">E–O</a><a href="#p">P–S（前）</a><a href="#s">S（後）–T</a></nav><div id="cards"></div><p class="note">音標採美式 KK 標示；例句以學測常見語境與自然用法為主。</p></main><script>
+const words=[
+['a','aboard','əˈbord','adv./prep. 在船、飛機或車上','go aboard','go əˈbord','登上交通工具','All passengers were safely aboard the ship.','所有乘客都已安全登船。','We went aboard the train just before it left.','我們在火車出發前一刻上了車。'],
+['','advise','ədˈvaɪz','v. 建議；勸告','advice','ədˈvaɪs','n. 建議；忠告','The doctor advised him to get more sleep.','醫師建議他多睡一點。','Could you give me some advice about studying abroad?','你能給我一些關於出國留學的建議嗎？'],
+['','audience','ˈɔdɪəns','n. 觀眾；聽眾','target audience','ˈtɑrgɪt ˈɔdɪəns','目標受眾','The audience applauded at the end of the play.','戲劇結束時，觀眾熱烈鼓掌。','Teenagers are the target audience for this magazine.','青少年是這本雜誌的目標讀者。'],
+['','basement','ˈbesmənt','n. 地下室','in the basement','ɪn ðə ˈbesmənt','在地下室','We store old furniture in the basement.','我們把舊家具存放在地下室。','The building has a parking lot in the basement.','這棟大樓的地下室設有停車場。'],
+['','bay','be','n. 海灣','across the bay','əˈkrɔs ðə be','橫越海灣','The fishing village lies beside a quiet bay.','這座漁村位於寧靜的海灣旁。','We could see the city lights across the bay.','我們可以看見海灣對岸的城市燈火。'],
+['','beast','bist','n. 野獸；凶猛動物','wild beast','waɪld bist','野獸','The story tells of a prince turned into a beast.','這個故事講述一位王子被變成野獸。','The hunters found tracks left by a wild beast.','獵人發現野獸留下的足跡。'],
+['','canyon','ˈkænjən','n. 峽谷','deep canyon','dip ˈkænjən','深邃峽谷','A river flows through the deep canyon.','一條河流經這座深邃峽谷。','The hikers admired the canyon from a safe distance.','登山客在安全距離外欣賞峽谷。'],
+['','carpenter','ˈkɑrpəntɚ','n. 木匠','carpentry','ˈkɑrpəntrɪ','n. 木工技術','The carpenter built a strong wooden table.','木匠做了一張堅固的木桌。','He learned basic carpentry from his grandfather.','他向祖父學習基礎木工技術。'],
+['','chill','tʃɪl','n. 寒意；v. 使冷卻','chilly','ˈtʃɪlɪ','adj. 寒冷的','A sudden chill filled the evening air.','夜間空氣突然充滿寒意。','It was chilly, so I put on a jacket.','天氣很冷，所以我穿上外套。'],
+['','chin','tʃɪn','n. 下巴','under one’s chin','ˈʌndɚ wʌnz tʃɪn','在某人下巴下方','She rested her chin on her hand.','她用手托著下巴。','Fasten the helmet strap under your chin.','把安全帽帶扣在下巴下方。'],
+['','cleaner','ˈklinɚ','n. 清潔工；清潔劑','vacuum cleaner','ˈvækjəm ˈklinɚ','吸塵器','The cleaner arrives before the office opens.','清潔人員在辦公室開門前抵達。','We use a vacuum cleaner on the carpet.','我們用吸塵器清理地毯。'],
+['','crispy','ˈkrɪspɪ','adj. 酥脆的','crisp','krɪsp','adj. 脆的；清新的','Bake the potatoes until they are crispy.','把馬鈴薯烤到酥脆。','The morning air was cool and crisp.','清晨的空氣涼爽清新。'],
+['','cruel','ˈkruəl','adj. 殘酷的；殘忍的','cruelty','ˈkruəltɪ','n. 殘酷；虐待','It is cruel to leave an animal without food.','讓動物挨餓是殘忍的。','The organization works to prevent cruelty to animals.','這個組織致力於防止虐待動物。'],
+['','database','ˈdetəˌbes','n. 資料庫','online database','ˈɑnˌlaɪn ˈdetəˌbes','線上資料庫','The school stores student records in a secure database.','學校把學生紀錄儲存在安全的資料庫中。','Researchers searched an online database for articles.','研究人員在線上資料庫搜尋文章。'],
+['','dawn','dɔn','n. 黎明；開端','at dawn','æt dɔn','在黎明時分','The rescue team began its search at dawn.','救援隊在黎明時展開搜索。','Birds started singing before dawn.','鳥兒在天亮前就開始歌唱。'],
+['','deck','dɛk','n. 甲板；露台','on deck','ɑn dɛk','在甲板上','Passengers gathered on deck to watch the sunset.','乘客聚集在甲板上看日落。','The crew cleaned the deck after the storm.','船員在暴風雨後清理甲板。'],
+['e','elderly','ˈɛldɚlɪ','adj. 年長的；年老的','the elderly','ðɪ ˈɛldɚlɪ','老年人','The volunteer helps elderly residents buy groceries.','這位志工協助年長居民購買日用品。','The city provides free health checks for the elderly.','這座城市為老年人提供免費健康檢查。'],
+['','explore','ɪkˈsplor','v. 探索；探討','exploration','ˌɛkspləˈreʃən','n. 探索；探勘','We spent the afternoon exploring the old town.','我們花了一下午探索老城區。','Space exploration has expanded our knowledge of the universe.','太空探索擴展了我們對宇宙的認識。'],
+['','fortune','ˈfɔrtʃən','n. 財富；運氣','fortunate','ˈfɔrtʃənɪt','adj. 幸運的','He made a fortune in the software business.','他在軟體業賺得巨額財富。','We were fortunate to find shelter before the storm.','我們很幸運在暴風雨前找到避難處。'],
+['','glory','ˈglorɪ','n. 光榮；榮耀','glorious','ˈglorɪəs','adj. 光榮的；壯麗的','The athlete brought glory to her country.','這位運動員為國家帶來榮耀。','We watched a glorious sunset over the ocean.','我們欣賞海面上壯麗的日落。'],
+['','hire','haɪr','v. 僱用；租用','hire an employee','haɪr ən ɛmˈplɔɪɪ','僱用員工','The company plans to hire ten new engineers.','公司計畫聘用十名新工程師。','We hired a guide to show us around the city.','我們雇用一位導遊帶我們參觀城市。'],
+['','horn','hɔrn','n. 角；喇叭','honking horn','ˈhɑŋkɪŋ hɔrn','鳴響的喇叭','The driver sounded the horn to warn the cyclist.','駕駛按喇叭警告騎士。','A goat has two horns on its head.','山羊頭上有兩隻角。'],
+['','opposite','ˈɑpəzɪt','adj. 相反的；prep. 在……對面','the opposite side','ðɪ ˈɑpəzɪt saɪd','另一側；對面','The bank is opposite the post office.','銀行在郵局對面。','Their opinions are on opposite sides of the debate.','他們的意見分處這場辯論的兩端。'],
+['','organize','ˈɔrgəˌnaɪz','v. 組織；整理','organization','ˌɔrgənəˈzeʃən','n. 組織；安排','Students organized a charity event at school.','學生在校內籌辦慈善活動。','Good organization can save time and reduce stress.','良好的規劃能節省時間並減少壓力。'],
+['','original','əˈrɪdʒənəl','adj. 原來的；原創的','originally','əˈrɪdʒənəlɪ','adv. 原先；起初','The museum displays the original painting.','博物館展出這幅畫的真跡。','The building was originally a train station.','這棟建築原先是一座火車站。'],
+['','oven','ˈʌvən','n. 烤箱','preheat the oven','priˈhit ðɪ ˈʌvən','預熱烤箱','Preheat the oven before baking the bread.','烤麵包前先預熱烤箱。','Be careful when you take the hot dish out of the oven.','從烤箱取出熱盤時要小心。'],
+['','owl','aʊl','n. 貓頭鷹','night owl','naɪt aʊl','夜貓子；晚睡的人','An owl can hunt quietly in the dark.','貓頭鷹能在黑暗中安靜獵食。','My brother is a night owl who studies after midnight.','我弟弟是個半夜後讀書的夜貓子。'],
+['p','pearl','pɝl','n. 珍珠','pearl necklace','pɝl ˈnɛklɪs','珍珠項鍊','The diver found a pearl inside the oyster.','潛水員在牡蠣中發現一顆珍珠。','She wore a pearl necklace to the ceremony.','她戴著珍珠項鍊參加典禮。'],
+['','persuade','pɚˈswed','v. 說服','persuade A to V','pɚˈswed e tu','說服某人做某事','I persuaded my friend to join the school club.','我說服朋友加入學校社團。','The advertisement failed to persuade consumers to buy the product.','這則廣告未能說服消費者購買產品。'],
+['','pill','pɪl','n. 藥丸','take a pill','tek ə pɪl','服用藥丸','Take this pill after breakfast.','早餐後服用這顆藥丸。','She swallowed the pill with a glass of water.','她配著一杯水吞下藥丸。'],
+['','ribbon','ˈrɪbən','n. 緞帶；絲帶','tie a ribbon','taɪ ə ˈrɪbən','繫上緞帶','She tied a red ribbon around the gift.','她在禮物外繫上紅色緞帶。','The winner received a blue ribbon.','優勝者獲得一條藍色緞帶。'],
+['','sauce','sɔs','n. 醬汁；調味醬','tomato sauce','təˈmeto sɔs','番茄醬汁','Pour the sauce over the pasta.','把醬汁淋在義大利麵上。','This tomato sauce contains fresh herbs.','這種番茄醬汁含有新鮮香草。'],
+['','saucer','ˈsɔsɚ','n. 茶碟；飛碟狀物','cup and saucer','kʌp ənd ˈsɔsɚ','杯子與茶碟','She placed the cup back on its saucer.','她把杯子放回茶碟上。','The café uses matching cups and saucers.','這家咖啡館使用成套的杯子與茶碟。'],
+['','shepherd','ˈʃɛpɚd','n. 牧羊人；v. 引領','shepherd dog','ˈʃɛpɚd dɔg','牧羊犬','The shepherd led the sheep across the field.','牧羊人帶領羊群穿過田野。','A shepherd dog guarded the flock.','一隻牧羊犬守護著羊群。'],
+['','sink','sɪŋk','v. 下沉；n. 洗手台','sink into','sɪŋk ˈɪntu','陷入；沉入','The damaged boat began to sink.','受損的船開始下沉。','Wash your hands in the kitchen sink.','在廚房水槽洗手。'],
+['','skip','skɪp','v. 跳過；蹦跳','skip a meal','skɪp ə mil','少吃一餐；不吃某餐','Do not skip breakfast before an exam.','考試前不要不吃早餐。','You may skip this chapter if you already know the material.','如果你已熟悉內容，可以跳過這一章。'],
+['','suicide','ˈsuəˌsaɪd','n. 自殺','suicide prevention','ˈsuəˌsaɪd prɪˈvɛnʃən','自殺防治','The campaign promotes suicide prevention and mental health support.','這項活動推動自殺防治與心理健康支持。','Anyone having thoughts of suicide should seek immediate professional help.','任何出現自殺念頭的人都應立即尋求專業協助。'],
+['','survey','ˈsɝve; sɚˈve','n. 調查；v. 調查','conduct a survey','kənˈdʌkt ə ˈsɝve','進行調查','The school conducted a survey of student reading habits.','學校針對學生閱讀習慣進行調查。','Researchers surveyed more than five hundred families.','研究人員調查了五百多個家庭。'],
+['s','suspect','səˈspɛkt; ˈsʌspɛkt','v. 懷疑；n. 嫌疑人','suspect that','səˈspɛkt ðæt','懷疑……','Police suspect that the fire was started on purpose.','警方懷疑這場火災是人為縱火。','The suspect was questioned for several hours.','嫌疑人被訊問了數小時。'],
+['','suspicion','səˈspɪʃən','n. 懷疑；嫌疑','under suspicion','ˈʌndɚ səˈspɪʃən','受到懷疑','His unusual behavior raised suspicion.','他的異常行為引起懷疑。','Several employees came under suspicion during the investigation.','調查期間有幾名員工受到懷疑。'],
+['','swan','swɑn','n. 天鵝','a pair of swans','ə pɛr əv swɑnz','一對天鵝','A white swan moved gracefully across the lake.','一隻白天鵝優雅地游過湖面。','We saw a pair of swans near the reeds.','我們在蘆葦附近看見一對天鵝。'],
+['','tangerine','ˌtændʒəˈrin','n. 橘子；橘紅色','tangerine peel','ˌtændʒəˈrin pil','橘子皮','She packed a tangerine in her lunch box.','她在午餐盒裡放了一顆橘子。','The room was filled with the fresh scent of tangerine peel.','房間裡充滿橘子皮的清新香氣。']
+];
+const root=document.getElementById('cards');words.forEach((w,i)=>{if(w[0]){const s=document.createElement('section');s.id=w[0];root.appendChild(s)}const a=document.createElement('article');a.className='card';a.innerHTML=`<h2>${i+1}. ${w[1]} <span class="phonetic">[${w[2]}]</span> <span class="pos">${w[3]}</span></h2><p class="related"><span class="label">常用延伸：</span>${w[4]} <span class="phonetic">[${w[5]}]</span>（${w[6]}）</p><ol class="examples"><li>${w[7]}<span class="zh">${w[8]}</span></li><li>${w[9]}<span class="zh">${w[10]}</span></li></ol><a class="top" href="#top">⬆ 回到頂端</a>`;root.lastElementChild.appendChild(a)});
+</script></body></html>
